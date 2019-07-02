@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+.load{
+    background-image: url("../src/assets/loader.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: 350px;
+   }

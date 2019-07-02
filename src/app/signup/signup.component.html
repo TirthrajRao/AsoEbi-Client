@@ -1,25 +1,41 @@
-<div class="row">
-    <div class="col-md-6 m-auto pt-5">
-        <div class="card p-5">
-            <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" autocomplete="off">
-                <div class="form-group">
-                    <label for="firstName">First Name</label>
-                    <input type="text" class="form-control" formControlName="firstName">
-                </div>
-                <div class="form-group">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" class="form-control" formControlName="lastName">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" formControlName="email">
-                </div>
-                <div class="form-group">
-                    <label for="pwd">Password</label>
-                    <input type="password" class="form-control" formControlName="password">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+<!-- Loader -->
+<div class="load" *ngIf="isDiable">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<div *ngIf="!isDiable">
+    <div class="row">
+        <div class="col-md-6 m-auto pt-5">
+            <div class="card p-5">
+                <form [formGroup]="signUpForm" autocomplete="off">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control" formControlName="firstName">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control" formControlName="lastName">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" formControlName="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Password</label>
+                        <input type="password" class="form-control" formControlName="password">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mobile">PhoneNo</label>
+                        <input type="number" class="form-control" formControlName="mobile">
+                    </div>
+                    <button type="button" class="btn btn-primary" (click)="onSubmit()"
+                    [disabled]="signUpForm.invalid" [disabled]="isDisable">Submit</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

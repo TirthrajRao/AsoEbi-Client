@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -8,23 +12,67 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import {LoginService} from './services/login.service';
-import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { HomeComponent } from './home/home.component';
+import { CreateEventComponent } from './create-event/create-event.component';
+import { EditEventComponent } from './edit-event/edit-event.component';
+import { MyEventComponent } from './my-event/my-event.component';
+import { HeaderComponent } from './header/header.component';
+import { AuthInterceptor } from './services/auth.interceptor';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { LoaderComponent } from './loader/loader.component';
+import {LoaderService} from './services/loader.service';
+
+
+
+let config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider("265692874005-9q5lu0gc23u3los6fisqmvgiuo7bp99s.apps.googleusercontent.com")
+  },
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider("350939005533804")
+  }
+]);
+export function provideConfig() {
+  return config;
+}
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
-    ForgotpasswordComponent
+    HomeComponent,
+    CreateEventComponent,
+    EditEventComponent,
+    MyEventComponent,
+    HeaderComponent,
+    ResetPasswordComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SocialLoginModule,
+    MatProgressSpinnerModule
   ],
-  providers: [LoginService],
+  providers: [LoginService,
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+    ],
   bootstrap: [AppComponent]
 })
+
+
 export class AppModule { }

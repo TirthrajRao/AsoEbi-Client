@@ -1,18 +1,71 @@
-<div class="row">
-    <div class="col-md-6 m-auto pt-5">
-        <div class="card p-5">
-            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
-                <div class="form-group">
-                    <label for="email">Email address:</label>
-                    <input type="email" class="form-control" formControlName="email">
-                </div>
-                <div class="form-group">
-                    <label for="pwd">Password:</label>
-                    <input type="password" class="form-control" formControlName="password">
-                </div>
-                <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Submit</button>
-                <h5 routerLink="/signUp">SignUp</h5>
-            </form>
+<!-- Loader  -->
+
+<div class="load" *ngIf="isDiable">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<div *ngIf="!isDiable">
+    <div class="row">
+        <div class="col-md-4 m-auto pt-5">
+            <div class="card p-5">
+                <form [formGroup]="loginForm" autocomplete="off">
+                    <div class="form-group">
+                        <label for="email">Email address:</label>
+                        <input type="email" class="form-control" formControlName="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Password:</label>
+                        <input type="password" class="form-control" formControlName="password">
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" (click)="onSubmitLogin()" class="btn btn-primary w-100"
+                            [disabled]="loginForm.invalid" [disabled]="isDisable" >Submit</button>
+                    </div>
+                    <div class="row p-3">
+                        <div class="col-md-6">
+                            <button type="button" (click)="signInWithGoogleAccount()" class="btn btn-primary w-100" [disabled]="isDisable">SignIn with Google</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-primary w-100" (click)="submitLogin();" [disabled]="isDisable">Login with facebook</button>
+                        </div>
+                    </div>
+                    <a href="" class="float-left" data-toggle="modal" data-target="#exampleModal">forgot password?</a>
+                    <a routerLink="/signUp" class="float-right">SignUp?</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Forgot password Model -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Forgot Password</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="forgotPasswordForm" autocomplete="off">
+                    <div class="form-group">
+                        <label for="email">Email address:</label>
+                        <input type="email" class="form-control" formControlName="email">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="submitForgotPassword();"
+                    [disabled]="forgotPasswordForm.invalid">Submit</button>
+            </div>
         </div>
     </div>
 </div>
