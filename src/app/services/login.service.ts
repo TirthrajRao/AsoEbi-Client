@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {config} from '../config'
+import {config} from '../config';
 import {LoginComponent} from '../login/login.component';
 import {SignupComponent} from '../signup/signup.component';
 import { BehaviorSubject, Observable } from 'rxjs';

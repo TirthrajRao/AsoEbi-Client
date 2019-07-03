@@ -1,0 +1,130 @@
+#register_steps_tab.ui-accordion .step_content.ui-accordion-content{
+    padding: 36px 0px 14px;
+    border-radius: 0px;
+    border-color: #d4d4d4;
+    overflow: hidden;
+ }
+ .register_step_section{
+    margin-top: 38px;
+ }
+ #register_steps_tab.ui-accordion .ui-accordion-header:first-child{
+    margin-top: 0px;
+ }
+ #register_steps_tab.ui-accordion .ui-accordion-header{
+    margin-top: 10px;
+    border-radius: 0px;
+    background-color: #818181;
+    color: #fff;
+    font-size: 18px;
+    padding: 4px 20px;
+    text-transform: uppercase;
+    border-color: #818181;
+    pointer-events: none;
+    outline: none;
+    font-weight: 600;
+ }
+ #register_steps_tab .ui-icon,
+ #register_steps_tab .ui-widget-content .ui-icon{
+    display: none;
+ }
+ #register_steps_tab.ui-accordion .ui-accordion-header.ui-accordion-header-active{
+    background-color: #0085f2;
+    border-color: #0085f2;
+ }
+ #register_steps_tab.ui-accordion .ui-accordion-header.ui-accordion-header-active span.step_number{
+    background-color: #0077d8;
+ }
+ span.step_number{
+    height: 40px;
+    width: 40px;
+    margin-right: 20px;
+    background-color: #b7b7b7;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px 0px;
+    border-radius: 50%;
+ }
+ .step_content h3{
+    font-size: 18px;
+    color: #474747;
+    padding-bottom: 17px;
+ }
+ .register_step_section .breadcrumb{margin-top: 13px;}
+ .step_content .form_input{margin-bottom: 18px;}
+ .step_content .form_input label {
+    display: block;
+    font-size: 14px;
+    color: #474747;
+    margin-bottom: 4px;
+ }
+ .step_content .form_input .input_text {
+    font-size: 14px;
+    color: #56575a;
+    height: 40px;
+    width: 100%;
+    border: 1px solid #d4d4d4;
+    border-radius: 4px;
+    padding: 0px 18px;
+ }
+ .next_step_and_prev_step{
+    display: inline-block;
+    margin-top: 3px;
+    float: right;
+ }
+ .next_step_and_prev_step a,
+ .next_step_and_prev_step .reg_submit_btn,
+ .continue_to_next_step a.continue_to_next,
+ .continue_to_next_step .btn_submit{
+    color: #fff;
+    display: inline-block;
+    padding: 10px 26px;
+    font-size: 16px;
+    text-transform: capitalize;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+ }
+ .next_step_and_prev_step a.prev_step{
+    background-color: #454748;
+    margin-right: 16px;
+ }
+ .next_step_and_prev_step a.next_step,
+ .next_step_and_prev_step .reg_submit_btn,
+ .continue_to_next_step a.continue_to_next,
+ .continue_to_next_step .btn_submit{
+    background-color: #0077d8;
+ }
+ .continue_to_next_step .btn_submit{
+    margin-top: 29px;
+ }
+ #register_steps_tab {
+    padding-bottom: 25px;
+ }
+ .bill_check_box input[type=checkbox] {
+    margin: -1px 6px 0px 0px;
+    display: inline-block;
+    vertical-align: middle;
+    outline: none;
+ }
+ .bill_check_box label {
+    display: inline-block;
+    font-size: 14px;
+    color: #474747;
+ }
+ .bill_check_box {
+    padding-bottom: 16px;
+ }
+ .step_content .form_input select.input_text{
+    background-repeat: no-repeat;
+    background-position: center right 18px;
+    background-color: transparent;
+    -webkit-appearance: none;
+ }
+ #register_steps_tab.ui-accordion .ui-accordion-header.step_done{
+    background-color: #5fcc68;
+    border-color: #5fcc68;
+ }
+ #register_steps_tab.ui-accordion .ui-accordion-header.step_done span.step_number{
+    background-color: #52b05a;
+ }

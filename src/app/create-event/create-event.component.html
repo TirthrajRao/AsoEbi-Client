@@ -1,1 +1,296 @@
-<p>create-event works!</p>
+<section id="stepperForm">
+    <div class="container">
+        <div class="section_title">
+            <h2>Accordion Stepper Form</h2>
+        </div>
+        <div id="register_steps_tab">
+            <h3><span class="step_number">1</span>Create New Event</h3>
+            <div class="step_content">
+                <div class="row">
+                    <div class="col-md-6 m-auto">
+                        <h5>Event Title</h5>
+                        <form [formGroup]="eventForm" autocomplete="off" class="user_acc_info">
+                            <div class="form_input">
+                                <label>Title *</label>
+                                <input type="text" class="form-control" formControlName="eventTitle"
+                                    placeholder="Enter Event Title" form>
+                            </div>
+                            <div class="row">
+                                <div class="dropdown col-md-12">
+                                    <h5>Select Event Type</h5>
+                                    <select class="form-control" formControlName="eventType">
+                                        <option value="Wedding">Wedding</option>
+                                        <option value="Birthday">Birthday</option>
+                                        <option value="Funeral">Funeral</option>
+                                        <option value="Reunion">Reunion</option>
+                                        <option value="Club Meeting">Club Meeting</option>
+                                        <option value="Religions">Religions</option>
+                                        <option value="Anniversary">Anniversary</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-6">
+                                    <h5>StartDate</h5>
+                                    <input type="date" class="form-control" formControlName="startDate">
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>EndDate</h5>
+                                    <input type="date" class="form-control" formControlName="endDate">
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-12">
+                                    <div class="form_input">
+                                        <label>Event HashTag *</label>
+                                        <input type="text" placeholder="Enter Event Hastag" class="form-control"
+                                            formControlName="hashTag">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5>Make this event Public or Private?</h5>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="switch1"
+                                            formControlName="isPublic">
+                                        <label class="custom-control-label" for="switch1">Public</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-12">
+                                    <h5>Upload Profile Photo</h5>
+                                    <div class="custom-file">
+                                        <input type="file" #profile formControlName="profile" class="form-control"
+                                            (change)="addFile($event.target.files)" id="customFile"
+                                            accept="image/png, image/jpeg, image/jpg" hidden>
+                                        <label class="custom-file-label" for="customFile">Choose file</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-12">
+                                    <h5>Select Last Payment Deadline Date</h5>
+                                    <input type="date" name="selectDate" formControlName="deadlineDate"
+                                        class="form-control">
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-md-12">
+                                    <h5>You want to use logistics service of ASO-EBI? </h5>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="switch2"
+                                            formControlName="isLogistics">
+                                        <label class="custom-control-label" for="switch2">Yes</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="next_step_and_prev_step mt-2">
+                                <a href="javascript:void(0);" class="next_step" (click)="addEvent()">Next</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <h3><span class="step_number">2</span>Event Activities</h3>
+            <div class="step_content">
+                <div class="row">
+                    <div class="col-md-12 w-50">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 m-auto">
+                        <!-- <h3>Event Activities</h3> -->
+                        <form [formGroup]="activityForm" class="user_acc_info">
+                            <div formArrayName="activity">
+                                <div [formGroupName]="i"
+                                    *ngFor="let tech of activityForm.controls.activity.controls; let i = index">
+                                    <p>activity #{{i+1}}</p>
+                                    <div class="row mt-3">
+                                        <div class="col-md-6">
+                                            <div class="form_input">
+                                                <label>Activity Name *</label>
+                                                <input type="text" class="form-control" formControlName="activityName"
+                                                    placeholder="Enter activity name">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form_input">
+                                                <label>Activity Date</label>
+                                                <input type="date" class="form-control" formControlName="activityDate">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <input id="eventId" class="form-control" formControlName="eventId"
+                                                [(ngModel)]="this.eventId">
+                                        </div>
+                                        <div class="float-right pr-2">
+                                                <button type="submit" class="btn btn-primary" (click)="addActivityField()"><span
+                                                        class="fa fa-plus"></span> Add</button>
+                                            </div>
+                                            <div class="float-right pr-3">
+                                                    <button type="submit" class="btn btn-primary" (click)="removeActivityField()"><span
+                                                            class="fa fa-minus"></span> Remove</button>
+                                                </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="next_step_and_prev_step">
+                                <a href="javascript:void(0);" class="prev_step">Previous</a>
+                                <a href="javascript:void(0);" class="next_step" (click)="addActivity()">Next</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <h3><span class="step_number">3</span>Billing Details</h3>
+            <div class="step_content">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3>Billing Address</h3>
+                        <form class="billing_address">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form_input">
+                                        <label>First Name *</label>
+                                        <input type="text" class="input_text" placeholder="Enter first name">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form_input">
+                                        <label>Last Name *</label>
+                                        <input type="text" class="input_text" placeholder="Enter first name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form_input">
+                                <label>Phone Number *</label>
+                                <input type="text" class="input_text" placeholder="Enter phone number">
+                            </div>
+                            <div class="form_input">
+                                <label>Address *</label>
+                                <input type="text" class="input_text" placeholder="Enter address">
+                            </div>
+                            <div class="form_input">
+                                <label>Address Line 2</label>
+                                <input type="text" class="input_text" placeholder="Enter address">
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form_input">
+                                        <label>City *</label>
+                                        <input type="text" class="input_text" placeholder="Enter city">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form_input">
+                                        <label>State/Province *</label>
+                                        <input type="text" class="input_text" placeholder="Enter state/province">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form_input">
+                                        <label>Zip/Postal Code *</label>
+                                        <input type="text" class="input_text" placeholder="Enter zip/postal code">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form_input">
+                                        <label>Country *</label>
+                                        <select class="input_text">
+                                            <option>United States</option>
+                                            <option>India</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bill_check_box">
+                                <input type="checkbox" id="chk_1">
+                                <label for="chk_1">Shipping address is the same as billing</label>
+                            </div>
+                            <div class="next_step_and_prev_step">
+                                <a href="javascript:void(0);" class="prev_step">Previous</a>
+                                <a href="javascript:void(0);" class="next_step">Next</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <h3><span class="step_number">4</span>shipping Details</h3>
+            <div class="step_content">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h3>Shipping Details</h3>
+                        <form class="billing_address">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form_input">
+                                        <label>First Name *</label>
+                                        <input type="text" class="input_text" placeholder="Enter first name">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form_input">
+                                        <label>Last Name *</label>
+                                        <input type="text" class="input_text" placeholder="Enter first name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form_input">
+                                <label>Phone Number *</label>
+                                <input type="text" class="input_text" placeholder="Enter phone number">
+                            </div>
+                            <div class="form_input">
+                                <label>Address *</label>
+                                <input type="text" class="input_text" placeholder="Enter address">
+                            </div>
+                            <div class="form_input">
+                                <label>Address Line 2</label>
+                                <input type="text" class="input_text" placeholder="Enter address">
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form_input">
+                                        <label>City *</label>
+                                        <input type="text" class="input_text" placeholder="Enter city">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form_input">
+                                        <label>State/Province *</label>
+                                        <input type="text" class="input_text" placeholder="Enter state/province">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form_input">
+                                        <label>Zip/Postal Code *</label>
+                                        <input type="text" class="input_text" placeholder="Enter zip/postal code">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form_input">
+                                        <label>Country *</label>
+                                        <select class="input_text">
+                                            <option>United States</option>
+                                            <option>India</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="next_step_and_prev_step">
+                                <a href="javascript:void(0);" class="prev_step">Previous</a>
+                                <input type="submit" class="reg_submit_btn" value="Register">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
