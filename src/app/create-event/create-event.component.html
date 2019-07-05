@@ -7,7 +7,7 @@
             <h3><span class="step_number">1</span>Create New Event</h3>
             <div class="step_content">
                 <div class="row">
-                    <div class="col-md-6 m-auto">
+                    <div class="col-12">
                         <h5>Event Title</h5>
                         <form [formGroup]="eventForm" autocomplete="off" class="user_acc_info">
                             <div class="form_input">
@@ -97,27 +97,23 @@
             <h3><span class="step_number">2</span>Event Activities</h3>
             <div class="step_content">
                 <div class="row">
-                    <div class="col-md-12 w-50">
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6 m-auto">
+                    <div class="col-12">
                         <!-- <h3>Event Activities</h3> -->
                         <form [formGroup]="activityForm" class="user_acc_info">
                             <div formArrayName="activity">
                                 <div [formGroupName]="i"
-                                    *ngFor="let tech of activityForm.controls.activity.controls; let i = index">
+                                    *ngFor="let tech of activityForm.controls.activity.controls; let i = index"
+                                    class="single_activity">
                                     <p>activity #{{i+1}}</p>
                                     <div class="row mt-3">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <div class="form_input">
                                                 <label>Activity Name *</label>
                                                 <input type="text" class="form-control" formControlName="activityName"
                                                     placeholder="Enter activity name">
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <div class="form_input">
                                                 <label>Activity Date</label>
                                                 <input type="date" class="form-control" formControlName="activityDate">
@@ -125,17 +121,23 @@
                                         </div>
                                         <div>
                                             <input id="eventId" class="form-control" formControlName="eventId"
-                                                [(ngModel)]="this.eventId">
+                                                [(ngModel)]="eventId" hidden>
                                         </div>
-                                        <div class="float-right pr-2">
-                                                <button type="submit" class="btn btn-primary" (click)="addActivityField()"><span
-                                                        class="fa fa-plus"></span> Add</button>
+                                        <div class="col-md-2">
+                                            <div class="remove_row"
+                                                *ngIf="activityForm.controls.activity.controls.length>1">
+                                                <button type="submit" class="btn btn-primary btn-blobk"
+                                                    (click)="removeActivityField(i)"><span class="fa fa-minus"></span>
+                                                    Remove</button>
                                             </div>
-                                            <div class="float-right pr-3">
-                                                    <button type="submit" class="btn btn-primary" (click)="removeActivityField()"><span
-                                                            class="fa fa-minus"></span> Remove</button>
-                                                </div>
+                                        </div>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="add_row">
+                                    <button type="submit" class="btn float-right btn-primary"
+                                        (click)="addActivityField()"><span class="fa fa-plus"></span> Add</button>
                                 </div>
                             </div>
                             <div class="next_step_and_prev_step">
@@ -146,148 +148,95 @@
                     </div>
                 </div>
             </div>
-            <h3><span class="step_number">3</span>Billing Details</h3>
+
+
+
+            <h3><span class="step_number">3</span>Create Group</h3>
             <div class="step_content">
                 <div class="row">
-                    <div class="col-sm-6">
-                        <h3>Billing Address</h3>
-                        <form class="billing_address">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form_input">
-                                        <label>First Name *</label>
-                                        <input type="text" class="input_text" placeholder="Enter first name">
+                    <div class="col-12" *ngIf="groupForm">
+                        <form [formGroup]="groupForm" class="billing_address">
+                            <div class="form_input" formArrayName="group">
+                                <div class="row" [formGroupName]="i"
+                                    *ngFor="let item of groupForm.controls.group.controls; let i = index">
+                                    <div class="col-md-12">
+                                        <h4>{{getActivityName(item.value.activityId)}}</h4>
+
+
+                                    </div>
+                                    <div class="col-12">
+                                        <label>Group Name *</label>
+                                        <input type="text" class="form-control" formControlName="groupName"
+                                            placeholder="Enter Group Name">
+                                    </div>
+                                    <div class="row">
+                                        <div formGroupName="male">
+                                            <h4>Male</h4>
+                                            <div class="col-6">
+                                                <div class="form_input">
+                                                    <label>Male</label>
+                                                    <div class="form_input">
+                                                        <label>Item Name</label>
+                                                        <input type="text" class="form-control"
+                                                            formControlName="itemName">
+                                                    </div>
+                                                    <div class="form_input">
+                                                        <label>Item Type</label>
+                                                        <input type="text" class="form-control"
+                                                            formControlName="itemType">
+                                                    </div>
+                                                    <div class="form_input">
+                                                        <label>Item Price</label>
+                                                        <input type="number" class="form-control"
+                                                            formControlName="itemPrice">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div formGroupName="female">
+                                            <h4>Female</h4>
+                                            <div class="col-6">
+                                                <div class="form_input">
+                                                    <label>Female</label>
+                                                    <div class="form_input">
+                                                        <label>Item Name</label>
+                                                        <input type="text" class="form-control"
+                                                            formControlName="itemName">
+                                                    </div>
+                                                    <div class="form_input">
+                                                        <label>Item Type</label>
+                                                        <input type="text" class="form-control"
+                                                            formControlName="itemType">
+                                                    </div>
+                                                    <div class="form_input">
+                                                        <label>Item Price</label>
+                                                        <input type="number" class="form-control"
+                                                            formControlName="itemPrice">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="remove_row" *ngIf="groupForm.controls.group.controls.length>1">
+                                        <button type="submit" class="btn btn-primary btn-blobk"
+                                            (click)="removeGroupField(i)"><span class="fa fa-minus"></span>
+                                            Remove</button>
+                                    </div>
+
+                                    <div class="add_row" *ngIf="groupForm.controls.group.controls.length>0">
+                                        <button type="button" class="btn float-right btn-primary"
+                                            (click)="AddGroupField(createdActivity[i].activityId, i)"><span
+                                                class="fa fa-plus"></span> Add</button>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="form_input">
-                                        <label>Last Name *</label>
-                                        <input type="text" class="input_text" placeholder="Enter first name">
-                                    </div>
-                                </div>
                             </div>
-                            <div class="form_input">
-                                <label>Phone Number *</label>
-                                <input type="text" class="input_text" placeholder="Enter phone number">
-                            </div>
-                            <div class="form_input">
-                                <label>Address *</label>
-                                <input type="text" class="input_text" placeholder="Enter address">
-                            </div>
-                            <div class="form_input">
-                                <label>Address Line 2</label>
-                                <input type="text" class="input_text" placeholder="Enter address">
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form_input">
-                                        <label>City *</label>
-                                        <input type="text" class="input_text" placeholder="Enter city">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form_input">
-                                        <label>State/Province *</label>
-                                        <input type="text" class="input_text" placeholder="Enter state/province">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form_input">
-                                        <label>Zip/Postal Code *</label>
-                                        <input type="text" class="input_text" placeholder="Enter zip/postal code">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form_input">
-                                        <label>Country *</label>
-                                        <select class="input_text">
-                                            <option>United States</option>
-                                            <option>India</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="bill_check_box">
-                                <input type="checkbox" id="chk_1">
-                                <label for="chk_1">Shipping address is the same as billing</label>
-                            </div>
-                            <div class="next_step_and_prev_step">
-                                <a href="javascript:void(0);" class="prev_step">Previous</a>
-                                <a href="javascript:void(0);" class="next_step">Next</a>
-                            </div>
+                            <!-- </div> -->
                         </form>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <h3><span class="step_number">4</span>shipping Details</h3>
-            <div class="step_content">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h3>Shipping Details</h3>
-                        <form class="billing_address">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form_input">
-                                        <label>First Name *</label>
-                                        <input type="text" class="input_text" placeholder="Enter first name">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form_input">
-                                        <label>Last Name *</label>
-                                        <input type="text" class="input_text" placeholder="Enter first name">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form_input">
-                                <label>Phone Number *</label>
-                                <input type="text" class="input_text" placeholder="Enter phone number">
-                            </div>
-                            <div class="form_input">
-                                <label>Address *</label>
-                                <input type="text" class="input_text" placeholder="Enter address">
-                            </div>
-                            <div class="form_input">
-                                <label>Address Line 2</label>
-                                <input type="text" class="input_text" placeholder="Enter address">
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form_input">
-                                        <label>City *</label>
-                                        <input type="text" class="input_text" placeholder="Enter city">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form_input">
-                                        <label>State/Province *</label>
-                                        <input type="text" class="input_text" placeholder="Enter state/province">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form_input">
-                                        <label>Zip/Postal Code *</label>
-                                        <input type="text" class="input_text" placeholder="Enter zip/postal code">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form_input">
-                                        <label>Country *</label>
-                                        <select class="input_text">
-                                            <option>United States</option>
-                                            <option>India</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="next_step_and_prev_step">
-                                <a href="javascript:void(0);" class="prev_step">Previous</a>
-                                <input type="submit" class="reg_submit_btn" value="Register">
-                            </div>
-                        </form>
+                        <div class="next_step_and_prev_step mt-2">
+                            <a href="javascript:void(0);" class="prev_step">Previous</a>
+                            <a href="javascript:void(0);" class="next_step" (click)="addGroup()">Create
+                                Event</a>
+                        </div>
                     </div>
                 </div>
             </div>

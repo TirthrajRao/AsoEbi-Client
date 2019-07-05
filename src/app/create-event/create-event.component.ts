@@ -17,14 +17,21 @@ import Swal from 'sweetalert2';
 export class CreateEventComponent implements OnInit {
   eventForm: FormGroup;
   activityForm: FormGroup;
+  groupForm: FormGroup;
   files: Array<File> = [];
   eventId: any;
+  createdActivity: any;
+  isPublic = false;
+  isLogistics = false;
+  activityId;
+  items;
+  gArray
 
 
   constructor(private route: ActivatedRoute,
     private router: Router, private _eventService: EventService, private fb: FormBuilder) { }
-
   ngOnInit() {
+
     this.eventForm = new FormGroup({
       eventTitle: new FormControl(''),
       eventType: new FormControl(''),
@@ -33,13 +40,14 @@ export class CreateEventComponent implements OnInit {
       hashTag: new FormControl(''),
       profile: new FormControl(''),
       deadlineDate: new FormControl(''),
-      isPublic: new FormControl(''),
-      isLogistics: new FormControl('')
-
+      isPublic: new FormControl(this.isPublic),
+      isLogistics: new FormControl(this.isLogistics)
     })
     this.activityForm = new FormGroup({
       activity: this.fb.array([this.activityArray()])
     })
+  }
+  ngAfterViewInit() {
     $('#eventId').css({ 'display': 'none' });
     $(function () {
       $("#datepicker").datepicker();
@@ -63,7 +71,10 @@ export class CreateEventComponent implements OnInit {
   }
 
 
-
+  /**@body {JSON} eventTitle,hashtag,startDate,endDate,eventType,profilePhoto,deadlineDate,logistics,piblic or private
+   * To Add basic event details which filled by celebrant and after filled all the values used that generated id of event to create activities and clothes
+   * of guest 
+   */
 
   addEvent() {
     console.log("data of event", this.eventForm);
@@ -78,7 +89,9 @@ export class CreateEventComponent implements OnInit {
       })
   }
 
-
+  /**
+   * To upload main profile photo of event 
+   */
   addFile(event) {
     console.log(event);
     _.forEach(event, (file: any) => {
@@ -94,7 +107,9 @@ export class CreateEventComponent implements OnInit {
     })
   }
 
-
+  /**@body {JSON} activityName, activityDate, eventId
+   * To create different types of activities of event with it's date
+   */
   activityArray() {
     return this.fb.group({
       activityName: new FormControl(''),
@@ -103,19 +118,151 @@ export class CreateEventComponent implements OnInit {
     })
   }
 
-  addActivity() {
-    console.log("activity details", this.activityForm);
+  /**@param {JSON} eventId & all activies id 
+   * To create group of different activites passed all activities id which created in another function and passed it in this function which help 
+   * to create different group in same activity
+   */
+  initGroupForm(activity) {
+    this.groupForm = new FormGroup({
+      eventId: new FormControl(''),
+      group: this.fb.array(this.groupArray())
+    })
   }
 
-  addActivityField(): void
-  {
+
+  /**@param {JSON} activityId,groupName, arrayof (male, female)
+   * to create different groups for one activity for male and female
+   */
+  groupArray(activityId?) {
+    if(activityId){
+      return this.fb.group({
+        activityId: new FormControl(activityId),
+        groupName: new FormControl(''),
+        male: new FormGroup(this.maleItemArray()),
+        female: new FormGroup(this.femaleItemArray())
+      });
+    }
+    this.gArray = [];
+    for (let i = 0; i < this.createdActivity.length; i++) {
+      this.gArray.push(this.fb.group({
+        activityId: new FormControl(this.createdActivity[i].activityId),
+        groupName: new FormControl(''),
+        male: new FormGroup(this.maleItemArray()),
+        female: new FormGroup(this.femaleItemArray())
+      }));
+    }
+    return this.gArray;
+  }
+
+  /**@param {JSON} itemName,itemType,itemPrice
+   * To create male object with their clothes with it's type,name & price with releated groups
+   */
+  maleItemArray() {
+    return {
+      itemName: new FormControl(''),
+      itemType: new FormControl(''),
+      itemPrice: new FormControl('')
+    }
+  }
+
+  
+  /**@param {JSON} itemName,itemType,itemPrice
+   * To create female object with their clothes with it's type,name & price with releated groups
+   */
+  femaleItemArray() {
+    return {
+      itemName: new FormControl(''),
+      itemType: new FormControl(''),
+      itemPrice: new FormControl('')
+    }
+  }
+
+  
+
+  /**@param {JSON} activityName & activityDate
+   * To create single activity or to create more than one activity
+   */
+  addActivity() {
+    console.log("activity details", this.activityForm);
+    this._eventService.addActivities(this.activityForm.value)
+      .subscribe((data: any) => {
+        console.log("activity response data", data);
+        this.createdActivity = data.data;
+        console.log("created activity response from server", this.createdActivity);
+        this.initGroupForm(this.createdActivity);
+      }, err => {
+        console.log(err);
+      })
+  }
+
+
+
+  /**
+   * To add more than one activity at single time click on add button and display another
+   * blank field to add activity  
+   */
+  addActivityField(): void {
     const control = <FormArray>this.activityForm.controls.activity;
     control.push(this.activityArray());
   }
 
-  removeActivityField(i:number): void{
+
+  /**@param{index} i
+   * If remove any activities pass it's index value and that activity should be 
+   * remove from activity array
+   */
+  removeActivityField(i: number): void {
+    console.log(i);
     const control = <FormArray>this.activityForm.controls.activity;
     control.removeAt(i);
   }
+
+  /**@param(JSON) activityId & index
+   * To add more than one group at sinle time and in single activity  
+   */
+  AddGroupField(activityId, i: number): void {
+    console.log("selcet button", i);
+    const control = <FormArray>this.groupForm.controls.group;
+    console.log(control)
+    control.push(this.groupArray(activityId));
+  }
+
+
+  /**@param(Json) activityId, index
+   * To remove unwanted groups from activity list
+   */
+  removeGroupField(i: number): void {
+    const control = <FormArray>this.groupForm.controls.group;
+    control.removeAt(i);
+  }
+
+
+
+  /**@param(JSON) activityId
+   * To print activity name top of the group form   
+   */
+  getActivityName(activityId){
+    console.log(activityId);
+    return this.createdActivity[_.findIndex(this.createdActivity, {activityId: activityId})].activityName;
+  }
+
+
+  /**@param(JSON) eventId,groupName,activitiesId,male{itemName,itemType,itemPrice},female{itemName,itemType,itemPrice}
+   * To add group in different activities with different groups and its male and female object  
+   */
+  addGroup() {
+    this.groupForm.controls.eventId.setValue(this.eventId)
+    console.log("created group details", this.groupForm.value);
+    this._eventService.addGroup(this.groupForm.value)
+      .subscribe(data => {
+        console.log("display created group data", data);
+        this.router.navigate(['home/myEvent'])
+      }, err => {
+        console.log(err);
+      })
+  }
+
+
+
 
 }

@@ -65,7 +65,8 @@ export class LoginComponent implements OnInit {
   }
 
 /**
- * 
+ * @param {JSON} email,password
+ * for login with created email and password
  */
   onSubmitLogin() {
     this.isDiable= true;
@@ -91,6 +92,11 @@ export class LoginComponent implements OnInit {
       })
   }
 
+
+  /**@param {JSON} email, password
+   * Login with google email address 
+   */
+
   signInWithGoogleAccount() {
     this.isDiable = true;
     console.log("In func")
@@ -113,10 +119,14 @@ export class LoginComponent implements OnInit {
   }
 
 
+
+  /**@param {JSON} email, password
+   * Login with facebook email address 
+   */
+
   submitLogin() {
     this.isDiable = true;
     console.log("submit login to facebook");
-    // FB.login();
     FB.login((response) => {
       console.log('submitLogin', response);
       let facebookId = response.authResponse.accessToken;
@@ -132,9 +142,6 @@ export class LoginComponent implements OnInit {
         },err=>{
           console.log(err);
         })  
-        //login success
-        //login success code here
-        //redirect to home page
       }
       else {
         console.log('User login failed');
@@ -143,14 +150,16 @@ export class LoginComponent implements OnInit {
 
   }
 
-  signInWithFB(): void {
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
-  }
+  // signOut(): void {
+  //   this.authService.signOut();
+  // }
 
-  signOut(): void {
-    this.authService.signOut();
-  }
 
+
+
+  /**@param {JSON} email
+   * If password forgot send link in your gmail account with registerd email while signUp
+   */
 
   submitForgotPassword() {
     console.log("body", this.forgotPasswordForm);

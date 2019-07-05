@@ -26,6 +26,9 @@ export class SignupComponent implements OnInit {
 
 
 
+  /**@param(JSON) firstName,lastName,email,password,mobile
+   * To login new user with submit this signup form    
+   */
   onSubmit(data){
     this.isDisable = true;
     this._loginService.signUp(this.signUpForm.value)

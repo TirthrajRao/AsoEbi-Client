@@ -8,6 +8,9 @@ import {EditEventComponent} from './edit-event/edit-event.component';
 import {MyEventComponent} from './my-event/my-event.component';
 import {ResetPasswordComponent} from './reset-password/reset-password.component';
 import { from } from 'rxjs';
+// import { AuthGuard } from './auth.guard';
+import { createComponent } from '@angular/compiler/src/core';
+
 
 const routes: Routes = [
   {
@@ -26,30 +29,62 @@ const routes: Routes = [
     pathMatch:'full'
   },
   {
-    path: 'home',
+    path: "home",
     component: HomeComponent,
-    pathMatch:'full'
-  },
-  {
-    path: 'createEvent',
-    component: CreateEventComponent,
-    pathMatch:'full'
-  },
-  {
-    path: 'editEvent',
-    component: EditEventComponent,
-    pathMatch:'full'
-  },
-  {
-    path: 'myEvent',
-    component: MyEventComponent,
-    pathMatch:'full'
-  },
-  {
-    path: 'reset-password',
-    component: ResetPasswordComponent,
-    pathMatch:'full'
+    // canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        redirectTo:'createEvent',
+        pathMatch:'full'
+      },
+      {
+        path: 'createEvent',
+        component: CreateEventComponent,
+        pathMatch:'full'
+      },
+      {
+        path: 'editEvent',
+        component: EditEventComponent,
+        pathMatch:'full'
+      },
+      {
+        path: 'myEvent',
+        component: MyEventComponent,
+        pathMatch:'full'
+      },
+      {
+        path: 'reset-password',
+        component: ResetPasswordComponent,
+        pathMatch:'full'
+      }   
+    ]
   }
+  // {
+  //   path: 'home',
+  //   component: HomeComponent,
+  //   pathMatch:'full'
+  // },
+  // {
+  //   path: 'createEvent',
+  //   component: CreateEventComponent,
+  //   pathMatch:'full'
+  // },
+  // {
+  //   path: 'editEvent',
+  //   component: EditEventComponent,
+  //   pathMatch:'full'
+  // },
+  // {
+  //   path: 'myEvent',
+  //   component: MyEventComponent,
+  //   pathMatch:'full'
+  // },
+  // {
+  //   path: 'reset-password',
+  //   component: ResetPasswordComponent,
+  //   pathMatch:'full'
+  // }
 ];
 
 @NgModule({

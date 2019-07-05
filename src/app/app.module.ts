@@ -4,7 +4,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-// import { AngularFireAuthModule } from '@angular/fire/auth';
 
 
 

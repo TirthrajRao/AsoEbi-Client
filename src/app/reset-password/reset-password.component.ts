@@ -28,6 +28,9 @@ export class ResetPasswordComponent implements OnInit {
 
 
 
+  /**@param(JSON) currentPassword,newPassword,confirmPassword
+   * To reset password of login user with matching newPassword  
+   */
   resetPassword(){
     this.isDisable = true;
 		delete this.resetPasswordForm.value['confirmPassword']
@@ -43,6 +46,10 @@ export class ResetPasswordComponent implements OnInit {
     })
   }
 
+
+  /**
+   * To show enterd newPassword and confirmPassowrd are same or not   
+   */
 	comparePassword(form){
 		console.log(form.value.newPassword == form.value.confirmPassword, this.match);
 		if(form.value.newPassword === form.value.confirmPassword){

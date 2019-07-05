@@ -1,5 +1,5 @@
 #register_steps_tab.ui-accordion .step_content.ui-accordion-content{
-    padding: 36px 0px 14px;
+    padding: 36px;
     border-radius: 0px;
     border-color: #d4d4d4;
     overflow: hidden;
@@ -128,3 +128,10 @@
  #register_steps_tab.ui-accordion .ui-accordion-header.step_done span.step_number{
     background-color: #52b05a;
  }
+ .single_activity:first-child .remove_row {
+    display: none;
+}
+
+.single_group:first-child .remove_row {
+   display: none;
+}
