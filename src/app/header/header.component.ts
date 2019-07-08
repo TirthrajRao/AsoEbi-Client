@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     console.log("current user in header component", this.currentuser);
-    if(this.currentuser == false){
+    if(!this.currentuser){
       $('#navbarSupportedContent').css({'display':'none'});
     }
   }

@@ -23,6 +23,7 @@ import { AuthInterceptor } from './services/auth.interceptor';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { LoaderComponent } from './loader/loader.component';
 import {LoaderService} from './services/loader.service';
+import { ViewEventComponent } from './view-event/view-event.component';
 
 
 
@@ -50,7 +51,8 @@ export function provideConfig() {
     MyEventComponent,
     HeaderComponent,
     ResetPasswordComponent,
-    LoaderComponent
+    LoaderComponent,
+    ViewEventComponent
   ],
   imports: [
     BrowserModule,

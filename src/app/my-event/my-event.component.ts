@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../services/event.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import {config} from '../config'; 
+import { from } from 'rxjs';
+import { Config } from 'protractor';
 
 
 @Component({
@@ -9,7 +12,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./my-event.component.css']
 })
 export class MyEventComponent implements OnInit {
-
+  path = config.baseMediaUrl;
   myEvent;
 
   constructor(private route: ActivatedRoute,
@@ -32,6 +35,12 @@ export class MyEventComponent implements OnInit {
       }, err => {
         console.log(err);
       })
+  }
+
+
+  viewMoreDeatils(id){
+    console.log("kai mde che ke nai", id);
+    this.router.navigate(['/home/view-event/',id])
   }
 
 

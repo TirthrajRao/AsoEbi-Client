@@ -7,6 +7,8 @@ import {CreateEventComponent} from './create-event/create-event.component';
 import {EditEventComponent} from './edit-event/edit-event.component';
 import {MyEventComponent} from './my-event/my-event.component';
 import {ResetPasswordComponent} from './reset-password/reset-password.component';
+import { ViewEventComponent } from './view-event/view-event.component';
+
 import { from } from 'rxjs';
 // import { AuthGuard } from './auth.guard';
 import { createComponent } from '@angular/compiler/src/core';
@@ -41,23 +43,33 @@ const routes: Routes = [
       {
         path: 'createEvent',
         component: CreateEventComponent,
-        pathMatch:'full'
+        // pathMatch:'full'
+      },
+      {
+        path: 'editEvent/:id',
+        component: CreateEventComponent,
+        // pathMatch:'full'
       },
       {
         path: 'editEvent',
         component: EditEventComponent,
-        pathMatch:'full'
+        // pathMatch:'full'
       },
       {
         path: 'myEvent',
         component: MyEventComponent,
-        pathMatch:'full'
+        // pathMatch:'full'
       },
       {
         path: 'reset-password',
         component: ResetPasswordComponent,
-        pathMatch:'full'
-      }   
+        // pathMatch:'full'
+      } ,
+      {
+        path: 'view-event/:id',
+        component: ViewEventComponent,
+        // pathMatch:'full'
+      }  
     ]
   }
   // {
