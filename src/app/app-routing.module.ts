@@ -8,6 +8,10 @@ import {EditEventComponent} from './edit-event/edit-event.component';
 import {MyEventComponent} from './my-event/my-event.component';
 import {ResetPasswordComponent} from './reset-password/reset-password.component';
 import { ViewEventComponent } from './view-event/view-event.component';
+import { ThankYouMessageComponent } from './thank-you-message/thank-you-message.component';
+import { MyCartComponent } from './my-cart/my-cart.component';
+
+
 
 import { from } from 'rxjs';
 // import { AuthGuard } from './auth.guard';
@@ -37,7 +41,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo:'createEvent',
+        redirectTo:'home',
         pathMatch:'full'
       },
       {
@@ -69,38 +73,21 @@ const routes: Routes = [
         path: 'view-event/:id',
         component: ViewEventComponent,
         // pathMatch:'full'
+      },
+      {
+        path: 'thank-you/:id',
+        component: ThankYouMessageComponent
+      },
+      {
+        path: 'my-cart/:id',
+        component: MyCartComponent
       }  
     ]
   }
-  // {
-  //   path: 'home',
-  //   component: HomeComponent,
-  //   pathMatch:'full'
-  // },
-  // {
-  //   path: 'createEvent',
-  //   component: CreateEventComponent,
-  //   pathMatch:'full'
-  // },
-  // {
-  //   path: 'editEvent',
-  //   component: EditEventComponent,
-  //   pathMatch:'full'
-  // },
-  // {
-  //   path: 'myEvent',
-  //   component: MyEventComponent,
-  //   pathMatch:'full'
-  // },
-  // {
-  //   path: 'reset-password',
-  //   component: ResetPasswordComponent,
-  //   pathMatch:'full'
-  // }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

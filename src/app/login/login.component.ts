@@ -64,6 +64,9 @@ export class LoginComponent implements OnInit {
 
   }
 
+  get f() { return this.loginForm.controls; }
+
+
 /**
  * @param {JSON} email,password
  * for login with created email and password

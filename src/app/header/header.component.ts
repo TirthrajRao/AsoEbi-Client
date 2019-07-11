@@ -16,17 +16,18 @@ declare var $ : any;
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private _loginService: LoginService,private route: ActivatedRoute,
-    private router: Router) { }
-
   currentuser = JSON.parse(localStorage.getItem('isUserLoggedIn'));
+  constructor(private _loginService: LoginService,private route: ActivatedRoute,
+    private router: Router) {
+      console.log("current user in header component", this.currentuser);
+      if(!this.currentuser){
+        $('#navbarSupportedContent').css({'display':'none'});
+      }
+    }
+
 
 
   ngOnInit() {
-    console.log("current user in header component", this.currentuser);
-    if(!this.currentuser){
-      $('#navbarSupportedContent').css({'display':'none'});
-    }
   }
 
 

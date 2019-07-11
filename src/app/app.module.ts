@@ -24,6 +24,9 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { LoaderComponent } from './loader/loader.component';
 import {LoaderService} from './services/loader.service';
 import { ViewEventComponent } from './view-event/view-event.component';
+import { ThankYouMessageComponent } from './thank-you-message/thank-you-message.component';
+import { GuestEventComponent } from './guest-event/guest-event.component';
+import { MyCartComponent } from './my-cart/my-cart.component';
 
 
 
@@ -52,7 +55,10 @@ export function provideConfig() {
     HeaderComponent,
     ResetPasswordComponent,
     LoaderComponent,
-    ViewEventComponent
+    ViewEventComponent,
+    ThankYouMessageComponent,
+    GuestEventComponent,
+    MyCartComponent
   ],
   imports: [
     BrowserModule,

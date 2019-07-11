@@ -12,15 +12,22 @@
                         <form [formGroup]="eventForm" autocomplete="off" class="user_acc_info">
                             <div class="form_input">
                                 <label>Title *</label>
-                                <input type="text" class="form-control" formControlName="eventTitle"
+                                <input type="text" class="form-control" id="eventTitle" formControlName="eventTitle"
                                     placeholder="Enter Event Title"
-                                    ngModel="{{createdEventDetails ? createdEventDetails.eventTitle : ''}}" form>
+                                    ngModel="{{createdEventDetails ? createdEventDetails.eventTitle : ''}}"
+                                    [ngClass]="{ 'is-invalid': f.eventTitle.touched && f.eventTitle.errors }" form>
+                                <div class="col-md-2" *ngIf="f.eventTitle.touched && f.eventTitle.errors"
+                                    class="invalid-feedback">
+                                    <div *ngIf="f.eventTitle.errors.required">eventTitle is required</div>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="dropdown col-md-12">
                                     <h5>Select Event Type</h5>
                                     <select class="form-control" formControlName="eventType"
-                                        ngModel="{{createdEventDetails ? createdEventDetails.eventType : ''}}">
+                                        ngModel="{{createdEventDetails ? createdEventDetails.eventType : ''}}"
+                                        id="eventType"
+                                        [ngClass]="{ 'is-invalid': f.eventType.touched && f.eventType.errors }">
                                         <option value="Wedding">Wedding</option>
                                         <option value="Birthday">Birthday</option>
                                         <option value="Funeral">Funeral</option>
@@ -29,17 +36,21 @@
                                         <option value="Religions">Religions</option>
                                         <option value="Anniversary">Anniversary</option>
                                     </select>
+                                    <div class="col-md-2" *ngIf="f.eventType.touched && f.eventType.errors"
+                                        class="invalid-feedback">
+                                        <div *ngIf="f.eventType.errors.required">eventType is required</div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row mt-2">
                                 <div class="col-md-6">
                                     <h5>StartDate</h5>
-                                    <input type="date" class="form-control" formControlName="startDate"
+                                    <input type="date" class="form-control" id="startDate" formControlName="startDate"
                                         ngModel="{{createdEventDetails ? selectedStartDate : ''}}">
                                 </div>
                                 <div class="col-md-6">
                                     <h5>EndDate</h5>
-                                    <input type="date" class="form-control" formControlName="endDate"
+                                    <input type="date" class="form-control" formControlName="endDate" id="endDate"
                                         ngModel="{{createdEventDetails ? selectedEndDate : ''}}">
                                 </div>
                             </div>
@@ -49,7 +60,15 @@
                                         <label>Event HashTag *</label>
                                         <input type="text" placeholder="Enter Event Hastag" class="form-control"
                                             formControlName="hashTag"
-                                            ngModel="{{createdEventDetails ? createdEventDetails.hashTag : ''}}">
+                                            ngModel="{{createdEventDetails ? createdEventDetails.hashTag : ''}}"
+                                            id="hashTag"
+                                            [ngClass]="{ 'is-invalid': f.hashTag.touched && f.hashTag.errors }">
+                                        <div class="col-md-2" *ngIf="f.hashTag.touched && f.hashTag.errors"
+                                            class="invalid-feedback">
+                                            <div *ngIf="f.hashTag.errors.required">EventHashTag is required</div>
+                                            <div *ngIf="f.hashTag.errors.minlength">Name must be at least 4 characters
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -58,14 +77,14 @@
                                     <h5>Make this event Public or Private?</h5>
                                     <div class="custom-control custom-switch">
                                         <input type="checkbox" class="custom-control-input" id="switch1"
-                                            formControlName="isPublic"
-                                            ngModel="{{createdEventDetails ? createdEventDetails.isPublic : ''}}">
+                                            formControlName="isPublic">
                                         <label class="custom-control-label" for="switch1">Public</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="row mt-2">
-                                <img src="{{path}}{{createdEventDetails.profilePhoto}}" class="rounded-circle" height="100">
+                                <img *ngIf="createdEventDetails && createdEventDetails.profilePhoto" src="{{path}}{{createdEventDetails.profilePhoto}}" class="rounded-circle"
+                                    height="100">
                                 <div class="col-md-12">
                                     <h5>Upload Profile Photo</h5>
                                     <div class="custom-file">
@@ -73,7 +92,6 @@
                                             (change)="addFile($event.target.files)" id="customFile"
                                             accept="image/png, image/jpeg, image/jpg" hidden>
                                         <label class="custom-file-label" for="customFile">Choose file</label>
-
                                     </div>
                                 </div>
                             </div>
@@ -95,14 +113,22 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="next_step_and_prev_step mt-2">
-                                <a href="javascript:void(0);" class="next_step"
-                                    (click)="createdEventDetails? updateEvent() : addEvent()">Next</a>
+                            <div class="row mt-2">
+                                <!-- <img src="{{path}}{{createdEventDetails.profilePhoto}}" class="rounded-circle" height="100"> -->
+                                <div class="col-md-12">
+                                    <h5>Choose Theme Photo</h5>
+                                    <div class="custom-file">
+                                        <input type="file" #background formControlName="background" class="form-control"
+                                            (change)="addThemePhoto($event.target.files)" id="customThemeFile"
+                                            accept="image/png, image/jpeg, image/jpg, image/gif" hidden>
+                                        <label class="custom-file-label" for="customThemeFile">Choose Theme Photo</label>
+                                    </div>
+                                </div>
                             </div>
-
-                            <!-- <div class="next_step_and_prev_step mt-2" *ngIf="createdEventDetails">
-                                    <a href="javascript:void(0);" class="next_step">Next</a>
-                                </div> -->
+                            <div class="next_step_and_prev_step mt-2" >
+                                <a href="javascript:void(0);" class="next_step"
+                                    (click)="createdEventDetails? updateEvent() : addEvent()"> Next</a>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -113,13 +139,12 @@
                 <div class="row">
                     <div class="col-12">
                         <!-- <h3>Event Activities</h3> -->
-                        <form  *ngIf="activityForm" [formGroup]="activityForm" class="user_acc_info">
+                        <form *ngIf="activityForm" [formGroup]="activityForm" class="user_acc_info">
                             <div formArrayName="activity">
                                 <div [formGroupName]="i"
                                     *ngFor="let tech of activityForm.controls.activity.controls; let i = index"
                                     class="single_activity">
                                     <p>activity #{{i+1}}</p>
-                                    <!-- <div class="row mt-3" *ngFor="let activity of eventActivities"> -->
                                     <div class="col-md-5">
                                         <div class="form_input">
                                             <label>Activity Name *</label>
@@ -176,8 +201,6 @@
                                     *ngFor="let item of groupForm.controls.group.controls; let i = index">
                                     <div class="col-md-12">
                                         <h4>{{getActivityName(item.value.activityId)}}</h4>
-
-
                                     </div>
                                     <div class="col-12">
                                         <label>Group Name *</label>
@@ -249,7 +272,8 @@
                         </form>
                         <div class="next_step_and_prev_step mt-2">
                             <a href="javascript:void(0);" class="prev_step">Previous</a>
-                            <a href="javascript:void(0);" class="next_step" (click)="createdEventDetails ? updateGroup() : addGroup()">Create
+                            <a href="javascript:void(0);" class="next_step"
+                                (click)="createdEventDetails ? updateGroup() : addGroup()">Create
                                 Event</a>
                         </div>
                     </div>

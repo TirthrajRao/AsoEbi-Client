@@ -21,9 +21,10 @@ export class CreateEventComponent implements OnInit {
   activityForm: FormGroup;
   groupForm: FormGroup;
   files: Array<File> = [];
+  themeFiles: Array<File> = [];
   eventId: any;
   createdActivity: any;
-  isPublic = false;
+  isPublicVal = false;
   isLogistics = false;
   activityId;
   items;
@@ -35,6 +36,7 @@ export class CreateEventComponent implements OnInit {
   paymentDeadlineDate;
   private sub: any;
   path = config.baseMediaUrl;
+  activitiesDate: any = [];
 
   // private eventId: any;
 
@@ -54,23 +56,24 @@ export class CreateEventComponent implements OnInit {
   ngOnInit() {
 
     this.eventForm = new FormGroup({
-      eventTitle: new FormControl(''),
-      eventType: new FormControl(''),
+      eventTitle: new FormControl('',[Validators.required]),
+      eventType: new FormControl('',[Validators.required]),
       startDate: new FormControl(''),
       endDate: new FormControl(''),
-      hashTag: new FormControl(''),
+      hashTag: new FormControl('',[Validators.required,Validators.minLength(4)]),
       profile: new FormControl(''),
       deadlineDate: new FormControl(''),
-      isPublic: new FormControl(this.isPublic),
-      isLogistics: new FormControl(this.isLogistics)
+      isPublic: new FormControl(this.isPublicVal),
+      isLogistics: new FormControl(this.isLogistics),
+      background: new FormControl('')
     })
     // this.activityForm = new FormGroup({
     //   activity: this.fb.array([this.activityArray()])
     // })
     $('#eventId').css({ 'display': 'none' });
-    $(function () {
-      $("#datepicker").datepicker();
-    });
+    $( function() {
+      $( "#datepicker" ).datepicker();
+    } );
 
 
     $("#register_steps_tab").accordion({
@@ -89,8 +92,10 @@ export class CreateEventComponent implements OnInit {
       $('.dropdown-toggle').html($(this).html());
     })
   }
-  ngAfterViewInit() {
-  }
+
+
+  get f() { return this.eventForm.controls; }
+
 
 
   /**@body {JSON} eventTitle,hashtag,startDate,endDate,eventType,profilePhoto,deadlineDate,logistics,piblic or private
@@ -100,7 +105,7 @@ export class CreateEventComponent implements OnInit {
 
   addEvent() {
     console.log("data of event", this.eventForm);
-    this._eventService.addEvent(this.eventForm.value, this.files)
+    this._eventService.addEvent(this.eventForm.value, this.files, this.themeFiles)
       .subscribe((data: any) => {
         console.log("event details", data);
         this.eventId = data.data._id;
@@ -117,9 +122,25 @@ export class CreateEventComponent implements OnInit {
    */
   addFile(event) {
     console.log(event);
+    // _.forEach(event, (file: any) => {
+      if (event[0].type == "image/jpeg" || event[0].type == "image/jpg" || event[0].type == "image/png") {
+        this.files = event;
+      } else {
+        Swal.fire({
+          title: 'Error',
+          text: "You can upload only image",
+          type: 'warning',
+        })
+      }
+    // })
+  }
+
+
+  addThemePhoto(event) {
+    console.log(event);
     _.forEach(event, (file: any) => {
-      if (file.type == "image/jpeg" || file.type == "image/jpg" || file.type == "image/png") {
-        this.files.push(file);
+      if (file.type == "image/jpeg" || file.type == "image/jpg" || file.type == "image/png" || file.type == "image/gif") {
+        this.themeFiles.push(file);
       } else {
         Swal.fire({
           title: 'Error',
@@ -152,7 +173,7 @@ export class CreateEventComponent implements OnInit {
     for (let i = 0; i < activities.length; i++) {
       actArray.push(this.fb.group({
         activityName: new FormControl(activities[i].activityName),
-        activityDate: new FormControl(activities[i].activityDate),
+        activityDate: new FormControl(activities[i].activityDate.split("T")[0]),
         eventId: new FormControl(activities[i].eventId)
       }))
     }
@@ -378,6 +399,12 @@ export class CreateEventComponent implements OnInit {
 
   updateGroup() {
     console.log(this.groupForm.value);
+    this._eventService.updateGroup(this.groupForm.value)
+    .subscribe(data=>{
+      console.log("updated group details", data);
+    }, err=>{
+      console.log(err);
+    })
   }
 
 

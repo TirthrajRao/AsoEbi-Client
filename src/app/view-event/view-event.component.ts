@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from '../services/event.service';
+import {config} from '../config';
 
 @Component({
   selector: 'app-view-event',
@@ -12,6 +13,12 @@ export class ViewEventComponent implements OnInit {
   private sub: any;
   private eventId: any;
   allDetailsofEvent= [];
+  activityArray: any = [];
+  groupArray: any ;
+  myEvent;
+  path = config.baseMediaUrl;
+  isDisable =  false;
+
 
   constructor(private route: ActivatedRoute,
     private router: Router,private _eventService: EventService) {
@@ -25,6 +32,10 @@ export class ViewEventComponent implements OnInit {
   ngOnInit() {
   }
 
+  getSrc(eventTheme) {
+    return `url(`+this.path+eventTheme+`)`;
+  }
+
 
 
   viewDetailsOfEvent(eventId){
@@ -33,6 +44,10 @@ export class ViewEventComponent implements OnInit {
       console.log("response of details event", data);
       this.allDetailsofEvent.push(data.data);
       console.log("response store in variable", this.allDetailsofEvent);
+      this.activityArray = data.data.activity;
+      console.log(this.activityArray);
+      this.groupArray=this.activityArray.group;
+      console.log(this.groupArray);
     }, err =>{
       console.log(err);
     })
@@ -42,6 +57,42 @@ export class ViewEventComponent implements OnInit {
     console.log(id);
     this.router.navigate(['/home/editEvent/',id])
 
+  }
+  deleteEvent(eventid)
+  {
+    console.log(eventid);
+    this._eventService.deleteEvent(eventid).subscribe(data=>{
+      console.log("delete event response", data);
+      this.router.navigate(['home/myEvent'])
+    },err=>{
+      console.log(err);
+    })
+  }
+  getMyEvents() {
+    this._eventService.getMyevents()
+      .subscribe((data: any) => {
+        console.log("get my all events ", data);
+        this.myEvent = data.data;
+        console.log("my events details", this.myEvent);
+      }, err => {
+        console.log(err);
+      })
+  }
+
+  addToCart(groupId, activityId, eventId, item,gender){
+    console.log({groupId, activityId, eventId, item,gender});
+    this.isDisable = true;
+    this._eventService.addToCart(groupId, activityId, eventId, item, gender)
+    .subscribe(data=>{
+      console.log(data);
+    },err=>{
+      console.log(err);
+    })
+  }
+
+  myCart(id){
+    console.log("event id", id)
+    this.router.navigate(['home/my-cart/',id]);
   }
 
 }

@@ -11,10 +11,14 @@
         <div class="col-md-4 m-auto pt-5">
             <div class="card p-5">
                 <form [formGroup]="loginForm" autocomplete="off">
-                    <div class="form-group">
-                        <label for="email">Email address:</label>
-                        <input type="email" class="form-control" formControlName="email">
-                    </div>
+                        <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email"class="form-control" formControlName="email" [ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }">
+                                <div class="col-md-2" *ngIf="f.email.touched && f.email.errors" class="invalid-feedback">
+                                    <div *ngIf="f.email.errors.required">Email is required</div>
+                                    <div *ngIf="f.email.errors.email">Please enter valid Email</div>
+                                </div>
+                            </div>
                     <div class="form-group">
                         <label for="pwd">Password:</label>
                         <input type="password" class="form-control" formControlName="password">
@@ -22,7 +26,7 @@
 
                     <div class="text-center">
                         <button type="submit" (click)="onSubmitLogin()" class="btn btn-primary w-100"
-                            [disabled]="loginForm.invalid" [disabled]="isDisable" >Submit</button>
+                        [disabled] = "isDisable || loginForm.invalid">Submit</button>
                     </div>
                     <div class="row p-3">
                         <div class="col-md-6">
