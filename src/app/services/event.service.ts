@@ -82,6 +82,7 @@ export class EventService {
 
 
   getEventDetails(id){
+    console.log("idddddddddddddddsssssssssssssssssss",id)
     return this.http.get(config.baseApiUrl + "api/event/" + id);
   }
 
@@ -112,5 +113,11 @@ export class EventService {
   getProducts(id){
     console.log(id);
   return this.http.get(config.baseApiUrl+"api/event/cart-list/"+ id);
+  }
+
+
+  joinEvent(id){
+    console.log("id of guest event", id);
+return this.http.post(config.baseApiUrl+"api/event/join-event", id);
   }
 }

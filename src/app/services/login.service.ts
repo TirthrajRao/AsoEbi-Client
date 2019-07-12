@@ -33,6 +33,11 @@ export class LoginService {
 
   login(userCredentials){
     console.log("helloooooooo");
+    const eventToken = JSON.parse(localStorage.getItem('newEventId'));
+    if(eventToken)
+    {
+      userCredentials.eventId = eventToken;
+      console.log("userdata",userCredentials);
       return this.http.post<any>(config.baseApiUrl +"api/login" , userCredentials)
       .pipe(map(user=>{
         console.log("login user detaislllllllllll======",user);
@@ -43,6 +48,20 @@ export class LoginService {
         }
         return user;
       }))
+    }
+    else{
+      return this.http.post<any>(config.baseApiUrl +"api/login" , userCredentials)
+      .pipe(map(user=>{
+        console.log("login user detaislllllllllll======",user);
+        if(user && user.data.accessToken){
+          // localStorage.setItem('currentUser', JSON.stringify(user.data));
+          localStorage.setItem('currentUser',JSON.stringify(user.data.accessToken));
+          this.currentUserSubject.next(user);
+        }
+        return user;
+      }))
+    }
+    
   }
 
   signUp(details){
