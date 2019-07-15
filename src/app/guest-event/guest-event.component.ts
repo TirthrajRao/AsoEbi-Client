@@ -81,6 +81,7 @@ export class GuestEventComponent implements OnInit {
     this._eventService.joinEvent(id)
     .subscribe(data=>{
       console.log("join event done", data);
+      this.router.navigate(['/home/view-event/', id])
     },err=>{
       console.log(err);
     })

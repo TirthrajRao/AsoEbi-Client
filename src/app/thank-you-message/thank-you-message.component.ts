@@ -56,7 +56,7 @@ export class ThankYouMessageComponent implements OnInit {
     })
   }
 
-  changeFile(event) {
+  addFile(event) {
     console.log(event);
     _.forEach(event, (file: any) => {
       if (file.type == "image/jpeg" || file.type == "image/jpg" || file.type == "image/png" || file.type == "image/gif") {

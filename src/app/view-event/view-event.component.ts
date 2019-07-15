@@ -18,6 +18,7 @@ export class ViewEventComponent implements OnInit {
   myEvent;
   path = config.baseMediaUrl;
   isDisable =  false;
+  visible = false;
 
 
   constructor(private route: ActivatedRoute,
@@ -83,7 +84,8 @@ export class ViewEventComponent implements OnInit {
     console.log({groupId, activityId, eventId, item,gender});
     this.isDisable = true;
     this._eventService.addToCart(groupId, activityId, eventId, item, gender)
-    .subscribe(data=>{
+    .subscribe((data:any)=>{
+    this.isDisable = false;
       console.log(data);
     },err=>{
       console.log(err);

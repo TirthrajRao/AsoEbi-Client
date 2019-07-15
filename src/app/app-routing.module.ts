@@ -11,6 +11,8 @@ import { ViewEventComponent } from './view-event/view-event.component';
 import { ThankYouMessageComponent } from './thank-you-message/thank-you-message.component';
 import { MyCartComponent } from './my-cart/my-cart.component';
 import { GuestEventComponent } from './guest-event/guest-event.component';
+import { PaymentComponent } from './payment/payment.component';
+
 
 
 
@@ -87,6 +89,10 @@ const routes: Routes = [
       {
         path: 'my-cart/:id',
         component: MyCartComponent
+      },
+      {
+        path: 'payment/:id',
+        component: PaymentComponent
       }
     ]
   }

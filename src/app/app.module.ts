@@ -28,6 +28,7 @@ import { ThankYouMessageComponent } from './thank-you-message/thank-you-message.
 import { GuestEventComponent } from './guest-event/guest-event.component';
 import { MyCartComponent } from './my-cart/my-cart.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { PaymentComponent } from './payment/payment.component';
 
 
 
@@ -60,7 +61,8 @@ export function provideConfig() {
     ViewEventComponent,
     ThankYouMessageComponent,
     GuestEventComponent,
-    MyCartComponent
+    MyCartComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,

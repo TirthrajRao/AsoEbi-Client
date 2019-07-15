@@ -1,0 +1,81 @@
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Activity Name</th>
+                <th>Group Name</th>
+                <th>Gender</th>
+                <th>Item Name</th>
+                <th>Item Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let products of finalCartDetails" class="product">
+                <td>{{products.activityName}}</td>
+                <td>{{products.groupName}}</td>
+                <td>{{products.gender}}</td>
+                <td>{{products.itemName}}</td>
+                <td>{{products.itemPrice}}</td>
+                <td>
+                    <input type="number" min="1" [(ngModel)]="products.quantity" disabled>
+                </td>
+                <td>{{products.subTotal}}</td>
+            </tr>
+            <tr>
+                <td>Total</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    {{grandTotal}}
+                </td>
+            </tr>
+
+            <tr>
+                    <td>Donation</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td >
+                        <input type="number" min="1" id="donation" (change)="finalTotal($event.target.value)"
+                            [(ngModel)]='donation'>
+                    </td>
+                </tr>
+            <tr>
+                <td>GrandTotal</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    {{finalGrandTotal}}
+                </td>
+            </tr>
+            <tr>
+
+                    <label for="comment">Address:</label>
+                    <textarea placeholder="Enter Your Address" [(ngModel)] = "address" id="address"></textarea>
+            </tr>
+            <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                    <button type="button" class="btn btn-primary"
+                        (click)="finalPayment(finalCartDetails,finalGrandTotal,donation,address)">CheckOut
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

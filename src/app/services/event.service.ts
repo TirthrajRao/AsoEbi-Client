@@ -118,6 +118,26 @@ export class EventService {
 
   joinEvent(id){
     console.log("id of guest event", id);
-  return this.http.post(config.baseApiUrl+"api/event/join-event", id);
+    const eventId = {
+      eventId:id
+    }
+  return this.http.post(config.baseApiUrl+"api/event/join-event", eventId);
+  }
+  removeCartItem(id){
+    console.log(id);
+    return this.http.delete(config.baseApiUrl+"api/event/delete-item/"+ id);
+  }
+
+  proceedToPay(data){
+    console.log(data);
+    return this.http.put(config.baseApiUrl+"api/event/update-item", data);
+  }
+
+  finalPaymentDetails(id){
+    return this.http.get(config.baseApiUrl+"api/event/final-list/"+ id);
+  }
+  makeFinalPayment(data){
+    console.log(data);
+    return this.http.post(config.baseApiUrl+"api/event/order-checkout", data);
   }
 }

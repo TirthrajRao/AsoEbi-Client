@@ -42,4 +42,30 @@ export class MyCartComponent implements OnInit {
     })
   }
 
+  removeItem(id){
+    console.log("id of remove item ", id);
+    this._eventService.removeCartItem(id)
+    .subscribe(data=>{
+      console.log("remove item data", data);
+      this.myCartDetails(this.eventId);
+    }, err=>{
+      console.log(err);
+    })
+  }
+
+  finalTotal(event){
+    console.log(event);
+  }
+
+  allItem(data){
+    console.log(data);
+    this._eventService.proceedToPay(data)
+    .subscribe(data=>{
+      console.log("added cart item ", data);
+      this.router.navigate(['home/payment/',this.eventId]);
+    }, err=>{
+      console.log(err);
+    })
+  }
+
 }

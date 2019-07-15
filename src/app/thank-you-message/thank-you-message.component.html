@@ -24,7 +24,16 @@
         </div>
     </div>
 </div> -->
-<div>
-    <ckeditor [editor]="Editor" data="<p>Hello, world!</p>" (ready)="onReady($event)"></ckeditor>
-    <!-- <button type="button" class="btn btn-primary" (click)="thankyouMessage()">Submit</button> -->
-</div>
+
+<form [formGroup]= "thankyouMessageForm">
+    <div>
+        <ckeditor class="ckeditor" [editor]="Editor" data="" formControlName="message" ></ckeditor>
+    </div>
+    <div class="custom-file">
+            <input type="file" #attachment formControlName="attachment" class="form-control"
+                (change)="addFile($event.target.files)" id="customFile"
+                accept="image/png, image/jpeg, image/jpg, image/gif" hidden>
+            <label class="custom-file-label" for="customFile">Choose file</label>
+        </div>
+    <button type="button" class="btn btn-primary"(click)="thankyouMessage()">Submit</button>
+</form>
