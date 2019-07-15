@@ -118,6 +118,6 @@ export class EventService {
 
   joinEvent(id){
     console.log("id of guest event", id);
-return this.http.post(config.baseApiUrl+"api/event/join-event", id);
+  return this.http.post(config.baseApiUrl+"api/event/join-event", id);
   }
 }

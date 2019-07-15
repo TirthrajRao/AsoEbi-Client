@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container" *ngIf="!guestEventDetailsAfterLogin" >
     <div class="row">
         <div class="col-12">
-            <div class="card" >
+            <div class="card">
                     <button type="button" class="btn btn-primary" (click)="joinNow(EventDetails._id)">Join Now
                         </button>
                 <div [ngStyle]="{background: getSrc(EventDetails.eventTheme)}" class="theme-background">
@@ -24,6 +24,43 @@
                         <div class="col text-center pt-4">
                             <p>EventHashTag:-
                                 <span>{{EventDetails.hashTag}}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container" *ngIf="guestEventDetailsAfterLogin">
+    <div class="row">
+        <div class="col-12">
+            <div class="card" >
+                    <button type="button" class="btn btn-primary" (click)="joinNowAfterLogin(guestEventDetailsAfterLogin._id)">Join Now
+                        </button>
+                <div [ngStyle]="{background: getSrc(guestEventDetailsAfterLogin.eventTheme)}" class="theme-background">
+                    <div class="row">
+                        <div class="col-4 m-auto">
+                            <img *ngIf="guestEventDetailsAfterLogin && guestEventDetailsAfterLogin.profilePhoto" src="{{path}}{{guestEventDetailsAfterLogin.profilePhoto}}" class="rounded-circle img-fluid">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center pt-4">
+                            <p>EventType:-
+                                <span>{{guestEventDetailsAfterLogin.eventType}}</span>
+                            </p>
+                        </div>
+                        <div class="col text-center pt-4">
+                            <p>EventTitle:-
+                                <span>{{guestEventDetailsAfterLogin.eventTitle}}</span>
+                            </p>
+                        </div>
+                        <div class="col text-center pt-4">
+                            <p>EventHashTag:-
+                                <span>{{guestEventDetailsAfterLogin.hashTag}}</span>
                             </p>
                         </div>
                     </div>

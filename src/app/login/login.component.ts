@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   FB: any;
   isUserLoggedIn = false;
   isDiable = false;
+  eventIdWithLogin;
   // currentUser = JSON.parse(localStorage.getItem('currentUser')); 
 
   constructor(private route: ActivatedRoute,
@@ -77,15 +78,20 @@ export class LoginComponent implements OnInit {
     this._loginService.login(this.loginForm.value)
       .subscribe(data => {
         console.log("response of login user", data);
-        this.isUserLoggedIn = true;
-        this.isDiable = false;
-        // $('#refresh_icon').css('display', 'none');
-        localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
-        this.router.navigate(['/home']);
+         this.eventIdWithLogin = data.data.eventId;
+        console.log("login with event iddddddd", this.eventIdWithLogin);
+        if(this.eventIdWithLogin){
+          this.router.navigate(['/welcome-guest',this.eventIdWithLogin]);
+        }else{
+
+          this.isUserLoggedIn = true;
+          this.isDiable = false;
+          localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+          this.router.navigate(['/home']);
+        }
       }, error => {
         console.log(error);
-         let errorMessege = error.statusText;
-         
+         let errorMessege = error.statusText;         
         // Swal.fire({
         //   type: 'info',
         //   title: 'Sorry ' + errorMessege,

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import {EventService} from '../services/event.service';
+import * as DecoupledEditor from '@ckeditor/ckeditor5-build-classic';
 import Swal from 'sweetalert2';
 import * as _ from 'lodash';
 
@@ -34,6 +35,16 @@ export class ThankYouMessageComponent implements OnInit {
     })
   }
 
+  public Editor = DecoupledEditor;
+  public configuration = { placeholder: 'Enter Comment Text...' };
+  public onReady( editor ) {
+      editor.ui.getEditableElement().parentElement.insertBefore(
+          editor.ui.view.toolbar.element,
+          editor.ui.getEditableElement()
+      );
+  }
+
+
 
   thankyouMessage(data){
     console.log(this.thankyouMessageForm);
@@ -45,7 +56,7 @@ export class ThankYouMessageComponent implements OnInit {
     })
   }
 
-  addFile(event) {
+  changeFile(event) {
     console.log(event);
     _.forEach(event, (file: any) => {
       if (file.type == "image/jpeg" || file.type == "image/jpg" || file.type == "image/png" || file.type == "image/gif") {
@@ -59,5 +70,7 @@ export class ThankYouMessageComponent implements OnInit {
       }
     })
   }
+
+
 
 }

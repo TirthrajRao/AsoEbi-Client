@@ -27,6 +27,8 @@ import { ViewEventComponent } from './view-event/view-event.component';
 import { ThankYouMessageComponent } from './thank-you-message/thank-you-message.component';
 import { GuestEventComponent } from './guest-event/guest-event.component';
 import { MyCartComponent } from './my-cart/my-cart.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+
 
 
 
@@ -67,7 +69,8 @@ export function provideConfig() {
     ReactiveFormsModule,
     HttpClientModule,
     SocialLoginModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    CKEditorModule
   ],
   providers: [LoginService,
     {
