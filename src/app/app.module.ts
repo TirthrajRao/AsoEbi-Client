@@ -29,6 +29,10 @@ import { GuestEventComponent } from './guest-event/guest-event.component';
 import { MyCartComponent } from './my-cart/my-cart.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { PaymentComponent } from './payment/payment.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { TotalEventsComponent } from './total-events/total-events.component';
+import { ChartsModule } from 'ng2-charts';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 
@@ -62,7 +66,10 @@ export function provideConfig() {
     ThankYouMessageComponent,
     GuestEventComponent,
     MyCartComponent,
-    PaymentComponent
+    PaymentComponent,
+    AdminDashboardComponent,
+    TotalEventsComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +79,8 @@ export function provideConfig() {
     HttpClientModule,
     SocialLoginModule,
     MatProgressSpinnerModule,
-    CKEditorModule
+    CKEditorModule,
+    ChartsModule
   ],
   providers: [LoginService,
     {

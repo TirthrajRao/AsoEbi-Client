@@ -12,6 +12,12 @@ import { ThankYouMessageComponent } from './thank-you-message/thank-you-message.
 import { MyCartComponent } from './my-cart/my-cart.component';
 import { GuestEventComponent } from './guest-event/guest-event.component';
 import { PaymentComponent } from './payment/payment.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { TotalEventsComponent } from './total-events/total-events.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+
+
+
 
 
 
@@ -41,7 +47,19 @@ const routes: Routes = [
   {
     path:'welcome-guest/:id',
     component: GuestEventComponent
-  },  
+  },
+  {
+    path:'admin-dashboard',
+    component:AdminDashboardComponent
+  } , 
+  {
+    path:'total-event',
+    component: TotalEventsComponent
+  },
+  {
+    path:'forgot-password/:id',
+    component: ForgotPasswordComponent
+  },
   {
     path: "home",
     component: HomeComponent,

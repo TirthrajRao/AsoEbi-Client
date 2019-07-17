@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card" *ngFor="let item of totalEvent">
+                <span [ngClass]="item.isPaymentAccept ? 'bg-success on_off' : 'bg-danger on_off'"></span>
+                <div [ngStyle]="{background: getSrc(item.eventTheme)}" class="theme-background">
+                    <div class="row">
+                        <div class="col-4 m-auto">
+                            <img *ngIf="item && item.profilePhoto" src="{{path}}{{item.profilePhoto}}"
+                                class="rounded-circle img-fluid">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center pt-4">
+                            <p>EventType:-
+                                <span>{{item.eventType}}</span>
+                            </p>
+                        </div>
+                        <div class="col text-center pt-4">
+                            <p>EventTitle:-
+                                <span>{{item.eventTitle}}</span>
+                            </p>
+                        </div>
+                        <div class="col text-center pt-4">
+                            <p>EventHashTag:-
+                                <span>{{item.hashTag}}</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <button type="button" class="btn btn-primary" (click)="viewMoreDeatils(item._id)">View More
+                            </button>
+                        </div>
+                        <div class="col-6">
+                            <button type="button" class="btn btn-primary" (click)="ThankYouMessage(item._id)">Thank You
+                                Message
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -8,7 +8,7 @@ export class EventService {
 
   constructor(private http: HttpClient) { }
 
-  addEvent(body, files: any, themeFiles:any) {
+  addEvent(body, files: any, themeFiles: any) {
     console.log("event detailsssssss", body);
     console.log("filessssss name ", files);
     let formdata = new FormData();
@@ -35,7 +35,7 @@ export class EventService {
 
   }
 
-  updateEvent(id, body, files:any){
+  updateEvent(id, body, files: any) {
     let formdata = new FormData();
     formdata.append('eventTitle', body.eventTitle);
     formdata.append('eventType', body.eventType);
@@ -50,7 +50,7 @@ export class EventService {
         formdata.append("profile", files[i]);
       }
     }
-    return this.http.put (config.baseApiUrl + "api/event/update-event/" + id, formdata)
+    return this.http.put(config.baseApiUrl + "api/event/update-event/" + id, formdata)
   }
 
   addActivities(data) {
@@ -58,39 +58,39 @@ export class EventService {
     return this.http.post(config.baseApiUrl + "api/activity/create-activity", data.activity);
   }
 
-  updateActivity(data){
+  updateActivity(data) {
     console.log("updated activity data", data);
-    return this.http.put(config.baseApiUrl + "api/activity/update-activity" , data);
+    return this.http.put(config.baseApiUrl + "api/activity/update-activity", data);
   }
 
 
-  addGroup(data){
-    console.log("group data",data);
+  addGroup(data) {
+    console.log("group data", data);
     return this.http.post(config.baseApiUrl + "api/group/create-group", data)
   }
 
-  updateGroup(data){
+  updateGroup(data) {
     console.log("updated group data", data);
     return this.http.put(config.baseApiUrl + "api/group/update-group", data);
   }
 
 
-  getMyevents(){
+  getMyevents() {
     return this.http.get(config.baseApiUrl + "api/event/myevent-list");
   }
 
 
 
-  getEventDetails(id){
-    console.log("idddddddddddddddsssssssssssssssssss",id)
+  getEventDetails(id) {
+    console.log("idddddddddddddddsssssssssssssssssss", id)
     return this.http.get(config.baseApiUrl + "api/event/" + id);
   }
 
-  thankyouMessage(body, files:any){
+  thankyouMessage(body, files: any) {
     console.log(body);
     let formdata = new FormData();
-    formdata.append('message',body.message);
-    formdata.append('eventId',body.eventId);
+    formdata.append('message', body.message);
+    formdata.append('eventId', body.eventId);
     if (files.length) {
       for (var i = 0; i < files.length; i++) {
         formdata.append("attachment", files[i]);
@@ -100,44 +100,56 @@ export class EventService {
 
   }
 
-  deleteEvent(id){
+  deleteEvent(id) {
     console.log("delete event id", id);
-   return this.http.delete(config.baseApiUrl + "api/event/delete-event/" + id);
+    return this.http.delete(config.baseApiUrl + "api/event/delete-event/" + id);
   }
 
-  addToCart(groupId, activityId, eventId, item,gender){
-    console.log(groupId, activityId, eventId, item,gender);
-    return this.http.post(config.baseApiUrl+"api/event/add-item" ,{groupId, activityId, eventId, item,gender});
+  addToCart(groupId, activityId, eventId, item, gender) {
+    console.log(groupId, activityId, eventId, item, gender);
+    return this.http.post(config.baseApiUrl + "api/event/add-item", { groupId, activityId, eventId, item, gender });
   }
 
-  getProducts(id){
+  getProducts(id) {
     console.log(id);
-  return this.http.get(config.baseApiUrl+"api/event/cart-list/"+ id);
+    return this.http.get(config.baseApiUrl + "api/event/cart-list/" + id);
   }
 
 
-  joinEvent(id){
+  joinEvent(id) {
     console.log("id of guest event", id);
     const eventId = {
-      eventId:id
+      eventId: id
     }
-  return this.http.post(config.baseApiUrl+"api/event/join-event", eventId);
+    return this.http.post(config.baseApiUrl + "api/event/join-event", eventId);
   }
-  removeCartItem(id){
+  removeCartItem(id) {
     console.log(id);
-    return this.http.delete(config.baseApiUrl+"api/event/delete-item/"+ id);
+    return this.http.delete(config.baseApiUrl + "api/event/delete-item/" + id);
   }
 
-  proceedToPay(data){
+  proceedToPay(data) {
     console.log(data);
-    return this.http.put(config.baseApiUrl+"api/event/update-item", data);
+    return this.http.put(config.baseApiUrl + "api/event/update-item", data);
   }
 
-  finalPaymentDetails(id){
-    return this.http.get(config.baseApiUrl+"api/event/final-list/"+ id);
+  finalPaymentDetails(id) {
+    return this.http.get(config.baseApiUrl + "api/event/final-list/" + id);
   }
-  makeFinalPayment(data){
+  makeFinalPayment(data) {
     console.log(data);
-    return this.http.post(config.baseApiUrl+"api/event/order-checkout", data);
+    return this.http.post(config.baseApiUrl + "api/event/order-checkout", data);
+  }
+
+
+  // Admin Panel
+  eventCount() {
+    return this.http.get(config.baseApiUrl + "api/event/total-event-count");
+  }
+  userCount() {
+    return this.http.get(config.baseApiUrl + "api/user/total-user-count");
+  }
+  allEventList(){
+    return this.http.get(config.baseApiUrl+"api/event/event-list");
   }
 }

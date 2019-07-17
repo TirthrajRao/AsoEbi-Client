@@ -109,6 +109,9 @@ export class LoginService {
   resetPassword(data){
     return this.http.post(config.baseApiUrl + "api/changepassword", data)
   }
+  forgotPasswordWithLink(data,id){
+    return this.http.post(config.baseApiUrl+"api/reset-password/"+id,data )
+  }
 
     
   logout() {
