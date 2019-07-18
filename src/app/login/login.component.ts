@@ -91,7 +91,10 @@ export class LoginComponent implements OnInit {
         }
       }, error => {
         console.log(error);
-         let errorMessege = error.statusText;         
+         let errorMessege = error.statusText;  
+         this.isDiable = false;
+         this.loginForm.reset();       
+         console.log("disable:",this.isDiable);
         // Swal.fire({
         //   type: 'info',
         //   title: 'Sorry ' + errorMessege,

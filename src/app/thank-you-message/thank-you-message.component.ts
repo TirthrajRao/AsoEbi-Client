@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import {EventService} from '../services/event.service';
-import * as DecoupledEditor from '@ckeditor/ckeditor5-build-classic';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Swal from 'sweetalert2';
 import * as _ from 'lodash';
 
@@ -35,7 +35,7 @@ export class ThankYouMessageComponent implements OnInit {
     })
   }
 
-  public Editor = DecoupledEditor;
+  public Editor = ClassicEditor;
   public configuration = { placeholder: 'Enter Comment Text...' };
   public onReady( editor ) {
       editor.ui.getEditableElement().parentElement.insertBefore(
@@ -51,6 +51,7 @@ export class ThankYouMessageComponent implements OnInit {
     this._eventService.thankyouMessage(this.thankyouMessageForm.value, this.files)
     .subscribe(data=>{
       console.log("thank you message response", data);
+      this.router.navigate(['home/myEvent'])
     },err=>{
       console.log(err);
     })

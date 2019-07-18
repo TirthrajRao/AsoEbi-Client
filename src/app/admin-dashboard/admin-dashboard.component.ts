@@ -18,26 +18,16 @@ export class AdminDashboardComponent implements OnInit {
 
   ngOnInit() {
     this.getEventCount();
-    this.getUsersCount();
   }
 
 
   getEventCount(){
-    this._eventService.eventCount()
+    this._eventService.dashBoardCount()
     .subscribe((data:any)=>{
       console.log(data)
-      this.eventCount = data.data.eventCount;
+      this.eventCount = data.data;
       console.log(this.eventCount);
     }, err=>{
-      console.log(err);
-    })
-  }
-  getUsersCount(){
-    this._eventService.userCount()
-    .subscribe((data:any)=>{
-      console.log(data);
-      this.usersCount = data.data.userCount
-    },err=>{
       console.log(err);
     })
   }

@@ -15,6 +15,8 @@ import { PaymentComponent } from './payment/payment.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { TotalEventsComponent } from './total-events/total-events.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
+import { AdminEventDetailsComponent } from './admin-event-details/admin-event-details.component';
 
 
 
@@ -55,6 +57,14 @@ const routes: Routes = [
   {
     path:'total-event',
     component: TotalEventsComponent
+  },
+  {
+    path: 'admin-eventDetails/:id',
+    component: AdminEventDetailsComponent
+  },
+  {
+    path:'total-user',
+    component: AdminUserListComponent
   },
   {
     path:'forgot-password/:id',

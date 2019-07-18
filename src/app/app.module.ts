@@ -33,6 +33,8 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { TotalEventsComponent } from './total-events/total-events.component';
 import { ChartsModule } from 'ng2-charts';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { AdminEventDetailsComponent } from './admin-event-details/admin-event-details.component';
+import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
 
 
 
@@ -69,7 +71,9 @@ export function provideConfig() {
     PaymentComponent,
     AdminDashboardComponent,
     TotalEventsComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    AdminEventDetailsComponent,
+    AdminUserListComponent
   ],
   imports: [
     BrowserModule,

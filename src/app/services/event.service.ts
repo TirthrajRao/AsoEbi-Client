@@ -143,13 +143,17 @@ export class EventService {
 
 
   // Admin Panel
-  eventCount() {
-    return this.http.get(config.baseApiUrl + "api/event/total-event-count");
-  }
-  userCount() {
-    return this.http.get(config.baseApiUrl + "api/user/total-user-count");
+  dashBoardCount() {
+    return this.http.get(config.baseApiUrl + "api/event/admin-dashboard-count");
   }
   allEventList(){
     return this.http.get(config.baseApiUrl+"api/event/event-list");
+  }
+  adminEventDetails(id){
+    console.log(id);
+    return this.http.get(config.baseApiUrl+"api/event/event-detail/" + id);
+  }
+  getUserList(){
+    return this.http.get(config.baseApiUrl+"api/user/user-list");
   }
 }

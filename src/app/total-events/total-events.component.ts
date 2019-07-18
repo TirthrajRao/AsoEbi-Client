@@ -34,12 +34,14 @@ export class TotalEventsComponent implements OnInit {
       console.log(data);
       this.totalEvent = data.data;
       console.log(this.totalEvent);
-      
-      // this.isPaymentAccept = data.data.isPaymentAccept;
-      // console.log(this.isPaymentAccept)
     }, err=>{
       console.log(err);
     })
+  }
+  viewMoreDeatils(id){
+    console.log(id);
+    this.router.navigate(['admin-eventDetails',id]);
+   
   }
 
 }

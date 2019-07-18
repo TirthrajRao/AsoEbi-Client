@@ -8,7 +8,7 @@
                 <span class="progress-right">
                     <span class="progress-bar"></span>
                 </span>
-                <div class="progress-value">{{eventCount}}</div>
+                <div class="progress-value" *ngIf="eventCount">{{eventCount.totalEventCount}}</div>
             </div>
             <label class="text-center">Total Events</label>
         </div>
@@ -20,7 +20,7 @@
                 <span class="progress-right">
                     <span class="progress-bar"></span>
                 </span>
-                <div class="progress-value">{{usersCount}}</div>
+                <div class="progress-value" *ngIf="eventCount">{{eventCount.totalUserCount}}</div>
             </div>
             <label class="text-center">Total Users</label>
         </div>
@@ -32,7 +32,7 @@
                 <span class="progress-right">
                     <span class="progress-bar"></span>
                 </span>
-                <div class="progress-value">{{eventCount}}</div>
+                <div class="progress-value" *ngIf="eventCount">{{eventCount.totalCollection}} $</div>
             </div>
             <label class="text-center">Total Payment</label>
         </div>
@@ -47,7 +47,7 @@
                     <span class="progress-right">
                         <span class="progress-bar"></span>
                     </span>
-                    <div class="progress-value">{{eventCount}}</div>
+                    <div class="progress-value"></div>
                 </div>
                 <label class="text-center">Total Amount Collected</label>
             </div>
@@ -59,7 +59,7 @@
                     <span class="progress-right">
                         <span class="progress-bar"></span>
                     </span>
-                    <div class="progress-value">{{usersCount}}</div>
+                    <div class="progress-value"></div>
                 </div>
                 <label class="text-center">Total Amount (Logistics)</label>
             </div>
@@ -71,7 +71,7 @@
                     <span class="progress-right">
                         <span class="progress-bar"></span>
                     </span>
-                    <div class="progress-value">{{eventCount}}</div>
+                    <div class="progress-value"></div>
                 </div>
                 <label class="text-center">Total Amount (Commission)</label>
             </div>

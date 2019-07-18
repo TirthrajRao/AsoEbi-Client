@@ -27,7 +27,7 @@
 
 <form [formGroup]= "thankyouMessageForm">
     <div>
-        <ckeditor class="ckeditor" [editor]="Editor" data="" formControlName="message" ></ckeditor>
+        <ckeditor class="ckeditor" [editor]="Editor" formControlName="message" (ready)="onReady($event)"></ckeditor>
     </div>
     <div class="custom-file">
             <input type="file" #attachment formControlName="attachment" class="form-control"
