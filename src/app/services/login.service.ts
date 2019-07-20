@@ -34,6 +34,7 @@ export class LoginService {
   login(userCredentials){
     console.log("helloooooooo");
     const eventToken = JSON.parse(localStorage.getItem('newEventId'));
+    console.log("login with link ", eventToken);
     if(eventToken)
     {
       userCredentials.eventId = eventToken;
@@ -118,9 +119,11 @@ export class LoginService {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
     localStorage.removeItem('accessToken');
-    this.currentUserSubject.next(null);
-    this.isUserLoggedIn = false;
-    localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+    localStorage.removeItem('isUserLoggedIn');
+    localStorage.removeItem('isCelebrant');
+    localStorage.removeItem('newEventId');
+    localStorage.removeItem('userRole');
+    localStorage.removeItem('isGuestJoined');
 }
 }
 

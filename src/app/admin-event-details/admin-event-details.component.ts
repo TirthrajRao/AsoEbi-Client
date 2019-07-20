@@ -16,6 +16,8 @@ export class AdminEventDetailsComponent implements OnInit {
   allEventDetails: any;
   guestList: any = [];
   guestListWithPayment: any = [];
+  groupWithItemList: any = [];
+  cartItems: any = [];
 
   constructor(private route: ActivatedRoute,
     private router: Router,private _eventService: EventService) {
@@ -44,6 +46,10 @@ export class AdminEventDetailsComponent implements OnInit {
       console.log("guest list ", this.guestList);
       this.guestListWithPayment = data.data.guestListWithPayment;
       console.log("payment list", this.guestListWithPayment);
+      this.groupWithItemList = data.data.groupWithItemList;
+      console.log("vechayeli itemsssssssss", this.groupWithItemList);
+      this.cartItems = this.groupWithItemList.cartItem;
+      // console.log("items which are sold ", this.cartItem);
     }, err=>{
       console.log(err);
     })

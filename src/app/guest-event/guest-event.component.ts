@@ -21,8 +21,10 @@ export class GuestEventComponent implements OnInit {
   newEventId;
   guestEventDetailsAfterLogin;
   idtoken = JSON.parse(localStorage.getItem('currentUser'));
+  isGuestJoined = JSON.parse(localStorage.getItem('isGuestJoined'));
   constructor(private route: ActivatedRoute,
     private router: Router, private _eventService: EventService) {
+
     this.sub = this.route.params.subscribe(params => {
       this.eventId = params.id;
       console.log("this.eventId", this.eventId);
@@ -30,7 +32,7 @@ export class GuestEventComponent implements OnInit {
     this.newEventId = Buffer.from(this.eventId, 'base64').toString('ascii');
     console.log(this.newEventId)
     this.guestEventDetailsWithoutLogin(this.newEventId);
-    this.guestEventDetailsWithLogin(this.eventId);
+    // this.guestEventDetailsWithLogin(this.eventId);
     localStorage.setItem('newEventId', JSON.stringify(this.newEventId));
   }
 
@@ -56,6 +58,7 @@ export class GuestEventComponent implements OnInit {
   }
 
   guestEventDetailsWithLogin(eventId) {
+    console.log("event id after login with link ============>", eventId);
     this._eventService.getEventDetails(eventId)
     .subscribe((data:any)=>{
       console.log("guest page display after login of guest", data);
@@ -83,7 +86,10 @@ export class GuestEventComponent implements OnInit {
       console.log("join event done", data);
       this.router.navigate(['/home/view-event/', id])
     },err=>{
-      console.log(err);
     })
+  }
+  viewMoreDeatils(id){
+    console.log(id);
+    this.router.navigate(['/home/view-event/', id])
   }
 }

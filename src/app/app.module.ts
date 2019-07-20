@@ -35,6 +35,8 @@ import { ChartsModule } from 'ng2-charts';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AdminEventDetailsComponent } from './admin-event-details/admin-event-details.component';
 import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
+import { ClipboardModule } from 'ngx-clipboard';
+
 
 
 
@@ -84,7 +86,8 @@ export function provideConfig() {
     SocialLoginModule,
     MatProgressSpinnerModule,
     CKEditorModule,
-    ChartsModule
+    ChartsModule,
+    ClipboardModule
   ],
   providers: [LoginService,
     {

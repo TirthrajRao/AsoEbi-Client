@@ -26,6 +26,9 @@ export class LoginComponent implements OnInit {
   isUserLoggedIn = false;
   isDiable = false;
   eventIdWithLogin;
+  isGuestJoined;
+  isCelebrant;
+  userRole;
   // currentUser = JSON.parse(localStorage.getItem('currentUser')); 
 
   constructor(private route: ActivatedRoute,
@@ -78,12 +81,26 @@ export class LoginComponent implements OnInit {
     this._loginService.login(this.loginForm.value)
       .subscribe(data => {
         console.log("response of login user", data);
+        // this.userRole = data.data.UserRole;
+        console.log("admin login entry",  data.data.UserRole);
+        localStorage.setItem('userRole', JSON.stringify( data.data.UserRole));
+        this.isGuestJoined = data.data.isGuestJoined;
+        console.log("this.isGuestJoined",this.isGuestJoined);
+        localStorage.setItem('isGuestJoined', JSON.stringify(this.isGuestJoined));
+        this.isCelebrant = data.data.isCelebrant;
+        console.log(this.isCelebrant);
+        localStorage.setItem('isCelebrant', JSON.stringify(this.isCelebrant))
          this.eventIdWithLogin = data.data.eventId;
         console.log("login with event iddddddd", this.eventIdWithLogin);
         if(this.eventIdWithLogin){
+          this.isUserLoggedIn = true;
+          localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
           this.router.navigate(['/welcome-guest',this.eventIdWithLogin]);
-        }else{
-
+        }
+        else if( data.data.UserRole == 'admin'){
+          this.router.navigate(['/home/admin-dashboard']);
+        }
+        else{
           this.isUserLoggedIn = true;
           this.isDiable = false;
           localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
@@ -95,11 +112,6 @@ export class LoginComponent implements OnInit {
          this.isDiable = false;
          this.loginForm.reset();       
          console.log("disable:",this.isDiable);
-        // Swal.fire({
-        //   type: 'info',
-        //   title: 'Sorry ' + errorMessege,
-        //   showConfirmButton: false, timer: 3000
-        // })
          console.log("display error messege",errorMessege);
       })
   }

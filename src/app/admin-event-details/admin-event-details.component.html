@@ -38,14 +38,15 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="12" *ngFor="let list of guestList">
+                            <div class="12">
                                 <h2 class="text-center">GuestList</h2>
-                                <span class="text-center">{{list.firstName}} {{list.lastName}}</span>
+                                <p class="text-center" *ngFor="let list of guestList">{{list.firstName}}
+                                    {{list.lastName}}</p>
                             </div>
                         </div>
                         <div class="row">
                             <h2>Total No Of Payment Done By Guest</h2>
-                            <div class="12">
+                            <div class="col-12">
                                 <table class="table">
                                     <thead class="thead-dark">
                                         <tr>
@@ -60,6 +61,32 @@
                                             <td>{{list.UserDetail.firstName}} {{list.UserDetail.lastName}}</td>
                                             <td>{{list.donation}} $</td>
                                             <td>{{list.grandTotal}} $</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row" *ngFor="let products of groupWithItemList">
+                            <h2>GroupName:{{products.groupName}}</h2>
+                            <div class="col-12">
+                                <table class="table">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>ItemName</th>
+                                            <th>Gender</th>
+                                            <th>Item Price</th>
+                                            <th>quantity</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let items of products.cartItem">
+                                            <td>{{items.itemName}}</td>
+                                            <td>{{items.gender}} $</td>
+                                            <td>{{items.itemPrice}} $</td>
+                                            <td>{{items.quantity}} $</td>
+                                            <td>{{items.subTotal}} $</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>

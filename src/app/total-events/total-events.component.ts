@@ -40,7 +40,7 @@ export class TotalEventsComponent implements OnInit {
   }
   viewMoreDeatils(id){
     console.log(id);
-    this.router.navigate(['admin-eventDetails',id]);
+    this.router.navigate(['home/admin-eventDetails',id]);
    
   }
 

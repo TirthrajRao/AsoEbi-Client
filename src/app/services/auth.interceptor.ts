@@ -37,7 +37,7 @@ export class AuthInterceptor implements HttpInterceptor {
             console.log("interceptorsssssssss error by meeeeeeeeeee", error);
             let errorMessage = error.error.message;
             console.log("error in interceptor", errorMessage);
-            if (error.status === 401 || error.status === 500) {
+            if (error.status === 401) {
               const idtoken = (localStorage.removeItem('currentUser'));
               Swal.fire({
                 type: 'error',
@@ -61,7 +61,7 @@ export class AuthInterceptor implements HttpInterceptor {
             console.log("interceptorsssssssss error in login", error);
             let errorMessage = error.error.message;
             console.log("dkjsbkjsbbskfbdsbfbdsf", errorMessage);
-            if (error.status === 401 || error.status === 400) {
+            if (error.status === 401) {
               Swal.fire({
                 type: 'error',
                  title: "sorry" + errorMessage,

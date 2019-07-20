@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="currentuser">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="adminUser == 'user'">
   <!-- <a class="navbar-brand" href="#">Navbar</a> -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +38,7 @@
 <!-- Admin Panel -->
 
 
-<div class="header" *ngIf="!currentuser">
+<div class="header" *ngIf="adminUser == 'admin'">
   <a id="menu-action">
     <i class="fa fa-bars"></i>
     <span>Close</span>
@@ -48,9 +48,10 @@
   </div>
   <div class="sidebar">
     <ul>
-      <li><a href="#"><i class="fa fa-desktop"></i><span>Total Events</span></a></li>
-      <li><a href="#"><i class="fa fa-server"></i><span>Total Users</span></a></li>
+      <li><a routerLink="total-event"><i class="fa fa-desktop"></i><span>Total Events</span></a></li>
+      <li><a routerLink="total-user"><i class="fa fa-server"></i><span>Total Users</span></a></li>
       <li><a href="#"><i class="fa fa-calendar"></i><span>Settings</span></a></li>
+      <li> <a href="#" (click)="logout()"><i class="fa fa-server"></i><span>LogOut</span></a></li>
     </ul>
   </div>
 </div>

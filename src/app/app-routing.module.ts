@@ -49,23 +49,7 @@ const routes: Routes = [
   {
     path:'welcome-guest/:id',
     component: GuestEventComponent
-  },
-  {
-    path:'admin-dashboard',
-    component:AdminDashboardComponent
-  } , 
-  {
-    path:'total-event',
-    component: TotalEventsComponent
-  },
-  {
-    path: 'admin-eventDetails/:id',
-    component: AdminEventDetailsComponent
-  },
-  {
-    path:'total-user',
-    component: AdminUserListComponent
-  },
+  }, 
   {
     path:'forgot-password/:id',
     component: ForgotPasswordComponent
@@ -121,7 +105,23 @@ const routes: Routes = [
       {
         path: 'payment/:id',
         component: PaymentComponent
-      }
+      },
+      {
+        path:'admin-dashboard',
+        component:AdminDashboardComponent
+      },
+      {
+        path:'total-event',
+        component: TotalEventsComponent
+      },
+      {
+        path: 'admin-eventDetails/:id',
+        component: AdminEventDetailsComponent
+      },
+      {
+        path:'total-user',
+        component: AdminUserListComponent
+      } 
     ]
   }
 ];

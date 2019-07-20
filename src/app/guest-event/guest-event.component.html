@@ -2,7 +2,9 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                    <button type="button" class="btn btn-primary" (click)="joinNow(EventDetails._id)">Join Now
+                    <button type="button" class="btn btn-primary" (click)="joinNow(EventDetails._id)" *ngIf="!isGuestJoined">Join Now
+                        </button>
+                        <button type="button" class="btn btn-primary" (click)="viewMoreDeatils(EventDetails._id)" *ngIf="isGuestJoined">View More
                         </button>
                 <div [ngStyle]="{background: getSrc(EventDetails.eventTheme)}" class="theme-background">
                     <div class="row">

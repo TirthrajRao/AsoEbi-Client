@@ -1,13 +1,16 @@
 <div class="row">
     <div class="col-12">
         <div *ngFor="let item of allDetailsofEvent">
-            <button type="button" class="btn btn-primary m-auto" (click)="editEventDeatils(item._id)">Edit Event </button>
-            <button type="button" class="btn btn-primary m-auto " (click)="deleteEvent(item._id)">Delete Event </button>
+            <button type="button" class="btn btn-primary m-auto" (click)="editEventDeatils(item._id)"
+                *ngIf="isCelebrant == 'true'">Edit Event </button>
+            <button type="button" class="btn btn-primary m-auto " (click)="deleteEvent(item._id)"
+                *ngIf="isCelebrant == 'true'">Delete Event </button>
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <div class="card p-4">
-                                <button type="button" class="btn btn-danger ml-auto mb-2" (click)="myCart(item._id)">My Cart</button>
+                            <button type="button" class="btn btn-danger ml-auto mb-2" (click)="myCart(item._id)"
+                                *ngIf="isCelebrant == 'false'">My Cart</button>
                             <div [ngStyle]="{background: getSrc(item.eventTheme)}" class="theme-background">
                                 <div class="row">
                                     <div class="col-4 m-auto">
@@ -31,6 +34,17 @@
                                         </p>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p>EventLink:-
+                                            <input #inputTarget [(ngModel)]="eventLink" readonly />
+                                            <button [ngxClipboard]="inputTarget" >Copy</button>
+                                            <!-- <button (cbOnSuccess)="isCopied = true" [cbContent]="'eventLink'">Copied</button> -->
+
+                                            <!-- <button (cbOnSuccess)="isCopied = true" [cbContent]="'example string'">Copied</button> -->
+                                        </p>
+                                    </div>
+                                </div>
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-lg-8 m-auto ">
@@ -49,7 +63,9 @@
                                                                 </div>
                                                                 <div class="col-lg-6">
                                                                     <button type="button" class="btn btn-info"
-                                                                        (click)="addToCart(group._id, activity.activityId, item._id, group.male,'male')" [disabled] = "isDisable">Add
+                                                                        (click)="addToCart(group._id, activity.activityId, item._id, group.male,'male')"
+                                                                        [disabled]="isDisable"
+                                                                        *ngIf="isCelebrant == 'false'">Add
                                                                         To Cart </button>
                                                                 </div>
                                                                 <div class="col-lg-12">
@@ -66,7 +82,9 @@
                                                                 </div>
                                                                 <div class="col-lg-6">
                                                                     <button type="button" class="btn btn-info"
-                                                                        (click)="addToCart(group._id, activity.activityId, item._id, group.female,'female')">Add
+                                                                        (click)="addToCart(group._id, activity.activityId, item._id, group.female,'female')"
+                                                                        *ngIf="isCelebrant == 'false'"
+                                                                        [disabled]="isDisable">Add
                                                                         To Cart </button>
                                                                 </div>
                                                                 <div class="col-lg-12">

@@ -16,11 +16,12 @@ declare var $ : any;
 })
 export class HeaderComponent implements OnInit {
 
-  currentuser = JSON.parse(localStorage.getItem('isUserLoggedIn'));
+  currentUser = JSON.parse(localStorage.getItem('isUserLoggedIn'));
+  adminUser = JSON.parse(localStorage.getItem('userRole'));
   constructor(private _loginService: LoginService,private route: ActivatedRoute,
     private router: Router) {
-      console.log("current user in header component", this.currentuser);
-      if(!this.currentuser){
+      console.log("current user in header component", this.currentUser);
+      if(!this.currentUser){
         $('#navbarSupportedContent').css({'display':'none'});
       }
     }
@@ -53,7 +54,6 @@ export class HeaderComponent implements OnInit {
   logout(){
       this._loginService.logout();
       this.router.navigate(['/login']);
-    
   }
 
 }
