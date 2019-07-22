@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import {EventService} from '../services/event.service';
+import { EventService } from '../services/event.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Swal from 'sweetalert2';
 import * as _ from 'lodash';
@@ -20,12 +20,11 @@ export class ThankYouMessageComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private router: Router, private _eventService: EventService) {
-      this.sub = this.route.params.subscribe(params=>{
-        this.eventId = params.id;
-        console.log(this.eventId);
-        // this.viewDetailsOfEvent(this.eventId);
-      })
-     }
+    this.sub = this.route.params.subscribe(params => {
+      this.eventId = params.id;
+      console.log(this.eventId);
+    })
+  }
 
   ngOnInit() {
     this.thankyouMessageForm = new FormGroup({
@@ -35,28 +34,38 @@ export class ThankYouMessageComponent implements OnInit {
     })
   }
 
+  /**
+   * Using of ckEditor for message
+   */
   public Editor = ClassicEditor;
   public configuration = { placeholder: 'Enter Comment Text...' };
-  public onReady( editor ) {
-      editor.ui.getEditableElement().parentElement.insertBefore(
-          editor.ui.view.toolbar.element,
-          editor.ui.getEditableElement()
-      );
+  public onReady(editor) {
+    editor.ui.getEditableElement().parentElement.insertBefore(
+      editor.ui.view.toolbar.element,
+      editor.ui.getEditableElement()
+    );
   }
 
 
-
-  thankyouMessage(data){
+  /**
+   * @param {Object} data
+   * Create new thank you message 
+   */
+  thankyouMessage(data) {
     console.log(this.thankyouMessageForm);
     this._eventService.thankyouMessage(this.thankyouMessageForm.value, this.files)
-    .subscribe(data=>{
-      console.log("thank you message response", data);
-      this.router.navigate(['home/myEvent'])
-    },err=>{
-      console.log(err);
-    })
+      .subscribe(data => {
+        console.log("thank you message response", data);
+        this.router.navigate(['home/myEvent'])
+      }, err => {
+        console.log(err);
+      })
   }
 
+  /**
+   * @param {Object} event
+   * Add new image,gif in thank you message 
+   */
   addFile(event) {
     console.log(event);
     _.forEach(event, (file: any) => {
@@ -71,7 +80,5 @@ export class ThankYouMessageComponent implements OnInit {
       }
     })
   }
-
-
 
 }

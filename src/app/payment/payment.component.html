@@ -1,3 +1,5 @@
+<!-- Total payment of myCart items and if donation added display final total  -->
+
 <div class="container">
     <table class="table">
         <thead class="thead-dark">
@@ -36,17 +38,17 @@
             </tr>
 
             <tr>
-                    <td>Donation</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td >
-                        <input type="number" min="1" id="donation" (change)="finalTotal($event.target.value)"
-                            [(ngModel)]='donation'>
-                    </td>
-                </tr>
+                <td>Donation</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <input type="number" min="1" id="donation" (change)="finalTotal($event.target.value)"
+                        [(ngModel)]='donation'>
+                </td>
+            </tr>
             <tr>
                 <td>GrandTotal</td>
                 <td></td>
@@ -59,17 +61,17 @@
                 </td>
             </tr>
             <tr>
-                    <label for="comment">Address:</label>
-                    <textarea placeholder="Enter Your Address" [(ngModel)] = "address" id="address"></textarea>
+                <label for="comment">Address:</label>
+                <textarea placeholder="Enter Your Address" [(ngModel)]="address" id="address"></textarea>
             </tr>
             <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
                     <button type="button" class="btn btn-primary"
                         (click)="finalPayment(finalCartDetails,finalGrandTotal,donation,address)">CheckOut
                     </button>

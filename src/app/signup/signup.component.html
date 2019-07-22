@@ -6,6 +6,7 @@
     <span></span>
 </div>
 
+<!-- SignUp form field  -->
 <div *ngIf="!isDiable">
     <div class="row">
         <div class="col-md-6 m-auto pt-5">
@@ -13,54 +14,63 @@
                 <form [formGroup]="signUpForm" autocomplete="off">
                     <div class="form-group">
                         <label for="firstName">First Name</label>
-                        <input type="text" (input)="validateFirstName(signUpForm.value)" id="firstName" class="form-control" formControlName="firstName" [ngClass]="{ 'is-invalid': f.firstName.touched && f.firstName.errors }">
+                        <input type="text" (input)="validateFirstName(signUpForm.value)" id="firstName"
+                            class="form-control" formControlName="firstName"
+                            [ngClass]="{ 'is-invalid': f.firstName.touched && f.firstName.errors }">
                         <span id="message1" style="color: red; font-size: 14px;"></span>
-						<div  class="col-md-2" *ngIf=" f.firstName.touched && f.firstName.errors" class="invalid-feedback">
-							<div *ngIf="f.firstName.errors.required">Name is required</div>
-							<div *ngIf="f.firstName.errors.minlength">Name must be at least 2 characters</div>
-							<div *ngIf="f.firstName.errors.pattern">Please enter only alphabates</div>
-						</div>
+                        <div class="col-md-2" *ngIf=" f.firstName.touched && f.firstName.errors"
+                            class="invalid-feedback">
+                            <div *ngIf="f.firstName.errors.required">Name is required</div>
+                            <div *ngIf="f.firstName.errors.minlength">Name must be at least 2 characters</div>
+                            <div *ngIf="f.firstName.errors.pattern">Please enter only alphabates</div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="lastName">Last Name</label>
-                        <input type="text" class="form-control" formControlName="lastName" (input)="validateLastName(signUpForm.value)" id="lastName" [ngClass]="{ 'is-invalid': f.lastName.touched && f.lastName.errors }">
+                        <input type="text" class="form-control" formControlName="lastName"
+                            (input)="validateLastName(signUpForm.value)" id="lastName"
+                            [ngClass]="{ 'is-invalid': f.lastName.touched && f.lastName.errors }">
                         <span id="message2" style="color: red; font-size: 14px;"></span>
-						<div  class="col-md-2" *ngIf=" f.lastName.touched && f.lastName.errors" class="invalid-feedback">
-							<div *ngIf="f.lastName.errors.required">Name is required</div>
-							<div *ngIf="f.lastName.errors.minlength">Name must be at least 2 characters</div>
-							<div *ngIf="f.lastName.errors.pattern">Please enter only alphabates</div>
-						</div>
-                    
+                        <div class="col-md-2" *ngIf=" f.lastName.touched && f.lastName.errors" class="invalid-feedback">
+                            <div *ngIf="f.lastName.errors.required">Name is required</div>
+                            <div *ngIf="f.lastName.errors.minlength">Name must be at least 2 characters</div>
+                            <div *ngIf="f.lastName.errors.pattern">Please enter only alphabates</div>
+                        </div>
+
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email"class="form-control" formControlName="email" [ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }">
+                        <input type="email" id="email" class="form-control" formControlName="email"
+                            [ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }">
                         <div class="col-md-2" *ngIf="f.email.touched && f.email.errors" class="invalid-feedback">
-							<div *ngIf="f.email.errors.required">Email is required</div>
-							<div *ngIf="f.email.errors.email">Please enter valid Email</div>
-						</div>
+                            <div *ngIf="f.email.errors.required">Email is required</div>
+                            <div *ngIf="f.email.errors.email">Please enter valid Email</div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="pwd">Password</label>
-                        <input type="password" class="form-control" formControlName="password" id="password" [ngClass]="{ 'is-invalid': f.password.touched && f.password.errors }">
-						<div *ngIf="f.password.touched && f.password.errors" class="invalid-feedback">
-							<div *ngIf="f.password.errors.required">Password is required</div>
-							<div *ngIf="f.password.errors.minlength">Password must contain atleast 6 characters</div>
-							<div *ngIf="f.password.errors.maxlength">Password must be  only 20 characters</div>
-						</div>
+                        <input type="password" class="form-control" formControlName="password" id="password"
+                            [ngClass]="{ 'is-invalid': f.password.touched && f.password.errors }">
+                        <div *ngIf="f.password.touched && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">Password is required</div>
+                            <div *ngIf="f.password.errors.minlength">Password must contain atleast 6 characters</div>
+                            <div *ngIf="f.password.errors.maxlength">Password must be only 20 characters</div>
+                        </div>
                     </div>
 
                     <div class="form-group">
                         <label for="mobile">PhoneNo</label>
-                        <input type="tel" class="form-control" formControlName="mobile" (input)="validatePhone(signUpForm.value)" id="mobile" [ngClass]="{ 'is-invalid': f.mobile.touched && f.mobile.errors }">
+                        <input type="tel" class="form-control" formControlName="mobile"
+                            (input)="validatePhone(signUpForm.value)" id="mobile"
+                            [ngClass]="{ 'is-invalid': f.mobile.touched && f.mobile.errors }">
                         <span id="message" style="color: red; font-size: 14px;"></span>
-                        <div  class="col-md-4" *ngIf="f.mobile.touched && f.mobile.errors" class="invalid-feedback">
-							<div *ngIf="f.mobile.errors.minlength">Phone must be only 10 digits</div>
-							<div *ngIf="f.mobile.errors.maxlength">Phone must be only 10 digits</div>
-						</div>
+                        <div class="col-md-4" *ngIf="f.mobile.touched && f.mobile.errors" class="invalid-feedback">
+                            <div *ngIf="f.mobile.errors.minlength">Phone must be only 10 digits</div>
+                            <div *ngIf="f.mobile.errors.maxlength">Phone must be only 10 digits</div>
+                        </div>
                     </div>
-                    <button type="button" class="btn btn-primary" (click)="onSubmit()" [disabled] = "isDisable || signUpForm.invalid"
-                    >Submit</button>
+                    <button type="button" class="btn btn-primary" (click)="onSubmit()"
+                        [disabled]="isDisable || signUpForm.invalid">Submit</button>
                 </form>
             </div>
         </div>

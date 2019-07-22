@@ -12,17 +12,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import {LoginService} from './services/login.service';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { LoginService } from './services/login.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { CreateEventComponent } from './create-event/create-event.component';
-import { EditEventComponent } from './edit-event/edit-event.component';
 import { MyEventComponent } from './my-event/my-event.component';
 import { HeaderComponent } from './header/header.component';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { LoaderComponent } from './loader/loader.component';
-import {LoaderService} from './services/loader.service';
+import { LoaderService } from './services/loader.service';
 import { ViewEventComponent } from './view-event/view-event.component';
 import { ThankYouMessageComponent } from './thank-you-message/thank-you-message.component';
 import { GuestEventComponent } from './guest-event/guest-event.component';
@@ -36,11 +35,11 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { AdminEventDetailsComponent } from './admin-event-details/admin-event-details.component';
 import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
 import { ClipboardModule } from 'ngx-clipboard';
+import { DisplayPageComponent } from './display-page/display-page.component';
 
-
-
-
-
+/**
+ * Key For login with google and facebook 
+ */
 let config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
@@ -51,9 +50,11 @@ let config = new AuthServiceConfig([
     provider: new FacebookLoginProvider("350939005533804")
   }
 ]);
+
 export function provideConfig() {
   return config;
 }
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +62,6 @@ export function provideConfig() {
     SignupComponent,
     HomeComponent,
     CreateEventComponent,
-    EditEventComponent,
     MyEventComponent,
     HeaderComponent,
     ResetPasswordComponent,
@@ -75,7 +75,8 @@ export function provideConfig() {
     TotalEventsComponent,
     ForgotPasswordComponent,
     AdminEventDetailsComponent,
-    AdminUserListComponent
+    AdminUserListComponent,
+    DisplayPageComponent
   ],
   imports: [
     BrowserModule,
@@ -99,7 +100,7 @@ export function provideConfig() {
       useClass: AuthInterceptor,
       multi: true
     }
-    ],
+  ],
   bootstrap: [AppComponent]
 })
 

@@ -1,3 +1,5 @@
+<!-- Form of create new event and also edit created event -->
+
 <section id="stepperForm">
     <div class="container">
         <div class="section_title">
@@ -83,7 +85,8 @@
                                 </div>
                             </div>
                             <div class="row mt-2">
-                                <img *ngIf="createdEventDetails && createdEventDetails.profilePhoto" src="{{path}}{{createdEventDetails.profilePhoto}}" class="rounded-circle"
+                                <img *ngIf="createdEventDetails && createdEventDetails.profilePhoto"
+                                    src="{{path}}{{createdEventDetails.profilePhoto}}" class="rounded-circle"
                                     height="100">
                                 <div class="col-md-12">
                                     <h5>Upload Profile Photo</h5>
@@ -121,11 +124,12 @@
                                         <input type="file" #background formControlName="background" class="form-control"
                                             (change)="addThemePhoto($event.target.files)" id="customThemeFile"
                                             accept="image/png, image/jpeg, image/jpg, image/gif" hidden>
-                                        <label class="custom-file-label" for="customThemeFile">Choose Theme Photo</label>
+                                        <label class="custom-file-label" for="customThemeFile">Choose Theme
+                                            Photo</label>
                                     </div>
                                 </div>
                             </div>
-                            <div class="next_step_and_prev_step mt-2" >
+                            <div class="next_step_and_prev_step mt-2">
                                 <a href="javascript:void(0);" class="next_step"
                                     (click)="createdEventDetails? updateEvent() : addEvent()"> Next</a>
                             </div>

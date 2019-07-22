@@ -5,7 +5,7 @@ import { EventService } from '../services/event.service';
 declare var $: any;
 import * as _ from 'lodash';
 import Swal from 'sweetalert2';
-import {config} from '../config'; 
+import { config } from '../config';
 
 
 
@@ -56,24 +56,23 @@ export class CreateEventComponent implements OnInit {
   ngOnInit() {
 
     this.eventForm = new FormGroup({
-      eventTitle: new FormControl('',[Validators.required]),
-      eventType: new FormControl('',[Validators.required]),
+      eventTitle: new FormControl('', [Validators.required]),
+      eventType: new FormControl('', [Validators.required]),
       startDate: new FormControl(''),
       endDate: new FormControl(''),
-      hashTag: new FormControl('',[Validators.required,Validators.minLength(4)]),
+      hashTag: new FormControl('', [Validators.required, Validators.minLength(4)]),
       profile: new FormControl(''),
       deadlineDate: new FormControl(''),
       isPublic: new FormControl(this.isPublicVal),
       isLogistics: new FormControl(this.isLogistics),
       background: new FormControl('')
     })
-    // this.activityForm = new FormGroup({
-    //   activity: this.fb.array([this.activityArray()])
-    // })
     $('#eventId').css({ 'display': 'none' });
-    $( function() {
-      $( "#datepicker" ).datepicker();
-    } );
+    $(function () {
+      $("#datepicker").datepicker();
+      // $("#startDate").val(Date.now());
+      $("#startDate").datepicker().datepicker("setDate", new Date());
+    });
 
 
     $("#register_steps_tab").accordion({
@@ -98,13 +97,12 @@ export class CreateEventComponent implements OnInit {
 
 
 
-  /**@body {JSON} eventTitle,hashtag,startDate,endDate,eventType,profilePhoto,deadlineDate,logistics,piblic or private
-   * To Add basic event details which filled by celebrant and after filled all the values used that generated id of event to create activities and clothes
-   * of guest 
+  /**
+   * @param {JSON}
+   * Event all details in json object for new event
    */
-
   addEvent() {
-    console.log("data of event", this.eventForm);
+    console.log("data of event", this.eventForm,this.files);
     this._eventService.addEvent(this.eventForm.value, this.files, this.themeFiles)
       .subscribe((data: any) => {
         console.log("event details", data);
@@ -123,19 +121,21 @@ export class CreateEventComponent implements OnInit {
   addFile(event) {
     console.log(event);
     // _.forEach(event, (file: any) => {
-      if (event[0].type == "image/jpeg" || event[0].type == "image/jpg" || event[0].type == "image/png") {
-        this.files = event;
-      } else {
-        Swal.fire({
-          title: 'Error',
-          text: "You can upload only image",
-          type: 'warning',
-        })
-      }
-    // })
+    if (event[0].type == "image/jpeg" || event[0].type == "image/jpg" || event[0].type == "image/png") {
+      this.files = event;
+    } else {
+      Swal.fire({
+        title: 'Error',
+        text: "You can upload only image",
+        type: 'warning',
+      })
+    }
   }
 
 
+  /**
+   * To upload theme photo of event 
+   */
   addThemePhoto(event) {
     console.log(event);
     _.forEach(event, (file: any) => {
@@ -151,6 +151,11 @@ export class CreateEventComponent implements OnInit {
     })
   }
 
+
+  /**
+   * @param {JSON} activityForm array 
+   * To get total no of users which are used ASO-EBI
+   */
   getActivityFrom(createdActivity?) {
     this.activityForm = new FormGroup({
       activity: this.fb.array(this.activityArray(createdActivity))
@@ -357,6 +362,10 @@ export class CreateEventComponent implements OnInit {
 
 
 
+  /**
+   * @param(id) eventId
+   * To get details of particular event 
+   */
   viewDetailsOfEvent(eventId) {
     this._eventService.getEventDetails(eventId)
       .subscribe((data: any) => {
@@ -375,36 +384,47 @@ export class CreateEventComponent implements OnInit {
       })
   }
 
+  /**
+   *  Updating event if any changes
+   */
   updateEvent() {
     // console.log("Update Event");
     this.getActivityFrom(this.eventActivities);
     this._eventService.updateEvent(this.eventId, this.eventForm.value, this.files)
-    .subscribe(data=>{
-      console.log(data);
-    }, err=>{
-      console.log(err);
-    })
+      .subscribe(data => {
+        console.log(data);
+      }, err => {
+        console.log(err);
+      })
   }
 
+
+  /**
+   *  Updating activity if any changes
+   */
   updateActivity() {
     // console.log("Update Event");
     this._eventService.updateActivity(this.activityForm.value)
-    .subscribe(data=>{
-      console.log(data);
-    }, err =>{
-      console.log(err);
-    })
+      .subscribe(data => {
+        console.log(data);
+      }, err => {
+        console.log(err);
+      })
     this.initGroupForm(this.eventActivities);
   }
 
+
+  /**
+   *  Updating group if any changes
+   */
   updateGroup() {
     console.log(this.groupForm.value);
     this._eventService.updateGroup(this.groupForm.value)
-    .subscribe(data=>{
-      console.log("updated group details", data);
-    }, err=>{
-      console.log(err);
-    })
+      .subscribe(data => {
+        console.log("updated group details", data);
+      }, err => {
+        console.log(err);
+      })
   }
 
 

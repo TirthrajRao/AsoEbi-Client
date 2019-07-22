@@ -3,14 +3,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { LoginService } from '../services/login.service';
 import { AuthService } from "angularx-social-login";
-import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
-import { $ } from 'protractor';
+import { GoogleLoginProvider } from "angularx-social-login";
 import { HttpErrorResponse } from '@angular/common/http';
 declare var FB: any;
-import Swal from 'sweetalert2';
-
-
-
 
 @Component({
   selector: 'app-login',
@@ -29,7 +24,6 @@ export class LoginComponent implements OnInit {
   isGuestJoined;
   isCelebrant;
   userRole;
-  // currentUser = JSON.parse(localStorage.getItem('currentUser')); 
 
   constructor(private route: ActivatedRoute,
     private router: Router, private _loginService: LoginService, private authService: AuthService) { }
@@ -45,7 +39,9 @@ export class LoginComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email])
     });
 
-
+    /**
+     * Login with facebook 
+     */
     (window as any).fbAsyncInit = function () {
       FB.init({
         appId: '350939005533804',
@@ -63,44 +59,43 @@ export class LoginComponent implements OnInit {
       js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3&appId=350939005533804&autoLogAppEvents=1";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
-
-
-
   }
 
+  /**
+   * function of display error 
+   */
   get f() { return this.loginForm.controls; }
 
-
-/**
- * @param {JSON} email,password
- * for login with created email and password
- */
+  /**
+   * @param {JSON} email,password
+   * for login with created email and password
+   */
   onSubmitLogin() {
-    this.isDiable= true;
+    this.isDiable = true;
     console.log("login details", this.loginForm);
     this._loginService.login(this.loginForm.value)
       .subscribe(data => {
         console.log("response of login user", data);
         // this.userRole = data.data.UserRole;
-        console.log("admin login entry",  data.data.UserRole);
-        localStorage.setItem('userRole', JSON.stringify( data.data.UserRole));
+        console.log("admin login entry", data.data.UserRole);
+        localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
         this.isGuestJoined = data.data.isGuestJoined;
-        console.log("this.isGuestJoined",this.isGuestJoined);
+        console.log("this.isGuestJoined", this.isGuestJoined);
         localStorage.setItem('isGuestJoined', JSON.stringify(this.isGuestJoined));
         this.isCelebrant = data.data.isCelebrant;
         console.log(this.isCelebrant);
         localStorage.setItem('isCelebrant', JSON.stringify(this.isCelebrant))
-         this.eventIdWithLogin = data.data.eventId;
+        this.eventIdWithLogin = data.data.eventId;
         console.log("login with event iddddddd", this.eventIdWithLogin);
-        if(this.eventIdWithLogin){
+        if (this.eventIdWithLogin) {
           this.isUserLoggedIn = true;
           localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
-          this.router.navigate(['/welcome-guest',this.eventIdWithLogin]);
+          this.router.navigate(['/welcome-guest', this.eventIdWithLogin]);
         }
-        else if( data.data.UserRole == 'admin'){
+        else if (data.data.UserRole == 'admin') {
           this.router.navigate(['/home/admin-dashboard']);
         }
-        else{
+        else {
           this.isUserLoggedIn = true;
           this.isDiable = false;
           localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
@@ -108,19 +103,17 @@ export class LoginComponent implements OnInit {
         }
       }, error => {
         console.log(error);
-         let errorMessege = error.statusText;  
-         this.isDiable = false;
-         this.loginForm.reset();       
-         console.log("disable:",this.isDiable);
-         console.log("display error messege",errorMessege);
+        let errorMessege = error.statusText;
+        this.isDiable = false;
+        this.loginForm.reset();
+        console.log("disable:", this.isDiable);
+        console.log("display error messege", errorMessege);
       })
   }
-
 
   /**@param {JSON} email, password
    * Login with google email address 
    */
-
   signInWithGoogleAccount() {
     this.isDiable = true;
     console.log("In func")
@@ -142,12 +135,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
-
-
   /**@param {JSON} email, password
    * Login with facebook email address 
    */
-
   submitLogin() {
     this.isDiable = true;
     console.log("submit login to facebook");
@@ -157,15 +147,15 @@ export class LoginComponent implements OnInit {
       console.log("facebook id of user", facebookId);
       if (response.authResponse) {
         this._loginService.checkFacebookId(facebookId)
-        .subscribe(data=>{
-          console.log("data of facebook login user",data);
-          this.isDiable = false;
-          this.isUserLoggedIn = true;
-        localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
-          this.router.navigate(['/home']);
-        },err=>{
-          console.log(err);
-        })  
+          .subscribe(data => {
+            console.log("data of facebook login user", data);
+            this.isDiable = false;
+            this.isUserLoggedIn = true;
+            localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+            this.router.navigate(['/home']);
+          }, err => {
+            console.log(err);
+          })
       }
       else {
         console.log('User login failed');
@@ -174,17 +164,9 @@ export class LoginComponent implements OnInit {
 
   }
 
-  // signOut(): void {
-  //   this.authService.signOut();
-  // }
-
-
-
-
   /**@param {JSON} email
    * If password forgot send link in your gmail account with registerd email while signUp
    */
-
   submitForgotPassword() {
     console.log("body", this.forgotPasswordForm);
     this._loginService.forgotPassword(this.forgotPasswordForm.value)

@@ -1,9 +1,9 @@
-<!-- Admin panel display total events  -->
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <div class="card" *ngFor="let item of totalEvent">
-                <span [ngClass]="item.isPaymentAccept ? 'bg-success on_off' : 'bg-danger on_off'"></span>
+            <button type="button" class="btn btn-primary" (click)="login()" *ngIf="!currentUser">Login
+            </button>
+            <div class="card" *ngFor="let item of publicEvents">
                 <div [ngStyle]="{background: getSrc(item.eventTheme)}" class="theme-background">
                     <div class="row">
                         <div class="col-4 m-auto">
@@ -26,12 +26,6 @@
                             <p>EventHashTag:-
                                 <span>{{item.hashTag}}</span>
                             </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <button type="button" class="btn btn-primary" (click)="viewMoreDeatils(item._id)">View More
-                            </button>
                         </div>
                     </div>
                 </div>

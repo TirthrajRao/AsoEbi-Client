@@ -1,3 +1,4 @@
+<!-- Display all addToCart items with price and quantity -->
 <div class="container">
     <table class="table">
         <thead class="thead-dark">
@@ -20,10 +21,11 @@
                 <td>{{products.itemName}}</td>
                 <td class="product-price">{{products.itemPrice}}</td>
                 <td class="product-quantity">
-                    <input type="number"  min="1" [(ngModel)]="products.quantity" (change)="finalTotal($event.target.value)">
+                    <input type="number" min="1" [(ngModel)]="products.quantity"
+                        (change)="finalTotal($event.target.value)">
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger" (click)="removeItem(products._id)" >Remove
+                    <button type="button" class="btn btn-danger" (click)="removeItem(products._id)">Remove
                     </button>
                 </td>
                 <td>{{products.itemPrice * products.quantity }}</td>

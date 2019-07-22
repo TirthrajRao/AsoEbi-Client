@@ -5,7 +5,6 @@ import { config } from '../config';
 import { from } from 'rxjs';
 import { Config } from 'protractor';
 
-
 @Component({
   selector: 'app-my-event',
   templateUrl: './my-event.component.html',
@@ -24,10 +23,13 @@ export class MyEventComponent implements OnInit {
     this.getMyEvents();
   }
 
+  /**
+   * @param eventTheme 
+   * Display backgorund of any event 
+   */
   getSrc(eventTheme) {
-    return `url(`+this.path+eventTheme+`)`;
+    return `url(` + this.path + eventTheme + `)`;
   }
-
 
   /**
    * To get all created events with it's details   
@@ -45,16 +47,22 @@ export class MyEventComponent implements OnInit {
       })
   }
 
-
+  /** 
+   * @param id eventId
+   * navigate from this page to that particular event details page
+   */
   viewMoreDeatils(id) {
     console.log("kai mde che ke nai", id);
     this.router.navigate(['/home/view-event/', id])
   }
 
-  ThankYouMessage(id){
+  /**
+   * @param id eventId
+   * Naviagte from this page to thank you messeage page of that event 
+   */
+  ThankYouMessage(id) {
     console.log("thank you message event id", id);
     this.router.navigate(['/home/thank-you', id])
   }
-
 
 }

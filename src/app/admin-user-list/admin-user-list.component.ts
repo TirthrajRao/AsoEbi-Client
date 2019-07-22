@@ -9,25 +9,27 @@ import { EventService } from '../services/event.service';
 })
 export class AdminUserListComponent implements OnInit {
 
-  userList: any=[]; 
+  userList: any = [];
   constructor(private route: ActivatedRoute,
-    private router: Router,private _eventService: EventService) { }
+    private router: Router, private _eventService: EventService) { }
 
   ngOnInit() {
     this.getUserList();
   }
 
-
-
-  getUserList(){
+  /**
+   * @param(id) eventId
+   * To get total no of users which are used ASO-EBI
+   */
+  getUserList() {
     this._eventService.getUserList()
-    .subscribe((data:any)=>{
-      console.log(data);
-      this.userList = data.data;
-      console.log(this.userList);
-    }, err=>{
-      console.log(err);
-    })
+      .subscribe((data: any) => {
+        console.log(data);
+        this.userList = data.data;
+        console.log(this.userList);
+      }, err => {
+        console.log(err);
+      })
   }
 
 }

@@ -1,3 +1,5 @@
+<!-- Display all created events of users and also invited events -->
+
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -5,7 +7,8 @@
                 <div [ngStyle]="{background: getSrc(item.eventTheme)}" class="theme-background">
                     <div class="row">
                         <div class="col-4 m-auto">
-                            <img *ngIf="item && item.profilePhoto" src="{{path}}{{item.profilePhoto}}" class="rounded-circle img-fluid">
+                            <img *ngIf="item && item.profilePhoto" src="{{path}}{{item.profilePhoto}}"
+                                class="rounded-circle img-fluid">
                         </div>
                     </div>
                     <div class="row">
@@ -32,9 +35,10 @@
                         </div>
 
                         <div class="col-6">
-                                <button type="button" class="btn btn-primary" (click)="ThankYouMessage(item._id)" *ngIf="isCelebrant == 'true'">Thank You Message
-                                </button>
-                            </div>
+                            <button type="button" class="btn btn-primary" (click)="ThankYouMessage(item._id)"
+                                *ngIf="isCelebrant == 'true'">Thank You Message
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,13 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { config } from '../config';
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class EventService {
 
   constructor(private http: HttpClient) { }
 
+  /**
+   * @param {Object} body 
+   * @param {Object} files 
+   * @param {Object} themeFiles
+   * Create new event
+   */
   addEvent(body, files: any, themeFiles: any) {
     console.log("event detailsssssss", body);
     console.log("filessssss name ", files);
@@ -20,7 +28,6 @@ export class EventService {
     formdata.append('deadlineDate', body.deadlineDate);
     formdata.append('isPublic', body.isPublic);
     formdata.append('isLogistics', body.isLogistics);
-    // formdata.append('background', )
     if (files.length) {
       for (var i = 0; i < files.length; i++) {
         formdata.append("profile", files[i]);
@@ -35,6 +42,12 @@ export class EventService {
 
   }
 
+  /**
+   * @param {String} id 
+   * @param {Object} body 
+   * @param {Object} files
+   * Update created event if any changes accrued  
+   */
   updateEvent(id, body, files: any) {
     let formdata = new FormData();
     formdata.append('eventTitle', body.eventTitle);
@@ -53,39 +66,63 @@ export class EventService {
     return this.http.put(config.baseApiUrl + "api/event/update-event/" + id, formdata)
   }
 
+  /**
+   * @param {Object} data
+   * Add new activity in event 
+   */
   addActivities(data) {
     console.log("activity data", data);
     return this.http.post(config.baseApiUrl + "api/activity/create-activity", data.activity);
   }
 
+  /**
+   * @param {Object} data
+   * Update created activity if any changes accrued 
+   */
   updateActivity(data) {
     console.log("updated activity data", data);
     return this.http.put(config.baseApiUrl + "api/activity/update-activity", data);
   }
 
-
+  /**
+   * @param {Object} data
+   * Add new group releated to it's activity and event 
+   */
   addGroup(data) {
     console.log("group data", data);
     return this.http.post(config.baseApiUrl + "api/group/create-group", data)
   }
 
+  /**
+   * @param {Object} data
+   * Update group of any particular activity if any changes accrued 
+   */
   updateGroup(data) {
     console.log("updated group data", data);
     return this.http.put(config.baseApiUrl + "api/group/update-group", data);
   }
 
-
+  /**
+   * Get event list which created by user 
+   */
   getMyevents() {
     return this.http.get(config.baseApiUrl + "api/event/myevent-list");
   }
 
-
-
+  /**
+   * @param {string} id
+   * Get details of any particular event  
+   */
   getEventDetails(id) {
     console.log("idddddddddddddddsssssssssssssssssss", id)
     return this.http.get(config.baseApiUrl + "api/event/" + id);
   }
 
+  /**
+   * @param {Object} body 
+   * @param {Object} files
+   * Create thanks giving message for guest  
+   */
   thankyouMessage(body, files: any) {
     console.log(body);
     let formdata = new FormData();
@@ -100,22 +137,40 @@ export class EventService {
 
   }
 
+  /**
+   * @param {String} id 
+   */
   deleteEvent(id) {
     console.log("delete event id", id);
     return this.http.delete(config.baseApiUrl + "api/event/delete-event/" + id);
   }
 
+  /**
+   * @param {String} groupId 
+   * @param {String} activityId 
+   * @param {String} eventId 
+   * @param {Object} item 
+   * @param {Key} gender
+   * Items which guest want to buy in addToCart 
+   */
   addToCart(groupId, activityId, eventId, item, gender) {
     console.log(groupId, activityId, eventId, item, gender);
     return this.http.post(config.baseApiUrl + "api/event/add-item", { groupId, activityId, eventId, item, gender });
   }
 
+  /**
+   * @param {String} id
+   * Get all items list which guest want to buy 
+   */
   getProducts(id) {
     console.log(id);
     return this.http.get(config.baseApiUrl + "api/event/cart-list/" + id);
   }
 
-
+  /**
+   * @param {String} id
+   * Join invited event for guest 
+   */
   joinEvent(id) {
     console.log("id of guest event", id);
     const eventId = {
@@ -123,37 +178,82 @@ export class EventService {
     }
     return this.http.post(config.baseApiUrl + "api/event/join-event", eventId);
   }
+  /**
+   * @param {String} id
+   * Remove cart item which added in all my cart items 
+   */
   removeCartItem(id) {
     console.log(id);
     return this.http.delete(config.baseApiUrl + "api/event/delete-item/" + id);
   }
 
+  /**
+   * @param {Object} data
+   * Proceed for final checkout of myCart items 
+   */
   proceedToPay(data) {
     console.log(data);
     return this.http.put(config.baseApiUrl + "api/event/update-item", data);
   }
 
+  /**
+   * @param {String} id
+   * Get all payment details with final price, quantity and subtotal 
+   */
   finalPaymentDetails(id) {
     return this.http.get(config.baseApiUrl + "api/event/final-list/" + id);
   }
+
+  /**
+   * @param {Object} data 
+   * Final payment of all item list
+   */
   makeFinalPayment(data) {
     console.log(data);
     return this.http.post(config.baseApiUrl + "api/event/order-checkout", data);
   }
 
+  /**
+   * @param {Key} searchText
+   * To get search event of all public events 
+   */
+  getPublicEvents(searchText?) {
+    if (searchText) {
+      const keyword = searchText;
+      return this.http.get(config.baseApiUrl + "api/event/public-event?keyword=" + keyword);
+    } else {
+      return this.http.get(config.baseApiUrl + "api/event/public-event");
+    }
+  }
 
-  // Admin Panel
+  // Admin Panel//
+
+  /**
+   * Get admin dashboard details
+   */
   dashBoardCount() {
     return this.http.get(config.baseApiUrl + "api/event/admin-dashboard-count");
   }
-  allEventList(){
-    return this.http.get(config.baseApiUrl+"api/event/event-list");
+  /**
+   * Get all events list which created by all users 
+   */
+  allEventList() {
+    return this.http.get(config.baseApiUrl + "api/event/event-list");
   }
-  adminEventDetails(id){
+
+  /**
+   * @param {String} id
+   * Get any particular event details  
+   */
+  adminEventDetails(id) {
     console.log(id);
-    return this.http.get(config.baseApiUrl+"api/event/event-detail/" + id);
+    return this.http.get(config.baseApiUrl + "api/event/event-detail/" + id);
   }
-  getUserList(){
-    return this.http.get(config.baseApiUrl+"api/user/user-list");
+
+  /**
+   * Get all Users list 
+   */
+  getUserList() {
+    return this.http.get(config.baseApiUrl + "api/user/user-list");
   }
 }

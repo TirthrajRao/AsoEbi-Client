@@ -16,6 +16,12 @@ export class AuthInterceptor implements HttpInterceptor {
 
   constructor(private route: ActivatedRoute,
     private router: Router, ) { }
+  /**
+   * 
+   * @param req 
+   * @param next
+   * When user request pass accessToken with all request and if any error display alert on every error 
+   */
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     const idtoken = JSON.parse(localStorage.getItem('currentUser'));
@@ -41,12 +47,12 @@ export class AuthInterceptor implements HttpInterceptor {
               const idtoken = (localStorage.removeItem('currentUser'));
               Swal.fire({
                 type: 'error',
-                 title: "sorry" + errorMessage,
-                 showConfirmButton:false,
-                 timer: 2000
-                })
-                this.router.navigate(['/login']);
-              }
+                title: "sorry" + errorMessage,
+                showConfirmButton: false,
+                timer: 2000
+              })
+              this.router.navigate(['/login']);
+            }
             return throwError('backend comm error');
           })
         );
@@ -62,12 +68,15 @@ export class AuthInterceptor implements HttpInterceptor {
             let errorMessage = error.error.message;
             console.log("dkjsbkjsbbskfbdsbfbdsf", errorMessage);
             if (error.status === 401) {
+              /**
+               * Alert of every error response
+               */
               Swal.fire({
                 type: 'error',
-                 title: "sorry" + errorMessage,
-                 showConfirmButton:false,
-                 timer: 2000
-                })
+                title: "sorry" + errorMessage,
+                showConfirmButton: false,
+                timer: 2000
+              })
               this.router.navigate(['/login']);
             }
             return throwError('backend comm error');
