@@ -36,6 +36,9 @@ import { AdminEventDetailsComponent } from './admin-event-details/admin-event-de
 import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
 import { ClipboardModule } from 'ngx-clipboard';
 import { DisplayPageComponent } from './display-page/display-page.component';
+import {MsalModule} from "@azure/msal-angular";
+
+
 
 /**
  * Key For login with google and facebook 
@@ -54,6 +57,8 @@ let config = new AuthServiceConfig([
 export function provideConfig() {
   return config;
 }
+// export const protectedResourceMap:[string, string[]][]=[ ['https://buildtodoservice.azurewebsites.net/api/todolist',['api://22ac3a8b-740f-4e09-a8da-fa5c74b8488c/access_as_user']] , ['https://graph.microsoft.com/v1.0/me', ['user.read']] ];
+
 
 @NgModule({
   declarations: [
@@ -88,7 +93,22 @@ export function provideConfig() {
     MatProgressSpinnerModule,
     CKEditorModule,
     ChartsModule,
-    ClipboardModule
+    ClipboardModule,
+    MsalModule.forRoot({
+      clientID: 'abe990aa-3a0c-42ae-a85c-989ea3b24c08',
+      authority: "https://login.microsoftonline.com/common/",
+      validateAuthority: true,
+      redirectUri: "http://localhost:4200/",
+      cacheLocation : "localStorage",
+      postLogoutRedirectUri: "http://localhost:4200/",
+      navigateToLoginRequestUrl: true,
+      popUp: false,
+      consentScopes: [ "user.read", "api://abe990aa-3a0c-42ae-a85c-989ea3b24c08/access_as_user"],
+      unprotectedResources: ["https://www.microsoft.com/en-us/"],
+      correlationId: '1234',
+      piiLoggingEnabled: true
+    }
+  ),
   ],
   providers: [LoginService,
     {

@@ -4,9 +4,9 @@
     <div class="col-12">
         <div *ngFor="let item of allDetailsofEvent">
             <button type="button" class="btn btn-primary m-auto" (click)="editEventDeatils(item._id)"
-                *ngIf="isCelebrant == 'true'">Edit Event </button>
+                >Edit Event </button>
             <button type="button" class="btn btn-primary m-auto " (click)="deleteEvent(item._id)"
-                *ngIf="isCelebrant == 'true'">Delete Event </button>
+                >Delete Event </button>
             <div class="container">
                 <div class="row">
                     <div class="col-12">

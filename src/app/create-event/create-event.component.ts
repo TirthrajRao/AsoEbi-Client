@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl, FormBuilder, FormArray } from '@angular/forms';
 import { EventService } from '../services/event.service';
+import {AlertService} from '../services/alert.service';
 declare var $: any;
 import * as _ from 'lodash';
 import Swal from 'sweetalert2';
@@ -44,7 +45,7 @@ export class CreateEventComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute,
-    private router: Router, private _eventService: EventService, private fb: FormBuilder) {
+    private router: Router, private _eventService: EventService,private alertService:AlertService, private fb: FormBuilder) {
     this.sub = this.route.params.subscribe(params => {
       if (params.id) {
         this.eventId = params.id;
@@ -71,9 +72,13 @@ export class CreateEventComponent implements OnInit {
     $(function () {
       $("#datepicker").datepicker();
       // $("#startDate").val(Date.now());
-      $("#startDate").datepicker().datepicker("setDate", new Date());
+      // $("#startDate").datepicker({ dateFormat: 'yyyy-MM-dd' }).val();
     });
-
+    $(document).ready(function() {
+      // $("#startDate").datepicker({dateFormat: "yy-mm-dd"});
+    
+      $("#startDate").datepicker({"setDate": new Date(), "minDate": new Date(), dateFormat: 'yy-mm-dd'});
+    });
 
     $("#register_steps_tab").accordion({
       heightStyle: "content"
@@ -201,6 +206,7 @@ export class CreateEventComponent implements OnInit {
    * to create different groups for one activity for male and female
    */
   groupArray(activities?, activityId?) {
+    console.log("jadya ne lidhe bdhu thay che =======", activities, activityId);
     if (activityId) {
       return this.fb.group({
         activityId: new FormControl(activityId),
@@ -216,7 +222,7 @@ export class CreateEventComponent implements OnInit {
           for (let j = 0; j < activities[i].group.length; j++) {
             // console.log("j =", j , "inner details =", activities[i].group[j])
             this.gArray.push(this.fb.group({
-              activityId: new FormControl(activities[i].activityId),
+              activityId: new FormControl(activities[i]._id),
               groupName: new FormControl(activities[i].group[j].groupName),
               male: new FormGroup(this.maleItemArray(activities[i].group[j].male)),
               female: new FormGroup(this.femaleItemArray(activities[i].group[j].female))
@@ -225,7 +231,7 @@ export class CreateEventComponent implements OnInit {
           // return this.gArray;
         } else {
           this.gArray.push(this.fb.group({
-            activityId: new FormControl(activities[i].activityId),
+            activityId: new FormControl(activities[i]._id),
             groupName: new FormControl(''),
             male: new FormGroup(this.maleItemArray()),
             female: new FormGroup(this.femaleItemArray())
@@ -312,7 +318,7 @@ export class CreateEventComponent implements OnInit {
   }
 
   /**@param(JSON) activityId & index
-   * To add more than one group at sinle time and in single activity  
+   * To add more than one group at single time and in single activity  
    */
   AddGroupField(activityId, i: number): void {
     // console.log("selcet button", i);
@@ -336,11 +342,11 @@ export class CreateEventComponent implements OnInit {
    * To print activity name top of the group form   
    */
   getActivityName(activityId) {
-    // console.log(activityId);
+    console.log("activitiesss=======>",activityId);
     if (this.createdActivity)
-      return this.createdActivity[_.findIndex(this.createdActivity, { activityId: activityId })].activityName;
+      return this.createdActivity[_.findIndex(this.createdActivity, { _id: activityId })].activityName;
     else
-      return this.eventActivities[_.findIndex(this.eventActivities, { activityId: activityId })].activityName;
+      return this.eventActivities[_.findIndex(this.eventActivities, { _id: activityId })].activityName;
   }
 
 
@@ -351,8 +357,9 @@ export class CreateEventComponent implements OnInit {
     this.groupForm.controls.eventId.setValue(this.eventId)
     console.log("created group details", this.groupForm.value);
     this._eventService.addGroup(this.groupForm.value)
-      .subscribe(data => {
+      .subscribe((data:any) => {
         console.log("display created group data", data);
+        this.alertService.getSuccess(data.message)
         this.router.navigate(['home/myEvent'])
       }, err => {
         console.log(err);

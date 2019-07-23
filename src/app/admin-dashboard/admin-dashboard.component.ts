@@ -20,7 +20,6 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   /**
-   * @param(id) eventId
    * To get total no of counts of events,users,amount
    */
   getEventCount() {

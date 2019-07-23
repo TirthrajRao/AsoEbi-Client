@@ -30,10 +30,12 @@ export class AdminEventDetailsComponent implements OnInit {
 
   ngOnInit() {
   }
+
   /**
    * @param eventTheme 
    * Display background image,gif in any event page
    */
+
   getSrc(eventTheme) {
     return `url(` + this.path + eventTheme + `)`;
   }

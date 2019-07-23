@@ -14,7 +14,7 @@ export class MyEventComponent implements OnInit {
   path = config.baseMediaUrl;
   myEvent;
   themePhoto: any = [];
-  isCelebrant = JSON.parse(localStorage.getItem('isCelebrant'));
+  // isCelebrant = JSON.parse(localStorage.getItem('isCelebrant'));
 
   constructor(private route: ActivatedRoute,
     private router: Router, private _eventService: EventService, ) { }

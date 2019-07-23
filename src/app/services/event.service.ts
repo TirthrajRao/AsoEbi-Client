@@ -38,7 +38,7 @@ export class EventService {
         formdata.append("background", themeFiles[i]);
       }
     }
-    return this.http.post(config.baseApiUrl + "api/event/create-event", formdata);
+    return this.http.post(config.baseApiUrl + "api/event", formdata);
 
   }
 
@@ -72,7 +72,7 @@ export class EventService {
    */
   addActivities(data) {
     console.log("activity data", data);
-    return this.http.post(config.baseApiUrl + "api/activity/create-activity", data.activity);
+    return this.http.post(config.baseApiUrl + "api/activity/", data.activity);
   }
 
   /**
@@ -81,7 +81,7 @@ export class EventService {
    */
   updateActivity(data) {
     console.log("updated activity data", data);
-    return this.http.put(config.baseApiUrl + "api/activity/update-activity", data);
+    return this.http.put(config.baseApiUrl + "api/activity", data);
   }
 
   /**
@@ -90,7 +90,7 @@ export class EventService {
    */
   addGroup(data) {
     console.log("group data", data);
-    return this.http.post(config.baseApiUrl + "api/group/create-group", data)
+    return this.http.post(config.baseApiUrl + "api/group", data)
   }
 
   /**
