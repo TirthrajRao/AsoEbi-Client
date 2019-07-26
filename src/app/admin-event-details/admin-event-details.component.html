@@ -1,0 +1,101 @@
+<!-- Admin panel display event details with guestList,total no of payment done by guest,which items sold groupwise -->
+
+<div class="row">
+    <div class="col-12">
+        <div>
+            <div class="container" *ngIf="allEventDetails">
+                <div class="row text-center">
+                    <div class="col-12">
+                        <div class="card p-4">
+                            <div [ngStyle]="{background: getSrc(allEventDetails.eventTheme)}" class="theme-background">
+                                <div class="row">
+                                    <div class="col-4 m-auto">
+                                        <img src="{{path}}{{allEventDetails.profilePhoto}}"
+                                            class="rounded-circle img-fluid">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col text-center pt-4">
+                                        <p>EventDate:-
+                                            <span>{{allEventDetails.startDate}}</span>
+                                        </p>
+                                    </div>
+                                    <div class="col text-center pt-4">
+                                        <p>EventTitle:-
+                                            <span>{{allEventDetails.eventTitle}}</span>
+                                        </p>
+                                    </div>
+                                    <div class="col text-center pt-4">
+                                        <p>EventHashTag:-
+                                            <span>{{allEventDetails.hashTag}}</span>
+                                        </p>
+                                    </div>
+                                    <div class="col text-center pt-4">
+                                        <p>Created By:-
+                                            <span>{{allEventDetails.eventCreator.firstName}}
+                                                {{allEventDetails.eventCreator.lastName}} </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="12">
+                                <h2 class="text-center">GuestList</h2>
+                                <p class="text-center" *ngFor="let list of guestList">{{list.firstName}}
+                                    {{list.lastName}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <h2>Total No Of Payment Done By Guest</h2>
+                            <div class="col-12">
+                                <table class="table">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>GuestName</th>
+                                            <th>Donation</th>
+                                            <th>Total Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let list of guestListWithPayment" class="product"
+                                            ng-init="count = 0">
+                                            <td>{{list.UserDetail.firstName}} {{list.UserDetail.lastName}}</td>
+                                            <td>{{list.donation}} $</td>
+                                            <td>{{list.grandTotal}} $</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row" *ngFor="let products of groupWithItemList">
+                            <h2>GroupName:{{products.groupName}}</h2>
+                            <div class="col-12">
+                                <table class="table">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th>ItemName</th>
+                                            <th>Gender</th>
+                                            <th>Item Price</th>
+                                            <th>quantity</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let items of products.cartItem">
+                                            <td>{{items.itemName}}</td>
+                                            <td>{{items.gender}} $</td>
+                                            <td>{{items.itemPrice}} $</td>
+                                            <td>{{items.quantity}} $</td>
+                                            <td>{{items.subTotal}} $</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

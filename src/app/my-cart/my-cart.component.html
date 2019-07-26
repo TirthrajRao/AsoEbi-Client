@@ -1,0 +1,41 @@
+<!-- Display all addToCart items with price and quantity -->
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Activity Name</th>
+                <th>Group Name</th>
+                <th>Gender</th>
+                <th>Item Name</th>
+                <th class="product-price">Item Price</th>
+                <th class="product-quantity">Quantity</th>
+                <th></th>
+                <th class="product-line-price">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let products of cartDetails" class="product" ng-init="count = 0">
+                <td>{{products.activityName}}</td>
+                <td>{{products.groupName}}</td>
+                <td>{{products.gender}}</td>
+                <td>{{products.itemName}}</td>
+                <td class="product-price">{{products.itemPrice}}</td>
+                <td class="product-quantity">
+                    <input type="number" min="1" [(ngModel)]="products.quantity"
+                        (change)="finalTotal($event.target.value)">
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger" (click)="removeItem(products._id)">Remove
+                    </button>
+                </td>
+                <td>{{products.itemPrice * products.quantity }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" class="btn btn-primary" (click)="allItem(cartDetails)">Procced To Pay
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

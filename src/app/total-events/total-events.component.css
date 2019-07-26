@@ -1,0 +1,11 @@
+.theme-background{
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}
+
+.on_off{
+    height: 25px;
+    width:  25px;
+    border-radius: 50%;
+}

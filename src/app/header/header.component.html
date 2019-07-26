@@ -1,0 +1,56 @@
+<!-- Users header section -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="adminUser == 'user'">
+  <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="createEvent" *ngIf="currentUser">Create Event</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="myEvent" *ngIf="currentUser">MyEvent</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Add Bank Account</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="reset-password" *ngIf="currentUser">Reset password</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" (click)="logout()" *ngIf="currentUser">Logout</a>
+      </li>
+    </ul>
+    <input type="text" id="exampleForm2" class="form-control" [(ngModel)]="searchText" (keyup)="onKey(searchText)"
+      autocomplete="off">
+    <label for="exampleForm2" style="padding-left: 15px;">Search Here</label>
+  </div>
+</nav>
+
+
+<!-- Admin Panel header section -->
+
+
+<div class="header" *ngIf="adminUser == 'admin'">
+  <a id="menu-action">
+    <i class="fa fa-bars"></i>
+    <span>Close</span>
+  </a>
+  <div class="logo">
+    Admin Panel
+  </div>
+  <div class="sidebar">
+    <ul>
+      <li><a routerLink="total-event"><i class="fa fa-desktop"></i><span>Total Events</span></a></li>
+      <li><a routerLink="total-user"><i class="fa fa-server"></i><span>Total Users</span></a></li>
+      <li><a href="#"><i class="fa fa-calendar"></i><span>Settings</span></a></li>
+      <li> <a href="#" (click)="logout()"><i class="fa fa-server"></i><span>LogOut</span></a></li>
+    </ul>
+  </div>
+</div>

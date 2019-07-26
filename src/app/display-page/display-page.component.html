@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <button type="button" class="btn btn-primary" (click)="login()" *ngIf="!currentUser">Login
+            </button>
+            <div class="card" *ngFor="let item of publicEvents">
+                <div [ngStyle]="{background: getSrc(item.eventTheme)}" class="theme-background">
+                    <div class="row">
+                        <div class="col-4 m-auto">
+                            <img *ngIf="item && item.profilePhoto" src="{{path}}{{item.profilePhoto}}"
+                                class="rounded-circle img-fluid">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center pt-4">
+                            <p>EventType:-
+                                <span>{{item.eventType}}</span>
+                            </p>
+                        </div>
+                        <div class="col text-center pt-4">
+                            <p>EventTitle:-
+                                <span>{{item.eventTitle}}</span>
+                            </p>
+                        </div>
+                        <div class="col text-center pt-4">
+                            <p>EventHashTag:-
+                                <span>{{item.hashTag}}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
