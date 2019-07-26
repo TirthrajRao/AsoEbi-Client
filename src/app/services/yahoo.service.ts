@@ -23,7 +23,9 @@ export class YahooService {
   config = {
     domain: "dev-ste529jg.auth0.com",
     client_id: "fOh4QziRPZ5ibi2e6KwKoKbJk74ig3tm",
-    redirect_uri: `http://localhost:4200/home`
+    redirect_uri: `http://localhost:4200/home`,
+    response_type: 'token',
+    callback: 'http://localhost:4200/home',
   };
 
   /**
@@ -39,7 +41,7 @@ export class YahooService {
       this.isAuthenticated.subscribe(async isAuthenticated => {
         if (isAuthenticated) {
           this.profile.next(await this.auth0Client.getUser());
-          // this.router.navigate(['/home']);
+          this.router.navigate(['/home']);
 
           return;
         }

@@ -36,7 +36,8 @@ import { AdminEventDetailsComponent } from './admin-event-details/admin-event-de
 import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
 import { ClipboardModule } from 'ngx-clipboard';
 import { DisplayPageComponent } from './display-page/display-page.component';
-import {MsalModule} from "@azure/msal-angular";
+import { MsalModule } from "@azure/msal-angular";
+import { tokenName } from '@angular/compiler';
 
 
 
@@ -99,16 +100,16 @@ export function provideConfig() {
       authority: "https://login.microsoftonline.com/common/",
       validateAuthority: true,
       redirectUri: "http://localhost:4200/",
-      cacheLocation : "localStorage",
+      cacheLocation: "localStorage",
       postLogoutRedirectUri: "http://localhost:4200/",
       navigateToLoginRequestUrl: true,
-      popUp: false,
-      consentScopes: [ "user.read", "api://abe990aa-3a0c-42ae-a85c-989ea3b24c08/access_as_user"],
+      popUp: true,
+      consentScopes: ["user.Read.All", "api://abe990aa-3a0c-42ae-a85c-989ea3b24c08/access_as_user"],
       unprotectedResources: ["https://www.microsoft.com/en-us/"],
-      correlationId: '1234',
-      piiLoggingEnabled: true
+      correlationId: '12345',
+      piiLoggingEnabled: true,
     }
-  ),
+    ),
   ],
   providers: [LoginService,
     {
@@ -126,3 +127,4 @@ export function provideConfig() {
 
 
 export class AppModule { }
+

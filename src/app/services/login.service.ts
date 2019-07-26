@@ -106,6 +106,22 @@ export class LoginService {
   }
 
 
+/**
+ * @param {string} token
+ * Send token for hotmail login 
+ */
+  hotMail(token) {
+    console.log("login token of hotmail in service", token);
+    var body = {
+      accessToken: token
+    }
+    // return this.http.post(config.baseApiUrl + "api/login/outlook", body);
+  }
+
+  // loginWithHotMail(){
+  //  return this.http.get("https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=abe990aa-3a0c-42ae-a85c-989ea3b24c08&redirect_uri=http://localhost:4200&response_type=token&scope=openid+Mail.Read")
+  // }
+
   /**
    * @param {Object} data
    * Send link of forgot password on email  
