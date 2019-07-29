@@ -171,20 +171,20 @@ export class LoginComponent implements OnInit {
   /**
    * Login with yahoo mail 
    */
-  yahooLogin() {
-    console.log("Provider", provider);
-    firebase.auth().signInWithPopup(provider)
-      .then(function (result: any) {
-        console.log("Response From yahoo", result, result.credential.accessToken);
-        callYahooLogin(result.credential.accessToken, result.additionalUserInfo.profile.sub);
-      })
-      .catch(function (error) {
-        console.log("Error From yahoo", error);
-      });
-    let callYahooLogin = (token, userId) => {
-      this.serverYahooLogin(token, userId);
-    }
-  }
+  // yahooLogin() {
+  //   console.log("Provider", provider);
+  //   firebase.auth().signInWithPopup(provider)
+  //     .then(function (result: any) {
+  //       console.log("Response From yahoo", result, result.credential.accessToken);
+  //       callYahooLogin(result.credential.accessToken, result.additionalUserInfo.profile.sub);
+  //     })
+  //     .catch(function (error) {
+  //       console.log("Error From yahoo", error);
+  //     });
+  //   let callYahooLogin = (token, userId) => {
+  //     this.serverYahooLogin(token, userId);
+  //   }
+  // }
 
   /**
    * @param {String} token 
