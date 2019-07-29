@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from '../services/event.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { config } from '../config';
-import { from } from 'rxjs';
-import { Config } from 'protractor';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-my-event',
@@ -14,10 +13,8 @@ export class MyEventComponent implements OnInit {
   path = config.baseMediaUrl;
   myEvent;
   themePhoto: any = [];
-  // isCelebrant = JSON.parse(localStorage.getItem('isCelebrant'));
 
-  constructor(private route: ActivatedRoute,
-    private router: Router, private _eventService: EventService, ) { }
+  constructor(private router: Router, private _eventService: EventService, private alertService: AlertService) { }
 
   ngOnInit() {
     this.getMyEvents();
@@ -44,11 +41,12 @@ export class MyEventComponent implements OnInit {
         console.log(this.themePhoto);
       }, err => {
         console.log(err);
+        this.alertService.getError(err.message);
       })
   }
 
   /** 
-   * @param id eventId
+   * @param {String} id eventId
    * navigate from this page to that particular event details page
    */
   viewMoreDeatils(id) {
@@ -57,7 +55,7 @@ export class MyEventComponent implements OnInit {
   }
 
   /**
-   * @param id eventId
+   * @param {String} id eventId
    * Naviagte from this page to thank you messeage page of that event 
    */
   ThankYouMessage(id) {

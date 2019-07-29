@@ -9,11 +9,29 @@ export class AlertService {
 
   constructor() { }
 
-  getSuccess(message){
+  /**
+   * @param {String} message
+   * Alert for all success response 
+   */
+  getSuccess(message) {
     console.log(message);
     Swal.fire({
       type: 'success',
       title: "congo" + message,
+      showConfirmButton: false,
+      timer: 2000
+    })
+  }
+
+  /**
+   * @param {String} message
+   * Alert for all error response 
+   */
+  getError(message) {
+    console.log(message);
+    Swal.fire({
+      type: 'error',
+      title: "Sorry" + message,
       showConfirmButton: false,
       timer: 2000
     })

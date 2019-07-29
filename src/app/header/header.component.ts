@@ -11,6 +11,7 @@ declare var $: any;
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
+
 export class HeaderComponent implements OnInit {
 
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -19,19 +20,19 @@ export class HeaderComponent implements OnInit {
   searchEvent: any = [];
   publicEvents: any = [];
   path = config.baseMediaUrl;
+
   constructor(private _loginService: LoginService, private route: ActivatedRoute,
     private router: Router, private fb: FormBuilder, private _eventService: EventService) {
-    console.log("current user in header component", this.currentUser);
     if (!this.currentUser) {
       $('#navbarSupportedContent').css({ 'display': 'none' });
     }
   }
 
-
-
   ngOnInit() {
 
-
+    /**
+     * Admin panel dashboard 
+     */
     $('#menu-action').click(function () {
       $('.sidebar').toggleClass('active');
       $('.main').toggleClass('active');
@@ -52,9 +53,7 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-
-  /**
-   * 
+  /** 
    * @param {string} searchText 
    * on key search response of public events 
    */

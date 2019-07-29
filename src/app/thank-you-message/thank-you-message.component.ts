@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { EventService } from '../services/event.service';
+import {AlertService} from '../services/alert.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import Swal from 'sweetalert2';
 import * as _ from 'lodash';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-thank-you-message',
@@ -19,7 +21,7 @@ export class ThankYouMessageComponent implements OnInit {
   files: Array<File> = [];
 
   constructor(private route: ActivatedRoute,
-    private router: Router, private _eventService: EventService) {
+    private router: Router, private _eventService: EventService, private alertService: AlertService) {
     this.sub = this.route.params.subscribe(params => {
       this.eventId = params.id;
       console.log(this.eventId);
@@ -27,6 +29,10 @@ export class ThankYouMessageComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    /**
+     * Thank you message form
+     */
     this.thankyouMessageForm = new FormGroup({
       message: new FormControl(''),
       attachment: new FormControl(''),
@@ -57,8 +63,9 @@ export class ThankYouMessageComponent implements OnInit {
       .subscribe(data => {
         console.log("thank you message response", data);
         this.router.navigate(['home/myEvent'])
-      }, err => {
+      }, (err: any) => {
         console.log(err);
+        this.alertService.getError(err.message);
       })
   }
 

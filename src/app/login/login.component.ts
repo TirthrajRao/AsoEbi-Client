@@ -5,22 +5,33 @@ import { LoginService } from '../services/login.service';
 import { AuthService } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
 import { HttpErrorResponse } from '@angular/common/http';
-import Auth0Client from '@auth0/auth0-spa-js/dist/typings/Auth0Client';
-import { YahooService } from '../services/yahoo.service';
-import { Profile } from 'selenium-webdriver/firefox';
-import { async } from '@angular/core/testing';
-// import { UserAgentApplication } from 'msal';
-// import { BroadcastService } from "@azure/msal-angular";
-// import { MsalService } from "@azure/msal-angular";
+import * as firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
+import { config, firebaseConfig } from '../config';
+import { AlertService } from '../services/alert.service';
+import { UserAgentApplication } from 'msal';
+import { MsalService } from "@azure/msal-angular";
 
-
-
+/**
+ * Login with yahoo using fireBase 
+ */
+firebase.initializeApp(firebaseConfig);
+var provider = new firebase.auth.OAuthProvider('yahoo.com');
+provider.setCustomParameters({
+  prompt: 'login',
+});
 declare var FB: any;
 declare var Msal: any;
-var graphConfig = {
-  graphMeEndpoint: "https://graph.microsoft.com/v1.0/me"
-};
 
+
+// var graphConfig = {
+//   graphMeEndpoint: "https://graph.microsoft.com/v1.0/me"
+// };
+
+/**
+ * Scope for microsoft login service
+ */
 var requestObj = {
   scopes: ["user.read"]
 };
@@ -30,29 +41,28 @@ var requestObj = {
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-// Register Callbacks for redirect flow
+
 export class LoginComponent implements OnInit {
+
   loginForm: FormGroup;
   forgotPasswordForm: FormGroup;
   returnUrl: string;
   FB: any;
   isUserLoggedIn = false;
   isDiable = false;
-  eventIdWithLogin;
+  eventIdWithLogin = JSON.parse(localStorage.getItem('newEventId'));;
   isGuestJoined;
   isCelebrant;
   userRole;
   isAuthenticated = false;
   profile: any;
-  private auth0Client: Auth0Client;
   hotmailToken;
-
+  yahooAccesstoken: any;
+  yahooId;
   msalConfig = {
     auth: {
       clientId: 'bd9b8a24-97aa-42db-a5fe-dcb24b15e6f8', //This is your client ID,
       authority: "https://login.microsoftonline.com/common", //This is your tenant info
-      // scopes: ["user.read"]
-
     },
     cache: {
       cacheLocation: "localStorage",
@@ -61,28 +71,29 @@ export class LoginComponent implements OnInit {
   };
   myMSALObj = new Msal.UserAgentApplication(this.msalConfig);
 
-
-
-
   constructor(private route: ActivatedRoute,
-    private router: Router, private _loginService: LoginService, private authService: AuthService, private _yahooService: YahooService,
-  ) {
+    private router: Router, private _loginService: LoginService, private authService: AuthService,
+    private alertService: AlertService, ) { }
 
-  }
+  ngOnInit() {
 
-  async ngOnInit() {
-
+    /**
+     * Login form for user
+     */
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required])
     });
 
+    /**
+     * Forgot password forn
+     */
     this.forgotPasswordForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email])
     });
 
     /**
-     * Login with facebook 
+     * AppId of facebook to login with facebook 
      */
     (window as any).fbAsyncInit = function () {
       FB.init({
@@ -93,7 +104,6 @@ export class LoginComponent implements OnInit {
       });
       FB.AppEvents.logPageView();
     };
-
     (function (d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) { return; }
@@ -101,56 +111,17 @@ export class LoginComponent implements OnInit {
       js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3&appId=350939005533804&autoLogAppEvents=1";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
-
-    /**
-     * Hotmail Login 
-     */
-    // this.broadcastService.subscribe("msal:loginFailure", (payload) => {
-    //   console.log("login failure ", payload);
-    //   // this.loggedIn = false;
-
-    // });
-
-    // this.broadcastService.subscribe("msal:loginSuccess", (payload) => {
-    //   console.log("login success " + JSON.stringify(payload));   
-    //   console.log("login success ", payload);
-    //   this.hotmailToken = payload._token;
-    //   console.log("hotmail login token ", this.hotmailToken);
-    //   // this.loggedIn = true;
-    //   // this.hotMailLogin(this.hotmailToken)
-    // });   
-
-
-
-    // yahooLogin //
-
-    this.auth0Client = await this._yahooService.getAuth0Client();
-
-    // Watch for changes to the isAuthenticated state
-    this._yahooService.isAuthenticated.subscribe(value => {
-      this.isAuthenticated = value;
-    });
-
-    // Watch for changes to the profile data
-    this._yahooService.profile.subscribe(profile => {
-      this.profile = profile;
-    });
   }
-
 
   /**
- * Logs in the user by redirecting to Auth0 for authentication
- */
-  async login() {
-    await this.auth0Client.loginWithRedirect({});
-  }
-
-  signIn() {
+   * Login with microsoft or hotmail
+   */
+  hotMailLogin() {
     console.log("heeeeeeeee rammmmmmm", this.myMSALObj);
     let requestObj = {
       scopes: ["user.read"]
     }
-   let obj= this.myMSALObj;
+    let obj = this.myMSALObj;
     obj.loginPopup(requestObj).then(function (loginResponse) {
       //Successful login
       //Call MS Graph using the token in the response
@@ -158,41 +129,82 @@ export class LoginComponent implements OnInit {
       obj.acquireTokenSilent(requestObj)
         .then(function (tokenResponse) {
           console.log(tokenResponse.accessToken);
+          callmicrosoftLogin(tokenResponse.accessToken)
         }).catch(function (error) {
           console.log(error);
         })
-        obj.acquireTokenPopup(requestObj)
-        .then(function(tokenResponse){
+      obj.acquireTokenPopup(requestObj)
+        .then(function (tokenResponse) {
           console.log(tokenResponse.accessToken)
-        }).catch(function(err){
+        }).catch(function (err) {
           console.log(err);
         })
+
     }).catch(function (error) {
       //Please check the console for errors
       console.log(error);
     });
+    let callmicrosoftLogin = (token) => {
+      this.serverHotmailLogin(token);
+    }
   }
 
   /**
-   * @param {string} token
-   * AccessToken of hotmail login send to server side  
+   * @param {String} token
+   * Send accessToken for authentication login with microSoft 
    */
-  // hotMailLogin(token){
-  //   this.hotmail.acquireTokenSilent(token)
-  //   .then(response=>{
-  //     console.log(response)
-  //   })
-  //   .catch(err=>{
-  //     console.log(err);
-  //   })
-  // }
+  serverHotmailLogin(token) {
+    console.log("login token of hotmail lofin response", token);
+    this._loginService.serverHotmailLogin(token)
+      .subscribe((data: any) => {
+        console.log("response of hotmail", data);
+        this.isUserLoggedIn = true;
+        localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+        localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
+        this.router.navigate(['/home']);
+      }, err => {
+        console.log(err);
+        this.alertService.getError(err.messege);
+      })
+  }
 
   /**
-   * hotmail login
+   * Login with yahoo mail 
    */
-  // Login() {
-  //   this.hotmail.loginPopup(["user.Read.All","api://abe990aa-3a0c-42ae-a85c-989ea3b24c08/access_as_user"]);
-  // }
+  yahooLogin() {
+    console.log("Provider", provider);
+    firebase.auth().signInWithPopup(provider)
+      .then(function (result: any) {
+        console.log("Response From yahoo", result, result.credential.accessToken);
+        callYahooLogin(result.credential.accessToken, result.additionalUserInfo.profile.sub);
+      })
+      .catch(function (error) {
+        console.log("Error From yahoo", error);
+      });
+    let callYahooLogin = (token, userId) => {
+      this.serverYahooLogin(token, userId);
+    }
+  }
+
+  /**
+   * @param {String} token 
+   * @param {String} userId
+   * Send accessToken and userId fot authentication  
+   */
+  serverYahooLogin(token, userId) {
+    console.log("generated token of yahoo", token);
+    this._loginService.sendYahooToken(token, userId)
+      .subscribe(data => {
+        console.log(data)
+        this.isUserLoggedIn = true;
+        localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+        localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
+        this.router.navigate(['/home']);
+      }, err => {
+        console.log(err);
+        this.alertService.getError(err.messege);
+      })
+  }
 
   /**
    * function of display error 
@@ -212,18 +224,11 @@ export class LoginComponent implements OnInit {
         // this.userRole = data.data.UserRole;
         console.log("admin login entry", data.data.UserRole);
         localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
-        this.isGuestJoined = data.data.isGuestJoined;
-        console.log("this.isGuestJoined", this.isGuestJoined);
-        // localStorage.setItem('isGuestJoined', JSON.stringify(this.isGuestJoined));
-        this.isCelebrant = data.data.isCelebrant;
         console.log(this.isCelebrant);
-        // localStorage.setItem('isCelebrant', JSON.stringify(this.isCelebrant))
-        this.eventIdWithLogin = data.data.eventId;
-        console.log("login with event iddddddd", this.eventIdWithLogin);
         if (this.eventIdWithLogin) {
           this.isUserLoggedIn = true;
           localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
-          this.router.navigate(['/welcome-guest', this.eventIdWithLogin]);
+          this.router.navigate(['/home/view-event/', this.eventIdWithLogin])
         }
         else if (data.data.UserRole == 'admin') {
           this.router.navigate(['/home/admin-dashboard']);
@@ -236,16 +241,15 @@ export class LoginComponent implements OnInit {
         }
       }, error => {
         console.log(error);
-        let errorMessege = error.statusText;
+        this.alertService.getError(error.messege);
         this.isDiable = false;
         this.loginForm.reset();
         console.log("disable:", this.isDiable);
-        console.log("display error messege", errorMessege);
       })
   }
 
-  /**@param {JSON} email, password
-   * Login with google email address 
+  /**
+   * Login with google account  
    */
   signInWithGoogleAccount() {
     this.isDiable = true;
@@ -254,7 +258,7 @@ export class LoginComponent implements OnInit {
       console.log(res);
       var googleIdToken = res.idToken;
       console.log("google id of login user", googleIdToken);
-      this._loginService.checkId(googleIdToken).subscribe(data => {
+      this._loginService.googleLogin(googleIdToken).subscribe(data => {
         console.log("response positive of google", data);
         this.isDiable = false;
         this.isUserLoggedIn = true;
@@ -268,10 +272,10 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  /**@param {JSON} email, password
-   * Login with facebook email address 
+  /**
+   * Login with facebook account
    */
-  submitLogin() {
+  signWithFacebook() {
     this.isDiable = true;
     console.log("submit login to facebook");
     FB.login((response) => {
@@ -279,7 +283,7 @@ export class LoginComponent implements OnInit {
       let facebookId = response.authResponse.accessToken;
       console.log("facebook id of user", facebookId);
       if (response.authResponse) {
-        this._loginService.checkFacebookId(facebookId)
+        this._loginService.facebookLogin(facebookId)
           .subscribe(data => {
             console.log("data of facebook login user", data);
             this.isDiable = false;
@@ -297,36 +301,19 @@ export class LoginComponent implements OnInit {
 
   }
 
-  /**@param {JSON} email
-   * If password forgot send link in your gmail account with registerd email while signUp
+  /**
+   * Forgot password functionality
    */
   submitForgotPassword() {
     console.log("body", this.forgotPasswordForm);
     this._loginService.forgotPassword(this.forgotPasswordForm.value)
-      .subscribe(data => {
+      .subscribe((data: any) => {
         console.log("response of forgot password", data);
+        this.alertService.getSuccess(data.messege);
         this.router.navigate(['/login']);
       }, err => {
         console.log(err);
       })
-  }
-
-  /**
-  * Logs in the user by redirecting to Auth0 for authentication
-  */
-  // async login() {
-  //   await this.auth0Client.loginWithRedirect({});
-  //   // this.router.navigate(['/home']);
-  // }
-
-  /**
-  * Logs the user out of the applicaion, as well as on Auth0
-  */
-  logout() {
-    this.auth0Client.logout({
-      client_id: this._yahooService.config.client_id,
-      returnTo: window.location.origin
-    });
   }
 
 }

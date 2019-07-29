@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from '../services/event.service';
 import { config } from '../config';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-display-page',
@@ -14,44 +15,58 @@ export class DisplayPageComponent implements OnInit {
   searchText;
   searchEvent: any = [];
   publicEvents: any = [];
-  constructor(private route: ActivatedRoute,
-    private router: Router,private _eventService: EventService) { }
+  constructor(private router: Router, private _eventService: EventService, private alertService: AlertService) { }
 
   ngOnInit() {
 
     this.getPublicEvents();
   }
 
-
+  /**
+   * @param {String} eventTheme
+   *Background image of event   
+   */
   getSrc(eventTheme) {
-    return `url(`+this.path+eventTheme+`)`;
+    return `url(` + this.path + eventTheme + `)`;
   }
 
-  onKey(searchText){
+  /**
+   * @param {String} searchText
+   * On key search of public event 
+   */
+  onKey(searchText) {
     console.log(searchText);
     this._eventService.getPublicEvents(searchText)
-    .subscribe(data=>{
-      console.log(data);
-      this.searchEvent = data;
-      console.log(this.searchEvent)
-      this.publicEvents = this.searchEvent.data;
-    },err=>{
-      console.log(err);
-    })
+      .subscribe(data => {
+        console.log(data);
+        this.searchEvent = data;
+        console.log(this.searchEvent)
+        this.publicEvents = this.searchEvent.data;
+      }, (err: any) => {
+        console.log(err);
+        this.alertService.getError(err.message);
+      })
   }
 
-  getPublicEvents(){
+  /**
+   * Get all public events with basic details of event
+   */
+  getPublicEvents() {
     this._eventService.getPublicEvents()
-    .subscribe((data:any)=>{
-      console.log("data of public event", data);
-      this.publicEvents = data.data;
-      console.log("this.publicEvents", this.publicEvents);
-    }, err=>{
-      console.log(err);
-    })
+      .subscribe((data: any) => {
+        console.log("data of public event", data);
+        this.publicEvents = data.data;
+        console.log("this.publicEvents", this.publicEvents);
+      }, (err: any) => {
+        console.log(err);
+        this.alertService.getError(err.message);
+      })
   }
 
-  login(){
+  /**
+   * Redirect to login page
+   */
+  login() {
     this.router.navigate(['/login']);
   }
 }

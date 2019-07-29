@@ -6,10 +6,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/do';
 import Swal from 'sweetalert2';
 
-
-
-
-
 @Injectable()
 
 export class AuthInterceptor implements HttpInterceptor {
@@ -20,7 +16,7 @@ export class AuthInterceptor implements HttpInterceptor {
    * 
    * @param req 
    * @param next
-   * When user request pass accessToken with all request and if any error display alert on every error 
+   * When user request pass accessToken with all request and if any error display alert on every error
    */
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
@@ -39,9 +35,13 @@ export class AuthInterceptor implements HttpInterceptor {
             // Swal.fire({type: 'success',title: 'Password Change Successfully',showConfirmButton:false,timer: 2000})
             return event;
           }),
+
+          /**
+           * 401 error 
+           */
           catchError((error: HttpErrorResponse) => {
             console.log("interceptorsssssssss error by meeeeeeeeeee", error);
-            let errorMessage = error.error.message;
+            const errorMessage = error.error.message;
             console.log("error in interceptor", errorMessage);
             if (error.status === 401) {
               const idtoken = (localStorage.removeItem('currentUser'));
@@ -65,7 +65,7 @@ export class AuthInterceptor implements HttpInterceptor {
           }),
           catchError((error: HttpErrorResponse) => {
             console.log("interceptorsssssssss error in login", error);
-            let errorMessage = error.error.message;
+            let errorMessage = error.message;
             console.log("dkjsbkjsbbskfbdsbfbdsf", errorMessage);
             if (error.status === 401) {
               /**

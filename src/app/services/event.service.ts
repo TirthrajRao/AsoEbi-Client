@@ -39,7 +39,6 @@ export class EventService {
       }
     }
     return this.http.post(config.baseApiUrl + "api/event", formdata);
-
   }
 
   /**
@@ -134,11 +133,11 @@ export class EventService {
       }
     }
     return this.http.post(config.baseApiUrl + "api/message/add-message", formdata);
-
   }
 
   /**
    * @param {String} id 
+   * Delete event
    */
   deleteEvent(id) {
     console.log("delete event id", id);

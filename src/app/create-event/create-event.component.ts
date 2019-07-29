@@ -2,21 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl, FormBuilder, FormArray } from '@angular/forms';
 import { EventService } from '../services/event.service';
-import {AlertService} from '../services/alert.service';
+import { AlertService } from '../services/alert.service';
 declare var $: any;
 import * as _ from 'lodash';
 import Swal from 'sweetalert2';
 import { config } from '../config';
-
-
-
-
 
 @Component({
   selector: 'app-create-event',
   templateUrl: './create-event.component.html',
   styleUrls: ['./create-event.component.css']
 })
+
 export class CreateEventComponent implements OnInit {
   eventForm: FormGroup;
   activityForm: FormGroup;
@@ -39,13 +36,8 @@ export class CreateEventComponent implements OnInit {
   path = config.baseMediaUrl;
   activitiesDate: any = [];
 
-  // private eventId: any;
-
-
-
-
-  constructor(private route: ActivatedRoute,
-    private router: Router, private _eventService: EventService,private alertService:AlertService, private fb: FormBuilder) {
+  constructor(private route: ActivatedRoute, private router: Router, private _eventService: EventService,
+    private alertService: AlertService, private fb: FormBuilder) {
     this.sub = this.route.params.subscribe(params => {
       if (params.id) {
         this.eventId = params.id;
@@ -54,8 +46,8 @@ export class CreateEventComponent implements OnInit {
       }
     })
   }
-  ngOnInit() {
 
+  ngOnInit() {
     this.eventForm = new FormGroup({
       eventTitle: new FormControl('', [Validators.required]),
       eventType: new FormControl('', [Validators.required]),
@@ -74,10 +66,10 @@ export class CreateEventComponent implements OnInit {
       // $("#startDate").val(Date.now());
       // $("#startDate").datepicker({ dateFormat: 'yyyy-MM-dd' }).val();
     });
-    $(document).ready(function() {
+    $(document).ready(function () {
       // $("#startDate").datepicker({dateFormat: "yy-mm-dd"});
-    
-      $("#startDate").datepicker({"setDate": new Date(), "minDate": new Date(), dateFormat: 'yy-mm-dd'});
+
+      $("#startDate").datepicker({ "setDate": new Date(), "minDate": new Date(), dateFormat: 'yy-mm-dd' });
     });
 
     $("#register_steps_tab").accordion({
@@ -97,17 +89,16 @@ export class CreateEventComponent implements OnInit {
     })
   }
 
-
+  /**
+   * Error message function 
+   */
   get f() { return this.eventForm.controls; }
 
-
-
   /**
-   * @param {JSON}
-   * Event all details in json object for new event
+   * Create new event with it's details
    */
   addEvent() {
-    console.log("data of event", this.eventForm,this.files);
+    console.log("data of event", this.eventForm, this.files);
     this._eventService.addEvent(this.eventForm.value, this.files, this.themeFiles)
       .subscribe((data: any) => {
         console.log("event details", data);
@@ -115,17 +106,18 @@ export class CreateEventComponent implements OnInit {
         console.log("helloooooooooo");
         console.log("created eventid", this.eventId);
         this.getActivityFrom();
-      }, err => {
+      }, (err: any) => {
         console.log(err);
+        this.alertService.getError(err.message);
       })
   }
 
   /**
-   * To upload main profile photo of event 
+   * @param {String} event
+   * To upload profile photo of event
    */
   addFile(event) {
     console.log(event);
-    // _.forEach(event, (file: any) => {
     if (event[0].type == "image/jpeg" || event[0].type == "image/jpg" || event[0].type == "image/png") {
       this.files = event;
     } else {
@@ -137,9 +129,9 @@ export class CreateEventComponent implements OnInit {
     }
   }
 
-
   /**
-   * To upload theme photo of event 
+   * @param {String} event
+   * To upload background of event 
    */
   addThemePhoto(event) {
     console.log(event);
@@ -156,10 +148,9 @@ export class CreateEventComponent implements OnInit {
     })
   }
 
-
   /**
-   * @param {JSON} activityForm array 
-   * To get total no of users which are used ASO-EBI
+   * @param {JSON} createdActivity
+   * Edit event activities 
    */
   getActivityFrom(createdActivity?) {
     this.activityForm = new FormGroup({
@@ -167,8 +158,9 @@ export class CreateEventComponent implements OnInit {
     })
   }
 
-  /**@body {JSON} activityName, activityDate, eventId
-   * To create different types of activities of event with it's date
+  /**
+   * @param {String} activities
+   *  To create new activity
    */
   activityArray(activities?: any[]) {
     console.log("activities", activities);
@@ -179,6 +171,9 @@ export class CreateEventComponent implements OnInit {
         eventId: new FormControl(this.eventId)
       })]
     }
+    /**
+     * To edit created activities
+     */
     let actArray = [];
     for (let i = 0; i < activities.length; i++) {
       actArray.push(this.fb.group({
@@ -190,9 +185,9 @@ export class CreateEventComponent implements OnInit {
     return actArray;
   }
 
-  /**@param {JSON} eventId & all activies id 
-   * To create group of different activites passed all activities id which created in another function and passed it in this function which help 
-   * to create different group in same activity
+  /**
+   * @param {String} activity
+   * To create new group in event or to edit created group of event 
    */
   initGroupForm(activity) {
     this.groupForm = new FormGroup({
@@ -201,9 +196,10 @@ export class CreateEventComponent implements OnInit {
     })
   }
 
-
-  /**@param {JSON} activityId,groupName, arrayof (male, female)
-   * to create different groups for one activity for male and female
+  /**
+   * @param {String} activities 
+   * @param {String} activityId
+   *  To create new group in event or to edit created group of event 
    */
   groupArray(activities?, activityId?) {
     console.log("jadya ne lidhe bdhu thay che =======", activities, activityId);
@@ -250,8 +246,9 @@ export class CreateEventComponent implements OnInit {
     }
   }
 
-  /**@param {JSON} itemName,itemType,itemPrice
-   * To create male object with their clothes with it's type,name & price with releated groups
+  /**
+   * @param {JSON} details
+   * Create items of male in new event 
    */
   maleItemArray(details?) {
     return {
@@ -261,9 +258,9 @@ export class CreateEventComponent implements OnInit {
     }
   }
 
-
-  /**@param {JSON} itemName,itemType,itemPrice
-   * To create female object with their clothes with it's type,name & price with releated groups
+  /**
+   * @param {JSON} details
+   * Create items of female in new event 
    */
   femaleItemArray(details?) {
     return {
@@ -273,10 +270,8 @@ export class CreateEventComponent implements OnInit {
     }
   }
 
-
-
-  /**@param {JSON} activityName & activityDate
-   * To create single activity or to create more than one activity
+  /**
+   * Create new activities for new event 
    */
   addActivity() {
     console.log("activity details", this.activityForm);
@@ -286,16 +281,14 @@ export class CreateEventComponent implements OnInit {
         this.createdActivity = data.data;
         console.log("created activity response from server", this.createdActivity);
         this.initGroupForm(this.createdActivity);
-      }, err => {
+      }, (err: any) => {
         console.log(err);
+        this.alertService.getError(err.message);
       })
   }
 
-
-
   /**
-   * To add more than one activity at single time click on add button and display another
-   * blank field to add activity  
+   * Add activity field with name,date 
    */
   addActivityField(): void {
     const control = <FormArray>this.activityForm.controls.activity;
@@ -306,72 +299,67 @@ export class CreateEventComponent implements OnInit {
     }));
   }
 
-
-  /**@param{index} i
-   * If remove any activities pass it's index value and that activity should be 
-   * remove from activity array
+  /**
+   * @param {String} i
+   * To remove added activity field 
    */
   removeActivityField(i: number): void {
-    // console.log(i);
     const control = <FormArray>this.activityForm.controls.activity;
     control.removeAt(i);
   }
 
-  /**@param(JSON) activityId & index
-   * To add more than one group at single time and in single activity  
+  /**
+   * @param {String} activityId 
+   * @param {String} i
+   *  Add new group field with activity 
    */
   AddGroupField(activityId, i: number): void {
-    // console.log("selcet button", i);
     const control = <FormArray>this.groupForm.controls.group;
     console.log(control)
     control.push(this.groupArray(null, activityId));
   }
 
-
-  /**@param(Json) activityId, index
-   * To remove unwanted groups from activity list
+  /**
+   * @param {String} i
+   * To remove added group 
    */
   removeGroupField(i: number): void {
     const control = <FormArray>this.groupForm.controls.group;
     control.removeAt(i);
   }
 
-
-
-  /**@param(JSON) activityId
-   * To print activity name top of the group form   
+  /**
+   * @param {Array} activityId
+   * To get all activities with name 
    */
   getActivityName(activityId) {
-    console.log("activitiesss=======>",activityId);
+    console.log("activitiesss=======>", activityId);
     if (this.createdActivity)
       return this.createdActivity[_.findIndex(this.createdActivity, { _id: activityId })].activityName;
     else
       return this.eventActivities[_.findIndex(this.eventActivities, { _id: activityId })].activityName;
   }
 
-
-  /**@param(JSON) eventId,groupName,activitiesId,male{itemName,itemType,itemPrice},female{itemName,itemType,itemPrice}
-   * To add group in different activities with different groups and its male and female object  
+  /**
+   * Create new group in new event
    */
   addGroup() {
     this.groupForm.controls.eventId.setValue(this.eventId)
     console.log("created group details", this.groupForm.value);
     this._eventService.addGroup(this.groupForm.value)
-      .subscribe((data:any) => {
+      .subscribe((data: any) => {
         console.log("display created group data", data);
         this.alertService.getSuccess(data.message)
         this.router.navigate(['home/myEvent'])
-      }, err => {
+      }, (err: any) => {
         console.log(err);
+        this.alertService.getError(err.message);
       })
   }
 
-
-
-
-  /**
-   * @param(id) eventId
-   * To get details of particular event 
+  /** 
+   * @param {String} eventId
+   * To get all details of particular event 
    */
   viewDetailsOfEvent(eventId) {
     this._eventService.getEventDetails(eventId)
@@ -386,25 +374,25 @@ export class CreateEventComponent implements OnInit {
         console.log(this.paymentDeadlineDate);
         this.eventActivities = this.createdEventDetails.activity;
         console.log(this.eventActivities);
-      }, err => {
+      }, (err: any) => {
         console.log(err);
+        this.alertService.getError(err.message);
       })
   }
 
   /**
-   *  Updating event if any changes
+   * If any changes update event
    */
   updateEvent() {
-    // console.log("Update Event");
     this.getActivityFrom(this.eventActivities);
     this._eventService.updateEvent(this.eventId, this.eventForm.value, this.files)
       .subscribe(data => {
         console.log(data);
-      }, err => {
+      }, (err: any) => {
         console.log(err);
+        this.alertService.getError(err.message);
       })
   }
-
 
   /**
    *  Updating activity if any changes
@@ -414,12 +402,12 @@ export class CreateEventComponent implements OnInit {
     this._eventService.updateActivity(this.activityForm.value)
       .subscribe(data => {
         console.log(data);
-      }, err => {
+      }, (err: any) => {
         console.log(err);
+        this.alertService.getError(err.message);
       })
     this.initGroupForm(this.eventActivities);
   }
-
 
   /**
    *  Updating group if any changes
@@ -429,12 +417,9 @@ export class CreateEventComponent implements OnInit {
     this._eventService.updateGroup(this.groupForm.value)
       .subscribe(data => {
         console.log("updated group details", data);
-      }, err => {
+      }, (err: any) => {
         console.log(err);
+        this.alertService.getError(err.message);
       })
   }
-
-
-
-
 }

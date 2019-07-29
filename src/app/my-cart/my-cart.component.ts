@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from '../services/event.service';
+import {AlertService} from '../services/alert.service';
 
 @Component({
   selector: 'app-my-cart',
@@ -14,7 +15,7 @@ export class MyCartComponent implements OnInit {
   cartDetails: any = [];
 
   constructor(private route: ActivatedRoute,
-    private router: Router, private _eventService: EventService) {
+    private router: Router, private _eventService: EventService, private alertService: AlertService) {
     this.sub = this.route.params.subscribe(params => {
       this.eventId = params.id;
       console.log(this.eventId);
@@ -26,7 +27,7 @@ export class MyCartComponent implements OnInit {
   }
 
   /**
-   * @param {} eventId 
+   * @param {String} eventId 
    * get all addToCart items details with price and quantity 
    */
   myCartDetails(eventId) {
@@ -36,12 +37,14 @@ export class MyCartComponent implements OnInit {
         console.log("card all detailsssss", data);
         this.cartDetails = data.data;
         console.log(this.cartDetails);
-      }, err => {
+      }, (err:any) => {
         console.log(err);
+        this.alertService.getError(err.message);
       })
   }
+
   /**
-   * @param id item._id pass
+   * @param {String} id item._id pass
    * remove any add to cart item on my cart 
    */
   removeItem(id) {
@@ -50,8 +53,9 @@ export class MyCartComponent implements OnInit {
       .subscribe(data => {
         console.log("remove item data", data);
         this.myCartDetails(this.eventId);
-      }, err => {
+      }, (err:any) => {
         console.log(err);
+        this.alertService.getError(err.message);
       })
   }
 
@@ -65,8 +69,9 @@ export class MyCartComponent implements OnInit {
       .subscribe(data => {
         console.log("added cart item ", data);
         this.router.navigate(['home/payment/', this.eventId]);
-      }, err => {
+      }, (err:any) => {
         console.log(err);
+        this.alertService.getError(err.message);
       })
   }
 

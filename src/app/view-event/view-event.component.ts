@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from '../services/event.service';
 import { config } from '../config';
 import { ClipboardService } from 'ngx-clipboard';
-import {AlertService} from '../services/alert.service';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-view-event',
@@ -23,10 +23,10 @@ export class ViewEventComponent implements OnInit {
   isDisable = false;
   visible = false;
   eventLink;
-  isCelebrant = JSON.parse(localStorage.getItem('isCelebrant'));
+  isCelebrant;
 
   constructor(private route: ActivatedRoute,
-    private router: Router, private _eventService: EventService,private _alertService: AlertService, private _clipboardService: ClipboardService) {
+    private router: Router, private _eventService: EventService, private alertService: AlertService, private _clipboardService: ClipboardService) {
     this.sub = this.route.params.subscribe(params => {
       this.eventId = params.id;
       console.log(this.eventId);
@@ -55,15 +55,16 @@ export class ViewEventComponent implements OnInit {
       .subscribe((data: any) => {
         console.log("response of details event", data);
         this.allDetailsofEvent.push(data.data);
+        this.isCelebrant = data.data.isCelebrant;
+        console.log(this.isCelebrant);
         console.log("response store in variable", this.allDetailsofEvent);
         this.eventLink = data.data.eventLink;
         console.log(this.eventLink);
         this.activityArray = data.data.activity;
         console.log(this.activityArray);
-        // this.groupArray=this.activityArray.group;
-        // console.log(this.groupArray);
-      }, err => {
+      }, (err: any) => {
         console.log(err);
+        this.alertService.getError(err.message);
       })
   }
 
@@ -82,12 +83,13 @@ export class ViewEventComponent implements OnInit {
    */
   deleteEvent(eventid) {
     console.log(eventid);
-    this._eventService.deleteEvent(eventid).subscribe(data => {
+    this._eventService.deleteEvent(eventid).subscribe((data: any) => {
       console.log("delete event response", data);
-      // this._alertService.getSuccess(data.data.message)
+      this.alertService.getSuccess(data.data.message)
       this.router.navigate(['home/myEvent'])
-    }, err => {
+    }, (err: any) => {
       console.log(err);
+      this.alertService.getError(err.message);
     })
   }
 
@@ -100,8 +102,9 @@ export class ViewEventComponent implements OnInit {
         console.log("get my all events ", data);
         this.myEvent = data.data;
         console.log("my events details", this.myEvent);
-      }, err => {
+      }, (err: any) => {
         console.log(err);
+        this.alertService.getError(err.message);
       })
   }
 
@@ -120,8 +123,10 @@ export class ViewEventComponent implements OnInit {
       .subscribe((data: any) => {
         this.isDisable = false;
         console.log(data);
-      }, err => {
+        this.alertService.getSuccess(data.data.message)
+      }, (err: any) => {
         console.log(err);
+        this.alertService.getError(err.message);
       })
   }
 

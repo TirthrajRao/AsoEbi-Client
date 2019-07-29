@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { LoginService } from '../services/login.service';
-import {AlertService} from '../services/alert.service';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-signup',
@@ -15,9 +15,13 @@ export class SignupComponent implements OnInit {
   submitted = false;
 
   constructor(private route: ActivatedRoute,
-    private router: Router, private _loginService: LoginService,private _alertService: AlertService) { }
+    private router: Router, private _loginService: LoginService, private _alertService: AlertService) { }
 
   ngOnInit() {
+
+    /**
+     * SignUp form for new user
+     */
     this.signUpForm = new FormGroup({
       firstName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
       lastName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
@@ -34,7 +38,7 @@ export class SignupComponent implements OnInit {
 
   /**
    * @param {String} form
-   * Validation of firstName  
+   * Validation of firstName in signUp form  
    */
   validateFirstName(form) {
     console.log(form);
@@ -50,7 +54,7 @@ export class SignupComponent implements OnInit {
 
   /**
    * @param {String} form
-   * Validation of lastName  
+   * Validation of lastName in signUp form  
    */
   validateLastName(form) {
     console.log(form);
@@ -66,7 +70,7 @@ export class SignupComponent implements OnInit {
 
   /**
    * @param {String} form
-   * Validation of phoneNumber  
+   * Validation of phoneNumber in signUp form  
    */
   validatePhone(form) {
     console.log(form);
@@ -91,12 +95,15 @@ export class SignupComponent implements OnInit {
     }
     this.isDisable = true;
     this._loginService.signUp(this.signUpForm.value)
-      .subscribe((data:any) => {
+      .subscribe((data: any) => {
         console.log("signup user details", data);
-        let message 
+        let message
         this._alertService.getSuccess(data.message)
         this.isDisable = false;
         this.router.navigate(['/login']);
+      }, err => {
+        console.log(err);
+        this._alertService.getError(err.message);
       })
   }
 

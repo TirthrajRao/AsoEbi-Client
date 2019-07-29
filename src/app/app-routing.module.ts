@@ -63,27 +63,22 @@ const routes: Routes = [
       {
         path: 'createEvent',
         component: CreateEventComponent,
-        // pathMatch:'full'
       },
       {
         path: 'editEvent/:id',
         component: CreateEventComponent,
-        // pathMatch:'full'
       },
       {
         path: 'myEvent',
         component: MyEventComponent,
-        // pathMatch:'full'
       },
       {
         path: 'reset-password',
         component: ResetPasswordComponent,
-        // pathMatch:'full'
       },
       {
         path: 'view-event/:id',
         component: ViewEventComponent,
-        // pathMatch:'full'
       },
       {
         path: 'thank-you/:id',
@@ -118,7 +113,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],//, { useHash: true }
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

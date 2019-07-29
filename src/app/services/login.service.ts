@@ -4,11 +4,10 @@ import { config } from '../config';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
+
 export class LoginService {
 
   isUserLoggedIn: false;
@@ -17,6 +16,7 @@ export class LoginService {
     this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
+
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;
   public get currentUserValue(): any {
@@ -28,7 +28,7 @@ export class LoginService {
    * Login for guest and celebrant  
    */
   login(userCredentials) {
-    console.log("helloooooooo");
+    console.log("helloooooooo", userCredentials);
     const eventToken = JSON.parse(localStorage.getItem('newEventId'));
     console.log("login with link ", eventToken);
     if (eventToken) {
@@ -72,7 +72,7 @@ export class LoginService {
    * @param {String} id_token
    * Login with google  
    */
-  checkId(id_token) {
+  googleLogin(id_token) {
     var body = {
       id_token: id_token
     }
@@ -91,9 +91,9 @@ export class LoginService {
    * @param {String} accessToken
    * Login with Facebook 
    */
-  checkFacebookId(accessToken) {
+  facebookLogin(accessToken) {
     console.log("facebook id", accessToken);
-    var body = {
+    const body = {
       sFaceBookSecretId: accessToken
     }
     return this.http.post<any>(config.baseApiUrl + "api/login/facebook", body)
@@ -106,21 +106,46 @@ export class LoginService {
   }
 
 
-/**
- * @param {string} token
- * Send token for hotmail login 
- */
-  hotMail(token) {
+  /**
+   * @param {string} token
+   * Send token for hotmail login 
+   */
+  serverHotmailLogin(token) {
     console.log("login token of hotmail in service", token);
     var body = {
       accessToken: token
     }
-    // return this.http.post(config.baseApiUrl + "api/login/outlook", body);
+    return this.http.post(config.baseApiUrl + "api/login/outlook", body)
+      .pipe(map((microsoftUser: any) => {
+        console.log("hotmaail login user token", microsoftUser);
+        if (microsoftUser && microsoftUser.data.accessToken) {
+          localStorage.setItem('currentUser', JSON.stringify(microsoftUser.data.accessToken));
+        }
+        return microsoftUser;
+      }))
   }
 
-  // loginWithHotMail(){
-  //  return this.http.get("https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=abe990aa-3a0c-42ae-a85c-989ea3b24c08&redirect_uri=http://localhost:4200&response_type=token&scope=openid+Mail.Read")
-  // }
+  /** 
+   * @param token 
+   * @param userId 
+   * Send accessToken and userID for authentication
+   */
+  sendYahooToken(token, userId) {
+    console.log(token, userId);
+    const body = {
+      accessToken: token,
+      userId: userId
+    }
+    console.log("yahoo user login ", body);
+    return this.http.post(config.baseApiUrl + "api/login/yahoo", body)
+      .pipe(map((yahooUser: any) => {
+        console.log("google login user accesstoken", yahooUser);
+        if (yahooUser && yahooUser.data.accessToken) {
+          localStorage.setItem('currentUser', JSON.stringify(yahooUser.data.accessToken));
+        }
+        return yahooUser;
+      }))
+  }
 
   /**
    * @param {Object} data
@@ -138,6 +163,7 @@ export class LoginService {
   resetPassword(data) {
     return this.http.post(config.baseApiUrl + "api/changepassword", data)
   }
+
   /**
    * @param {Object} data 
    * @param {String} id

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from '../services/event.service';
+import { AlertService } from '../services/alert.service';
 import { config } from '../config';
 
 @Component({
@@ -15,10 +16,13 @@ export class TotalEventsComponent implements OnInit {
   themePhoto: any = [];
   isPaymentAccept: any = [];
 
-  constructor(private route: ActivatedRoute,
-    private router: Router, private _eventService: EventService) { }
+  constructor(private router: Router, private _eventService: EventService, private alertService: AlertService) { }
 
   ngOnInit() {
+
+    /**
+     * Get all events 
+     */
     this.getAllEvents();
   }
 
@@ -39,8 +43,9 @@ export class TotalEventsComponent implements OnInit {
         console.log(data);
         this.totalEvent = data.data;
         console.log(this.totalEvent);
-      }, err => {
+      }, (err: any) => {
         console.log(err);
+        this.alertService.getError(err.message);
       })
   }
 
@@ -51,7 +56,6 @@ export class TotalEventsComponent implements OnInit {
   viewMoreDeatils(id) {
     console.log(id);
     this.router.navigate(['home/admin-eventDetails', id]);
-
   }
 
 }

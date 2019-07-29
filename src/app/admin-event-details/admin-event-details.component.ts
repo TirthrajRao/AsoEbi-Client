@@ -2,14 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from '../services/event.service';
 import { config } from '../config';
-
+import { AlertService } from '../services/alert.service';
 @Component({
   selector: 'app-admin-event-details',
   templateUrl: './admin-event-details.component.html',
   styleUrls: ['./admin-event-details.component.css']
 })
 export class AdminEventDetailsComponent implements OnInit {
-
   private sub: any;
   private eventId: any;
   path = config.baseMediaUrl;
@@ -20,7 +19,7 @@ export class AdminEventDetailsComponent implements OnInit {
   cartItems: any = [];
 
   constructor(private route: ActivatedRoute,
-    private router: Router, private _eventService: EventService) {
+    private router: Router, private _eventService: EventService, private alerService: AlertService) {
     this.sub = this.route.params.subscribe(params => {
       this.eventId = params.id;
       console.log(this.eventId);
@@ -35,14 +34,13 @@ export class AdminEventDetailsComponent implements OnInit {
    * @param eventTheme 
    * Display background image,gif in any event page
    */
-
   getSrc(eventTheme) {
-    return `url(` + this.path + eventTheme + `)`;
+    return `url(${this.path + eventTheme})`;
   }
 
   /**
-   * @param(id) eventId
-   * To get particular event details 
+   * @param {String} eventId
+   * To get details count of total event,usersList,amount 
    */
   adminEventDetails(eventId) {
     console.log(eventId);

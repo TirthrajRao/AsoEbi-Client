@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from '../services/event.service';
-
+import { AlertService } from '../services/alert.service';
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
@@ -11,8 +11,7 @@ export class AdminDashboardComponent implements OnInit {
   eventCount;
   usersCount;
   constructor(private route: ActivatedRoute,
-    private router: Router, private _eventService: EventService) {
-
+    private router: Router, private _eventService: EventService, private alertSerivce: AlertService) {
   }
 
   ngOnInit() {
@@ -28,9 +27,9 @@ export class AdminDashboardComponent implements OnInit {
         console.log(data)
         this.eventCount = data.data;
         console.log(this.eventCount);
-      }, err => {
+      }, (err: any) => {
         console.log(err);
+        this.alertSerivce.getError(err.message);
       })
   }
-
 }

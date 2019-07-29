@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { LoginService } from '../services/login.service';
-import Swal from 'sweetalert2';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -13,10 +13,14 @@ export class ResetPasswordComponent implements OnInit {
   resetPasswordForm: FormGroup;
   match: boolean = false;
   isDisable = false;
-  constructor(private route: ActivatedRoute,
-    private router: Router, private _loginService: LoginService) { }
+  
+  constructor(private router: Router, private _loginService: LoginService, private alertService: AlertService) { }
 
   ngOnInit() {
+
+    /**
+     * Reset password form
+     */
     this.resetPasswordForm = new FormGroup({
       currentPassword: new FormControl('', [Validators.required]),
       newPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
@@ -24,8 +28,8 @@ export class ResetPasswordComponent implements OnInit {
     })
   }
 
-  /**@param(JSON) currentPassword,newPassword,confirmPassword
-   * To reset password of login user with matching newPassword  
+  /**
+   * Reset password functionality
    */
   resetPassword() {
     this.isDisable = true;
@@ -35,10 +39,10 @@ export class ResetPasswordComponent implements OnInit {
       .subscribe(data => {
         console.log("reset password done by user", data);
         this.isDisable = false;
-        Swal.fire({ type: 'success', title: 'Password Change Successfully', showConfirmButton: false, timer: 2000 })
         this.router.navigate(['/home']);
-      }, err => {
+      }, (err: any) => {
         console.log(err);
+        this.alertService.getError(err.message);
       })
   }
 
@@ -53,7 +57,6 @@ export class ResetPasswordComponent implements OnInit {
     } else {
       this.match = false;
     }
-
   }
 
 }

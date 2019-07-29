@@ -8,5 +8,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
   // title = 'client';
   title = 'Aso-Ebi';
-  currentUser = JSON.parse(localStorage.getItem('isUserLoggedIn'));
 }

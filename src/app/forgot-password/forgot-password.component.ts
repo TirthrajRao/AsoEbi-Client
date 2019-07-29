@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { LoginService } from '../services/login.service';
-import Swal from 'sweetalert2';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -17,7 +17,7 @@ export class ForgotPasswordComponent implements OnInit {
   isDisable = false;
 
   constructor(private route: ActivatedRoute,
-    private router: Router, private _loginService: LoginService) {
+    private router: Router, private _loginService: LoginService, private alertService: AlertService) {
     this.sub = this.route.params.subscribe(params => {
       this.hash = params.id;
       console.log(this.hash);
@@ -25,6 +25,10 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    /**
+     * Form of forgot password
+     */
     this.forgotPasswordForm = new FormGroup({
       newPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
       confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)])
@@ -39,19 +43,21 @@ export class ForgotPasswordComponent implements OnInit {
     this.isDisable = true;
     console.log("current password value", this.forgotPasswordForm.value);
     this._loginService.forgotPasswordWithLink(this.forgotPasswordForm.value, this.hash)
-      .subscribe(data => {
+      .subscribe((data: any) => {
         console.log("reset password done by user", data);
+        this.alertService.getSuccess(data.data.message);
         this.isDisable = false;
-        Swal.fire({ type: 'success', title: 'Password Change Successfully', showConfirmButton: false, timer: 2000 })
         this.router.navigate(['/login']);
       }, err => {
         console.log(err);
+        this.alertService.getError(err.message);
       })
   }
 
   /**
-  * To compare password of new password and confirm password 
-  */
+   * @param {JSON} form
+   * Comapre new password and confirm password  
+   */
   comparePassword(form) {
     console.log(form.value.newPassword == form.value.confirmPassword, this.match);
     if (form.value.newPassword === form.value.confirmPassword) {
@@ -60,7 +66,6 @@ export class ForgotPasswordComponent implements OnInit {
     } else {
       this.match = false;
     }
-
   }
 
 }

@@ -38,7 +38,7 @@
                                 [disabled]="isDisable">SignIn with Google</button>
                         </div>
                         <div class="col-md-6">
-                            <button type="button" class="btn btn-primary w-100" (click)="submitLogin();"
+                            <button type="button" class="btn btn-primary w-100" (click)="signWithFacebook();"
                                 [disabled]="isDisable">Login with facebook</button>
                         </div>
                     </div>
@@ -46,15 +46,14 @@
                     <a routerLink="/signUp" class="float-right">SignUp?</a>
                 </form>
                 <div>
-                    <button (click)="login()" >Log In</button>
-                    <button (click)="signIn()">Sign in with Microsoft</button>
+                    <button (click)="yahooLogin()">Yahoo Login</button>
+                    <button (click)="hotMailLogin()">Sign in with Microsoft</button>
 
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 
 <!-- Forgot password Model -->
 
@@ -84,4 +83,3 @@
         </div>
     </div>
 </div>
-

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from '../services/event.service';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-payment',
@@ -15,8 +16,9 @@ export class PaymentComponent implements OnInit {
   grandTotal;
   finalGrandTotal;
   myCart;
+
   constructor(private route: ActivatedRoute,
-    private router: Router, private _eventService: EventService) {
+    private router: Router, private _eventService: EventService, private alertService: AlertService) {
     this.sub = this.route.params.subscribe(params => {
       this.eventId = params.id;
       console.log(this.eventId);
@@ -40,8 +42,9 @@ export class PaymentComponent implements OnInit {
         console.log(this.grandTotal);
         this.finalCartDetails = data.data.cartItem;
         console.log(this.finalCartDetails);
-      }, err => {
+      }, (err: any) => {
         console.log(err);
+        this.alertService.getError(err.message);
       })
   }
 
@@ -75,8 +78,9 @@ export class PaymentComponent implements OnInit {
     this._eventService.makeFinalPayment(this.myCart)
       .subscribe((data: any) => {
         console.log("final response of carts", data);
-      }, err => {
+      }, (err: any) => {
         console.log(err);
+        this.alertService.getError(err.message);
       })
   }
 

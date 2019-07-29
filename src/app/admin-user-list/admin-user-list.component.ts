@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from '../services/event.service';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-admin-user-list',
@@ -8,18 +9,16 @@ import { EventService } from '../services/event.service';
   styleUrls: ['./admin-user-list.component.css']
 })
 export class AdminUserListComponent implements OnInit {
-
   userList: any = [];
-  constructor(private route: ActivatedRoute,
-    private router: Router, private _eventService: EventService) { }
+
+  constructor(private router: Router, private _eventService: EventService, private alerService: AlertService) { }
 
   ngOnInit() {
     this.getUserList();
   }
 
   /**
-   * @param(id) eventId
-   * To get total no of users which are used ASO-EBI
+   * Total usersList which use Aso_Ebi website
    */
   getUserList() {
     this._eventService.getUserList()
