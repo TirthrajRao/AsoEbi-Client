@@ -42,8 +42,8 @@ export class SignupComponent implements OnInit {
    */
   validateFirstName(form) {
     console.log(form);
-    var nameInput = /[a-zA-Z ]/;
-    var message1 = document.getElementById('message1');
+    const nameInput = /[a-zA-Z ]/;
+    let message1 = document.getElementById('message1');
     if (!form.firstName.match(nameInput)) {
       console.log("message==========", message1)
       message1.innerHTML = "Name can not start with digit"
@@ -58,8 +58,8 @@ export class SignupComponent implements OnInit {
    */
   validateLastName(form) {
     console.log(form);
-    var nameInput = /[a-zA-Z ]/;
-    var message2 = document.getElementById('message2');
+    const nameInput = /[a-zA-Z ]/;
+    let message2 = document.getElementById('message2');
     if (!form.lastName.match(nameInput)) {
       console.log("message==========", message2)
       message2.innerHTML = "Name can not start with digit"
@@ -74,8 +74,8 @@ export class SignupComponent implements OnInit {
    */
   validatePhone(form) {
     console.log(form);
-    var phoneno = /[0-9]/;
-    var message = document.getElementById('message');
+    const phoneno = /[0-9]/;
+    let message = document.getElementById('message');
     if (!form.mobile.match(phoneno)) {
       console.log("message==========", message)
       message.innerHTML = "Please enter only numbers"

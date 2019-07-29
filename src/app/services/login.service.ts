@@ -73,7 +73,7 @@ export class LoginService {
    * Login with google  
    */
   googleLogin(id_token) {
-    var body = {
+    const body = {
       id_token: id_token
     }
     console.log(body);
@@ -112,7 +112,7 @@ export class LoginService {
    */
   serverHotmailLogin(token) {
     console.log("login token of hotmail in service", token);
-    var body = {
+    const body = {
       accessToken: token
     }
     return this.http.post(config.baseApiUrl + "api/login/outlook", body)

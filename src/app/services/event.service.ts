@@ -29,12 +29,12 @@ export class EventService {
     formdata.append('isPublic', body.isPublic);
     formdata.append('isLogistics', body.isLogistics);
     if (files.length) {
-      for (var i = 0; i < files.length; i++) {
+      for (let i = 0; i < files.length; i++) {
         formdata.append("profile", files[i]);
       }
     }
     if (themeFiles.length) {
-      for (var i = 0; i < themeFiles.length; i++) {
+      for (let i = 0; i < themeFiles.length; i++) {
         formdata.append("background", themeFiles[i]);
       }
     }
@@ -58,7 +58,7 @@ export class EventService {
     formdata.append('isPublic', body.isPublic);
     formdata.append('isLogistics', body.isLogistics);
     if (files.length) {
-      for (var i = 0; i < files.length; i++) {
+      for (let i = 0; i < files.length; i++) {
         formdata.append("profile", files[i]);
       }
     }
@@ -128,7 +128,7 @@ export class EventService {
     formdata.append('message', body.message);
     formdata.append('eventId', body.eventId);
     if (files.length) {
-      for (var i = 0; i < files.length; i++) {
+      for (let i = 0; i < files.length; i++) {
         formdata.append("attachment", files[i]);
       }
     }

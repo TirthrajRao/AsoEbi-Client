@@ -17,12 +17,12 @@ import { MsalService } from "@azure/msal-angular";
  * Login with yahoo using fireBase 
  */
 firebase.initializeApp(firebaseConfig);
-var provider = new firebase.auth.OAuthProvider('yahoo.com');
+const provider = new firebase.auth.OAuthProvider('yahoo.com');
 provider.setCustomParameters({
   prompt: 'login',
 });
-declare var FB: any;
-declare var Msal: any;
+declare const FB: any;
+declare const Msal: any;
 
 
 // var graphConfig = {
@@ -32,7 +32,7 @@ declare var Msal: any;
 /**
  * Scope for microsoft login service
  */
-var requestObj = {
+const requestObj = {
   scopes: ["user.read"]
 };
 
@@ -105,7 +105,7 @@ export class LoginComponent implements OnInit {
       FB.AppEvents.logPageView();
     };
     (function (d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
+      let js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) { return; }
       js = d.createElement(s); js.id = id;
       js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3&appId=350939005533804&autoLogAppEvents=1";
@@ -256,7 +256,7 @@ export class LoginComponent implements OnInit {
     console.log("In func")
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((res) => {
       console.log(res);
-      var googleIdToken = res.idToken;
+      const googleIdToken = res.idToken;
       console.log("google id of login user", googleIdToken);
       this._loginService.googleLogin(googleIdToken).subscribe(data => {
         console.log("response positive of google", data);
