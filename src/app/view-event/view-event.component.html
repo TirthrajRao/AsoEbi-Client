@@ -11,8 +11,8 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card p-4">
-                            <button type="button" class="btn btn-danger ml-auto mb-2" (click)="myCart(item._id)"
-                                *ngIf="isCelebrant == 'false'">My Cart</button>
+                            <button type="button" class="btn btn-danger ml-auto mb-2" (click)="myCart(item._id)">My
+                                Cart</button>
                             <div [ngStyle]="{background: getSrc(item.eventTheme)}" class="theme-background">
                                 <div class="row">
                                     <div class="col-4 m-auto">
@@ -63,8 +63,7 @@
                                                                 <div class="col-lg-6">
                                                                     <button type="button" class="btn btn-info"
                                                                         (click)="addToCart(group._id, activity.activityId, item._id, group.male,'male')"
-                                                                        [disabled]="isDisable"
-                                                                        *ngIf="isCelebrant == 'false'">Add
+                                                                        [disabled]="isDisable">Add
                                                                         To Cart </button>
                                                                 </div>
                                                                 <div class="col-lg-12">
@@ -82,7 +81,6 @@
                                                                 <div class="col-lg-6">
                                                                     <button type="button" class="btn btn-info"
                                                                         (click)="addToCart(group._id, activity.activityId, item._id, group.female,'female')"
-                                                                        *ngIf="isCelebrant == 'false'"
                                                                         [disabled]="isDisable">Add
                                                                         To Cart </button>
                                                                 </div>

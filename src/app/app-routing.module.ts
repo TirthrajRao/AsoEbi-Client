@@ -17,6 +17,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
 import { AdminEventDetailsComponent } from './admin-event-details/admin-event-details.component';
 import { DisplayPageComponent } from './display-page/display-page.component';
+import {HomeModule} from './home/home.module';
 
 /**
  * Routing of all pages 
@@ -51,65 +52,69 @@ const routes: Routes = [
     component: ForgotPasswordComponent
   },
   {
-    path: "home",
-    component: HomeComponent,
-    // canActivate: [AuthGuard],
-    children: [
-      {
-        path: '',
-        redirectTo: 'home',
-        pathMatch: 'full'
-      },
-      {
-        path: 'createEvent',
-        component: CreateEventComponent,
-      },
-      {
-        path: 'editEvent/:id',
-        component: CreateEventComponent,
-      },
-      {
-        path: 'myEvent',
-        component: MyEventComponent,
-      },
-      {
-        path: 'reset-password',
-        component: ResetPasswordComponent,
-      },
-      {
-        path: 'view-event/:id',
-        component: ViewEventComponent,
-      },
-      {
-        path: 'thank-you/:id',
-        component: ThankYouMessageComponent
-      },
-      {
-        path: 'my-cart/:id',
-        component: MyCartComponent
-      },
-      {
-        path: 'payment/:id',
-        component: PaymentComponent
-      },
-      {
-        path: 'admin-dashboard',
-        component: AdminDashboardComponent
-      },
-      {
-        path: 'total-event',
-        component: TotalEventsComponent
-      },
-      {
-        path: 'admin-eventDetails/:id',
-        component: AdminEventDetailsComponent
-      },
-      {
-        path: 'total-user',
-        component: AdminUserListComponent
-      }
-    ]
-  }
+    path: 'home',
+    loadChildren: ()=> HomeModule 
+  },
+  // {
+  //   path: "home",
+  //   component: HomeComponent,
+  //   // canActivate: [AuthGuard],
+  //   children: [
+  //     {
+  //       path: '',
+  //       redirectTo: 'home',
+  //       pathMatch: 'full'
+  //     },
+  //     {
+  //       path: 'createEvent',
+  //       component: CreateEventComponent,
+  //     },
+  //     {
+  //       path: 'editEvent/:id',
+  //       component: CreateEventComponent,
+  //     },
+  //     {
+  //       path: 'myEvent',
+  //       component: MyEventComponent,
+  //     },
+  //     {
+  //       path: 'reset-password',
+  //       component: ResetPasswordComponent,
+  //     },
+  //     {
+  //       path: 'view-event/:id',
+  //       component: ViewEventComponent,
+  //     },
+  //     {
+  //       path: 'thank-you/:id',
+  //       component: ThankYouMessageComponent
+  //     },
+  //     {
+  //       path: 'my-cart/:id',
+  //       component: MyCartComponent
+  //     },
+  //     {
+  //       path: 'payment/:id',
+  //       component: PaymentComponent
+  //     },
+  //     {
+  //       path: 'admin-dashboard',
+  //       component: AdminDashboardComponent
+  //     },
+  //     {
+  //       path: 'total-event',
+  //       component: TotalEventsComponent
+  //     },
+  //     {
+  //       path: 'admin-eventDetails/:id',
+  //       component: AdminEventDetailsComponent
+  //     },
+  //     {
+  //       path: 'total-user',
+  //       component: AdminUserListComponent
+  //     }
+  //   ]
+  // }
 ];
 
 @NgModule({

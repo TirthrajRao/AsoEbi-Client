@@ -21,8 +21,7 @@
                 <td>{{products.itemName}}</td>
                 <td class="product-price">{{products.itemPrice}}</td>
                 <td class="product-quantity">
-                    <input type="number" min="1" [(ngModel)]="products.quantity"
-                        (change)="finalTotal($event.target.value)">
+                    <input type="number" min="1" [(ngModel)]="products.quantity">
                 </td>
                 <td>
                     <button type="button" class="btn btn-danger" (click)="removeItem(products._id)">Remove

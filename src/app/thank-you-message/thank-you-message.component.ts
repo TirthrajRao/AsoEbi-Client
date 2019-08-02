@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { EventService } from '../services/event.service';
 import {AlertService} from '../services/alert.service';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+// import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import * as _ from 'lodash';
 import Swal from 'sweetalert2';
 
@@ -43,14 +43,14 @@ export class ThankYouMessageComponent implements OnInit {
   /**
    * Using of ckEditor for message
    */
-  public Editor = ClassicEditor;
-  public configuration = { placeholder: 'Enter Comment Text...' };
-  public onReady(editor) {
-    editor.ui.getEditableElement().parentElement.insertBefore(
-      editor.ui.view.toolbar.element,
-      editor.ui.getEditableElement()
-    );
-  }
+  // public Editor = ClassicEditor;
+  // public configuration = { placeholder: 'Enter Comment Text...' };
+  // public onReady(editor) {
+  //   editor.ui.getEditableElement().parentElement.insertBefore(
+  //     editor.ui.view.toolbar.element,
+  //     editor.ui.getEditableElement()
+  //   );
+  // }
 
 
   /**

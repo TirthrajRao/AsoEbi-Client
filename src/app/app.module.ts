@@ -20,14 +20,14 @@ import { ViewEventComponent } from './view-event/view-event.component';
 import { ThankYouMessageComponent } from './thank-you-message/thank-you-message.component';
 import { GuestEventComponent } from './guest-event/guest-event.component';
 import { MyCartComponent } from './my-cart/my-cart.component';
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+// import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { PaymentComponent } from './payment/payment.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { TotalEventsComponent } from './total-events/total-events.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AdminEventDetailsComponent } from './admin-event-details/admin-event-details.component';
 import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
-import { ClipboardModule } from 'ngx-clipboard';
+// import { ClipboardModule } from 'ngx-clipboard';
 import { DisplayPageComponent } from './display-page/display-page.component';
 
 /**
@@ -52,17 +52,17 @@ export function provideConfig() {
     AppComponent,
     LoginComponent,
     SignupComponent,
-    HomeComponent,
-    CreateEventComponent,
-    MyEventComponent,
-    HeaderComponent,
-    ResetPasswordComponent,
+    // HomeComponent,
+    // CreateEventComponent,
+    // MyEventComponent,
+    // HeaderComponent,
+    // ResetPasswordComponent,
     LoaderComponent,
-    ViewEventComponent,
-    ThankYouMessageComponent,
+    // ViewEventComponent,
+    // ThankYouMessageComponent,
     GuestEventComponent,
-    MyCartComponent,
-    PaymentComponent,
+    // MyCartComponent,
+    // PaymentComponent,
     AdminDashboardComponent,
     TotalEventsComponent,
     ForgotPasswordComponent,
@@ -77,8 +77,8 @@ export function provideConfig() {
     ReactiveFormsModule,
     HttpClientModule,
     SocialLoginModule,
-    CKEditorModule,
-    ClipboardModule,
+    // CKEditorModule,
+    // ClipboardModule,
   ],
   providers: [LoginService,
     {

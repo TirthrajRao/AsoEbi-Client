@@ -123,7 +123,7 @@ export class ViewEventComponent implements OnInit {
       .subscribe((data: any) => {
         this.isDisable = false;
         console.log(data);
-        this.alertService.getSuccess(data.data.message)
+        this.alertService.getSuccess(data.message)
       }, (err: any) => {
         console.log(err);
         this.alertService.getError(err.message);
