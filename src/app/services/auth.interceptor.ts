@@ -65,7 +65,7 @@ export class AuthInterceptor implements HttpInterceptor {
           }),
           catchError((error: HttpErrorResponse) => {
             console.log("interceptorsssssssss error in login", error);
-            let errorMessage = error.message;
+            let errorMessage = error.error.message;
             console.log("dkjsbkjsbbskfbdsbfbdsf", errorMessage);
             if (error.status === 401) {
               /**
@@ -73,7 +73,8 @@ export class AuthInterceptor implements HttpInterceptor {
                */
               Swal.fire({
                 type: 'error',
-                title: "sorry" + errorMessage,
+                title: "sorry",
+                text: errorMessage,
                 showConfirmButton: false,
                 timer: 2000
               })

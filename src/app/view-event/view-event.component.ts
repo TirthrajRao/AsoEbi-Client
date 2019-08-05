@@ -24,6 +24,7 @@ export class ViewEventComponent implements OnInit {
   visible = false;
   eventLink;
   isCelebrant;
+  isJoined;
 
   constructor(private route: ActivatedRoute,
     private router: Router, private _eventService: EventService, private alertService: AlertService, private _clipboardService: ClipboardService) {
@@ -51,13 +52,21 @@ export class ViewEventComponent implements OnInit {
    * Get any particular event details 
    */
   viewDetailsOfEvent(eventId) {
+    // this.isDisable = true;
     this._eventService.getEventDetails(eventId)
       .subscribe((data: any) => {
         console.log("response of details event", data);
         this.allDetailsofEvent.push(data.data);
         this.isCelebrant = data.data.isCelebrant;
         console.log(this.isCelebrant);
-        console.log("response store in variable", this.allDetailsofEvent);
+        this.isJoined = data.data.isJoined;
+        console.log(this.isJoined);
+        if(data.data.isJoined == true){
+          this.isDisable = true;
+        }else{
+          this.isDisable = false;
+        }
+        // console.log("response store in variable", this.allDetailsofEvent);
         this.eventLink = data.data.eventLink;
         console.log(this.eventLink);
         this.activityArray = data.data.activity;
@@ -65,6 +74,20 @@ export class ViewEventComponent implements OnInit {
       }, (err: any) => {
         console.log(err);
         this.alertService.getError(err.message);
+      })
+  }
+
+  joinNow(id) {
+    console.log("after login send event id", id);
+    this._eventService.joinEvent(id)
+      .subscribe((data:any) => {
+        console.log("join event done", data);
+        this.isDisable = true;
+        this.alertService.getSuccess(data.message)
+        this.router.navigate(['/home/view-event/', id])
+      }, err => {
+        console.log(err);
+        this.alertService.getError(err.error.message);
       })
   }
 
@@ -116,10 +139,10 @@ export class ViewEventComponent implements OnInit {
    * @param {Key} gender
    * Items added to cart  
    */
-  addToCart(groupId, activityId, eventId, item, gender) {
-    console.log({ groupId, activityId, eventId, item, gender });
+  addToCart(eventId, itemId) {
+    console.log({ eventId, itemId });
     this.isDisable = true;
-    this._eventService.addToCart(groupId, activityId, eventId, item, gender)
+    this._eventService.addToCart(eventId, itemId)
       .subscribe((data: any) => {
         this.isDisable = false;
         console.log(data);

@@ -71,7 +71,7 @@ export class EventService {
    */
   addActivities(data) {
     console.log("activity data", data);
-    return this.http.post(config.baseApiUrl + "api/activity/", data.activity);
+    return this.http.post(config.baseApiUrl + "api/activity", data.activity);
   }
 
   /**
@@ -152,9 +152,9 @@ export class EventService {
    * @param {Key} gender
    * Items which guest want to buy in addToCart 
    */
-  addToCart(groupId, activityId, eventId, item, gender) {
-    console.log(groupId, activityId, eventId, item, gender);
-    return this.http.post(config.baseApiUrl + "api/event/add-item", { groupId, activityId, eventId, item, gender });
+  addToCart(eventId, itemId) {
+    console.log(eventId, itemId);
+    return this.http.post(config.baseApiUrl + "api/cart", { eventId, itemId });
   }
 
   /**

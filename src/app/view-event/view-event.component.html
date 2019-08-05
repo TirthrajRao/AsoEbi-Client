@@ -4,15 +4,18 @@
     <div class="col-12">
         <div *ngFor="let item of allDetailsofEvent">
             <button type="button" class="btn btn-primary m-auto" (click)="editEventDeatils(item._id)"
-                *ngIf="isCelebrant">Edit Event </button>
+                >Edit Event </button>
             <button type="button" class="btn btn-primary m-auto " (click)="deleteEvent(item._id)"
-                *ngIf="isCelebrant">Delete Event </button>
+                >Delete Event </button>
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <div class="card p-4">
                             <button type="button" class="btn btn-danger ml-auto mb-2" (click)="myCart(item._id)">My
                                 Cart</button>
+                            <button type="button" class="btn btn-primary" *ngIf="item.isCelebrant == false"
+                                (click)="joinNow(item._id)" [disabled]="isDisable">Join Now
+                            </button>
                             <div [ngStyle]="{background: getSrc(item.eventTheme)}" class="theme-background">
                                 <div class="row">
                                     <div class="col-4 m-auto">
@@ -38,7 +41,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
-                                        <p>EventLink:-
+                                        <p >EventLink:-
                                             <input #inputTarget [(ngModel)]="eventLink" readonly />
                                             <button [ngxClipboard]="inputTarget">Copy</button>
                                         </p>
@@ -60,17 +63,21 @@
                                                                 <div class="col-lg-6">
                                                                     <p class="font-weight-bold">Male</p>
                                                                 </div>
+                                                            </div>
+                                                            <div class="row" *ngFor="let male of group.male">
+
+                                                                <div class="col-lg-6">
+                                                                    <p>itemType :{{male.itemType}}</p>
+                                                                    <p>itemPrice :{{male.itemPrice}}</p>
+                                                                    <p>itemName :{{male.itemName}}</p>
+                                                                </div>
                                                                 <div class="col-lg-6">
                                                                     <button type="button" class="btn btn-info"
-                                                                        (click)="addToCart(group._id, activity.activityId, item._id, group.male,'male')"
+                                                                        (click)="addToCart(item._id,male._id)"
                                                                         [disabled]="isDisable">Add
                                                                         To Cart </button>
                                                                 </div>
-                                                                <div class="col-lg-12">
-                                                                    <p>itemType :{{group.male.itemType}}</p>
-                                                                    <p>itemPrice :{{group.male.itemPrice}}</p>
-                                                                    <p>itemName :{{group.male.itemName}}</p>
-                                                                </div>
+
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
@@ -78,16 +85,18 @@
                                                                 <div class="col-lg-6">
                                                                     <p class="font-weight-bold">Female</p>
                                                                 </div>
+                                                            </div>
+                                                            <div class="row" *ngFor="let female of group.female">
                                                                 <div class="col-lg-6">
-                                                                    <button type="button" class="btn btn-info"
-                                                                        (click)="addToCart(group._id, activity.activityId, item._id, group.female,'female')"
+                                                                    <p>itemName :{{female.itemName}}</p>
+                                                                    <p>itemType :{{female.itemType}}</p>
+                                                                    <p>itemPrice :{{female.itemPrice}}</p>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <button type="button"  class="btn btn-info"
+                                                                        (click)="addToCart(item._id,female._id)"
                                                                         [disabled]="isDisable">Add
                                                                         To Cart </button>
-                                                                </div>
-                                                                <div class="col-lg-12">
-                                                                    <p>itemName :{{group.female.itemName}}</p>
-                                                                    <p>itemName :{{group.female.itemType}}</p>
-                                                                    <p>itemName :{{group.female.itemPrice}}</p>
                                                                 </div>
                                                             </div>
                                                         </div>

@@ -35,7 +35,6 @@ export class CreateEventComponent implements OnInit {
   private sub: any;
   path = config.baseMediaUrl;
   activitiesDate: any = [];
-
   constructor(private route: ActivatedRoute, private router: Router, private _eventService: EventService,
     private alertService: AlertService, private fb: FormBuilder) {
     this.sub = this.route.params.subscribe(params => {
@@ -60,6 +59,8 @@ export class CreateEventComponent implements OnInit {
       isLogistics: new FormControl(this.isLogistics),
       background: new FormControl('')
     })
+
+    // this.maleItemArray = []
     $('#eventId').css({ 'display': 'none' });
     $(function () {
       $("#datepicker").datepicker();
@@ -202,13 +203,13 @@ export class CreateEventComponent implements OnInit {
    *  To create new group in event or to edit created group of event 
    */
   groupArray(activities?, activityId?) {
-    console.log("jadya ne lidhe bdhu thay che =======", activities, activityId);
+    console.log("new create group =======", activities, activityId);
     if (activityId) {
       return this.fb.group({
         activityId: new FormControl(activityId),
         groupName: new FormControl(''),
-        male: new FormGroup(this.maleItemArray()),
-        female: new FormGroup(this.femaleItemArray())
+        male: this.fb.array([this.maleItemArray()]),
+        female: this.fb.array([this.femaleItemArray()])
       });
     } else if (activities.length) {
       this.gArray = [];
@@ -220,7 +221,7 @@ export class CreateEventComponent implements OnInit {
             this.gArray.push(this.fb.group({
               activityId: new FormControl(activities[i]._id),
               groupName: new FormControl(activities[i].group[j].groupName),
-              male: new FormGroup(this.maleItemArray(activities[i].group[j].male)),
+              male: this.fb.array([this.maleItemArray(activities[i].group[j].male)]),
               female: new FormGroup(this.femaleItemArray(activities[i].group[j].female))
             }));
           }
@@ -229,8 +230,8 @@ export class CreateEventComponent implements OnInit {
           this.gArray.push(this.fb.group({
             activityId: new FormControl(activities[i]._id),
             groupName: new FormControl(''),
-            male: new FormGroup(this.maleItemArray()),
-            female: new FormGroup(this.femaleItemArray())
+            male: this.fb.array([this.maleItemArray()]),
+            female: this.fb.array([this.femaleItemArray()])
           }));
         }
       }
@@ -240,8 +241,8 @@ export class CreateEventComponent implements OnInit {
       return this.fb.group({
         activityId: new FormControl(''),
         groupName: new FormControl(''),
-        male: new FormGroup(this.maleItemArray()),
-        female: new FormGroup(this.femaleItemArray())
+        male: this.fb.array([this.maleItemArray()]),
+        female: this.fb.array([this.femaleItemArray()])
       });
     }
   }
@@ -251,11 +252,21 @@ export class CreateEventComponent implements OnInit {
    * Create items of male in new event 
    */
   maleItemArray(details?) {
-    return {
+    return this.fb.group({
       itemName: new FormControl(details ? details.itemName : ''),
       itemType: new FormControl(details ? details.itemType : ''),
       itemPrice: new FormControl(details ? details.itemPrice : '')
-    }
+    })
+  }
+
+  addItemsMale(index){
+    console.log(index)
+    const control = <FormArray>index.controls.male;
+    control.push(this.maleItemArray());
+  }
+  removeItemsMale(gIndex, mIndex){
+    const control = <FormArray>gIndex.controls.male;
+    control.removeAt(mIndex);
   }
 
   /**
@@ -263,12 +274,23 @@ export class CreateEventComponent implements OnInit {
    * Create items of female in new event 
    */
   femaleItemArray(details?) {
-    return {
+    return this.fb.group ({
       itemName: new FormControl(details ? details.itemName : ''),
       itemType: new FormControl(details ? details.itemType : ''),
       itemPrice: new FormControl(details ? details.itemPrice : '')
-    }
+    })
   }
+  addItemsfeMale(index){
+    const control = <FormArray>index.controls.female;
+    control.push(this.femaleItemArray());
+  }
+
+
+  removeItemsfeMale(gIndex, fIndex){
+    const control = <FormArray>gIndex.controls.female;
+    control.removeAt(fIndex);
+  }
+
 
   /**
    * Create new activities for new event 
@@ -332,8 +354,8 @@ export class CreateEventComponent implements OnInit {
    * @param {Array} activityId
    * To get all activities with name 
    */
-  getActivityName(activityId) {
-    console.log("activitiesss=======>", activityId);
+  getActivityName(activityId, controls) {
+    console.log("activitiesss=======>", controls);
     if (this.createdActivity)
       return this.createdActivity[_.findIndex(this.createdActivity, { _id: activityId })].activityName;
     else

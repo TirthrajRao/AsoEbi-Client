@@ -211,10 +211,12 @@
                                         <input type="text" class="form-control" formControlName="groupName"
                                             placeholder="Enter Group Name">
                                     </div>
-                                    <div class="row">
-                                        <div formGroupName="male">
-                                            <h4>Male</h4>
-                                            <div class="col-6">
+                                    <!-- {{ item | json }} -->
+                                    <h4>Male</h4>
+                                    <div class="row" formArrayName="male">
+                                        <div [formGroupName]="k"
+                                            *ngFor="let group of item.controls.male.controls; let k = index">
+                                            <div class="col-8">
                                                 <div class="form_input">
                                                     <label>Male</label>
                                                     <div class="form_input">
@@ -235,40 +237,72 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div formGroupName="female">
-                                            <h4>Female</h4>
-                                            <div class="col-6">
-                                                <div class="form_input">
-                                                    <label>Female</label>
-                                                    <div class="form_input">
-                                                        <label>Item Name</label>
-                                                        <input type="text" class="form-control"
-                                                            formControlName="itemName">
-                                                    </div>
-                                                    <div class="form_input">
-                                                        <label>Item Type</label>
-                                                        <input type="text" class="form-control"
-                                                            formControlName="itemType">
-                                                    </div>
-                                                    <div class="form_input">
-                                                        <label>Item Price</label>
-                                                        <input type="number" class="form-control"
-                                                            formControlName="itemPrice">
-                                                    </div>
-                                                </div>
+                                        <div class="col-2">
+                                            <div class="add_row">
+                                                <button type="button" class="btn float-right btn-primary"
+                                                    *ngIf="item.controls.male.controls.length>1"
+                                                    (click)="removeItemsMale(item,k)"><span class="fa fa-plus"></span>
+                                                    Remove Male</button>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-2">
+                                        <div class="add_row">
+                                            <button type="button" class="btn float-right btn-primary"
+                                                (click)="addItemsMale(item)"><span class="fa fa-plus"></span>
+                                                Add Male</button>
+                                        </div>
+                                    </div>
+                                    <h4>Female</h4>
+                                    <div class="row" formArrayName="female">
+                                            <div [formGroupName]="j"
+                                                *ngFor="let group of item.controls.female.controls; let j = index">
+                                                <div class="col-8">
+                                                    <div class="form_input">
+                                                        <label>Female</label>
+                                                        <div class="form_input">
+                                                            <label>Item Name</label>
+                                                            <input type="text" class="form-control"
+                                                                formControlName="itemName">
+                                                        </div>
+                                                        <div class="form_input">
+                                                            <label>Item Type</label>
+                                                            <input type="text" class="form-control"
+                                                                formControlName="itemType">
+                                                        </div>
+                                                        <div class="form_input">
+                                                            <label>Item Price</label>
+                                                            <input type="number" class="form-control"
+                                                                formControlName="itemPrice">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-2">
+                                                <div class="add_row">
+                                                    <button type="button" class="btn float-right btn-primary"
+                                                        *ngIf="item.controls.female.controls.length>1"
+                                                        (click)="removeItemsfeMale(item,j)"><span class="fa fa-plus"></span>
+                                                        Remove Female</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="add_row">
+                                                <button type="button" class="btn float-right btn-primary"
+                                                    (click)="addItemsfeMale(item)"><span class="fa fa-plus"></span>
+                                                    Add Female</button>
+                                            </div>
+                                        </div>
                                     <div class="remove_row" *ngIf="groupForm.controls.group.controls.length>1">
                                         <button type="submit" class="btn btn-primary btn-blobk"
                                             (click)="removeGroupField(i)"><span class="fa fa-minus"></span>
-                                            Remove</button>
+                                            Remove Group</button>
                                     </div>
-
                                     <div class="add_row" *ngIf="groupForm.controls.group.controls.length>0">
                                         <button type="button" class="btn float-right btn-primary"
-                                            (click)="createdEventDetails ? AddGroupField(eventActivities[i].activityId, i) : AddGroupField(createdActivity[i]._id, i)"><span
-                                                class="fa fa-plus"></span> Add</button>
+                                            (click)="createdEventDetails ? AddGroupField(eventActivities[i]._id, i) : AddGroupField(createdActivity[i]._id, i)"><span
+                                                class="fa fa-plus"></span> Add Group</button>
                                     </div>
                                 </div>
                             </div>
