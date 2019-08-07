@@ -12,6 +12,7 @@ import { config, firebaseConfig } from '../config';
 import { AlertService } from '../services/alert.service';
 import { UserAgentApplication } from 'msal';
 import { MsalService } from "@azure/msal-angular";
+declare const $: any;
 
 /**
  * Login with yahoo using fireBase 
@@ -25,9 +26,9 @@ declare const FB: any;
 declare const Msal: any;
 
 
-// var graphConfig = {
-//   graphMeEndpoint: "https://graph.microsoft.com/v1.0/me"
-// };
+var graphConfig = {
+  graphMeEndpoint: "https://graph.microsoft.com/v1.0/me"
+};
 
 /**
  * Scope for microsoft login service
@@ -59,6 +60,8 @@ export class LoginComponent implements OnInit {
   hotmailToken;
   yahooAccesstoken: any;
   yahooId;
+  show: boolean;
+  pwd: boolean;
   msalConfig = {
     auth: {
       clientId: 'bd9b8a24-97aa-42db-a5fe-dcb24b15e6f8', //This is your client ID,
@@ -73,9 +76,15 @@ export class LoginComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private router: Router, private _loginService: LoginService, private authService: AuthService,
-    private alertService: AlertService, ) { }
+    private alertService: AlertService, ) {
+    this.show = false;
+  }
 
   ngOnInit() {
+    $(".toggle-password").click(function () {
+      $(this).toggleClass("fa-eye fa-eye-slash");
+    });
+
 
     /**
      * Login form for user
@@ -239,9 +248,11 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
           this.router.navigate(['/home']);
         }
-      }, error => {
+      }, (error: any) => {
         console.log(error);
-        this.alertService.getError(error.messege);
+        let errorMessage = error.error.message;
+        console.log("error message -------->>>>>>>>", errorMessage);
+        this.alertService.getError(errorMessage);
         this.isDiable = false;
         this.loginForm.reset();
         console.log("disable:", this.isDiable);
@@ -314,6 +325,14 @@ export class LoginComponent implements OnInit {
       }, err => {
         console.log(err);
       })
+  }
+
+  /**
+   * Show password when user login 
+   */
+  password() {
+    this.show = !this.show;
+    this.pwd = !this.pwd;
   }
 
 }

@@ -1,0 +1,49 @@
+<div *ngIf="!isDiable">
+    <div class="row">
+        <div class="col-md-6 m-auto pt-5">
+            <div class="card p-5">
+                <form [formGroup]="bankDetailsForm" autocomplete="off">
+                    <div class="form-group">
+                        <label for="bankName">Bank Name</label>
+                        <input type="text" (input)="validateBankName(bankDetailsForm.value)" id="bankName"
+                            class="form-control" formControlName="bankName"
+                            [ngClass]="{ 'is-invalid': f.bankName.touched && f.bankName.errors }">
+                        <span id="message1" style="color: red; font-size: 14px;"></span>
+                        <div class="col-md-2" *ngIf=" f.bankName.touched && f.bankName.errors" class="invalid-feedback">
+                            <div *ngIf="f.bankName.errors.required">Name is required</div>
+                            <div *ngIf="f.bankName.errors.minlength">Name must be at least 2 characters</div>
+                            <div *ngIf="f.bankName.errors.pattern">Please enter only alphabates</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="accountNumber">Account Number</label>
+                        <input type="number" class="form-control" formControlName="accountNumber"
+                            (input)="validateAccountNumber(bankDetailsForm.value)" id="accountNumber"
+                            [ngClass]="{ 'is-invalid': f.accountNumber.touched && f.accountNumber.errors }">
+                        <span id="message" style="color: red; font-size: 14px;"></span>
+                        <div class="col-md-4" *ngIf="f.accountNumber.touched && f.accountNumber.errors" class="invalid-feedback">
+                            <div *ngIf= "f.accountNumber.errors.required">Account Number is required</div>
+                            <div *ngIf="f.accountNumber.errors.minlength">Account Number must be only 16 digits</div>
+                            <div *ngIf="f.accountNumber.errors.maxlength">Account Number must be only 16 digits</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                            <label for="IFSCCode">IFSC Code</label>
+                            <input type="number" class="form-control" formControlName="IFSCCode"
+                                (input)="validateIFSCCode(bankDetailsForm.value)" id="IFSCCode"
+                                [ngClass]="{ 'is-invalid': f.IFSCCode.touched && f.IFSCCode.errors }">
+                            <span id="message" style="color: red; font-size: 14px;"></span>
+                            <div class="col-md-4" *ngIf="f.IFSCCode.touched && f.IFSCCode.errors" class="invalid-feedback">
+                                <div *ngIf= "f.IFSCCode.errors.required">IFSC Code is required</div>
+                                <div *ngIf="f.IFSCCode.errors.minlength">IFSC Code must be only 9 digits</div>
+                                <div *ngIf="f.IFSCCode.errors.maxlength">IFSC Code must be only 9 digits</div>
+                            </div>
+                        </div>
+                    <button type="button" class="btn btn-primary" (click)="onSubmit()"
+                        [disabled]="isDisable || bankDetailsForm.invalid">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

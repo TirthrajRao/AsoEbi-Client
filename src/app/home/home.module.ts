@@ -12,6 +12,8 @@ import { ThankYouMessageComponent } from '../thank-you-message/thank-you-message
 import { MyCartComponent } from '../my-cart/my-cart.component';
 import { PaymentComponent } from '../payment/payment.component';
 import { HeaderComponent } from '../header/header.component';
+import {BankDetailsComponent} from '../bank-details/bank-details.component';
+
 const routes: Routes = [
 
   {
@@ -51,6 +53,10 @@ const routes: Routes = [
         path: 'payment/:id',
         component: PaymentComponent
       },
+      {
+        path: 'bankDetails',
+        component: BankDetailsComponent
+      }
       // {
       //   path: 'admin-dashboard',
       //   component: AdminDashboardComponent
@@ -82,7 +88,8 @@ const routes: Routes = [
     ViewEventComponent,
     ThankYouMessageComponent,
     MyCartComponent,
-    PaymentComponent
+    PaymentComponent,
+    BankDetailsComponent
   ],
   imports: [
     CommonModule,

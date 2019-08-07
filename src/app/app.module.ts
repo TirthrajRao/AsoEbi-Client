@@ -29,6 +29,7 @@ import { AdminEventDetailsComponent } from './admin-event-details/admin-event-de
 import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
 // import { ClipboardModule } from 'ngx-clipboard';
 import { DisplayPageComponent } from './display-page/display-page.component';
+// import { BankDetailsComponent } from './bank-details/bank-details.component';
 
 /**
  * Key For login with google and facebook 
@@ -68,7 +69,8 @@ export function provideConfig() {
     ForgotPasswordComponent,
     AdminEventDetailsComponent,
     AdminUserListComponent,
-    DisplayPageComponent
+    DisplayPageComponent,
+    // BankDetailsComponent
   ],
   imports: [
     BrowserModule,

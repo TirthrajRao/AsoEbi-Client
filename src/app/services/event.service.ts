@@ -57,12 +57,13 @@ export class EventService {
     formdata.append('deadlineDate', body.deadlineDate);
     formdata.append('isPublic', body.isPublic);
     formdata.append('isLogistics', body.isLogistics);
+    formdata.append('eventId',id)
     if (files.length) {
       for (let i = 0; i < files.length; i++) {
         formdata.append("profile", files[i]);
       }
     }
-    return this.http.put(config.baseApiUrl + "api/event/update-event/" + id, formdata)
+    return this.http.put(config.baseApiUrl + "api/event", formdata)
   }
 
   /**

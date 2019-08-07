@@ -80,7 +80,7 @@ export class AuthInterceptor implements HttpInterceptor {
               })
               this.router.navigate(['/login']);
             }
-            return throwError('backend comm error');
+            return throwError(error);
           })
         );
     };

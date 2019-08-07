@@ -178,6 +178,7 @@ export class CreateEventComponent implements OnInit {
     let actArray = [];
     for (let i = 0; i < activities.length; i++) {
       actArray.push(this.fb.group({
+        activityId: new FormControl(activities[i]._id),
         activityName: new FormControl(activities[i].activityName),
         activityDate: new FormControl(activities[i].activityDate.split("T")[0]),
         eventId: new FormControl(activities[i].eventId)
@@ -221,8 +222,8 @@ export class CreateEventComponent implements OnInit {
             this.gArray.push(this.fb.group({
               activityId: new FormControl(activities[i]._id),
               groupName: new FormControl(activities[i].group[j].groupName),
-              male: this.fb.array([this.maleItemArray(activities[i].group[j].male)]),
-              female: new FormGroup(this.femaleItemArray(activities[i].group[j].female))
+              male: this.fb.array([this.maleItemArray(activities[i].group[j].item[i])]),
+              female: this.fb.array([this.femaleItemArray(activities[i].group[j].item[i])])
             }));
           }
           // return this.gArray;
@@ -259,12 +260,12 @@ export class CreateEventComponent implements OnInit {
     })
   }
 
-  addItemsMale(index){
+  addItemsMale(index) {
     console.log(index)
     const control = <FormArray>index.controls.male;
     control.push(this.maleItemArray());
   }
-  removeItemsMale(gIndex, mIndex){
+  removeItemsMale(gIndex, mIndex) {
     const control = <FormArray>gIndex.controls.male;
     control.removeAt(mIndex);
   }
@@ -274,19 +275,28 @@ export class CreateEventComponent implements OnInit {
    * Create items of female in new event 
    */
   femaleItemArray(details?) {
-    return this.fb.group ({
+    return this.fb.group({
       itemName: new FormControl(details ? details.itemName : ''),
       itemType: new FormControl(details ? details.itemType : ''),
       itemPrice: new FormControl(details ? details.itemPrice : '')
     })
   }
-  addItemsfeMale(index){
+
+  /**
+   * @param {String} index
+   * add Item of clothes in male  
+   */
+  addItemsfeMale(index) {
     const control = <FormArray>index.controls.female;
     control.push(this.femaleItemArray());
   }
 
 
-  removeItemsfeMale(gIndex, fIndex){
+  /**
+   * @param {String} index
+   * add Item of clothes in female  
+   */
+  removeItemsfeMale(gIndex, fIndex) {
     const control = <FormArray>gIndex.controls.female;
     control.removeAt(fIndex);
   }
@@ -355,7 +365,7 @@ export class CreateEventComponent implements OnInit {
    * To get all activities with name 
    */
   getActivityName(activityId, controls) {
-    console.log("activitiesss=======>", controls);
+    // console.log("activitiesss=======>", controls);
     if (this.createdActivity)
       return this.createdActivity[_.findIndex(this.createdActivity, { _id: activityId })].activityName;
     else

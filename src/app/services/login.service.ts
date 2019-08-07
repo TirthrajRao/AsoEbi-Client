@@ -186,5 +186,9 @@ export class LoginService {
     localStorage.removeItem('userRole');
     localStorage.removeItem('isGuestJoined');
   }
+
+  addBankDetails(data){
+    return this.http.put(config.baseApiUrl+ "api/account", data);
+  }
 }
 

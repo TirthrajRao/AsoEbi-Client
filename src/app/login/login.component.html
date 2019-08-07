@@ -25,7 +25,10 @@
                     </div>
                     <div class="form-group">
                         <label for="pwd">Password:</label>
-                        <input type="password" class="form-control" formControlName="password">
+                        <input type="password" class="form-control" id="pwd" formControlName="password"  [type]="show ? 'text' : 'password'">
+                        <!-- <span toggle="#password-field" class="fa fa-fw fa-eye-slash field-icon toggle-password" (click)="password()" [title]="pwd ? 'hide password' : 'show password'"></span> -->
+                        <span toggle="#password-field" class="fa fa-fw fa-eye-slash field-icon toggle-password"
+                       (click)="password()"></span>
                     </div>
 
                     <div class="text-center">

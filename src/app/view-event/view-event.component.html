@@ -3,18 +3,18 @@
 <div class="row">
     <div class="col-12">
         <div *ngFor="let item of allDetailsofEvent">
-            <button type="button" class="btn btn-primary m-auto" (click)="editEventDeatils(item._id)"
+            <button type="button" class="btn btn-primary m-auto" (click)="editEventDeatils(item._id)" *ngIf= "isCelebrant == true"
                 >Edit Event </button>
-            <button type="button" class="btn btn-primary m-auto " (click)="deleteEvent(item._id)"
+            <button type="button" class="btn btn-primary m-auto " (click)="deleteEvent(item._id)" *ngIf= "isCelebrant == true"
                 >Delete Event </button>
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <div class="card p-4">
-                            <button type="button" class="btn btn-danger ml-auto mb-2" (click)="myCart(item._id)">My
+                            <button type="button" class="btn btn-danger ml-auto mb-2" (click)="myCart(item._id)" *ngIf= "isCelebrant == false">My
                                 Cart</button>
-                            <button type="button" class="btn btn-primary" *ngIf="item.isCelebrant == false"
-                                (click)="joinNow(item._id)" [disabled]="isDisable">Join Now
+                            <button type="button" class="btn btn-primary"
+                                (click)="joinNow(item._id)" [disabled]="isDisable" *ngIf= "isCelebrant == false">Join Now
                             </button>
                             <div [ngStyle]="{background: getSrc(item.eventTheme)}" class="theme-background">
                                 <div class="row">
@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
-                                        <p >EventLink:-
+                                        <p *ngIf= "isCelebrant == true">EventLink:-
                                             <input #inputTarget [(ngModel)]="eventLink" readonly />
                                             <button [ngxClipboard]="inputTarget">Copy</button>
                                         </p>
@@ -64,17 +64,18 @@
                                                                     <p class="font-weight-bold">Male</p>
                                                                 </div>
                                                             </div>
-                                                            <div class="row" *ngFor="let male of group.male">
-
-                                                                <div class="col-lg-6">
+                                                            <div class="row" *ngFor="let male of group.item">
+                                                                <div class="col-lg-9" *ngIf="male.itemGender == 'male'">
+                                                                        <!-- {{male.itemGender | json}} -->
+                                                                    <!-- <p>{{male.itemGender}}</p> -->
                                                                     <p>itemType :{{male.itemType}}</p>
                                                                     <p>itemPrice :{{male.itemPrice}}</p>
                                                                     <p>itemName :{{male.itemName}}</p>
                                                                 </div>
-                                                                <div class="col-lg-6">
+                                                                <div class="col-lg-3">
                                                                     <button type="button" class="btn btn-info"
                                                                         (click)="addToCart(item._id,male._id)"
-                                                                        [disabled]="isDisable">Add
+                                                                         *ngIf= "isCelebrant == false">Add
                                                                         To Cart </button>
                                                                 </div>
 
@@ -86,16 +87,16 @@
                                                                     <p class="font-weight-bold">Female</p>
                                                                 </div>
                                                             </div>
-                                                            <div class="row" *ngFor="let female of group.female">
-                                                                <div class="col-lg-6">
+                                                            <div class="row" *ngFor="let female of group.item">
+                                                                <div class="col-lg-9" *ngIf="female.itemGender == 'female'">
                                                                     <p>itemName :{{female.itemName}}</p>
                                                                     <p>itemType :{{female.itemType}}</p>
                                                                     <p>itemPrice :{{female.itemPrice}}</p>
                                                                 </div>
-                                                                <div class="col-lg-6">
+                                                                <div class="col-lg-3">
                                                                     <button type="button"  class="btn btn-info"
                                                                         (click)="addToCart(item._id,female._id)"
-                                                                        [disabled]="isDisable">Add
+                                                                         *ngIf= "isCelebrant == false">Add
                                                                         To Cart </button>
                                                                 </div>
                                                             </div>
