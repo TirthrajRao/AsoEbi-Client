@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { LoginService } from '../services/login.service';
 import { AlertService } from '../services/alert.service';
+declare var $: any;
 
 @Component({
   selector: 'app-signup',
@@ -11,9 +12,11 @@ import { AlertService } from '../services/alert.service';
 })
 export class SignupComponent implements OnInit {
   signUpForm: FormGroup;
+  personalDetailsForm: FormGroup;
   isDisable = false;
   submitted = false;
-
+  signUpDetails;
+  userId;
   constructor(private route: ActivatedRoute,
     private router: Router, private _loginService: LoginService, private _alertService: AlertService) { }
 
@@ -23,10 +26,12 @@ export class SignupComponent implements OnInit {
      * SignUp form for new user
      */
     this.signUpForm = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)])
+    })
+    this.personalDetailsForm = new FormGroup({
       firstName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
       lastName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
       mobile: new FormControl('', [Validators.minLength(10), Validators.maxLength(10)]),
     })
   }
@@ -35,6 +40,7 @@ export class SignupComponent implements OnInit {
    * Display error message
    */
   get f() { return this.signUpForm.controls; }
+  get p(){ return this.personalDetailsForm.controls}
 
   /**
    * @param {String} form
@@ -94,17 +100,55 @@ export class SignupComponent implements OnInit {
       return;
     }
     this.isDisable = true;
-    this._loginService.signUp(this.signUpForm.value)
+    this._loginService.signUpOfEmail(this.signUpForm.value)
       .subscribe((data: any) => {
         console.log("signup user details", data);
-        let message
-        this._alertService.getSuccess(data.message)
+        this._alertService.getSuccess(data.message);
+        $('.firstStep').css({ 'display': 'none' })
+        $('.secondStep').css({ 'display': 'block' });
         this.isDisable = false;
-        this.router.navigate(['/login']);
+        this.signUpDetails = data.data.email;
+        console.log("first sign up details", this.signUpDetails);
       }, err => {
         console.log(err);
         this._alertService.getError(err.message);
+        this.isDisable = true;
       })
+  }
+
+  verifyCode(data) {
+    console.log("data", data);
+    const verified = {
+      code: data,
+      email: this.signUpDetails
+    }
+    this._loginService.verificationCode(verified)
+      .subscribe((data: any) => {
+        console.log("positive response", data);
+        this.userId = data.data.userId;
+        console.log(this.userId);
+        $('.secondStep').css({ 'display': 'none' });
+        $('.thirdStep').css({ 'display': 'block' })
+      }, err => {
+        console.log(err);
+      })
+  }
+
+
+  personalDetails(data){
+    console.log(this.personalDetailsForm.value);
+    const finalDetails = {
+      details: this.personalDetailsForm.value,
+      userId: this.userId
+    }
+    this._loginService.personalDetails(finalDetails)
+    .subscribe((data:any)=>{
+      console.log("final response", data);
+      this._alertService.getSuccess(data.message);
+      this.router.navigate(['/login']);
+    }, err=>{
+      console.log(err);
+    })
   }
 
 }

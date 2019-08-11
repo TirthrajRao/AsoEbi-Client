@@ -64,7 +64,7 @@ export class LoginService {
    * @param {Object} details
    * SignUp form form new user  
    */
-  signUp(details) {
+  signUpOfEmail(details) {
     return this.http.post(config.baseApiUrl + "api/signup", details);
   }
 
@@ -189,6 +189,15 @@ export class LoginService {
 
   addBankDetails(data){
     return this.http.put(config.baseApiUrl+ "api/account", data);
+  }
+
+  verificationCode(data){
+    console.log(data);
+  return  this.http.put(config.baseApiUrl+"api/email-verify", data);
+  }
+  personalDetails(details){
+    console.log(details);
+    return this.http.put(config.baseApiUrl+"api/addProfile",details);
   }
 }
 

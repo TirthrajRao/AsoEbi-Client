@@ -136,6 +136,19 @@
                         </form>
                     </div>
                 </div>
+
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Bank Account</button>
+                <div class="row" *ngFor="let details of bankDetails">
+                    <input type="radio" name="Bank details" (change)="getDetails($event, details)">
+                    <div class="col-md-12">
+                        <label>Bank Name</label>
+                        <input type="text" class="form-control" ngModel="{{details ? details.bankName : ''}}">
+                        <label>Account Number</label>
+                        <input type="text" class="form-control" ngModel="{{details ? details.accountNumber : ''}}">
+                        <label>IFSC Code</label>
+                        <input type="text" class="form-control" ngModel="{{details ? details.IFSCCode : ''}}">
+                    </div>
+                </div>
             </div>
 
             <h3><span class="step_number">2</span>Event Activities</h3>
@@ -255,45 +268,45 @@
                                     </div>
                                     <h4>Female</h4>
                                     <div class="row" formArrayName="female">
-                                            <div [formGroupName]="j"
-                                                *ngFor="let group of item.controls.female.controls; let j = index">
-                                                <div class="col-8">
+                                        <div [formGroupName]="j"
+                                            *ngFor="let group of item.controls.female.controls; let j = index">
+                                            <div class="col-8">
+                                                <div class="form_input">
+                                                    <label>Female</label>
                                                     <div class="form_input">
-                                                        <label>Female</label>
-                                                        <div class="form_input">
-                                                            <label>Item Name</label>
-                                                            <input type="text" class="form-control"
-                                                                formControlName="itemName">
-                                                        </div>
-                                                        <div class="form_input">
-                                                            <label>Item Type</label>
-                                                            <input type="text" class="form-control"
-                                                                formControlName="itemType">
-                                                        </div>
-                                                        <div class="form_input">
-                                                            <label>Item Price</label>
-                                                            <input type="number" class="form-control"
-                                                                formControlName="itemPrice">
-                                                        </div>
+                                                        <label>Item Name</label>
+                                                        <input type="text" class="form-control"
+                                                            formControlName="itemName">
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-2">
-                                                <div class="add_row">
-                                                    <button type="button" class="btn float-right btn-primary"
-                                                        *ngIf="item.controls.female.controls.length>1"
-                                                        (click)="removeItemsfeMale(item,j)"><span class="fa fa-plus"></span>
-                                                        Remove Female</button>
+                                                    <div class="form_input">
+                                                        <label>Item Type</label>
+                                                        <input type="text" class="form-control"
+                                                            formControlName="itemType">
+                                                    </div>
+                                                    <div class="form_input">
+                                                        <label>Item Price</label>
+                                                        <input type="number" class="form-control"
+                                                            formControlName="itemPrice">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-2">
                                             <div class="add_row">
                                                 <button type="button" class="btn float-right btn-primary"
-                                                    (click)="addItemsfeMale(item)"><span class="fa fa-plus"></span>
-                                                    Add Female</button>
+                                                    *ngIf="item.controls.female.controls.length>1"
+                                                    (click)="removeItemsfeMale(item,j)"><span class="fa fa-plus"></span>
+                                                    Remove Female</button>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="add_row">
+                                            <button type="button" class="btn float-right btn-primary"
+                                                (click)="addItemsfeMale(item)"><span class="fa fa-plus"></span>
+                                                Add Female</button>
+                                        </div>
+                                    </div>
                                     <div class="remove_row" *ngIf="groupForm.controls.group.controls.length>1">
                                         <button type="submit" class="btn btn-primary btn-blobk"
                                             (click)="removeGroupField(i)"><span class="fa fa-minus"></span>
@@ -320,3 +333,54 @@
         </div>
     </div>
 </section>
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form [formGroup]="bankDetailsForm" autocomplete="off">
+                <div class="form-group">
+                    <label for="bankName">Bank Name</label>
+                    <input type="text" (input)="validateBankName(bankDetailsForm.value)" id="bankName"
+                        class="form-control" formControlName="bankName"
+                        [ngClass]="{ 'is-invalid': errorMessage.bankName.touched && errorMessage.bankName.errors }">
+                    <span id="message1" style="color: red; font-size: 14px;"></span>
+                    <div class="col-md-2" *ngIf=" errorMessage.bankName.touched && errorMessage.bankName.errors" class="invalid-feedback">
+                        <div *ngIf="errorMessage.bankName.errors.required">Bank Name is required</div>
+                        <div *ngIf="errorMessage.bankName.errors.minlength">Name must be at least 2 characters</div>
+                        <div *ngIf="errorMessage.bankName.errors.pattern">Please enter only alphabates</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="accountNumber">Account Number</label>
+                    <input type="number" class="form-control" formControlName="accountNumber"
+                        (input)="validateAccountNumber(bankDetailsForm.value)" id="accountNumber"
+                        [ngClass]="{ 'is-invalid': errorMessage.accountNumber.touched && errorMessage.accountNumber.errors }">
+                    <span id="message" style="color: red; font-size: 14px;"></span>
+                    <div class="col-md-4" *ngIf="errorMessage.accountNumber.touched && errorMessage.accountNumber.errors"
+                        class="invalid-feedback">
+                        <div *ngIf="errorMessage.accountNumber.errors.required">Account Number is required</div>
+                        <div *ngIf="errorMessage.accountNumber.errors.minlength">Account Number must be only 16 digits</div>
+                        <div *ngIf="errorMessage.accountNumber.errors.maxlength">Account Number must be only 16 digits</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="IFSCCode">IFSC Code</label>
+                    <input type="number" class="form-control" formControlName="IFSCCode"
+                        (input)="validateIFSCCode(bankDetailsForm.value)" id="IFSCCode"
+                        [ngClass]="{ 'is-invalid': errorMessage.IFSCCode.touched && errorMessage.IFSCCode.errors }">
+                    <span id="message" style="color: red; font-size: 14px;"></span>
+                    <div class="col-md-4" *ngIf="errorMessage.IFSCCode.touched && errorMessage.IFSCCode.errors" class="invalid-feedback">
+                        <div *ngIf="errorMessage.IFSCCode.errors.required">IFSC Code is required</div>
+                        <div *ngIf="errorMessage.IFSCCode.errors.minlength">IFSC Code must be only 9 digits</div>
+                        <div *ngIf="errorMessage.IFSCCode.errors.maxlength">IFSC Code must be only 9 digits</div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary" (click)="addMoreBankDetails()"
+                    [disabled]="isDisable || bankDetailsForm.invalid">Submit</button>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>

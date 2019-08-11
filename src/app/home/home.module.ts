@@ -13,6 +13,10 @@ import { MyCartComponent } from '../my-cart/my-cart.component';
 import { PaymentComponent } from '../payment/payment.component';
 import { HeaderComponent } from '../header/header.component';
 import {BankDetailsComponent} from '../bank-details/bank-details.component';
+import { AdminUserListComponent } from '../admin-user-list/admin-user-list.component';
+import { AdminEventDetailsComponent } from '../admin-event-details/admin-event-details.component';
+import { AdminDashboardComponent } from '../admin-dashboard/admin-dashboard.component';
+import { TotalEventsComponent } from '../total-events/total-events.component';
 
 const routes: Routes = [
 
@@ -56,23 +60,24 @@ const routes: Routes = [
       {
         path: 'bankDetails',
         component: BankDetailsComponent
+      },
+      // Admin Panel
+      {
+        path: 'admin-dashboard',
+        component: AdminDashboardComponent
+      },
+      {
+        path: 'total-event',
+        component: TotalEventsComponent
+      },
+      {
+        path: 'admin-eventDetails/:id',
+        component: AdminEventDetailsComponent
+      },
+      {
+        path: 'total-user',
+        component: AdminUserListComponent
       }
-      // {
-      //   path: 'admin-dashboard',
-      //   component: AdminDashboardComponent
-      // },
-      // {
-      //   path: 'total-event',
-      //   component: TotalEventsComponent
-      // },
-      // {
-      //   path: 'admin-eventDetails/:id',
-      //   component: AdminEventDetailsComponent
-      // },
-      // {
-      //   path: 'total-user',
-      //   component: AdminUserListComponent
-      // }
     ]
   }
 
@@ -89,7 +94,11 @@ const routes: Routes = [
     ThankYouMessageComponent,
     MyCartComponent,
     PaymentComponent,
-    BankDetailsComponent
+    BankDetailsComponent,
+    AdminDashboardComponent,
+    TotalEventsComponent,
+    AdminEventDetailsComponent,
+    AdminUserListComponent
   ],
   imports: [
     CommonModule,

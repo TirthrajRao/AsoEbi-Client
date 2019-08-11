@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl, FormBuilder, FormArray } from '@angular/forms';
 import { EventService } from '../services/event.service';
+import {LoginService} from '../services/login.service';
 import { AlertService } from '../services/alert.service';
 declare var $: any;
 import * as _ from 'lodash';
@@ -35,8 +36,12 @@ export class CreateEventComponent implements OnInit {
   private sub: any;
   path = config.baseMediaUrl;
   activitiesDate: any = [];
+  bankDetails: any = [];
+  bankDetailsForm: FormGroup; 
+  isDisable = false;
+  submitted = false;
   constructor(private route: ActivatedRoute, private router: Router, private _eventService: EventService,
-    private alertService: AlertService, private fb: FormBuilder) {
+    private alertService: AlertService, private fb: FormBuilder, private _loginService:LoginService) {
     this.sub = this.route.params.subscribe(params => {
       if (params.id) {
         this.eventId = params.id;
@@ -58,6 +63,12 @@ export class CreateEventComponent implements OnInit {
       isPublic: new FormControl(this.isPublicVal),
       isLogistics: new FormControl(this.isLogistics),
       background: new FormControl('')
+    })
+
+    this.bankDetailsForm = new FormGroup({
+      bankName: new FormControl('',[Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
+      accountNumber: new FormControl('',[Validators.required,Validators.minLength(16), Validators.maxLength(16)]),
+      IFSCCode: new FormControl('',[Validators.required,Validators.minLength(9), Validators.maxLength(9)])
     })
 
     // this.maleItemArray = []
@@ -88,13 +99,15 @@ export class CreateEventComponent implements OnInit {
     $('.dropdown-menu a').on('click', function () {
       $('.dropdown-toggle').html($(this).html());
     })
+    this.getBankDetails();
   }
 
   /**
    * Error message function 
    */
-  get f() { return this.eventForm.controls; }
+  get f() { return this.eventForm.controls}
 
+  get errorMessage() { return this.bankDetailsForm.controls; }
   /**
    * Create new event with it's details
    */
@@ -454,4 +467,71 @@ export class CreateEventComponent implements OnInit {
         this.alertService.getError(err.message);
       })
   }
+
+  getBankDetails(){
+    this._eventService.getBankDetails()
+    .subscribe((data: any)=>{
+      console.log(data);
+      this.bankDetails = data.data.bankDetail;
+      console.log("har har mahadev", this.bankDetails);
+    }, err=>{
+      console.log(err);
+    })
+  }
+  addMoreBankDetails(){
+    console.log(this.bankDetailsForm);
+    this.submitted = true;
+    if (this.bankDetailsForm.invalid) {
+      return;
+    }
+    this.isDisable = true;
+    this._loginService.addBankDetails(this.bankDetailsForm.value)
+      .subscribe((data: any) => {
+        console.log("data of bank details", data);
+        this.alertService.getSuccess(data.message)
+        this.bankDetailsForm.reset();
+      }, (err:any) => {
+        console.log(err);
+        this.alertService.getError(err.message);
+      })
+  }
+  getDetails(e, details){
+    console.log(details);
+  }
+
+  validateBankName(form) {
+    console.log(form);
+    const nameInput = /[a-zA-Z ]/;
+    let message1 = document.getElementById('message1');
+    if (!form.bankName.match(nameInput)) {
+      console.log("message==========", message1)
+      message1.innerHTML = "Name can not start with digit"
+    } else {
+      message1.innerHTML = "";
+    }
+  }
+  validateAccountNumber(form){
+
+    console.log(form);
+    const phoneno = /[0-9]/;
+    let message = document.getElementById('message');
+    if (!form.accountNumber.match(phoneno)) {
+      console.log("message==========", message)
+      message.innerHTML = "Please enter only numbers"
+    } else {
+      message.innerHTML = "";
+    }
+  }
+  validateIFSCCode(form){
+    console.log(form);
+    const phoneno = /[0-9]/;
+    let message = document.getElementById('message');
+    if (!form.IFSCCode.match(phoneno)) {
+      console.log("message==========", message)
+      message.innerHTML = "Please enter only numbers"
+    } else {
+      message.innerHTML = "";
+    
+  }
+}
 }

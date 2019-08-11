@@ -17,13 +17,13 @@
             <tr *ngFor="let products of finalCartDetails" class="product">
                 <td>{{products.activityName}}</td>
                 <td>{{products.groupName}}</td>
-                <td>{{products.gender}}</td>
+                <td>{{products.itemGender}}</td>
                 <td>{{products.itemName}}</td>
                 <td>{{products.itemPrice}}</td>
                 <td>
                     <input type="number" min="1" [(ngModel)]="products.quantity" disabled>
                 </td>
-                <td>{{products.subTotal}}</td>
+                <td>{{products.quantity*products.itemPrice}}</td>
             </tr>
             <tr>
                 <td>Total</td>
@@ -45,7 +45,7 @@
                 <td></td>
                 <td></td>
                 <td>
-                    <input type="number" min="1" id="donation" (change)="finalTotal($event.target.value)"
+                    <input type="number" min="1" id="donation" (keyup)="finalTotal($event.target.value)"
                         [(ngModel)]='donation'>
                 </td>
             </tr>

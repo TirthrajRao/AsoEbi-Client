@@ -226,6 +226,10 @@ export class EventService {
     }
   }
 
+  getBankDetails(){
+    return this.http.get(config.baseApiUrl+"api/accountList");
+  }
+
   // Admin Panel//
 
   /**

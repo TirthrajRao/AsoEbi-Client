@@ -167,10 +167,17 @@ export class LoginComponent implements OnInit {
     this._loginService.serverHotmailLogin(token)
       .subscribe((data: any) => {
         console.log("response of hotmail", data);
-        this.isUserLoggedIn = true;
-        localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
-        localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
-        this.router.navigate(['/home']);
+        if (this.eventIdWithLogin) {
+          this.isUserLoggedIn = true;
+          localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+          this.router.navigate(['/home/view-event/', this.eventIdWithLogin])
+        }
+        else {
+          this.isUserLoggedIn = true;
+          localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+          localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
+          this.router.navigate(['/home']);
+        }
       }, err => {
         console.log(err);
         this.alertService.getError(err.messege);
@@ -205,10 +212,17 @@ export class LoginComponent implements OnInit {
     this._loginService.sendYahooToken(token, userId)
       .subscribe(data => {
         console.log(data)
-        this.isUserLoggedIn = true;
-        localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
-        localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
-        this.router.navigate(['/home']);
+        if (this.eventIdWithLogin) {
+          this.isUserLoggedIn = true;
+          localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+          this.router.navigate(['/home/view-event/', this.eventIdWithLogin])
+        }
+        else {
+          this.isUserLoggedIn = true;
+          localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+          localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
+          this.router.navigate(['/home']);
+        }
       }, err => {
         console.log(err);
         this.alertService.getError(err.messege);
@@ -250,9 +264,9 @@ export class LoginComponent implements OnInit {
         }
       }, (error: any) => {
         console.log(error);
-        let errorMessage = error.error.message;
-        console.log("error message -------->>>>>>>>", errorMessage);
-        this.alertService.getError(errorMessage);
+        // let errorMessage = error.error.message;
+        // console.log("error message -------->>>>>>>>", errorMessage);
+        // this.alertService.getError(errorMessage);
         this.isDiable = false;
         this.loginForm.reset();
         console.log("disable:", this.isDiable);
@@ -271,10 +285,17 @@ export class LoginComponent implements OnInit {
       console.log("google id of login user", googleIdToken);
       this._loginService.googleLogin(googleIdToken).subscribe(data => {
         console.log("response positive of google", data);
-        this.isDiable = false;
-        this.isUserLoggedIn = true;
-        localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
-        this.router.navigate(['/home']);
+        if (this.eventIdWithLogin) {
+          this.isUserLoggedIn = true;
+          localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+          this.router.navigate(['/home/view-event/', this.eventIdWithLogin])
+        }
+        else {
+          this.isDiable = false;
+          this.isUserLoggedIn = true;
+          localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+          this.router.navigate(['/home']);
+        }
       }, err => {
         console.log("error display", err);
       })
@@ -297,10 +318,17 @@ export class LoginComponent implements OnInit {
         this._loginService.facebookLogin(facebookId)
           .subscribe(data => {
             console.log("data of facebook login user", data);
-            this.isDiable = false;
-            this.isUserLoggedIn = true;
-            localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
-            this.router.navigate(['/home']);
+            if (this.eventIdWithLogin) {
+              this.isUserLoggedIn = true;
+              localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+              this.router.navigate(['/home/view-event/', this.eventIdWithLogin])
+            }
+            else {
+              this.isDiable = false;
+              this.isUserLoggedIn = true;
+              localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+              this.router.navigate(['/home']);
+            }
           }, err => {
             console.log(err);
           })
