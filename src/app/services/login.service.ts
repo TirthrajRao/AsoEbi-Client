@@ -187,17 +187,32 @@ export class LoginService {
     localStorage.removeItem('isGuestJoined');
   }
 
-  addBankDetails(data){
-    return this.http.put(config.baseApiUrl+ "api/account", data);
+
+  /**
+   * @param {Object} data
+   * Add bank details of user 
+   */
+  addBankDetails(data) {
+    return this.http.put(config.baseApiUrl + "api/account", data);
   }
 
-  verificationCode(data){
+  /**
+   * 
+   * @param {Object} data
+   * Check verification code for new register user 
+   */
+  verificationCode(data) {
     console.log(data);
-  return  this.http.put(config.baseApiUrl+"api/email-verify", data);
+    return this.http.put(config.baseApiUrl + "api/email-verify", data);
   }
-  personalDetails(details){
+
+  /**
+   * @param {Object} details
+   * Add more other details of new user 
+   */
+  personalDetails(details) {
     console.log(details);
-    return this.http.put(config.baseApiUrl+"api/addProfile",details);
+    return this.http.put(config.baseApiUrl + "api/addProfile", details);
   }
 }
 

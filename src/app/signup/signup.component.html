@@ -6,7 +6,8 @@
     <span></span>
 </div>
 
-<!-- SignUp form field  -->
+<!-- Register Form for new user  -->
+
 <div *ngIf="!isDiable">
     <div class="row firstStep">
         <form [formGroup]="signUpForm" autocomplete="off">
@@ -15,8 +16,8 @@
                     <h3 class="main_title_outside_box">Aso Ebi</h3>
                     <div class="box_content_all_pages">
                         <div class="two_btn_div">
-                            <a href="join.html" class="float-left btn_join text-white">Join</a>
-                            <a href="enter.html" class="float-right btn_enter text-white">Enter</a>
+                            <a routerLink="/signUp" class="float-left btn_join text-white">Join</a>
+                            <a routerLink="/login" class="float-right btn_enter text-white">Enter</a>
                         </div>
                         <div class="five_social_login_btns">
                             <div class="mail_login">
@@ -57,6 +58,7 @@
                             <button type="button" id="create" class="submit_btn" (click)="onSubmit()"
                                 [disabled]="isDisable || signUpForm.invalid">Create</button>
                         </div>
+                        <div class="sharethis-inline-share-buttons">FaceBook</div>
                     </div>
                 </div>
             </section>
@@ -94,6 +96,10 @@
                 [disabled]="isDisable || signUpForm.invalid">Create</button> -->
         </form>
     </div>
+
+
+    <!-- Verification form for new register user -->
+
     <div class="row secondStep" style="display:none">
         <!-- <div class="col-md-12">
             <input #joinCode type="number" placeholder="Join Code" name="joinCode" value="joinCodeValue">
@@ -121,6 +127,9 @@
             </div>
         </section>
     </div>
+
+
+    <!-- personalDetails form for new register user -->
 
     <div class="row thirdStep" style="display:none">
         <form [formGroup]="personalDetailsForm" autocomplete="off">
@@ -166,49 +175,48 @@
                     <h3 class="main_title_outside_box">Aso Ebi</h3>
                     <div class="box_content_all_pages">
                         <div class="form_content">
-                            
-                                <div class="form_input">
-                                        <input type="text" (input)="validateFirstName(personalDetailsForm.value)" id="firstName"
-                                        class="form-control" formControlName="firstName"
-                                        [ngClass]="{ 'is-invalid': p.firstName.touched && p.firstName.errors }">
-                                    <span id="message1" style="color: red; font-size: 14px;"></span>
-                                    <div class="col-md-2" *ngIf=" p.firstName.touched && p.firstName.errors"
-                                        class="invalid-feedback">
-                                        <div *ngIf="p.firstName.errors.required">Name is required</div>
-                                        <div *ngIf="p.firstName.errors.minlength">Name must be at least 2 characters</div>
-                                        <div *ngIf="p.firstName.errors.pattern">Please enter only alphabates</div>
-                                    </div>
-                                </div>
-                                <div class="form_input">
-                                    <input type="text" class="form-control" placeholder="Your Last Name"
-                                        formControlName="lastName" (input)="validateLastName(personalDetailsForm.value)"
-                                        id="lastName"
-                                        [ngClass]="{ 'is-invalid': p.lastName.touched && p.lastName.errors }">
-                                    <span id="message2" style="color: red; font-size: 14px;"></span>
-                                    <div class="col-md-2" *ngIf=" p.lastName.touched && p.lastName.errors"
-                                        class="invalid-feedback">
-                                        <div *ngIf="p.lastName.errors.required">Name is required</div>
-                                        <div *ngIf="p.lastName.errors.minlength">Name must be at least 2 characters
-                                        </div>
-                                        <div *ngIf="p.lastName.errors.pattern">Please enter only alphabates</div>
-                                    </div>
-                                </div>
-                                <div class="form_input">
-                                    <input type="tel" class="form-control" placeholder="Mobile Number" formControlName="mobile"
-                                        (input)="validatePhone(personalDetailsForm.value)" id="mobile"
-                                        [ngClass]="{ 'is-invalid': p.mobile.touched && p.mobile.errors }">
-                                    <span id="message" style="color: red; font-size: 14px;"></span>
-                                    <div class="col-md-4" *ngIf="p.mobile.touched && p.mobile.errors"
-                                        class="invalid-feedback">
-                                        <div *ngIf="p.mobile.errors.minlength">Phone must be only 10 digits</div>
-                                        <div *ngIf="p.mobile.errors.maxlength">Phone must be only 10 digits</div>
-                                    </div>
-                                </div>
-                                <!-- <a href="join_form_three.html" class="submit_btn">Send</a> -->
 
-                                <button type="button" id="personal" class="submit_btn" (click)="personalDetails()"
-                                    [disabled]="isDisable || personalDetailsForm.invalid">personalDetails</button>
-                            
+                            <div class="form_input">
+                                <input type="text" (input)="validateFirstName(personalDetailsForm.value)" id="firstName"
+                                    class="form-control" formControlName="firstName"
+                                    [ngClass]="{ 'is-invalid': p.firstName.touched && p.firstName.errors }">
+                                <span id="message1" style="color: red; font-size: 14px;"></span>
+                                <div class="col-md-2" *ngIf=" p.firstName.touched && p.firstName.errors"
+                                    class="invalid-feedback">
+                                    <div *ngIf="p.firstName.errors.required">Name is required</div>
+                                    <div *ngIf="p.firstName.errors.minlength">Name must be at least 2 characters</div>
+                                    <div *ngIf="p.firstName.errors.pattern">Please enter only alphabates</div>
+                                </div>
+                            </div>
+                            <div class="form_input">
+                                <input type="text" class="form-control" placeholder="Your Last Name"
+                                    formControlName="lastName" (input)="validateLastName(personalDetailsForm.value)"
+                                    id="lastName" [ngClass]="{ 'is-invalid': p.lastName.touched && p.lastName.errors }">
+                                <span id="message2" style="color: red; font-size: 14px;"></span>
+                                <div class="col-md-2" *ngIf=" p.lastName.touched && p.lastName.errors"
+                                    class="invalid-feedback">
+                                    <div *ngIf="p.lastName.errors.required">Name is required</div>
+                                    <div *ngIf="p.lastName.errors.minlength">Name must be at least 2 characters
+                                    </div>
+                                    <div *ngIf="p.lastName.errors.pattern">Please enter only alphabates</div>
+                                </div>
+                            </div>
+                            <div class="form_input">
+                                <input type="tel" class="form-control" placeholder="Mobile Number"
+                                    formControlName="mobile" (input)="validatePhone(personalDetailsForm.value)"
+                                    id="mobile" [ngClass]="{ 'is-invalid': p.mobile.touched && p.mobile.errors }">
+                                <span id="message" style="color: red; font-size: 14px;"></span>
+                                <div class="col-md-4" *ngIf="p.mobile.touched && p.mobile.errors"
+                                    class="invalid-feedback">
+                                    <div *ngIf="p.mobile.errors.minlength">Phone must be only 10 digits</div>
+                                    <div *ngIf="p.mobile.errors.maxlength">Phone must be only 10 digits</div>
+                                </div>
+                            </div>
+                            <!-- <a href="join_form_three.html" class="submit_btn">Send</a> -->
+
+                            <button type="button" id="personal" class="submit_btn" (click)="personalDetails()"
+                                [disabled]="isDisable || personalDetailsForm.invalid">personalDetails</button>
+
                         </div>
                     </div>
                 </div>

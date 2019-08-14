@@ -9,27 +9,12 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginService } from './services/login.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HomeComponent } from './home/home.component';
-import { CreateEventComponent } from './create-event/create-event.component';
-import { MyEventComponent } from './my-event/my-event.component';
-import { HeaderComponent } from './header/header.component';
 import { AuthInterceptor } from './services/auth.interceptor';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { LoaderComponent } from './loader/loader.component';
-import { ViewEventComponent } from './view-event/view-event.component';
-import { ThankYouMessageComponent } from './thank-you-message/thank-you-message.component';
 import { GuestEventComponent } from './guest-event/guest-event.component';
-import { MyCartComponent } from './my-cart/my-cart.component';
 // import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-import { PaymentComponent } from './payment/payment.component';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import { TotalEventsComponent } from './total-events/total-events.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { AdminEventDetailsComponent } from './admin-event-details/admin-event-details.component';
-import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
-// import { ClipboardModule } from 'ngx-clipboard';
 import { DisplayPageComponent } from './display-page/display-page.component';
-// import { BankDetailsComponent } from './bank-details/bank-details.component';
 
 /**
  * Key For login with google and facebook 
@@ -53,24 +38,10 @@ export function provideConfig() {
     AppComponent,
     LoginComponent,
     SignupComponent,
-    // HomeComponent,
-    // CreateEventComponent,
-    // MyEventComponent,
-    // HeaderComponent,
-    // ResetPasswordComponent,
     LoaderComponent,
-    // ViewEventComponent,
-    // ThankYouMessageComponent,
     GuestEventComponent,
-    // MyCartComponent,
-    // PaymentComponent,
-    // AdminDashboardComponent,
-    // TotalEventsComponent,
     ForgotPasswordComponent,
-    // AdminEventDetailsComponent,
-    // AdminUserListComponent,
-    DisplayPageComponent,
-    // BankDetailsComponent
+    DisplayPageComponent
   ],
   imports: [
     BrowserModule,
@@ -80,7 +51,6 @@ export function provideConfig() {
     HttpClientModule,
     SocialLoginModule,
     // CKEditorModule,
-    // ClipboardModule,
   ],
   providers: [LoginService,
     {

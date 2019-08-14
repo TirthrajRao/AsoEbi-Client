@@ -15,20 +15,22 @@ export class BankDetailsComponent implements OnInit {
   constructor(private router: Router, private _loginService: LoginService, private _alertService: AlertService) { }
 
   ngOnInit() {
-
     this.bankDetailsForm = new FormGroup({
-      bankName: new FormControl('',[Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
-      accountNumber: new FormControl('',[Validators.required,Validators.minLength(16), Validators.maxLength(16)]),
-      IFSCCode: new FormControl('',[Validators.required,Validators.minLength(9), Validators.maxLength(9)])
+      bankName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
+      accountNumber: new FormControl('', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]),
+      IFSCCode: new FormControl('', [Validators.required, Validators.minLength(9), Validators.maxLength(9)])
     })
   }
-
 
   /**
    * Display error message
    */
   get f() { return this.bankDetailsForm.controls; }
 
+  /**
+   * @param {json} data
+   * Add bank account details of user
+   */
   onSubmit(data) {
     console.log(this.bankDetailsForm);
     this.submitted = true;
@@ -41,13 +43,17 @@ export class BankDetailsComponent implements OnInit {
         console.log("data of bank details", data);
         this._alertService.getSuccess(data.message)
         this.bankDetailsForm.reset();
-      }, (err:any) => {
+      }, (err: any) => {
         console.log(err);
         this._alertService.getError(err.message);
       })
 
   }
 
+  /**
+   * @param {String} form
+   * validation of bankName with proper error message 
+   */
   validateBankName(form) {
     console.log(form);
     const nameInput = /[a-zA-Z ]/;
@@ -59,7 +65,12 @@ export class BankDetailsComponent implements OnInit {
       message1.innerHTML = "";
     }
   }
-  validateAccountNumber(form){
+
+  /**
+   * @param {String} form
+   * validation of accountNumber with proper error message 
+   */
+  validateAccountNumber(form) {
 
     console.log(form);
     const phoneno = /[0-9]/;
@@ -71,7 +82,12 @@ export class BankDetailsComponent implements OnInit {
       message.innerHTML = "";
     }
   }
-  validateIFSCCode(form){
+
+  /**
+   * @param {String} form
+   * validation of IFSC Code with proper error message 
+   */
+  validateIFSCCode(form) {
     console.log(form);
     const phoneno = /[0-9]/;
     let message = document.getElementById('message');
@@ -80,7 +96,7 @@ export class BankDetailsComponent implements OnInit {
       message.innerHTML = "Please enter only numbers"
     } else {
       message.innerHTML = "";
-    
+
+    }
   }
-}
 }

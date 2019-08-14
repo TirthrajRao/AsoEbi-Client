@@ -1,0 +1,142 @@
+@media (max-width: 1366px){
+	.green_slide .inner_content_box img{
+		max-width: 200px;
+	}
+	.home_slider,.inner_content_box, .box_content_all_pages {
+		height: 525px;
+		width: 535px;
+	}
+	.green_slide .inner_content_box h3,
+	.pink_slide .inner_content_box h3,
+	.orange_slide .inner_content_box h3,
+	.orange_slide .inner_content_box h2,
+	.yellow_slide .inner_content_box h3,
+	h3.main_title_outside_box,
+	.box_content_all_pages h3{
+		font-size: 42px;
+	}
+	.home_slider_section .two_btn_div {
+		margin-top: 20px;
+	}
+	.box_content_all_pages {
+		padding: 40px;
+	}
+	.third_step .box_content_all_pages .two_btn_div {
+		margin-bottom: 40px;
+	}
+	.box_content_all_pages .two_btn_div {
+		margin-bottom: 30px;
+	}
+	.four_social_btns ul li a{
+		font-size: 20px;
+	}
+	.form-control{
+		height: 60px;
+		font-size: 30px;
+		padding: 8px 20px;
+	}
+	a.submit_btn {
+		height: 60px;
+		font-size: 20px;
+		line-height: 60px;
+	}
+	h3.main_title_outside_box{
+		margin: 0px;
+	}
+	.join_asoebi_section.second_step a.submit_btn,
+	.join_asoebi_section.third_step a.submit_btn,
+	.join_asoebi_section.forth_step a.submit_btn{
+		font-size: 42px;
+	}
+}
+@media (max-width: 575px){
+	.two_btn_div a {
+		height: 36px;
+		line-height: 36px;
+		width: 100px;
+		font-size: 14px;
+	}
+	.home_slider, .inner_content_box, .box_content_all_pages {
+		height: 350px;
+		width: 100%;
+	}
+	.inner_content_box{
+		padding: 15px;
+	}
+	.green_slide .inner_content_box h3,
+	.pink_slide .inner_content_box h3,
+	.orange_slide .inner_content_box h3,
+	.orange_slide .inner_content_box h2,
+	.yellow_slide .inner_content_box h3,
+	.box_content_all_pages h3{
+		font-size: 24px;
+	}
+	.green_slide .inner_content_box img {
+		max-width: 150px;
+	}
+	.orange_slide .inner_content_box img {
+		max-width: 65px;
+	}
+	ul.slick-dots button{
+		height: 5px;
+		width: 18px;
+	}
+	.box_content_all_pages {
+		padding: 15px;
+	}
+	.third_step .box_content_all_pages .two_btn_div{
+		margin-bottom: 20px;
+	}
+	.box_content_all_pages .two_btn_div {
+		margin-bottom: 10px;
+	}
+	.mail_login {
+		display: none;
+	}
+	.four_social_btns{
+		width: 100%;
+	}
+	.four_social_btns ul{
+		margin-left: -10px;
+	}
+	.four_social_btns ul li a {
+		font-size: 14px;
+		padding: 6.5px 10px 6.5px 45px;
+		line-height: 27px;
+	}
+	.four_social_btns ul li img{
+		height: 30px;
+		width: 30px;
+		left: 10px;
+	}
+	.form-control {
+		height: 45px;
+		font-size: 20px;
+		padding: 8px 15px;
+	}
+	.form_input ::placeholder{
+		top: 3px;
+	}
+	.form_input :-ms-input-placeholder{
+		top: 3px;
+	}
+	.form_input ::-ms-input-placeholder{
+		top: 3px;
+	}
+	a.submit_btn {
+		height: 45px;
+		font-size: 16px;
+		line-height: 45px;
+	}
+	.join_asoebi_section.second_step a.submit_btn,
+	.join_asoebi_section.third_step a.submit_btn,
+	.join_asoebi_section.forth_step a.submit_btn{
+		font-size: 34px;
+	}
+}
+@media (max-width: 812px) and (orientation : landscape) {
+	.home_slider_section, .enter_asoebi_section, .join_asoebi_section.first_step, .join_asoebi_section.second_step, .join_asoebi_section.third_step, .join_asoebi_section.forth_step {
+		height: auto;
+		padding: 30px;
+	}
+}

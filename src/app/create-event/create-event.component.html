@@ -95,7 +95,15 @@
                                             (change)="addFile($event.target.files)" id="customFile"
                                             accept="image/png, image/jpeg, image/jpg" hidden>
                                         <label class="custom-file-label" for="customFile">Choose file</label>
+                                        <img [src]="imgURL" height="200" class="float-right" id="imageFilter" *ngIf="imgURL">
                                     </div>
+                                    <p id="color1" >Grayscale</p>
+                                    <p id="color2">Sepia</p>
+                                    <p id="color3">contrast</p>
+                                    <p id="color4">brightness</p>
+                                    <p id="color5">opacity</p>
+                                    <p id="color6">saturate</p>
+                                    <p id="normal">Remove Filter</p>
                                 </div>
                             </div>
                             <div class="row mt-2">
@@ -137,7 +145,8 @@
                     </div>
                 </div>
 
-                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Bank Account</button>
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Bank
+                    Account</button>
                 <div class="row" *ngFor="let details of bankDetails">
                     <input type="radio" name="Bank details" (change)="getDetails($event, details)">
                     <div class="col-md-12">
@@ -346,7 +355,8 @@
                         class="form-control" formControlName="bankName"
                         [ngClass]="{ 'is-invalid': errorMessage.bankName.touched && errorMessage.bankName.errors }">
                     <span id="message1" style="color: red; font-size: 14px;"></span>
-                    <div class="col-md-2" *ngIf=" errorMessage.bankName.touched && errorMessage.bankName.errors" class="invalid-feedback">
+                    <div class="col-md-2" *ngIf=" errorMessage.bankName.touched && errorMessage.bankName.errors"
+                        class="invalid-feedback">
                         <div *ngIf="errorMessage.bankName.errors.required">Bank Name is required</div>
                         <div *ngIf="errorMessage.bankName.errors.minlength">Name must be at least 2 characters</div>
                         <div *ngIf="errorMessage.bankName.errors.pattern">Please enter only alphabates</div>
@@ -358,11 +368,14 @@
                         (input)="validateAccountNumber(bankDetailsForm.value)" id="accountNumber"
                         [ngClass]="{ 'is-invalid': errorMessage.accountNumber.touched && errorMessage.accountNumber.errors }">
                     <span id="message" style="color: red; font-size: 14px;"></span>
-                    <div class="col-md-4" *ngIf="errorMessage.accountNumber.touched && errorMessage.accountNumber.errors"
+                    <div class="col-md-4"
+                        *ngIf="errorMessage.accountNumber.touched && errorMessage.accountNumber.errors"
                         class="invalid-feedback">
                         <div *ngIf="errorMessage.accountNumber.errors.required">Account Number is required</div>
-                        <div *ngIf="errorMessage.accountNumber.errors.minlength">Account Number must be only 16 digits</div>
-                        <div *ngIf="errorMessage.accountNumber.errors.maxlength">Account Number must be only 16 digits</div>
+                        <div *ngIf="errorMessage.accountNumber.errors.minlength">Account Number must be only 16 digits
+                        </div>
+                        <div *ngIf="errorMessage.accountNumber.errors.maxlength">Account Number must be only 16 digits
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
@@ -371,7 +384,8 @@
                         (input)="validateIFSCCode(bankDetailsForm.value)" id="IFSCCode"
                         [ngClass]="{ 'is-invalid': errorMessage.IFSCCode.touched && errorMessage.IFSCCode.errors }">
                     <span id="message" style="color: red; font-size: 14px;"></span>
-                    <div class="col-md-4" *ngIf="errorMessage.IFSCCode.touched && errorMessage.IFSCCode.errors" class="invalid-feedback">
+                    <div class="col-md-4" *ngIf="errorMessage.IFSCCode.touched && errorMessage.IFSCCode.errors"
+                        class="invalid-feedback">
                         <div *ngIf="errorMessage.IFSCCode.errors.required">IFSC Code is required</div>
                         <div *ngIf="errorMessage.IFSCCode.errors.minlength">IFSC Code must be only 9 digits</div>
                         <div *ngIf="errorMessage.IFSCCode.errors.maxlength">IFSC Code must be only 9 digits</div>

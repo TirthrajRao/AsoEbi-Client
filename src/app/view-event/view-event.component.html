@@ -3,18 +3,19 @@
 <div class="row">
     <div class="col-12">
         <div *ngFor="let item of allDetailsofEvent">
-            <button type="button" class="btn btn-primary m-auto" (click)="editEventDeatils(item._id)" *ngIf= "isCelebrant == true"
-                >Edit Event </button>
-            <button type="button" class="btn btn-primary m-auto " (click)="deleteEvent(item._id)" *ngIf= "isCelebrant == true"
-                >Delete Event </button>
+            <button type="button" class="btn btn-primary m-auto" (click)="editEventDeatils(item._id)"
+                *ngIf="isCelebrant == true">Edit Event </button>
+            <button type="button" class="btn btn-primary m-auto " (click)="deleteEvent(item._id)"
+                *ngIf="isCelebrant == true">Delete Event </button>
             <div class="container">
                 <div class="row">
                     <div class="col-12">
                         <div class="card p-4">
-                            <button type="button" class="btn btn-danger ml-auto mb-2" (click)="myCart(item._id)" *ngIf= "isCelebrant == false">My
+                            <button type="button" class="btn btn-danger ml-auto mb-2" (click)="myCart(item._id)"
+                                *ngIf="isCelebrant == false">My
                                 Cart</button>
-                            <button type="button" class="btn btn-primary"
-                                (click)="joinNow(item._id)" [disabled]="isDisable" *ngIf= "isCelebrant == false">Join Now
+                            <button type="button" class="btn btn-primary" (click)="joinNow(item._id)"
+                                [disabled]="isDisable" *ngIf="isCelebrant == false">Join Now
                             </button>
                             <div [ngStyle]="{background: getSrc(item.eventTheme)}" class="theme-background">
                                 <div class="row">
@@ -41,11 +42,16 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
-                                        <p *ngIf= "isCelebrant == true">EventLink:-
+                                        <p *ngIf="isCelebrant == true">EventLink:-
                                             <input #inputTarget [(ngModel)]="eventLink" readonly />
                                             <button [ngxClipboard]="inputTarget">Copy</button>
                                         </p>
                                     </div>
+                                    <div class="fb-share-button"
+                                        data-href="https://developers.facebook.com/docs/plugins/"
+                                        data-layout="button" data-size="small"><a target="eventLink"
+                                            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
+                                            class="fb-xfbml-parse-ignore">Share</a></div>
                                 </div>
                                 <div class="container">
                                     <div class="row">
@@ -66,7 +72,7 @@
                                                             </div>
                                                             <div class="row" *ngFor="let male of group.item">
                                                                 <div class="col-lg-9" *ngIf="male.itemGender == 'male'">
-                                                                        <!-- {{male.itemGender | json}} -->
+                                                                    <!-- {{male.itemGender | json}} -->
                                                                     <!-- <p>{{male.itemGender}}</p> -->
                                                                     <p>itemType :{{male.itemType}}</p>
                                                                     <p>itemPrice :{{male.itemPrice}}</p>
@@ -75,7 +81,7 @@
                                                                 <div class="col-lg-3">
                                                                     <button type="button" class="btn btn-info"
                                                                         (click)="addToCart(item._id,male._id)"
-                                                                         *ngIf= "isCelebrant == false">Add
+                                                                        *ngIf="isCelebrant == false">Add
                                                                         To Cart </button>
                                                                 </div>
 
@@ -88,15 +94,16 @@
                                                                 </div>
                                                             </div>
                                                             <div class="row" *ngFor="let female of group.item">
-                                                                <div class="col-lg-9" *ngIf="female.itemGender == 'female'">
+                                                                <div class="col-lg-9"
+                                                                    *ngIf="female.itemGender == 'female'">
                                                                     <p>itemName :{{female.itemName}}</p>
                                                                     <p>itemType :{{female.itemType}}</p>
                                                                     <p>itemPrice :{{female.itemPrice}}</p>
                                                                 </div>
                                                                 <div class="col-lg-3">
-                                                                    <button type="button"  class="btn btn-info"
+                                                                    <button type="button" class="btn btn-info"
                                                                         (click)="addToCart(item._id,female._id)"
-                                                                         *ngIf= "isCelebrant == false">Add
+                                                                        *ngIf="isCelebrant == false">Add
                                                                         To Cart </button>
                                                                 </div>
                                                             </div>

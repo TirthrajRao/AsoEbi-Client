@@ -40,6 +40,9 @@ export class CreateEventComponent implements OnInit {
   bankDetailsForm: FormGroup; 
   isDisable = false;
   submitted = false;
+  public imagePath;
+  imgURL: any;
+
   constructor(private route: ActivatedRoute, private router: Router, private _eventService: EventService,
     private alertService: AlertService, private fb: FormBuilder, private _loginService:LoginService) {
     this.sub = this.route.params.subscribe(params => {
@@ -100,6 +103,50 @@ export class CreateEventComponent implements OnInit {
       $('.dropdown-toggle').html($(this).html());
     })
     this.getBankDetails();
+
+/* Filteration of profile photo */
+
+    $("#color1").click(function(){
+      $("#imageFilter").css({
+       '-webkit-filter':'grayscale(100%)',
+      });
+    });
+    
+    $("#color2").click(function(){
+      $("#imageFilter").css({
+         '-webkit-filter':'sepia(100%)',
+      });
+    });
+
+    $("#normal").click(function(){
+      $("#imageFilter").css({
+         '-webkit-filter':'none',
+      });
+    });
+
+    $("#color3").click(function(){
+      $("#imageFilter").css({
+         '-webkit-filter':'contrast(100%)',
+      });
+    });
+
+    $("#color4").click(function(){
+      $("#imageFilter").css({
+         '-webkit-filter':'brightness(3)',
+      });
+    });
+
+    $("#color5").click(function(){
+      $("#imageFilter").css({
+         '-webkit-filter':'opacity(0.2)',
+      });
+    });
+    
+    $("#color6").click(function(){
+      $("#imageFilter").css({
+         '-webkit-filter':'saturate(8)',
+      });
+    });
   }
 
   /**
@@ -131,15 +178,24 @@ export class CreateEventComponent implements OnInit {
    * To upload profile photo of event
    */
   addFile(event) {
-    console.log(event);
+    console.log("profile photo path",event);
     if (event[0].type == "image/jpeg" || event[0].type == "image/jpg" || event[0].type == "image/png") {
       this.files = event;
-    } else {
+      var reader = new FileReader();
+      this.imagePath = this.files;
+      reader.readAsDataURL(this.files[0]); 
+      reader.onload = (_event) => { 
+        this.imgURL = reader.result; 
+      }
+    } 
+    
+    else {
       Swal.fire({
         title: 'Error',
         text: "You can upload only image",
         type: 'warning',
       })
+      
     }
   }
 
@@ -152,6 +208,7 @@ export class CreateEventComponent implements OnInit {
     _.forEach(event, (file: any) => {
       if (file.type == "image/jpeg" || file.type == "image/jpg" || file.type == "image/png" || file.type == "image/gif") {
         this.themeFiles.push(file);
+        
       } else {
         Swal.fire({
           title: 'Error',

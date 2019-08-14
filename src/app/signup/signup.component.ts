@@ -17,6 +17,7 @@ export class SignupComponent implements OnInit {
   submitted = false;
   signUpDetails;
   userId;
+
   constructor(private route: ActivatedRoute,
     private router: Router, private _loginService: LoginService, private _alertService: AlertService) { }
 
@@ -37,10 +38,15 @@ export class SignupComponent implements OnInit {
   }
 
   /**
-   * Display error message
+   * Display error message for signUp form
    */
   get f() { return this.signUpForm.controls; }
-  get p(){ return this.personalDetailsForm.controls}
+
+
+  /**
+   * Display error message for personalDetails form
+   */
+  get p() { return this.personalDetailsForm.controls }
 
   /**
    * @param {String} form
@@ -116,6 +122,10 @@ export class SignupComponent implements OnInit {
       })
   }
 
+  /**
+   * @param {Object} data
+   * Check verification code for new register user 
+   */
   verifyCode(data) {
     console.log("data", data);
     const verified = {
@@ -135,20 +145,25 @@ export class SignupComponent implements OnInit {
   }
 
 
-  personalDetails(data){
+  /**
+   * 
+   * @param {Object} data
+   * Add other details of new user after verification  
+   */
+  personalDetails(data) {
     console.log(this.personalDetailsForm.value);
     const finalDetails = {
       details: this.personalDetailsForm.value,
       userId: this.userId
     }
     this._loginService.personalDetails(finalDetails)
-    .subscribe((data:any)=>{
-      console.log("final response", data);
-      this._alertService.getSuccess(data.message);
-      this.router.navigate(['/login']);
-    }, err=>{
-      console.log(err);
-    })
+      .subscribe((data: any) => {
+        console.log("final response", data);
+        this._alertService.getSuccess(data.message);
+        this.router.navigate(['/login']);
+      }, err => {
+        console.log(err);
+      })
   }
 
 }

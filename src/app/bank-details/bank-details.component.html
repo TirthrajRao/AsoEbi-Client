@@ -1,3 +1,5 @@
+<!-- Add bank details Form  -->
+
 <div *ngIf="!isDiable">
     <div class="row">
         <div class="col-md-6 m-auto pt-5">
@@ -21,24 +23,25 @@
                             (input)="validateAccountNumber(bankDetailsForm.value)" id="accountNumber"
                             [ngClass]="{ 'is-invalid': f.accountNumber.touched && f.accountNumber.errors }">
                         <span id="message" style="color: red; font-size: 14px;"></span>
-                        <div class="col-md-4" *ngIf="f.accountNumber.touched && f.accountNumber.errors" class="invalid-feedback">
-                            <div *ngIf= "f.accountNumber.errors.required">Account Number is required</div>
+                        <div class="col-md-4" *ngIf="f.accountNumber.touched && f.accountNumber.errors"
+                            class="invalid-feedback">
+                            <div *ngIf="f.accountNumber.errors.required">Account Number is required</div>
                             <div *ngIf="f.accountNumber.errors.minlength">Account Number must be only 16 digits</div>
                             <div *ngIf="f.accountNumber.errors.maxlength">Account Number must be only 16 digits</div>
                         </div>
                     </div>
                     <div class="form-group">
-                            <label for="IFSCCode">IFSC Code</label>
-                            <input type="number" class="form-control" formControlName="IFSCCode"
-                                (input)="validateIFSCCode(bankDetailsForm.value)" id="IFSCCode"
-                                [ngClass]="{ 'is-invalid': f.IFSCCode.touched && f.IFSCCode.errors }">
-                            <span id="message" style="color: red; font-size: 14px;"></span>
-                            <div class="col-md-4" *ngIf="f.IFSCCode.touched && f.IFSCCode.errors" class="invalid-feedback">
-                                <div *ngIf= "f.IFSCCode.errors.required">IFSC Code is required</div>
-                                <div *ngIf="f.IFSCCode.errors.minlength">IFSC Code must be only 9 digits</div>
-                                <div *ngIf="f.IFSCCode.errors.maxlength">IFSC Code must be only 9 digits</div>
-                            </div>
+                        <label for="IFSCCode">IFSC Code</label>
+                        <input type="number" class="form-control" formControlName="IFSCCode"
+                            (input)="validateIFSCCode(bankDetailsForm.value)" id="IFSCCode"
+                            [ngClass]="{ 'is-invalid': f.IFSCCode.touched && f.IFSCCode.errors }">
+                        <span id="message" style="color: red; font-size: 14px;"></span>
+                        <div class="col-md-4" *ngIf="f.IFSCCode.touched && f.IFSCCode.errors" class="invalid-feedback">
+                            <div *ngIf="f.IFSCCode.errors.required">IFSC Code is required</div>
+                            <div *ngIf="f.IFSCCode.errors.minlength">IFSC Code must be only 9 digits</div>
+                            <div *ngIf="f.IFSCCode.errors.maxlength">IFSC Code must be only 9 digits</div>
                         </div>
+                    </div>
                     <button type="button" class="btn btn-primary" (click)="onSubmit()"
                         [disabled]="isDisable || bankDetailsForm.invalid">Submit</button>
                 </form>
@@ -46,4 +49,3 @@
         </div>
     </div>
 </div>
-
