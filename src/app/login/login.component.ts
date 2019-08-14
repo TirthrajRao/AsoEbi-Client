@@ -78,12 +78,18 @@ export class LoginComponent implements OnInit {
     private router: Router, private _loginService: LoginService, private authService: AuthService,
     private alertService: AlertService, ) {
     this.show = false;
+
+    // redirect to home if already logged in
+    if (this._loginService.currentUserValue) {
+      this.router.navigate(['/home']);
+    }
   }
 
   ngOnInit() {
     $(".toggle-password").click(function () {
       $(this).toggleClass("fa-eye fa-eye-slash");
     });
+
 
 
     /**
@@ -264,9 +270,6 @@ export class LoginComponent implements OnInit {
         }
       }, (error: any) => {
         console.log(error);
-        // let errorMessage = error.error.message;
-        // console.log("error message -------->>>>>>>>", errorMessage);
-        // this.alertService.getError(errorMessage);
         this.isDiable = false;
         this.loginForm.reset();
         console.log("disable:", this.isDiable);

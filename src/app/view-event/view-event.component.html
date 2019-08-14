@@ -47,11 +47,28 @@
                                             <button [ngxClipboard]="inputTarget">Copy</button>
                                         </p>
                                     </div>
-                                    <div class="fb-share-button"
-                                        data-href="https://developers.facebook.com/docs/plugins/"
-                                        data-layout="button" data-size="small"><a target="eventLink"
+                                    <!-- <div class="fb-share-button" data-href="getLink(eventLink)" data-layout="button"
+                                        data-size="small"><a target="eventLink"
                                             href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
-                                            class="fb-xfbml-parse-ignore">Share</a></div>
+                                            class="fb-xfbml-parse-ignore">facebook</a></div> -->
+
+                                    <share-button [theme]="'circles-dark'" [button]="'whatsapp'" [showText]="true"
+                                        [showCount]="true"
+                                        [url]="'https://aso-ebi.com/welcome-guest/NWQ1MmMyMTdhNTBjMTUzYmVmNDc2MTIy'"
+                                        [autoSetMeta]="false"></share-button>
+                                    <share-button [theme]="'circles-dark'" [button]="'facebook'" [showText]="true"
+                                        [showCount]="true"
+                                        [url]="'https://aso-ebi.com/welcome-guest/NWQ1MmMyMTdhNTBjMTUzYmVmNDc2MTIy'">
+                                    </share-button>
+                                    <share-button [theme]="'circles-dark'" [button]="'email'" [showText]="true"
+                                        [showCount]="true" [url]="'https://twitter.com/'"></share-button>
+                                    <share-button [theme]="'circles-dark'" [button]="'google'" [showText]="true"
+                                        [showCount]="true" [url]="'https://twitter.com/'"></share-button>
+                                    <share-button [theme]="'circles-dark'" [button]="'sms'" [showText]="true"
+                                        [showCount]="true" [url]="'https://twitter.com/'"></share-button>
+                                    <share-button [theme]="'circles-dark'" [button]="'copy'" [showText]="true"
+                                        [showCount]="true" [url]="eventLink"></share-button>
+
                                 </div>
                                 <div class="container">
                                     <div class="row">
@@ -122,3 +139,10 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function getLink(eventLink) {
+        console.log("eventLinkeventLinkeventLink", eventLink);
+        return eventLink;
+    }
+</script>

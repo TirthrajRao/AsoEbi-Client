@@ -46,67 +46,7 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: ()=> HomeModule 
-  },
-  // {
-  //   path: "home",
-  //   component: HomeComponent,
-  //   // canActivate: [AuthGuard],
-  //   children: [
-  //     {
-  //       path: '',
-  //       redirectTo: 'home',
-  //       pathMatch: 'full'
-  //     },
-  //     {
-  //       path: 'createEvent',
-  //       component: CreateEventComponent,
-  //     },
-  //     {
-  //       path: 'editEvent/:id',
-  //       component: CreateEventComponent,
-  //     },
-  //     {
-  //       path: 'myEvent',
-  //       component: MyEventComponent,
-  //     },
-  //     {
-  //       path: 'reset-password',
-  //       component: ResetPasswordComponent,
-  //     },
-  //     {
-  //       path: 'view-event/:id',
-  //       component: ViewEventComponent,
-  //     },
-  //     {
-  //       path: 'thank-you/:id',
-  //       component: ThankYouMessageComponent
-  //     },
-  //     {
-  //       path: 'my-cart/:id',
-  //       component: MyCartComponent
-  //     },
-  //     {
-  //       path: 'payment/:id',
-  //       component: PaymentComponent
-  //     },
-  //     {
-  //       path: 'admin-dashboard',
-  //       component: AdminDashboardComponent
-  //     },
-  //     {
-  //       path: 'total-event',
-  //       component: TotalEventsComponent
-  //     },
-  //     {
-  //       path: 'admin-eventDetails/:id',
-  //       component: AdminEventDetailsComponent
-  //     },
-  //     {
-  //       path: 'total-user',
-  //       component: AdminUserListComponent
-  //     }
-  //   ]
-  // }
+  }
 ];
 
 @NgModule({

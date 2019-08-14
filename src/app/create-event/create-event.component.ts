@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl, FormBuilder, FormArray } from '@angular/forms';
 import { EventService } from '../services/event.service';
-import {LoginService} from '../services/login.service';
+import { LoginService } from '../services/login.service';
 import { AlertService } from '../services/alert.service';
 declare var $: any;
 import * as _ from 'lodash';
@@ -37,14 +37,14 @@ export class CreateEventComponent implements OnInit {
   path = config.baseMediaUrl;
   activitiesDate: any = [];
   bankDetails: any = [];
-  bankDetailsForm: FormGroup; 
+  bankDetailsForm: FormGroup;
   isDisable = false;
   submitted = false;
   public imagePath;
   imgURL: any;
 
   constructor(private route: ActivatedRoute, private router: Router, private _eventService: EventService,
-    private alertService: AlertService, private fb: FormBuilder, private _loginService:LoginService) {
+    private alertService: AlertService, private fb: FormBuilder, private _loginService: LoginService) {
     this.sub = this.route.params.subscribe(params => {
       if (params.id) {
         this.eventId = params.id;
@@ -69,9 +69,9 @@ export class CreateEventComponent implements OnInit {
     })
 
     this.bankDetailsForm = new FormGroup({
-      bankName: new FormControl('',[Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
-      accountNumber: new FormControl('',[Validators.required,Validators.minLength(16), Validators.maxLength(16)]),
-      IFSCCode: new FormControl('',[Validators.required,Validators.minLength(9), Validators.maxLength(9)])
+      bankName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
+      accountNumber: new FormControl('', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]),
+      IFSCCode: new FormControl('', [Validators.required, Validators.minLength(9), Validators.maxLength(9)])
     })
 
     // this.maleItemArray = []
@@ -104,56 +104,59 @@ export class CreateEventComponent implements OnInit {
     })
     this.getBankDetails();
 
-/* Filteration of profile photo */
+    /* Filteration of profile photo */
 
-    $("#color1").click(function(){
+    $("#color1").click(function () {
       $("#imageFilter").css({
-       '-webkit-filter':'grayscale(100%)',
-      });
-    });
-    
-    $("#color2").click(function(){
-      $("#imageFilter").css({
-         '-webkit-filter':'sepia(100%)',
+        '-webkit-filter': 'grayscale(100%)',
       });
     });
 
-    $("#normal").click(function(){
+    $("#color2").click(function () {
       $("#imageFilter").css({
-         '-webkit-filter':'none',
+        '-webkit-filter': 'sepia(100%)',
       });
     });
 
-    $("#color3").click(function(){
+    $("#normal").click(function () {
       $("#imageFilter").css({
-         '-webkit-filter':'contrast(100%)',
+        '-webkit-filter': 'none',
       });
     });
 
-    $("#color4").click(function(){
+    $("#color3").click(function () {
       $("#imageFilter").css({
-         '-webkit-filter':'brightness(3)',
+        '-webkit-filter': 'contrast(100%)',
       });
     });
 
-    $("#color5").click(function(){
+    $("#color4").click(function () {
       $("#imageFilter").css({
-         '-webkit-filter':'opacity(0.2)',
+        '-webkit-filter': 'brightness(3)',
       });
     });
-    
-    $("#color6").click(function(){
+
+    $("#color5").click(function () {
       $("#imageFilter").css({
-         '-webkit-filter':'saturate(8)',
+        '-webkit-filter': 'opacity(0.2)',
+      });
+    });
+
+    $("#color6").click(function () {
+      $("#imageFilter").css({
+        '-webkit-filter': 'saturate(8)',
       });
     });
   }
 
   /**
-   * Error message function 
+   * Error message of eventDetails 
    */
-  get f() { return this.eventForm.controls}
+  get f() { return this.eventForm.controls }
 
+  /**
+   * Error message of bankDetails
+   */
   get errorMessage() { return this.bankDetailsForm.controls; }
   /**
    * Create new event with it's details
@@ -178,24 +181,24 @@ export class CreateEventComponent implements OnInit {
    * To upload profile photo of event
    */
   addFile(event) {
-    console.log("profile photo path",event);
+    console.log("profile photo path", event);
     if (event[0].type == "image/jpeg" || event[0].type == "image/jpg" || event[0].type == "image/png") {
       this.files = event;
       var reader = new FileReader();
       this.imagePath = this.files;
-      reader.readAsDataURL(this.files[0]); 
-      reader.onload = (_event) => { 
-        this.imgURL = reader.result; 
+      reader.readAsDataURL(this.files[0]);
+      reader.onload = (_event) => {
+        this.imgURL = reader.result;
       }
-    } 
-    
+    }
+
     else {
       Swal.fire({
         title: 'Error',
         text: "You can upload only image",
         type: 'warning',
       })
-      
+
     }
   }
 
@@ -208,7 +211,7 @@ export class CreateEventComponent implements OnInit {
     _.forEach(event, (file: any) => {
       if (file.type == "image/jpeg" || file.type == "image/jpg" || file.type == "image/png" || file.type == "image/gif") {
         this.themeFiles.push(file);
-        
+
       } else {
         Swal.fire({
           title: 'Error',
@@ -525,17 +528,17 @@ export class CreateEventComponent implements OnInit {
       })
   }
 
-  getBankDetails(){
+  getBankDetails() {
     this._eventService.getBankDetails()
-    .subscribe((data: any)=>{
-      console.log(data);
-      this.bankDetails = data.data.bankDetail;
-      console.log("har har mahadev", this.bankDetails);
-    }, err=>{
-      console.log(err);
-    })
+      .subscribe((data: any) => {
+        console.log(data);
+        this.bankDetails = data.data.bankDetail;
+        console.log("har har mahadev", this.bankDetails);
+      }, err => {
+        console.log(err);
+      })
   }
-  addMoreBankDetails(){
+  addMoreBankDetails() {
     console.log(this.bankDetailsForm);
     this.submitted = true;
     if (this.bankDetailsForm.invalid) {
@@ -547,12 +550,12 @@ export class CreateEventComponent implements OnInit {
         console.log("data of bank details", data);
         this.alertService.getSuccess(data.message)
         this.bankDetailsForm.reset();
-      }, (err:any) => {
+      }, (err: any) => {
         console.log(err);
         this.alertService.getError(err.message);
       })
   }
-  getDetails(e, details){
+  getDetails(e, details) {
     console.log(details);
   }
 
@@ -567,7 +570,7 @@ export class CreateEventComponent implements OnInit {
       message1.innerHTML = "";
     }
   }
-  validateAccountNumber(form){
+  validateAccountNumber(form) {
 
     console.log(form);
     const phoneno = /[0-9]/;
@@ -579,7 +582,7 @@ export class CreateEventComponent implements OnInit {
       message.innerHTML = "";
     }
   }
-  validateIFSCCode(form){
+  validateIFSCCode(form) {
     console.log(form);
     const phoneno = /[0-9]/;
     let message = document.getElementById('message');
@@ -588,7 +591,7 @@ export class CreateEventComponent implements OnInit {
       message.innerHTML = "Please enter only numbers"
     } else {
       message.innerHTML = "";
-    
+
+    }
   }
-}
 }

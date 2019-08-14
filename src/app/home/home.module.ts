@@ -12,18 +12,23 @@ import { ThankYouMessageComponent } from '../thank-you-message/thank-you-message
 import { MyCartComponent } from '../my-cart/my-cart.component';
 import { PaymentComponent } from '../payment/payment.component';
 import { HeaderComponent } from '../header/header.component';
-import {BankDetailsComponent} from '../bank-details/bank-details.component';
+import { BankDetailsComponent } from '../bank-details/bank-details.component';
 import { AdminUserListComponent } from '../admin-user-list/admin-user-list.component';
 import { AdminEventDetailsComponent } from '../admin-event-details/admin-event-details.component';
 import { AdminDashboardComponent } from '../admin-dashboard/admin-dashboard.component';
 import { TotalEventsComponent } from '../total-events/total-events.component';
+import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
+import { ShareButtonModule } from '@ngx-share/button';
+import { ShareModule } from '@ngx-share/core';
+import{AuthGuard} from '../auth.guard';
+
 
 const routes: Routes = [
 
   {
     path: "",
     component: HomeComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'createEvent',
@@ -105,7 +110,10 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
-    ClipboardModule
+    ClipboardModule,
+    JwSocialButtonsModule,
+    ShareButtonModule,
+    ShareModule
   ],
 })
 export class HomeModule { }

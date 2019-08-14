@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +9,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  currentUser: any;
+  constructor(private router: Router, private _loginService: LoginService) {
+    this._loginService.currentUser.subscribe(x => this.currentUser = x);
+  }
   async ngOnInit() {
   }
 

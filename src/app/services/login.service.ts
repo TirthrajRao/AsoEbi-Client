@@ -185,6 +185,7 @@ export class LoginService {
     localStorage.removeItem('newEventId');
     localStorage.removeItem('userRole');
     localStorage.removeItem('isGuestJoined');
+    this.currentUserSubject.next(null);
   }
 
 

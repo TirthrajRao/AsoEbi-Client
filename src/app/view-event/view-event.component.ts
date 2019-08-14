@@ -4,6 +4,9 @@ import { EventService } from '../services/event.service';
 import { config } from '../config';
 import { ClipboardService } from 'ngx-clipboard';
 import { AlertService } from '../services/alert.service';
+// import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons/faFacebookSquare';
+// import '~@ngx-share/button/themes/default/default-theme';
+
 
 @Component({
   selector: 'app-view-event',
@@ -25,6 +28,8 @@ export class ViewEventComponent implements OnInit {
   eventLink;
   isCelebrant;
   isJoined;
+url = this.eventLink;
+// fbIcon = faFacebookSquare;
 
   constructor(private route: ActivatedRoute,
     private router: Router, private _eventService: EventService, private alertService: AlertService, private _clipboardService: ClipboardService) {
@@ -76,6 +81,10 @@ export class ViewEventComponent implements OnInit {
         this.alertService.getError(err.message);
       })
   }
+
+  // getLink(){
+  //   return this.eventLink;
+  // }
 
   joinNow(id) {
     console.log("after login send event id", id);
