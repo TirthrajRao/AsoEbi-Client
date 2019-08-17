@@ -28,8 +28,8 @@ export class ViewEventComponent implements OnInit {
   eventLink;
   isCelebrant;
   isJoined;
-url = this.eventLink;
-// fbIcon = faFacebookSquare;
+  url = this.eventLink;
+  // fbIcon = faFacebookSquare;
 
   constructor(private route: ActivatedRoute,
     private router: Router, private _eventService: EventService, private alertService: AlertService, private _clipboardService: ClipboardService) {
@@ -66,9 +66,9 @@ url = this.eventLink;
         console.log(this.isCelebrant);
         this.isJoined = data.data.isJoined;
         console.log(this.isJoined);
-        if(data.data.isJoined == true){
+        if (data.data.isJoined == true) {
           this.isDisable = true;
-        }else{
+        } else {
           this.isDisable = false;
         }
         // console.log("response store in variable", this.allDetailsofEvent);
@@ -89,7 +89,7 @@ url = this.eventLink;
   joinNow(id) {
     console.log("after login send event id", id);
     this._eventService.joinEvent(id)
-      .subscribe((data:any) => {
+      .subscribe((data: any) => {
         console.log("join event done", data);
         this.isDisable = true;
         this.alertService.getSuccess(data.message)
@@ -177,6 +177,11 @@ url = this.eventLink;
    */
   copy(text: string) {
     this._clipboardService.copyFromContent(text);
+  }
+
+  totalCollection(id) {
+    console.log("event id", id);
+    this.router.navigate(['home/collection/', id]);
   }
 
 }

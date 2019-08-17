@@ -319,7 +319,7 @@ export class LoginComponent implements OnInit {
       console.log("facebook id of user", facebookId);
       if (response.authResponse) {
         this._loginService.facebookLogin(facebookId)
-          .subscribe(data => {
+          .subscribe((data: any) => {
             console.log("data of facebook login user", data);
             if (this.eventIdWithLogin) {
               this.isUserLoggedIn = true;
@@ -327,10 +327,10 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['/home/view-event/', this.eventIdWithLogin])
             }
             else {
+              this.router.navigate(['/home']);
               this.isDiable = false;
               this.isUserLoggedIn = true;
               localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
-              this.router.navigate(['/home']);
             }
           }, err => {
             console.log(err);

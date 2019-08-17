@@ -1,14 +1,14 @@
 <!-- Loader  -->
-
+<!-- 
 <div class="load" *ngIf="isDiable">
     <span></span>
     <span></span>
     <span></span>
     <span></span>
-</div>
+</div> -->
 
 <!-- Form of login user  -->
-
+<!-- 
 <div *ngIf="!isDiable">
     <div class="row">
         <div class="col-md-4 m-auto pt-5">
@@ -26,7 +26,6 @@
                     <div class="form-group">
                         <label for="pwd">Password:</label>
                         <input type="password" class="form-control" id="pwd" formControlName="password"  [type]="show ? 'text' : 'password'">
-                        <!-- <span toggle="#password-field" class="fa fa-fw fa-eye-slash field-icon toggle-password" (click)="password()" [title]="pwd ? 'hide password' : 'show password'"></span> -->
                         <span toggle="#password-field" class="fa fa-fw fa-eye-slash field-icon toggle-password"
                        (click)="password()"></span>
                     </div>
@@ -56,11 +55,11 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- Forgot password Model -->
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -85,4 +84,128 @@
             </div>
         </div>
     </div>
+</div> -->
+
+
+<!-- New Design Integreat -->
+
+
+<section class="enter_section d-flex flex-wrap align-content-center" *ngIf="!isDiable">
+	<div class="container-fluid">
+		<h3 class="text-center">Aso Ebi</h3>
+		<div class="enter_screen_sec">
+			<div class="Join_inner_content_box">
+				<div class="inner_content_btn text-center">
+					<a routerLink="/signUp" class="nav-link btn_join2  float-left">Join</a>
+					<a routerLink="/login" class="btn_enter_screen text-white float-right">Enter</a>
+				</div>
+				<div class="login_form_sec">
+					<div class="row ">
+						<div class="email_display col-2 pr-0">
+							<div class="email_sec">
+								<a>
+									<img src="/assets/images/email.png">
+								</a>
+							</div>
+						</div>
+						<div class="col-sm-10 col-xs-12 social_media_login">
+							<div class="row">
+								<div class="col-6 p-0">
+									<div class="facebook_sec">
+										<a (click)="signWithFacebook();">
+											<img src="/assets/images/facebook.png">
+											<span>facebook</span>
+										</a>
+									</div>
+								</div>
+								<div class="col-6 p-0">
+									<div class="google_sec">
+										<a (click)="signInWithGoogleAccount()">
+											<img src="/assets/images/google.png">
+											<span>google</span>
+										</a>
+									</div>
+								</div>
+								<div class="col-6 p-0">
+									<div class="microsoft_sec">
+										<a (click)="hotMailLogin()">
+											<img src="/assets/images/microsoft.png">
+											<span>microsoft</span>
+										</a>
+									</div>
+								</div>
+								<div class="col-6 p-0">
+									<div class="yahoo_sec">
+										<a (click)="yahooLogin()">
+											<img src="/assets/images/yahoo.png">
+											<span>yahoo</span>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<form class="join_form login_form pt-0" [formGroup]="loginForm" autocomplete="off">
+						<div class="form-group mt-2">
+							<div class="input-group">
+								<input type="email" class="form-control" id="email" formControlName="email"
+									placeholder="Email/Phone Number" name="email"
+									[ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }">
+								<div class="col-md-2" *ngIf="f.email.touched && f.email.errors"
+									class="invalid-feedback">
+									<div *ngIf="f.email.errors.required">Email is required</div>
+									<div *ngIf="f.email.errors.email">Please enter valid Email</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group ">
+							<div class="input-group">
+								<input type="password" class="form-control" formControlName="password" id="pwd"
+									placeholder="Password" name="password">
+							</div>
+						</div>
+						<div class="btn_login">
+							<button type="submit" (click)="onSubmitLogin()" class="btn text-white in_btn"
+								[disabled]="isDisable || loginForm.invalid">In</button>
+						</div>
+						<a class="text-white" data-toggle="modal" data-target="#exampleModal">forgot password ?</a>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<!-- Forgot password modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<section class="text-center d-flex flex-wrap align-content-center "
+			id="exampleModal">
+			<div class="container-fluid">
+				<h3>Aso Ebi</h3>
+				<div class="forgot_password">
+					<div class="Join_inner_content_box">
+						<div class="inner_content_btn">
+							<a href="#" class="btn_join_pwd float-left">Join</a>
+							<a href="#" class="btn_enter_pwd text-white float-right">Enter</a>
+						</div>
+						<form class="join_form forgot_pwd_form ">
+							<div class="form-group">
+								<div class="input-group">
+									<input type="email" class="form-control" id="email" placeholder="Email address"
+										name="no">
+								</div>
+							</div>
+							<div class="btn_submit_pwd">
+								<a href="#" class="btn text-white text-center submit_btn_pwd text-center">Submit</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
 </div>

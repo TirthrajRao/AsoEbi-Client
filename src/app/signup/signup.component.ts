@@ -166,4 +166,9 @@ export class SignupComponent implements OnInit {
       })
   }
 
+  nextSection(goto, from) {
+    $('.' + goto).css({ 'display': 'block' });
+    $('.' + from).css({ 'display': 'none' })
+  }
+
 }

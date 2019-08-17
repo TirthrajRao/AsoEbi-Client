@@ -8,10 +8,30 @@
 
 <!-- Register Form for new user  -->
 
+
+
+<div class="custom_steps initialStep">
+
+    <section class="join_page1_section text-center d-flex flex-wrap align-content-center">
+        <div class="container-fluid">
+            <h3>Aso Ebi</h3>
+            <div class="join_aso_ebi_sec1">
+                <div class="Join_inner_content_box">
+                    <div class="inner_content_btn">
+                        <a (click)="nextSection('firstStep', 'initialStep')"
+                            class="btn_join1 text-white float-left">Join</a>
+                        <a href="#" class="btn_enter1 text-white float-right">Enter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
 <div *ngIf="!isDiable">
-    <div class="row firstStep">
-        <form [formGroup]="signUpForm" autocomplete="off">
-            <section class="join_asoebi_section second_step text-center d-flex flex-wrap align-content-center">
+    <div class="row custom_steps firstStep" style="display:none">
+
+        <!-- <section class="join_asoebi_section second_step text-center d-flex flex-wrap align-content-center">
                 <div class="container-fluid">
                     <h3 class="main_title_outside_box">Aso Ebi</h3>
                     <div class="box_content_all_pages">
@@ -61,8 +81,101 @@
                         <div class="sharethis-inline-share-buttons">FaceBook</div>
                     </div>
                 </div>
-            </section>
-            <!-- <div class="form-group">
+            </section> -->
+        <section class="join_page2_section d-flex flex-wrap align-content-center">
+            <div class="container-fluid">
+                <h3 class="text-center">Aso Ebi</h3>
+                <div class="join_aso_ebi_sec2">
+                    <div class="Join_inner_content_box">
+                        <div class="inner_content_btn text-center">
+                            <a (click)="nextSection('initialStep', 'firstStep')" class="btn_join2  float-left">Join</a>
+                            <a href="#" class="btn_enter2 text-white float-right">Enter</a>
+                        </div>
+                        <div class="login_form_sec">
+                            <div class="row ">
+                                <div class="email_display col-2 pr-0">
+                                    <div class="email_sec">
+                                        <a href="#">
+                                            <img src="/assets/images/email.png">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-10 col-xs-12 social_media_login">
+                                    <div class="row">
+                                        <div class="col-6 p-0">
+                                            <div class="facebook_sec">
+                                                <a href="#">
+                                                    <img src="/assets/images/facebook.png">
+                                                    <span>facebook</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 p-0">
+                                            <div class="google_sec">
+                                                <a href="#">
+                                                    <img src="/assets/images/google.png">
+                                                    <span>google</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 p-0">
+                                            <div class="microsoft_sec">
+                                                <a href="#">
+                                                    <img src="/assets/images/microsoft.png">
+                                                    <span>microsoft</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 p-0">
+                                            <div class="yahoo_sec">
+                                                <a href="#">
+                                                    <img src="/assets/images/yahoo.png">
+                                                    <span>yahoo</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <form class="join_form login_form" [formGroup]="signUpForm" autocomplete="off">
+                                <div class="form-group mt-2">
+                                    <div class="input-group ">
+                                        <input type="email" class="form-control" id="email"
+                                            placeholder="Email/Phone Number" name="email" formControlName="email"
+                                            [ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }">>
+                                        <div class="col-md-2" *ngIf="f.email.touched && f.email.errors"
+                                            class="invalid-feedback">
+                                            <div *ngIf="f.email.errors.required">Email is required</div>
+                                            <div *ngIf="f.email.errors.email">Please enter valid Email</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <div class="input-group">
+                                        <input placeholder="Password" type="password" class="form-control"
+                                            formControlName="password" id="password"
+                                            [ngClass]="{ 'is-invalid': f.password.touched && f.password.errors }">
+                                        <div *ngIf="f.password.touched && f.password.errors" class="invalid-feedback">
+                                            <div *ngIf="f.password.errors.required">Password is required</div>
+                                            <div *ngIf="f.password.errors.minlength">Password must contain atleast 6
+                                                characters</div>
+                                            <div *ngIf="f.password.errors.maxlength">Password must be only 20 characters
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="btn_login">
+                                    <button type="submit" class="btn text-white login_btn" (click)="onSubmit()"
+                                        [disabled]="isDisable || signUpForm.invalid">Create</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" id="email" class="form-control" formControlName="email"
                             [ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }">
@@ -81,7 +194,7 @@
                             <div *ngIf="f.password.errors.maxlength">Password must be only 20 characters</div>
                         </div>
                     </div> -->
-            <!-- <div class="form-group">
+        <!-- <div class="form-group">
                         <label for="mobile">PhoneNo</label>
                         <input type="tel" class="form-control" formControlName="mobile"
                             (input)="validatePhone(signUpForm.value)" id="mobile"
@@ -92,22 +205,22 @@
                             <div *ngIf="f.mobile.errors.maxlength">Phone must be only 10 digits</div>
                         </div>
                     </div> -->
-            <!-- <button type="button" id="create" class="btn btn-primary" (click)="onSubmit()"
+        <!-- <button type="button" id="create" class="btn btn-primary" (click)="onSubmit()"
                 [disabled]="isDisable || signUpForm.invalid">Create</button> -->
-        </form>
+
     </div>
 
 
     <!-- Verification form for new register user -->
 
-    <div class="row secondStep" style="display:none">
+    <div class="row custom_steps secondStep" style="display:none">
         <!-- <div class="col-md-12">
             <input #joinCode type="number" placeholder="Join Code" name="joinCode" value="joinCodeValue">
             <button type="button" class="btn btn-primary" (click)="verifyCode(joinCode.value)">Join</button>
             <a href="" (click)="resendCode()">Resend Code</a>
         </div> -->
 
-        <section class="join_asoebi_section third_step text-center d-flex flex-wrap align-content-center">
+        <!-- <section class="join_asoebi_section third_step text-center d-flex flex-wrap align-content-center">
             <div class="container-fluid">
                 <h3 class="main_title_outside_box">Aso Ebi</h3>
                 <div class="box_content_all_pages">
@@ -120,9 +233,33 @@
                             <input #joinCode type="text" name="joinCode" placeholder="Join code" class="form-control">
                         </div>
                         <button type="button" class="submit_btn" (click)="verifyCode(joinCode.value)">Join</button>
-                        <!-- <a href="join_form_three.html" class="submit_btn">Join</a> -->
                     </div>
                     <h3 class="text-white">Enter Join code <br> sent to your email/ <br> phone number</h3>
+                </div>
+            </div>
+        </section> -->
+        <section class="join_page3_section text-center d-flex flex-wrap align-content-center">
+            <div class="container-fluid">
+                <h3>Aso ebi</h3>
+                <div class="join_aso_ebi_sec3">
+                    <div class="Join_inner_content_box">
+                        <div class="inner_content_btn">
+                            <a (click)="nextSection('initialStep', 'secondStep')"
+                                class="btn_join3 text-white float-left">Join</a>
+                            <a href="#" class="btn_enter3 float-right">Enter</a>
+                            <form class="join_form">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input #joinCode type="text" name="joinCode" class="form-control" id="join_code"
+                                            placeholder="Join code">
+                                    </div>
+                                </div>
+                                <button type="button" class="btn text-white form_join_btn"
+                                    (click)="verifyCode(joinCode.value)">Join</button>
+                                <h3 class="text-white">Enter Join code<br>sent to your email/<br>phone number</h3>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -132,8 +269,8 @@
     <!-- personalDetails form for new register user -->
 
     <div class="row thirdStep" style="display:none">
-        <form [formGroup]="personalDetailsForm" autocomplete="off">
-            <!-- <div class="form-group">
+
+        <!-- <div class="form-group">
                         <label for="firstName">First Name</label>
                         <input type="text" (input)="validateFirstName(personalDetailsForm.value)" id="firstName"
                             class="form-control" formControlName="firstName"
@@ -170,7 +307,7 @@
                         </div>
                     </div> -->
 
-            <section class="join_asoebi_section forth_step text-center d-flex flex-wrap align-content-center">
+        <!-- <section class="join_asoebi_section forth_step text-center d-flex flex-wrap align-content-center">
                 <div class="container-fluid">
                     <h3 class="main_title_outside_box">Aso Ebi</h3>
                     <div class="box_content_all_pages">
@@ -212,17 +349,73 @@
                                     <div *ngIf="p.mobile.errors.maxlength">Phone must be only 10 digits</div>
                                 </div>
                             </div>
-                            <!-- <a href="join_form_three.html" class="submit_btn">Send</a> -->
-
                             <button type="button" id="personal" class="submit_btn" (click)="personalDetails()"
                                 [disabled]="isDisable || personalDetailsForm.invalid">personalDetails</button>
 
                         </div>
                     </div>
                 </div>
-            </section>
-        </form>
-
+            </section> -->
+        <section class="join_page4_section text-center d-flex flex-wrap align-content-center">
+            <div class="container-fluid">
+                <h3>Aso Ebi</h3>
+                <div class="join_aso_ebi_sec4">
+                    <div class="Join_inner_content_box">
+                        <form class="join_form join_name" [formGroup]="personalDetailsForm" autocomplete="off">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="First Name" name="fname"
+                                        (input)="validateFirstName(personalDetailsForm.value)" id="firstName"
+                                        class="form-control" formControlName="firstName"
+                                        [ngClass]="{ 'is-invalid': p.firstName.touched && p.firstName.errors }">
+                                    <span id="message1" style="color: red; font-size: 14px;"></span>
+                                    <div class="col-md-2" *ngIf=" p.firstName.touched && p.firstName.errors"
+                                        class="invalid-feedback">
+                                        <div *ngIf="p.firstName.errors.required">Name is required</div>
+                                        <div *ngIf="p.firstName.errors.minlength">Name must be at least 2 characters
+                                        </div>
+                                        <div *ngIf="p.firstName.errors.pattern">Please enter only alphabates</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Last Name" name="lname"
+                                        formControlName="lastName" (input)="validateLastName(personalDetailsForm.value)"
+                                        id="lastName"
+                                        [ngClass]="{ 'is-invalid': p.lastName.touched && p.lastName.errors }">
+                                    <span id="message2" style="color: red; font-size: 14px;"></span>
+                                    <div class="col-md-2" *ngIf=" p.lastName.touched && p.lastName.errors"
+                                        class="invalid-feedback">
+                                        <div *ngIf="p.lastName.errors.required">Name is required</div>
+                                        <div *ngIf="p.lastName.errors.minlength">Name must be at least 2 characters
+                                        </div>
+                                        <div *ngIf="p.lastName.errors.pattern">Please enter only alphabates</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Mobile Number" name="no"
+                                        formControlName="mobile" (input)="validatePhone(personalDetailsForm.value)"
+                                        id="mobile" [ngClass]="{ 'is-invalid': p.mobile.touched && p.mobile.errors }">
+                                    <span id="message" style="color: red; font-size: 14px;"></span>
+                                    <div class="col-md-4" *ngIf="p.mobile.touched && p.mobile.errors"
+                                        class="invalid-feedback">
+                                        <div *ngIf="p.mobile.errors.minlength">Phone must be only 10 digits</div>
+                                        <div *ngIf="p.mobile.errors.maxlength">Phone must be only 10 digits</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btn_submit">
+                                <button class="btn text-white submit_btn text-center" (click)="personalDetails()"
+                                    [disabled]="isDisable || personalDetailsForm.invalid">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </div>
 

@@ -41,7 +41,7 @@ export function provideConfig() {
     LoaderComponent,
     GuestEventComponent,
     ForgotPasswordComponent,
-    DisplayPageComponent
+    DisplayPageComponent,
   ],
   imports: [
     BrowserModule,

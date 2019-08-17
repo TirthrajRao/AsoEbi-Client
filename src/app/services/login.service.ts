@@ -82,6 +82,8 @@ export class LoginService {
         console.log("google login user accesstoken", googleUser);
         if (googleUser && googleUser.data.accessToken) {
           localStorage.setItem('currentUser', JSON.stringify(googleUser.data.accessToken));
+          localStorage.setItem('userRole',JSON.stringify(googleUser.data.UserRole));
+          this.currentUserSubject.next(googleUser);
         }
         return googleUser;
       }))
@@ -101,7 +103,11 @@ export class LoginService {
         console.log("facebook user jwt token", facebookUser);
         if (facebookUser && facebookUser.data.accessToken) {
           localStorage.setItem('currentUser', JSON.stringify(facebookUser.data.accessToken));
+          localStorage.setItem('userRole',JSON.stringify(facebookUser.data.UserRole));
+          this.currentUserSubject.next(facebookUser);
+
         }
+        return facebookUser;
       }))
   }
 
@@ -120,6 +126,8 @@ export class LoginService {
         console.log("hotmaail login user token", microsoftUser);
         if (microsoftUser && microsoftUser.data.accessToken) {
           localStorage.setItem('currentUser', JSON.stringify(microsoftUser.data.accessToken));
+          localStorage.setItem('userRole',JSON.stringify(microsoftUser.data.UserRole));
+          this.currentUserSubject.next(microsoftUser);
         }
         return microsoftUser;
       }))
@@ -142,6 +150,8 @@ export class LoginService {
         console.log("google login user accesstoken", yahooUser);
         if (yahooUser && yahooUser.data.accessToken) {
           localStorage.setItem('currentUser', JSON.stringify(yahooUser.data.accessToken));
+          localStorage.setItem('userRole',JSON.stringify(yahooUser.data.UserRole));
+          this.currentUserSubject.next(yahooUser);
         }
         return yahooUser;
       }))

@@ -57,7 +57,7 @@ export class EventService {
     formdata.append('deadlineDate', body.deadlineDate);
     formdata.append('isPublic', body.isPublic);
     formdata.append('isLogistics', body.isLogistics);
-    formdata.append('eventId',id)
+    formdata.append('eventId', id)
     if (files.length) {
       for (let i = 0; i < files.length; i++) {
         formdata.append("profile", files[i]);
@@ -226,8 +226,13 @@ export class EventService {
     }
   }
 
-  getBankDetails(){
-    return this.http.get(config.baseApiUrl+"api/accountList");
+  getBankDetails() {
+    return this.http.get(config.baseApiUrl + "api/accountList");
+  }
+
+  getCollections(id) {
+
+    return this.http.get(config.baseApiUrl + "api/event-collection?eventId="+ id);
   }
 
   // Admin Panel//

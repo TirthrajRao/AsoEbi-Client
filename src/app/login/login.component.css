@@ -1,0 +1,24 @@
+/*enter screen section start*/
+.enter_screen_sec .Join_inner_content_box {
+    background-image: url(/assets/images/enter1.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.in_btn{
+    background-color: #eb2577;
+}
+.btn_enter_screen{
+    background-color: #eb2577;
+    color: #000;
+}
+.enter_section{
+    background-color: #ef729d;
+    min-height: 100vh;
+}
+.enter_section h3{
+    font-size: 58.33px;
+    color: #201f62;
+    margin-top: -78px;
+    margin-bottom: 18px;
+}

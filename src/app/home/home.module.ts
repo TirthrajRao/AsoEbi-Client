@@ -17,6 +17,7 @@ import { AdminUserListComponent } from '../admin-user-list/admin-user-list.compo
 import { AdminEventDetailsComponent } from '../admin-event-details/admin-event-details.component';
 import { AdminDashboardComponent } from '../admin-dashboard/admin-dashboard.component';
 import { TotalEventsComponent } from '../total-events/total-events.component';
+import { CollectionsComponent } from '../collections/collections.component';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 import { ShareButtonModule } from '@ngx-share/button';
 import { ShareModule } from '@ngx-share/core';
@@ -66,6 +67,10 @@ const routes: Routes = [
         path: 'bankDetails',
         component: BankDetailsComponent
       },
+      {
+        path: 'collection/:id',
+        component: CollectionsComponent
+      },
       // Admin Panel
       {
         path: 'admin-dashboard',
@@ -103,11 +108,12 @@ const routes: Routes = [
     AdminDashboardComponent,
     TotalEventsComponent,
     AdminEventDetailsComponent,
-    AdminUserListComponent
+    AdminUserListComponent,
+    CollectionsComponent
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),
+    [RouterModule.forRoot(routes), { useHash: true }],
     FormsModule,
     ReactiveFormsModule,
     ClipboardModule,

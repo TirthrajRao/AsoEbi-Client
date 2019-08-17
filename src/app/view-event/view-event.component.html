@@ -7,6 +7,8 @@
                 *ngIf="isCelebrant == true">Edit Event </button>
             <button type="button" class="btn btn-primary m-auto " (click)="deleteEvent(item._id)"
                 *ngIf="isCelebrant == true">Delete Event </button>
+            <button type="button" class="btn btn-primary m-auto " (click)="totalCollection(item._id)"
+                *ngIf="isCelebrant == true">Collections </button>
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -47,11 +49,6 @@
                                             <button [ngxClipboard]="inputTarget">Copy</button>
                                         </p>
                                     </div>
-                                    <!-- <div class="fb-share-button" data-href="getLink(eventLink)" data-layout="button"
-                                        data-size="small"><a target="eventLink"
-                                            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
-                                            class="fb-xfbml-parse-ignore">facebook</a></div> -->
-
                                     <share-button [theme]="'circles-dark'" [button]="'whatsapp'" [showText]="true"
                                         [showCount]="true"
                                         [url]="'https://aso-ebi.com/welcome-guest/NWQ1MmMyMTdhNTBjMTUzYmVmNDc2MTIy'"
@@ -62,13 +59,8 @@
                                     </share-button>
                                     <share-button [theme]="'circles-dark'" [button]="'email'" [showText]="true"
                                         [showCount]="true" [url]="'https://twitter.com/'"></share-button>
-                                    <share-button [theme]="'circles-dark'" [button]="'google'" [showText]="true"
-                                        [showCount]="true" [url]="'https://twitter.com/'"></share-button>
                                     <share-button [theme]="'circles-dark'" [button]="'sms'" [showText]="true"
                                         [showCount]="true" [url]="'https://twitter.com/'"></share-button>
-                                    <share-button [theme]="'circles-dark'" [button]="'copy'" [showText]="true"
-                                        [showCount]="true" [url]="eventLink"></share-button>
-
                                 </div>
                                 <div class="container">
                                     <div class="row">
