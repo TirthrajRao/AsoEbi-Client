@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { LoginService } from '../services/login.service';
 import { AlertService } from '../services/alert.service';
+declare var $: any;
+
 @Component({
   selector: 'app-bank-details',
   templateUrl: './bank-details.component.html',
@@ -17,8 +19,8 @@ export class BankDetailsComponent implements OnInit {
   ngOnInit() {
     this.bankDetailsForm = new FormGroup({
       bankName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
-      accountNumber: new FormControl('', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]),
-      IFSCCode: new FormControl('', [Validators.required, Validators.minLength(9), Validators.maxLength(9)])
+      accountNumber: new FormControl('', [Validators.required, Validators.minLength(16), Validators.min(16)]),
+      IFSCCode: new FormControl('', [Validators.required, Validators.minLength(9), Validators.min(9)])
     })
   }
 
@@ -73,9 +75,9 @@ export class BankDetailsComponent implements OnInit {
   validateAccountNumber(form) {
 
     console.log(form);
-    const phoneno = /[0-9]/;
-    let message = document.getElementById('message');
-    if (!form.accountNumber.match(phoneno)) {
+    const accountNumber = /[0-9]/;
+    let message = document.getElementById('message2');
+    if (!form.accountNumber.match(accountNumber)) {
       console.log("message==========", message)
       message.innerHTML = "Please enter only numbers"
     } else {
@@ -90,7 +92,7 @@ export class BankDetailsComponent implements OnInit {
   validateIFSCCode(form) {
     console.log(form);
     const phoneno = /[0-9]/;
-    let message = document.getElementById('message');
+    let message = document.getElementById('message3');
     if (!form.IFSCCode.match(phoneno)) {
       console.log("message==========", message)
       message.innerHTML = "Please enter only numbers"

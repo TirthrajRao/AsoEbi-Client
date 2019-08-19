@@ -22,18 +22,15 @@ const routes: Routes = [
   },
   {
     path: 'display-page',
-    component: DisplayPageComponent,
-    pathMatch: 'full'
+    component: DisplayPageComponent
   },
   {
     path: 'login',
-    component: LoginComponent,
-    pathMatch: 'full'
+    component: LoginComponent
   },
   {
     path: 'signUp',
-    component: SignupComponent,
-    pathMatch: 'full'
+    component: SignupComponent
   },
   {
     path: 'welcome-guest/:id',
@@ -51,7 +48,7 @@ const routes: Routes = [
 
 @NgModule({
   // { useHash: true }
-  imports: [RouterModule.forRoot(routes)], 
+  imports: [RouterModule.forRoot(routes, { useHash: true })], 
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

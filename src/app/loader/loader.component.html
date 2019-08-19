@@ -1,5 +1,41 @@
-<!-- Loader for all websites -->
-
-<div class="loader">
-  <div class="spinner"></div>
+<div>
+  <section class="msg_page_section d-flex flex-wrap align-content-center">
+    <div class="container-fluid">
+      <h3 class="text-center">Aso Ebi</h3>
+      <div class="msg_sec1">
+        <div class="Join_inner_content_box">
+          <div class="all_event_sec">
+            <div class="row">
+              <div class="col-3 m-auto pr-0 new_event_menu float-right">
+                <a id="sideMenu"><img src="/assets/images/icon1.png"></a>
+              </div>
+              <div class="col-9 p-0">
+                <span class="all_event_name"> Hello Rao Info Tech </span>
+              </div>
+            </div>
+          </div>
+          <div class="slider_menu">
+            <div class="event_btns">
+              <ul>
+                <li><a routerLink="myEvent" class="text-white text-center new_event">my event</a></li>
+                <li><a routerLink="createEvent" class="text-white text-center my_event">new event</a></li>
+                <li><a routerLink="bankDetails" class="text-white text-center my_account">bank account</a>
+                </li>
+              </ul>
+            </div>
+            <div class="event_btns1">
+              <ul>
+                <li><a routerLink="reset-password" class="text-white text-center my_account">Reset
+                    Password</a></li>
+                <li><a (click)="logout()" class="text-white text-center my_account">Logout</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="msg_slug">
+            <p>Messages Collections</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>

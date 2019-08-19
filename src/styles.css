@@ -272,6 +272,43 @@ a{display: inline-block; text-decoration: none!important; outline: none!importan
     background-color: #e0573a;
 }
 /*thanks  1 css end*/
+/* Reset Password start */
+.reset_pwd_section{
+    min-height: 100vh;
+    background-color: #d8d9dd !important;
+ }
+ .reset_pwd_section h3{
+    color: #e70d6a !important;
+    font-size: 58.33px;
+    margin-top: -78px;
+    margin-bottom: 18px;
+ }
+ .reset_password .Join_inner_content_box{
+    background-image: url(/assets/images/reset_pwd.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+ }
+ .reset_pwd_btn{
+    background-color: #e70d6a!important;
+ }
+/* Reset password end */
+/* Add bank account details start */
+.add_bank_account_sec{
+    background-color: #fff!important;
+ }
+ .add_bank_account .Join_inner_content_box{
+    background-image: url(/assets/images/bank_acc.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+ }
+ .add_bank_btn{
+    background-color: #ef2556!important;
+ }
+
+/* Add bank account details end */
+
 /*share page section start*/
 .share_page_section{
     min-height: 100vh;
@@ -330,7 +367,7 @@ a{display: inline-block; text-decoration: none!important; outline: none!importan
     background-repeat: no-repeat;
 }
 .in_btn{
-    background-color: #eb2577;
+    background-color: #eb2577 !important;
 }
 .btn_enter_screen{
     background-color: #eb2577;
@@ -1163,7 +1200,7 @@ input:checked + .slider:before {
     background-color: #18c4ad;
 }
 .submit_btn_pwd{
- background-color: #18c4ad; 
+ background-color: #18c4ad !important; 
 }
 .btn_submit_pwd a{
     font-size: 25px;
@@ -1607,7 +1644,7 @@ input:checked + .slider:before {
     text-transform: uppercase;
     background-color: #2b3335;
     line-height: 52px;
-    margin-top: 3px;
+    margin: 2px;
 }
 .msg_page_section .event_btns{
     padding:0px  60px;
@@ -1617,6 +1654,7 @@ input:checked + .slider:before {
     list-style: none;
     display: inline-block;
     text-align: center;
+    margin: 2px;
 }
 .msg_page_section .event_btns1 a {
     font-size: 20.83px;
@@ -1626,7 +1664,7 @@ input:checked + .slider:before {
     text-transform: uppercase;
     background-color: #2b3335;
     line-height: 52px;
-    margin-top: 8px;
+    margin-top: 5px;
 }
 .msg_page_section .event_btns1{
     padding:0px  60px;

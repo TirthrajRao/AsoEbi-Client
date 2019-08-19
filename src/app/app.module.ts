@@ -10,11 +10,11 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginService } from './services/login.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './services/auth.interceptor';
-import { LoaderComponent } from './loader/loader.component';
 import { GuestEventComponent } from './guest-event/guest-event.component';
 // import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { DisplayPageComponent } from './display-page/display-page.component';
+import {HomeModule} from './home/home.module';
 
 /**
  * Key For login with google and facebook 
@@ -38,7 +38,6 @@ export function provideConfig() {
     AppComponent,
     LoginComponent,
     SignupComponent,
-    LoaderComponent,
     GuestEventComponent,
     ForgotPasswordComponent,
     DisplayPageComponent,
@@ -50,6 +49,7 @@ export function provideConfig() {
     ReactiveFormsModule,
     HttpClientModule,
     SocialLoginModule,
+    HomeModule
     // CKEditorModule,
   ],
   providers: [LoginService,

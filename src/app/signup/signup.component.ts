@@ -159,8 +159,10 @@ export class SignupComponent implements OnInit {
     this._loginService.personalDetails(finalDetails)
       .subscribe((data: any) => {
         console.log("final response", data);
+        $('.thirdStep').css({ 'display': 'none' });
+        $('.fourthStep').css({ 'display': 'block' })
         this._alertService.getSuccess(data.message);
-        this.router.navigate(['/login']);
+        // this.router.navigate(['/login']);
       }, err => {
         console.log(err);
       })

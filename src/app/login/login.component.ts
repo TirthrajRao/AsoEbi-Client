@@ -240,6 +240,8 @@ export class LoginComponent implements OnInit {
    */
   get f() { return this.loginForm.controls; }
 
+  get g(){ return this.forgotPasswordForm.controls;}
+
   /**
    * @param {JSON} email,password
    * for login with created email and password
@@ -347,12 +349,13 @@ export class LoginComponent implements OnInit {
    * Forgot password functionality
    */
   submitForgotPassword() {
-    console.log("body", this.forgotPasswordForm);
+    console.log("body", this.forgotPasswordForm.value);
+    $('#exampleModal').modal('toggle');
     this._loginService.forgotPassword(this.forgotPasswordForm.value)
       .subscribe((data: any) => {
         console.log("response of forgot password", data);
-        this.alertService.getSuccess(data.messege);
-        this.router.navigate(['/login']);
+        this.alertService.getSuccess(data.message);
+        // this.router.navigate(['/login']);
       }, err => {
         console.log(err);
       })

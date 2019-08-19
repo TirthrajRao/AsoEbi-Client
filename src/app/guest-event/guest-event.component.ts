@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from '../services/event.service';
 import { config } from '../config';
-const Buffer = require('buffer/').Buffer;
+// const Buffer = require('buffer/').Buffer;
 
 @Component({
   selector: 'app-guest-event',

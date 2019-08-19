@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from '../services/event.service';
 import { config } from '../config';
 import { AlertService } from '../services/alert.service';
+import loadjs from 'loadjs';
 
 @Component({
   selector: 'app-display-page',
@@ -15,10 +16,11 @@ export class DisplayPageComponent implements OnInit {
   searchText;
   searchEvent: any = [];
   publicEvents: any = [];
-  constructor(private router: Router, private _eventService: EventService, private alertService: AlertService) { }
-
+  constructor(private router: Router, private _eventService: EventService, private alertService: AlertService) {
+  }
+  
   ngOnInit() {
-
+    loadjs('assets/js/custom.js');
     this.getPublicEvents();
   }
 

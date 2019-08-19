@@ -18,6 +18,7 @@ import { AdminEventDetailsComponent } from '../admin-event-details/admin-event-d
 import { AdminDashboardComponent } from '../admin-dashboard/admin-dashboard.component';
 import { TotalEventsComponent } from '../total-events/total-events.component';
 import { CollectionsComponent } from '../collections/collections.component';
+import { LoaderComponent } from '../loader/loader.component';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 import { ShareButtonModule } from '@ngx-share/button';
 import { ShareModule } from '@ngx-share/core';
@@ -31,6 +32,10 @@ const routes: Routes = [
     component: HomeComponent,
     canActivate: [AuthGuard],
     children: [
+      {
+        path: '',
+        component: LoaderComponent,
+      },
       {
         path: 'createEvent',
         component: CreateEventComponent,
@@ -109,11 +114,12 @@ const routes: Routes = [
     TotalEventsComponent,
     AdminEventDetailsComponent,
     AdminUserListComponent,
-    CollectionsComponent
+    CollectionsComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,
-    [RouterModule.forRoot(routes), { useHash: true }],
+    RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
     ClipboardModule,

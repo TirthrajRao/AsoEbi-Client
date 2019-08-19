@@ -182,30 +182,31 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 	aria-hidden="true">
 	<div class="modal-dialog" role="document">
-		<section class="text-center d-flex flex-wrap align-content-center "
-			id="exampleModal">
-			<div class="container-fluid">
-				<h3>Aso Ebi</h3>
-				<div class="forgot_password">
-					<div class="Join_inner_content_box">
-						<div class="inner_content_btn">
-							<a href="#" class="btn_join_pwd float-left">Join</a>
-							<a href="#" class="btn_enter_pwd text-white float-right">Enter</a>
-						</div>
-						<form class="join_form forgot_pwd_form ">
-							<div class="form-group">
-								<div class="input-group">
-									<input type="email" class="form-control" id="email" placeholder="Email address"
-										name="no">
-								</div>
-							</div>
-							<div class="btn_submit_pwd">
-								<a href="#" class="btn text-white text-center submit_btn_pwd text-center">Submit</a>
-							</div>
-						</form>
-					</div>
+		<div class="modal-content">
+			<div class="modal_content">
+				<div class="">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
+				<form class="forgot_password_form" [formGroup]="forgotPasswordForm" autocomplete="off">
+					<div class="form-group">
+						<div class="input-group ">
+							<!-- <input type="email" class="form-control" id="email"  formControlName="email" placeholder="Enter Email" > -->
+
+							<input type="email" class="form-control" id="email" formControlName="email"
+								placeholder="Email/Phone Number" name="email"
+								[ngClass]="{ 'is-invalid': g.email.touched && g.email.errors }">
+							<div class="col-md-2" *ngIf="g.email.touched && g.email.errors" class="invalid-feedback">
+								<div *ngIf="g.email.errors.required">Email is required</div>
+								<div *ngIf="g.email.errors.email">Please enter valid Email</div>
+							</div>
+						</div>
+					</div>
+					<div class="submit_mail">
+						<button type="submit" (click)="submitForgotPassword();"
+							[disabled]="isDisable || forgotPasswordForm.invalid">Submit</button>
+					</div>
+				</form>
 			</div>
-		</section>
+		</div>
 	</div>
 </div>

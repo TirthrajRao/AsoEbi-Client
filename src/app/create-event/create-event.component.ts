@@ -42,7 +42,8 @@ export class CreateEventComponent implements OnInit {
   submitted = false;
   public imagePath;
   imgURL: any;
-
+  colorSetting:any;
+  changeColors: any;
   constructor(private route: ActivatedRoute, private router: Router, private _eventService: EventService,
     private alertService: AlertService, private fb: FormBuilder, private _loginService: LoginService) {
     this.sub = this.route.params.subscribe(params => {
@@ -77,19 +78,21 @@ export class CreateEventComponent implements OnInit {
     // this.maleItemArray = []
     $('#eventId').css({ 'display': 'none' });
     $(function () {
-      $("#datepicker").datepicker();
+      // $("#datepicker").datepicker();
       // $("#startDate").val(Date.now());
       // $("#startDate").datepicker({ dateFormat: 'yyyy-MM-dd' }).val();
     });
+
+    
     $(document).ready(function () {
       // $("#startDate").datepicker({dateFormat: "yy-mm-dd"});
 
-      $("#startDate").datepicker({ "setDate": new Date(), "minDate": new Date(), dateFormat: 'yy-mm-dd' });
+      // $("#startDate").datepicker({ "setDate": new Date(), "minDate": new Date(), dateFormat: 'yy-mm-dd' });
     });
 
-    $("#register_steps_tab").accordion({
-      heightStyle: "content"
-    });
+    // $("#register_steps_tab").accordion({
+    //   heightStyle: "content"
+    // });
     $('.next_step').click(function () {
       $('#register_steps_tab.ui-accordion .ui-accordion-header-active').next('.step_content').next('h3').trigger('click');
       $('#register_steps_tab.ui-accordion .ui-accordion-header-active').prev('.step_content').prev('h3').addClass('step_done');
@@ -147,6 +150,67 @@ export class CreateEventComponent implements OnInit {
         '-webkit-filter': 'saturate(8)',
       });
     });
+
+
+    // new event page slider start
+    // setTimeout(()=> {
+      var $slideContainter = $('.new_event_slider'),
+        $slider = $slideContainter.slick({
+          dots: true,
+          infinite: false,
+          speed: 1000,
+          draggable: true,
+          arrows: true,
+          prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+          nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>"
+          // autoplay:true
+        });
+      $slider.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+        setTimeout(function () {
+          var activeNow = $('.slick-dots li.slick-active').text();
+          $('.slick-dots').removeClass('slide1');
+          $('.slick-dots').removeClass('slide2');
+          $('.slick-dots').removeClass('slide3');
+          $('.slick-dots').removeClass('slide4');
+          $('.slick-dots').removeClass('slide5');
+          $('.slick-dots').removeClass('slide6');
+          $('.slick-dots').removeClass('slide7');
+          $('.slick-dots').removeClass('slide8');
+          $('.slick-dots').removeClass('slide9');
+          $('.slick-dots').removeClass('slide10');
+          $('.slick-dots').removeClass('slide11');
+          $('.slick-dots').removeClass('slide12');
+          var className = ['slide1', 'slide2', 'slide3', 'slide4', 'slide5', 'slide6', 'slide7', 'slide8', 'slide9', 'slide10', 'slide11', 'slide12'];
+          $('.slick-dots li').parent('.slick-dots').addClass(className[activeNow - 1]);
+        }, 10);
+      });
+
+      let colorSetting = {
+        section: ['#c1c3be', '#cdcdcd', '#e7e7e7', '#f7f7f7', '#f4f4f4', '#e1c2aa', '#e8e7e5', '#e7e7e7', '#93a8c1', '#e2e4e3', '#ebf0f1', '#d1d1d1'],
+        prevArrow: ['#a4bf45', '#f73953', '#ef6439', '#f4ad48', '#fae545', '#f4c036', '#ffeb5b', '#f73953', '#bfa066', '#eaa52e', '#afda57', '#ffb54d'],
+        headings: ['#1d73ae', '#f73953', '#ef6439', '#f4ad48', '#e32676', '#373255', '#371448', '#e91e3b', '#363f4f', '#eaa52e', '#1c424d', '#000000'],
+      };
+      var changeColors = function (slide) {
+        console.log("color=========>", colorSetting.section[slide]);
+        $('.event_slider_section').css({
+          background: colorSetting.section[slide]
+        }, 10);
+        $('.new_event_slider button.slick-prev').css({
+          color: colorSetting.prevArrow[slide]
+        }, 10);
+        $('.event_slider_section .aso_heading').css({
+          color: colorSetting.headings[slide]
+        }, 10);
+
+      };
+      $slider.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+        changeColors(nextSlide);
+      });
+      changeColors(0);
+
+
+    // }, 500);
+    // new event page slider end
   }
 
   /**

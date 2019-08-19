@@ -1,5 +1,5 @@
 /*enter screen section start*/
-.enter_screen_sec .Join_inner_content_box {
+/* .enter_screen_sec .Join_inner_content_box {
     background-image: url(/assets/images/enter1.png);
     background-size: cover;
     background-position: center;
@@ -21,4 +21,41 @@
     color: #201f62;
     margin-top: -78px;
     margin-bottom: 18px;
-}
+} */
+
+
+
+
+
+.modal-content{
+    background-image: url('/assets/images/join1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+   }
+   .modal_content{
+      padding: 20px;
+   }
+   .forgot_password_form{
+      margin: 20px 0;
+   }
+   .forgot_password_form input{
+      background-color: transparent;
+      color: #000;
+      height: 50px;
+      border-radius: 0px!important;
+      font-size: 30px;
+   }
+   .forgot_password_form  input::-webkit-input-placeholder {
+      color: #000!important;
+      font-size: 30px!important;
+   }
+   .submit_mail button{
+      font-size: 35.83px;
+      height: 50px;
+      width: 100%;
+      background-color: #202055;
+      line-height: 52px;
+      border: none;
+      color: #fff;
+   }

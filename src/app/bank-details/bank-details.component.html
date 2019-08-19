@@ -1,5 +1,5 @@
 <!-- Add bank details Form  -->
-
+<!-- 
 <div *ngIf="!isDiable">
     <div class="row">
         <div class="col-md-6 m-auto pt-5">
@@ -48,4 +48,85 @@
             </div>
         </div>
     </div>
+</div> -->
+
+
+
+<div>
+    <section class="reset_pwd_section add_bank_account_sec d-flex flex-wrap align-content-center">
+        <div class="container-fluid">
+            <h3 class="text-center">Aso Ebi</h3>
+            <div class="add_bank_account">
+                <div class="Join_inner_content_box">
+                    <div class="event_inner_content">
+                        <div class="new_event_sec">
+                            <div class="row">
+                                <div class="col-3 m-auto pr-0 float-right">
+                                    <a href="#"><img src="/assets/images/bank_icon.png"></a>
+                                    <p class="text-white">New Event</p>
+                                </div>
+                                <div class="col-9 p-0">
+                                    <span class="text-white event_name"> Hello Rao Info Tech </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <form [formGroup]="bankDetailsForm" autocomplete="off" class="join_form forgot_pwd_form mt-3">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control"
+                                    (input)="validateBankName(bankDetailsForm.value)" id="bankName" class="form-control"
+                                    formControlName="bankName"
+                                    [ngClass]="{ 'is-invalid': f.bankName.touched && f.bankName.errors }"
+                                    placeholder="Bank Name" name="bname">
+                                <span id="message1" style="color: white !important; font-size: 14px;"></span>
+                                <div class="col-md-2" *ngIf=" f.bankName.touched && f.bankName.errors"
+                                    class="invalid-feedback">
+                                    <div *ngIf="f.bankName.errors.required">Name is required</div>
+                                    <div *ngIf="f.bankName.errors.minlength">Name must be at least 2 characters</div>
+                                    <div *ngIf="f.bankName.errors.pattern">Please enter only alphabates</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" max="16" maxlength="16" class="form-control" formControlName="accountNumber"
+                                    (input)="validateAccountNumber(bankDetailsForm.value)" id="accountNumber"
+                                    [ngClass]="{ 'is-invalid': f.accountNumber.touched && f.accountNumber.errors }"
+                                    placeholder="Account Number">
+                                <span id="message2" style="color: white !important; font-size: 14px;"></span>
+                                <div class="col-md-4" *ngIf="f.accountNumber.touched && f.accountNumber.errors"
+                                    class="invalid-feedback">
+                                    <div *ngIf="f.accountNumber.errors.required">Account Number is required</div>
+                                    <div *ngIf="f.accountNumber.errors.minlength">Account Number must be only 16 digits
+                                    </div>
+                                    <div *ngIf="f.accountNumber.errors.maxlength">Account Number must be only 16 digits
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control" max="9" maxlength="9" formControlName="IFSCCode"
+                                    (input)="validateIFSCCode(bankDetailsForm.value)" id="IFSCCode"
+                                    [ngClass]="{ 'is-invalid': f.IFSCCode.touched && f.IFSCCode.errors }"
+                                    placeholder="IFSC Code">
+                                <span id="message3" style="color: white !important; font-size: 14px;"></span>
+                                <div class="col-md-4" *ngIf="f.IFSCCode.touched && f.IFSCCode.errors"
+                                    class="invalid-feedback">
+                                    <div *ngIf="f.IFSCCode.errors.required">IFSC Code is required</div>
+                                    <div *ngIf="f.IFSCCode.errors.minlength">IFSC Code must be only 9 digits</div>
+                                    <div *ngIf="f.IFSCCode.errors.maxlength">IFSC Code must be only 9 digits</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn_submit_pwd">
+                            <button class="btn text-white text-center add_bank_btn submit_btn_pwd text-center"
+                                (click)="onSubmit()" [disabled]="isDisable || bankDetailsForm.invalid">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
