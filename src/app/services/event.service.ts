@@ -22,8 +22,8 @@ export class EventService {
     let formdata = new FormData();
     formdata.append('eventTitle', body.eventTitle);
     formdata.append('eventType', body.eventType);
-    formdata.append('startDate', body.startDate);
-    formdata.append('endDate', body.endDate);
+    // formdata.append('startDate', body.startDate);
+    // formdata.append('endDate', body.endDate);
     formdata.append('hashTag', body.hashTag);
     formdata.append('deadlineDate', body.deadlineDate);
     formdata.append('isPublic', body.isPublic);

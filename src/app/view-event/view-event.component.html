@@ -1,6 +1,6 @@
 <!-- Details of any particular event  -->
 
-<div class="row">
+<!-- <div class="row">
     <div class="col-12">
         <div *ngFor="let item of allDetailsofEvent">
             <button type="button" class="btn btn-primary m-auto" (click)="editEventDeatils(item._id)"
@@ -81,8 +81,6 @@
                                                             </div>
                                                             <div class="row" *ngFor="let male of group.item">
                                                                 <div class="col-lg-9" *ngIf="male.itemGender == 'male'">
-                                                                    <!-- {{male.itemGender | json}} -->
-                                                                    <!-- <p>{{male.itemGender}}</p> -->
                                                                     <p>itemType :{{male.itemType}}</p>
                                                                     <p>itemPrice :{{male.itemPrice}}</p>
                                                                     <p>itemName :{{male.itemName}}</p>
@@ -130,7 +128,129 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+
+
+
+<!-- new Design  -->
+
+<section class="view_event_section d-flex flex-wrap align-content-center">
+    <div class="container-fluid">
+        <h3 class="text-center aso_heading">Aso Ebi</h3>
+        <div class="profile_pic text-center">
+            <img src="/assets/images/profile.png">
+        </div>
+        <div class="row w-50 m-auto">
+            <div class="col-10">
+                    <h3 class="text-center"># Ayo Kunbi</h3>
+            </div>
+            <div class="col-2 mt-3 cart_pic">
+                    <img src="/assets/images/cart.png">
+            </div>
+        </div>
+        <div class="veiw_event" *ngFor="let item of allDetailsofEvent">
+            <div class="Join_inner_content_box h-100 mb-3">
+                <div class="event_inner_content">
+                    <div class="new_event_sec veiw_event_sec">
+                        <div class="row">
+                            <div class="col-3 m-auto pr-0 float-right new_event_menu">
+                                <a href="javascript:void(0)"><img src="/assets/images/view_event_icon.png">
+                                    <p class="text-white">View Event</p>
+                                </a>
+                            </div>
+                            <div class="col-9 p-0">
+                                <span class="text-white event_name"> Hello Rao Info Tech </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="overlay" class="new_event_menu_box" style="display: none;">
+                        <div class="">
+                            <div class="event_menu">
+                                <div class="all_menu_content  d-flex flex-wrap align-content-center">
+                                    <ul>
+                                        <li><a href="eventA.html" class="text-white new_event">my event</a></li>
+                                        <li><a href="new_event_slider.html" class="text-white my_event">new event</a>
+                                        </li>
+                                        <li><a href="add_bank_account.html" class="text-white my_account">bank
+                                                account</a></li>
+                                        <li><a href="reset_password.html" class="text-white my_account">Reset
+                                                Password</a></li>
+                                        <li><a href="#" class="text-white my_account">Logout</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="event_detail_btns">
+                        <button class="btn-primary w-100 joinNowBtn">Join Now</button>
+                        <ul>
+                            <li><a href="#"
+                                    class="text-white text-center event_type">EventType:<br>{{item.eventType}}</a>
+                            </li>
+                            <li><a href="#"
+                                    class="text-white text-center event_title">EventTitle:<br>{{item.eventTitle}}</a>
+                            </li>
+                            <li><a href="#" class="text-white text-center">EventHashTag:<br>{{item.hashTag}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="activity_slider">
+                        <div class="activity_day" *ngFor="let activity of activityArray">
+                            <p class="text-center first_day_activity">Activity:{{activity.activityName}}</p>
+                            <div *ngFor="let group of activity.group">
+                                <p class="group_family">Group: {{group.groupName}}</p>
+                                <div class="gender_slider1 mb-3">
+                                    <div class="gender_slide1 male_slide1">
+                                        <h5 class="text-white">Male</h5>
+                                        <div *ngFor="let male of group.item">
+                                            <div *ngIf="male.itemGender == 'male'">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <div class="item_detail">
+                                                            <p class="text-white">itemType: {{male.itemType}}</p>
+                                                            <p class="text-white">itemPrice: {{male.itemPrice}}</p>
+                                                            <p class="text-white">itemName: {{male.itemName}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="add_to_cart_btn">
+                                                            <a href="#" class="text-white">Add to Cart</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="gender_slide1 female_slide1">
+                                        <h5 class="text-white">Female</h5>
+                                        <div *ngFor="let female of group.item">
+                                            <div *ngIf="female.itemGender == 'female'">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <div class="item_detail">
+                                                            <p class="text-white">itemType: {{female.itemType}}</p>
+                                                            <p class="text-white">itemPrice: {{female.itemPrice}}</p>
+                                                            <p class="text-white">itemName: {{female.itemName}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="add_to_cart_btn">
+                                                            <a href="#" class="text-white">Add to Cart</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <script type="text/javascript">
     function getLink(eventLink) {

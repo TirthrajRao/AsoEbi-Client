@@ -1,6 +1,20 @@
 $(document).ready(function(){
-
-
+// menu toggle start
+$(".new_event_menu").click(function(){
+	$(".new_event_menu_box").toggle();
+});
+// menu toggle end
+// select value start
+$('.select_event_type li > a').click(function () {
+	var value = $(this).html();
+	$('.selected_event_type > a').html(value);
+});
+// select value end
+// font style change start
+$(".normal_style").click(function(){
+	$( ".normal_style" ).addClass( "normal_style_font" );
+});
+// font style change end
 // home page slider
 
 var $slideContainterHome = $('.home_slider'),
@@ -74,6 +88,29 @@ $('.gender_slider').slick({
 
 // gender slider end
 
+// second gender slider start
+
+$('.gender_slider1').slick({
+	// autoplay: true,
+	autoplaySpeed:2000,
+	arrows: false,
+	dots: false,
+	slidesToShow:1.5,
+	slidesToScroll: 1,
+	draggable: true,
+	fade:false,
+	responsive: [
+	{
+		breakpoint: 451,
+		settings: {
+			slidesToShow: 1
+		}
+	}
+	]
+});
+
+//second gender slider end
+
 /*bank detail slider start*/
 $('.slider1').slick({
 	infinite: true,
@@ -101,12 +138,45 @@ $('.slider1').slick({
 	]
 });
 /*bank detail slider end*/
+// event slider start
 
-
+$('.event_slider1').slick({
+	infinite: true,
+	slidesToShow: 2.5,
+	slidesToScroll: 1,
+	autoplay: false,
+	arrows: false,
+	prevArrow:'<button class="prevarrow text-center"><i class="fa fa-caret-left" aria-hidden="true"></i></button>',
+	nextArrow:'<button class="nextarrow text-center"><i class="fa fa-caret-right" aria-hidden="true"></i></button>',
+	responsive: [
+	{
+		breakpoint: 1024,
+		settings: {
+			slidesToShow: 2,
+			slidesToScroll: 1,
+			infinite: true,
+		}
+	},
+	{
+		breakpoint: 600,
+		settings: {
+			slidesToShow: 2,
+			slidesToScroll: 1,
+		}
+	},
+	{
+		breakpoint: 480,
+		settings: {
+			slidesToShow: 1,
+			slidesToScroll: 1
+		}
+	}
+	]
+});
+// event slider end
 // scrollbar starts
 $('.scrollbar-rail').scrollbar();
 // scrollbar ends
-
 
 });
 

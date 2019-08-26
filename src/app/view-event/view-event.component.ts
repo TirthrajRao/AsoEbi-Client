@@ -4,6 +4,10 @@ import { EventService } from '../services/event.service';
 import { config } from '../config';
 import { ClipboardService } from 'ngx-clipboard';
 import { AlertService } from '../services/alert.service';
+import loadjs from 'loadjs';
+declare var $: any;
+
+
 // import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons/faFacebookSquare';
 // import '~@ngx-share/button/themes/default/default-theme';
 
@@ -39,8 +43,50 @@ export class ViewEventComponent implements OnInit {
       this.viewDetailsOfEvent(this.eventId);
     })
   }
-
   ngOnInit() {
+    $(".new_event_menu").click(function () {
+      $(".new_event_menu_box").toggle();
+    });
+    setTimeout(() => {
+      // activity slider
+      $('.activity_slider').not('.slick-initialized').slick({
+        dots: false,
+        arrows: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        draggable: false,
+        infinite: false,
+        prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+        nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+        responsive: [
+          {
+            breakpoint: 451,
+            settings: {
+              slidesToShow: 1
+            }
+          }
+        ]
+      });
+      // gender slider
+      $('.gender_slider1').not('.slick-initialized').slick({
+        // autoplay: true,
+        autoplaySpeed: 2000,
+        arrows: false,
+        dots: false,
+        slidesToShow: 1.5,
+        slidesToScroll: 1,
+        draggable: true,
+        fade: false,
+        responsive: [
+          {
+            breakpoint: 451,
+            settings: {
+              slidesToShow: 1
+            }
+          }
+        ]
+      });
+    }, 300)
   }
 
   /**

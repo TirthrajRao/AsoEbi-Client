@@ -8,6 +8,7 @@ declare var $: any;
 import * as _ from 'lodash';
 import Swal from 'sweetalert2';
 import { config } from '../config';
+import loadjs from 'loadjs';
 
 @Component({
   selector: 'app-create-event',
@@ -42,8 +43,9 @@ export class CreateEventComponent implements OnInit {
   submitted = false;
   public imagePath;
   imgURL: any;
-  colorSetting:any;
+  colorSetting: any;
   changeColors: any;
+  eventTypeValue;
   constructor(private route: ActivatedRoute, private router: Router, private _eventService: EventService,
     private alertService: AlertService, private fb: FormBuilder, private _loginService: LoginService) {
     this.sub = this.route.params.subscribe(params => {
@@ -53,14 +55,11 @@ export class CreateEventComponent implements OnInit {
         this.viewDetailsOfEvent(this.eventId);
       }
     })
-  }
-
-  ngOnInit() {
     this.eventForm = new FormGroup({
       eventTitle: new FormControl('', [Validators.required]),
       eventType: new FormControl('', [Validators.required]),
-      startDate: new FormControl(''),
-      endDate: new FormControl(''),
+      // startDate: new FormControl(''),
+      // endDate: new FormControl(''),
       hashTag: new FormControl('', [Validators.required, Validators.minLength(4)]),
       profile: new FormControl(''),
       deadlineDate: new FormControl(''),
@@ -68,13 +67,18 @@ export class CreateEventComponent implements OnInit {
       isLogistics: new FormControl(this.isLogistics),
       background: new FormControl('')
     })
-
+  
     this.bankDetailsForm = new FormGroup({
       bankName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
       accountNumber: new FormControl('', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]),
       IFSCCode: new FormControl('', [Validators.required, Validators.minLength(9), Validators.maxLength(9)])
     })
+    
+  }
 
+  ngOnInit() {
+    this.getActivityFrom(),
+    this.initGroupForm()
     // this.maleItemArray = []
     $('#eventId').css({ 'display': 'none' });
     $(function () {
@@ -83,7 +87,7 @@ export class CreateEventComponent implements OnInit {
       // $("#startDate").datepicker({ dateFormat: 'yyyy-MM-dd' }).val();
     });
 
-    
+
     $(document).ready(function () {
       // $("#startDate").datepicker({dateFormat: "yy-mm-dd"});
 
@@ -154,64 +158,85 @@ export class CreateEventComponent implements OnInit {
 
     // new event page slider start
     // setTimeout(()=> {
-      var $slideContainter = $('.new_event_slider'),
-        $slider = $slideContainter.slick({
-          dots: true,
-          infinite: false,
-          speed: 1000,
-          draggable: true,
-          arrows: true,
-          prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
-          nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>"
-          // autoplay:true
-        });
-      $slider.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-        setTimeout(function () {
-          var activeNow = $('.slick-dots li.slick-active').text();
-          $('.slick-dots').removeClass('slide1');
-          $('.slick-dots').removeClass('slide2');
-          $('.slick-dots').removeClass('slide3');
-          $('.slick-dots').removeClass('slide4');
-          $('.slick-dots').removeClass('slide5');
-          $('.slick-dots').removeClass('slide6');
-          $('.slick-dots').removeClass('slide7');
-          $('.slick-dots').removeClass('slide8');
-          $('.slick-dots').removeClass('slide9');
-          $('.slick-dots').removeClass('slide10');
-          $('.slick-dots').removeClass('slide11');
-          $('.slick-dots').removeClass('slide12');
-          var className = ['slide1', 'slide2', 'slide3', 'slide4', 'slide5', 'slide6', 'slide7', 'slide8', 'slide9', 'slide10', 'slide11', 'slide12'];
-          $('.slick-dots li').parent('.slick-dots').addClass(className[activeNow - 1]);
-        }, 10);
+    var $slideContainter = $('.new_event_slider'),
+      $slider = $slideContainter.slick({
+        dots: true,
+        infinite: false,
+        speed: 1000,
+        draggable: true,
+        arrows: true,
+        prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+        nextArrow: "<button type='button' class='slick-next pull-right' id='next_btn'><i class='fa fa-angle-right' aria-hidden='true'></i></button>"
+        // autoplay:true
       });
+    $slider.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+      setTimeout(function () {
+        var activeNow = $('.slick-dots li.slick-active').text();
+        $('.slick-dots').removeClass('slide1');
+        $('.slick-dots').removeClass('slide2');
+        $('.slick-dots').removeClass('slide3');
+        $('.slick-dots').removeClass('slide4');
+        $('.slick-dots').removeClass('slide5');
+        $('.slick-dots').removeClass('slide6');
+        $('.slick-dots').removeClass('slide7');
+        $('.slick-dots').removeClass('slide8');
+        $('.slick-dots').removeClass('slide9');
+        $('.slick-dots').removeClass('slide10');
+        $('.slick-dots').removeClass('slide11');
+        $('.slick-dots').removeClass('slide12');
+        var className = ['slide1', 'slide2', 'slide3', 'slide4', 'slide5', 'slide6', 'slide7', 'slide8', 'slide9', 'slide10', 'slide11', 'slide12'];
+        $('.slick-dots li').parent('.slick-dots').addClass(className[activeNow - 1]);
+      }, 10);
+    });
 
-      let colorSetting = {
-        section: ['#c1c3be', '#cdcdcd', '#e7e7e7', '#f7f7f7', '#f4f4f4', '#e1c2aa', '#e8e7e5', '#e7e7e7', '#93a8c1', '#e2e4e3', '#ebf0f1', '#d1d1d1'],
-        prevArrow: ['#a4bf45', '#f73953', '#ef6439', '#f4ad48', '#fae545', '#f4c036', '#ffeb5b', '#f73953', '#bfa066', '#eaa52e', '#afda57', '#ffb54d'],
-        headings: ['#1d73ae', '#f73953', '#ef6439', '#f4ad48', '#e32676', '#373255', '#371448', '#e91e3b', '#363f4f', '#eaa52e', '#1c424d', '#000000'],
-      };
-      var changeColors = function (slide) {
-        console.log("color=========>", colorSetting.section[slide]);
-        $('.event_slider_section').css({
-          background: colorSetting.section[slide]
-        }, 10);
-        $('.new_event_slider button.slick-prev').css({
-          color: colorSetting.prevArrow[slide]
-        }, 10);
-        $('.event_slider_section .aso_heading').css({
-          color: colorSetting.headings[slide]
-        }, 10);
+    let colorSetting = {
+      section: ['#c1c3be', '#cdcdcd', '#e7e7e7', '#f7f7f7', '#f4f4f4', '#e1c2aa', '#e8e7e5', '#e7e7e7', '#93a8c1', '#e2e4e3', '#ebf0f1', '#d1d1d1'],
+      prevArrow: ['#a4bf45', '#f73953', '#ef6439', '#f4ad48', '#fae545', '#f4c036', '#ffeb5b', '#f73953', '#bfa066', '#eaa52e', '#afda57', '#ffb54d'],
+      headings: ['#1d73ae', '#f73953', '#ef6439', '#f4ad48', '#e32676', '#373255', '#371448', '#e91e3b', '#363f4f', '#eaa52e', '#1c424d', '#000000'],
+    };
+    var changeColors = function (slide) {
+      console.log("color=========>", colorSetting.section[slide]);
+      $('.event_slider_section').css({
+        background: colorSetting.section[slide]
+      }, 10);
+      $('.new_event_slider button.slick-prev').css({
+        color: colorSetting.prevArrow[slide]
+      }, 10);
+      $('.event_slider_section .aso_heading').css({
+        color: colorSetting.headings[slide]
+      }, 10);
 
-      };
-      $slider.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-        changeColors(nextSlide);
-      });
-      changeColors(0);
+    };
+    $slider.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+      changeColors(nextSlide);
+    });
+    changeColors(0);
 
 
     // }, 500);
     // new event page slider end
+
+    $('#next_btn').on('click', () => {
+      this.addEvent($(this));
+    })
+
+
+    // DropDown Js
+    $('.select_event_type li > a').click(function () {
+      this.eventTypeValue = $(this).html();
+     $('.selected_event_type > a').html(this.eventTypeValue);
+     console.log("event selcet thai jaje ========", this.eventTypeValue);
+     setControl(this.eventTypeValue);
+   });
+   var eventFormLocal = this.eventForm;
+   var setControl = function(event) {
+    console.log("event selcet thai jaje biji var ========", event);
+    eventFormLocal.controls.eventType.setValue(event)
+   }
+    
   }
+
+
 
   /**
    * Error message of eventDetails 
@@ -225,19 +250,28 @@ export class CreateEventComponent implements OnInit {
   /**
    * Create new event with it's details
    */
-  addEvent() {
-    console.log("data of event", this.eventForm, this.files);
-    this._eventService.addEvent(this.eventForm.value, this.files, this.themeFiles)
-      .subscribe((data: any) => {
-        console.log("event details", data);
-        this.eventId = data.data._id;
-        console.log("helloooooooooo");
-        console.log("created eventid", this.eventId);
-        this.getActivityFrom();
-      }, (err: any) => {
-        console.log(err);
-        this.alertService.getError(err.message);
-      })
+  
+  addEvent($this) {
+    console.log("data of event", $('.slick-active').hasClass("done"));
+    if ($('.slick-active').hasClass("done")) {
+      console.log("in twelve_slide");
+      this._eventService.addEvent(this.eventForm.value, this.files, this.themeFiles)
+        .subscribe((data: any) => {
+          console.log("event details", data);
+          $('.step_1').css({ 'display': 'none' })
+          $('.step_2').css({ 'display': 'block' });
+          this.eventId = data.data._id;
+          console.log("created eventid", this.eventId);
+          this.getActivityFrom();
+        }, (err: any) => {
+          console.log(err);
+          this.alertService.getError(err.message);
+        })
+    }
+    console.log("data of event", $('.slick-active').hasClass("twelve_slide"));
+    if ($('.slick-active').hasClass("twelve_slide")) {
+      $('.slick-active').addClass("done")
+    }
   }
 
   /**
@@ -328,9 +362,9 @@ export class CreateEventComponent implements OnInit {
    * @param {String} activity
    * To create new group in event or to edit created group of event 
    */
-  initGroupForm(activity) {
+  initGroupForm(activity?) {
     this.groupForm = new FormGroup({
-      eventId: new FormControl(activity[0].eventId),
+      eventId: new FormControl(activity ? activity[0].eventId : ""),
       group: this.fb.array(this.groupArray(activity, null))
     })
   }
@@ -349,7 +383,7 @@ export class CreateEventComponent implements OnInit {
         male: this.fb.array([this.maleItemArray()]),
         female: this.fb.array([this.femaleItemArray()])
       });
-    } else if (activities.length) {
+    } else if (activities && activities.length) {
       this.gArray = [];
       for (let i = 0; i < activities.length; i++) {
         // console.log("i =", i , "details =", activities[i])
@@ -376,12 +410,13 @@ export class CreateEventComponent implements OnInit {
       console.log(this.gArray);
       return this.gArray;
     } else {
-      return this.fb.group({
+      console.log("In else");
+      return [this.fb.group({
         activityId: new FormControl(''),
         groupName: new FormControl(''),
         male: this.fb.array([this.maleItemArray()]),
         female: this.fb.array([this.femaleItemArray()])
-      });
+      })];
     }
   }
 
@@ -482,10 +517,30 @@ export class CreateEventComponent implements OnInit {
    * @param {String} i
    *  Add new group field with activity 
    */
-  AddGroupField(activityId, i: number): void {
+  async AddGroupField(activityId, i: number) {
+    console.log(activityId, i)
+    console.log(this.groupForm.controls)
     const control = <FormArray>this.groupForm.controls.group;
-    console.log(control)
-    control.push(this.groupArray(null, activityId));
+    console.log(control.controls)
+    await control.controls.push(this.groupArray(null, activityId));
+    $('.gender_slider').not('.slick-initialized').slick({
+      // autoplay: true,
+      autoplaySpeed:2000,
+      arrows: false,
+      dots: false,
+      slidesToShow:1.5,
+      slidesToScroll: 1,
+      draggable: true,
+      fade:false,
+      responsive: [
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 1
+        }
+      }
+      ]
+    });
   }
 
   /**

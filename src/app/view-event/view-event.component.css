@@ -7,3 +7,31 @@
     background-color: #0909095e !important;
     color: white;
 }
+.event_detail_btns li{
+    width: 33.33%;
+    font-size: 16px;
+}
+
+
+/* join now button */
+
+button.joinNowBtn {
+    border: none;
+    outline: none;
+    background-color: #f79133;
+    font-size: 30px;
+    padding: 5px 0px;
+    margin: 10px 0px;
+}
+
+button.joinNowBtn:hover {
+    background-color: #f79133
+}
+ 
+
+
+.cart_pic img{
+    height: 50px;
+    width: 50px;
+    margin-left: -30px;
+}

@@ -3,3 +3,77 @@
     background-repeat: no-repeat !important;
     background-size: cover !important;
 }
+.event_img{
+    width: 140px;
+    height: 140px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: auto;
+}
+.event_img img{
+    object-fit: cover;
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 100%;
+    min-height: 100%;
+}
+
+.collect_img{
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: auto;
+}
+.collect_img img{
+    object-fit: cover;
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 100%;
+    min-height: 100%;
+}
+
+
+.collect_detail .slick-arrow {
+    position: absolute;
+    height: 56px;
+    width: 33px;
+    padding: 10px 5px;
+    top: 10px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    z-index: 11;
+    background-color: transparent;
+    font-size: 44px;
+    color: white;
+}
+
+.collect_detail button.slick-next.pull-right.slick-arrow {
+    left: auto;
+}
+.collect_detail button.slick-prev.pull-left.slick-arrow {
+    right: auto;
+}
+
+.prevarrow{
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: auto;
+    margin: auto;
+    height: fit-content;
+}
+.nextarrow{
+    position: absolute;
+    left: auto;
+    top: 0;
+    bottom: 0;
+    right: 0px;
+    margin: auto;
+    height: fit-content;
+}
