@@ -18,7 +18,7 @@
   <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="assets/css/slick.css">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+  <!-- <link rel="stylesheet" type="text/css" href="assets/css/responsive.css"> -->
   
 <!-- <script src="./assets/js/custom.js"></script> -->
 
@@ -70,6 +70,10 @@
   <script type="text/javascript" src="./assets/js/slick.min.js"></script>
   <script type="text/javascript" src="./assets/css/responsive.css"></script>
   <script>
+    $(".new_event_menu").click(function(){
+      $(".new_event_menu_box").toggle();
+    });
+    
     $(window).on('load', function () {
       $('#loader-wrapper').fadeOut('slow', function () {
         $('body').removeAttr('style');
