@@ -405,6 +405,7 @@ a {
 .btn_join2 {
     background-color: #fff;
     color: #000;
+    line-height: 36px!important;
 }
 
 .join_page2_section {
@@ -3245,13 +3246,13 @@ input:checked+.slider:before {
     background-color: rgba(0,0,0,0.9);
 }
 .event_menu{
- width: 665px;
- position: absolute;
- background-color: transparent;
- top: 40%;
- left: 50%;
- transform: translate(-50%,-50%);
- -ms-transform: translate(-50%,-50%);
+   width: 665px;
+   position: absolute;
+   background-color: transparent;
+   top: 40%;
+   left: 50%;
+   transform: translate(-50%,-50%);
+   -ms-transform: translate(-50%,-50%);
 }
 .all_menu_content{
     padding: 0px 60px;
@@ -3283,30 +3284,30 @@ input:checked+.slider:before {
     left: 61px;
 }
 .event_slider_section #overlay{
-   height: 645px;
-   width: 666px;
-   margin: auto;
-   position: absolute;
-   top: 4px;
-   left: 0;
-   right: 0;
-   bottom: 0;
-   z-index: 1110;
-   cursor: pointer;
-   background-color: rgba(0,0,0,0.9);
+ height: 645px;
+ width: 666px;
+ margin: auto;
+ position: absolute;
+ top: 4px;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ z-index: 1110;
+ cursor: pointer;
+ background-color: rgba(0,0,0,0.9);
 }
 .collection_slider_section #overlay{
-   height: 645px;
-   width: 666px;
-   margin: auto;
-   position: absolute;
-   top: 4px;
-   left: 0;
-   right: 0;
-   bottom: 0;
-   z-index: 1110;
-   cursor: pointer;
-   background-color: rgba(0,0,0,0.9);
+ height: 645px;
+ width: 666px;
+ margin: auto;
+ position: absolute;
+ top: 4px;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ z-index: 1110;
+ cursor: pointer;
+ background-color: rgba(0,0,0,0.9);
 }
 .slider_menu{
     position: relative;
@@ -4953,719 +4954,720 @@ input:checked+.slider:before {
     /*enter screen responsive start*/
     .enter_section h3{
         font-size: 42px;
-        margin-bottom: 20px;
-        margin-top: -40px;
+        margin-bottom: 8px;
     }
     .event_bank_detail .slider_box1 {
         margin-right: 0px;
     }
-    /*enter screen responsive end*/
-    /*home page responsive css end*/
-    /*all join page responsive start*/
-    .join_page1_section h3, .join_page2_section h3, .join_page3_section h3, .join_page4_section h3, .join_page5_section h3{
-        font-size: 42px;
-        margin-bottom: 20px;
-        margin-top: -40px;
-    }
-    .inner_content_btn a {
-        font-size: 14px;
-        height: 36px;
-        width: 115px;
-        line-height: 40px;
-        margin: 15px 15px 5px 15px;
-    }
-    .Join_inner_content_box{
-        height: 385px;
-        width: 100%;
-    }
-    .join_form button{
-        font-size: 30px;
-    }
-    .join_form input{
-        height: 45px;
-        margin-top: 20px;
-    }
-    .join_form input, input::-webkit-input-placeholder {
-        color: #fff!important;
-        font-size: 24px!important;
-    }
-    .join_form h3 {
-        font-size: 32px;
-        margin-top: 20px;
-    }
-    .join_form {
-        padding: 15px;
-    }
-    .user_first_name p {
-        font-size: 30px;
-        padding: 15px 5px 5px 10px;
-    }
-    .email_display{
-        display: none;
-    }
-    .facebook_sec span, .microsoft_sec span, .yahoo_sec span, .google_sec span {
-        font-size: 11px;
-    }
-    .facebook_sec img, .microsoft_sec img, .yahoo_sec img, .google_sec img {
-        height: 30px;
-        width: 30px;
-        margin-top: -5px;
-    }
-    .facebook_sec {
-        margin: 0px 10px 5px 15px;
-        padding: 5px 7px;
-        height: 45px;
-    }
-    .microsoft_sec {
-        margin: 5px 10px 0px 15px;
-        padding: 5px 7px;
-        height: 45px;
-    }
-    .google_sec {
-        margin: 0px 15px 5px 0px;
-        padding: 5px 7px;
-        height: 45px;
-    }
-    .yahoo_sec {
-        margin: 5px 15px 0px 0px;
-        padding: 5px 7px;
-        height: 45px;
-    }
-    .login_form_sec {
-        padding: 10px 15px; 
-    }
-    .col-10.social_media_login{
-        margin: auto;
-    }
-    .facebook_sec , .microsoft_sec {
-        margin-: 0px;
-    }
-    .join_form a {
-        font-size: 20px;
-        height: 45px;
-        line-height: 50px;
-    }
-    /*join page responsive end*/
-    /*new event responsive page start*/
-    .new_event_slider{
-        height: 525px;
-        width: 600px;
-    }
-    .new_event_slider button.slick-prev, .new_event_slider button.slick-next {
-        font-size: 25px;
-    }
-    .new_event_slider ul.slick-dots {
-        bottom: 8%;
-    }
-    .new_event_slider ul.slick-dots button {
-        height: 3px;
-        width: 16px;
-    }
-    .new_event_slider button.slick-prev {
-        left: 1%;
-        bottom: 3.9%;
-    }
-    .new_event_slider button.slick-next {
-        left: 5.2%;
-        bottom: 3.9%;
-    }
-    .new_event_sec .event_name {
-        font-size: 24px;
-        margin-left: -18px;
-    }
-    .select_event_type a {
-        font-size: 14px;
-        padding: 4px 20px;
-    }
+    .btn_join2 {
+       line-height: 23px!important;
+   }
+   /*enter screen responsive end*/
+   /*home page responsive css end*/
+   /*all join page responsive start*/
+   .join_page1_section h3, .join_page2_section h3, .join_page3_section h3, .join_page4_section h3, .join_page5_section h3{
+    font-size: 42px;
+    margin-bottom: 8px;
+}
+.inner_content_btn a {
+    font-size: 14px;
+    height: 36px;
+    width: 115px;
+    line-height: 40px;
+    margin: 15px 15px 5px 15px;
+}
+.Join_inner_content_box{
+    height: 385px;
+    width: 100%;
+}
+.join_form button{
+    font-size: 30px;
+}
+.join_form input{
+    height: 45px;
+    margin-top: 20px;
+}
+.join_form input, input::-webkit-input-placeholder {
+    color: #fff!important;
+    font-size: 24px!important;
+}
+.join_form h3 {
+    font-size: 32px;
+    margin-top: 20px;
+}
+.join_form {
+    padding: 15px;
+}
+.user_first_name p {
+    font-size: 30px;
+    padding: 15px 5px 5px 10px;
+}
+.email_display{
+    display: none;
+}
+.facebook_sec span, .microsoft_sec span, .yahoo_sec span, .google_sec span {
+    font-size: 11px;
+}
+.facebook_sec img, .microsoft_sec img, .yahoo_sec img, .google_sec img {
+    height: 30px;
+    width: 30px;
+    margin-top: -5px;
+}
+.facebook_sec {
+    margin: 0px 10px 5px 15px;
+    padding: 5px 7px;
+    height: 45px;
+}
+.microsoft_sec {
+    margin: 5px 10px 0px 15px;
+    padding: 5px 7px;
+    height: 45px;
+}
+.google_sec {
+    margin: 0px 15px 5px 0px;
+    padding: 5px 7px;
+    height: 45px;
+}
+.yahoo_sec {
+    margin: 5px 15px 0px 0px;
+    padding: 5px 7px;
+    height: 45px;
+}
+.login_form_sec {
+    padding: 10px 15px; 
+}
+.col-10.social_media_login{
+    margin: auto;
+}
+.facebook_sec , .microsoft_sec {
+    margin-: 0px;
+}
+.join_form a {
+    font-size: 20px;
+    height: 45px;
+    line-height: 50px;
+}
+/*join page responsive end*/
+/*new event responsive page start*/
+.new_event_slider{
+    height: 525px;
+    width: 600px;
+}
+.new_event_slider button.slick-prev, .new_event_slider button.slick-next {
+    font-size: 25px;
+}
+.new_event_slider ul.slick-dots {
+    bottom: 8%;
+}
+.new_event_slider ul.slick-dots button {
+    height: 3px;
+    width: 16px;
+}
+.new_event_slider button.slick-prev {
+    left: 1%;
+    bottom: 3.9%;
+}
+.new_event_slider button.slick-next {
+    left: 5.2%;
+    bottom: 3.9%;
+}
+.new_event_sec .event_name {
+    font-size: 24px;
+    margin-left: -18px;
+}
+.select_event_type a {
+    font-size: 14px;
+    padding: 4px 20px;
+}
 
-    .font_style a {
-        font-size: 14px;
-        padding: 12px 10px;
-    }
-    .profile_event_sec .profile_hashtag p {
-        font-size: 16px;
-        margin-top: 5px;
-    }
-    .profile_photo {
-        height: 130px;
-        height: 130px;
-    }
-    .profile_event_sec .profile_content ul li {
-        padding: 0px 14px;
-        font-size: 12px;
-    }
-    .select_pic .back_hashtag p {
-        font-size: 16px;
-        margin-top: 5px;
-    }
-    .select_pic .back_event p {
-        font-size: 22px;
-    }
-    .profile_event_sec .profile_event p {
-        font-size: 22px;
-    }
-    .new_event_sec img{
-        height: 35px;
-        width: 35px;
-    }
-    .Pricing_tip p {
-        font-size: 22px;
-    }
-    .new_event_slider ul.slick-dots {
-        padding: 0px 15px 0px 5px;
-    }
-    .event_inner_content {
-        padding: 0px 15px;
-    }
-    .new_event_sec {
-        padding-top: 15px;
-    }
-    .enter_event_title input {
-        height: 45px;
-    }
-    .enter_event_title h6 {
-        font-size: 18px;
-        letter-spacing: 0px; 
-    }
-    .event_slider_section h3 {
-        font-size: 42px;
-        margin-bottom: 10px;
-        margin-top: -60px;
-    }
-    .event_inner_content_box, .new_event_slider{
-        height: 385px;
-        width: 100%;
-    }
-    .new_event_sec p {
-        font-size: 13.67px;
-    }
-    .back1 img{
-        width: 70px;
-        height: 69px;
-    }
-    .all_back_img .col-sm-3{
-        padding-right: 3px;
-    }
-    .all_back_img .row {
-        flex-wrap: unset;
-    }
-    .all_back_img {
-        margin-top: 15px;
-    }
-    .back1 p {
-        font-size: 14px;
-    }
-    .preffered_option p {
-        font-size: 14px;
-        padding: 5px 0px;
-    }
-    .preffered_option h6 {
-        font-size: 11.83px;
-    }
-    .container {
-        font-size: 14px;
-    }
-    .checkmark {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 18px;
-        width: 18px;
-        background-color: #transparent;
-    }
-    .container input ~ .checkmark {
-        margin-top: 1px; 
-    }
-    .container .checkmark:after {
-        left: 4px;
-        top: 2px;
-        width: 4px;
-        height: 8px;
-    }
-    .select_registry select {
-        height: 45px;
-        font-size: 24px;
-        padding: 0px 15px;
-    }
-    .yes_no_btn {
-        margin-top: 10px;
-    }
-    .yes_no_btn a {
-        font-size: 12.29px;
-        line-height: 36px;
-    }
-    .enter_event_title p {
-        font-size: 16.83px;
-    }
-    .plus_add img{
-        height: 20px;
-        width: 20px;
-    }
-    .event_bank_detail .plus_add img {
-        right: 15px;
-    }
-    .event_bank_detail label {
-        font-size: 14px;
-    }
-    .event_bank_detail .event_hashtag p {
-        font-size: 16px;
-        margin-top: 5px;
-    }
-    .event_bank_detail .plus_add img {
-        bottom: -32px;
-    }
-    .enter_event_title p {
-        font-size: 15.83px;
-    }
-    .switch {
-        width: 58px;
-        height: 25px;
-    }
-    .slider:before {
-        height: 18px;
-        width: 18px;
-        left: 3px;
-        bottom: 2px;
-    }
-    .prising_list p {
-        padding-left: 50px;
-    }
-    /*new event responsive end*/
-    /*edit event responsive start*/
-    .edit_event_btn a {
-        margin-bottom: 8px;
-    }
-    /*edit event responsive end*/
-    /*collection screen responsive start*/
-    .collection_slider_section .event_inner_content_box {
-        width: 100%;
-    }
-    .collection_slider_section .new_event_sec {
-        padding-top: 15px;
-    }
-    .collection_slider{
-        width: 100%;
-    }
-    .collection_slider_section .event_inner_content {
-        width: 100%;
-        padding: 0px 15px;
-    }
-    .collection_slider_section .new_event_sec span {
-        font-size: 32px;
-    }
-    .collection_slider_section .slick-slide .new_event_sec img {
-        display: inline;
-        max-height: 42px;
-    }
-    .collection_slider_section .new_event_sec span {
-        font-size: 33.17px;
-        margin-left: -25px;
-    }
-    .collection_slider button.slick-prev {
-        top: 16%;
-        left: 23%;
-    }
-    .collection_slider button.slick-next {
-        bottom: 72%;
-        right: 23%;
-    }
-    .collection_slider_section form .col-3 {
-        max-width: 31%;
-    }
-    .collection_slider_section .inner_content_btn a {
-        width: 135px;
-    }
-    .slide_five .gender_list p {
-        line-height: 24px;
-    }
-    /*collection screen slider responsive end*/
-    /*new event page without slider start*/
-    /*msg start*/
-    .msg_page_section .event_btns {
-        padding: 0px 15px;
-        padding-top: 25px;
-    }
-    .all_event_sec .all_event_name {
-        font-size: 24px;
-        margin-left: -18px;
-    }
-    .all_event_sec img{
-        height: 35px;
-        width: 35px;
-    }
-    .all_event_sec{
-        padding: 15px 15px 0px 15px;
-    }
-    .all_event_sec p {
-        font-size: 13.67px;
-        line-height: 25px;
-    }
-    .msg_page_section .msg_tgl_btn {
-        padding: 15px 15px 0px 15px;
-    }
-    .msg_page_section h3{
-        font-size: 42px;
-        margin-bottom: 20px;
-        margin-top: -40px;
-    }
-    .msg_slug p{
-        text-align: center;
-    }
-    .msg_page_section .event_btns1 {
-        padding: 0px 15px;
-    }
-    /*msg end*/
+.font_style a {
+    font-size: 14px;
+    padding: 12px 10px;
+}
+.profile_event_sec .profile_hashtag p {
+    font-size: 16px;
+    margin-top: 5px;
+}
+.profile_photo {
+    height: 130px;
+    height: 130px;
+}
+.profile_event_sec .profile_content ul li {
+    padding: 0px 14px;
+    font-size: 12px;
+}
+.select_pic .back_hashtag p {
+    font-size: 16px;
+    margin-top: 5px;
+}
+.select_pic .back_event p {
+    font-size: 22px;
+}
+.profile_event_sec .profile_event p {
+    font-size: 22px;
+}
+.new_event_sec img{
+    height: 35px;
+    width: 35px;
+}
+.Pricing_tip p {
+    font-size: 22px;
+}
+.new_event_slider ul.slick-dots {
+    padding: 0px 15px 0px 5px;
+}
+.event_inner_content {
+    padding: 0px 15px;
+}
+.new_event_sec {
+    padding-top: 15px;
+}
+.enter_event_title input {
+    height: 45px;
+}
+.enter_event_title h6 {
+    font-size: 18px;
+    letter-spacing: 0px; 
+}
+.event_slider_section h3 {
+    font-size: 42px;
+    margin-bottom: 10px;
+    margin-top: -60px;
+}
+.event_inner_content_box, .new_event_slider{
+    height: 385px;
+    width: 100%;
+}
+.new_event_sec p {
+    font-size: 13.67px;
+}
+.back1 img{
+    width: 70px;
+    height: 69px;
+}
+.all_back_img .col-sm-3{
+    padding-right: 3px;
+}
+.all_back_img .row {
+    flex-wrap: unset;
+}
+.all_back_img {
+    margin-top: 15px;
+}
+.back1 p {
+    font-size: 14px;
+}
+.preffered_option p {
+    font-size: 14px;
+    padding: 5px 0px;
+}
+.preffered_option h6 {
+    font-size: 11.83px;
+}
+.container {
+    font-size: 14px;
+}
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: #transparent;
+}
+.container input ~ .checkmark {
+    margin-top: 1px; 
+}
+.container .checkmark:after {
+    left: 4px;
+    top: 2px;
+    width: 4px;
+    height: 8px;
+}
+.select_registry select {
+    height: 45px;
+    font-size: 24px;
+    padding: 0px 15px;
+}
+.yes_no_btn {
+    margin-top: 10px;
+}
+.yes_no_btn a {
+    font-size: 12.29px;
+    line-height: 36px;
+}
+.enter_event_title p {
+    font-size: 16.83px;
+}
+.plus_add img{
+    height: 20px;
+    width: 20px;
+}
+.event_bank_detail .plus_add img {
+    right: 15px;
+}
+.event_bank_detail label {
+    font-size: 14px;
+}
+.event_bank_detail .event_hashtag p {
+    font-size: 16px;
+    margin-top: 5px;
+}
+.event_bank_detail .plus_add img {
+    bottom: -32px;
+}
+.enter_event_title p {
+    font-size: 15.83px;
+}
+.switch {
+    width: 58px;
+    height: 25px;
+}
+.slider:before {
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 2px;
+}
+.prising_list p {
+    padding-left: 50px;
+}
+/*new event responsive end*/
+/*edit event responsive start*/
+.edit_event_btn a {
+    margin-bottom: 8px;
+}
+/*edit event responsive end*/
+/*collection screen responsive start*/
+.collection_slider_section .event_inner_content_box {
+    width: 100%;
+}
+.collection_slider_section .new_event_sec {
+    padding-top: 15px;
+}
+.collection_slider{
+    width: 100%;
+}
+.collection_slider_section .event_inner_content {
+    width: 100%;
+    padding: 0px 15px;
+}
+.collection_slider_section .new_event_sec span {
+    font-size: 32px;
+}
+.collection_slider_section .slick-slide .new_event_sec img {
+    display: inline;
+    max-height: 42px;
+}
+.collection_slider_section .new_event_sec span {
+    font-size: 33.17px;
+    margin-left: -25px;
+}
+.collection_slider button.slick-prev {
+    top: 16%;
+    left: 23%;
+}
+.collection_slider button.slick-next {
+    bottom: 72%;
+    right: 23%;
+}
+.collection_slider_section form .col-3 {
+    max-width: 31%;
+}
+.collection_slider_section .inner_content_btn a {
+    width: 135px;
+}
+.slide_five .gender_list p {
+    line-height: 24px;
+}
+/*collection screen slider responsive end*/
+/*new event page without slider start*/
+/*msg start*/
+.msg_page_section .event_btns {
+    padding: 0px 15px;
+    padding-top: 25px;
+}
+.all_event_sec .all_event_name {
+    font-size: 24px;
+    margin-left: -18px;
+}
+.all_event_sec img{
+    height: 35px;
+    width: 35px;
+}
+.all_event_sec{
+    padding: 15px 15px 0px 15px;
+}
+.all_event_sec p {
+    font-size: 13.67px;
+    line-height: 25px;
+}
+.msg_page_section .msg_tgl_btn {
+    padding: 15px 15px 0px 15px;
+}
+.msg_page_section h3{
+    font-size: 42px;
+    margin-bottom: 20px;
+    margin-top: -40px;
+}
+.msg_slug p{
+    text-align: center;
+}
+.msg_page_section .event_btns1 {
+    padding: 0px 15px;
+}
+/*msg end*/
 
-    /*add_event page start*/
-    .name_page_section .name_tgl_btn {
-        padding: 15px 15px 0px 15px;
-    }
-    .name_page_section .name_ceremony {
-        padding: 0px 15px;
-    }
-    .name_page_section h3{
-        font-size: 42px;
-        margin-bottom: 20px;
-        margin-top: -40px;
-    }
-    .name_page_section .Join_inner_content_box{
-        height: 385px;
-    }
-    .name_page_section .name_hashtag p {
-        font-size: 16px;
-        margin-top: 5px;
-    }
-    .name_page_section .name_event p {
-        font-size: 26px;
-    }
-    /*add_event page end*/
+/*add_event page start*/
+.name_page_section .name_tgl_btn {
+    padding: 15px 15px 0px 15px;
+}
+.name_page_section .name_ceremony {
+    padding: 0px 15px;
+}
+.name_page_section h3{
+    font-size: 42px;
+    margin-bottom: 20px;
+    margin-top: -40px;
+}
+.name_page_section .Join_inner_content_box{
+    height: 385px;
+}
+.name_page_section .name_hashtag p {
+    font-size: 16px;
+    margin-top: 5px;
+}
+.name_page_section .name_event p {
+    font-size: 26px;
+}
+/*add_event page end*/
 
-    /*event1 page start*/
-    .event1_page_section .event_item {
-        padding: 0 15px;
-    }
-    .event1_page_section .event_ceremony p {
-        font-size: 16px;
-    }
-    .event1_page_section .event1_btns a {
-        font-size: 14px;
-        height: 32px;
-        line-height: 34px;
-    }
-    .event_add img{
-        height: 20px;
-        width: 20px;
-    }
-    .event1_page_section .gendar{
-        padding: 5px 15px;
-    }
-    .event1_page_section button.save_btn {
-        font-size: 16px;
-        padding: 5px 25px;
-        margin: 5px 15px;
-    }
-    .event1_page_section .event_ceremony {
-        padding: 5px 15px;
-    }
-    .event1_page_section a.event_family {
-        width: 100px;
-    }
-    .event1_page_section .event1_btns {
-        padding: 0px 15px;
-    }
-    .event1_page_section .event1_tgl_btn {
-        padding: 15px 15px 0px 15px;
-    }
-    .event1_page_section h3{
-        font-size: 42px;
-        margin-bottom: 20px;
-        margin-top: -40px;
-    }
-    .event1_page_section .event_add {
-        padding: 0 15px;
-    }
-    .event1_page_section a.event_plus {
-        width: 45px;
-    }
-    /*event1 page end*/
+/*event1 page start*/
+.event1_page_section .event_item {
+    padding: 0 15px;
+}
+.event1_page_section .event_ceremony p {
+    font-size: 16px;
+}
+.event1_page_section .event1_btns a {
+    font-size: 14px;
+    height: 32px;
+    line-height: 34px;
+}
+.event_add img{
+    height: 20px;
+    width: 20px;
+}
+.event1_page_section .gendar{
+    padding: 5px 15px;
+}
+.event1_page_section button.save_btn {
+    font-size: 16px;
+    padding: 5px 25px;
+    margin: 5px 15px;
+}
+.event1_page_section .event_ceremony {
+    padding: 5px 15px;
+}
+.event1_page_section a.event_family {
+    width: 100px;
+}
+.event1_page_section .event1_btns {
+    padding: 0px 15px;
+}
+.event1_page_section .event1_tgl_btn {
+    padding: 15px 15px 0px 15px;
+}
+.event1_page_section h3{
+    font-size: 42px;
+    margin-bottom: 20px;
+    margin-top: -40px;
+}
+.event1_page_section .event_add {
+    padding: 0 15px;
+}
+.event1_page_section a.event_plus {
+    width: 45px;
+}
+/*event1 page end*/
 
-    /*slider page start*/
-    .slider_page_section .slider_tgl_btn {
-        padding: 15px 15px 0px 15px;
-    }
-    .slider_page_section h3{
-        font-size: 42px;
-        margin-bottom: 20px;
-        margin-top: -40px;
-    }
-    .slider_page_section .ceremony1 a, .ceremony2 a, .ceremony3 a {
-        width: 126px;
-    }
-    .slider_page_section .all_ceremony_btn {
-        padding: 0 15px;
-    }
-    .slider_page_section .select_date input {
-        height: 45px;
-    }
-    .slider_page_section .event_detail h6 {
-        font-size: 16px;
-    }
-    .slider_page_section .ceremony1 a, .ceremony2 a, .ceremony3 a {
-        width: 115px;
-        height: 34px;
-        font-size: 16px;
-        line-height: 32px;
-    }
+/*slider page start*/
+.slider_page_section .slider_tgl_btn {
+    padding: 15px 15px 0px 15px;
+}
+.slider_page_section h3{
+    font-size: 42px;
+    margin-bottom: 20px;
+    margin-top: -40px;
+}
+.slider_page_section .ceremony1 a, .ceremony2 a, .ceremony3 a {
+    width: 126px;
+}
+.slider_page_section .all_ceremony_btn {
+    padding: 0 15px;
+}
+.slider_page_section .select_date input {
+    height: 45px;
+}
+.slider_page_section .event_detail h6 {
+    font-size: 16px;
+}
+.slider_page_section .ceremony1 a, .ceremony2 a, .ceremony3 a {
+    width: 115px;
+    height: 34px;
+    font-size: 16px;
+    line-height: 32px;
+}
 
-    .slider_page_section .select_date {
-        padding: 0 15px;
-    }
-    .slider_page_section .plus a {
-        width: 30px;
-        height: 34px;
-        font-size: 16px;
-        line-height:32px;
-    }
-    .slider_page_section .event_detail {
-        margin-top: 5px; 
-    }
-    .slider_page_section .freind_family {
-        padding: 0 15px;
-    }
-    .slider_page_section .all_ceremony_btn ul li {
-        list-style: none;
-        display: inline-block;
-        padding: 5px 3px 5px 0px;
-    }
-    .slider_page_section .NGN label, .item_name, .slider_page_section .gender_slide h5 {
-        font-size: 12px;
-    }
-    .slider_page_section .select_item, .plus_icon {
-        margin-top: 2px;
-    }
-    .slider_page_section .gender_slide {
-        padding: 8px 8px 0px 8px;
-    }
-    /*event_slider page end*/
+.slider_page_section .select_date {
+    padding: 0 15px;
+}
+.slider_page_section .plus a {
+    width: 30px;
+    height: 34px;
+    font-size: 16px;
+    line-height:32px;
+}
+.slider_page_section .event_detail {
+    margin-top: 5px; 
+}
+.slider_page_section .freind_family {
+    padding: 0 15px;
+}
+.slider_page_section .all_ceremony_btn ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 5px 3px 5px 0px;
+}
+.slider_page_section .NGN label, .item_name, .slider_page_section .gender_slide h5 {
+    font-size: 12px;
+}
+.slider_page_section .select_item, .plus_icon {
+    margin-top: 2px;
+}
+.slider_page_section .gender_slide {
+    padding: 8px 8px 0px 8px;
+}
+/*event_slider page end*/
 
-    /*thanks start*/
-    .thanks_page_section .thanks_head p {
-        font-size: 70px;
-        padding-top: 95px;
-    }
-    .thanks_page_section .thanks_slug p {
-        font-size: 18px;
-    }
-    .thanks_page_section h3{
-        font-size: 42px;
-        margin-bottom: 20px;
-        margin-top: -40px;
-    }
-    .thanks_page_section img.close_img {
-        top: -60px;
-    }
-    /*thanks end*/
-    /*new event page without slider end*/
-    /*aso ebi event pages css start*/
-    /*eventA page start*/
-    .eventA_page_section .evet_sliding, .eventB_page_section .evet_sliding, .eventC_page_section .evet_sliding{
-        padding: 4px 15px;
-    }
-    .eventA_page_section .collected {
-        padding: 6px 15px;
-    }
-    .collect_img img {
-        height: 56px;
-    }
-    .collect_detail .collect_img p {
-        font-size: 11px;
-    }
-    .collect_detail {
-        padding: 5px 15px;
-    }
-    .eventA_page_section button.event_btn {
-        font-size: 13px;
-    }
-    .eventA_page_section .collected p {
-        font-size: 13px;
-    }
-    .collect_detail .collect_img {
-        width: 65px;
-    }
-    /*eventA page end*/
+/*thanks start*/
+.thanks_page_section .thanks_head p {
+    font-size: 70px;
+    padding-top: 95px;
+}
+.thanks_page_section .thanks_slug p {
+    font-size: 18px;
+}
+.thanks_page_section h3{
+    font-size: 42px;
+    margin-bottom: 20px;
+    margin-top: -40px;
+}
+.thanks_page_section img.close_img {
+    top: -60px;
+}
+/*thanks end*/
+/*new event page without slider end*/
+/*aso ebi event pages css start*/
+/*eventA page start*/
+.eventA_page_section .evet_sliding, .eventB_page_section .evet_sliding, .eventC_page_section .evet_sliding{
+    padding: 4px 15px;
+}
+.eventA_page_section .collected {
+    padding: 6px 15px;
+}
+.collect_img img {
+    height: 56px;
+}
+.collect_detail .collect_img p {
+    font-size: 11px;
+}
+.collect_detail {
+    padding: 5px 15px;
+}
+.eventA_page_section button.event_btn {
+    font-size: 13px;
+}
+.eventA_page_section .collected p {
+    font-size: 13px;
+}
+.collect_detail .collect_img {
+    width: 65px;
+}
+/*eventA page end*/
 
-    /*eventB start*/
-    .event_img img {
-        height: 65px;
-    }
-    .eventB_page_section .event_img p {
-        font-size: 14.92px;
-    }
-    /*eventB page end*/
+/*eventB start*/
+.event_img img {
+    height: 65px;
+}
+.eventB_page_section .event_img p {
+    font-size: 14.92px;
+}
+/*eventB page end*/
 
-    /*evnetC page start*/
-    .eventC_page_section .event_activity {
-        padding: 0px 15px 0px 15px;
-    }
-    .eventC_page_section .event_button {
-        padding: 0px 15px;
-    }
-    .eventC_page_section .eventC_gendar{
-        padding-top: 0px;
-    }
-    .eventC_page_section .eventC_btn {
-        padding: 5px 15px;
-        font-size: 13px;
-    }
-    .eventC_page_section .eventC_gendar label, .eventC_page_section .eventC_item p{
-        font-size: 13px;
-    }
-    .eventC_page_section input[type=radio]{
-        height: 14px;
-    }
-    .eventC_page_section .eventC_item {
-        padding: 0px 15px;
-    }
-    .eventC_page_section input[type=radio] {
-        margin-left: 15px;
-    }
-    .eventC_page_section .event_activity p {
-        font-size: 13px;
-    }
-    .eventC_page_section button.event_btn{
-        font-size: 13px;
-        padding: 0px 10px;
-    }
-    /*eventCpage end*/
-    /*eventD page start*/
-    .eventD_page_section .evet_sliding, .eventD_page_section .eventD_input, .eventD_page_section .eventD_detail {
-        padding: 0px 15px;
-    }
-    .eventD_page_section .eventD_btn{
-        padding: 5px 15px;
-    }
-    .eventC_page_section #overlay1, .eventD_page_section #overlay1, .eventE_page_section #overlay1{
-        height: 470px;
-        width: 100%;
-    }
-    .eventC_page_section .Join_inner_content_box, .eventD_page_section .Join_inner_content_box, .eventE_page_section .Join_inner_content_box{
-        height: 470px;
-        width: 100%;
-    }
-    .eventD_page_section button.event_payment, .eventD_page_section button.event_invitation{
-        font-size: 13px;
-        padding: 6px 5px;
-    }
-    .eventD_page_section .eventD_detail p {
-        font-size: 13px;
-    }
-    .eventD_page_section input.event_aso {
-        height: 35px;
-        padding: 15px;
-        font-size: 16px;
-    }
-    .eventD_page_section button.event_btn {
-        font-size: 12px;
-        padding: 3px 15px;
-    }
-    .eventD_page_section button.eventD_share{
-        font-size: 13px;
-        padding: 5px 25px;  
-        margin-top: 0px;
-    }
-    /*eventD page end*/
+/*evnetC page start*/
+.eventC_page_section .event_activity {
+    padding: 0px 15px 0px 15px;
+}
+.eventC_page_section .event_button {
+    padding: 0px 15px;
+}
+.eventC_page_section .eventC_gendar{
+    padding-top: 0px;
+}
+.eventC_page_section .eventC_btn {
+    padding: 5px 15px;
+    font-size: 13px;
+}
+.eventC_page_section .eventC_gendar label, .eventC_page_section .eventC_item p{
+    font-size: 13px;
+}
+.eventC_page_section input[type=radio]{
+    height: 14px;
+}
+.eventC_page_section .eventC_item {
+    padding: 0px 15px;
+}
+.eventC_page_section input[type=radio] {
+    margin-left: 15px;
+}
+.eventC_page_section .event_activity p {
+    font-size: 13px;
+}
+.eventC_page_section button.event_btn{
+    font-size: 13px;
+    padding: 0px 10px;
+}
+/*eventCpage end*/
+/*eventD page start*/
+.eventD_page_section .evet_sliding, .eventD_page_section .eventD_input, .eventD_page_section .eventD_detail {
+    padding: 0px 15px;
+}
+.eventD_page_section .eventD_btn{
+    padding: 5px 15px;
+}
+.eventC_page_section #overlay1, .eventD_page_section #overlay1, .eventE_page_section #overlay1{
+    height: 470px;
+    width: 100%;
+}
+.eventC_page_section .Join_inner_content_box, .eventD_page_section .Join_inner_content_box, .eventE_page_section .Join_inner_content_box{
+    height: 470px;
+    width: 100%;
+}
+.eventD_page_section button.event_payment, .eventD_page_section button.event_invitation{
+    font-size: 13px;
+    padding: 6px 5px;
+}
+.eventD_page_section .eventD_detail p {
+    font-size: 13px;
+}
+.eventD_page_section input.event_aso {
+    height: 35px;
+    padding: 15px;
+    font-size: 16px;
+}
+.eventD_page_section button.event_btn {
+    font-size: 12px;
+    padding: 3px 15px;
+}
+.eventD_page_section button.eventD_share{
+    font-size: 13px;
+    padding: 5px 25px;  
+    margin-top: 0px;
+}
+/*eventD page end*/
 
-    /*eventE page start*/
-    .eventE_page_section .evet_sliding {
-        padding: 0px 15px;
-    }
-    .eventE_page_section .event_channel {
-        padding: 2px 15px 2px 15px;
-    }
-    .channel_name {
-        display: inline-flex;
-    }
-    .eventE_page_section .event_channel p {
-        padding: 0px 5px;
-    }
-    .eventE_page_section .eventE_media {
-        text-align: center;
-    }
-    .eventE_page_section .eventE_media {
-        padding: 0 0px;
-    }
-    .eventE_page_section .eventE_media img {
-        padding: 0 5px;
-    }
-    /*eventE page end*/
+/*eventE page start*/
+.eventE_page_section .evet_sliding {
+    padding: 0px 15px;
+}
+.eventE_page_section .event_channel {
+    padding: 2px 15px 2px 15px;
+}
+.channel_name {
+    display: inline-flex;
+}
+.eventE_page_section .event_channel p {
+    padding: 0px 5px;
+}
+.eventE_page_section .eventE_media {
+    text-align: center;
+}
+.eventE_page_section .eventE_media {
+    padding: 0 0px;
+}
+.eventE_page_section .eventE_media img {
+    padding: 0 5px;
+}
+/*eventE page end*/
 
-    /*eventF page start*/
-    .eventF_page_section .Join_inner_content_box {
-        height: 560px;
-        width: 100%;
-    }
-    .eventF_page_section #overlay {
-        height: 560px;
-        width: 100%;
-    }
-    .eventF_page_section .evet_sliding {
-        padding: 3px 15px;
-    }
-    .eventF_page_section .eventF_btn{
-        text-align: center;
-    }
-    .eventF_at, .eventF_to {
-        padding: 1px 15px;
-    }
-    .eventF_page_section .eventF_pera {
-        padding: 3px 15px;
-    }
-    .eventF_page_section .eventF_send {
-        padding: 3px 15px;
-    }
-    .eventF_page_section button.event_btn {
-        padding: 4px 20px;
-        font-size: 11px;
-    }
-    .eventF_page_section button.invitation {
-        width: 90px;
-        font-size: 11px;
-        height: 31px;
-    }
-    .eventF_page_section button.plus{
-        width: 32px;
-        height: 30px;
-    }
-    .eventF_page_section .eventF_pera p{
-        font-size: 12px;
-    }
-    .eventF_page_section button.eventF_save {
-        font-size: 12px;
-        padding: 5px 21px;
-    }
-    .eventF_page_section .eventF_send input {
-        font-size: 12px;
-        width: 65px;
-    }
-    .eventF_page_section .eventF_send label, .eventF_page_section .eventF_at label, .eventF_page_section .eventF_to label {
-        font-size: 12px;
-    }
-    .eventF_page_section .eventF_at input {
-        width: 18px;
-        height: 16px;
-    }
-    .eventF_page_section [type="radio"]:checked + label:before, .eventF_page_section [type="radio"]:not(:checked) + label:before{
-        width: 18px;
-        height: 17px;
-    }
-    .eventF_page_section [type="radio"]:checked + label:after, .eventF_page_section [type="radio"]:not(:checked) + label:after{
-        top: 4px;
-        left: 4px;
-    }
-    .eventF_page_section [type="radio"]:checked + label, .eventF_page_section [type="radio"]:not(:checked) + label{
-        line-height: 15px;
-    }
-    /*aso ebi event pages css end*/
+/*eventF page start*/
+.eventF_page_section .Join_inner_content_box {
+    height: 560px;
+    width: 100%;
+}
+.eventF_page_section #overlay {
+    height: 560px;
+    width: 100%;
+}
+.eventF_page_section .evet_sliding {
+    padding: 3px 15px;
+}
+.eventF_page_section .eventF_btn{
+    text-align: center;
+}
+.eventF_at, .eventF_to {
+    padding: 1px 15px;
+}
+.eventF_page_section .eventF_pera {
+    padding: 3px 15px;
+}
+.eventF_page_section .eventF_send {
+    padding: 3px 15px;
+}
+.eventF_page_section button.event_btn {
+    padding: 4px 20px;
+    font-size: 11px;
+}
+.eventF_page_section button.invitation {
+    width: 90px;
+    font-size: 11px;
+    height: 31px;
+}
+.eventF_page_section button.plus{
+    width: 32px;
+    height: 30px;
+}
+.eventF_page_section .eventF_pera p{
+    font-size: 12px;
+}
+.eventF_page_section button.eventF_save {
+    font-size: 12px;
+    padding: 5px 21px;
+}
+.eventF_page_section .eventF_send input {
+    font-size: 12px;
+    width: 65px;
+}
+.eventF_page_section .eventF_send label, .eventF_page_section .eventF_at label, .eventF_page_section .eventF_to label {
+    font-size: 12px;
+}
+.eventF_page_section .eventF_at input {
+    width: 18px;
+    height: 16px;
+}
+.eventF_page_section [type="radio"]:checked + label:before, .eventF_page_section [type="radio"]:not(:checked) + label:before{
+    width: 18px;
+    height: 17px;
+}
+.eventF_page_section [type="radio"]:checked + label:after, .eventF_page_section [type="radio"]:not(:checked) + label:after{
+    top: 4px;
+    left: 4px;
+}
+.eventF_page_section [type="radio"]:checked + label, .eventF_page_section [type="radio"]:not(:checked) + label{
+    line-height: 15px;
+}
+/*aso ebi event pages css end*/
 }
 @media screen and (max-width: 500px){
     /*buying option 2 start*/
