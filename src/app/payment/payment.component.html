@@ -1,6 +1,6 @@
 <!-- Total payment of myCart items and if donation added display final total  -->
 
-<div class="container">
+<!-- <div class="container">
     <table class="table">
         <thead class="thead-dark">
             <tr>
@@ -79,4 +79,203 @@
             </tr>
         </tbody>
     </table>
+</div> -->
+
+
+<!-- new Design of lastPayment -->
+
+
+<div class="step_one">
+    <section class="buying_option1_section buying_option5_section d-flex flex-wrap align-content-center ">
+        <div class="container-fluid">
+            <h3 class="text-center text-center Aso_title">Aso Ebi</h3>
+            <div class="profile_pic text-center text-center">
+                <img src="/assets/images/profile.png">
+            </div>
+            <h3 class="text-center text-center user_name"> hi</h3>
+            <div class="card_inner_content_box5">
+                <div class="veiw_event">
+                    <div class="event_inner_content">
+                        <div class="event_detail_slider">
+                            <div class="event_detail_slide event_detail_slide_sky1">
+                                <div class="events_name text-center">
+                                    <a href="#" class="text-center text-white">
+                                        hi</a>
+                                </div>
+                            </div>
+                            <div class="event_detail_slide event_detail_slide_sky1">
+                                <div class="events_name text-center">
+                                    <a (click)="nextSection('step_four', 'step_five')"
+                                        class="text-center text-white">Gift Donation</a>
+                                </div>
+                            </div>
+                            <div class="event_detail_slide event_detail_slide_sky1">
+                                <div class="events_name text-center">
+                                    <a href="#" class="text-center text-white">Total</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="radio_btn text-white">
+                            <div class="event_prise_detail">
+                                <p class="event_name_new"> ji</p>
+                                <p class="gender_select">Male</p>
+                                <div class="row" *ngFor="let item of finalCartDetails">
+                                    <div class="col-7">
+                                        <div class="row">
+                                            <div class="col-12" *ngIf="item.itemGender == 'male'">
+                                                <div class="all_list">
+                                                    <div class="fabric_name float-left">{{item.itemName}}<img
+                                                            src="/assets/images/wn.png">{{item.itemPrice}}</div>
+                                                    <div class="float-right">
+                                                        <!-- <label class=""> x </label> -->
+                                                        <input type="number" min="1" [(ngModel)]="item.quantity"
+                                                            disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 all_list_total_price" *ngIf="item.itemGender == 'male'">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class=" float-right"> = <img src="/assets/images/wn.png">
+                                                    {{item.itemPrice * item.quantity }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="event_prise_detail">
+                                <!-- <p class="event_name_new" *ngIf="eventDetails"> {{eventDetails.eventType}}</p> -->
+                                <p class="gender_select">Female</p>
+                                <div class="row" *ngFor="let item of finalCartDetails">
+                                    <div class="col-7">
+                                        <div class="row">
+                                            <div class="col-12" *ngIf="item.itemGender=='female'">
+                                                <div class="all_list">
+                                                    <div class="fabric_name float-left">{{item.itemName}}<img
+                                                            src="/assets/images/wn.png">{{item.itemPrice}}</div>
+                                                    <div class="float-right">
+                                                        <!-- <label class=""> x </label> -->
+                                                        <input type="number" min="1" [(ngModel)]="item.quantity"
+                                                            disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 all_list_total_price" *ngIf="item.itemGender=='female'">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class=" float-right"> = <img src="/assets/images/wn.png">
+                                                    {{item.itemPrice * item.quantity }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="all_total">
+                                <div class="row">
+                                    <div class="col-11">
+                                        <div class="float-left">Total</div>
+                                        <div class="fabric_name float-right">= <img src="/assets/images/yn.png">
+                                            {{grandTotal}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="save_and_pay_btn">
+                                <a class="update_btn text-center"  (click)="finalPayment(finalCartDetails,finalGrandTotal,donation,address)">Procced</a>
+                                <a class="paynow_btn text-center" (click)="nextSection('step_two', 'step_one')">Donation</a>
+                            </div>
+
+                            <div class="all_total">
+                                    <div class="row">
+                                        <div class="col-11">
+                                            <div class="float-left">FInal Total</div>
+                                            <div class="fabric_name float-right">= <img src="/assets/images/yn.png">
+                                                {{finalGrandTotal}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+<div class="step_two" style="display:none">
+    <section class="buying_option1_section buying_option4_section d-flex flex-wrap align-content-center ">
+        <div class="container-fluid">
+            <h3 class="text-center text-white Aso_title">Aso Ebi</h3>
+            <div class="profile_pic text-center text-center">
+                <img src="/assets/images/profile.png">
+            </div>
+            <h3 class="text-center text-white user_name"># Ayo Kunbi</h3>
+            <div class="card_inner_content_box">
+                <div class="veiw_event">
+                    <div class="event_inner_content">
+                        <div class="event_detail_slider">
+                            <div class="event_detail_slide event_detail_slide_pink1">
+                                <div class="events_name text-center">
+                                    <a href="#" class="text-center text-white">Engagement</a>
+                                </div>
+                            </div>
+                            <div class="event_detail_slide event_detail_slide_pink1">
+                                <div class="events_name text-center">
+                                    <a href="#" class="text-center text-white">Wedding</a>
+                                </div>
+                            </div>
+                            <div class="event_detail_slide event_detail_slide_pink1">
+                                <div class="events_name text-center">
+                                    <a href="#" class="text-center text-white">Gift Donation</a>
+                                </div>
+                            </div>
+                            <div class="event_detail_slide event_detail_slide_pink1">
+                                <div class="events_name text-center">
+                                    <a href="#" class="text-center text-white">Total</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="donation_detail">
+                            <div class="row">
+                                <div class="col-11">
+                                    <div class="thanx_write text-white">
+                                        <p>Thank you for being here. Planning on getting
+                                            us a present - we are gestated. Gifts will not
+                                            be accepted on the wedding day, however, put
+                                            financial gift is very much appreciated.</p>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-1">
+                                    <div class="cross_img float-right">
+                                        <img src="/assets/images/cross_img.png">
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <label for="email" class="text-white">I give</label>
+                                </div>
+                                <div class="col-sm-10">
+                                        <input type="number" min="1" id="donation" (keyup)="finalTotal($event.target.value)"
+                                        [(ngModel)]='donation' value="donation">
+                                </div>
+                            </div>
+                            <div class="save_and_pay_btn">
+                                <a class="save1_btn text-white text-center" (click)="nextSection('step_one', 'step_two')">Pay</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>

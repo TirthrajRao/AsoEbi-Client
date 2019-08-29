@@ -184,7 +184,7 @@ export class EventService {
    */
   removeCartItem(id) {
     console.log(id);
-    return this.http.delete(config.baseApiUrl + "api/event/delete-item/" + id);
+    return this.http.delete(config.baseApiUrl + "api/cart?itemId=" + id);
   }
 
   /**
@@ -232,14 +232,14 @@ export class EventService {
 
   getCollections(id) {
 
-    return this.http.get(config.baseApiUrl + "api/event-collection?eventId="+ id);
+    return this.http.get(config.baseApiUrl + "api/event-collection?eventId=" + id);
   }
-  totalAmount(id){
-    return this.http.get(config.baseApiUrl+"api/event-donation?eventId="+id);
+  totalAmount(id) {
+    return this.http.get(config.baseApiUrl + "api/event-donation?eventId=" + id);
   }
 
-  guestList(id){
-    return this.http.get(config.baseApiUrl + "api/event/event-detail/"+ id);
+  guestList(id) {
+    return this.http.get(config.baseApiUrl + "api/event/event-detail/" + id);
   }
 
   // Admin Panel//

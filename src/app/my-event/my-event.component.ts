@@ -344,9 +344,7 @@ export class MyEventComponent implements OnInit {
     this.itemNamePrint = _.filter(item.item, { 'itemGender': this.selectedGender });
   }
 
-  groupwiseItem(item){
-    console.log(item);
-  }
+ 
 }
 
 

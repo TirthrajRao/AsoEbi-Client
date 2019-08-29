@@ -3790,6 +3790,328 @@ a.createEvent_button {
 }
 /*my card page 5 end*/
 
+/* final payment css start */
+.my_cart_section{
+    min-height: 100vh;
+    background-color: #e5e5e5;
+}
+.my_cart_section h3{
+ font-size: 55.33px;
+ color: #1471a1;
+}
+.my_cart_section .my_cart_box{
+    background-image: url(/assets/images/my_cart.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.my_cart_box{
+ position: relative;
+ width: 665px;
+ height: 838px;
+ margin: auto;
+}
+.my_cart_box #overlay{
+ width: 665px;
+ height: 838px; 
+}
+.all_item_total{
+    padding: 10px;
+}
+.my_cart_detail{
+    border: 1px solid #fff;
+    margin-top: 20px;
+}
+.my_cart_detail input{
+    width: 70px;
+    height: 28px;
+    color: #fff!important;
+    background-color: transparent;
+}
+.my_cart_detail .table td, .my_cart_detail .table th {
+    border-top: none!important; 
+}
+.my_cart_detail .table thead th {
+   border-bottom: 0px !important; 
+   background-color: #1471a1;
+}
+.my_cart_detail .table td{
+   font-size: 14.58px;
+}
+.my_cart_detail{
+   font-family: 'Russo One', sans-serif; 
+}
+.address_sec input{
+    width: 170px!important
+}
+.address_sec .form-control{
+    border-radius: 0px;
+}
+.address_sec input::-webkit-input-placeholder {
+    color: #fff!important;
+    font-size: 14.58px!important;
+}
+.checkout_btn button{
+    background-color: #f6941f;
+    border: none!important;
+    height: 28px;
+    width: 100px;
+    font-size: 12.5px;
+}
+.item_total{
+    margin-top: 12px;
+}
+.item_donation{
+    margin-top: 12px;
+}
+.item_grand_total{
+    margin-top: 12px;
+}
+.address_sec{
+    margin-top: 12px;
+}
+/* final payment css end */
+
+
+
+/*admin dashboard css start*/
+
+/* header css */
+
+.header {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    background: #2499ef !important;
+    width: 100%;
+    color: #fff !important;
+}
+
+.logo {
+    font-size: 54px;
+    position: fixed;
+    margin-left: 90px;
+}
+
+#menu-action {
+    display: block;
+    float: left;
+    padding: 15px 20px;
+    line-height: 50px;
+    margin-right: 15px;
+    color: #fff !important;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.15) !important;
+    font-size: 33px;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+i {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.sidebar {
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 80px;
+    height: 100%;
+    width: 80px;
+    background: #3b414e !important;
+    border-right: 1px solid #ddd;
+    text-align: center;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    font-family: 'Russo One', sans-serif;
+}
+
+.sidebar:hover, .active, .hovered {
+    width: 250px;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar .li {
+    display: block;
+}
+
+.sidebar a {
+    display: block;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    border-bottom: 1px solid #31343b;
+    color: #fff !important;
+    text-align: left;
+}
+
+.sidebar i {
+    display: inline-block;
+    width: 70px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    -webkit-animation-duration: .7s;
+    -moz-animation-duration: .7s;
+    -o-animation-duration: .7s;
+    animation-duration: .7s;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    -o-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.admin-card .card {
+    margin: 150px 120px 120px 200px;
+    border-radius: 0px !important;
+
+}
+
+.admin-card label {
+    margin: 10px 0px;
+}
+
+.admin-card {
+    font-family: 'Russo One', sans-serif;
+}
+.chart{
+    width: 100%; 
+    min-height: 450px;
+}
+.progress {
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    background: none;
+    margin: 0 auto;
+    box-shadow: none;
+    position: relative;
+}
+
+.progress:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 12px solid #fff !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.progress>span {
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
+
+.progress .progress-left {
+    left: 0;
+}
+
+.progress .progress-bar {
+    width: 100%;
+    height: 100%;
+    background: none;
+    border-width: 12px;
+    border-style: solid;
+    position: absolute;
+    top: 0;
+}
+
+.progress .progress-left .progress-bar {
+    left: 100%;
+    border-top-right-radius: 80px;
+    border-bottom-right-radius: 80px;
+    border-left: 0;
+    -webkit-transform-origin: center left;
+    transform-origin: center left;
+}
+
+.progress .progress-right {
+    right: 0;
+}
+
+.progress .progress-right .progress-bar {
+    left: -100%;
+    border-top-left-radius: 80px;
+    border-bottom-left-radius: 80px;
+    border-right: 0;
+    -webkit-transform-origin: center right;
+    transform-origin: center right;
+    animation: loading-1 1.8s linear forwards;
+}
+
+.progress .progress-value {
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    /*background: #44484b;*/
+    font-size: 24px;
+    color: #fff !important;
+    line-height: 135px;
+    text-align: center;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+}
+.sidebar a:hover {
+    background-color: white !important;
+    color: #3398db;
+}
+
+.progress.blue .progress-bar {
+    border-color: #057dd9 !important;
+}
+
+.progress.blue .progress-left .progress-bar {
+    animation: loading-1 1.5s linear forwards 1.8s;
+}
+
+.progress.gray .progress-bar {
+    border-color: #3b414e;
+}
+
+.progress.gray .progress-left .progress-bar {
+    animation: loading-2 1.5s linear forwards 1.8s;
+}
+
+@keyframes loading-1 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes loading-2 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(144deg);
+        transform: rotate(144deg);
+    }
+}
+
+/*admin dashboard css end*/
+
 /* responsive css start */
 
 @media(max-width: 1366px) {

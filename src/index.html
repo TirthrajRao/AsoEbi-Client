@@ -45,6 +45,7 @@
   <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/js/bootstrap4-toggle.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> -->
   <!-- <script src="https://secure.aadcdn.microsoftonline-p.com/lib/<version>/js/msal.js"></script>
   <script src="https://secure.aadcdn.microsoftonline-p.com/lib/<version>/js/msal.min.js"></script> -->
@@ -68,75 +69,13 @@
   <script type="text/javascript" src="./assets/js/popper.min.js"></script>
   <script type="text/javascript" src="./assets/js/custom.js"></script>
   <script type="text/javascript" src="./assets/js/slick.min.js"></script>
+
   <script>
     $(window).on('load', function () {
       $('#loader-wrapper').fadeOut('slow', function () {
         $('body').removeAttr('style');
       });
     });
-  </script>
-
-  <script>
-
-    // new event page slider start
-    // $(document).ready(function () {
-    //   var $slideContainter = $('.new_event_slider'),
-    //     $slider = $slideContainter.slick({
-    //       dots: true,
-    //       infinite: false,
-    //       speed: 1000,
-    //       draggable: true,
-    //       arrows: true,
-    //       prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
-    //       nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>"
-    //       // autoplay:true
-    //     });
-    //   $slider.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-    //     setTimeout(function () {
-    //       var activeNow = $('.slick-dots li.slick-active').text();
-    //       $('.slick-dots').removeClass('slide1');
-    //       $('.slick-dots').removeClass('slide2');
-    //       $('.slick-dots').removeClass('slide3');
-    //       $('.slick-dots').removeClass('slide4');
-    //       $('.slick-dots').removeClass('slide5');
-    //       $('.slick-dots').removeClass('slide6');
-    //       $('.slick-dots').removeClass('slide7');
-    //       $('.slick-dots').removeClass('slide8');
-    //       $('.slick-dots').removeClass('slide9');
-    //       $('.slick-dots').removeClass('slide10');
-    //       $('.slick-dots').removeClass('slide11');
-    //       $('.slick-dots').removeClass('slide12');
-    //       var className = ['slide1', 'slide2', 'slide3', 'slide4', 'slide5', 'slide6', 'slide7', 'slide8', 'slide9', 'slide10', 'slide11', 'slide12'];
-    //       $('.slick-dots li').parent('.slick-dots').addClass(className[activeNow - 1]);
-    //     }, 10);
-    //   });
-
-    //   colorSetting = {
-    //     section: ['#c1c3be', '#cdcdcd', '#e7e7e7', '#f7f7f7', '#f4f4f4', '#e1c2aa', '#e8e7e5', '#e7e7e7', '#93a8c1', '#e2e4e3', '#ebf0f1', '#d1d1d1'],
-    //     prevArrow: ['#a4bf45', '#f73953', '#ef6439', '#f4ad48', '#fae545', '#f4c036', '#ffeb5b', '#f73953', '#bfa066', '#eaa52e', '#afda57', '#ffb54d'],
-    //     headings: ['#1d73ae', '#f73953', '#ef6439', '#f4ad48', '#e32676', '#373255', '#371448', '#e91e3b', '#363f4f', '#eaa52e', '#1c424d', '#000000'],
-    //   },
-    //     changeColors = function (slide) {
-    //       console.log("color=========>", colorSettings.section[slide]);
-    //       $('.event_slider_section').css({
-    //         background: colorSetting.section[slide]
-    //       }, 10);
-    //       $('.new_event_slider button.slick-prev').css({
-    //         color: colorSetting.prevArrow[slide]
-    //       }, 10);
-    //       $('.event_slider_section .aso_heading').css({
-    //         color: colorSetting.headings[slide]
-    //       }, 10);
-
-    //     };
-    //   changeColors(0);
-
-    //   $slider.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-    //     changeColors(nextSlide);
-    //   });
-
-    // });
-    // new event page slider end
   </script>
 </body>
 

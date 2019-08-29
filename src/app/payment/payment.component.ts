@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from '../services/event.service';
 import { AlertService } from '../services/alert.service';
 import * as _ from 'lodash';
+declare var $: any;
+
 
 @Component({
   selector: 'app-payment',
@@ -18,6 +20,7 @@ export class PaymentComponent implements OnInit {
   subTotal;
   finalGrandTotal;
   myCart;
+  donationAmount = JSON.parse(localStorage.getItem('donationAmount'));
 
   constructor(private route: ActivatedRoute,
     private router: Router, private _eventService: EventService, private alertService: AlertService) {
@@ -29,8 +32,8 @@ export class PaymentComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.donationAmount);
   }
-
   /**
    * @param eventId 
    * get event items details with it's price and quantity and subtotal of all items 
@@ -38,11 +41,12 @@ export class PaymentComponent implements OnInit {
   finalPaymentDetails(eventId) {
     this._eventService.finalPaymentDetails(eventId)
       .subscribe((data: any) => {
+        setTimeout(() => {
+          this.initMainSlider();
+        }, 10)
         console.log("last all payment details", data);
-
-        
-        console.log(this.grandTotal);
         this.finalCartDetails = data.data.cartItem;
+        console.log(this.finalCartDetails);
         _.forEach(this.finalCartDetails, (Item: any) => {
           this.subTotal = Item.itemPrice * Item.quantity;
           this.grandTotal = this.grandTotal + this.subTotal;
@@ -92,5 +96,52 @@ export class PaymentComponent implements OnInit {
         this.alertService.getError(err.message);
       })
   }
+
+  initMainSlider() {
+    setTimeout(() => {
+      $('.event_detail_slider').not('.slick-initialized').slick({
+        // autoplay: true,
+        autoplaySpeed: 2000,
+        arrows: false,
+        dots: false,
+        slidesToShow: 1.5,
+        slidesToScroll: 1,
+        draggable: true,
+        fade: false,
+        responsive: [
+          {
+            breakpoint: 1367,
+            settings: {
+              slidesToShow: 3.2
+            }
+          },
+          {
+            breakpoint: 769,
+            settings: {
+              slidesToShow: 2.7
+            }
+          }, {
+            breakpoint: 575,
+            settings: {
+              slidesToShow: 1.5
+            }
+          }
+        ]
+      });
+    }, 100)
+  }
+
+  donation() {
+
+  }
+  nextSection(goto, from) {
+    console.log(goto, from)
+    setTimeout(() => {
+      $('.' + goto).css({ 'display': 'block' });
+      $('.' + from).css({ 'display': 'none' })
+      this.initMainSlider();
+    }, 200)
+  }
+
 
 }
