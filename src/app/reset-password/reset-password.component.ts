@@ -4,6 +4,8 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { LoginService } from '../services/login.service';
 import { AlertService } from '../services/alert.service';
 
+
+
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
@@ -19,7 +21,9 @@ export class ResetPasswordComponent implements OnInit {
   ngOnInit() {
 
     // menu toggle start
-    
+    // $(".new_event_menu").click(function(){
+    //   $(".new_event_menu_box").toggle();
+    // });
     // menu toggle end
 
     /**

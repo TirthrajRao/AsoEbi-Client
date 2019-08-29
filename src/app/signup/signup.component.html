@@ -23,9 +23,8 @@
         </div>
     </section>
 </div>
-
 <div *ngIf="!isDiable">
-    <div class="row custom_steps firstStep" style="display:none">
+    <div class=" custom_steps firstStep" >
         <section class="join_page2_section d-flex flex-wrap align-content-center">
             <div class="container-fluid">
                 <h3 class="text-center">Aso Ebi</h3>
@@ -86,9 +85,9 @@
                                     <div class="input-group ">
                                         <input type="email" class="form-control" id="email"
                                         placeholder="Email/Phone Number" name="email" formControlName="email"
-                                        [ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }">>
-                                        <div class="col-md-2" *ngIf="f.email.touched && f.email.errors"
-                                        class="invalid-feedback">
+                                        [ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }">
+                                        <div *ngIf="f.email.touched && f.email.errors"
+                                        class="invalid-feedback text-white">
                                         <div *ngIf="f.email.errors.required">Email is required</div>
                                         <div *ngIf="f.email.errors.email">Please enter valid Email</div>
                                     </div>
@@ -99,7 +98,7 @@
                                     <input placeholder="Password" type="password" class="form-control"
                                     formControlName="password" id="password"
                                     [ngClass]="{ 'is-invalid': f.password.touched && f.password.errors }">
-                                    <div *ngIf="f.password.touched && f.password.errors" class="invalid-feedback">
+                                    <div *ngIf="f.password.touched && f.password.errors" class="invalid-feedback text-white">
                                         <div *ngIf="f.password.errors.required">Password is required</div>
                                         <div *ngIf="f.password.errors.minlength">Password must contain atleast 6
                                         characters</div>
@@ -124,7 +123,7 @@
 
 <!-- Verification form for new register user -->
 
-<div class="row custom_steps secondStep" style="display:none">
+<div class="custom_steps secondStep" >
     <section class="join_page3_section text-center d-flex flex-wrap align-content-center">
         <div class="container-fluid">
             <h3>Aso ebi</h3>
@@ -143,7 +142,7 @@
                             </div>
                             <button type="button" class="btn text-white form_join_btn"
                             (click)="verifyCode(joinCode.value)">Join</button>
-                            <h3 class="text-white">Enter Join code<br>sent to your email/<br>phone number</h3>
+                            <p class="text-white text-center enter_join_code">Enter Join code<br>sent to your email/<br>phone number</p>
                         </form>
                     </div>
                 </div>
@@ -154,8 +153,7 @@
 
 
 <!-- personalDetails form for new register user -->
-
-<div class="row thirdStep" style="display:none">
+<div class="thirdStep">
     <section class="join_page4_section text-center d-flex flex-wrap align-content-center">
         <div class="container-fluid">
             <h3>Aso Ebi</h3>
@@ -168,9 +166,9 @@
                                 (input)="validateFirstName(personalDetailsForm.value)" id="firstName"
                                 class="form-control" formControlName="firstName"
                                 [ngClass]="{ 'is-invalid': p.firstName.touched && p.firstName.errors }">
-                                <span id="message1" style="color: red; font-size: 14px;"></span>
-                                <div class="col-md-2" *ngIf=" p.firstName.touched && p.firstName.errors"
-                                class="invalid-feedback">
+                                <div id="message1"></div>
+                                <div  *ngIf=" p.firstName.touched && p.firstName.errors"
+                                class="invalid-feedback text-white">
                                 <div *ngIf="p.firstName.errors.required">Name is required</div>
                                 <div *ngIf="p.firstName.errors.minlength">Name must be at least 2 characters
                                 </div>
@@ -184,11 +182,11 @@
                             formControlName="lastName" (input)="validateLastName(personalDetailsForm.value)"
                             id="lastName"
                             [ngClass]="{ 'is-invalid': p.lastName.touched && p.lastName.errors }">
-                            <span id="message2" style="color: red; font-size: 14px;"></span>
-                            <div class="col-md-2" *ngIf=" p.lastName.touched && p.lastName.errors"
-                            class="invalid-feedback">
+                            <div id="message2"></div>
+                            <div *ngIf=" p.lastName.touched && p.lastName.errors"
+                            class="invalid-feedback text-white">
                             <div *ngIf="p.lastName.errors.required">Name is required</div>
-                            <div *ngIf="p.lastName.errors.minlength">Name must be at least 2 characters
+                            <div *ngIf="p.lastName.errors.minlength" >Name must be at least 2 characters
                             </div>
                             <div *ngIf="p.lastName.errors.pattern">Please enter only alphabates</div>
                         </div>
@@ -199,9 +197,9 @@
                         <input type="text" class="form-control" placeholder="Mobile Number" name="no"
                         formControlName="mobile" (input)="validatePhone(personalDetailsForm.value)"
                         id="mobile" [ngClass]="{ 'is-invalid': p.mobile.touched && p.mobile.errors }">
-                        <span id="message" style="color: red; font-size: 14px;"></span>
-                        <div class="col-md-4" *ngIf="p.mobile.touched && p.mobile.errors"
-                        class="invalid-feedback">
+                        <div id="message"></div>
+                        <div *ngIf="p.mobile.touched && p.mobile.errors"
+                        class="invalid-feedback text-white">
                         <div *ngIf="p.mobile.errors.minlength">Phone must be only 10 digits</div>
                         <div *ngIf="p.mobile.errors.maxlength">Phone must be only 10 digits</div>
                     </div>
@@ -218,7 +216,7 @@
 </section>
 </div>
 
-<div class="row fourthStep" style="display:none">
+<div class="fourthStep">
 
     <section class="join_page5_section text-center d-flex flex-wrap align-content-center">
         <div class="container-fluid">
