@@ -33,7 +33,8 @@ export class ViewEventComponent implements OnInit {
   isCelebrant;
   isJoined;
   url = this.eventLink;
-  // fbIcon = faFacebookSquare;
+  eventHashTag;
+  userName = JSON.parse(localStorage.getItem('userName'));
 
   constructor(private route: ActivatedRoute,
     private router: Router, private _eventService: EventService, private alertService: AlertService, private _clipboardService: ClipboardService) {
@@ -97,7 +98,6 @@ export class ViewEventComponent implements OnInit {
     return `url(` + this.path + eventTheme + `)`;
   }
 
-
   /**
    * @param {String} eventId
    * Get any particular event details 
@@ -106,8 +106,10 @@ export class ViewEventComponent implements OnInit {
     // this.isDisable = true;
     this._eventService.getEventDetails(eventId)
       .subscribe((data: any) => {
-        console.log("response of details event", data);
         this.allDetailsofEvent.push(data.data);
+        console.log("response of details event", this.allDetailsofEvent);
+        // this.allDetailsofEvent.push(this.userName);
+        this.eventHashTag = data.data.hashTag;
         this.isCelebrant = data.data.isCelebrant;
         console.log(this.isCelebrant);
         this.isJoined = data.data.isJoined;
@@ -144,31 +146,6 @@ export class ViewEventComponent implements OnInit {
         console.log(err);
         this.alertService.getError(err.error.message);
       })
-  }
-
-  /**
-   * @param {String} id
-   * Redirect to edit event page 
-   */
-  editEventDeatils(id) {
-    console.log(id);
-    this.router.navigate(['/home/editEvent/', id])
-
-  }
-  /**
-   * @param {String} eventid
-   * Delete created event 
-   */
-  deleteEvent(eventid) {
-    console.log(eventid);
-    this._eventService.deleteEvent(eventid).subscribe((data: any) => {
-      console.log("delete event response", data);
-      this.alertService.getSuccess(data.data.message)
-      this.router.navigate(['home/myEvent'])
-    }, (err: any) => {
-      console.log(err);
-      this.alertService.getError(err.message);
-    })
   }
 
   /**

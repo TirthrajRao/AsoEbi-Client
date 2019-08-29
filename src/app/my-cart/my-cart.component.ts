@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from '../services/event.service';
 import {AlertService} from '../services/alert.service';
-
+declare var $: any;
+import * as _ from 'lodash';
+import { async } from 'q';
 @Component({
   selector: 'app-my-cart',
   templateUrl: './my-cart.component.html',
@@ -13,6 +15,12 @@ export class MyCartComponent implements OnInit {
   private sub: any;
   private eventId: any;
   cartDetails: any = [];
+  eventDetails;
+  allDetails;
+  selectedGender;
+  selectedGroup;
+  firstGroupItem;
+  itemNamePrint;
 
   constructor(private route: ActivatedRoute,
     private router: Router, private _eventService: EventService, private alertService: AlertService) {
@@ -24,7 +32,86 @@ export class MyCartComponent implements OnInit {
   }
 
   ngOnInit() {
+    $('input:radio[name="radio-group"]').on('change', (e)=>{
+      this.selectedGender = e.target.value;
+      console.log(this.selectedGender);
+      console.log("haila",this.cartDetails)
+      let item = _.filter(this.cartDetails, {groupName: this.selectedGroup});
+      console.log(item);
+      this.itemNamePrint = _.filter(item, { 'itemGender': this.selectedGender });
+      console.log("he bhagvan",this.itemNamePrint)
+    })
   }
+
+  initMainSlider() {
+    setTimeout(() => {
+      $('.event_detail_slider').not('.slick-initialized').slick({
+        // autoplay: true,
+        autoplaySpeed:2000,
+        arrows: false,
+        dots: false,
+        slidesToShow: 1.5,
+        slidesToScroll: 1,
+        draggable: true,
+        fade:false,
+        responsive: [
+        {
+          breakpoint: 1367,
+          settings: {
+            slidesToShow: 3.2
+          }
+        },
+        {
+          breakpoint: 769,
+          settings: {
+            slidesToShow: 2.7
+          }
+        }, {
+          breakpoint: 575,
+          settings: {
+            slidesToShow: 1.5
+          }
+        }
+        ]
+      });
+    }, 100)
+  }
+
+  initGroupSlider() {
+    setTimeout(() => {
+      $('.groupSlider').not('.slick-initialized').slick({
+        // autoplay: true,
+        autoplaySpeed:2000,
+        arrows: false,
+        dots: false,
+        slidesToShow: 1.5,
+        slidesToScroll: 1,
+        draggable: true,
+        fade:false,
+        responsive: [
+        {
+          breakpoint: 1367,
+          settings: {
+            slidesToShow: 3.2
+          }
+        },
+        {
+          breakpoint: 769,
+          settings: {
+            slidesToShow: 2.7
+          }
+        }, {
+          breakpoint: 575,
+          settings: {
+            slidesToShow: 1.5
+          }
+        }
+        ]
+      });
+    }, 100)
+  }
+
+
 
   /**
    * @param {String} eventId 
@@ -33,10 +120,17 @@ export class MyCartComponent implements OnInit {
   myCartDetails(eventId) {
     console.log("event iddddddd", eventId);
     this._eventService.getProducts(eventId)
-      .subscribe((data: any) => {
+      .subscribe(async(data: any) => {
         console.log("card all detailsssss", data);
-        this.cartDetails = data.data;
+        this.allDetails = data.data;
+        this.eventDetails = data.data.eventDetail;
+        this.cartDetails = await this.allDetails.cartList;
+        // this.itemNamePrint.push(this.cartDetails[0])
         console.log(this.cartDetails);
+        setTimeout(()=>{
+          this.initMainSlider();
+          this.initGroupSlider();
+        },200)
       }, (err:any) => {
         console.log(err);
         this.alertService.getError(err.message);
@@ -75,4 +169,12 @@ export class MyCartComponent implements OnInit {
       })
   }
 
+  handleChange(item){
+    console.log(item);
+    this.selectedGroup = item.groupName;
+    this.selectedGender = 'male';
+    $('input:radio[id="test1"]').prop('checked', true);
+    this.itemNamePrint = _.filter(item, { 'itemGender': this.selectedGender });
+
+  }
 }

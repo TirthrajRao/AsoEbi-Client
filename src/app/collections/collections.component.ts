@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from '../services/event.service';
 import * as _ from 'lodash';
+// import * as $ from 'jquery';   
+
 declare var $: any;
 
 @Component({
@@ -17,8 +19,13 @@ export class CollectionsComponent implements OnInit {
   groupCollections: any = [];
   femaleTotal = 0;
   maleTotal = 0;
+  totalCollection: any;
+  finalTotal;
+  allGuestList: any;
   $slideContainter;
   $slider;
+  from = false;
+  fromClass;
   colorSettings = {
     section: ['#d7d7d7', '#d0dadc', '#a4a5a8', '#dadbdf', '#2b2f31'],
     prevArrows: ['#9ec23b', '#19a7b2', '#fcb638', '#b930a8', '#d44b3d'],
@@ -32,15 +39,31 @@ export class CollectionsComponent implements OnInit {
       this.eventId = params.id;
       console.log(this.eventId);
       this.getCollections(this.eventId);
+      this.totalAmountOfUser(this.eventId);
+      this.guestList(this.eventId);
     })
-  }
-  ngOnInit() {
-
     $(".new_event_menu").click(function () {
       $(".new_event_menu_box").toggle();
     });
 
-    // this.initCollectionSlider()
+  }
+  ngOnInit() {
+
+
+    // $('.new_event_menu').click(function () {
+    //   $('.new_event_menu_box').toggleClass('active');
+    //   $('.main').toggleClass('active');
+    //   $(this).toggleClass('active');
+
+    //   if ($('.new_event_menu_box').hasClass('active')) {
+    //     $(this).find('i').addClass('fa-close');
+    //     $(this).find('i').removeClass('fa-bars');
+    //   } else {
+    //     $(this).find('i').addClass('fa-bars');
+    //     $(this).find('i').removeClass('fa-close');
+    //   }
+    // });
+    // this.initCollectionSlider()  
     this.changeColors(0);
 
 
@@ -74,39 +97,46 @@ export class CollectionsComponent implements OnInit {
   };
 
   initCollectionSlider() {
-    this.$slideContainter = $('.collection_slider'),
-      this.$slider = this.$slideContainter.slick({
-        dots: true,
-        infinite: false,
-        speed: 1000,
-        draggable: true,
-        arrows: true,
-        prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
-        nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>"
-        // autoplay:true
-      });
-    this.$slider.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-      setTimeout(function () {
-        var activeNow = $('.slick-dots li.slick-active').text();
-        $('.slick-dots').removeClass('slideOne');
-        $('.slick-dots').removeClass('slideTwo');
-        $('.slick-dots').removeClass('slideThree');
-        $('.slick-dots').removeClass('slideFour');
-        $('.slick-dots').removeClass('slideFive');
-        var className = ['slideOne', 'slideTwo', 'slideThree', 'slideFour', 'slideFive'];
-        $('.slick-dots li').parent('.slick-dots').addClass(className[activeNow - 1]);
-      }, 10);
-    });
-    var changeColors = this.changeColors;
-    var handleChange = (i) => {
-      if (i < this.activitiesCollections.length)
-        this.handleChange(this.activitiesCollections[i].group[0])
-    };
-    this.$slider.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-      changeColors(nextSlide);
-      handleChange(nextSlide);
-    });
+    setTimeout(() => {
 
+      this.$slideContainter = $('.collection_slider'),
+        this.$slider = this.$slideContainter.slick({
+          dots: true,
+          infinite: false,
+          speed: 1000,
+          draggable: true,
+          arrows: true,
+          prevArrow: "<button type='button' id='display_slide' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+          nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>"
+          // autoplay:true
+        });
+      this.$slider.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+        setTimeout(function () {
+          var activeNow = $('.slick-dots li.slick-active').text();
+          $('.slick-dots').removeClass('slideOne');
+          $('.slick-dots').removeClass('slideTwo');
+          $('.slick-dots').removeClass('slideThree');
+          $('.slick-dots').removeClass('slideFour');
+          $('.slick-dots').removeClass('slideFive');
+          var className = ['slideOne', 'slideTwo', 'slideThree', 'slideFour', 'slideFive'];
+          $('.slick-dots li').parent('.slick-dots').addClass(className[activeNow - 1]);
+        }, 10);
+      });
+      var changeColors = this.changeColors;
+      var handleChange = (i) => {
+        if (i < this.activitiesCollections.length)
+          this.handleChange(this.activitiesCollections[i].group[0])
+      };
+      this.$slider.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+        changeColors(nextSlide);
+        handleChange(nextSlide);
+      });
+
+    }, 10)
+
+    $('#display_slide').on('click', () => {
+      this.priveviousSlide();
+    })
   }
 
   getFemaleTotal(total) {
@@ -151,31 +181,50 @@ export class CollectionsComponent implements OnInit {
             this.femaleTotal = this.getFemaleTotal(item.total)
           }
         })
-        // this.maleTotal = this.getMaleTotal(this.activitiesCollections[0].group[0].item[0].total)
-        // this.femaleTotal = this.getFemaleTotal(this.activitiesCollections[0].group[0].item[0].total)
-        // _.forEach(this.activitiesCollections, (activity) => {
-        //   console.log('activity==========>', activity);
-        //   _.forEach(activity.group, (group) => {
-        //     console.log('group==========>', group);
-        //     _.forEach(group.item, (item) => {
-        //       console.log("item====================>Before", item);
-        //       // console.log()
-        //       if (item.itemGender == 'male') {
-        //         this.maleTotal = this.getMaleTotal(item.total)
-        //       }
-        //       if (item.itemGender == 'female') {
-        //         this.femaleTotal = this.getFemaleTotal(item.total)
-        //       }
-        //       console.log("item====================>after", item);
-        //     })
-        //   })
-        // })
         setTimeout(() => {
           $('input:radio[id=00]').prop('checked', true);
           this.initCollectionSlider()
-        })
+        }, 10)
       }, err => {
         console.log(err);
       })
+  }
+
+  totalAmountOfUser(eventId) {
+    console.log("event id of single event", eventId);
+    this._eventService.totalAmount(eventId)
+      .subscribe((data: any) => {
+        this.totalCollection = data.data;
+        console.log("total collection of event", this.totalCollection)
+      }, err => {
+        console.log(err);
+      })
+  }
+  guestList(eventId) {
+    this._eventService.guestList(eventId)
+      .subscribe((data: any) => {
+        this.allGuestList = data.data.guestDetail;
+        console.log("this============", this.allGuestList);
+        // })
+      }, err => {
+        console.log(err);
+      })
+  }
+  totalCost(goto, from) {
+    console.log("classss", goto, from);
+    this.fromClass = from;
+    console.log("this.formclass", this.fromClass);
+    if(this.from == false){
+
+      $('.'+goto).css({'display':'block'});
+      $('.'+from).css({'display':'none'});
+    }
+  }
+  priveviousSlide(){
+    console.log("hale che")
+    this.from = true;
+    if(this.from == true){
+      $(this.fromClass).css({'display': 'block'});
+    }
   }
 }

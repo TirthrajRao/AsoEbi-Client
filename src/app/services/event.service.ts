@@ -234,6 +234,13 @@ export class EventService {
 
     return this.http.get(config.baseApiUrl + "api/event-collection?eventId="+ id);
   }
+  totalAmount(id){
+    return this.http.get(config.baseApiUrl+"api/event-donation?eventId="+id);
+  }
+
+  guestList(id){
+    return this.http.get(config.baseApiUrl + "api/event/event-detail/"+ id);
+  }
 
   // Admin Panel//
 

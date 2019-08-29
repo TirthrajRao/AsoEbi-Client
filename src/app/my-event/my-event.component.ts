@@ -16,6 +16,7 @@ declare let $: any;
 export class MyEventComponent implements OnInit {
   path = config.baseMediaUrl;
   myEvent;
+  singleEventId;
   themePhoto: any = [];
   singleEventDetails: any;
   activityName: any;
@@ -23,11 +24,16 @@ export class MyEventComponent implements OnInit {
   selectedActivityGroup: any = [];
   itemNamePrint: any = [];
   eventHashtag;
-  eventId
+  eventId;
+  maleItem;
+  feMaleItem;
+  selectedGroup;
+  selectedGender;
   constructor(private router: Router, private _eventService: EventService, private alertService: AlertService, private _loginService: LoginService) {
     $(".new_event_menu").click(function () {
       $(".new_event_menu_box").toggle();
     });
+    this.ngOnInit()
   }
 
   componentDidMount() {
@@ -42,12 +48,20 @@ export class MyEventComponent implements OnInit {
     // this.showMenu();
 
 
-
+    $('input:radio[name="radio-group1"]').on('change', (e)=>{
+      this.selectedGender = e.target.value;
+      console.log(this.selectedGender);
+      console.log(this.selectedActivityGroup)
+      let item = _.filter(this.selectedActivityGroup, {groupName: this.selectedGroup});
+      console.log(item);
+      this.itemNamePrint = _.filter(item[0].item, { 'itemGender': this.selectedGender });
+      console.log(this.itemNamePrint)
+    })
     this.getMyEvents();
     // this.initCollectDetailSlick();
+    this.initActivitySlider();
+    $(window).on('resize', this.initActivitySlider());
     setTimeout(() => {
-      this.initActivitySlider();
-      $(window).on('resize', this.initActivitySlider());
       $('.event_slider1')[0].slick.refresh();
     }, 100)
     // function createSlick() {
@@ -116,6 +130,11 @@ export class MyEventComponent implements OnInit {
         console.log("get my all events ", data);
         this.myEvent = data.data;
         console.log("my events details", this.myEvent);
+        
+        // _.forEach(this.myEvent,(item)=>{
+        //   console.log("single event id ", item);
+        //   this.singleEventId.push(item)
+        // })
         this.themePhoto = data.eventTheme;
         console.log(this.themePhoto);
       }, err => {
@@ -235,13 +254,18 @@ export class MyEventComponent implements OnInit {
     console.log(item);
     this.selectedActivity = item;
     this.selectedActivityGroup = item.group;
-
+    this.selectedGroup = item.group[0].groupName;
+    this.selectedGender = 'male';
+    this.itemNamePrint = [];
     console.log("thisbjfdkjnkjdfdjfg", this.selectedActivityGroup)
-    _.forEach(this.selectedActivityGroup, (item) => {
-      _.forEach(item.item, (itemName) => {
-        this.itemNamePrint.push(itemName);
-      })
-    })
+    this.itemNamePrint.push(this.selectedActivityGroup[0].item[0]);
+    // _.forEach(this.selectedActivityGroup, (item) => {
+    //   console.log("item------------------------------------",item);
+    //   _.forEach(item.item, (itemName) => {
+    //     console.log("itemName------------------------------------",itemName);
+    //     this.itemNamePrint.push(itemName);
+    //   })
+    // })
     setTimeout(() => {
       this.initActivitySlider();
       this.initCollectDetailSlick();
@@ -299,14 +323,29 @@ export class MyEventComponent implements OnInit {
    */
   deleteEvent(eventid) {
     console.log(eventid);
-    // this._eventService.deleteEvent(eventid).subscribe((data: any) => {
-    //   console.log("delete event response", data);
-    //   this.alertService.getSuccess(data.data.message)
-    //   this.router.navigate(['home/myEvent'])
-    // }, (err: any) => {
-    //   console.log(err);
-    //   this.alertService.getError(err.message);
-    // })
+    this._eventService.deleteEvent(eventid).subscribe((data: any) => {
+      console.log("delete event response", data);
+      this.alertService.getSuccess(data.data.message)
+      this.router.navigate(['home/myEvent'])
+    }, (err: any) => {
+      console.log(err);
+      this.alertService.getError(err.message);
+    })
+  }
+  handleChange(item){
+    console.log("item of single event ",item);
+    this.selectedGroup = item.groupName;
+    this.selectedGender = 'male';
+    $('input:radio[id="test"]').prop('checked', true);
+    // this.selectedActivity = item;
+    // this.selectedActivityGroup = item.group;
+    // this.itemNamePrint = [];
+    // console.log("thisbjfdkjnkjdfdjfg", this.selectedActivityGroup)
+    this.itemNamePrint = _.filter(item.item, { 'itemGender': this.selectedGender });
+  }
+
+  groupwiseItem(item){
+    console.log(item);
   }
 }
 

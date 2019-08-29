@@ -399,7 +399,7 @@
 
 <!-- New Design of create event page and edit event page  -->
 
-<div class="step_1" style="display:none">
+<div class="step_1">
     <section class="event_slider_section d-flex flex-wrap align-content-center">
         <div class="container-fluid">
             <h3 class="text-center aso_heading">Aso Ebi</h3>
@@ -410,7 +410,7 @@
                             <div class="event_inner_content ">
                                 <div class="new_event_sec">
                                     <div class="row">
-                                        <div class="col-3 m-auto pr-0 float-right">
+                                        <div class="col-3 m-auto pr-0 float-right new_event_menu">
                                             <a><img src="/assets/images/icon1.png"></a>
                                             <p class="text-white">New Event</p>
                                         </div>
@@ -442,7 +442,7 @@
                             <div class="event_inner_content ">
                                 <div class="new_event_sec">
                                     <div class="row">
-                                        <div class="col-3 m-auto pr-0 float-right">
+                                        <div class="col-3 m-auto pr-0 float-right new_event_menu">
                                             <a><img src="/assets/images/icon2.png"></a>
                                             <p class="text-white">New Event</p>
                                         </div>
@@ -487,7 +487,7 @@
                             <div class="event_inner_content ">
                                 <div class="new_event_sec">
                                     <div class="row">
-                                        <div class="col-3 m-auto pr-0 float-right">
+                                        <div class="col-3 m-auto pr-0 float-right new_event_menu">
                                             <a><img src="/assets/images/icon3.png"></a>
                                             <p class="text-white">New Event</p>
                                         </div>
@@ -532,7 +532,7 @@
                             <div class="event_inner_content ">
                                 <div class="new_event_sec">
                                     <div class="row">
-                                        <div class="col-3 m-auto pr-0 float-right">
+                                        <div class="col-3 m-auto pr-0 float-right new_event_menu">
                                             <a><img src="/assets/images/4icon.png"></a>
                                             <p class="text-white">New Event</p>
                                         </div>
@@ -581,7 +581,7 @@
                             <div class="event_inner_content ">
                                 <div class="new_event_sec">
                                     <div class="row">
-                                        <div class="col-3 m-auto pr-0 float-right">
+                                        <div class="col-3 m-auto pr-0 float-right new_event_menu">
                                             <a><img src="/assets/images/5icon.png"></a>
                                             <p class="text-white">New Event</p>
                                         </div>
@@ -673,7 +673,7 @@
                             <div class="event_inner_content">
                                 <div class="new_event_sec">
                                     <div class="row">
-                                        <div class="col-3 m-auto pr-0 float-right">
+                                        <div class="col-3 m-auto pr-0 float-right new_event_menu">
                                             <a><img src="/assets/images/icon7.png"></a>
                                         </div>
                                         <div class="col-9 p-0">
@@ -704,7 +704,7 @@
                             <div class="event_inner_content ">
                                 <div class="new_event_sec">
                                     <div class="row">
-                                        <div class="col-3 m-auto pr-0 float-right">
+                                        <div class="col-3 m-auto pr-0 float-right new_event_menu">
                                             <a><img src="/assets/images/icon8.png"></a>
                                             <p class="text-white">New Event</p>
                                         </div>
@@ -760,7 +760,7 @@
                             <div class="event_inner_content ">
                                 <div class="new_event_sec">
                                     <div class="row">
-                                        <div class="col-3 m-auto pr-0 float-right">
+                                        <div class="col-3 m-auto pr-0 float-right new_event_menu">
                                             <a><img src="/assets/images/icon9.png"></a>
                                         </div>
                                         <div class="col-9 p-0">
@@ -786,7 +786,7 @@
                             <div class="event_inner_content ">
                                 <div class="new_event_sec">
                                     <div class="row">
-                                        <div class="col-3 m-auto pr-0 float-right">
+                                        <div class="col-3 m-auto pr-0 float-right new_event_menu">
                                             <a><img src="/assets/images/10icon.png"></a>
                                             <p class="text-white">New Event</p>
                                         </div>
@@ -853,7 +853,7 @@
                             <div class="event_inner_content ">
                                 <div class="new_event_sec">
                                     <div class="row">
-                                        <div class="col-3 m-auto pr-0 float-right">
+                                        <div class="col-3 m-auto pr-0 float-right new_event_menu">
                                             <a><img src="/assets/images/icon10.png"></a>
                                             <p class="text-white">New Event</p>
                                         </div>
@@ -886,7 +886,7 @@
                             <div class="event_inner_content ">
                                 <div class="new_event_sec">
                                     <div class="row">
-                                        <div class="col-3 m-auto pr-0 float-right">
+                                        <div class="col-3 m-auto pr-0 float-right new_event_menu">
                                             <a><img src="/assets/images/icon11.png"></a>
                                             <p class="text-white">New Event</p>
                                         </div>
@@ -931,7 +931,7 @@
                 <div class="Join_inner_content_box">
                     <div class="all_event_sec">
                         <div class="row">
-                            <div class="col-3 m-auto pr-0 float-right">
+                            <div class="col-3 m-auto pr-0 float-right new_event_menu">
                                 <a><img src="/assets/images/icon_creme.png"></a>
                                 <p class="text-white">New Event</p>
                             </div>
@@ -945,6 +945,9 @@
                     </div>
                     <div class="name_event text-center">
                         <p>Event Activities</p>
+                    </div>
+                    <div class="add_ceremony float-right">
+                        <img src="/assets/images/add.png" (click)="addActivityField()">
                     </div>
                     <form [formGroup]="activityForm">
                         <div formArrayName="activity">
@@ -965,19 +968,17 @@
                             </div>
                         </div>
                     </form>
-                    <div class="add_ceremony text-center">
-                        <img src="/assets/images/add.png" (click)="addActivityField()">
+                    <div class="next_button">
+                        <a class="next_btn " (click)="createdEventDetails ? updateActivity() : addActivity()">Next</a>
                     </div>
                 </div>
-                <a href="javascript:void(0);" class="next_step"
-                    (click)="createdEventDetails ? updateActivity() : addActivity()">Next</a>
             </div>
         </div>
     </section>
 </div>
 
 
-<div class="step_3">
+<div class="step_3" style="display:none">
     <div class="form_input">
         <div class="row justify-content-center m-0">
             <section class="slider_page_section d-flex flex-wrap align-content-center">
@@ -988,7 +989,7 @@
                             <div class="event_detail">
                                 <div class="all_event_sec">
                                     <div class="row">
-                                        <div class="col-3 m-auto pr-0 float-right">
+                                        <div class="col-3 m-auto pr-0 float-right new_event_menu">
                                             <a><img src="/assets/images/event_orange.png"></a>
                                             <p class="text-white">New Event</p>
                                         </div>
@@ -999,17 +1000,19 @@
                                 </div>
                                 <h6 class="text-center"># EventName</h6>
                                 <div class="all_ceremony_btn">
-                                    <ul>
-                                        <li class="ceremony1">
-                                            <a class="text-center">Ceremony 1</a>
-                                            <!--{{getActivityName(item.value.activityId)}}-->
+                                    <ul *ngIf="createdActivity && createdActivity.length">
+                                        <li class="ceremony1" *ngFor="let item of createdActivity;"
+                                            (click)="addGroupWithActivity(item._id)">
+                                            <a class="text-center">{{item.activityName}}</a>
                                         </li>
                                     </ul>
                                 </div>
                                 <form [formGroup]="groupForm" class="billing_address">
                                     <div formArrayName="group">
                                         <div [formGroupName]="i"
-                                            *ngFor="let item of groupForm.controls.group.controls; let i = index">
+                                            *ngFor="let item of groupForm.controls.group.controls; let i = index"
+                                            [hidden]="selectedActivityToAddGroup != item.value.activityId">
+                                            <!-- <p style="color: white;">{{ printItem(item) }}</p> -->
                                             <div class="freind_family">
                                                 <div class="row">
                                                     <div class="col-10 form-group">
@@ -1018,7 +1021,7 @@
                                                     </div>
                                                     <div class="col-1 text-white pl-0">
                                                         <i class="fa fa-plus" aria-hidden="true"
-                                                            (click)="AddGroupField('123456', i)"></i>
+                                                            (click)="createdEventDetails ? AddGroupField(eventActivities[i]._id) : AddGroupField(selectedActivityToAddGroup)"></i>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1071,11 +1074,37 @@
                                         </div>
                                     </div>
                                 </form>
+                                <div class="">
+                                    <a class="createEvent_button"
+                                        (click)="createdEventDetails ? updateGroup() : addGroup()">Create Event</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="overlay" class="new_event_menu_box" style="display: none;">
+    <div class="">
+        <div class="event_menu">
+            <div class="all_menu_content  d-flex flex-wrap align-content-center">
+                <ul>
+                    <li><a routerLink="/home" class="text-white new_event">Home</a></li>
+                    <li><a routerLink="/myEvent" class="text-white new_event">my event</a></li>
+                    <li><a routerLink="/createEvent" class="text-white my_event">new event</a>
+                    </li>
+                    <li><a routerLink="/bankDetails" class="text-white my_account">bank
+                            account</a></li>
+                    <li><a routerLink="/reset-password" class="text-white my_account">Reset
+                            Password</a></li>
+                    <li><a (click)="logout()" class="text-white my_account">Logout</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

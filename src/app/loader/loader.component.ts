@@ -11,6 +11,7 @@ declare var $: any;
 })
 export class LoaderComponent implements OnInit {
 
+  userName = JSON.parse(localStorage.getItem('userName'));
   constructor( private _loginService: LoginService, private route: ActivatedRoute,
     private router: Router) { }
 
@@ -19,7 +20,7 @@ export class LoaderComponent implements OnInit {
     $(".new_event_menu").click(function(){
       $(".slider_menu").slideToggle();
   });
-
+console.log("login user name", this.userName);
     // $('#sideMenu').click(function () {
     //   $('.slider_menu').toggleClass('active');
     //   $('.main').toggleClass('active');

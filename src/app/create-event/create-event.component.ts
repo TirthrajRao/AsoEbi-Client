@@ -46,6 +46,7 @@ export class CreateEventComponent implements OnInit {
   colorSetting: any;
   changeColors: any;
   eventTypeValue;
+  selectedActivityToAddGroup;
   constructor(private route: ActivatedRoute, private router: Router, private _eventService: EventService,
     private alertService: AlertService, private fb: FormBuilder, private _loginService: LoginService) {
     this.sub = this.route.params.subscribe(params => {
@@ -67,18 +68,41 @@ export class CreateEventComponent implements OnInit {
       isLogistics: new FormControl(this.isLogistics),
       background: new FormControl('')
     })
-  
+
     this.bankDetailsForm = new FormGroup({
       bankName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
       accountNumber: new FormControl('', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]),
       IFSCCode: new FormControl('', [Validators.required, Validators.minLength(9), Validators.maxLength(9)])
     })
-    
+
+    $(".new_event_menu").click(function () {
+      $(".new_event_menu_box").toggle();
+    });
+
   }
 
   ngOnInit() {
+
+    // this.createdActivity = [
+    //   {
+    //     activityDate: null,
+    //     activityName: "vbcnbnbv",
+    //     createdAt: "2019-08-27T14:17:46.935Z",
+    //     isDeleted: false,
+    //     updatedAt: "2019-08-27T14:17:46.935Z",
+    //     _id: "5d65fbd85a521a7f6075f691"
+    //   }, {
+    //     activityDate: null,
+    //     activityName: "hdhfgh",
+    //     createdAt: "2019-08-27T14:17:46.935Z",
+    //     isDeleted: false,
+    //     updatedAt: "2019-08-27T14:17:46.935Z",
+    //     _id: "5d65fbd85a521a7f6075f690"
+    //   }
+    // ]
     this.getActivityFrom(),
-    this.initGroupForm()
+      // this.initGroupForm(this.createdActivity);
+      this.initGroupForm();
     // this.maleItemArray = []
     $('#eventId').css({ 'display': 'none' });
     $(function () {
@@ -224,16 +248,16 @@ export class CreateEventComponent implements OnInit {
     // DropDown Js
     $('.select_event_type li > a').click(function () {
       this.eventTypeValue = $(this).html();
-     $('.selected_event_type > a').html(this.eventTypeValue);
-     console.log("event selcet thai jaje ========", this.eventTypeValue);
-     setControl(this.eventTypeValue);
-   });
-   var eventFormLocal = this.eventForm;
-   var setControl = function(event) {
-    console.log("event selcet thai jaje biji var ========", event);
-    eventFormLocal.controls.eventType.setValue(event)
-   }
-    
+      $('.selected_event_type > a').html(this.eventTypeValue);
+      console.log("event selcet thai jaje ========", this.eventTypeValue);
+      setControl(this.eventTypeValue);
+    });
+    var eventFormLocal = this.eventForm;
+    var setControl = function (event) {
+      console.log("event selcet thai jaje biji var ========", event);
+      eventFormLocal.controls.eventType.setValue(event)
+    }
+
   }
 
 
@@ -250,7 +274,7 @@ export class CreateEventComponent implements OnInit {
   /**
    * Create new event with it's details
    */
-  
+
   addEvent($this) {
     console.log("data of event", $('.slick-active').hasClass("done"));
     if ($('.slick-active').hasClass("done")) {
@@ -370,7 +394,7 @@ export class CreateEventComponent implements OnInit {
   }
 
   /**
-   * @param {String} activities 
+   * @param {String} activities `
    * @param {String} activityId
    *  To create new group in event or to edit created group of event 
    */
@@ -385,10 +409,10 @@ export class CreateEventComponent implements OnInit {
       });
     } else if (activities && activities.length) {
       this.gArray = [];
-      for (let i = 0; i < activities.length; i++) {
+      for (let i = 0; i < 1; i++) {
         // console.log("i =", i , "details =", activities[i])
         if (activities[i].group) {
-          for (let j = 0; j < activities[i].group.length; j++) {
+          for (let j = 0; j < 1; j++) {
             // console.log("j =", j , "inner details =", activities[i].group[j])
             this.gArray.push(this.fb.group({
               activityId: new FormControl(activities[i]._id),
@@ -399,6 +423,7 @@ export class CreateEventComponent implements OnInit {
           }
           // return this.gArray;
         } else {
+          this.selectedActivityToAddGroup = activities[i]._id;
           this.gArray.push(this.fb.group({
             activityId: new FormControl(activities[i]._id),
             groupName: new FormControl(''),
@@ -485,6 +510,28 @@ export class CreateEventComponent implements OnInit {
         this.createdActivity = data.data;
         console.log("created activity response from server", this.createdActivity);
         this.initGroupForm(this.createdActivity);
+        setTimeout(() => {
+          $('.step_2').css({ 'display': 'none' })
+          $('.step_3').css({ 'display': 'block' });
+          $('.gender_slider').not('.slick-initialized').slick({
+            // autoplay: true,
+            autoplaySpeed: 2000,
+            arrows: false,
+            dots: false,
+            slidesToShow: 1.5,
+            slidesToScroll: 1,
+            draggable: true,
+            fade: false,
+            responsive: [
+              {
+                breakpoint: 767,
+                settings: {
+                  slidesToShow: 1
+                }
+              }
+            ]
+          });
+        }, 500);
       }, (err: any) => {
         console.log(err);
         this.alertService.getError(err.message);
@@ -517,30 +564,32 @@ export class CreateEventComponent implements OnInit {
    * @param {String} i
    *  Add new group field with activity 
    */
-  async AddGroupField(activityId, i: number) {
-    console.log(activityId, i)
+  async AddGroupField(activityId) {
+    console.log(activityId)
     console.log(this.groupForm.controls)
     const control = <FormArray>this.groupForm.controls.group;
     console.log(control.controls)
     await control.controls.push(this.groupArray(null, activityId));
-    $('.gender_slider').not('.slick-initialized').slick({
-      // autoplay: true,
-      autoplaySpeed:2000,
-      arrows: false,
-      dots: false,
-      slidesToShow:1.5,
-      slidesToScroll: 1,
-      draggable: true,
-      fade:false,
-      responsive: [
-      {
-        breakpoint: 767,
-        settings: {
-          slidesToShow: 1
-        }
-      }
-      ]
-    });
+    setTimeout(() => {
+      $('.gender_slider').not('.slick-initialized').slick({
+        // autoplay: true,
+        autoplaySpeed: 2000,
+        arrows: false,
+        dots: false,
+        slidesToShow: 1.5,
+        slidesToScroll: 1,
+        draggable: true,
+        fade: false,
+        responsive: [
+          {
+            breakpoint: 767,
+            settings: {
+              slidesToShow: 1
+            }
+          }
+        ]
+      });
+    }, 10);
   }
 
   /**
@@ -568,9 +617,16 @@ export class CreateEventComponent implements OnInit {
    * Create new group in new event
    */
   addGroup() {
-    this.groupForm.controls.eventId.setValue(this.eventId)
-    console.log("created group details", this.groupForm.value);
-    this._eventService.addGroup(this.groupForm.value)
+    // this.eventId = '5d6613c7ae51902a2b045c81';
+    this.groupForm.controls.eventId.setValue(this.eventId);
+    const control = <FormArray>this.groupForm.controls.group;
+    let values = [];
+    _.forEach(control.controls, (ctr)=>{
+      values.push(ctr.value);
+    })
+    this.groupForm.value.group = values;
+    console.log("created group details", this.groupForm);
+    this._eventService.addGroup(this.groupForm.value) 
       .subscribe((data: any) => {
         console.log("display created group data", data);
         this.alertService.getSuccess(data.message)
@@ -712,5 +768,36 @@ export class CreateEventComponent implements OnInit {
       message.innerHTML = "";
 
     }
+  }
+
+  addGroupWithActivity(id) {
+    console.log("activity id ", id);
+    this.selectedActivityToAddGroup = id;
+    const control = <FormArray>this.groupForm.controls.group;
+    // console.log("item==========================================>", control.controls, _.findIndex(control.controls, { value: { activityId: this.selectedActivityToAddGroup } }));
+    if (_.findIndex(control.controls, { value: { activityId: this.selectedActivityToAddGroup } }) === -1)
+      this.AddGroupField(this.selectedActivityToAddGroup);
+    $('.gender_slider').not('.slick-initialized').slick({
+      // autoplay: true,
+      autoplaySpeed: 2000,
+      arrows: false,
+      dots: false,
+      slidesToShow: 1.5,
+      slidesToScroll: 1,
+      draggable: true,
+      fade: false,
+      responsive: [
+        {
+          breakpoint: 767,
+          settings: {
+            slidesToShow: 1
+          }
+        }
+      ]
+    });
+  }
+
+  printItem(item) {
+    console.log("item==========================================>", item.value.activityId);
   }
 }

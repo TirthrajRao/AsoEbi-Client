@@ -60,6 +60,7 @@ export class LoginComponent implements OnInit {
   hotmailToken;
   yahooAccesstoken: any;
   yahooId;
+  userName;
   show: boolean;
   pwd: boolean;
   msalConfig = {
@@ -253,8 +254,13 @@ export class LoginComponent implements OnInit {
       .subscribe(data => {
         console.log("response of login user", data);
         // this.userRole = data.data.UserRole;
+       let firstName = data.data.firstName
+       let lastName = data.data.lastName
+       this.userName = firstName + " " +lastName;
+       console.log(this.userName);
         console.log("admin login entry", data.data.UserRole);
         localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
+        localStorage.setItem('userName', JSON.stringify(this.userName));
         console.log(this.isCelebrant);
         if (this.eventIdWithLogin) {
           this.isUserLoggedIn = true;
