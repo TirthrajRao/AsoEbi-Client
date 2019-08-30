@@ -72,7 +72,7 @@ export class CreateEventComponent implements OnInit {
     this.bankDetailsForm = new FormGroup({
       bankName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
       accountNumber: new FormControl('', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]),
-      IFSCCode: new FormControl('', [Validators.required, Validators.minLength(9), Validators.maxLength(9)])
+      // IFSCCode: new FormControl('', [Validators.required, Validators.minLength(9), Validators.maxLength(9)])
     })
 
     $(".new_event_menu").click(function () {
@@ -241,7 +241,13 @@ export class CreateEventComponent implements OnInit {
     // new event page slider end
 
     $('#next_btn').on('click', () => {
-      this.addEvent($(this));
+      if(this.eventId){
+
+        this.updateEvent($(this));
+      }
+      else{
+        this.addEvent($(this));
+      }
     })
 
 
@@ -621,12 +627,12 @@ export class CreateEventComponent implements OnInit {
     this.groupForm.controls.eventId.setValue(this.eventId);
     const control = <FormArray>this.groupForm.controls.group;
     let values = [];
-    _.forEach(control.controls, (ctr)=>{
+    _.forEach(control.controls, (ctr) => {
       values.push(ctr.value);
     })
     this.groupForm.value.group = values;
     console.log("created group details", this.groupForm);
-    this._eventService.addGroup(this.groupForm.value) 
+    this._eventService.addGroup(this.groupForm.value)
       .subscribe((data: any) => {
         console.log("display created group data", data);
         this.alertService.getSuccess(data.message)
@@ -646,6 +652,8 @@ export class CreateEventComponent implements OnInit {
       .subscribe((data: any) => {
         console.log("created event details ", data);
         this.createdEventDetails = data.data;
+        $('.selected_event_type > a').html(this.createdEventDetails.eventType);
+        this.eventForm.controls.eventType.setValue(this.createdEventDetails.eventType);
         this.selectedStartDate = this.createdEventDetails.startDate.split("T")[0];
         console.log(this.selectedStartDate);
         this.selectedEndDate = this.createdEventDetails.endDate.split("T")[0];
@@ -663,15 +671,38 @@ export class CreateEventComponent implements OnInit {
   /**
    * If any changes update event
    */
-  updateEvent() {
+  updateEvent($this) {
     this.getActivityFrom(this.eventActivities);
-    this._eventService.updateEvent(this.eventId, this.eventForm.value, this.files)
-      .subscribe(data => {
-        console.log(data);
-      }, (err: any) => {
-        console.log(err);
-        this.alertService.getError(err.message);
-      })
+  
+
+
+      if ($('.slick-active').hasClass("done")) {
+        console.log("in twelve_slide");
+        // this._eventService.addEvent(this.eventForm.value, this.files, this.themeFiles)
+        //   .subscribe((data: any) => {
+        //     console.log("event details", data);
+        
+        //   }, (err: any) => {
+        //     console.log(err);
+        //     this.alertService.getError(err.message);
+        //   })
+        this._eventService.updateEvent(this.eventId, this.eventForm.value, this.files)
+        .subscribe((data:any) => {
+          console.log(data);
+              $('.step_1').css({ 'display': 'none' })
+            $('.step_2').css({ 'display': 'block' });
+            this.eventId = data.data._id;
+            console.log("created eventid", this.eventId);
+            this.getActivityFrom();
+        }, (err: any) => {
+          console.log(err);
+          this.alertService.getError(err.message);
+        })
+      }
+      console.log("data of event", $('.slick-active').hasClass("twelve_slide"));
+      if ($('.slick-active').hasClass("twelve_slide")) {
+        $('.slick-active').addClass("done")
+      }
   }
 
   /**
@@ -708,13 +739,45 @@ export class CreateEventComponent implements OnInit {
       .subscribe((data: any) => {
         console.log(data);
         this.bankDetails = data.data.bankDetail;
+        setTimeout(()=>{
+          this.bankDetailsSlider();
+        })
         console.log("har har mahadev", this.bankDetails);
       }, err => {
         console.log(err);
       })
   }
+
+  bankDetailsSlider() {
+    $('.slider1').not('.slick-initialized').slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: false,
+      arrows: true,
+      prevArrow: '<button class="prevarrow text-center"><i class="fa fa-caret-left" aria-hidden="true"></i></button>',
+      nextArrow: '<button class="nextarrow text-center"><i class="fa fa-caret-right" aria-hidden="true"></i></button>',
+      responsive: [
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
+    });
+  }
   addMoreBankDetails() {
     console.log(this.bankDetailsForm);
+    $('#exampleModal').modal('toggle');
     this.submitted = true;
     if (this.bankDetailsForm.invalid) {
       return;

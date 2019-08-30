@@ -114,7 +114,7 @@ $('.gender_slider1').slick({
 /*bank detail slider start*/
 $('.slider1').slick({
 	infinite: true,
-	slidesToShow: 1.5,
+	slidesToShow: 1,
 	slidesToScroll: 1,
 	autoplay: false,
 	arrows: false,
