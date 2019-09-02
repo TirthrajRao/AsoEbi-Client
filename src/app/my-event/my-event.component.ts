@@ -38,13 +38,11 @@ export class MyEventComponent implements OnInit {
     this.ngOnInit()
   }
 
-  componentDidMount() {
-    console.log("hello");
-    const script = document.createElement('script');
-    script.src = '../assets/js/custom.js';
-    script.defer = true;
-    script.async = true;
-    document.body.appendChild(script);
+  // componentDidMount() {
+    // }
+    
+    ngAfterViewChecked() {
+    this.initActivitySlider();
   }
   ngOnInit() {
     // this.showMenu();
@@ -64,7 +62,7 @@ export class MyEventComponent implements OnInit {
     // this.initActivitySlider();
     $(window).on('resize', this.initActivitySlider());
     setTimeout(() => {
-      $('.event_slider1')[0].slick.refresh();
+      // $('.event_slider1')[0].slick.refresh();
     }, 100)
   }
 
@@ -83,9 +81,9 @@ export class MyEventComponent implements OnInit {
   getMyEvents() {
     this._eventService.getMyevents()
       .subscribe((data: any) => {
-        setTimeout(() => {
-          this.initActivitySlider();
-        }, 10)
+        // setTimeout(() => {
+        //   this.initActivitySlider();
+        // }, 10)
         console.log("get my all events ", data);
         this.myEvent = data.data;
         console.log("my events details", this.myEvent);
@@ -223,7 +221,7 @@ export class MyEventComponent implements OnInit {
   initActivitySlider() {
     $(document).ready(function () {
       setTimeout(() => {
-        console.log("$('#custom_btn_next').trigger('click') done");
+        // console.log("$('#custom_btn_next').trigger('click') done");
         // console.log($('.event_slider1').not('.slick-initialized'));
         $('.event_slider1').not('.slick-initialized').slick({
           infinite: true,
@@ -267,8 +265,8 @@ export class MyEventComponent implements OnInit {
   initCollectDetailSlick() {
     // setTimeout(() => {
     $('.collect_detail').not('.slick-initialized').slick({
-      infinite: true,
-      slidesToShow: 4,
+
+      slidesToShow: 6,
       slidesToScroll: 1,
       autoplay: false,
       draggable: true,
@@ -279,7 +277,7 @@ export class MyEventComponent implements OnInit {
         {
           breakpoint: 1024,
           settings: {
-            slidesToShow: 2,
+            slidesToShow: 5,
             slidesToScroll: 1,
             infinite: true,
           }
@@ -287,14 +285,14 @@ export class MyEventComponent implements OnInit {
         {
           breakpoint: 600,
           settings: {
-            slidesToShow: 2,
+            slidesToShow: 4,
             slidesToScroll: 1,
           }
         },
         {
           breakpoint: 480,
           settings: {
-            slidesToShow: 1,
+            slidesToShow: 2,
             slidesToScroll: 1
           }
         }
