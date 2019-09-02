@@ -44,7 +44,7 @@
 
 <!-- New Design of my cart  -->
 
-<div class="step_one" >
+<div class="step_one" style="display:none">
     <section class="buying_option1_section d-flex flex-wrap align-content-center ">
         <div class="container-fluid">
             <h3 class="text-white text-center Aso_title">Aso Ebi</h3>
@@ -64,7 +64,7 @@
                             <div class="event_detail_slide event_detail_slide_blue">
                                 <div class="events_name text-center">
                                     <a href="#" class="text-center text-white"
-                                        *ngIf="eventDetails">{{eventDetails.eventType}}</a>
+                                    *ngIf="eventDetails">{{eventDetails.eventType}}</a>
                                 </div>
                             </div>
                             <div class="event_detail_slide event_detail_slide_blue">
@@ -85,249 +85,29 @@
     </section>
 </div>
 
-<div class="step_two" >
-    <section class="buying_option1_section buying_option2_section d-flex flex-wrap align-content-center ">
-        <div class="container-fluid">
-            <h3 class="text-white text-center Aso_title">Aso Ebi</h3>
-            <div class="profile_pic  text-center">
-                <img src="/assets/images/profile.png">
-            </div>
-            <h3 class="text-center text-white user_name" *ngIf="eventDetails">{{eventDetails.hashTag}}</h3>
-            <div class="card_inner_content_box">
-                <div class="veiw_event">
-                    <div class="event_inner_content">
-                        <div class="event_detail_slider">
-                            <div class="event_detail_slide event_detail_slide_sky">
-                                <div class="events_name text-center">
-                                    <a href="#" class="text-center text-white"
-                                        *ngIf="eventDetails">{{eventDetails.eventType}}</a>
-                                </div>
-                            </div>
-                            <div class="event_detail_slide event_detail_slide_sky">
-                                <div class="events_name text-center">
-                                    <a href="#" class="text-center text-white">Gift Donation</a>
-                                </div>
-                            </div>
-                            <div class="event_detail_slide event_detail_slide_sky">
-                                <div class="events_name text-center">
-                                    <a href="#" class="text-center text-white">Total</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="groupSlider">
-                            <div class="event_group event_group_orange " *ngFor="let item of cartDetails">
-                                <a class="text-white border-right border-left text-center">{{item.groupName}}</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
 
-<div class="step_three">
-    <section class="buying_option1_section buying_option3_section d-flex flex-wrap align-content-center">
-        <div class="container-fluid">
-            <h3 class="text-center text-white Aso_title">Aso Ebi</h3>
-            <div class="profile_pic text-center text-center">
-                <img src="/assets/images/profile.png">
-            </div>
-            <h3 class="text-center text-white user_name" *ngIf="eventDetails">{{eventDetails.hashTag}}</h3>
-            <div class="card_inner_content_box">
-                <div class="veiw_event">
-                    <div class="event_inner_content">
-                        <div class="event_detail_slider">
-                            <div class="event_detail_slide event_detail_slide_pink">
-                                <div class="events_name text-center">
-                                    <a href="#" class="text-center text-white"
-                                        *ngIf="eventDetails">{{eventDetails.eventType}}</a>
-                                </div>
-                            </div>
-                            <div class="event_detail_slide event_detail_slide_pink">
-                                <div class="events_name text-center">
-                                    <a href="#" class="text-center text-white">Gift Donation</a>
-                                </div>
-                            </div>
-                            <div class="event_detail_slide event_detail_slide_pink">
-                                <div class="events_name text-center">
-                                    <a href="#" class="text-center text-white">Total</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="groupSlider">
-                            <div class="event_group event_group_sky" *ngFor="let item of cartDetails">
-                                <a class="text-white border-right border-left text-center"
-                                    (click)="handleChange(item)">{{item.groupName}}</a>
-                            </div>
-                        </div>
-                        <div class="radio_btn">
-                            <div class="row">
-                                <div class="col-3">
-                                    <input type="radio" id="test1" name="radio-group" checked>
-                                    <label for="test1">Male</label>
-                                </div>
-                                <div class="col-3">
-                                    <input type="radio" id="test2" name="radio-group">
-                                    <label for="test2">Female</label>
-                                </div>
-                            </div>
-                            <div class="event_prise_detail" *ngFor="let name of itemNamePrint;">
-                                <div class="row">
-                                    <div class="col-7">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="all_list">
-                                                    <div class="fabric_name float-left">{{name.itemName}} <img
-                                                            src="/assets/images/nn.png">, {{name.itemPrice}}</div>
-                                                    <div class="float-right">
-                                                        <label class=""> x </label>
-                                                        <input type="text" name="number">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- <div class="col-12">
-                                                <div class="all_list">
-                                                    <div class="fabric_name float-left">Gebe, <img
-                                                            src="/assets/images/nn.png">, 12,000</div>
-                                                    <div class="float-right">
-                                                        <label class=""> x </label>
-                                                        <input type="text" name="number">
-                                                    </div>
-                                                </div>
-                                            </div> -->
-                                        </div>
-                                    </div>
-                                    <div class="col-5 all_list_total_price">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="fabric_name float-right"> = <img
-                                                        src="/assets/images/nn.png"> 10,000</div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="fabric_name float-right"> = <img
-                                                        src="/assets/images/nn.png"> 12,000</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="total_event_prise_detail">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="fabric_name float-right"><img src="/assets/images/nn.png">
-                                            22,000</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="save_and_pay_btn">
-                                <a href="#" class="save_btn text-white text-center">Save</a>
-                                <a href="#" class="pay_btn text-white text-center">Pay</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
-
-<div class="step_four" >
-    <section class="buying_option1_section buying_option4_section d-flex flex-wrap align-content-center ">
-        <div class="container-fluid">
-            <h3 class="text-center text-white Aso_title">Aso Ebi</h3>
-            <div class="profile_pic text-center text-center">
-                <img src="/assets/images/profile.png">
-            </div>
-            <h3 class="text-center text-white user_name"># Ayo Kunbi</h3>
-            <div class="card_inner_content_box">
-                <div class="veiw_event">
-                    <div class="event_inner_content">
-                        <div class="event_detail_slider">
-                            <div class="event_detail_slide event_detail_slide_pink1">
-                                <div class="events_name text-center">
-                                    <a href="#" class="text-center text-white">Engagement</a>
-                                </div>
-                            </div>
-                            <div class="event_detail_slide event_detail_slide_pink1">
-                                <div class="events_name text-center">
-                                    <a href="#" class="text-center text-white">Wedding</a>
-                                </div>
-                            </div>
-                            <div class="event_detail_slide event_detail_slide_pink1">
-                                <div class="events_name text-center">
-                                    <a href="#" class="text-center text-white">Gift Donation</a>
-                                </div>
-                            </div>
-                            <div class="event_detail_slide event_detail_slide_pink1">
-                                <div class="events_name text-center">
-                                    <a href="#" class="text-center text-white">Total</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="donation_detail">
-                            <div class="row">
-                                <div class="col-11">
-                                    <div class="thanx_write text-white">
-                                        <p>Thank you for being here. Planning on getting
-                                            us a present - we are gestated. Gifts will not
-                                            be accepted on the wedding day, however, put
-                                            financial gift is very much appreciated.</p>
-                                    </div>
-                                </div>
-                                <div class="col-1">
-                                    <div class="cross_img float-right">
-                                        <img src="/assets/images/cross_img.png">
-                                    </div>
-                                </div>
-                            </div>
-                            <form action="#" class="donation_form">
-                                <div class="row">
-                                    <div class="col-sm-2">
-                                        <label for="email" class="text-white">I give</label>
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <input type="email" name="give">
-                                    </div>
-                                </div>
-                            </form>
-                            <div class="save_and_pay_btn">
-                                <a href="#" class="save1_btn text-white text-center">Save</a>
-                                <a href="#" class="pay1_btn text-white text-center">Pay</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
-
-<div class="step_five" >
+<div class="step_five">
     <section class="buying_option1_section buying_option5_section d-flex flex-wrap align-content-center ">
         <div class="container-fluid">
             <h3 class="text-center text-center Aso_title">Aso Ebi</h3>
             <div class="profile_pic text-center text-center">
                 <img src="/assets/images/profile.png">
             </div>
-            <h3 class="text-center text-center user_name"># Ayo Kunbi</h3>
+            <h3 class="text-center text-center user_name" *ngIf="eventDetails"> {{eventDetails.hashTag}}</h3>
             <div class="card_inner_content_box5">
                 <div class="veiw_event">
                     <div class="event_inner_content">
                         <div class="event_detail_slider">
                             <div class="event_detail_slide event_detail_slide_sky1">
                                 <div class="events_name text-center">
-                                    <a href="#" class="text-center text-white">Engagement</a>
+                                    <a href="#" class="text-center text-white" *ngIf="eventDetails">
+                                    {{eventDetails.eventType}}</a>
                                 </div>
                             </div>
                             <div class="event_detail_slide event_detail_slide_sky1">
                                 <div class="events_name text-center">
-                                    <a href="#" class="text-center text-white">Wedding</a>
-                                </div>
-                            </div>
-                            <div class="event_detail_slide event_detail_slide_sky1">
-                                <div class="events_name text-center">
-                                    <a href="#" class="text-center text-white">Gift Donation</a>
+                                    <a (click)="nextSection('step_four', 'step_five')"
+                                    class="text-center text-white">Gift Donation</a>
                                 </div>
                             </div>
                             <div class="event_detail_slide event_detail_slide_sky1">
@@ -336,173 +116,96 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="radio_btn text-white">
-                            <form action="#" class="paying_form update_paying_form">
-                                <div class="event_prise_detail">
-                                    <p class="event_name_new">Engagement</p>
-                                    <p class="gender_select">Male</p>
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <div class="all_list">
-                                                        <div class="fabric_name float-left">Gebe, <img
-                                                                src="/assets/images/wn.png">, 3,000</div>
-                                                        <div class="float-right">
+                        <div class="radio_btn text-white ">
+                            <p class="event_name_new" *ngIf="eventDetails"> {{eventDetails.eventType}}</p>
+                            <div class="all_list_height event_prise_detail">
+                                <p class="gender_select">Male</p>
+                                <div class="row" *ngFor="let item of cartDetails">
+                                    <div class="col-7">
+                                        <div class="row">
+                                            <div class="col-12" *ngIf="item.itemGender == 'male'">
+                                                <div class="all_list">
+                                                    <div class="fabric_name float-left">{{item.itemName}} <img
+                                                        src="/assets/images/wn.png"> {{item.itemPrice}} </div>
+                                                        <div class="float-right number_of_item">
                                                             <label class=""> x </label>
-                                                            <input type="text" name="number">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <div class="all_list">
-                                                        <div class="fabric_name float-left">Gebe, <img
-                                                                src="/assets/images/wn.png">, 12,000</div>
-                                                        <div class="float-right">
-                                                            <label class=""> x </label>
-                                                            <input type="text" name="number">
+                                                            <input type="text" min="1" id="donation"
+                                                            (click)="finalTotal(item)"
+                                                            [(ngModel)]='item.quantity'>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-4 all_list_total_price">
+                                        <div class="col-4 all_list_total_price" *ngIf="item.itemGender == 'male'">
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class=" float-right"> = <img src="/assets/images/wn.png">
-                                                        10,000</div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <div class=" float-right"> = <img src="/assets/images/wn.png">
-                                                        12,000</div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <div class="fabric_name_yellow float-right"><img
-                                                            src="/assets/images/yn.png"> 22,000</div>
+                                                    {{item.itemPrice * item.quantity }}</div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-1">
+                                        <div class="col-1" *ngIf="item.itemGender == 'male'">
                                             <div class="delete_item">
-                                                <i class="fa fa-times" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="delete_item">
-                                                <i class="fa fa-times" aria-hidden="true"></i>
+                                                <i class="fa fa-times" aria-hidden="true"
+                                                (click)="removeItem(item._id)"></i>
                                             </div>
                                         </div>
                                     </div>
                                     <hr>
-                                </div>
-                            </form>
-                            <form action="#" class="paying_form update_paying_form">
-                                <div class="event_prise_detail">
-                                    <p class="event_name_new">Wedding</p>
                                     <p class="gender_select">Female</p>
-                                    <div class="row">
+                                    <div class="row" *ngFor="let item of cartDetails">
                                         <div class="col-7">
                                             <div class="row">
-                                                <div class="col-12">
+                                                <div class="col-12" *ngIf="item.itemGender=='female'">
                                                     <div class="all_list">
-                                                        <div class="fabric_name float-left">Gebe, <img
-                                                                src="/assets/images/wn.png">, 3,000</div>
-                                                        <div class="float-right">
-                                                            <label class=""> x </label>
-                                                            <input type="text" name="number">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <div class="all_list">
-                                                        <div class="fabric_name float-left">Gebe, <img
-                                                                src="/assets/images/wn.png">, 12,000</div>
-                                                        <div class="float-right">
-                                                            <label class=""> x </label>
-                                                            <input type="text" name="number">
+                                                        <div class="fabric_name float-left"> {{item.itemName}} <img
+                                                            src="/assets/images/wn.png"> {{item.itemPrice}} </div>
+                                                            <div class="float-right number_of_item text-white">
+                                                                <label class=""> x </label>
+                                                                <input type="text" min="1" id="donation"
+                                                                (click)="finalTotal(item)"
+                                                                [(ngModel)]='item.quantity'>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="col-4 all_list_total_price" *ngIf="item.itemGender=='female'">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class=" float-right"> = <img src="/assets/images/wn.png">
+                                                        {{item.itemPrice * item.quantity }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-1" *ngIf="item.itemGender=='female'">
+                                                <div class="delete_item">
+                                                    <i class="fa fa-times" aria-hidden="true"
+                                                    (click)="removeItem(item._id)"></i>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-4 all_list_total_price">
+                                        <hr>
+                                        <div class="all_total">
                                             <div class="row">
-                                                <div class="col-12">
-                                                    <div class=" float-right"> = <img src="/assets/images/wn.png">
-                                                        10,000</div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <div class=" float-right"> = <img src="/assets/images/wn.png">
-                                                        12,000</div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <div class="fabric_name_yellow float-right"><img
-                                                            src="/assets/images/yn.png"> 22,000</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-1">
-                                            <div class="delete_item">
-                                                <i class="fa fa-times" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="delete_item">
-                                                <i class="fa fa-times" aria-hidden="true"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                </div>
-                            </form>
-                            <form action="#" class="paying_form update_paying_form">
-                                <div class="event_prise_detail">
-                                    <p class="event_name_new">Engagement</p>
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <div class="all_list">
-                                                        <div class="fabric_name float-left">Gebe, <img
-                                                                src="/assets/images/wn.png">, 3,000</div>
-                                                        <div class="float-right">
-                                                            <label class=""> x </label>
-                                                            <input type="text" name="number">
-                                                        </div>
+                                                <div class="col-11">
+                                                    <div class="float-left">Total</div>
+                                                    <div class="fabric_name float-right">= <img src="/assets/images/yn.png">
+                                                        {{finalGrandTotal}}
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-4 all_list_total_price">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <div class=" float-right"> = <img src="/assets/images/wn.png">
-                                                        10,000</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-1">
-                                            <div class="delete_item">
-                                                <i class="fa fa-times" aria-hidden="true"></i>
-                                            </div>
-                                        </div>
                                     </div>
-                                    <hr>
-                                </div>
-                            </form>
-                            <div class="all_total">
-                                <div class="row">
-                                    <div class="col-11">
-                                        <div class="float-left">Total</div>
-                                        <div class="fabric_name float-right">= <img src="/assets/images/yn.png"> 22,000
-                                        </div>
+                                    <div class="save_and_pay_btn">
+                                        <a class="update_btn text-center" (click)="allItem(cartDetails)">Procced</a>
+                                        <!-- <a class="paynow_btn text-center" (click)="addDonation()">Add Donation</a> -->
                                     </div>
                                 </div>
-                            </div>
-                            <div class="save_and_pay_btn">
-                                <a href="#" class="update_btn text-center">Update</a>
-                                <a href="#" class="paynow_btn text-center">Pay Now</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
-    </section>
-</div>

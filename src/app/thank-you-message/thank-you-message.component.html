@@ -1,31 +1,31 @@
 <!-- Thank you message with normal form field -->
 
-<div class="container m-auto p-4">
+<!-- <div class="container m-auto p-4">
     <div class="row">
         <div class="col-6">
             <div class="card p-2">
-                <form [formGroup]= "thankyouMessageForm">
+                <form [formGroup]="thankyouMessageForm">
                     <div class="form-group">
                         <label for="comment">Message:</label>
-                        <textarea class="form-control"  formControlName="message"></textarea>
+                        <textarea class="form-control" formControlName="message"></textarea>
                     </div>
                     <div class="row mt-2">
-                            <div class="col-md-12">
-                                <h5>Upload Profile Photo</h5>
-                                <div class="custom-file">
-                                    <input type="file" #attachment formControlName="attachment" class="form-control"
-                                        (change)="addFile($event.target.files)" id="customFile"
-                                        accept="image/png, image/jpeg, image/jpg, image/gif" hidden>
-                                    <label class="custom-file-label" for="customFile">Choose file</label>
-                                </div>
+                        <div class="col-md-12">
+                            <h5>Upload Profile Photo</h5>
+                            <div class="custom-file">
+                                <input type="file" #attachment formControlName="attachment" class="form-control"
+                                    (change)="addFile($event.target.files)" id="customFile"
+                                    accept="image/png, image/jpeg, image/jpg, image/gif" hidden>
+                                <label class="custom-file-label" for="customFile">Choose file</label>
                             </div>
                         </div>
+                    </div>
                     <button type="button" class="btn btn-primary" (click)="thankyouMessage()">Submit</button>
                 </form>
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- Thank you message with use of editor -->
 
@@ -41,3 +41,86 @@
     </div>
     <button type="button" class="btn btn-primary" (click)="thankyouMessage()">Submit</button>
 </form> -->
+
+
+<!-- New Design implemented -->
+<div class="step_one">
+    <section class="thanks_page_section thank_you_section d-flex flex-wrap align-content-center">
+        <div class="container-fluid">
+            <h3 class="text-center">Aso Ebi</h3>
+            <div class="add_bank_account">
+                <div class="Join_inner_content_box">
+                    <div class="event_inner_content">
+                        <div class="new_event_sec">
+                            <div class="row">
+                                <div class="col-3 m-auto pr-0 float-right new_event_menu">
+                                    <a href="javascript:void(0)" class="closebtn"><img src="/assets/images/bank_icon.png">
+                                        <p class="text-white">Thank You</p></a>
+                                    </div>
+                                    <div class="col-9 p-0">
+                                        <span class="text-white event_name"> Hello Rao Info Tech </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="overlay" class="new_event_menu_box" style="display: none;">
+                                <div class="">
+                                    <div class="event_menu">
+                                        <div class="all_menu_content  d-flex flex-wrap align-content-center">
+                                            <ul>
+                                                <li><a class="text-white new_event">My Event</a></li>
+                                                <li><a  class="text-white my_event">New Event</a></li>
+                                                <li><a  class="text-white my_account">bank account</a></li>
+                                                <li><a  class="text-white my_account">Reset Password</a></li>
+                                                <li><a  class="text-white my_account">Logout</a></li>
+                                                <li><a  class="text-white my_account">Messages</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <form [formGroup]="thankyouMessageForm" autocomplete="off" class="join_form forgot_pwd_form mt-3">
+                            <div class="form-group">
+                                <!-- <label for="comment">Message:</label> -->
+                                <textarea class="form-control" rows="3"  formControlName="message"
+                                placeholder="Enter Thank you message" style="resize: none;"></textarea>
+                            </div>
+                            <div class="row mt-1">
+                                <div class="col-md-12">
+                                  <input type="file" #attachment formControlName="attachment" class="form-control"
+                                  (change)="addFile($event.target.files)" id="file"
+                                  accept="image/png, image/jpeg, image/jpg, image/gif" style="display: none;" hidden>
+                                  <label class="upload_photo" for="file">Upload files</label>
+                              </div>
+                          </div>
+                          <div class="btn_submit_pwd">
+                            <button class="btn text-white text-center add_bank_btn submit_btn_pwd text-center"
+                            (click)="thankyouMessage()" [disabled]="isDisable">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="step_two">
+    <section class="thank_you_sec_font thanks_page_section text-center d-flex flex-wrap align-content-center">
+        <div class="container-fluid">
+            <h3>Aso Ebi</h3>
+            <div class="thanks_sec1">
+                <div class="Join_inner_content_box">
+                    <div class="inner_content_btn">
+                        <div class="thankyou_msg m-auto">
+                            <div class="thankyou_img text-center">
+                                <div class="all_msg">
+                                    <p class="text-center thankyou_font">Thank You</p>
+                                    <p class="text-center thankyou_font_msg">Lorem ipsum dolor sit amet, consectetur adipiscing</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -27,11 +27,35 @@ button.joinNowBtn {
 button.joinNowBtn:hover {
     background-color: #f79133
 }
- 
-
-
 .cart_pic img{
     height: 50px;
     width: 50px;
-    margin-left: -30px;
+    position: absolute;
+    bottom: 5px;
+    right: 32.5%;
+}
+.cart_pic{
+    position: relative;
+}
+
+@media(max-width: 1366px){
+  .cart_pic img{
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    bottom: 5px;
+    right: 27%;
+}  
+}
+@media(max-width: 991px){
+  .cart_pic img{
+      right: 19%;
+  }  
+}
+@media(max-width: 991px){
+  .cart_pic img{
+      right: 0%;
+      height: 30px;
+      width: 30px;
+  }  
 }
