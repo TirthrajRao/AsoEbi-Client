@@ -52,112 +52,56 @@
 <!-- New design implement -->
 
 <!-- First slide -->
-<div class="firstStep">
-    <section class="eventA_page_section d-flex flex-wrap align-content-center">
-        <div class="container-fluid">
-            <h3 class="text-center">Aso Ebi</h3>
-            <div class="eventA_sec1">
-                <div class="Join_inner_content_box">
-                    <div class="all_event_sec">
-                        <div class="row">
-                            <div class="col-3 m-auto pr-0 float-right new_event_menu">
-                                <a><img src="/assets/images/eventA_icon.png">
-                                    <p class="new_event_black">My Event</p>
-                                </a>
-                            </div>
-                            <div class="col-9 p-0">
-                                <span class="text-black all_event_name"> Hello Rao Info Tech </span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div id="overlay" class="new_event_menu_box" style="display: none;">
-                        <div class="m-auto pr-0 float-left new_event_menu slider_overlay">
-                            <a class="text-white "><img src="/assets/images/overlay.png">
-                                <p>Collections</p>
+<section class="d-flex flex-wrap align-content-center final_step" [ngClass]="getClassNameOfSection()">
+    <div class="container-fluid">
+        <h3 class="text-center">Aso Ebi</h3>
+        <div [ngClass]="getClassNameOfDiv()">
+            <div class="Join_inner_content_box">
+                <div class="all_event_sec">
+                    <div class="row">
+                        <div class="col-3 m-auto pr-0 float-right new_event_menu">
+                            <a><img [src]="getSourceOfImage()">
+                                <p [ngClass]="getClassNameOfText()">My Event</p>
                             </a>
                         </div>
-                        <div class="">
-                            <div class="event_menu">
-                                <div class="all_menu_content  d-flex flex-wrap align-content-center">
-                                    <ul>
-                                        <li><a routerLink="/myEvent" class="text-white new_event">my event</a></li>
-                                        <li><a routerLink="/createEvent" class="text-white my_event">new event</a>
-                                        </li>
-                                        <li><a routerLink="/bankDetails" class="text-white my_account">bank
-                                                account</a></li>
-                                        <li><a routerLink="/reset-password" class="text-white my_account">Reset
-                                                Password</a></li>
-                                        <li><a (click)="logout()" class="text-white my_account">Logout</a></li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <div class="col-9 p-0">
+                            <span class="all_event_name" [ngClass]="getClassNameOfHeading()"> Hello {{userName}} </span>
                         </div>
-                    </div> -->
-                    <div class="evet_sliding">
-                        <div class="event_slider1">
-                            <div class="slide1" *ngFor="let item of myEvent">
-                                <div class="slider_box1 text-center m-2">
-                                    <button class="event_btn"
-                                        (click)="eventDeatils(item._id)">{{item.eventTitle}}</button>
-                                </div>
+                    </div>
+                </div>
+                <div class="evet_sliding">
+                    <div class="event_slider1" id="firstSlider">
+                        <div class="slide1" *ngFor="let item of myEvent">
+                            <div class="slider_box1 text-center m-2" [hidden]="!item.eventTitle">
+                                <button class="event_btn" (click)="eventDeatils(item._id, 'eventB_sec1')">{{item.eventTitle}}</button>
                             </div>
                         </div>
                     </div>
-
+                </div>
+                <div id="dynamic_loader_content">
+                <div class="firstStep">
                     <div class="collected">
                         <p>Total Collected: 624,000;00 (dote)</p>
                         <p>Check my collections for more details</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-</div>
-
-<!-- second slide -->
-<div class="secondStep" style="display:none">
-    <section class="eventB_page_section d-flex flex-wrap align-content-center">
-        <div class="container-fluid">
-            <h3 class="text-center">Aso Ebi</h3>
-            <div class="eventB_sec1">
-                <div class="Join_inner_content_box">
-                    <div class="all_event_sec">
-                        <div class="row">
-                            <div class="col-3 m-auto pr-0 float-right new_event_menu">
-                                <a><img src="/assets/images/eventB_icon.png">
-                                    <p class="text-white">New Event</p>
-                                </a>
-                            </div>
-                            <div class="col-9 p-0">
-                                <span class="text-white all_event_name"> Hello Rao Info Tech </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="evet_sliding">
-                        <div class="event_slider1">
-                            <div class="slide1" *ngFor="let item of myEvent">
-                                <div class="slider_box1 text-center m-2">
-                                    <button class="event_btn"
-                                        (click)="eventDeatils(item._id)">{{item.eventTitle}}</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <!-- second slide -->
+                <div class="secondStep" style="display:none">
                     <div class="event_img text-center">
                         <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                             src="{{path}}{{singleEventDetails.profilePhoto}}" class="rounded-circle img-fluid">
                         <!-- <p class="text-white">Chnage Image</p> -->
                     </div>
                     <div class="collect_detail text-center">
-                        <span *ngFor="let item of activityName">
-                            <div class="collect1_img">
+                        <!-- <span *ngFor="let item of activityName"> -->
+                            <div class="collect1_img" *ngFor="let item of activityName">
                                 <div class="collect_img" (click)="activityDetails(item,'thirdStep', 'secondStep')">
                                     <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                         src="{{path}}{{singleEventDetails.profilePhoto}}">
                                 </div>
                                 <p class="text-white">{{item.activityName}}</p>
                             </div>
-                        </span>
+                        <!-- </span> -->
                         <div class="collect1_img" (click)="totalCollection(singleEventDetails._id)">
                             <div class="collect_img">
                                 <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
@@ -203,64 +147,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- <div id="overlay" class="new_event_menu_box" style="display: none;">
-            <div class="m-auto pr-0 float-left new_event_menu slider_overlay">
-                <a class="text-white "><img src="/assets/images/overlay.png">
-                    <p>Collections</p>
-                </a>
-            </div>
-            <div class="">
-                <div class="event_menu">
-                    <div class="all_menu_content  d-flex flex-wrap align-content-center">
-                        <ul>
-                            <li><a routerLink="/myEvent" class="text-white new_event">my event</a></li>
-                            <li><a routerLink="/createEvent" class="text-white my_event">new event</a>
-                            </li>
-                            <li><a routerLink="/bankDetails" class="text-white my_account">bank
-                                    account</a></li>
-                            <li><a routerLink="/reset-password" class="text-white my_account">Reset
-                                    Password</a></li>
-                            <li><a (click)="logout()" class="text-white my_account">Logout</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-    </section>
-</div>
-
-<!-- third slide -->
-<div class="thirdStep" style="display:none">
-    <section class="eventC_page_section d-flex flex-wrap align-content-center">
-        <div class="container-fluid">
-            <h3 class="text-center">Aso Ebi</h3>
-            <div class="eventC_sec1">
-                <div class="Join_inner_content_box">
-                    <div class="all_event_sec">
-                        <div class="row">
-                            <div class="col-3 m-auto pr-0 float-right new_event_menu">
-                                <a><img src="/assets/images/eventC_icon.png">
-                                    <p class="text-white">New Event</p>
-                                </a>
-                            </div>
-                            <div class="col-9 p-0">
-                                <span class="text-white all_event_name"> Hello Rao Info Tech </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="evet_sliding">
-                        <div class="event_slider1">
-                            <div class="slide1" *ngFor="let item of myEvent">
-                                <div class="slider_box1 text-center m-2">
-                                    <button class="event_btn"
-                                        (click)="eventDeatils(item._id,'secondStep','thirdStep')">{{item.eventTitle}}</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                <!-- third slide -->
+                <div class="thirdStep" style="display:none">
                     <div class="event_activity" *ngIf="selectedActivity">
                         <p>{{selectedActivity.activityName}}<br>{{selectedActivity.activityDate}}</p>
                         <div class="event_slace">/</div>
@@ -269,20 +157,20 @@
                         </div>
                     </div>
                     <div class="row pl-5">
-                        <div class="col-12">         
+                        <div class="col-12">
                             <div class="event_button" *ngFor="let item of selectedActivityGroup;">
                                 <button class="eventC_btn" (click)="handleChange(item)">{{item.groupName}}</button>
                             </div>
-                            </div>
-                            <div class="col-3">
-                                <input type="radio" id="test" value="male" name="radio-group1" checked>
-                                <label for="test">Male</label>
-                            </div>
-                            <div class="col-3">
-                                <input type="radio" id="test5" value="female" name="radio-group1">
-                                <label for="test5">Female</label>
-                            </div>
                         </div>
+                        <div class="col-3">
+                            <input type="radio" id="test" value="male" name="radio-group1" checked>
+                            <label for="test">Male</label>
+                        </div>
+                        <div class="col-3">
+                            <input type="radio" id="test5" value="female" name="radio-group1">
+                            <label for="test5">Female</label>
+                        </div>
+                    </div>
                     <div class="eventC_item" *ngFor="let name of itemNamePrint;">
                         <div class="row">
                             <div class="col-12">
@@ -332,7 +220,6 @@
                             </div>
                             <p class="text-white">View Event</p>
                         </div>
-
                         <div class="collect1_img">
                             <div class="collect_img" (click)="nextSection('fourthStep', 'thirdStep')">
                                 <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
@@ -356,63 +243,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-</div>
-
-<!-- fourth slide -->
-<div class="fourthStep" style="display:none">
-    <section class="eventD_page_section d-flex flex-wrap align-content-center">
-        <div class="container-fluid">
-            <h3 class="text-center">Aso Ebi</h3>
-            <div class="eventD_sec1">
-                <div class="Join_inner_content_box">
-                    <div class="all_event_sec">
-                        <div class="row">
-                            <div class="col-3 m-auto pr-0 float-right new_event_menu">
-                                <a><img src="/assets/images/eventD_icon.png">
-                                    <p class="text-white">New Event</p>
-                                </a>
-                            </div>
-                            <div class="col-9 p-0">
-                                <span class="text-white all_event_name"> Hello Rao Info Tech </span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div id="overlay" class="new_event_menu_box" style="display: none;">
-                        <div class="m-auto pr-0 float-left new_event_menu slider_overlay">
-                            <a class="text-white "><img src="/assets/images/overlay.png">
-                                <p>Collections</p>
-                            </a>
-                        </div>
-                        <div class="">
-                            <div class="event_menu">
-                                <div class="all_menu_content  d-flex flex-wrap align-content-center">
-                                    <ul>
-                                        <li><a routerLink="/myEvent" class="text-white new_event">my event</a></li>
-                                        <li><a routerLink="/createEvent" class="text-white my_event">new event</a>
-                                        </li>
-                                        <li><a routerLink="/bankDetails" class="text-white my_account">bank
-                                                account</a></li>
-                                        <li><a routerLink="/reset-password" class="text-white my_account">Reset
-                                                Password</a></li>
-                                        <li><a (click)="logout()" class="text-white my_account">Logout</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                    <div class="evet_sliding">
-                        <div class="event_slider1">
-                            <div class="slide1" *ngFor="let item of myEvent">
-                                <div class="slider_box1 text-center m-2">
-                                    <button class="event_btn"
-                                        (click)="eventDeatils(item._id,'secondStep','fourthStep')">{{item.eventTitle}}</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <!-- fourth slide -->
+                <div class="fourthStep" style="display:none">
                     <div class="eventD_input">
                         <input type="text" name="event" placeholder="Asoebi.com/#kandy" class="event_aso">
                     </div>
@@ -421,7 +253,7 @@
                         <div class="row">
                             <button class="event_invitation"
                                 (click)="nextSection('fifthStep', 'fourthStep')">Invitation</button>
-                            <button class="event_payment">Payment Thank you</button>
+                            <button class="event_payment" (click)="ThankYouMessage(eventId)">Payment Thank you</button>
                             <button class="event_invitation" (click)="nextSection('sixthStep', 'fourthStep')">After
                                 Event</button>
                             <!-- <button class="event_plus">+</button> -->
@@ -493,84 +325,26 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-</div>
-
-<!-- fifth slide  -->
-<div class="fifthStep" style="display:none">
-    <section class="eventE_page_section d-flex flex-wrap align-content-center">
-        <div class="container-fluid">
-            <h3 class="text-center">Aso Ebi</h3>
-            <div class="eventE_sec1">
-                <div class="Join_inner_content_box">
-                    <div class="all_event_sec">
-                        <div class="row">
-                            <div class="col-3 m-auto pr-0 float-right new_event_menu">
-                                <a><img src="/assets/images/eventE_icon.png"></a>
-                            </div>
-                            <div class="col-9 p-0">
-                                <span class="text-black all_event_name"> Hello Rao Info Tech </span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div id="overlay" class="new_event_menu_box" style="display: none;">
-                        <div class="m-auto pr-0 float-left new_event_menu slider_overlay">
-                            <a class="text-white "><img src="/assets/images/overlay.png">
-                                <p>Collections</p>
-                            </a>
-                        </div>
-                        <div class="">
-                            <div class="event_menu">
-                                <div class="all_menu_content  d-flex flex-wrap align-content-center">
-                                    <ul>
-                                        <li><a routerLink="/myEvent" class="text-white new_event">my event</a></li>
-                                        <li><a routerLink="/createEvent" class="text-white my_event">new event</a>
-                                        </li>
-                                        <li><a routerLink="/bankDetails" class="text-white my_account">bank
-                                                account</a></li>
-                                        <li><a routerLink="/reset-password" class="text-white my_account">Reset
-                                                Password</a></li>
-                                        <li><a (click)="logout()" class="text-white my_account">Logout</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                    <div class="event_guest text-center m-2">
-                        <img src="/assets/images/eventE_close.png">
-                        <span>Guests invited</span>
-                    </div>
-                    <div class="evet_sliding">
-                        <div class="event_slider1">
-                            <div class="slide1" *ngFor="let item of myEvent">
-                                <div class="slider_box1 text-center m-2">
-                                    <button class="event_btn"
-                                        (click)="eventDeatils(item._id,'secondStep','fifthStep')">{{item.eventTitle}}</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                <!-- fifth slide  -->
+                <div class="fifthStep" style="display:none">
                     <div class="eventE_media">
                         <!-- <img src="/assets/images/eentE_phone.png">
-                        <img src="/assets/images/eventE_mail.png">
-                        <img src="/assets/images/eventE_facebook.png">
-                        <img src="/assets/images/eventE_google.png">
-                        <img src="/assets/images/eventE_wp.png"> -->
-                        <share-button [theme]="'circles-dark'" [button]="'whatsapp'" [showText]="true"
-                            [showCount]="true"
-                            [url]="'https://aso-ebi.com/welcome-guest/NWQ1MmMyMTdhNTBjMTUzYmVmNDc2MTIy'"
-                            [autoSetMeta]="false"></share-button>
-                        <share-button [theme]="'circles-dark'" [button]="'facebook'" [showText]="true"
-                            [showCount]="true"
-                            [url]="'https://aso-ebi.com/welcome-guest/NWQ1MmMyMTdhNTBjMTUzYmVmNDc2MTIy'">
-                        </share-button>
-                        <share-button [theme]="'circles-dark'" [button]="'email'" [showText]="true" [showCount]="true"
-                            [url]="'https://twitter.com/'"></share-button>
-                        <share-button [theme]="'circles-dark'" [button]="'sms'" [showText]="true" [showCount]="true"
-                            [url]="'https://twitter.com/'"></share-button>
+                    <img src="/assets/images/eventE_mail.png">
+                    <img src="/assets/images/eventE_facebook.png">
+                    <img src="/assets/images/eventE_google.png">
+                    <img src="/assets/images/eventE_wp.png"> -->
+                        <!-- <share-button [theme]="'circles-dark'" [button]="'whatsapp'" [showText]="true"
+                        [showCount]="true"
+                        [url]="'https://aso-ebi.com/welcome-guest/NWQ1MmMyMTdhNTBjMTUzYmVmNDc2MTIy'"
+                        [autoSetMeta]="false"></share-button>
+                    <share-button [theme]="'circles-dark'" [button]="'facebook'" [showText]="true"
+                        [showCount]="true"
+                        [url]="'https://aso-ebi.com/welcome-guest/NWQ1MmMyMTdhNTBjMTUzYmVmNDc2MTIy'">
+                    </share-button>
+                    <share-button [theme]="'circles-dark'" [button]="'email'" [showText]="true" [showCount]="true"
+                        [url]="'https://twitter.com/'"></share-button>
+                    <share-button [theme]="'circles-dark'" [button]="'sms'" [showText]="true" [showCount]="true"
+                        [url]="'https://twitter.com/'"></share-button> -->
                     </div>
                     <div class="collect_detail text-center">
                         <span *ngFor="let item of activityName">
@@ -627,64 +401,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-</div>
-
-<!-- sixth slide -->
-<div class="sixthStep" style="display:none">
-    <section class="eventF_page_section d-flex flex-wrap align-content-center">
-        <div class="container-fluid">
-            <h3 class="text-center">Aso Ebi</h3>
-            <div class="eventF_sec1">
-                <div class="Join_inner_content_box">
-                    <div class="all_event_sec">
-                        <div class="row">
-                            <div class="col-3 m-auto pr-0 float-right new_event_menu">
-                                <a><img src="/assets/images/eventF_icon.png">
-                                    <p class="text-white">New Event</p>
-                                </a>
-                            </div>
-                            <div class="col-9 p-0">
-                                <span class="text-white all_event_name"> Hello Rao Info Tech </span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div id="overlay" class="new_event_menu_box" style="display: none;">
-                        <div class="m-auto pr-0 float-left new_event_menu slider_overlay">
-                            <a class="text-white "><img src="/assets/images/overlay.png">
-                                <p>Collections</p>
-                            </a>
-                        </div>
-                        <div class="">
-                            <div class="event_menu">
-                                <div class="all_menu_content  d-flex flex-wrap align-content-center">
-                                    <ul>
-                                        <li><a routerLink="/myEvent" class="text-white new_event">my event</a></li>
-                                        <li><a routerLink="/createEvent" class="text-white my_event">new event</a>
-                                        </li>
-                                        <li><a routerLink="/bankDetails" class="text-white my_account">bank
-                                                account</a></li>
-                                        <li><a routerLink="/reset-password" class="text-white my_account">Reset
-                                                Password</a></li>
-                                        <li><a (click)="logout()" class="text-white my_account">Logout</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                    <div class="evet_sliding">
-                        <div class="event_slider1">
-                            <div class="slide1" *ngFor="let item of myEvent">
-                                <div class="slider_box1 text-center m-2">
-                                    <button class="event_btn"
-                                        (click)="eventDeatils(item._id,'secondStep','sixthStep')">{{item.eventTitle}}</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                <!-- sixth slide -->
+                <div class="sixthStep" style="display:none">
                     <div class="eventF_btn">
                         <button class="invitation">Invitation</button>
                         <button class="invitation">Payment</button>
@@ -790,10 +508,10 @@
                     </div>
                 </div>
             </div>
+            </div>
         </div>
-    </section>
-</div>
-
+    </div>
+</section>
 
 <!-- Edit Event Slide -->
 <div class="seventhStep" style="display:none">
@@ -811,7 +529,7 @@
                                     </a>
                                 </div>
                                 <div class="col-9 p-0">
-                                    <span class="text-white event_name"> Hello Rao Info Tech </span>
+                                    <span class="text-white event_name"> Hello {{userName}} </span>
                                 </div>
                             </div>
                         </div>

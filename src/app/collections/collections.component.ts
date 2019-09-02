@@ -26,6 +26,8 @@ export class CollectionsComponent implements OnInit {
   $slider;
   from = false;
   fromClass;
+  userName = JSON.parse(localStorage.getItem('userName'));
+
   colorSettings = {
     section: ['#d7d7d7', '#d0dadc', '#a4a5a8', '#dadbdf', '#2b2f31'],
     prevArrows: ['#9ec23b', '#19a7b2', '#fcb638', '#b930a8', '#d44b3d'],

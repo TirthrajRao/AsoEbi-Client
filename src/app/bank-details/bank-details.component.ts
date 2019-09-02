@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { LoginService } from '../services/login.service';
 import { AlertService } from '../services/alert.service';
+import { EventService } from '../services/event.service';
+
 declare var $: any;
 
 @Component({
@@ -14,7 +16,9 @@ export class BankDetailsComponent implements OnInit {
   bankDetailsForm: FormGroup;
   isDisable = false;
   submitted = false;
-  constructor(private router: Router, private _loginService: LoginService, private _alertService: AlertService) { }
+  bankDetails;
+  selectedBank;
+  constructor(private router: Router, private _loginService: LoginService,private _eventService: EventService, private _alertService: AlertService) { }
 
   ngOnInit() {
     this.bankDetailsForm = new FormGroup({
@@ -22,6 +26,8 @@ export class BankDetailsComponent implements OnInit {
       accountNumber: new FormControl('', [Validators.required, Validators.minLength(16), Validators.min(16)]),
       IFSCCode: new FormControl('', [Validators.required, Validators.minLength(9), Validators.min(9)])
     })
+    this.getBankDetails();
+    // this.bankDetailsSlider()
   }
 
   /**
@@ -51,6 +57,29 @@ export class BankDetailsComponent implements OnInit {
       })
 
   }
+
+  getBankDetails() {
+    this._eventService.getBankDetails()
+      .subscribe((data: any) => {
+        console.log(data);
+        this.bankDetails = data.data.bankDetail;
+        console.log("har har mahadev", this.bankDetails);
+      }, err => {
+        console.log(err);
+      })
+  }
+
+  selectBank(){
+   this.selectedBank = $('input[name="radio-group"]:checked').val();
+  //  var checked = document.querySelector('[name="checkButton"]:checked');
+  // let checked = $('input[name="checkButton"]:checked').val();
+  // let checked = $('#box1').val();
+  //  console.log(checked)
+   console.log(this.selectedBank);
+
+  }
+
+
 
   /**
    * @param {String} form

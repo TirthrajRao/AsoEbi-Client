@@ -84,6 +84,11 @@ export class EventService {
     return this.http.put(config.baseApiUrl + "api/activity", data);
   }
 
+  removeActivity(data) {
+    console.log("data of delete activity", data)
+    return this.http.post(config.baseApiUrl + "api/activity-delete", data);
+  }
+
   /**
    * @param {Object} data
    * Add new group releated to it's activity and event 
@@ -99,7 +104,7 @@ export class EventService {
    */
   updateGroup(data) {
     console.log("updated group data", data);
-    return this.http.put(config.baseApiUrl + "api/group/update-group", data);
+    return this.http.put(config.baseApiUrl + "api/group/", data);
   }
 
   /**

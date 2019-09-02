@@ -415,7 +415,7 @@
                                             <p class="text-white">New Event</p>
                                         </div>
                                         <div class="col-9 p-0">
-                                            <span class="text-white event_name"> Hello Rao Info Tech </span>
+                                            <span class="text-white event_name"> Hello {{userName}} </span>
                                         </div>
                                     </div>
                                 </div>
@@ -447,7 +447,7 @@
                                             <p class="text-white">New Event</p>
                                         </div>
                                         <div class="col-9 p-0">
-                                            <span class="text-white event_name"> Hello Rao Info Tech </span>
+                                            <span class="text-white event_name"> Hello {{userName}} </span>
                                         </div>
                                     </div>
                                 </div>
@@ -492,7 +492,7 @@
                                             <p class="text-white">New Event</p>
                                         </div>
                                         <div class="col-9 p-0">
-                                            <span class="text-white event_name"> Hello Rao Info Tech </span>
+                                            <span class="text-white event_name"> Hello {{userName}} </span>
                                         </div>
                                     </div>
                                 </div>
@@ -537,7 +537,7 @@
                                             <p class="text-white">New Event</p>
                                         </div>
                                         <div class="col-9 p-0">
-                                            <span class="text-white event_name"> Hello Rao Info Tech </span>
+                                            <span class="text-white event_name"> Hello {{userName}} </span>
                                         </div>
                                     </div>
                                 </div>
@@ -586,7 +586,7 @@
                                             <p class="text-white">New Event</p>
                                         </div>
                                         <div class="col-9 p-0">
-                                            <span class="text-white event_name"> Hello Rao Info Tech </span>
+                                            <span class="text-white event_name"> Hello {{userName}} </span>
                                         </div>
                                     </div>
                                 </div>
@@ -677,7 +677,7 @@
                                             <a><img src="/assets/images/icon7.png"></a>
                                         </div>
                                         <div class="col-9 p-0">
-                                            <span class="text-white event_name"> Hello Rao Info Tech </span>
+                                            <span class="text-white event_name"> Hello {{userName}} </span>
                                         </div>
                                     </div>
                                 </div>
@@ -685,9 +685,10 @@
                                     <p class="text-white">Make this event Public or Private?</p>
                                     <div class="row">
                                         <div class="col-1">
+                                            {{ createdEventDetails }}
                                             <label class="switch mt-2">
                                                 <input type="checkbox" class="custom-control-input" id="switch1"
-                                                    formControlName="isPublic" ngModel="{{ createdEventDetails && createdEventDetails.isPublic ? createdEventDetails.isPublic : false }}">
+                                                    formControlName="isPublic">
                                                 <span class="slider round"></span>
                                             </label>
                                         </div>
@@ -709,7 +710,7 @@
                                             <p class="text-white">New Event</p>
                                         </div>
                                         <div class="col-9 p-0">
-                                            <span class="text-white event_name"> Hello Rao Info Tech </span>
+                                            <span class="text-white event_name"> Hello {{userName}} </span>
                                         </div>
                                     </div>
                                 </div>
@@ -764,7 +765,7 @@
                                             <a><img src="/assets/images/icon9.png"></a>
                                         </div>
                                         <div class="col-9 p-0">
-                                            <span class="text-white event_name"> Hello Rao Info Tech </span>
+                                            <span class="text-white event_name"> Hello {{userName}} </span>
                                         </div>
                                     </div>
                                 </div>
@@ -791,7 +792,7 @@
                                             <p class="text-white">New Event</p>
                                         </div>
                                         <div class="col-9 p-0">
-                                            <span class="text-white event_name"> Hello Rao Info Tech </span>
+                                            <span class="text-white event_name"> Hello {{userName}} </span>
                                         </div>
                                     </div>
                                 </div>
@@ -849,7 +850,7 @@
                                             <p class="text-white">New Event</p>
                                         </div>
                                         <div class="col-9 p-0">
-                                            <span class="text-white event_name"> Hello Rao Info Tech </span>
+                                            <span class="text-white event_name"> Hello {{userName}} </span>
                                         </div>
                                     </div>
                                 </div>
@@ -914,7 +915,7 @@
                                             <p class="text-white">New Event</p>
                                         </div>
                                         <div class="col-9 p-0">
-                                            <span class="text-white event_name"> Hello Rao Info Tech </span>
+                                            <span class="text-white event_name"> Hello {{userName}} </span>
                                         </div>
                                     </div>
                                 </div>
@@ -947,7 +948,7 @@
                                             <p class="text-white">New Event</p>
                                         </div>
                                         <div class="col-9 p-0">
-                                            <span class="text-white event_name"> Hello Rao Info Tech </span>
+                                            <span class="text-white event_name"> Hello {{userName}} </span>
                                         </div>
                                     </div>
                                 </div>
@@ -992,7 +993,7 @@
                                 <p class="text-white">New Event</p>
                             </div>
                             <div class="col-9 p-0">
-                                <span class="text-white all_event_name"> Hello Rao Info Tech </span>
+                                <span class="text-white all_event_name"> Hello {{userName}} </span>
                             </div>
                         </div>
                     </div>
@@ -1016,8 +1017,12 @@
                                                 placeholder="Enter activity name">
                                         </div>
                                         <div *ngIf="activityForm.controls.activity.controls.length>1">
-                                            <a (click)="removeActivityField(i)">
+                                            <a (click)="removeActivityField(i,tech.value)">
                                                 <img src="/assets/images/close1.png"></a>
+                                        </div>
+                                        <div>
+                                            <input id="eventId" class="form-control" formControlName="eventId"
+                                                [(ngModel)]="eventId" hidden>
                                         </div>
                                     </div>
                                 </div>
@@ -1050,7 +1055,7 @@
                                             <p class="text-white">New Event</p>
                                         </div>
                                         <div class="col-9 p-0">
-                                            <span class="text-white all_event_name"> Hello Rao Info Tech </span>
+                                            <span class="text-white all_event_name"> Hello {{userName}} </span>
                                         </div>
                                     </div>
                                 </div>

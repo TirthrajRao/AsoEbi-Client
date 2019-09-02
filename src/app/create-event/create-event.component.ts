@@ -47,6 +47,7 @@ export class CreateEventComponent implements OnInit {
   changeColors: any;
   eventTypeValue;
   selectedActivityToAddGroup;
+  userName = JSON.parse(localStorage.getItem('userName'));
   constructor(private route: ActivatedRoute, private router: Router, private _eventService: EventService,
     private alertService: AlertService, private fb: FormBuilder, private _loginService: LoginService) {
     this.sub = this.route.params.subscribe(params => {
@@ -82,7 +83,7 @@ export class CreateEventComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    console.log("login user name", this.userName)
     // this.createdActivity = [
     //   {
     //     activityDate: null,
@@ -133,7 +134,7 @@ export class CreateEventComponent implements OnInit {
     $('.dropdown-menu a').on('click', function () {
       $('.dropdown-toggle').html($(this).html());
     })
-    this.getBankDetails();
+    // this.getBankDetails();
 
     /* Filteration of profile photo */
 
@@ -241,11 +242,11 @@ export class CreateEventComponent implements OnInit {
     // new event page slider end
 
     $('#next_btn').on('click', () => {
-      if(this.eventId){
+      if (this.eventId) {
 
         this.updateEvent($(this));
       }
-      else{
+      else {
         this.addEvent($(this));
       }
     })
@@ -355,6 +356,7 @@ export class CreateEventComponent implements OnInit {
    * Edit event activities 
    */
   getActivityFrom(createdActivity?) {
+    console.log("update activity details", createdActivity);
     this.activityForm = new FormGroup({
       activity: this.fb.array(this.activityArray(createdActivity))
     })
@@ -369,7 +371,7 @@ export class CreateEventComponent implements OnInit {
     if (!activities) {
       return [this.fb.group({
         activityName: new FormControl(''),
-        activityDate: new FormControl(''),
+        // activityDate: new FormControl(''),
         eventId: new FormControl(this.eventId)
       })]
     }
@@ -381,7 +383,7 @@ export class CreateEventComponent implements OnInit {
       actArray.push(this.fb.group({
         activityId: new FormControl(activities[i]._id),
         activityName: new FormControl(activities[i].activityName),
-        activityDate: new FormControl(activities[i].activityDate.split("T")[0]),
+        // activityDate: new FormControl(activities[i].activityDate.split("T")[0]),
         eventId: new FormControl(activities[i].eventId)
       }))
     }
@@ -392,10 +394,10 @@ export class CreateEventComponent implements OnInit {
    * @param {String} activity
    * To create new group in event or to edit created group of event 
    */
-  initGroupForm(activity?) {
+  initGroupForm(activity?, fromUpdate = false) {
     this.groupForm = new FormGroup({
       eventId: new FormControl(activity ? activity[0].eventId : ""),
-      group: this.fb.array(this.groupArray(activity, null))
+      group: this.fb.array(this.groupArray(activity, null, fromUpdate))
     })
   }
 
@@ -404,7 +406,7 @@ export class CreateEventComponent implements OnInit {
    * @param {String} activityId
    *  To create new group in event or to edit created group of event 
    */
-  groupArray(activities?, activityId?) {
+  groupArray(activities?, activityId?, fromUpdate = false) {
     console.log("new create group =======", activities, activityId);
     if (activityId) {
       return this.fb.group({
@@ -415,16 +417,17 @@ export class CreateEventComponent implements OnInit {
       });
     } else if (activities && activities.length) {
       this.gArray = [];
-      for (let i = 0; i < 1; i++) {
+      for (let i = 0; i < activities.length; i++) {
         // console.log("i =", i , "details =", activities[i])
         if (activities[i].group) {
-          for (let j = 0; j < 1; j++) {
+          this.selectedActivityToAddGroup = activities[0]._id;
+          for (let j = 0; j < activities[i].group.length; j++) {
             // console.log("j =", j , "inner details =", activities[i].group[j])
             this.gArray.push(this.fb.group({
               activityId: new FormControl(activities[i]._id),
               groupName: new FormControl(activities[i].group[j].groupName),
-              male: this.fb.array([this.maleItemArray(activities[i].group[j].item[i])]),
-              female: this.fb.array([this.femaleItemArray(activities[i].group[j].item[i])])
+              male: this.fb.array([...this.maleItemArray(activities[i].group[j].item)]),
+              female: this.fb.array([...this.femaleItemArray(activities[i].group[j].item)])
             }));
           }
           // return this.gArray;
@@ -455,18 +458,36 @@ export class CreateEventComponent implements OnInit {
    * @param {JSON} details
    * Create items of male in new event 
    */
-  maleItemArray(details?) {
-    return this.fb.group({
-      itemName: new FormControl(details ? details.itemName : ''),
-      itemType: new FormControl(details ? details.itemType : ''),
-      itemPrice: new FormControl(details ? details.itemPrice : '')
-    })
+  maleItemArray(details?): any {
+    if (details) {
+      let maleArray = [];
+      for (let i = 0; i < details.length; i++) {
+        if (details[i].itemGender === 'male') {
+          maleArray.push(this.fb.group({
+            itemName: new FormControl(details[i].itemName),
+            itemType: new FormControl(details[i].itemType),
+            itemPrice: new FormControl(details[i].itemPrice)
+          }))
+        }
+      }
+      return maleArray;
+    } else {
+      return this.fb.group({
+        itemName: new FormControl(''),
+        itemType: new FormControl(''),
+        itemPrice: new FormControl('')
+      })
+    }
   }
 
   addItemsMale(index) {
     console.log(index)
     const control = <FormArray>index.controls.male;
-    control.push(this.maleItemArray());
+    control.push(this.fb.group({
+      itemName: new FormControl(''),
+      itemType: new FormControl(''),
+      itemPrice: new FormControl('')
+    }));
   }
   removeItemsMale(gIndex, mIndex) {
     const control = <FormArray>gIndex.controls.male;
@@ -477,12 +498,26 @@ export class CreateEventComponent implements OnInit {
    * @param {JSON} details
    * Create items of female in new event 
    */
-  femaleItemArray(details?) {
-    return this.fb.group({
-      itemName: new FormControl(details ? details.itemName : ''),
-      itemType: new FormControl(details ? details.itemType : ''),
-      itemPrice: new FormControl(details ? details.itemPrice : '')
-    })
+  femaleItemArray(details?): any {
+    if (details) {
+      let femaleArray = [];
+      for (let i = 0; i < details.length; i++) {
+        if (details[i].itemGender === 'female') {
+          femaleArray.push(this.fb.group({
+            itemName: new FormControl(details[i].itemName),
+            itemType: new FormControl(details[i].itemType),
+            itemPrice: new FormControl(details[i].itemPrice)
+          }))
+        }
+      }
+      return femaleArray;
+    } else {
+      return this.fb.group({
+        itemName: new FormControl(''),
+        itemType: new FormControl(''),
+        itemPrice: new FormControl('')
+      })
+    }
   }
 
   /**
@@ -491,7 +526,11 @@ export class CreateEventComponent implements OnInit {
    */
   addItemsfeMale(index) {
     const control = <FormArray>index.controls.female;
-    control.push(this.femaleItemArray());
+    control.push(this.fb.group({
+      itemName: new FormControl(''),
+      itemType: new FormControl(''),
+      itemPrice: new FormControl('')
+    }));
   }
 
 
@@ -560,9 +599,23 @@ export class CreateEventComponent implements OnInit {
    * @param {String} i
    * To remove added activity field 
    */
-  removeActivityField(i: number): void {
-    const control = <FormArray>this.activityForm.controls.activity;
-    control.removeAt(i);
+  removeActivityField(i: number, id): void {
+    console.log("activity id", id)
+    if (!id.activityId) {
+      const control = <FormArray>this.activityForm.controls.activity;
+      control.removeAt(i);
+    }
+    else {
+      console.log(id);
+      this._eventService.removeActivity(id)
+      .subscribe((data: any)=>{
+        console.log(data);
+        this.createdActivity = data.data                                                                                                                                                                                                                                                                                                                                          
+        this.getActivityFrom(this.createdActivity);
+      },err=>{
+        console.log(err);
+      })
+    }
   }
 
   /**
@@ -654,6 +707,7 @@ export class CreateEventComponent implements OnInit {
         this.createdEventDetails = data.data;
         $('.selected_event_type > a').html(this.createdEventDetails.eventType);
         this.eventForm.controls.eventType.setValue(this.createdEventDetails.eventType);
+        this.eventForm.controls.isPublic.setValue(this.createdEventDetails.isPublic);
         this.selectedStartDate = this.createdEventDetails.startDate.split("T")[0];
         console.log(this.selectedStartDate);
         this.selectedEndDate = this.createdEventDetails.endDate.split("T")[0];
@@ -673,36 +727,34 @@ export class CreateEventComponent implements OnInit {
    */
   updateEvent($this) {
     this.getActivityFrom(this.eventActivities);
-  
+    if ($('.slick-active').hasClass("done")) {
+      console.log("in twelve_slide");
+      // this._eventService.addEvent(this.eventForm.value, this.files, this.themeFiles)
+      //   .subscribe((data: any) => {
+      //     console.log("event details", data);
 
-
-      if ($('.slick-active').hasClass("done")) {
-        console.log("in twelve_slide");
-        // this._eventService.addEvent(this.eventForm.value, this.files, this.themeFiles)
-        //   .subscribe((data: any) => {
-        //     console.log("event details", data);
-        
-        //   }, (err: any) => {
-        //     console.log(err);
-        //     this.alertService.getError(err.message);
-        //   })
-        this._eventService.updateEvent(this.eventId, this.eventForm.value, this.files)
-        .subscribe((data:any) => {
+      //   }, (err: any) => {
+      //     console.log(err);
+      //     this.alertService.getError(err.message);
+      //   })
+      this._eventService.updateEvent(this.eventId, this.eventForm.value, this.files)
+        .subscribe((data: any) => {
           console.log(data);
-              $('.step_1').css({ 'display': 'none' })
-            $('.step_2').css({ 'display': 'block' });
-            this.eventId = data.data._id;
-            console.log("created eventid", this.eventId);
-            this.getActivityFrom();
+          $('.step_1').css({ 'display': 'none' })
+          $('.step_2').css({ 'display': 'block' });
+          this.eventId = data.data._id;
+          this.createdActivity = data.data.activities;
+          console.log("created eventid", this.eventId);
+          this.getActivityFrom(this.createdActivity);
         }, (err: any) => {
           console.log(err);
           this.alertService.getError(err.message);
         })
-      }
-      console.log("data of event", $('.slick-active').hasClass("twelve_slide"));
-      if ($('.slick-active').hasClass("twelve_slide")) {
-        $('.slick-active').addClass("done")
-      }
+    }
+    console.log("data of event", $('.slick-active').hasClass("twelve_slide"));
+    if ($('.slick-active').hasClass("twelve_slide")) {
+      $('.slick-active').addClass("done")
+    }
   }
 
   /**
@@ -711,13 +763,44 @@ export class CreateEventComponent implements OnInit {
   updateActivity() {
     // console.log("Update Event");
     this._eventService.updateActivity(this.activityForm.value)
-      .subscribe(data => {
+      .subscribe((data: any) => {
         console.log(data);
+        this.createdActivity = data.data.activity;
+        // _.forEach(updateACtivityData, (item)=>{
+        //   _.forEach(item.activities, (itemActivity)=>{
+        //     console.log("item of activity",itemActivity)
+
+        //     this.createdActivity.push(itemActivity);
+        //   } )
+        // })
+        // this.eventActivities = updateACtivityData.activities;
+        console.log(this.createdActivity);
+        setTimeout(() => {
+          $('.step_2').css({ 'display': 'none' })
+          $('.step_3').css({ 'display': 'block' });
+          $('.gender_slider').not('.slick-initialized').slick({
+            autoplaySpeed: 2000,
+            arrows: false,
+            dots: false,
+            slidesToShow: 1.5,
+            slidesToScroll: 1,
+            draggable: true,
+            fade: false,
+            responsive: [
+              {
+                breakpoint: 767,
+                settings: {
+                  slidesToShow: 1
+                }
+              }
+            ]
+          });
+          this.initGroupForm(this.createdActivity, true);
+        }, 500);
       }, (err: any) => {
         console.log(err);
         this.alertService.getError(err.message);
       })
-    this.initGroupForm(this.eventActivities);
   }
 
   /**
@@ -734,47 +817,8 @@ export class CreateEventComponent implements OnInit {
       })
   }
 
-  getBankDetails() {
-    this._eventService.getBankDetails()
-      .subscribe((data: any) => {
-        console.log(data);
-        this.bankDetails = data.data.bankDetail;
-        setTimeout(()=>{
-          this.bankDetailsSlider();
-        })
-        console.log("har har mahadev", this.bankDetails);
-      }, err => {
-        console.log(err);
-      })
-  }
 
-  bankDetailsSlider() {
-    $('.slider1').not('.slick-initialized').slick({
-      infinite: true,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      autoplay: false,
-      arrows: true,
-      prevArrow: '<button class="prevarrow text-center"><i class="fa fa-caret-left" aria-hidden="true"></i></button>',
-      nextArrow: '<button class="nextarrow text-center"><i class="fa fa-caret-right" aria-hidden="true"></i></button>',
-      responsive: [
-        {
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-          }
-        },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1
-          }
-        }
-      ]
-    });
-  }
+
   addMoreBankDetails() {
     console.log(this.bankDetailsForm);
     $('#exampleModal').modal('toggle');
@@ -837,7 +881,7 @@ export class CreateEventComponent implements OnInit {
     console.log("activity id ", id);
     this.selectedActivityToAddGroup = id;
     const control = <FormArray>this.groupForm.controls.group;
-    // console.log("item==========================================>", control.controls, _.findIndex(control.controls, { value: { activityId: this.selectedActivityToAddGroup } }));
+    console.log("item==========================================>", control.controls, _.findIndex(control.controls, { value: { activityId: this.selectedActivityToAddGroup } }));
     if (_.findIndex(control.controls, { value: { activityId: this.selectedActivityToAddGroup } }) === -1)
       this.AddGroupField(this.selectedActivityToAddGroup);
     $('.gender_slider').not('.slick-initialized').slick({
@@ -861,6 +905,6 @@ export class CreateEventComponent implements OnInit {
   }
 
   printItem(item) {
-    console.log("item==========================================>", item.value.activityId);
+    console.log("item==========================================>",this.selectedActivityToAddGroup, item.value.activityId);
   }
 }

@@ -1446,6 +1446,51 @@ input:checked+.slider:before {
 }
 
 /*add bank account css end/
+
+/* Thank you message css start */
+
+.thank_you_section {
+	min-height: 100vh;
+	background-color: #d8d9dd;
+}
+
+.thank_you_section h3 {
+	color: #e70d6a;
+	font-size: 58.33px;
+	margin-bottom: 18px;
+}
+
+.thank_you_section .Join_inner_content_box {
+	background-image: url(/assets/images/thanks1.png);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	position: relative;
+}
+
+.thank_you_btn {
+	background-color: #e70d6a!important;
+}
+
+
+/* 
+.thank_you_sec {
+	background-color: #fff!important;
+}
+
+.thank_you .Join_inner_content_box {
+	background-image: url(/assets/images/bank_acc.png);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	position: relative;
+}
+
+.thank_you_btn {
+	background-color: #ef2556!important; */
+
+/* Thank you message css start */
+
 /*forgot password page start*/
 
 .login_form a {
