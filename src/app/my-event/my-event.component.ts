@@ -330,10 +330,10 @@ export class MyEventComponent implements OnInit {
    * @param {String} id eventId
    * Naviagte from this page to thank you messeage page of that event 
    */
-  ThankYouMessage(id) {
-    console.log("thank you message event id", id);
-    this.router.navigate(['/home/thank-you', id])
-  }
+  // ThankYouMessage(id) {
+  //   console.log("thank you message event id", id);
+  //   this.router.navigate(['/home/thank-you', id])
+  // }
   totalCollection(id) {
     console.log("event id", id);
     this.router.navigate(['home/collection/', id]);
