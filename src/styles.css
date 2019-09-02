@@ -360,7 +360,7 @@ a {
 	font-size: 17.29px;
 	font-family: 'Russo One', sans-serif;
 	height: 49px;
-	width: 149px;
+	/* width: 149px; */
 	text-transform: uppercase;
 	line-height: 49px;
 	margin: 60px;
@@ -1581,8 +1581,25 @@ input:checked+.slider:before {
 .collection_slider_section .slick-slide img {
 	display: inline;
 }
-
-.collection_slider button.slick-prev, .collection_slider button.slick-next {
+.collection_slider .slick-arrow {
+	position: absolute;
+	top: 26%;
+	margin: auto;
+	border: none;
+	outline: none;
+	box-shadow: none;
+	background-color: transparent;
+	z-index: 11;
+	color: white;
+	font-size: 40px;
+}
+.collection_slider .slick-arrow.slick-prev {
+	left: 200px;
+}
+.collection_slider .slick-arrow.slick-next {
+	right: 200px;
+}
+/* .collection_slider button.slick-prev, .collection_slider button.slick-next {
 	outline: none!important;
 	position: absolute;
 	border: none!important;
@@ -1601,7 +1618,7 @@ input:checked+.slider:before {
 	color: #fff;
 	right: 28%;
 	bottom: 66%;
-}
+} */
 
 .collection_slider ul.slick-dots button {
 	height: 4px;
@@ -1640,9 +1657,9 @@ input:checked+.slider:before {
 
 .collection_slider_section .inner_content_btn a {
 	margin: 20px;
-	width: 175px;
-	text-transform: unset;
-	font-size: 20px;
+    text-transform: unset;
+    font-size: 20px;
+    padding: 0px 10px;
 }
 
 .total_btn a {
@@ -1668,6 +1685,7 @@ input:checked+.slider:before {
 	font-size: 16.67px !important;
 	padding: 15px;
 	height: 215px;
+	overflow: auto;
 }
 
 .inner_box_content .inner_title h3 {
@@ -2079,7 +2097,19 @@ input:checked+.slider:before {
 }
 
 /*msg end*/
-
+/* my event css start s */
+.sb-wrapper .sb-icon {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    min-width: 2em;
+    background-color: #1793c4;
+    border-radius: 50%;
+    padding: 40px 20px 28px;
+    color: white;
+    font-size: 25px!important;
+}
+/* my event css end s */
 /*add_event start*/
 
 .name_page_section {
@@ -2839,6 +2869,7 @@ a.createEvent_button {
 	display: inline-block;
 	color: #fff;
 	font-size: 20.83px;
+	margin-right: 20px;
 	font-family: 'Russo One', sans-serif;
 }
 
@@ -2952,7 +2983,6 @@ a.createEvent_button {
 	padding: 20px;
 	color: #fff;
 	font-size: 30px;
-	font-family: 'Russo One', sans-serif;
 }
 
 .eventD_page_section .eventD_btn {
@@ -2961,31 +2991,15 @@ a.createEvent_button {
 
 .eventD_page_section button.event_invitation {
 	background: #da9500;
-	font-size: 16px;
+	font-size: 17px;
 	color: #fff;
-	font-family: aso;
-	padding: 6px 34px;
-	margin-left: 5px;
+	/* font-family: aso; */
+	padding: 6px 28px;
+	margin-right: 5px;
+	outline: none!important;
+	border: none!important;
+	font-family: 'Russo One', sans-serif;
 }
-
-.eventD_page_section button.event_payment {
-	background: #da9500;
-	font-size: 16px;
-	color: #fff;
-	font-family: aso;
-	padding: 6px 34px;
-	margin-left: 5px;
-}
-
-.eventD_page_section button.event_plus {
-	background: #da9500;
-	font-size: 16px;
-	color: #fff;
-	font-family: aso;
-	padding: 6px 18px;
-	margin-left: 5px;
-}
-
 .eventD_page_section .eventD_detail {
 	padding: 0px 60px;
 }
@@ -3006,7 +3020,12 @@ a.createEvent_button {
 }
 
 /*eventD page end*/
-
+.event-count-box{
+	height: 100px;
+	overflow: auto;
+	border: 1px solid #fff;
+	padding: 10px;
+}
 /*eventE page start*/
 
 .eventE_page_section {
@@ -3061,15 +3080,16 @@ a.createEvent_button {
 
 .eventE_page_section .event_guest img {
 	margin-top: -10px;
+	margin-right: 10px
 }
 
-.eventE_page_section .eventE_media img {
+/* .eventE_page_section .eventE_media img {
 	padding: 0 17px;
 }
 
 .eventE_page_section .eventE_media {
 	padding: 0 90px;
-}
+} */
 
 .eventE_page_section .event_channel {
 	padding: 38px 60px 0px 60px;
@@ -3140,8 +3160,8 @@ a.createEvent_button {
 	width: 116px;
 	height: 50px;
 	border: none;
-	/*    padding: 10px 13px;
-*/
+	margin-right: 10px;
+	/*    padding: 10px 13px;*/
 }
 
 .eventF_page_section button.plus {
@@ -3161,7 +3181,7 @@ a.createEvent_button {
 }
 
 .eventF_page_section .eventF_send {
-	padding: 30px 60px;
+	padding: 0px 60px;
 }
 
 .eventF_page_section .eventF_pera p {
@@ -3176,6 +3196,9 @@ a.createEvent_button {
 	font-family: 'Russo One', sans-serif;
 	font-size: 25px;
 	padding: 10px 43px;
+	outline: none!important;
+	border: none!important;
+	margin: 0 0px 25px;
 }
 
 .eventF_page_section .eventF_send label, .eventF_page_section .eventF_at label, .eventF_page_section .eventF_to label {
@@ -3231,6 +3254,9 @@ a.createEvent_button {
 	background-color: transparent;
 	font-size: 30px;
 	color: #fff;
+	border: 1px solid white;
+    padding: 10px;
+    margin-right: 12px;
 }
 
 .eventF_page_section .eventF_at input {
@@ -3238,6 +3264,8 @@ a.createEvent_button {
 	background-color: transparent;
 	height: 30px;
 	color: #fff;
+	border: 2px solid white;
+    margin-right: 5px;
 }
 
 /*aso ebi event pages css end*/
@@ -3496,9 +3524,9 @@ a.createEvent_button {
 	height: 56px;
 	width: 33px;
 	padding: 10px 5px;
-	top: 26px;
-	left: 40px;
-	right: 40px;
+	top: 24px;
+	left: 30px;
+	right: 30px;
 	margin: auto;
 	border: none;
 	outline: none;
@@ -4229,7 +4257,7 @@ tr.blue-table-header{
 	}
 	.Join_inner_content_box {
 		width: 600px;
-		height: 525px
+		/* height: 100%; */
 	}
 	.join_form h3 {
 		font-size: 45px;
@@ -4376,19 +4404,17 @@ tr.blue-table-header{
 	}
 	.collection_slider_section .inner_content_btn a {
 		margin: 14px;
-		width: 155px;
+		/* width: 155px; */
 		text-transform: unset;
 		font-size: 18px;
 		height: 40px;
 		line-height: 40px;
 	}
 	.collection_slider button.slick-prev {
-		left: 30%;
-		top: 23.5%;
+		
 	}
 	.collection_slider button.slick-next {
-		right: 30%;
-		bottom: 65%;
+		
 	}
 	.collection_slider_section .new_event_sec {
 		padding-top: 40px;
@@ -4583,7 +4609,7 @@ tr.blue-table-header{
 		padding: 6px 50px;
 	}
 	.collect_detail {
-		padding: 5px 50px;
+		padding: 25px 50px;
 	}
 	.collect_detail .collect_img {
 		width: 73px;
@@ -4654,7 +4680,8 @@ tr.blue-table-header{
 		padding: 6px 13px;
 	}
 	.eventD_page_section button.event_invitation {
-		padding: 6px 27px;
+		padding: 6px 24px;
+		font-size: 16px;
 	}
 	/*eventD page end*/
 	/*eventE page start*/
@@ -4669,9 +4696,9 @@ tr.blue-table-header{
 	.eventE_page_section button.event_btn {
 		padding: 8px 42px;
 	}
-	.eventE_page_section .eventE_media {
+	/* .eventE_page_section .eventE_media {
 		padding: 0 70px;
-	}
+	} */
 	.eventE_page_section .event_channel {
 		padding: 2px 50px 2px 50px;
 	}
@@ -4927,13 +4954,13 @@ tr.blue-table-header{
 		font-size: 39px;
 	}
 	.collection_slider_section .inner_content_btn a {
-		width: 145px;
+		/* width: 145px; */
 	}
-	.collection_slider button.slick-prev {
-		left: 26%;
+	.collection_slider .slick-arrow.slick-prev{
+		left: 140px;
 	}
-	.collection_slider button.slick-next {
-		right: 26%;
+	.collection_slider .slick-arrow.slick-next {
+		right: 140px;
 	}
 	.collection_slider_section .event_inner_content {
 		width: 100%;
@@ -4999,10 +5026,7 @@ tr.blue-table-header{
 		width: 520px;
 	}
 	.eventD_page_section button.event_invitation {
-		padding: 6px 15px;
-	}
-	.eventD_page_section button.event_payment {
-		padding: 6px 23px;
+		padding: 6px 11px;
 	}
 	.eventD_page_section button.eventD_share {
 		padding: 8px 25px;
@@ -5015,12 +5039,12 @@ tr.blue-table-header{
 	.eventE_page_section button.event_btn, .eventE_page_section .event_channel p {
 		font-size: 16px;
 	}
-	.eventE_page_section .eventE_media {
+	/* .eventE_page_section .eventE_media {
 		padding: 0 36px;
-	}
-	.eventE_page_section .eventE_media img {
+	} */
+	/* .eventE_page_section .eventE_media img {
 		height: 36px;
-	}
+	} */
 	.eventE_page_section .event_channel {
 		padding: 2px 60px 2px 60px;
 	}
@@ -5201,7 +5225,7 @@ tr.blue-table-header{
 	.inner_content_btn a {
 		font-size: 14px;
 		height: 36px;
-		width: 115px;
+		/* width: 115px; */
 		line-height: 40px;
 		margin: 15px 15px 5px 15px;
 	}
@@ -5269,7 +5293,7 @@ tr.blue-table-header{
 		margin: auto;
 	}
 	.facebook_sec, .microsoft_sec {
-		margin-: 0px;
+		margin: 0px;
 	}
 	.join_form a {
 		font-size: 20px;
@@ -5277,6 +5301,16 @@ tr.blue-table-header{
 		line-height: 50px;
 	}
 	/*join page responsive end*/
+	/* my event css start s */
+	.sb-wrapper .sb-icon {
+		padding: 33px 10px 25px;
+		font-size: 18px!important;
+	}
+	.event_img{
+		width: 120px!important;
+		height: 120px !important;;
+	}
+	/* my event css end s */
 	/*new event responsive page start*/
 	.new_event_slider {
 		height: 525px;
@@ -5496,19 +5530,20 @@ tr.blue-table-header{
 		font-size: 33.17px;
 		margin-left: -25px;
 	}
-	.collection_slider button.slick-prev {
-		top: 16%;
-		left: 23%;
-	}
-	.collection_slider button.slick-next {
-		bottom: 72%;
-		right: 23%;
+	.collection_slider .slick-arrow{
+		top:19%;
 	}
 	.collection_slider_section form .col-3 {
 		max-width: 31%;
 	}
 	.collection_slider_section .inner_content_btn a {
-		width: 135px;
+		margin: 0 5px;
+	}
+	.collection_slider .slick-arrow.slick-next {
+		right: 40px;
+	}
+	.collection_slider .slick-arrow.slick-prev {
+		left: 40px;
 	}
 	.slide_five .gender_list p {
 		line-height: 24px;
@@ -5573,6 +5608,13 @@ tr.blue-table-header{
 		font-size: 26px;
 	}
 	/*add_event page end*/
+	/* my event s start */
+	.collect_detail .slick-arrow{
+		top: 4px;
+		left: 10px;
+		right: 10px;
+	}
+	/* my event s end */
 	/*event1 page start*/
 	.event1_page_section .event_item {
 		padding: 0 15px;
@@ -5781,8 +5823,8 @@ tr.blue-table-header{
 		width: 100%;
 	}
 	.eventD_page_section button.event_payment, .eventD_page_section button.event_invitation {
-		font-size: 13px;
-		padding: 6px 5px;
+		font-size: 12px;
+		padding: 3px 7px;
 	}
 	.eventD_page_section .eventD_detail p {
 		font-size: 13px;
@@ -5815,15 +5857,6 @@ tr.blue-table-header{
 	.eventE_page_section .event_channel p {
 		padding: 0px 5px;
 	}
-	.eventE_page_section .eventE_media {
-		text-align: center;
-	}
-	.eventE_page_section .eventE_media {
-		padding: 0 0px;
-	}
-	.eventE_page_section .eventE_media img {
-		padding: 0 5px;
-	}
 	/*eventE page end*/
 	/*eventF page start*/
 	.eventF_page_section .Join_inner_content_box {
@@ -5854,9 +5887,10 @@ tr.blue-table-header{
 		font-size: 11px;
 	}
 	.eventF_page_section button.invitation {
-		width: 90px;
+		width: 80px;
 		font-size: 11px;
 		height: 31px;
+		margin-bottom: 10px;
 	}
 	.eventF_page_section button.plus {
 		width: 32px;
@@ -5864,6 +5898,7 @@ tr.blue-table-header{
 	}
 	.eventF_page_section .eventF_pera p {
 		font-size: 12px;
+		margin: 0;
 	}
 	.eventF_page_section button.eventF_save {
 		font-size: 12px;
@@ -5872,6 +5907,7 @@ tr.blue-table-header{
 	.eventF_page_section .eventF_send input {
 		font-size: 12px;
 		width: 65px;
+		margin-right: 3px;
 	}
 	.eventF_page_section .eventF_send label, .eventF_page_section .eventF_at label, .eventF_page_section .eventF_to label {
 		font-size: 12px;
@@ -5944,6 +5980,7 @@ tr.blue-table-header{
 	}
 	/*slider page end*/
 	/*new event page without slider end*/
+
 }
 
 @media screen and (max-width: 421px) {
@@ -5956,6 +5993,7 @@ tr.blue-table-header{
 	/*msg start*/
 	.all_event_sec p {
 		font-size: 10px;
+		line-height: 11px;
 	}
 	.all_event_sec .all_event_name {
 		margin-left: -5px;
@@ -6068,7 +6106,7 @@ tr.blue-table-header{
 		font-size: 16px;
 		height: 38px;
 		line-height: 38px;
-		width: 100px;
+		/* width: 100px; */
 	}
 	.number, .inner_box_content .inner_title h3 {
 		font-size: 16.33px !important;
@@ -6094,11 +6132,10 @@ tr.blue-table-header{
 		left: 15%;
 	}
 	.collection_slider button.slick-prev {
-		left: 20%;
-		top: 15%;
+		
 	}
 	.collection_slider button.slick-next {
-		right: 20%;
+	
 	}
 	.collection_slider_section .new_event_sec span {
 		font-size: 27.17px;
@@ -6217,6 +6254,16 @@ tr.blue-table-header{
 		font-size: 12px;
 	}
 	/*new event responsive end*/
+
+	/* my event responsive start */
+	.collect_detail .slick-arrow{
+		top: 0;
+	}
+	.sb-wrapper .sb-icon {
+		padding: 23px 0px 14px;
+		font-size: 15px!important;
+	}
+	/* my event responsive start */
 }
 
 @media screen and (max-width: 360px) {
@@ -6407,7 +6454,7 @@ tr.blue-table-header{
 		font-size: 14px;
 		height: 35px;
 		line-height: 35px;
-		width: 92px;
+		/* width: 92px; */
 	}
 	.number, .inner_box_content .inner_title h3 {
 		font-size: 12px !important;
@@ -6434,8 +6481,7 @@ tr.blue-table-header{
 		right: 23%;
 	}
 	.collection_slider button.slick-prev {
-		left: 24%;
-		top: 19.5%;
+		
 	}
 	.collection_slider ul.slick-dots {
 		bottom: 28px;

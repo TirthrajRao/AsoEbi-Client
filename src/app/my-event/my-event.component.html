@@ -163,7 +163,7 @@
                                 <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                     src="{{path}}{{singleEventDetails.profilePhoto}}">
                             </div>
-                            <p class="text-white text-center">Collected</p>
+                            <p class="text-center text-white">Collected</p>
                         </div>
                         <div class="collect1_img" *ngIf="eventId">
                             <div class="collect_img" (click)="editEvent(eventId,'seventhStep', 'secondStep')">
@@ -250,6 +250,25 @@
                             </div>
                         </div>
                     </div>
+                    <div id="overlay" class="new_event_menu_box" style="display: none;">
+                        <div class="">
+                            <div class="event_menu">
+                                <div class="all_menu_content  d-flex flex-wrap align-content-center">
+                                    <ul>
+                                        <li><a routerLink="/home" class="text-white new_event">Home</a></li>
+                                        <li><a routerLink="/myEvent" class="text-white new_event">my event</a></li>
+                                        <li><a routerLink="/createEvent" class="text-white my_event">new event</a>
+                                        </li>
+                                        <li><a routerLink="/bankDetails" class="text-white my_account">bank
+                                                account</a></li>
+                                        <li><a routerLink="/reset-password" class="text-white my_account">Reset
+                                                Password</a></li>
+                                        <li><a (click)="logout()" class="text-white my_account">Logout</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="evet_sliding">
                         <div class="event_slider1">
                             <div class="slide1" *ngFor="let item of myEvent">
@@ -263,30 +282,26 @@
 
                     <div class="event_activity" *ngIf="selectedActivity">
                         <p>{{selectedActivity.activityName}}<br>{{selectedActivity.activityDate}}</p>
-                        <div class="event_slace">/</div>
-                        <div class="event_adding">
+                        <!-- <div class="event_slace">/</div> -->
+                        <!-- <div class="event_adding">
                             <img src="/assets/images/event_adding.png">
-                        </div>
+                        </div> -->
                     </div>
-                    <div class="row pl-5">
-                        <div class="col-12">         
-                            <div class="event_button" *ngFor="let item of selectedActivityGroup;">
-                                <button class="eventC_btn" (click)="handleChange(item)">{{item.groupName}}</button>
-                            </div>
-                            </div>
-                            <div class="col-3">
-                                <input type="radio" id="test" value="male" name="radio-group1" checked>
-                                <label for="test">Male</label>
-                            </div>
-                            <div class="col-3">
-                                <input type="radio" id="test5" value="female" name="radio-group1">
-                                <label for="test5">Female</label>
-                            </div>
-                        </div>
+                    <div class="w-100 mb-3">
+                    <div class="event_button" *ngFor="let item of selectedActivityGroup;">
+                        <button class="eventC_btn" (click)="handleChange(item)">{{item.groupName}}</button>
+                    </div>
+                </div>
+                <div class="pb-3 ml-5">
+                    <input type="radio" id="test" value="male" name="radio-group1" checked>
+                    <label for="test">Male</label>
+                    <input type="radio" id="test5" value="female" name="radio-group1">
+                    <label for="test5">Female</label>
+                </div>
                     <div class="eventC_item" *ngFor="let name of itemNamePrint;">
                         <div class="row">
                             <div class="col-12">
-                                <div class="">
+                                <div class="event-count-box">
                                     <div class="eventC_close float-left text-white">
                                         <p class="text-white">{{name.itemName}}<p>
                                     </div>
@@ -298,9 +313,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="eventC_add">
+                    <!-- <div class="eventC_add">
                         <img src="/assets/images/eventC_add.png">
-                    </div>
+                    </div> -->
                     <div class="collect_detail text-center">
                         <span *ngFor="let item of activityName">
                             <div class="collect1_img">
@@ -316,7 +331,7 @@
                                 <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                     src="{{path}}{{singleEventDetails.profilePhoto}}">
                             </div>
-                            <p class="text-white text-center">Collected</p>
+                            <p class="text-center text-white">Collected</p>
                         </div>
                         <div class="collect1_img">
                             <div class="collect_img" (click)="nextSection('seventhStep', 'thirdStep')">
@@ -418,17 +433,19 @@
                     </div>
 
                     <div class="eventD_btn">
-                        <div class="row">
-                            <button class="event_invitation"
+                        <div class="d-inline-block">
+                            <button class="event_invitation  my-1"
                                 (click)="nextSection('fifthStep', 'fourthStep')">Invitation</button>
-                            <button class="event_payment">Payment Thank you</button>
-                            <button class="event_invitation" (click)="nextSection('sixthStep', 'fourthStep')">After
+                            <button class="event_invitation  my-1">Payment Thank you</button>
+                            <button class="event_invitation  my-1"
+                                (click)="nextSection('sixthStep', 'fourthStep')">After
                                 Event</button>
                             <!-- <button class="event_plus">+</button> -->
                         </div>
+
                     </div>
 
-                    <div class="eventD_detail text-white">
+                    <div class="eventD_detail text-white mb-3">
                         <p>We look forward to having you of the manage collections of Kayode and Your. Kindly pay for
                             aso
                             ebi here. Thank you.</p>
@@ -453,7 +470,7 @@
                                 <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                     src="{{path}}{{singleEventDetails.profilePhoto}}">
                             </div>
-                            <p class="text-white text-center">Collected</p>
+                            <p class="text-white">Collected</p>
                         </div>
                         <div class="collect1_img">
                             <div class="collect_img" (click)="nextSection('seventhStep', 'fourthStep')">
@@ -553,33 +570,32 @@
                         </div>
                     </div>
 
-                    <div class="eventE_media">
+                    <div class="eventE_media text-center">
                         <!-- <img src="/assets/images/eentE_phone.png">
                         <img src="/assets/images/eventE_mail.png">
                         <img src="/assets/images/eventE_facebook.png">
                         <img src="/assets/images/eventE_google.png">
                         <img src="/assets/images/eventE_wp.png"> -->
-                        <share-button [theme]="'circles-dark'" [button]="'whatsapp'" [showText]="true"
-                            [showCount]="true"
+                        <share-button [theme]="'circles-dark'" [button]="'whatsapp'"
+                            [image]="'/assets/images/eventE_facebook.png'" [showCount]="true"
                             [url]="'https://aso-ebi.com/welcome-guest/NWQ1MmMyMTdhNTBjMTUzYmVmNDc2MTIy'"
                             [autoSetMeta]="false"></share-button>
-                        <share-button [theme]="'circles-dark'" [button]="'facebook'" [showText]="true"
-                            [showCount]="true"
+                        <share-button [theme]="'circles-dark'" [button]="'facebook'" [showCount]="true"
                             [url]="'https://aso-ebi.com/welcome-guest/NWQ1MmMyMTdhNTBjMTUzYmVmNDc2MTIy'">
                         </share-button>
-                        <share-button [theme]="'circles-dark'" [button]="'email'" [showText]="true" [showCount]="true"
+                        <share-button [theme]="'circles-dark'" [button]="'email'" [showCount]="true"
                             [url]="'https://twitter.com/'"></share-button>
-                        <share-button [theme]="'circles-dark'" [button]="'sms'" [showText]="true" [showCount]="true"
+                        <share-button [theme]="'circles-dark'" [button]="'sms'" [showCount]="true"
                             [url]="'https://twitter.com/'"></share-button>
                     </div>
-                    <div class="collect_detail text-center">
+                    <div class="collect_detail text-center mt-3">
                         <span *ngFor="let item of activityName">
                             <div class="collect1_img">
                                 <div class="collect_img" (click)="activityDetails(item,'thirdStep', 'fifthStep')">
                                     <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                         src="{{path}}{{singleEventDetails.profilePhoto}}">
                                 </div>
-                                <p class="text-white">{{item.activityName}}</p>
+                                <p>{{item.activityName}}</p>
                             </div>
                         </span>
                         <div class="collect1_img" (click)="totalCollection(singleEventDetails._id)">
@@ -587,21 +603,21 @@
                                 <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                     src="{{path}}{{singleEventDetails.profilePhoto}}">
                             </div>
-                            <p class="text-white text-center">Collected</p>
+                            <p>Collected</p>
                         </div>
                         <div class="collect1_img">
                             <div class="collect_img" (click)="nextSection('seventhStep', 'fifthStep')">
                                 <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                     src="{{path}}{{singleEventDetails.profilePhoto}}">
                             </div>
-                            <p class="text-white">Edit Event</p>
+                            <p>Edit Event</p>
                         </div>
                         <div class="collect1_img">
                             <div class="collect_img" (click)="viewMoreDeatils(singleEventDetails._id)">
                                 <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                     src="{{path}}{{singleEventDetails.profilePhoto}}">
                             </div>
-                            <p class="text-white">View Event</p>
+                            <p>View Event</p>
                         </div>
 
                         <div class="collect1_img">
@@ -609,21 +625,21 @@
                                 <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                     src="{{path}}{{singleEventDetails.profilePhoto}}">
                             </div>
-                            <p class="text-white">Message</p>
+                            <p>Message</p>
                         </div>
                         <div class="collect1_img">
                             <div class="collect_img" (click)="nextSection('fifthStep', 'fifthStep')">
                                 <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                     src="{{path}}{{singleEventDetails.profilePhoto}}">
                             </div>
-                            <p class="text-white">Invited Guestes</p>
+                            <p>Invited Guestes</p>
                         </div>
                         <div class="collect1_img">
                             <div class="collect_img" (click)="nextSection('sixthStep', 'fifthStep ')">
                                 <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                     src="{{path}}{{singleEventDetails.profilePhoto}}">
                             </div>
-                            <p class="text-white">Auto Message</p>
+                            <p>Auto Message</p>
                         </div>
                     </div>
                 </div>
@@ -690,7 +706,7 @@
                         <button class="invitation">Payment</button>
                         <button class="invitation">Event</button>
                         <button class="invitation">Aftert</button>
-                        <button class="plus">+</button>
+                        <!-- <button class="plus">+</button> -->
                     </div>
 
                     <div class="eventF_pera">
@@ -708,7 +724,7 @@
                         <input type="text" name="Year" placeholder="year">
                     </div>
 
-                    <div class="eventF_at">
+                    <div class="eventF_at my-3">
                         <label class="text-white mr-1">at</label>
                         <input type="text" name="time">
                         <input type="text" name="time">
@@ -719,7 +735,7 @@
 
                     <div class="eventF_to">
                         <label class="text-white">to</label>
-                        <input type="radio" name="gender_to" id="all1" class="gendar_radio" checked>
+                        <input type="radio" name="gender_to" id="all1" class="gendar_radio ml-3" checked>
                         <label for="all1" class="text-white ml-1">all invited guests</label>
 
                         <div class="to_radio ml-4">
@@ -749,7 +765,7 @@
                                 <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                     src="{{path}}{{singleEventDetails.profilePhoto}}">
                             </div>
-                            <p class="text-white text-center">Collected</p>
+                            <p class="text-center text-white">Collected</p>
                         </div>
                         <div class="collect1_img">
                             <div class="collect_img" (click)="nextSection('seventhStep', 'sixthStep')">
@@ -866,25 +882,4 @@
             </div>
         </div>
     </section>
-</div>
-
-
-<div id="overlay" class="new_event_menu_box" style="display: none;">
-    <div class="">
-        <div class="event_menu">
-            <div class="all_menu_content  d-flex flex-wrap align-content-center">
-                <ul>
-                    <li><a routerLink="/home" class="text-white new_event">Home</a></li>
-                    <li><a routerLink="/myEvent" class="text-white new_event">my event</a></li>
-                    <li><a routerLink="/createEvent" class="text-white my_event">new event</a>
-                    </li>
-                    <li><a routerLink="/bankDetails" class="text-white my_account">bank
-                            account</a></li>
-                    <li><a routerLink="/reset-password" class="text-white my_account">Reset
-                            Password</a></li>
-                    <li><a (click)="logout()" class="text-white my_account">Logout</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
 </div>
