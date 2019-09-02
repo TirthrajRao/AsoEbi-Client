@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { LoginService } from '../services/login.service';
 import { AlertService } from '../services/alert.service';
+declare var $: any;
 
 @Component({
   selector: 'app-forgot-password',
@@ -26,14 +27,20 @@ export class ForgotPasswordComponent implements OnInit {
 
   ngOnInit() {
 
+    // menu toggle start
+    $(".new_event_menu").click(function(){
+      $(".new_event_menu_box").toggle();
+    });
+    // menu toggle end
+
     /**
      * Form of forgot password
      */
-    this.forgotPasswordForm = new FormGroup({
-      newPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
-      confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)])
-    })
-  }
+     this.forgotPasswordForm = new FormGroup({
+       newPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
+       confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)])
+     })
+   }
 
   /**
   * @param(hash) encrypted eventId
@@ -43,29 +50,29 @@ export class ForgotPasswordComponent implements OnInit {
     this.isDisable = true;
     console.log("current password value", this.forgotPasswordForm.value);
     this._loginService.forgotPasswordWithLink(this.forgotPasswordForm.value, this.hash)
-      .subscribe((data: any) => {
-        console.log("reset password done by user", data);
-        this.alertService.getSuccess(data.data.message);
-        this.isDisable = false;
-        this.router.navigate(['/login']);
-      }, err => {
-        console.log(err);
-        this.alertService.getError(err.message);
-      })
+    .subscribe((data: any) => {
+      console.log("reset password done by user", data);
+      this.alertService.getSuccess(data.data.message);
+      this.isDisable = false;
+      this.router.navigate(['/login']);
+    }, err => {
+      console.log(err);
+      this.alertService.getError(err.message);
+    })
   }
 
   /**
    * @param {JSON} form
    * Comapre new password and confirm password  
    */
-  comparePassword(form) {
-    console.log(form.value.newPassword == form.value.confirmPassword, this.match);
-    if (form.value.newPassword === form.value.confirmPassword) {
-      console.log("In true condition");
-      this.match = true;
-    } else {
-      this.match = false;
-    }
-  }
+   comparePassword(form) {
+     console.log(form.value.newPassword == form.value.confirmPassword, this.match);
+     if (form.value.newPassword === form.value.confirmPassword) {
+       console.log("In true condition");
+       this.match = true;
+     } else {
+       this.match = false;
+     }
+   }
 
-}
+ }

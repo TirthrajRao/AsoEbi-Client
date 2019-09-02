@@ -66,28 +66,22 @@ export class MyCartComponent implements OnInit {
         autoplaySpeed: 2000,
         arrows: false,
         dots: false,
-        slidesToShow: 1.5,
+        slidesToShow: 2.5,
         slidesToScroll: 1,
         draggable: true,
         fade: false,
         responsive: [
-          {
-            breakpoint: 1367,
-            settings: {
-              slidesToShow: 3.2
-            }
-          },
-          {
-            breakpoint: 769,
-            settings: {
-              slidesToShow: 2.7
-            }
-          }, {
-            breakpoint: 575,
-            settings: {
-              slidesToShow: 1.5
-            }
+        {
+          breakpoint: 769,
+          settings: {
+            slidesToShow: 2.3
           }
+        }, {
+          breakpoint: 575,
+          settings: {
+            slidesToShow: 1.5
+          }
+        }
         ]
       });
     }, 100)

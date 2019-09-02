@@ -68,6 +68,27 @@ export class ViewEventComponent implements OnInit {
           }
         ]
       });
+
+      // group slider start
+   $('.activity_group_slider').not('.slick-initialized').slick({
+        dots: false,
+        arrows: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        draggable: false,
+        infinite: false,
+        prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+        nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+        responsive: [
+          {
+            breakpoint: 451,
+            settings: {
+              slidesToShow: 1
+            }
+          }
+        ]
+      });
+
       // gender slider
       $('.gender_slider1').not('.slick-initialized').slick({
         // autoplay: true,
@@ -88,6 +109,8 @@ export class ViewEventComponent implements OnInit {
         ]
       });
     }, 300)
+
+
   }
 
   /**

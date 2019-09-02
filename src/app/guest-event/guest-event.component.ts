@@ -27,7 +27,7 @@ export class GuestEventComponent implements OnInit {
       this.eventId = params.id;
       console.log("this.eventId", this.eventId);
     })
-    this.newEventId = Buffer.from(this.eventId, 'base64').toString('ascii');
+    // this.newEventId = Buffer.from(this.eventId, 'base64').toString('ascii');
     console.log(this.newEventId)
     this.guestEventDetailsWithoutLogin(this.newEventId);
     localStorage.setItem('newEventId', JSON.stringify(this.newEventId));

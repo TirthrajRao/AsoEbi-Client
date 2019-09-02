@@ -1,8 +1,8 @@
 $(document).ready(function(){
 // menu toggle start
-$(".new_event_menu").click(function(){
-	$(".new_event_menu_box").toggle();
-});
+// $(".new_event_menu").click(function(){
+// 	$(".new_event_menu_box").toggle();
+// });
 // menu toggle end
 // select value start
 $('.select_event_type li > a').click(function () {
