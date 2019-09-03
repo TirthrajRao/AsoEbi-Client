@@ -265,7 +265,7 @@
                                         <label for="email" class="text-white">I give</label>
                                     </div>
                                     <div class="col-sm-10">
-                                        <input type="text" min="1" id="donation" (keyup)="finalTotal($event.target.value)"
+                                        <input type="number" min="1" (keyup)="finalTotal($event.target.value)"
                                         [(ngModel)]='donation' value="donation">
                                     </div>
                                 </div>

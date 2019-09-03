@@ -50,7 +50,7 @@ export class CollectionsComponent implements OnInit {
 
   }
   ngOnInit() {
-
+console.log(this.userName);
 
     // $('.new_event_menu').click(function () {
     //   $('.new_event_menu_box').toggleClass('active');

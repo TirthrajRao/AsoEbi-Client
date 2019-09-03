@@ -39,14 +39,15 @@ export class MyEventComponent implements OnInit {
   }
 
   // componentDidMount() {
-    // }
-    
-    ngAfterViewChecked() {
+  // }
+
+  ngAfterViewChecked() {
     this.initActivitySlider();
   }
   ngOnInit() {
     // this.showMenu();
 
+    // $('.collect_detail')[0].slick.refresh();
 
     $('input:radio[name="radio-group1"]').on('change', (e) => {
       this.selectedGender = e.target.value;
@@ -172,7 +173,7 @@ export class MyEventComponent implements OnInit {
     }
   }
 
-  ngOnViweChecked(){
+  ngOnViweChecked() {
     this.change.detectChanges();
   }
 
@@ -184,7 +185,7 @@ export class MyEventComponent implements OnInit {
     console.log("kai mde che ke nai", id);
     this.router.navigate(['/home/view-event/', id])
   }
-  eventDeatils(id, goto?, from?) {
+  eventDeatils(id, goto, from) {
     let className = $('#dynamic_loader_content > div:visible').attr('class');
     this._eventService.getEventDetails(id)
       .subscribe((data: any) => {
@@ -202,11 +203,11 @@ export class MyEventComponent implements OnInit {
         if (className !== 'secondStep') {
           $('.firstStep').css({ 'display': 'none' })
           $('.secondStep').css({ 'display': 'block' });
+          setTimeout(() => {
+            this.initCollectDetailSlick();
+            // $('.collect_detail')[0].slick.refresh();
+          }, 20);
         }
-        setTimeout(() => {
-          this.initCollectDetailSlick();
-          $('.collect_detail')[0].slick.refresh();
-        }, 200);
         if (goto && from) {
           this.nextSection(goto, from)
         }
@@ -214,9 +215,9 @@ export class MyEventComponent implements OnInit {
         console.log(err);
       })
   }
-  ngOnDestroy() {
-    this.change.detach();
-  }
+  // ngOnDestroy() {
+  //   this.change.detach();
+  // }
 
   initActivitySlider() {
     $(document).ready(function () {
@@ -230,7 +231,7 @@ export class MyEventComponent implements OnInit {
           autoplay: false,
           arrows: false,
           prevArrow: '<button class="prevarrow text-center"><i class="fa fa-caret-left" aria-hidden="true"></i></button>',
-          nextArrow: '<button class="nextarrow text-center" id="custom_btn_next"><i class="fa fa-caret-right" aria-hidden="true"></i></button>',
+          nextArrow: '<button class="nextarrow text-center" ><i class="fa fa-caret-right" aria-hidden="true"></i></button>',
           responsive: [
             {
               breakpoint: 1024,
@@ -256,48 +257,51 @@ export class MyEventComponent implements OnInit {
             }
           ]
         });
-        $('#custom_btn_next').trigger('click');
+        // $('#custom_btn_next').trigger('click');
       }, 100);
     })
   }
 
 
   initCollectDetailSlick() {
-    // setTimeout(() => {
-    $('.collect_detail').not('.slick-initialized').slick({
-
-      slidesToShow: 6,
-      slidesToScroll: 1,
-      autoplay: false,
-      draggable: true,
-      arrows: true,
-      prevArrow: "<button type='button' class='prevarrow slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
-      nextArrow: "<button type='button' class='nextarrow slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
-      responsive: [
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 5,
-            slidesToScroll: 1,
-            infinite: true,
-          }
-        },
-        {
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 4,
-            slidesToScroll: 1,
-          }
-        },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 1
-          }
-        }
-      ]
-    });
+    $(document).ready(function () {
+      setTimeout(() => {
+        $('.collect_detail').not('.slick-initialized').slick({
+          infinite: true,
+          slidesToShow: 6,
+          slidesToScroll: 1,
+          autoplay: false,
+          draggable: true,
+          arrows: true,
+          prevArrow: "<button type='button' class='prevarrow slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+          nextArrow: "<button type='button' class='nextarrow slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 5,
+                slidesToScroll: 1,
+                infinite: true,
+              }
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 4,
+                slidesToScroll: 1,
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1
+              }
+            }
+          ]
+        });
+      }, 100)
+    })
   }
 
 
@@ -342,11 +346,11 @@ export class MyEventComponent implements OnInit {
 
   nextSection(goto, from) {
     console.log(goto, from)
-    setTimeout(() => {
-      $('.' + goto).css({ 'display': 'block' });
-      $('.' + from).css({ 'display': 'none' })
-      this.initCollectDetailSlick()
-    }, 200)
+    // setTimeout(() => {
+    $('.' + goto).css({ 'display': 'block' });
+    $('.' + from).css({ 'display': 'none' })
+    this.initCollectDetailSlick()
+    // }, 200)
   }
 
   logout() {

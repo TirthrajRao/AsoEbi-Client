@@ -10,6 +10,7 @@ declare var $: any;
   styleUrls: ['./loader.component.css']
 })
 export class LoaderComponent implements OnInit {
+  userName = JSON.parse(localStorage.getItem('userName'));
 
   constructor( private _loginService: LoginService, private route: ActivatedRoute,
     private router: Router) { }

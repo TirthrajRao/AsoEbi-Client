@@ -23,6 +23,7 @@ import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 import { ShareButtonModule } from '@ngx-share/button';
 import { ShareModule } from '@ngx-share/core';
 import{AuthGuard} from '../auth.guard';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 const routes: Routes = [
@@ -125,7 +126,9 @@ const routes: Routes = [
     ClipboardModule,
     JwSocialButtonsModule,
     ShareButtonModule,
-    ShareModule
+    ShareModule,
+    NgbModule
+
   ],
 })
 export class HomeModule { }

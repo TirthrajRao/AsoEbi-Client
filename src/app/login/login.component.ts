@@ -62,6 +62,7 @@ export class LoginComponent implements OnInit {
   yahooId;
   show: boolean;
   pwd: boolean;
+  userName;
   msalConfig = {
     auth: {
       clientId: 'bd9b8a24-97aa-42db-a5fe-dcb24b15e6f8', //This is your client ID,
@@ -251,10 +252,15 @@ export class LoginComponent implements OnInit {
     console.log("login details", this.loginForm);
     this._loginService.login(this.loginForm.value)
       .subscribe(data => {
+        let firstName = data.data.firstName
+       let lastName = data.data.lastName
+       this.userName = firstName + " " +lastName;
+       console.log(this.userName);
         console.log("response of login user", data);
         // this.userRole = data.data.UserRole;
         console.log("admin login entry", data.data.UserRole);
         localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
+        localStorage.setItem('userName', JSON.stringify(this.userName));
         console.log(this.isCelebrant);
         if (this.eventIdWithLogin) {
           this.isUserLoggedIn = true;

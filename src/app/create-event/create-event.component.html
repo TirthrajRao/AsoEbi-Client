@@ -767,133 +767,25 @@
                                     <p class="text-white">Select Last Payment Deadline Date</p>
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input type="date" name="selectDate" formControlName="deadlineDate"
-                                                class="form-control"
-                                                ngModel="{{createdEventDetails ? paymentDeadlineDate : ''}}">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="new_event_slide ten_slide">
-                        <div class="event_inner_content_box">
-                            <div class="event_inner_content ">
-                                <div class="new_event_sec">
-                                    <div class="row">
-                                        <div class="col-3 m-auto pr-0 float-right new_event_menu">
-                                            <a><img src="/assets/images/10icon.png"></a>
-                                            <p class="text-white">New Event</p>
-                                        </div>
-                                        <div class="col-9 p-0">
-                                            <span class="text-white event_name"> Hello {{userName}} </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="event_bank_detail">
-                                    <div class="event_hashtag text-center">
-                                        <p># Event Hashtag</p>
-                                    </div>
-                                    <div class="sliding">
-                                        <div class="row bank_slider">
-                                            <div class="col-11 ">
-                                                <div class="slider1" >
-                                                    <div class="slide1">
-                                                        <input type="radio" name="gender" value="male" checked>
-                                                        <div class="slider_box1 ">
-                                                        </div>
-                                                    </div>
-                                                    <div class="slide1">
-                                                        <input type="radio" name="gender" value="female">
-                                                        <div class="slider_box1">
-                                                            <p>Bank name: {{details.bankName}}<br> Account number: {{details.accountNumber}}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-1 p-0">
-                                                <div class="plus_add">
-                                                    <a data-toggle="modal" data-target="#exampleModal">
-                                                        <img src="/assets/images/plus.png"> </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="check">
-                                        <label class="container">Instant transfer to my account
-                                            <input type="checkbox" checked="checked">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <label class="container">Franster on 05-08-2019 to my account (this option saves
-                                            you on alert notifications)
-                                            <input type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                    <div class="new_event_slide ten_slide">
-                        <div class="event_inner_content_box">
-                            <div class="event_inner_content ">
-                                <div class="new_event_sec">
-                                    <div class="row">
-                                        <div class="col-3 m-auto pr-0 float-right new_event_menu">
-                                            <a><img src="/assets/images/10icon.png"></a>
-                                            <p class="text-white">New Event</p>
-                                        </div>
-                                        <div class="col-9 p-0">
-                                            <span class="text-white event_name"> Hello {{userName}} </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="event_bank_detail">
-                                    <div class="event_hashtag text-center">
-                                        <p># Event Hashtag</p>
-                                    </div>
-                                    <div class="sliding">
-                                        <div class="row bank_slider">
-                                            <div class="col-11 ">
-                                                <div class="slider1" *ngFor="let details of bankDetails">
-                                                    <div class="slide1">
-                                                        <div class=slider_radio_btn>
-                                                            <input type="radio" id="first" name="radio-group"
-                                                                checked="">
-                                                            <label for="first"></label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="slide1" >
-                                                        <div class=slider_radio_btn>
-                                                            <input type="radio" id="second" name="radio-group">
-                                                            <label for="second"></label>
-                                                        </div>
-                                                        <div class="slider_box1" >
-                                                            <p>Bank name: {{details.bankName}}<br> Account number: {{details.accountNumber}}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-1 p-0">
-                                                <div class="plus_add">
-                                                    <a class="text-white" data-toggle="modal"
-                                                        data-target="#exampleModal">
-                                                        <img src="/assets/images/plus.png"> </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="check">
-                                        <label class="container">Instant transfer to my account
-                                            <input type="checkbox" checked="checked">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <label class="container">Franster on 05-08-2019 to my account (this option saves
+                                            <ngb-datepicker #dp
+                                                ngModel="{{createdEventDetails ? paymentDeadlineDate : ''}}"
+                                                formControlName="deadlineDate" (navigate)="valuedate = $event.next">
+                                            </ngb-datepicker> -->
 
-                                            you on alert notifications)
-                                            <input type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
+                                            <!-- <input type="text" #sd id="startDate"/> -->
+                                            <!-- <input type="text" id="deadLineDate"  formControlName="deadlineDate"
+                                                class="form-control"
+                                                ngModel="{{createdEventDetails ? paymentDeadlineDate : ''}}" /> -->
+                                         </div> 
+
+                                        <!-- <div class="input-group">
+                                                <input class="form-control" placeholder="{{valuedate | date: 'yyyy-MM-dd'}}"
+
+                                                       name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" formControlName="deadlineDate">
+                                                <div class="input-group-addon" (click)="d.toggle()" >
+                                                  <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+                                                </div>
+                                              </div> -->
                                     </div>
                                 </div>
                             </div>
