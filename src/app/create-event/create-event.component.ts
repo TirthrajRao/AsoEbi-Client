@@ -641,36 +641,20 @@ export class CreateEventComponent implements OnInit {
         setTimeout(() => {
           $('.step_2').css({ 'display': 'none' })
           $('.step_3').css({ 'display': 'block' });
-
-          $('.createdActivitySlider').not('.slick-initialized').slick({
-            infinite: true,
-            slidesToShow: 1,
+ $('.gender_slider1').not('.slick-initialized').slick({
+            // autoplay: true,
+            autoplaySpeed: 2000,
+            arrows: false,
+            dots: false,
+            slidesToShow: 1.5,
             slidesToScroll: 1,
-            autoplay: false,
-            arrows: true,
-            prevArrow: '<button class="prevarrow text-center"><i class="fa fa-caret-left" aria-hidden="true"></i></button>',
-            nextArrow: '<button class="nextarrow text-center" ><i class="fa fa-caret-right" aria-hidden="true"></i></button>',
+            draggable: true,
+            fade: false,
             responsive: [
               {
-                breakpoint: 1024,
+                breakpoint: 767,
                 settings: {
-                  slidesToShow: 2,
-                  slidesToScroll: 1,
-                  infinite: true,
-                }
-              },
-              {
-                breakpoint: 600,
-                settings: {
-                  slidesToShow: 2,
-                  slidesToScroll: 1,
-                }
-              },
-              {
-                breakpoint: 480,
-                settings: {
-                  slidesToShow: 1,
-                  slidesToScroll: 1
+                  slidesToShow: 1
                 }
               }
             ]
