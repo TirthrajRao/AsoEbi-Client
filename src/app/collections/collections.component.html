@@ -27,6 +27,30 @@
 
 <section class="collection_slider_section d-flex flex-wrap align-content-center">
     <div class="container-fluid">
+            <div id="overlay" class="new_event_menu_box" style="display: none;">
+                    <div class="m-auto pr-0 float-left new_event_menu slider_overlay">
+                        <a class="text-white "><img src="/assets/images/overlay.png">
+                            <p>Collections</p>
+                        </a>
+                    </div>
+                    <div class="">
+                        <div class="event_menu">
+                            <div class="all_menu_content  d-flex flex-wrap align-content-center">
+                                <ul>
+                                    <li><a routerLink="/home" class="text-white new_event">Home</a></li>
+                                    <li><a routerLink="/myEvent" class="text-white new_event">my event</a></li>
+                                    <li><a routerLink="/createEvent" class="text-white my_event">new event</a>
+                                    </li>
+                                    <li><a routerLink="/bankDetails" class="text-white my_account">bank
+                                            account</a></li>
+                                    <li><a routerLink="/reset-password" class="text-white my_account">Reset
+                                            Password</a></li>
+                                    <li><a (click)="logout()" class="text-white my_account">Logout</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         <h3 class="text-center">Aso Ebi</h3>
         <!-- collection slider starts -->
         <div class="collection_slider">
@@ -174,8 +198,7 @@
                                     </div>
                                     <div class="gender_list text-white" *ngFor="let list of allGuestList">
                                         <div class="list1">
-                                            <p>{{list.firstName}} {{list.lastName}} <img src="/assets/images/N.png"> 15000</p>
-                                            <p>1 fabric from wedding <img src="/assets/images/N.png"> 15000</p>
+                                            <p>{{list.firstName}} {{list.lastName}} <img src="/assets/images/N.png">{{list.totalCollection}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -187,31 +210,31 @@
             <!-- 5th slide end -->
         </div>
         <!-- collection slider ends -->
-    </div>
-
-</section>
 
 <div id="overlay" class="new_event_menu_box" style="display: none;">
-    <!-- <div class="m-auto pr-0 float-left new_event_menu slider_overlay">
-        <a class="text-white "><img src="/assets/images/overlay.png">
-            <p>Collections</p>
-        </a>
-    </div> -->
-    <div class="">
-        <div class="event_menu">
-            <div class="all_menu_content  d-flex flex-wrap align-content-center">
-                <ul>
-                    <li><a routerLink="/home" class="text-white new_event">Home</a></li>
-                    <li><a routerLink="/myEvent" class="text-white new_event">my event</a></li>
-                    <li><a routerLink="/createEvent" class="text-white my_event">new event</a>
-                    </li>
-                    <li><a routerLink="/bankDetails" class="text-white my_account">bank
-                            account</a></li>
-                    <li><a routerLink="/reset-password" class="text-white my_account">Reset
-                            Password</a></li>
-                    <li><a (click)="logout()" class="text-white my_account">Logout</a></li>
-                </ul>
+        <!-- <div class="m-auto pr-0 float-left new_event_menu slider_overlay">
+            <a class="text-white "><img src="/assets/images/overlay.png">
+                <p>Collections</p>
+            </a>
+        </div> -->
+        <div class="">
+            <div class="event_menu">
+                <div class="all_menu_content  d-flex flex-wrap align-content-center">
+                    <ul>
+                        <li><a routerLink="/home" class="text-white new_event">Home</a></li>
+                        <li><a routerLink="/myEvent" class="text-white new_event">my event</a></li>
+                        <li><a routerLink="/createEvent" class="text-white my_event">new event</a>
+                        </li>
+                        <li><a routerLink="/bankDetails" class="text-white my_account">bank
+                                account</a></li>
+                        <li><a routerLink="/reset-password" class="text-white my_account">Reset
+                                Password</a></li>
+                        <li><a (click)="logout()" class="text-white my_account">Logout</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    </div>
+
+</section>

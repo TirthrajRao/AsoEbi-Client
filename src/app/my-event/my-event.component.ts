@@ -32,9 +32,6 @@ export class MyEventComponent implements OnInit {
   userName = JSON.parse(localStorage.getItem('userName'));
   constructor(private router: Router, private _eventService: EventService, private alertService: AlertService,
     private _loginService: LoginService, private change: ChangeDetectorRef) {
-    $(".new_event_menu").click(function () {
-      $(".new_event_menu_box").toggle();
-    });
     this.ngOnInit()
   }
 
@@ -45,6 +42,9 @@ export class MyEventComponent implements OnInit {
     this.initActivitySlider();
   }
   ngOnInit() {
+    $(".new_event_menu").click(function () {
+      $(".new_event_menu_box").toggle();
+    });
     // this.showMenu();
 
     // $('.collect_detail')[0].slick.refresh();
@@ -186,34 +186,36 @@ export class MyEventComponent implements OnInit {
     this.router.navigate(['/home/view-event/', id])
   }
   eventDeatils(id, goto, from) {
-    let className = $('#dynamic_loader_content > div:visible').attr('class');
-    this._eventService.getEventDetails(id)
-      .subscribe((data: any) => {
-        // $('.event_slider1').slidesToShow()
-        this.singleEventDetails = data.data;
-        this.eventHashtag = this.singleEventDetails.hashTag;
-        this.eventId = this.singleEventDetails._id;
-        console.log("this.singlevebtdetailssssssssss", this.singleEventDetails);
-        this.activityName = [];
-        this.activityName = this.singleEventDetails.activity;
-        console.log("data of single event ", this.activityName);
-        if (!this.change['destroyed']) {
-          this.change.detectChanges();
-        }
-        if (className !== 'secondStep') {
-          $('.firstStep').css({ 'display': 'none' })
-          $('.secondStep').css({ 'display': 'block' });
-          setTimeout(() => {
-            this.initCollectDetailSlick();
-            // $('.collect_detail')[0].slick.refresh();
-          }, 20);
-        }
-        if (goto && from) {
-          this.nextSection(goto, from)
-        }
-      }, err => {
-        console.log(err);
-      })
+    console.log(id);
+    this.router.navigate(['/home/myEventDetails/', id])
+    // let className = $('#dynamic_loader_content > div:visible').attr('class');
+    // this._eventService.getEventDetails(id)
+    //   .subscribe((data: any) => {
+    //     // $('.event_slider1').slidesToShow()
+    //     this.singleEventDetails = data.data;
+    //     this.eventHashtag = this.singleEventDetails.hashTag;
+    //     this.eventId = this.singleEventDetails._id;
+    //     console.log("this.singlevebtdetailssssssssss", this.singleEventDetails);
+    //     this.activityName = [];
+    //     this.activityName = this.singleEventDetails.activity;
+    //     console.log("data of single event ", this.activityName);
+    //     if (!this.change['destroyed']) {
+    //       this.change.detectChanges();
+    //     }
+    //     if (className !== 'secondStep') {
+    //       $('.firstStep').css({ 'display': 'none' })
+    //       $('.secondStep').css({ 'display': 'block' });
+    //       setTimeout(() => {
+    //         this.initCollectDetailSlick();
+    //         // $('.collect_detail')[0].slick.refresh();
+    //       }, 20);
+    //     }
+    //     if (goto && from) {
+    //       this.nextSection(goto, from)
+    //     }
+    //   }, err => {
+    //     console.log(err);
+    //   })
   }
   // ngOnDestroy() {
   //   this.change.detach();

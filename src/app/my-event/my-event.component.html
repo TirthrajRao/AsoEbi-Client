@@ -52,7 +52,7 @@
 <!-- New design implement -->
 
 <!-- First slide -->
-<section class="d-flex flex-wrap align-content-center final_step" [ngClass]="getClassNameOfSection()">
+<section class="d-flex flex-wrap align-content-center final_step" [ngClass]="getClassNameOfSection()" style="display:none">
     <div class="container-fluid">
         <h3 class="text-center">Aso Ebi</h3>
         <div [ngClass]="getClassNameOfDiv()">
@@ -73,7 +73,7 @@
                     <div class="event_slider1" id="firstSlider">
                         <div class="slide1" *ngFor="let item of myEvent">
                             <div class="slider_box1 text-center m-2" [hidden]="!item.eventTitle">
-                                <button class="event_btn" (click)="eventDeatils(item._id, 'eventB_sec1')">{{item.eventTitle}}</button>
+                                <button class="event_btn" (click)="eventDeatils(item._id)">{{item.eventTitle}}</button>
                             </div>
                         </div>
                     </div>
@@ -249,7 +249,7 @@
                         <div class="d-inline-block">
                             <button class="event_invitation  my-1"
                                 (click)="nextSection('fifthStep', 'fourthStep')">Invitation</button>
-                            <button class="event_payment" (click)="ThankYouMessage(eventId)">Payment Thank you</button>
+                            <button class="event_invitation" (click)="ThankYouMessage(eventId)">Payment Thank you</button>
                             <button class="event_invitation" (click)="nextSection('sixthStep', 'fourthStep')">After
                                 Event</button>
                             <!-- <button class="event_plus">+</button> -->
@@ -582,3 +582,21 @@
         </div>
     </section>
 </div>
+
+<!-- overLay -->
+<!-- <div id="overlay" class="new_event_menu_box" style="display: none;">
+    <div class="">
+        <div class="event_menu">
+            <div class="all_menu_content  d-flex flex-wrap align-content-center">
+                <ul>
+                    <li><a class="text-white new_event">My Event</a></li>
+                    <li><a  class="text-white my_event">New Event</a></li>
+                    <li><a  class="text-white my_account">bank account</a></li>
+                    <li><a  class="text-white my_account">Reset Password</a></li>
+                    <li><a  class="text-white my_account">Logout</a></li>
+                    <li><a  class="text-white my_account">Messages</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div> -->

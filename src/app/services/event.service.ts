@@ -244,7 +244,7 @@ export class EventService {
   }
 
   guestList(id) {
-    return this.http.get(config.baseApiUrl + "api/event/event-detail/" + id);
+    return this.http.get(config.baseApiUrl + "api/guest?eventId=" + id);
   }
 
   // Admin Panel//

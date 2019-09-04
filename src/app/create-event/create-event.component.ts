@@ -9,7 +9,7 @@ import * as _ from 'lodash';
 import Swal from 'sweetalert2';
 import { config } from '../config';
 import loadjs from 'loadjs';
-import {NgbDateStruct, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -82,39 +82,50 @@ export class CreateEventComponent implements OnInit {
       // IFSCCode: new FormControl('', [Validators.required, Validators.minLength(9), Validators.maxLength(9)])
     })
 
-    $(".new_event_menu").click(function () {
-      $(".new_event_menu_box").toggle();
-    });
 
   }
   ngOnInit() {
-
+    $(".new_event_menu").click(function () {
+      $(".new_event_menu_box").toggle();
+    });
     console.log("login user name", this.userName)
-    // this.createdActivity = [
-    //   {
-    //     activityDate: null,
-    //     activityName: "vbcnbnbv",
-    //     createdAt: "2019-08-27T14:17:46.935Z",
-    //     isDeleted: false,
-    //     updatedAt: "2019-08-27T14:17:46.935Z",
-    //     _id: "5d65fbd85a521a7f6075f691"
-    //   }, {
-    //     activityDate: null,
-    //     activityName: "hdhfgh",
-    //     createdAt: "2019-08-27T14:17:46.935Z",
-    //     isDeleted: false,
-    //     updatedAt: "2019-08-27T14:17:46.935Z",
-    //     _id: "5d65fbd85a521a7f6075f690"
-    //   }
-    // ]
+    this.createdActivity = [
+      {
+
+        activityName: "vzvsdfrsfrsr",
+        createdAt: "2019-09-03T13:56:44.676Z",
+        isDeleted: false,
+        updatedAt: "2019-09-03T13:56:44.676Z",
+        _id: "5d6f1ecbc9e2730f32beba99"
+      }, {
+        activityName: "dfsfdsfdsfdsfdsFdsf",
+        createdAt: "2019-09-03T13:56:44.676Z",
+        isDeleted: false,
+        updatedAt: "2019-09-03T13:56:44.676Z",
+        _id: "5d6f1ecbc9e2730f32beba98"
+      }, {
+        activityName: "fsdfdsfdsfZXCERere",
+        createdAt: "2019-09-03T13:56:44.676Z",
+        isDeleted: false,
+        updatedAt: "2019-09-03T13:56:44.676Z",
+        _id: "5d6f1ecbc9e2730f32beba97"
+      },
+      {
+        activityName: "cvvzcxvrtgrtrtrt",
+        createdAt: "2019-09-03T13:56:44.676Z",
+        isDeleted: false,
+        updatedAt: "2019-09-03T13:56:44.676Z",
+        _id: "5d6f1ecbc9e2730f32beba96"
+      }
+    ]
     this.getActivityFrom(),
       // this.initGroupForm(this.createdActivity);
       this.initGroupForm();
-    $('#eventId').css({ 'display': 'none' });   
+    $('#eventId').css({ 'display': 'none' });
     // $(document).ready(function () {
 
-      // $("#deadLineDate").val(Date.now());
-      // $("#deadLineDate").datepicker({ dateFormat: 'yyyy-MM-dd' }).val();
+    // $("#deadLineDate").val(Date.now());
+    // $("#deadLineDate").datepicker({ dateFormat: 'yyyy-MM-dd' }).val();
     //   $("#deadLineDate").datepicker({dateFormat: "yy-mm-dd"});
 
     //   $("#deadLineDate").datepicker({ "setDate": new Date(), "minDate": new Date(), dateFormat: 'yy-mm-dd' });
@@ -179,6 +190,37 @@ export class CreateEventComponent implements OnInit {
       });
     });
 
+    // change font style start
+    $(".normal_style").click(function (event) {
+      $("input").removeClass('italic_style1');
+      $('input').removeClass('starry_style1');
+      $('input').removeClass('carved_wood_style1');
+      $("input").addClass('normal_style1');
+    });
+
+    $(".italic_style").click(function (event) {
+      $('input').removeClass('normal_style1');
+      $('input').removeClass('starry_style1');
+      $('input').removeClass('carved_wood_style1');
+      $("input").addClass('italic_style1');
+    });
+
+    $(".starry_style").click(function (event) {
+      $("input").removeClass('normal_style1');
+      $('input').removeClass('italic_style1');
+      $('input').removeClass('carved_wood_style1');
+      $("input").addClass('starry_style1');
+    });
+
+    $(".carved_wood_style").click(function (event) {
+      $("input").removeClass('normal_style1');
+      $("input").removeClass('starry_style1');
+      $('input').removeClass('italic_style1');
+      $("input").addClass('carved_wood_style1');
+    });
+
+    // change font style end
+
 
     // new event page slider start
     // setTimeout(()=> {
@@ -240,15 +282,15 @@ export class CreateEventComponent implements OnInit {
     // }, 500);
     // new event page slider end
 
-    $('#next_btn').on('click', () => {
-      if (this.eventId) {
+    // $('#next_btn').on('click', () => {
+    //   if (this.eventId) {
 
-        this.updateEvent($(this));
-      }
-      else {
-        this.addEvent($(this));
-      }
-    })
+    //     this.updateEvent($(this));
+    //   }
+    //   else {
+    //     this.addEvent($(this));
+    //   }
+    // })
 
 
     // DropDown Js
@@ -285,24 +327,24 @@ export class CreateEventComponent implements OnInit {
     console.log(this.eventForm.value);
     console.log("data of event", $('.slick-active').hasClass("done"));
     // if ($('.slick-active').hasClass("done")) {
-    //   console.log("in twelve_slide");
-    //   this._eventService.addEvent(this.eventForm.value, this.files, this.themeFiles)
-    //     .subscribe((data: any) => {
-    //       console.log("event details", data);
-    //       $('.step_1').css({ 'display': 'none' })
-    //       $('.step_2').css({ 'display': 'block' });
-    //       this.eventId = data.data._id;
-    //       console.log("created eventid", this.eventId);
-    //       this.getActivityFrom();
-    //     }, (err: any) => {
-    //       console.log(err);
-    //       this.alertService.getError(err.message);
-    //     })
+    console.log("in twelve_slide");
+    this._eventService.addEvent(this.eventForm.value, this.files, this.themeFiles)
+      .subscribe((data: any) => {
+        console.log("event details", data);
+        $('.step_1').css({ 'display': 'none' })
+        $('.step_2').css({ 'display': 'block' });
+        this.eventId = data.data._id;
+        console.log("created eventid", this.eventId);
+        this.getActivityFrom();
+      }, (err: any) => {
+        console.log(err);
+        this.alertService.getError(err.message);
+      })
     // }
-    // console.log("data of event", $('.slick-active').hasClass("twelve_slide"));
-    // if ($('.slick-active').hasClass("twelve_slide")) {
-    //   $('.slick-active').addClass("done")
-    // }
+    console.log("data of event", $('.slick-active').hasClass("twelve_slide"));
+    if ($('.slick-active').hasClass("twelve_slide")) {
+      $('.slick-active').addClass("done")
+    }
   }
 
   /**
@@ -422,9 +464,13 @@ export class CreateEventComponent implements OnInit {
         if (activities[i].group) {
           this.selectedActivityToAddGroup = activities[0]._id;
           for (let j = 0; j < activities[i].group.length; j++) {
-            // console.log("j =", j , "inner details =", activities[i].group[j])
+            let groupId = activities[i].group[j]._id;
+            console.log("update group event id", this.eventId);
+            console.log("j =", j, "inner details =", activities[i].group[j])
             this.gArray.push(this.fb.group({
               activityId: new FormControl(activities[i]._id),
+              eventId: new FormControl(this.eventId),
+              groupId: new FormControl(activities[i].group[j]._id),
               groupName: new FormControl(activities[i].group[j].groupName),
               male: this.fb.array([...this.maleItemArray(activities[i].group[j].item)]),
               female: this.fb.array([...this.femaleItemArray(activities[i].group[j].item)])
@@ -464,6 +510,7 @@ export class CreateEventComponent implements OnInit {
       for (let i = 0; i < details.length; i++) {
         if (details[i].itemGender === 'male') {
           maleArray.push(this.fb.group({
+            itemId: new FormControl(details[i]._id),
             itemName: new FormControl(details[i].itemName),
             itemType: new FormControl(details[i].itemType),
             itemPrice: new FormControl(details[i].itemPrice)
@@ -504,6 +551,7 @@ export class CreateEventComponent implements OnInit {
       for (let i = 0; i < details.length; i++) {
         if (details[i].itemGender === 'female') {
           femaleArray.push(this.fb.group({
+            itemId: new FormControl(details[i]._id),
             itemName: new FormControl(details[i].itemName),
             itemType: new FormControl(details[i].itemType),
             itemPrice: new FormControl(details[i].itemPrice)
@@ -543,6 +591,41 @@ export class CreateEventComponent implements OnInit {
     control.removeAt(fIndex);
   }
 
+  initCreatedActivitySlider() {
+    $('.createdActivitySlider').not('.slick-initialized').slick({
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: false,
+      arrows: true,
+      prevArrow: '<button class="prevarrow text-center"><i class="fa fa-caret-left" aria-hidden="true"></i></button>',
+      nextArrow: '<button class="nextarrow text-center" ><i class="fa fa-caret-right" aria-hidden="true"></i></button>',
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            infinite: true,
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
+    });
+  }
 
   /**
    * Create new activities for new event 
@@ -558,6 +641,41 @@ export class CreateEventComponent implements OnInit {
         setTimeout(() => {
           $('.step_2').css({ 'display': 'none' })
           $('.step_3').css({ 'display': 'block' });
+
+          $('.createdActivitySlider').not('.slick-initialized').slick({
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            autoplay: false,
+            arrows: true,
+            prevArrow: '<button class="prevarrow text-center"><i class="fa fa-caret-left" aria-hidden="true"></i></button>',
+            nextArrow: '<button class="nextarrow text-center" ><i class="fa fa-caret-right" aria-hidden="true"></i></button>',
+            responsive: [
+              {
+                breakpoint: 1024,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 1,
+                  infinite: true,
+                }
+              },
+              {
+                breakpoint: 600,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 1,
+                }
+              },
+              {
+                breakpoint: 480,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1
+                }
+              }
+            ]
+          });
+
           $('.gender_slider').not('.slick-initialized').slick({
             // autoplay: true,
             autoplaySpeed: 2000,
@@ -608,13 +726,13 @@ export class CreateEventComponent implements OnInit {
     else {
       console.log(id);
       this._eventService.removeActivity(id)
-      .subscribe((data: any)=>{
-        console.log(data);
-        this.createdActivity = data.data                                                                                                                                                                                                                                                                                                                                          
-        this.getActivityFrom(this.createdActivity);
-      },err=>{
-        console.log(err);
-      })
+        .subscribe((data: any) => {
+          console.log(data);
+          this.createdActivity = data.data
+          this.getActivityFrom(this.createdActivity);
+        }, err => {
+          console.log(err);
+        })
     }
   }
 
@@ -807,6 +925,7 @@ export class CreateEventComponent implements OnInit {
    *  Updating group if any changes
    */
   updateGroup() {
+    this.groupForm.controls.eventId.setValue(this.eventId);
     console.log(this.groupForm.value);
     this._eventService.updateGroup(this.groupForm.value)
       .subscribe(data => {
@@ -905,6 +1024,6 @@ export class CreateEventComponent implements OnInit {
   }
 
   printItem(item) {
-    console.log("item==========================================>",this.selectedActivityToAddGroup, item.value.activityId);
+    console.log("item==========================================>", this.selectedActivityToAddGroup, item.value.activityId);
   }
 }

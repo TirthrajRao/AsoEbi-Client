@@ -44,13 +44,13 @@ export class CollectionsComponent implements OnInit {
       this.totalAmountOfUser(this.eventId);
       this.guestList(this.eventId);
     })
+    
+  }
+  ngOnInit() {
     $(".new_event_menu").click(function () {
       $(".new_event_menu_box").toggle();
     });
-
-  }
-  ngOnInit() {
-console.log(this.userName);
+    console.log(this.userName);
 
     // $('.new_event_menu').click(function () {
     //   $('.new_event_menu_box').toggleClass('active');

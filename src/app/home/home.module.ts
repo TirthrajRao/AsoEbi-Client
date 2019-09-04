@@ -22,8 +22,13 @@ import { LoaderComponent } from '../loader/loader.component';
 import { JwSocialButtonsModule } from 'jw-angular-social-buttons';
 import { ShareButtonModule } from '@ngx-share/button';
 import { ShareModule } from '@ngx-share/core';
-import{AuthGuard} from '../auth.guard';
+import { AuthGuard } from '../auth.guard';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MyEventDetailsComponent } from '../my-event-details/my-event-details.component';
+import { MessagesOfEventComponent } from '../messages-of-event/messages-of-event.component';
+import { InvitationEventComponent } from '../invitation-event/invitation-event.component';
+import { AutoMessageComponent } from '../auto-message/auto-message.component';
+import { EventActivityComponent } from '../event-activity/event-activity.component';
 
 
 const routes: Routes = [
@@ -93,6 +98,26 @@ const routes: Routes = [
       {
         path: 'total-user',
         component: AdminUserListComponent
+      },
+      {
+        path: 'myEventDetails/:id',
+        component: MyEventDetailsComponent
+      },
+      {
+        path: 'eventMessage/:id',
+        component: MessagesOfEventComponent
+      },
+      {
+        path: 'invitation/:id',
+        component: InvitationEventComponent
+      },
+      {
+        path: 'autoMessage/:id',
+        component: AutoMessageComponent
+      },
+      {
+        path: 'eventActivity/:id/:id1',
+        component: EventActivityComponent
       }
     ]
   }
@@ -116,7 +141,12 @@ const routes: Routes = [
     AdminEventDetailsComponent,
     AdminUserListComponent,
     CollectionsComponent,
-    LoaderComponent
+    LoaderComponent,
+    MyEventDetailsComponent,
+    MessagesOfEventComponent,
+    InvitationEventComponent,
+    AutoMessageComponent,
+    EventActivityComponent
   ],
   imports: [
     CommonModule,
