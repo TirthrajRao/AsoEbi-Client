@@ -228,7 +228,7 @@ export class MyEventDetailsComponent implements OnInit {
 
   activityDetails(eventId, activityId) {
     console.log(eventId, activityId);
-    this.router.navigate(['/home/eventActivity/', eventId, activityId])
+    this.router.navigate(['/home/eventActivity/', eventId, activityId], { skipLocationChange: true })
   }
 
   nextSection(goto, from) {

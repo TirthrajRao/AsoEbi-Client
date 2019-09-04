@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { config } from '../config';
 import { AlertService } from '../services/alert.service';
 import { LoginService } from '../services/login.service';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 import * as _ from 'lodash';
 declare let $: any;
 
@@ -14,6 +15,7 @@ declare let $: any;
   styleUrls: ['./auto-message.component.css']
 })
 export class AutoMessageComponent implements OnInit {
+  autoMessageForm: FormGroup;
   private sub: any;
   private eventId: any;
   path = config.baseMediaUrl;
@@ -41,10 +43,16 @@ export class AutoMessageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.autoMessageForm = new FormGroup({
+      thanksMessage: new FormControl(''),
+      messageDate: new FormControl(''),
+      messagePreferance: new FormControl(''),
+      // eventId: new FormControl ('', this.eventId)
+    })
     this.getMyEvents();
     this.initActivitySlider();
     this.initCollectDetailSlick();
-
+    $("#afterEventDate").datepicker({ "setDate": new Date(), "minDate": new Date(), dateFormat: 'yy-mm-dd' });
   }
 
   initActivitySlider() {
@@ -199,10 +207,10 @@ export class AutoMessageComponent implements OnInit {
     this.router.navigate(['/home/view-event/', id])
   }
 
-  messageEvent(id){
-this.router.navigate(['/home/eventMessage/', id])
+  messageEvent(id) {
+    this.router.navigate(['/home/eventMessage/', id])
   }
-  autoMessage(id){
+  autoMessage(id) {
     this.router.navigate(['/home/autoMessage/', id])
   }
 
@@ -210,7 +218,7 @@ this.router.navigate(['/home/eventMessage/', id])
     console.log(eventId, activityId);
     this.router.navigate(['/home/eventActivity/', eventId, activityId])
   }
-  invitation(id){
+  invitation(id) {
     this.router.navigate(['/home/invitation/', id])
   }
   allEventList(id) {
@@ -228,8 +236,21 @@ this.router.navigate(['/home/eventMessage/', id])
 
   }
   thankYouMessage(id) {
-      console.log("thank you message event id", id);
-      this.router.navigate(['/home/thank-you', id])
-    }
+    console.log("thank you message event id", id);
+    this.router.navigate(['/home/thank-you', id])
+  }
+
+  afterEventMessage() {
+    this.autoMessageForm.value.messageDate = $('#afterEventDate').val();
+    console.log(this.autoMessageForm.value);
+    console.log('eventId:', this.eventId);
+
+    this._eventService.afterEventMessageDetail(this.eventId, this.autoMessageForm.value)
+      .subscribe((data: any) => {
+        console.log('Success Response:', data);
+      }, err => {
+        console.log(err);
+      })
+  }
 
 }

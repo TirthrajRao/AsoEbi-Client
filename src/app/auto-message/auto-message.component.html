@@ -49,46 +49,37 @@
                     <button class="plus">+</button>
                 </div> -->
 
-                <div class="eventF_pera">
-                    <p>Together with our families, Thank you for your presence, Purchase, Presents, and Prayers.</p>
-                </div>
 
-                <div class="eventE_btn text-center text-white">
-                    <button class="eventF_save">Save</button>
-                </div>
-
-                <div class="eventF_send ">
-                    <label class="text-white mr-1">Send on</label>
-                    <input type="text" name="day" placeholder="Day">
-                    <input type="text" name="Month" placeholder="month">
-                    <input type="text" name="Year" placeholder="year">
-                </div>
-
-                <div class="eventF_at">
-                    <label class="text-white mr-1">at</label>
-                    <input type="text" name="time">
-                    <input type="text" name="time">
-                    <span class="text-white"> : </span>
-                    <input type="text" name="time">
-                    <input type="text" name="time">
-                </div>
-
-                <div class="eventF_to">
-                    <label class="text-white">to</label>
-                    <input type="radio" name="gender_to" id="all1" class="gendar_radio" checked>
-                    <label for="all1" class="text-white ml-1">all invited guests</label>
-
-                    <div class="to_radio ml-4">
-                        <input type="radio" name="gender_to" id="all2" class="gendar_radio">
-                        <label for="all2" class="text-white">all invited guests</label>
+                <form [formGroup]="autoMessageForm" autocomplete="off">
+                    <div class="form-group">
+                        <div class="eventF_pera">
+                            <textarea class="form-control" rows="3" formControlName="thanksMessage"
+                                placeholder="Enter Thank you message"
+                                style="resize: none;">Together with our families, Thank you for your presence, Purchase, Presents, and Prayers.</textarea>
+                        </div>
+                    </div>
+                    <div class="eventE_btn text-center text-white">
+                        <button class="eventF_save" (click)="afterEventMessage()">Save</button>
+                    </div>
+                    <div class="form-group">
+                        <div class="eventF_send ">
+                            <label class="text-white mr-1">Send on</label>
+                            <input autocomplete="off" type="text" id="afterEventDate" formControlName="messageDate" name="sendDate" class="form-control">
+                        </div>
                     </div>
 
-                    <div class="to_radio ml-4">
-                        <input type="radio" name="gender_to" id="all3" class="gendar_radio">
-                        <label for="all3" class="text-white">all invited guests</label>
+                    <div class="form-group">
+                        <div class="eventF_to">
+                            <label class="text-white">to</label>
+                            <input type="radio" id="all1" value="onlyPaidGuest" formControlName="messagePreferance">
+                            <label for="all1" class="text-white ml-1">Only Guest That paid Aso_Ebi</label>
+                            <div class="to_radio ml-4">
+                                <input type="radio" id="all2" value="allGuest" formControlName="messagePreferance">
+                                <label for="all2" class="text-white">all invited guests</label>
+                            </div>
+                        </div>
                     </div>
-
-                </div>
+                </form>
 
                 <div class="collect_detail text-center">
                     <!-- <span *ngFor="let item of activityName"> -->

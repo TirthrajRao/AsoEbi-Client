@@ -81,7 +81,7 @@
                         <span *ngFor="let item of allActivityList">
                             <div class="collect1_img">
                                 <div class="collect_img"
-                                    (click)="singleActivityDetails(singleEventDetails._id,item._id)">
+                                    (click)="singleActivityDetails(item)">
                                     <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                         src="{{path}}{{singleEventDetails.profilePhoto}}">
                                 </div>

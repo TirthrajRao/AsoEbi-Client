@@ -176,13 +176,25 @@ export class CollectionsComponent implements OnInit {
         this.activitiesCollections = data.data;
         console.log("activity array", this.activitiesCollections);
         _.forEach(this.activitiesCollections[0].group[0].item, (item) => {
+          console.log(item)
+          let activityTotal = item.itemPrice
           if (item.itemGender == 'male') {
             this.maleTotal = this.getMaleTotal(item.total)
           }
           if (item.itemGender == 'female') {
             this.femaleTotal = this.getFemaleTotal(item.total)
           }
-        })
+        });
+        var total = 0;
+        _.forEach(this.activitiesCollections[0].group, (singleGroup)=>{
+          _.forEach(singleGroup.item , (singleItem)=>{
+            console.log("singleItem.itemPrice ==> " , singleItem.itemPrice);
+            if(singleItem.itemPrice){
+              total = total + singleItem.itemPrice;
+            }
+          })
+        });
+        console.log("TOTAL PRICE =====>" , total);  
         setTimeout(() => {
           $('input:radio[id=00]').prop('checked', true);
           this.initCollectionSlider()

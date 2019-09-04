@@ -438,22 +438,23 @@
                                     <div class="row">
                                         <div class="col-3 m-auto pr-0 float-right new_event_menu">
                                             <a><img src="/assets/images/icon1.png">
-                                                <p class="text-white">New Event</p></a>
-                                            </div>
-                                            <div class="col-9 p-0">
-                                                <span class="text-white event_name"> Hello {{userName}} </span>
-                                            </div>
+                                                <p class="text-white">New Event</p>
+                                            </a>
+                                        </div>
+                                        <div class="col-9 p-0">
+                                            <span class="text-white event_name"> Hello {{userName}} </span>
                                         </div>
                                     </div>
-                                    <div class="enter_event_title">
-                                        <h6 class="text-center text-white">Event Title</h6>
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" id="eventTitle"
+                                </div>
+                                <div class="enter_event_title">
+                                    <h6 class="text-center text-white">Event Title</h6>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="eventTitle"
                                                 formControlName="eventTitle" placeholder="Enter Event Title"
                                                 ngModel="{{createdEventDetails ? createdEventDetails.eventTitle : ''}}"
                                                 [ngClass]="{ 'is-invalid': f.eventTitle.touched && f.eventTitle.errors }">
-                                                <div class="col-md-2" *ngIf="f.eventTitle.touched && f.eventTitle.errors"
+                                            <div class="col-md-2" *ngIf="f.eventTitle.touched && f.eventTitle.errors"
                                                 class="invalid-feedback text-white">
                                                 <div *ngIf="f.eventTitle.errors.required">eventTitle is required</div>
                                             </div>
@@ -503,25 +504,26 @@
                                     <div class="row">
                                         <div class="col-3 m-auto pr-0 float-right new_event_menu">
                                             <a><img src="/assets/images/icon2.png">
-                                                <p class="text-white">New Event</p></a>
-                                            </div>
-                                            <div class="col-9 p-0">
-                                                <span class="text-white event_name"> Hello {{userName}} </span>
-                                            </div>
+                                                <p class="text-white">New Event</p>
+                                            </a>
+                                        </div>
+                                        <div class="col-9 p-0">
+                                            <span class="text-white event_name"> Hello {{userName}} </span>
                                         </div>
                                     </div>
-                                    <div class="select_event_type">
-                                        <ul class="list-group">
-                                            <li class="list-group-item active selected_event_type "><a>Event Type</a> </li>
-                                            <li class="list-group-item"><a>Wedding</a> </li>
-                                            <li class="list-group-item"><a>Birthday</a> </li>
-                                            <li class="list-group-item"><a>Funeral</a></li>
-                                            <li class="list-group-item"><a>Reunion</a></li>
-                                            <li class="list-group-item"><a>Club Meeting</a></li>
-                                            <li class="list-group-item"><a>Religious</a></li>
-                                            <li class="list-group-item"><a>Anniversary</a></li>
-                                        </ul>
-                                        <div  *ngIf="f.eventType.touched && f.eventType.errors"
+                                </div>
+                                <div class="select_event_type">
+                                    <ul class="list-group">
+                                        <li class="list-group-item active selected_event_type "><a>Event Type</a> </li>
+                                        <li class="list-group-item"><a>Wedding</a> </li>
+                                        <li class="list-group-item"><a>Birthday</a> </li>
+                                        <li class="list-group-item"><a>Funeral</a></li>
+                                        <li class="list-group-item"><a>Reunion</a></li>
+                                        <li class="list-group-item"><a>Club Meeting</a></li>
+                                        <li class="list-group-item"><a>Religious</a></li>
+                                        <li class="list-group-item"><a>Anniversary</a></li>
+                                    </ul>
+                                    <div *ngIf="f.eventType.touched && f.eventType.errors"
                                         class="invalid-feedback text-white">
                                         <div *ngIf="f.eventType.errors.required">eventType is required</div>
                                     </div>
@@ -581,23 +583,24 @@
                                     <div class="row">
                                         <div class="col-3 m-auto pr-0 float-right new_event_menu">
                                             <a><img src="/assets/images/icon3.png">
-                                                <p class="text-white">New Event</p></a>
-                                            </div>
-                                            <div class="col-9 p-0">
-                                                <span class="text-white event_name"> Hello {{userName}} </span>
-                                            </div>
+                                                <p class="text-white">New Event</p>
+                                            </a>
+                                        </div>
+                                        <div class="col-9 p-0">
+                                            <span class="text-white event_name"> Hello {{userName}} </span>
                                         </div>
                                     </div>
-                                    <div class="enter_event_title">
-                                        <h6 class="text-center text-white">Event HashTag</h6>
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <input type="text" placeholder="# Enter your event hashtag here.."
+                                </div>
+                                <div class="enter_event_title">
+                                    <h6 class="text-center text-white">Event HashTag</h6>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="text" placeholder="# Enter your event hashtag here.."
                                                 class="form-control" formControlName="hashTag"
                                                 ngModel="{{createdEventDetails ? createdEventDetails.hashTag : ''}}"
                                                 id="hashTag"
                                                 [ngClass]="{ 'is-invalid': f.hashTag.touched && f.hashTag.errors }">
-                                                <div class="col-md-2" *ngIf="f.hashTag.touched && f.hashTag.errors"
+                                            <div class="col-md-2" *ngIf="f.hashTag.touched && f.hashTag.errors"
                                                 class="invalid-feedback text-white">
                                                 <div *ngIf="f.hashTag.errors.required">EventHashTag is required
                                                 </div>
@@ -608,17 +611,21 @@
                                         </div>
                                     </div>
                                     <div class="font_style text-center">
-                                     <ul>
-                                        <li><a href="javascript:void(0)" class="text-white normal_style">Normal</a> </li>
-                                        <li><a  href="javascript:void(0)" class="text-white italic_style">Italics</a> </li>
-                                        <li><a  href="javascript:void(0)" class="text-white starry_style">Starry</a> </li>
-                                        <li><a  href="javascript:void(0)" class="text-white carved_wood_style">Carved Wood</a></li>
-                                    </ul>
+                                        <ul>
+                                            <li><a href="javascript:void(0)" class="text-white normal_style">Normal</a>
+                                            </li>
+                                            <li><a href="javascript:void(0)" class="text-white italic_style">Italics</a>
+                                            </li>
+                                            <li><a href="javascript:void(0)" class="text-white starry_style">Starry</a>
+                                            </li>
+                                            <li><a href="javascript:void(0)" class="text-white carved_wood_style">Carved
+                                                    Wood</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                     <!-- <div class="new_event_slide four_slide">
                         <div class="event_inner_content_box">
                             <div class="event_inner_content ">
@@ -676,33 +683,35 @@
                                     <div class="row">
                                         <div class="col-3 m-auto pr-0 float-right new_event_menu">
                                             <a><img src="/assets/images/4icon.png">
-                                                <p class="text-white">New Event</p></a>
-                                            </div>
-                                            <div class="col-9 p-0">
-                                                <span class="text-white event_name"> Hello {{userName}} </span>
-                                            </div>
+                                                <p class="text-white">New Event</p>
+                                            </a>
+                                        </div>
+                                        <div class="col-9 p-0">
+                                            <span class="text-white event_name"> Hello {{userName}} </span>
                                         </div>
                                     </div>
-                                    <div class="profile_event_sec">
-                                        <div class="profile_hashtag text-center">
-                                            <p># Event Hashtag</p>
-                                        </div>
-                                        <div class="profile_event text-center">
-                                            <p>Event Profile Photo</p>
-                                        </div>
-                                        <div class="profile_image text-center">
-                                            <div class="profile_photo profile_image_box text-center" touranchor="change-profile"
-                                            ng-reflect-tour-anchor="change-profile">
+                                </div>
+                                <div class="profile_event_sec">
+                                    <div class="profile_hashtag text-center">
+                                        <p># Event Hashtag</p>
+                                    </div>
+                                    <div class="profile_event text-center">
+                                        <p>Event Profile Photo</p>
+                                    </div>
+                                    <div class="profile_image text-center">
+                                        <div class="profile_photo profile_image_box text-center"
+                                            touranchor="change-profile" ng-reflect-tour-anchor="change-profile">
                                             <img *ngIf="createdEventDetails && createdEventDetails.profilePhoto"
-                                            src="{{path}}{{createdEventDetails.profilePhoto}}"
-                                            class="rounded-circle">
-                                            <input type="file"  name="files" value="files" formControlName="profile" 
-                                            (change)="addFile($event.target.files)" id="customFile"
-                                            accept="image/png, image/jpeg, image/jpg" style="display: none;">
+                                                src="{{path}}{{createdEventDetails.profilePhoto}}"
+                                                class="rounded-circle">
+                                            <input type="file" name="files" value="files" formControlName="profile"
+                                                (change)="addFile($event.target.files)" id="customFile"
+                                                accept="image/png, image/jpeg, image/jpg" style="display: none;">
                                             <label for="customFile" class="profile_and_cover_edit text-center"
-                                            title="Change Profile"><i class="fa fa-camera" aria-hidden="true"></i></label>
-                                            <img [src]="imgURL" height="200" class="float-right rounded-circle" id="imageFilter"
-                                            onerror="this.src='/assets/images/profile_photo.png'">
+                                                title="Change Profile"><i class="fa fa-camera"
+                                                    aria-hidden="true"></i></label>
+                                            <img [src]="imgURL" height="200" class="float-right rounded-circle"
+                                                id="imageFilter" onerror="this.src='/assets/images/profile_photo.png'">
                                         </div>
                                     </div>
                                     <div class="profile_content">
@@ -781,21 +790,22 @@
                                     <div class="row">
                                         <div class="col-3 m-auto pr-0 float-right new_event_menu">
                                             <a><img src="/assets/images/5icon.png">
-                                                <p class="text-white">New Event</p></a>
-                                            </div>
-                                            <div class="col-9 p-0">
-                                                <span class="text-white event_name"> Hello {{userName}} </span>
-                                            </div>
+                                                <p class="text-white">New Event</p>
+                                            </a>
+                                        </div>
+                                        <div class="col-9 p-0">
+                                            <span class="text-white event_name"> Hello {{userName}} </span>
                                         </div>
                                     </div>
-                                    <div class="select_pic">
-                                        <div class="back_hashtag text-center">
-                                            <p># Event Hashtag</p>
-                                        </div>
-                                        <div class="back_event text-center">
-                                          <p>Event Background Photo</p>
-                                      </div>
-                                      <div class="all_back_img">
+                                </div>
+                                <div class="select_pic">
+                                    <div class="back_hashtag text-center">
+                                        <p># Event Hashtag</p>
+                                    </div>
+                                    <div class="back_event text-center">
+                                        <p>Event Background Photo</p>
+                                    </div>
+                                    <div class="all_back_img">
                                         <div class="row">
                                             <div class="col-sm-3 ">
                                                 <a class="back1">
@@ -818,10 +828,13 @@
                                             <div class="col-sm-3 ">
                                                 <a class="back1">
                                                     <input type="file" formControlName="background" class="form-control"
-                                                    (change)="addThemePhoto($event.target.files)" id="customThemeFile"
-                                                    accept="image/png, image/jpeg, image/jpg, image/gif" style="display: none;">
+                                                        (change)="addThemePhoto($event.target.files)"
+                                                        id="customThemeFile"
+                                                        accept="image/png, image/jpeg, image/jpg, image/gif"
+                                                        style="display: none;">
                                                     <label for="customThemeFile" class="background_edit text-center"
-                                                    title="Change Profile"><i class="fa fa-camera" aria-hidden="true"></i></label>
+                                                        title="Change Profile"><i class="fa fa-camera"
+                                                            aria-hidden="true"></i></label>
                                                     <p class="text-center">Add Photo</p>
                                                     <div class="background_img">
 
@@ -870,34 +883,34 @@
                     <div class="new_event_slide six_slide">
                         <div class="event_inner_content_box">
                             <div class="event_inner_content ">
-                             <div class="Pricing_tip">
-                                <p>Pricing Tip</p>
-                            </div>
-                            <div class="prising_list">
-                                <ul>
-                                    <li><img src="/assets/images/1.png">
-                                        <p class="text-white prising_text">Aso Ebi can deliver your fabric to
-                                            guests
-                                        </p>
-                                    </li>
-                                    <li class="second_list"><img src="/assets/images/2.png">
-                                        <p class="text-white prising_text">Include a delivery cost of NGN
-                                            500-NGN
-                                            1000 in your pricing if you want us to handle
-                                            logistics.
-                                        </p>
-                                    </li>
-                                    <li class="third_list"><img src="/assets/images/3.png">
-                                        <p class="text-white prising_text">Include a payment transfer free of
-                                            NGN 60
-                                            when setting your aso ebi pricing.
-                                        </p>
-                                    </li>
-                                </ul>
+                                <div class="Pricing_tip">
+                                    <p>Pricing Tip</p>
+                                </div>
+                                <div class="prising_list">
+                                    <ul>
+                                        <li><img src="/assets/images/1.png">
+                                            <p class="text-white prising_text">Aso Ebi can deliver your fabric to
+                                                guests
+                                            </p>
+                                        </li>
+                                        <li class="second_list"><img src="/assets/images/2.png">
+                                            <p class="text-white prising_text">Include a delivery cost of NGN
+                                                500-NGN
+                                                1000 in your pricing if you want us to handle
+                                                logistics.
+                                            </p>
+                                        </li>
+                                        <li class="third_list"><img src="/assets/images/3.png">
+                                            <p class="text-white prising_text">Include a payment transfer free of
+                                                NGN 60
+                                                when setting your aso ebi pricing.
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                     <!-- <div class="new_event_slide seven_slide">
                         <div class="event_inner_content_box">
                             <div class="event_inner_content">
@@ -950,7 +963,7 @@
                                             {{ createdEventDetails }}
                                             <label class="switch mt-2">
                                                 <input type="checkbox" class="custom-control-input" id="switch1"
-                                                formControlName="isPublic">
+                                                    formControlName="isPublic">
                                                 <span class="slider round"></span>
                                             </label>
                                         </div>
@@ -1035,7 +1048,7 @@
                                 <div class="preffered_option">
                                     <p class="text-white">Tick Preferred Optional</p>
                                     <h6 class="text-white">Would you prefer your guests not bring
-                                    a present, but gift you with:</h6>
+                                        a present, but gift you with:</h6>
                                     <div class="cash_option">
                                         <label class="container">Cash
                                             <input type="checkbox" checked="checked">
@@ -1135,14 +1148,14 @@
                                                 ngModel="{{createdEventDetails ? paymentDeadlineDate : ''}}"
                                                 formControlName="deadlineDate" (navigate)="valuedate = $event.next">
                                             </ngb-datepicker> -->
-                                        <!-- <input type="text" #sd id="startDate"/> -->
+                                            <!-- <input type="text" #sd id="startDate"/> -->
                                             <!-- <input type="text" id="deadLineDate"  formControlName="deadlineDate"
                                                 class="form-control"
                                                 ngModel="{{createdEventDetails ? paymentDeadlineDate : ''}}" /> -->
-                                                <input type="date" name="selectDate" formControlName="deadlineDate"
-                                        class="form-control"
-                                        ngModel="{{createdEventDetails ? paymentDeadlineDate : ''}}">
-                                            </div> 
+                                            <input autocomplete="off" type="text" id="deadLineDate" name="selectDate"
+                                                formControlName="deadlineDate" class="form-control"
+                                                ngModel="{{createdEventDetails ? paymentDeadlineDate : ''}}">
+                                        </div>
 
                                         <!-- <div class="input-group">
                                                 <input class="form-control" placeholder="{{valuedate | date: 'yyyy-MM-dd'}}"
@@ -1152,11 +1165,11 @@
                                                   <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
                                                 </div>
                                             </div> -->
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
                     <!-- <div class="new_event_slide eleven_slide">
                         <div class="event_inner_content_box">
                             <div class="event_inner_content ">
@@ -1275,7 +1288,7 @@
                                         <div class="col-1">
                                             <label class="switch mt-2">
                                                 <input type="checkbox" class="custom-control-input" id="switch2"
-                                                formControlName="isLogistics">
+                                                    formControlName="isLogistics">
                                                 <span class="slider round"></span>
                                             </label>
                                         </div>
@@ -1285,7 +1298,8 @@
                                     </div>
                                 </div>
                                 <div class="slider_next_btn text-center">
-                                    <a class="text-white" (click)="addEvent()">Next</a>
+                                    <a class="text-white"
+                                        (click)="createdEventDetails? updateEvent() : addEvent()">Next</a>
                                 </div>
                             </div>
                         </div>
@@ -1303,19 +1317,19 @@
                 <div class="event_menu">
                     <div class="all_menu_content  d-flex flex-wrap align-content-center">
                         <ul>
-                         <li><a routerLink="myEvent" class="text-white text-center new_event">my event</a></li>
-                         <li><a routerLink="createEvent" class="text-white text-center my_event">new event</a></li>
-                         <li><a routerLink="bankDetails" class="text-white text-center my_account">bank account</a>
-                         </li>
-                         <li><a routerLink="reset-password" class="text-white text-center my_account">Reset
-                         Password</a></li>
-                         <li><a (click)="logout()" class="text-white text-center my_account">Logout</a></li>
-                         <li><a href="#" class="text-white text-center my_messages">Messages</a></li>
-                     </ul>
-                 </div>
-             </div>
-         </div>
-     </div>
+                            <li><a routerLink="myEvent" class="text-white text-center new_event">my event</a></li>
+                            <li><a routerLink="createEvent" class="text-white text-center my_event">new event</a></li>
+                            <li><a routerLink="bankDetails" class="text-white text-center my_account">bank account</a>
+                            </li>
+                            <li><a routerLink="reset-password" class="text-white text-center my_account">Reset
+                                    Password</a></li>
+                            <li><a (click)="logout()" class="text-white text-center my_account">Logout</a></li>
+                            <li><a href="#" class="text-white text-center my_messages">Messages</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 </div>
 
@@ -1391,53 +1405,65 @@
                         <div class="row">
                             <div class="col-3 m-auto pr-0 float-right new_event_menu">
                                 <a><img src="/assets/images/icon_creme.png">
-                                    <p class="text-white">New Event</p></a>
-                                </div>
-                                <div class="col-9 p-0">
-                                    <span class="text-white all_event_name"> Hello {{userName}} </span>
+                                    <p class="text-white">New Event</p>
+                                </a>
+                            </div>
+                            <div class="col-9 p-0">
+                                <span class="text-white all_event_name"> Hello {{userName}} </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="overlay" class="new_event_menu_box" style="display: none;">
+                        <div class="">
+                            <div class="event_menu">
+                                <div class="all_menu_content  d-flex flex-wrap align-content-center">
+                                    <ul>
+                                        <li><a routerLink="myEvent" class="text-white text-center new_event">my
+                                                event</a></li>
+                                        <li><a routerLink="createEvent" class="text-white text-center my_event">new
+                                                event</a></li>
+                                        <li><a routerLink="bankDetails" class="text-white text-center my_account">bank
+                                                account</a>
+                                        </li>
+                                        <li><a routerLink="reset-password"
+                                                class="text-white text-center my_account">Reset
+                                                Password</a></li>
+                                        <li><a (click)="logout()" class="text-white text-center my_account">Logout</a>
+                                        </li>
+                                        <li><a href="#" class="text-white text-center my_messages">Messages</a></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
-                        <div id="overlay" class="new_event_menu_box" style="display: none;">
-                            <div class="">
-                                <div class="event_menu">
-                                    <div class="all_menu_content  d-flex flex-wrap align-content-center">
-                                        <ul>
-                                         <li><a routerLink="myEvent" class="text-white text-center new_event">my event</a></li>
-                                         <li><a routerLink="createEvent" class="text-white text-center my_event">new event</a></li>
-                                         <li><a routerLink="bankDetails" class="text-white text-center my_account">bank account</a>
-                                         </li>
-                                         <li><a routerLink="reset-password" class="text-white text-center my_account">Reset
-                                         Password</a></li>
-                                         <li><a (click)="logout()" class="text-white text-center my_account">Logout</a></li>
-                                         <li><a href="#" class="text-white text-center my_messages">Messages</a></li>
-                                     </ul>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                     <div class="name_hashtag text-center">
+                    </div>
+                    <div class="name_hashtag text-center">
                         <p># Event Hashtag</p>
                     </div>
                     <div class="name_event text-center">
                         <p>Event Activities</p>
                     </div>
 
-                    <form [formGroup]="activityForm"  class="all_activity_form">
+                    <form [formGroup]="activityForm" class="all_activity_form">
                         <div formArrayName="activity">
                             <div [formGroupName]="i"
-                            *ngFor="let tech of activityForm.controls.activity.controls; let i = index">
-                            <div class="name_ceremony">
-                                <div class="ceremony1">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-group float-left">
-                                                <input type="text" class="form-control" formControlName="activityName"
-                                                placeholder="Enter activity name">
-                                            </div>
-                                            <div *ngIf="activityForm.controls.activity.controls.length>1" class="close_ceremony text-center float-right">
-                                                <a (click)="removeActivityField(i,tech.value)">
-                                                    <img src="/assets/images/close1.png"></a>
+                                *ngFor="let tech of activityForm.controls.activity.controls; let i = index">
+                                <div class="name_ceremony">
+                                    <div class="ceremony1">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group float-left">
+                                                    <input type="text" class="form-control"
+                                                        formControlName="activityName"
+                                                        placeholder="Enter activity name">
+                                                </div>
+                                                <div *ngIf="activityForm.controls.activity.controls.length>1"
+                                                    class="close_ceremony text-center float-right">
+                                                    <a (click)="removeActivityField(i,tech.value)">
+                                                        <img src="/assets/images/close1.png"></a>
+                                                </div>
+                                                <div>
+                                                    <input id="eventId" class="form-control" formControlName="eventId"
+                                                        [(ngModel)]="eventId" hidden>
                                                 </div>
                                             </div>
                                         </div>
@@ -1454,7 +1480,8 @@
                             </div>
                         </div>
                         <div class="next_button">
-                            <a class="next_btn " (click)="createdEventDetails ? updateActivity() : addActivity()">Next</a>
+                            <a class="next_btn "
+                                (click)="createdEventDetails ? updateActivity() : addActivity()">Next</a>
                         </div>
                     </div>
                 </div>
@@ -1464,7 +1491,7 @@
 </div>
 
 
-<div class="step_3" >
+<div class="step_3" style="display:none">
     <div class="form_input">
         <div class="row justify-content-center m-0">
             <section class="slider_page_section d-flex flex-wrap align-content-center">
@@ -1485,16 +1512,28 @@
                                     </div>
                                 </div>
                                 <h6 class="text-center"># EventName</h6>
-                                <div class="all_ceremony_btn">
-                                    <div class="createdActivitySlider">
-                                    <span *ngIf="createdActivity && createdActivity.length">
+                                <!-- <div class="all_ceremony_btn"> -->
+                                <!-- <div class="createdActivitySlider">
+                                    <div *ngIf="createdActivity && createdActivity.length">
                                         <button class="ceremony1" *ngFor="let item of createdActivity;"
                                             (click)="addGroupWithActivity(item._id)">
                                             <a class="text-center">{{item.activityName}}</a>
                                         </button>
+                                    </div>
+                                </div> -->
+                                <!-- </div> -->
+                                <!-- <div class="evet_sliding"> -->
+                                <div class="gender_slider1" *ngIf="createdActivity && createdActivity.length">
+                                    <span *ngFor="let item of createdActivity;">
+                                        <div class="slide1">
+                                            <div class="ceremony1  m-2">
+                                                <button class="event_btn"
+                                                    (click)="addGroupWithActivity(item._id)">{{item.activityName}}</button>
+                                            </div>
+                                        </div>
                                     </span>
                                 </div>
-                                </div>
+                                <!-- </div> -->
                                 <form [formGroup]="groupForm" class="billing_address">
                                     <div formArrayName="group">
                                         <div [formGroupName]="i"
