@@ -44,7 +44,10 @@ export class AutoMessageComponent implements OnInit {
     this.getMyEvents();
     this.initActivitySlider();
     this.initCollectDetailSlick();
-
+    $("#afterEventDate").datepicker({ "setDate": new Date(), "minDate": new Date(), dateFormat: 'yy-mm-dd' });
+    $(".new_event_menu").click(function () {
+      $(".new_event_menu_box").toggle();
+    });
   }
 
   initActivitySlider() {

@@ -41,7 +41,9 @@ export class MyEventDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.getMyEvents();
-
+    $(".new_event_menu").click(function () {
+      $(".new_event_menu_box").toggle();
+    });
 
   }
 

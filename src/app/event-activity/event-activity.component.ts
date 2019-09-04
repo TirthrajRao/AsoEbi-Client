@@ -62,7 +62,9 @@ export class EventActivityComponent implements OnInit {
       this.itemNamePrint = _.filter(item[0].item, { 'itemGender': this.selectedGender });
       console.log(this.itemNamePrint)
     })
-
+    $(".new_event_menu").click(function () {
+      $(".new_event_menu_box").toggle();
+    });
   }
 
   initActivitySlider() {

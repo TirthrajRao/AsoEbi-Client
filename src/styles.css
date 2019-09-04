@@ -817,7 +817,7 @@ label.upload_photo {
 }
 
 .new_event_sec span {
-	font-size: 54.17px;
+	font-size: 48.17px;
 	margin-left: -22px;
 }
 
@@ -2158,8 +2158,10 @@ label.background_edit i {
     text-transform: unset;
     font-size: 20px;
     padding: 0px 10px;
-    white-space: nowrap;
     width: 190px;
+	text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
     overflow: hidden !important;
 }
 
@@ -2541,7 +2543,7 @@ label.background_edit i {
 }
 
 .all_event_sec span {
-	font-size: 54.17px;
+	font-size: 49.17px;
 	margin-left: -22px;
 }
 
@@ -3129,7 +3131,13 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 /*forgot password modal css end*/
 
 /*aso ebi event pages css start*/
-
+/* event Activity css start s */
+.event-activity-class {
+    /* max-width: 600px; */
+    overflow-x: scroll;
+    max-height: 50px;
+}
+/* event Activity css end s */
 /*eventA page start*/
 
 .eventA_page_section {
@@ -3161,15 +3169,6 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 .eventA_page_section .eventA_tgl_btn {
 	padding: 0px 60px;
 	padding-top: 45px;
-}
-
-.eventA_page_section button.event_btn {
-	background: #374b5d;
-	color: white;
-	font-size: 20px;
-	font-family: 'Russo One', sans-serif;
-	padding: 8px 51px;
-	border: none;
 }
 
 .eventA_page_section .collected {
@@ -3502,15 +3501,29 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	font-family: aso;
 	padding: 6px 34px;
 	margin-left: 5px;
+	border: none;
+	outline: none;
 }
-
-.eventD_page_section button.event_payment {
+.eventE_btn button.event_invitation {
 	background: #da9500;
 	font-size: 16px;
 	color: #fff;
 	font-family: aso;
 	padding: 6px 34px;
 	margin-left: 5px;
+	border: none;
+	outline: none;
+	font-family: 'Russo One', sans-serif;
+}
+/* .eventD_page_section button.event_payment {
+	background: #da9500;
+	font-size: 16px;
+	color: #fff;
+	font-family: aso;
+	padding: 6px 34px;
+	margin-left: 5px;
+	border: none;
+	outline: none;
 }
 
 .eventD_page_section button.event_plus {
@@ -3520,7 +3533,9 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	font-family: aso;
 	padding: 6px 18px;
 	margin-left: 5px;
-}
+	border: none;
+	outline: none;
+} */
 
 .eventD_page_section .eventD_detail {
 	padding: 0px 60px;
@@ -3539,6 +3554,8 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	font-family: 'Russo One', sans-serif;
 	border: none;
 	margin-top: 12px;
+	border: none;
+	outline: none;
 }
 
 /*eventD page end*/
@@ -3657,11 +3674,15 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 
 .eventF_page_section button.event_btn {
 	background: #f9b43b;
-	color: white;
-	font-size: 20px;
-	font-family: 'Russo One', sans-serif;
-	padding: 8px 45px;
-	border: none;
+    color: white;
+    font-size: 20px;
+    font-family: 'Russo One', sans-serif;
+    padding: 5px 27px;
+    border: none;
+    text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden !important;
 }
 
 .eventF_page_section .eventF_btn, .eventF_at, .eventF_to {
@@ -3767,6 +3788,8 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	background-color: transparent;
 	font-size: 30px;
 	color: #fff;
+	border-radius: 0px;
+	width: 100%;
 }
 
 .eventF_page_section .eventF_at input {
@@ -4296,9 +4319,14 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	background: #374b5d;
 	color: white;
 	font-size: 20px;
-	font-family: 'Russo One', sans-serif;
-	padding: 8px 51px;
-	border: none;
+    font-family: 'Russo One', sans-serif;
+    padding: 8px 21px;
+    border: none;
+    outline: none;
+    text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden !important;
 }
 
 .eventA_page_section .collected {
@@ -4351,8 +4379,14 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 .eventB_page_section {
 	background-color: #949494;
 	min-height: 100vh;
+	position: relative;
 }
-
+.overlay-parent-class {
+    position: relative;
+    height: 645px;
+    width: 665px;
+    margin: auto;
+}
 .eventB_sec1 .Join_inner_content_box {
 	background-image: url('/assets/images/eventB_bg.png');
 	background-size: cover;
@@ -4385,12 +4419,16 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 
 .eventB_page_section button.event_btn {
 	background: #00ab8a;
-	color: white;
-	font-size: 20px;
-	font-family: 'Russo One', sans-serif;
-	padding: 8px 52px;
-	border: none;
-	outline: none;
+    color: white;
+    font-size: 20px;
+    font-family: 'Russo One', sans-serif;
+    padding: 8px 21px;
+    border: none;
+    outline: none;
+    text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden !important;
 }
 
 .eventB_page_section .event_img p {
@@ -4440,11 +4478,15 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 
 .eventC_page_section button.event_btn {
 	background: #f69537;
-	color: white;
-	font-size: 20px;
-	font-family: 'Russo One', sans-serif;
-	padding: 8px 45px;
-	border: none;
+    color: white;
+    font-size: 20px;
+    font-family: 'Russo One', sans-serif;
+    padding: 8px 45px;
+    border: none;
+    text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden !important;
 }
 
 .eventC_page_section .event_img p {
@@ -4453,7 +4495,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 }
 
 .eventC_page_section .event_activity {
-	padding: 17px 60px 7px 60px;
+	/* padding: 17px 60px 7px 60px; */
 	display: inline-flex;
 }
 
@@ -4611,11 +4653,15 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 
 .eventD_page_section button.event_btn {
 	background: #3a9bbb;
-	color: white;
-	font-size: 20px;
-	font-family: 'Russo One', sans-serif;
-	padding: 8px 45px;
-	border: none;
+    color: white;
+    font-size: 20px;
+    font-family: 'Russo One', sans-serif;
+    padding: 8px 20px;
+    border: none;
+    text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden !important;
 }
 
 .eventD_page_section .eventD_input {
@@ -4714,11 +4760,16 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 
 .eventE_page_section button.event_btn {
 	background: #3d9e43;
-	color: white;
-	font-size: 20px;
-	font-family: 'Russo One', sans-serif;
-	padding: 8px 45px;
-	border: none;
+    color: white;
+    font-size: 20px;
+    font-family: 'Russo One', sans-serif;
+    padding: 8px 21px;
+    border: none;
+    text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden !important;
+	
 }
 
 .eventE_page_section .event_guest span {
@@ -4818,7 +4869,8 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 }
 
 .event_prise_detail::-webkit-scrollbar-track, form.billing_address::-webkit-scrollbar-track,
-.inner_box_content::-webkit-scrollbar-track, form.billing_address::-webkit-scrollbar-track {
+.inner_box_content::-webkit-scrollbar-track, form.billing_address::-webkit-scrollbar-track ,
+.event-activity-class::-webkit-scrollbar-track, form.billing_address::-webkit-scrollbar-track {
 	border: 1px solid transparent;
 	padding: 2px 0;
 	width: 7px;
@@ -4826,13 +4878,15 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 }
 
 .event_prise_detail::-webkit-scrollbar, form.billing_address::-webkit-scrollbar,
-.inner_box_content::-webkit-scrollbar, form.billing_address::-webkit-scrollbar {
+.inner_box_content::-webkit-scrollbar, form.billing_address::-webkit-scrollbar ,
+.event-activity-class::-webkit-scrollbar, form.billing_address::-webkit-scrollbar {
 	width: 3px;
 	height: 3px;
 }
 
 .event_prise_detail::-webkit-scrollbar-thumb, form.billing_address::-webkit-scrollbar-thumb ,
-.inner_box_content::-webkit-scrollbar-thumb, form.billing_address::-webkit-scrollbar-thumb{
+.inner_box_content::-webkit-scrollbar-thumb, form.billing_address::-webkit-scrollbar-thumb,
+.event-activity-class::-webkit-scrollbar-thumb, form.billing_address::-webkit-scrollbar-thumb{
 	border-radius: 10px;
 	background-color: #fff;
 }
@@ -5523,7 +5577,6 @@ tr.blue-table-header {
 }
 
 /* total event list admin css end */
-
 /* responsive css start */
 
 @media(max-width: 1366px) {
@@ -5946,7 +5999,7 @@ tr.blue-table-header {
 	/*enter screen responsive css end*/
 	/*collection screen slider responsive start*/
 	.new_event_sec span {
-		font-size: 48px;
+		font-size: 45px;
 		margin-left: -22px;
 	}
 	.collection_slider_section .event_inner_content_box {
@@ -5975,7 +6028,7 @@ tr.blue-table-header {
 	.collection_slider_section .inner_box_content {
 		font-size: 15.67px !important;
 		padding: 12px;
-		height: 185px;
+		height: 155px;
 	}
 	.inner_box_content .inner_title h3 {
 		font-size: 18.83px !important;
@@ -6165,9 +6218,9 @@ tr.blue-table-header {
 	.eventA_page_section .collected {
 		padding: 6px 50px;
 	}
-	.collect_detail {
+	/* .collect_detail {
 		padding: 25px 50px;
-	}
+	} */
 	.collect_detail .collect_img {
 		width: 73px;
 	}
@@ -6185,7 +6238,7 @@ tr.blue-table-header {
 		margin-bottom: 0px;
 	}
 	.eventC_page_section .evet_sliding, .eventD_page_section .evet_sliding, .eventD_page_section .eventD_input {
-		padding: 0px 50px;
+		padding: 0px 40px;
 	}
 	.eventC_page_section .event_activity p {
 		font-size: 16px;
@@ -6195,7 +6248,7 @@ tr.blue-table-header {
 	}
 	.eventC_page_section button.event_btn, .eventD_page_section button.event_btn {
 		font-size: 16px;
-		padding: 6px 52px;
+		padding: 7px;
 	}
 	/*eventC page end*/
 	/*eventD page start*/
@@ -6225,7 +6278,7 @@ tr.blue-table-header {
 		margin-left: 50px;
 	}
 	.eventC_page_section .event_activity {
-		padding: 17px 50px 7px 50px;
+		margin-left: 40px;
 	}
 	.eventD_page_section button.eventD_share {
 		font-size: 17px;
@@ -6238,6 +6291,7 @@ tr.blue-table-header {
 	}
 	.eventD_page_section button.event_invitation {
 		padding: 6px 27px;
+		font-size: 16px;
 	}
 	/*eventD page end*/
 	/*eventE page start*/
@@ -6285,10 +6339,10 @@ tr.blue-table-header {
 	.eventF_page_section .eventF_send {
 		padding: 5px 50px;
 	}
-	.eventF_page_section button.event_btn {
+	/* .eventF_page_section button.event_btn {
 		padding: 5px 52px;
 		font-size: 16px;
-	}
+	} */
 	.eventF_page_section button.invitation {
 		width: 100px;
 		font-size: 14px;
@@ -6604,10 +6658,10 @@ tr.blue-table-header {
 		/* width: 145px; */
 	}
 	.collection_slider .slick-arrow.slick-prev {
-		left: 140px;
+		left: 120px;
 	}
 	.collection_slider .slick-arrow.slick-next {
-		right: 140px;
+		right: 120px;
 	}
 	.collection_slider_section .event_inner_content {
 		width: 100%;
@@ -6699,6 +6753,14 @@ tr.blue-table-header {
 		padding: 2px 60px 2px 60px;
 	}
 	/*aso ebi event pages css end*/
+	/* event activity start s */
+	.event-count-box {
+		height: 77px;
+		overflow: scroll;
+		border: 1px solid #fff;
+		padding: 10px;
+	}
+	/* event activity end s */
 }
 
 @media(max-width: 575px) {
@@ -7009,6 +7071,11 @@ tr.blue-table-header {
 		margin-top: 15px;
 	}
 	/*share responsive css end*/
+	/* radio button css start s */
+	.eventC_page_section [type="radio"]:checked+label, .eventC_page_section [type="radio"]:not(:checked)+label{
+		font-size: 14.70px;
+	}
+	/* radio button css start s */
 	/*edit event responsive start*/
 	.login_form a {
 		font-size: 12px!important;
@@ -7451,7 +7518,7 @@ tr.blue-table-header {
 		margin-left: -25px;
 	}
 	.collection_slider .slick-arrow {
-		top: 19%;
+		top: 14%;
 	}
 	.collection_slider_section form .col-3 {
 		max-width: 31%;
@@ -7665,9 +7732,9 @@ tr.blue-table-header {
 	.collect_detail .collect_img p {
 		font-size: 11px;
 	}
-	.collect_detail {
+	/* .collect_detail {
 		padding: 5px 15px;
-	}
+	} */
 	.eventA_page_section button.event_btn {
 		font-size: 13px;
 	}
@@ -7688,7 +7755,7 @@ tr.blue-table-header {
 	/*eventB page end*/
 	/*evnetC page start*/
 	.eventC_page_section .event_activity {
-		padding: 0px 15px 0px 15px;
+		/* padding: 0px 15px 0px 15px; */
 	}
 	.eventC_page_section .event_button {
 		padding: 0px 15px;
@@ -7699,6 +7766,7 @@ tr.blue-table-header {
 	.eventC_page_section .eventC_btn {
 		padding: 5px 15px;
 		font-size: 13px;
+		margin-bottom: 5px;
 	}
 	.eventC_page_section .eventC_gendar label, .eventC_page_section .eventC_item p {
 		font-size: 13px;
@@ -7736,11 +7804,11 @@ tr.blue-table-header {
 		width: 100%;
 	}
 	.eventD_page_section button.event_payment, .eventD_page_section button.event_invitation {
-		font-size: 13px;
+		font-size: 12px;
 		padding: 6px 5px;
 	}
 	.eventD_page_section .eventD_detail p {
-		font-size: 13px;
+		font-size: 12px;
 	}
 	.eventD_page_section input.event_aso {
 		height: 35px;
@@ -7819,7 +7887,7 @@ tr.blue-table-header {
 	}
 	.eventF_page_section .eventF_send input {
 		font-size: 12px;
-		width: 65px;
+		/* width: 65px; */
 		margin-right: 3px;
 	}
 	.eventF_page_section .eventF_send label, .eventF_page_section .eventF_at label, .eventF_page_section .eventF_to label {
@@ -7961,6 +8029,11 @@ tr.blue-table-header {
 	}
 	/*slider page end*/
 	/*new event page without slider end*/
+	/* Collection page start s */
+	.collection_slider_section .inner_content_btn a{
+		width: 148px;
+	}
+	/* Collection page end s */
 }
 
 @media screen and (max-width: 421px) {
@@ -8353,6 +8426,14 @@ tr.blue-table-header {
 		padding: 4px 5px;
 	}
 	/*view event responsive css end*/
+	/* collection css start */
+	.collection_slider_section .inner_content_btn a{
+		width: 100px;
+	}
+	.collection_slider .slick-arrow{
+		top:19%;
+	}
+	/* collection css end */
 }
 
 @media screen and (max-width: 340px) {

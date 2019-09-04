@@ -14,9 +14,9 @@
 }
 
 .collect_detail .collect_img {
-    width: 82px;
+    width: 70px;
     border-radius: 50%;
-    height: 82px;
+    height: 70px;
     overflow: hidden;
 }
 .collect_detail .collect_img img{
@@ -25,4 +25,8 @@
     max-height: 100%;
     min-height: 100%;
     object-fit: cover;
+}
+.eventE_media {
+    margin: auto;
+    text-align: center;
 }

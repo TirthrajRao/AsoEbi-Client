@@ -45,7 +45,9 @@ export class InvitationEventComponent implements OnInit {
     this.getMyEvents();
     this.initActivitySlider();
     this.initCollectDetailSlick();
-
+    $(".new_event_menu").click(function () {
+      $(".new_event_menu_box").toggle();
+    });
   }
 
   initActivitySlider() {

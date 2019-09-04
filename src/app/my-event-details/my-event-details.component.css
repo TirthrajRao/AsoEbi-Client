@@ -14,9 +14,10 @@
 }
 
 .collect_detail .collect_img {
-    width: 82px;
     border-radius: 50%;
-    height: 82px;
+    width: 70px;
+    height: 70px;
+    margin: auto;
     overflow: hidden;
 }
 .collect_detail .collect_img img{

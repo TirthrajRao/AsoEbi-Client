@@ -14,10 +14,12 @@
 }
 
 .collect_detail .collect_img {
-    width: 82px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
-    height: 82px;
     overflow: hidden;
+    margin: auto;
+    text-align: center;
 }
 .collect_detail .collect_img img{
     max-width: 100%;

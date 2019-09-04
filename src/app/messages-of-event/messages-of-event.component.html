@@ -1,8 +1,4 @@
 
-
-
-
-
 <div class="initialStep">
 <section class="eventD_page_section d-flex flex-wrap align-content-center">
     <div class="container-fluid">
@@ -22,6 +18,11 @@
                     </div>
                 </div>
                 <div id="overlay1" class="new_event_menu_box" style="display: none;">
+                    <div class="m-auto pr-0 float-left new_event_menu slider_overlay">
+                        <a class="text-white "><img src="/assets/images/overlay.png">
+                            <p>Collections</p>
+                        </a>
+                    </div>
                     <div class="">
                         <div class="event_menu">
                             <div class="all_menu_content  d-flex flex-wrap align-content-center">
@@ -43,7 +44,7 @@
                     <div class="event_slider1" id="firstSlider">
                         <div class="slide1" *ngFor="let item of myEvent">
                             <div class="slider_box1 text-center m-2" [hidden]="!item.eventTitle">
-                                <button class="event_btn"
+                                <button class="event_btn" title="{{item.eventTitle}}"
                                     (click)="allEventList(item._id)">{{item.eventTitle}}</button>
                             </div>
                         </div>
