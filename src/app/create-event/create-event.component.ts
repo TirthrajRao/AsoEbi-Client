@@ -89,35 +89,35 @@ export class CreateEventComponent implements OnInit {
       $(".new_event_menu_box").toggle();
     });
     console.log("login user name", this.userName)
-    // this.createdActivity = [
-    //   {
+    this.createdActivity = [
+      {
 
-    //     activityName: "vzvsdfrsfrsr",
-    //     createdAt: "2019-09-03T13:56:44.676Z",
-    //     isDeleted: false,
-    //     updatedAt: "2019-09-03T13:56:44.676Z",
-    //     _id: "5d6f1ecbc9e2730f32beba99"
-    //   }, {
-    //     activityName: "dfsfdsfdsfdsfdsFdsf",
-    //     createdAt: "2019-09-03T13:56:44.676Z",
-    //     isDeleted: false,
-    //     updatedAt: "2019-09-03T13:56:44.676Z",
-    //     _id: "5d6f1ecbc9e2730f32beba98"
-    //   }, {
-    //     activityName: "fsdfdsfdsfZXCERere",
-    //     createdAt: "2019-09-03T13:56:44.676Z",
-    //     isDeleted: false,
-    //     updatedAt: "2019-09-03T13:56:44.676Z",
-    //     _id: "5d6f1ecbc9e2730f32beba97"
-    //   },
-    //   {
-    //     activityName: "cvvzcxvrtgrtrtrt",
-    //     createdAt: "2019-09-03T13:56:44.676Z",
-    //     isDeleted: false,
-    //     updatedAt: "2019-09-03T13:56:44.676Z",
-    //     _id: "5d6f1ecbc9e2730f32beba96"
-    //   }
-    // ]
+        activityName: "vzvsdfrsfrsr",
+        createdAt: "2019-09-03T13:56:44.676Z",
+        isDeleted: false,
+        updatedAt: "2019-09-03T13:56:44.676Z",
+        _id: "5d6f1ecbc9e2730f32beba99"
+      }, {
+        activityName: "dfsfdsfdsfdsfdsFdsf",
+        createdAt: "2019-09-03T13:56:44.676Z",
+        isDeleted: false,
+        updatedAt: "2019-09-03T13:56:44.676Z",
+        _id: "5d6f1ecbc9e2730f32beba98"
+      }, {
+        activityName: "fsdfdsfdsfZXCERere",
+        createdAt: "2019-09-03T13:56:44.676Z",
+        isDeleted: false,
+        updatedAt: "2019-09-03T13:56:44.676Z",
+        _id: "5d6f1ecbc9e2730f32beba97"
+      },
+      {
+        activityName: "cvvzcxvrtgrtrtrt",
+        createdAt: "2019-09-03T13:56:44.676Z",
+        isDeleted: false,
+        updatedAt: "2019-09-03T13:56:44.676Z",
+        _id: "5d6f1ecbc9e2730f32beba96"
+      }
+    ]
     this.getActivityFrom(),
       // this.initGroupForm(this.createdActivity);
       this.initGroupForm();
@@ -643,12 +643,10 @@ export class CreateEventComponent implements OnInit {
         setTimeout(() => {
           $('.step_2').css({ 'display': 'none' })
           $('.step_3').css({ 'display': 'block' });
-          // this.initCreatedActivitySlider();
-
-          $('.gender_slider1').not('.slick-initialized').slick({
+ $('.gender_slider1').not('.slick-initialized').slick({
             // autoplay: true,
             autoplaySpeed: 2000,
-            arrows: true,
+            arrows: false,
             dots: false,
             slidesToShow: 1.5,
             slidesToScroll: 1,

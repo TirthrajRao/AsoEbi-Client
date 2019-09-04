@@ -19,6 +19,7 @@ export class MyCartComponent implements OnInit {
   cartDetails: any = [];
   eventDetails;
   allDetails;
+  quantity;
   selectedGender;
   selectedGroup;
   firstGroupItem;
@@ -136,17 +137,19 @@ export class MyCartComponent implements OnInit {
         this.eventDetails = data.data.eventDetail;
         this.cartDetails = await this.allDetails.cartList;
         _.forEach(this.cartDetails, (item) => {
-          console.log(item);
+          this.quantity = item.quantity;
+          console.log("bov important che ",this.quantity);
+          
           if (item.itemGender == 'male') {
             this.maleTotal = item.itemPrice;
           }
           if (item.itemGender == 'female') {
             this.femaleTotal = item.itemPrice;
           }
-          console.log(this.femaleTotal);
+          // console.log(this.femaleTotal);
           this.subTotal = item.itemPrice * item.quantity;
           this.grandTotal = this.grandTotal + this.subTotal
-          this.finalGrandTotal = this.grandTotal;
+          // this.finalGrandTotal = this.grandTotal;
         })
         console.log(this.cartDetails);
         setTimeout(() => {

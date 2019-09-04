@@ -129,7 +129,9 @@
                                                         src="/assets/images/wn.png"> {{item.itemPrice}} </div>
                                                         <div class="float-right number_of_item">
                                                             <label class=""> x </label>
-                                                            <input type="text" min="1" id="donation"
+                                                            <!-- <h1>helooooo</h1> -->
+                                                            <!-- {{item.quantity}} -->
+                                                            <input type="text" min="1"  
                                                             (click)="finalTotal(item)"
                                                             [(ngModel)]='item.quantity'>
                                                         </div>
@@ -164,7 +166,7 @@
                                                             <div class="float-right number_of_item text-white">
                                                                 <label class=""> x </label>
                                                                 <input type="text" min="1" id="donation"
-                                                                (click)="finalTotal(item)"
+                                                                (keyup)="finalTotal(item)"
                                                                 [(ngModel)]='item.quantity'>
                                                             </div>
                                                         </div>

@@ -29,6 +29,8 @@ export class BankDetailsComponent implements OnInit {
     });
     // menu toggle end
 
+    /*bank detail slider end*/
+
     this.bankDetailsForm = new FormGroup({
       bankName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
       accountNumber: new FormControl('', [Validators.required, Validators.minLength(16), Validators.min(16)]),
@@ -39,100 +41,103 @@ export class BankDetailsComponent implements OnInit {
 
   }
 
-  initSlider(){
-    $('.slider1').not('.slick-initialized').slick({
-      infinite: true,
-      slidesToShow: 1.5,
-      slidesToScroll: 1,
-      autoplay: false,
-      arrows: false,
-      prevArrow:'<button class="prevarrow text-center"><i class="fa fa-caret-left" aria-hidden="true"></i></button>',
-      nextArrow:'<button class="nextarrow text-center"><i class="fa fa-caret-right" aria-hidden="true"></i></button>',
-      responsive: [
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-      ]
-    });
-
-  }
-
   /**
    * Display error message
    */
-  get f() { return this.bankDetailsForm.controls; }
+   get f() { return this.bankDetailsForm.controls; }
 
   /**
    * @param {json} data
    * Add bank account details of user
    */
-  onSubmit(data) {
-    console.log(this.bankDetailsForm);
-    this.submitted = true;
-    if (this.bankDetailsForm.invalid) {
-      return;
-    }
-    this.isDisable = true;
-    this._loginService.addBankDetails(this.bankDetailsForm.value)
-      .subscribe((data: any) => {
-        console.log("data of bank details", data);
-        this._alertService.getSuccess(data.message)
-        this.bankDetailsForm.reset();
+   onSubmit(data) {
+     console.log(this.bankDetailsForm);
+     this.submitted = true;
+     if (this.bankDetailsForm.invalid) {
+       return;
+     }
+     this.isDisable = true;
+     this._loginService.addBankDetails(this.bankDetailsForm.value)
+     .subscribe((data: any) => {
+       console.log("data of bank details", data);
+       this._alertService.getSuccess(data.message)
+       this.bankDetailsForm.reset();
 
-        $('.secondStep').css({ 'display': 'none' })
-        $('.firstStep ').css({ 'display': 'block' });
-      }, (err: any) => {
-        console.log(err);
-        this._alertService.getError(err.message);
-      })
+       $('.secondStep').css({ 'display': 'none' })
+       $('.firstStep ').css({ 'display': 'block' });
+     }, (err: any) => {
+       console.log(err);
+       this._alertService.getError(err.message);
+     })
 
-  }
+   }
 
-  getBankDetails() {
-    this._eventService.getBankDetails()
-      .subscribe((data: any) => {
-        console.log(data);
-        this.bankDetails = data.data.bankDetail;
-        console.log("har har mahadev", this.bankDetails);
-      }, err => {
-        console.log(err);
-      })
-  }
+   getBankDetails() {
+     this._eventService.getBankDetails()
+     .subscribe((data: any) => {
+       console.log(data);
+       this.bankDetails = data.data.bankDetail;
+       console.log("har har mahadev", this.bankDetails);
+       setTimeout(()=>{
+       this.initSlider()
+       },100)
+     }, err => {
+       console.log(err);
+     })
+   }
 
-  selectBank() {
+   initSlider(){
+     $('.slider1').not('.slick-initialized').slick({
+       infinite: true,
+       slidesToShow: 1.5,
+       slidesToScroll: 1,
+       autoplay: false,
+       arrows: false,
+       prevArrow:'<button class="prevarrow text-center"><i class="fa fa-caret-left" aria-hidden="true"></i></button>',
+       nextArrow:'<button class="nextarrow text-center"><i class="fa fa-caret-right" aria-hidden="true"></i></button>',
+       responsive: [
+       {
+         breakpoint: 600,
+         settings: {
+           slidesToShow: 1,
+           slidesToScroll: 1,
+         }
+       },
+       {
+         breakpoint: 480,
+         settings: {
+           slidesToShow: 1,
+           slidesToScroll: 1
+         }
+       }
+       ]
+     });
 
-    this.selectedBank = $('input[name="radio-group"]:checked').val();
-    let checked = $('input[name="checkButton"]:checked').val();
+   }
 
-    if (checked == 'direct' && checked == 'indirect' ) {
-      Swal.fire({
-        type: 'error',
-        title: "sorry" + "You Can Select Only One Item",
-        showConfirmButton: false,
-        timer: 2000
-      })
-    }
-    else {
-      console.log(this.selectedBank);
-      console.log(checked);
-    }
-  }
+   selectBank() {
 
-  addBankAccount() {
-    $('.firstStep').css({ 'display': 'none' })
-    $('.secondStep').css({ 'display': 'block' });
-  }
+     this.selectedBank = $('input[name="radio-group"]:checked').val();
+     let checked = $('input[name="checkButton"]:checked').val();
+
+     if (checked == 'direct' && checked == 'indirect' ) {
+       Swal.fire({
+         type: 'error',
+         title: "sorry" + "You Can Select Only One Item",
+         showConfirmButton: false,
+         timer: 2000
+       })
+     }
+     else {
+       console.log(this.selectedBank);
+       console.log(checked);
+     }
+   }
+
+   addBankAccount() {
+     $('.firstStep').css({ 'display': 'none' })
+     $('.secondStep').css({ 'display': 'block' });
+   }
 
 
 
@@ -140,50 +145,50 @@ export class BankDetailsComponent implements OnInit {
    * @param {String} form
    * validation of bankName with proper error message 
    */
-  validateBankName(form) {
-    console.log(form);
-    const nameInput = /[a-zA-Z ]/;
-    let message1 = document.getElementById('message1');
-    if (!form.bankName.match(nameInput)) {
-      console.log("message==========", message1)
-      message1.innerHTML = "Name can not start with digit"
-    } else {
-      message1.innerHTML = "";
-    }
-  }
+   validateBankName(form) {
+     console.log(form);
+     const nameInput = /[a-zA-Z ]/;
+     let message1 = document.getElementById('message1');
+     if (!form.bankName.match(nameInput)) {
+       console.log("message==========", message1)
+       message1.innerHTML = "Name can not start with digit"
+     } else {
+       message1.innerHTML = "";
+     }
+   }
 
   /**
    * @param {String} form
    * validation of accountNumber with proper error message 
    */
-  validateAccountNumber(form) {
+   validateAccountNumber(form) {
 
-    console.log(form);
-    //  NOT ( REGEX ( Name__c,"[a-zA-Z]*" ))
-    const accountNumber = /[0-9]/;
-    let message = document.getElementById('message2');
-    if (!form.accountNumber.match(accountNumber)) {
-      console.log("message==========", message)
-      message.innerHTML = "Please enter only numbers"
-    } else {
-      message.innerHTML = "";
-    }
-  }
+     console.log(form);
+     //  NOT ( REGEX ( Name__c,"[a-zA-Z]*" ))
+     const accountNumber = /[0-9]/;
+     let message = document.getElementById('message2');
+     if (!form.accountNumber.match(accountNumber)) {
+       console.log("message==========", message)
+       message.innerHTML = "Please enter only numbers"
+     } else {
+       message.innerHTML = "";
+     }
+   }
 
   /**
    * @param {String} form
    * validation of IFSC Code with proper error message 
    */
-  validateIFSCCode(form) {
-    console.log(form);
-    const phoneno = /[0-9]/;
-    let message = document.getElementById('message3');
-    if (!form.IFSCCode.match(phoneno)) {
-      console.log("message==========", message)
-      message.innerHTML = "Please enter only numbers"
-    } else {
-      message.innerHTML = "";
+   validateIFSCCode(form) {
+     console.log(form);
+     const phoneno = /[0-9]/;
+     let message = document.getElementById('message3');
+     if (!form.IFSCCode.match(phoneno)) {
+       console.log("message==========", message)
+       message.innerHTML = "Please enter only numbers"
+     } else {
+       message.innerHTML = "";
 
-    }
-  }
-}
+     }
+   }
+ }
