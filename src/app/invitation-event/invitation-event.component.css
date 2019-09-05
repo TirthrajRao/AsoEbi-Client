@@ -15,8 +15,9 @@
 
 .collect_detail .collect_img {
     width: 70px;
-    border-radius: 50%;
     height: 70px;
+    margin: auto;
+    border-radius: 50%;
     overflow: hidden;
 }
 .collect_detail .collect_img img{

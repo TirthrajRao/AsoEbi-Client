@@ -16,7 +16,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="overlay1" class="new_event_menu_box" style="display: none;">
+                    <div id="overlay" class="new_event_menu_box" style="display: none;">
                         <div class="m-auto pr-0 float-left new_event_menu slider_overlay">
                             <a class="text-white "><img src="/assets/images/overlay.png">
                                 <p>Collections</p>
@@ -86,7 +86,7 @@
                         <span *ngFor="let item of allActivityList">
                             <div class="collect1_img">
                                 <div class="collect_img"
-                                    (click)="singleActivityDetails(singleEventDetails._id,item._id)">
+                                    (click)="singleActivityDetails(item)">
                                     <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                         src="{{path}}{{singleEventDetails.profilePhoto}}">
                                 </div>
@@ -163,7 +163,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="overlay1" class="new_event_menu_box" style="display: none;">
+                        <div id="overlay" class="new_event_menu_box" style="display: none;">
                                 <div class="m-auto pr-0 float-left new_event_menu slider_overlay">
                                     <a class="text-white "><img src="/assets/images/overlay.png">
                                         <p>Collections</p>

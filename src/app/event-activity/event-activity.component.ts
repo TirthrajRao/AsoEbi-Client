@@ -199,9 +199,15 @@ export class EventActivityComponent implements OnInit {
   //   console.log(id);
   //   this.router.navigate(['/home/myEventDetails/', id])
   // }
-  singleActivityDetails(eventId, activityId) {
-    console.log(eventId, activityId);
-    this.router.navigate(['/home/eventActivity/', eventId, activityId])
+  singleActivityDetails(activityId) {
+    console.log(activityId);
+    this.selectedActivityGroup = activityId.group;
+    this.selectedGroup = activityId.group[0].groupName;
+    this.selectedGender = 'male';
+    console.log(this.selectedGender)
+    $('input:radio[id="test"]').prop('checked', true);
+    this.itemNamePrint = _.filter(activityId.group[0].item, {itemGender: 'male'});
+    // this.router.navigate(['/home/eventActivity/', eventId, activityId])
   }
 
   eventDeatils(id, activityId) {

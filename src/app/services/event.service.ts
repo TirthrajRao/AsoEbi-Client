@@ -84,9 +84,9 @@ export class EventService {
     return this.http.put(config.baseApiUrl + "api/activity", data);
   }
 
-  removeActivity(data) {
-    console.log("data of delete activity", data)
-    return this.http.post(config.baseApiUrl + "api/activity-delete", data);
+  removeActivity(activityId) {
+    console.log("data of delete activity",activityId)
+    return this.http.post(config.baseApiUrl + "api/activity-delete", activityId);
   }
 
   /**
@@ -276,5 +276,16 @@ export class EventService {
    */
   getUserList() {
     return this.http.get(config.baseApiUrl + "api/user/user-list");
+  }
+
+  afterEventMessageDetail(eventId, messageData) {
+    const data = {
+      eventId: eventId,
+      messageDate: messageData.messageDate,
+      messagePreference: messageData.messagePreferance,
+      message: messageData.thanksMessage
+    }
+    return this.http.put(config.baseApiUrl + "api/after-eventmsg", data);
+
   }
 }

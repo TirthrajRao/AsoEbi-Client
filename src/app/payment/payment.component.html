@@ -124,8 +124,8 @@
                                     <div class="row">
                                         <div class="col-12" *ngIf="item.itemGender == 'male'">
                                             <div class="all_list all_list_height">
-                                                <div class="fabric_name float-left">{{item.itemName}}<img
-                                                    src="/assets/images/wn.png">{{item.itemPrice}}</div>
+                                                <div class="fabric_name float-left"> {{item.itemName}} <img
+                                                    src="/assets/images/wn.png"> {{item.itemPrice}} </div>
                                                     <div class="float-right number_of_item">
                                                         <!-- <label class=""> x </label> -->
                                                         <input type="text" min="1" [(ngModel)]="item.quantity"
@@ -139,7 +139,7 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class=" float-right"> = <img src="/assets/images/wn.png">
-                                                {{item.itemPrice * item.quantity }}</div>
+                                                 {{item.itemPrice * item.quantity }} </div>
                                             </div>
                                         </div>
                                     </div>
@@ -154,8 +154,8 @@
                                         <div class="row">
                                             <div class="col-12" *ngIf="item.itemGender=='female'">
                                                 <div class="all_list all_list_height">
-                                                    <div class="fabric_name float-left">{{item.itemName}}<img
-                                                        src="/assets/images/wn.png">{{item.itemPrice}}</div>
+                                                    <div class="fabric_name float-left"> {{item.itemName}} <img
+                                                        src="/assets/images/wn.png"> {{item.itemPrice}} </div>
                                                         <div class="float-right number_of_item">
                                                             <!-- <label class=""> x </label> -->
                                                             <input type="text" min="1" [(ngModel)]="item.quantity"
@@ -168,8 +168,8 @@
                                         <div class="col-5 all_list_total_price" *ngIf="item.itemGender=='female'">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <div class=" float-right"> = <img src="/assets/images/wn.png">
-                                                    {{item.itemPrice * item.quantity }}</div>
+                                                    <div class=" float-right"> = <img src="/assets/images/wn.png"> 
+                                                    {{item.itemPrice * item.quantity }} </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -180,8 +180,8 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="float-left">Total</div>
-                                            <div class="fabric_name float-right">= <img src="/assets/images/yn.png">
-                                                {{grandTotal}}
+                                            <div class="fabric_name float-right"> = <img src="/assets/images/yn.png">
+                                                 {{grandTotal}}
                                             </div>
                                         </div>
                                     </div>
@@ -191,7 +191,7 @@
                                         <div class="col-12">
                                             <div class="float-left">FInal Total</div>
                                             <div class="fabric_name float-right">= <img src="/assets/images/yn.png">
-                                                {{finalGrandTotal}}
+                                                 {{finalGrandTotal}}
                                             </div>
                                         </div>
                                     </div>

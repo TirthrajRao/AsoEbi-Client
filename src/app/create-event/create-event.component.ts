@@ -121,6 +121,7 @@ export class CreateEventComponent implements OnInit {
     this.getActivityFrom(),
       // this.initGroupForm(this.createdActivity);
       this.initGroupForm();
+    this.initCreatedActivitySlider()
     $('#eventId').css({ 'display': 'none' });
     // $(document).ready(function () {
 
@@ -128,7 +129,7 @@ export class CreateEventComponent implements OnInit {
     // $("#deadLineDate").datepicker({ dateFormat: 'yyyy-MM-dd' }).val();
     //   $("#deadLineDate").datepicker({dateFormat: "yy-mm-dd"});
 
-    //   $("#deadLineDate").datepicker({ "setDate": new Date(), "minDate": new Date(), dateFormat: 'yy-mm-dd' });
+      $("#deadLineDate").datepicker({ "setDate": new Date(), "minDate": new Date(), dateFormat: 'yy-mm-dd' });
     // });
 
 
@@ -324,27 +325,28 @@ export class CreateEventComponent implements OnInit {
    */
 
   addEvent($this) {
+    this.eventForm.value.deadlineDate = $('#deadLineDate').val();
     console.log(this.eventForm.value);
     console.log("data of event", $('.slick-active').hasClass("done"));
     // if ($('.slick-active').hasClass("done")) {
     console.log("in twelve_slide");
-    this._eventService.addEvent(this.eventForm.value, this.files, this.themeFiles)
-      .subscribe((data: any) => {
-        console.log("event details", data);
-        $('.step_1').css({ 'display': 'none' })
-        $('.step_2').css({ 'display': 'block' });
-        this.eventId = data.data._id;
-        console.log("created eventid", this.eventId);
-        this.getActivityFrom();
-      }, (err: any) => {
-        console.log(err);
-        this.alertService.getError(err.message);
-      })
+    // this._eventService.addEvent(this.eventForm.value, this.files, this.themeFiles)
+    //   .subscribe((data: any) => {
+    //     console.log("event details", data);
+    //     $('.step_1').css({ 'display': 'none' })
+    //     $('.step_2').css({ 'display': 'block' });
+    //     this.eventId = data.data._id;
+    //     console.log("created eventid", this.eventId);
+    //     this.getActivityFrom();
+    //   }, (err: any) => {
+    //     console.log(err);
+    //     this.alertService.getError(err.message);
+    //   })
+    // // }
+    // console.log("data of event", $('.slick-active').hasClass("twelve_slide"));
+    // if ($('.slick-active').hasClass("twelve_slide")) {
+    //   $('.slick-active').addClass("done")
     // }
-    console.log("data of event", $('.slick-active').hasClass("twelve_slide"));
-    if ($('.slick-active').hasClass("twelve_slide")) {
-      $('.slick-active').addClass("done")
-    }
   }
 
   /**
@@ -641,41 +643,24 @@ export class CreateEventComponent implements OnInit {
         setTimeout(() => {
           $('.step_2').css({ 'display': 'none' })
           $('.step_3').css({ 'display': 'block' });
-
-          $('.createdActivitySlider').not('.slick-initialized').slick({
-            infinite: true,
-            slidesToShow: 1,
+ $('.gender_slider1').not('.slick-initialized').slick({
+            // autoplay: true,
+            autoplaySpeed: 2000,
+            arrows: false,
+            dots: false,
+            slidesToShow: 1.5,
             slidesToScroll: 1,
-            autoplay: false,
-            arrows: true,
-            prevArrow: '<button class="prevarrow text-center"><i class="fa fa-caret-left" aria-hidden="true"></i></button>',
-            nextArrow: '<button class="nextarrow text-center" ><i class="fa fa-caret-right" aria-hidden="true"></i></button>',
+            draggable: true,
+            fade: false,
             responsive: [
               {
-                breakpoint: 1024,
+                breakpoint: 767,
                 settings: {
-                  slidesToShow: 2,
-                  slidesToScroll: 1,
-                  infinite: true,
-                }
-              },
-              {
-                breakpoint: 600,
-                settings: {
-                  slidesToShow: 2,
-                  slidesToScroll: 1,
-                }
-              },
-              {
-                breakpoint: 480,
-                settings: {
-                  slidesToShow: 1,
-                  slidesToScroll: 1
+                  slidesToShow: 1
                 }
               }
             ]
           });
-
           $('.gender_slider').not('.slick-initialized').slick({
             // autoplay: true,
             autoplaySpeed: 2000,
@@ -694,7 +679,7 @@ export class CreateEventComponent implements OnInit {
               }
             ]
           });
-        }, 500);
+        }, 50);
       }, (err: any) => {
         console.log(err);
         this.alertService.getError(err.message);
@@ -725,10 +710,12 @@ export class CreateEventComponent implements OnInit {
     }
     else {
       console.log(id);
+      // let event = this.eventId;
+      console.log(event);
       this._eventService.removeActivity(id)
         .subscribe((data: any) => {
           console.log(data);
-          this.createdActivity = data.data
+          this.createdActivity = data.data.activities
           this.getActivityFrom(this.createdActivity);
         }, err => {
           console.log(err);
@@ -843,9 +830,9 @@ export class CreateEventComponent implements OnInit {
   /**
    * If any changes update event
    */
-  updateEvent($this) {
+  updateEvent() {
     this.getActivityFrom(this.eventActivities);
-    if ($('.slick-active').hasClass("done")) {
+    // if ($('.slick-active').hasClass("done")) {
       console.log("in twelve_slide");
       // this._eventService.addEvent(this.eventForm.value, this.files, this.themeFiles)
       //   .subscribe((data: any) => {
@@ -868,7 +855,7 @@ export class CreateEventComponent implements OnInit {
           console.log(err);
           this.alertService.getError(err.message);
         })
-    }
+    // }
     console.log("data of event", $('.slick-active').hasClass("twelve_slide"));
     if ($('.slick-active').hasClass("twelve_slide")) {
       $('.slick-active').addClass("done")
