@@ -1,122 +1,123 @@
 <div class="initialStep">
-<section class="eventE_page_section d-flex flex-wrap align-content-center">
-    <div class="container-fluid">
-        <h3 class="text-center">Aso Ebi</h3>
-        <div class="eventE_sec1">
-            <div class="Join_inner_content_box">
-                <div class="all_event_sec">
-                    <div class="row">
+    <section class="eventE_page_section d-flex flex-wrap align-content-center">
+        <div class="container-fluid">
+            <h3 class="text-center">Aso Ebi</h3>
+            <div class="eventE_sec1">
+                <div class="Join_inner_content_box">
+                    <div class="all_event_sec">
+                        <div class="row">
                             <div class="col-3 m-auto pr-0 float-right new_event_menu">
-                                    <a><img src="/assets/images/eventE_icon.png">
-                                        <p class="text-white">My Event</p>
-                                    </a>
-                                </div>
-                        <div class="col-9 p-0">
-                            <span class="text-black all_event_name"> Hello Rao Info Tech </span>
-                        </div>
-                    </div>
-                </div>
-                <div id="overlay" class="new_event_menu_box" style="display: none;">
-                        <div class="m-auto pr-0 float-left new_event_menu slider_overlay">
-                                <a class="text-white "><img src="/assets/images/overlay.png">
-                                    <p>My Event</p>
+                                <a><img src="/assets/images/eventE_icon.png">
+                                    <p class="text-white">My Event</p>
                                 </a>
                             </div>
-                    <div class="">
-                        <div class="event_menu">
-                            <div class="all_menu_content  d-flex flex-wrap align-content-center">
-                                <ul>
-                                    <li><a href="eventA.html" class="text-white new_event">my event</a></li>
-                                    <li><a href="new_event_slider.html" class="text-white my_event">new event</a></li>
-                                    <li><a href="add_bank_account.html" class="text-white my_account">bank account</a>
-                                    </li>
-                                    <li><a href="reset_password.html" class="text-white my_account">Reset Password</a>
-                                    </li>
-                                    <li><a href="#" class="text-white my_account">Logout</a></li>
-                                </ul>
+                            <div class="col-9 p-0">
+                                <span class="text-black all_event_name"> Hello Rao Info Tech </span>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="evet_sliding">
-                    <div class="event_slider1" id="firstSlider">
-                        <div class="slide1" *ngFor="let item of myEvent">
-                            <div class="slider_box1 text-center m-2" [hidden]="!item.eventTitle">
-                                <button class="event_btn" title="{{item.eventTitle}}"
-                                    (click)="allEventList(item._id)">{{item.eventTitle}}</button>
+                    <div id="overlay" class="new_event_menu_box" style="display: none;">
+                        <div class="m-auto pr-0 float-left new_event_menu slider_overlay">
+                            <a class="text-white "><img src="/assets/images/overlay.png">
+                                <p>My Event</p>
+                            </a>
+                        </div>
+                        <div class="">
+                            <div class="event_menu">
+                                <div class="all_menu_content  d-flex flex-wrap align-content-center">
+                                    <ul>
+                                        <li><a href="eventA.html" class="text-white new_event">my event</a></li>
+                                        <li><a href="new_event_slider.html" class="text-white my_event">new event</a>
+                                        </li>
+                                        <li><a href="add_bank_account.html" class="text-white my_account">bank
+                                                account</a>
+                                        </li>
+                                        <li><a href="reset_password.html" class="text-white my_account">Reset
+                                                Password</a>
+                                        </li>
+                                        <li><a href="#" class="text-white my_account">Logout</a></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="evet_sliding">
+                        <div class="event_slider1" id="firstSlider">
+                            <div class="slide1" *ngFor="let item of myEvent">
+                                <div class="slider_box1 text-center m-2" [hidden]="!item.eventTitle">
+                                    <button class="event_btn" title="{{item.eventTitle}}"
+                                        (click)="allEventList(item._id)">{{item.eventTitle}}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="eventE_media">
+                        <share-button [theme]="'circles-dark'" [button]="'whatsapp'" [showCount]="true"
+                            [url]="'https://aso-ebi.com/welcome-guest/NWQ1MmMyMTdhNTBjMTUzYmVmNDc2MTIy'"
+                            [autoSetMeta]="false"></share-button>
+                        <share-button [theme]="'circles-dark'" [button]="'facebook'" [showCount]="true"
+                            [url]="'https://aso-ebi.com/welcome-guest/NWQ1MmMyMTdhNTBjMTUzYmVmNDc2MTIy'">
+                        </share-button>
+                        <share-button [theme]="'circles-dark'" [button]="'email'" [showCount]="true"
+                            [url]="'https://twitter.com/'"></share-button>
+                        <share-button [theme]="'circles-dark'" [button]="'sms'" [showCount]="true"
+                            [url]="'https://twitter.com/'"></share-button>
 
-                <div class="eventE_media">
-                      <share-button [theme]="'circles-dark'" [button]="'whatsapp'"
-                        [showCount]="true"
-                        [url]="'https://aso-ebi.com/welcome-guest/NWQ1MmMyMTdhNTBjMTUzYmVmNDc2MTIy'"
-                        [autoSetMeta]="false"></share-button>
-                    <share-button [theme]="'circles-dark'" [button]="'facebook'"
-                        [showCount]="true"
-                        [url]="'https://aso-ebi.com/welcome-guest/NWQ1MmMyMTdhNTBjMTUzYmVmNDc2MTIy'">
-                    </share-button>
-                    <share-button [theme]="'circles-dark'" [button]="'email'" [showCount]="true"
-                        [url]="'https://twitter.com/'"></share-button>
-                    <share-button [theme]="'circles-dark'" [button]="'sms'" [showCount]="true"
-                        [url]="'https://twitter.com/'"></share-button>
-
-                </div>
-                <div class="collect_detail text-center mt-3">
-                    <span *ngFor="let item of activityName">
-                        <div class="collect1_img">
-                            <div class="collect_img" (click)="singleActivityDetails(singleEventDetails._id,item._id)">
+                    </div>
+                    <div class="collect_detail text-center mt-3">
+                        <span *ngFor="let item of activityName">
+                            <div class="collect1_img">
+                                <div class="collect_img"
+                                    (click)="singleActivityDetails(singleEventDetails._id,item._id)">
+                                    <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
+                                        src="{{path}}{{singleEventDetails.profilePhoto}}">
+                                </div>
+                                <p>{{item.activityName}}</p>
+                            </div>
+                        </span>
+                        <div class="collect1_img" (click)="totalCollection(singleEventDetails._id)">
+                            <div class="collect_img">
                                 <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                     src="{{path}}{{singleEventDetails.profilePhoto}}">
                             </div>
-                            <p>{{item.activityName}}</p>
+                            <p>Collected</p>
                         </div>
-                    </span>
-                    <div class="collect1_img"  (click)="totalCollection(singleEventDetails._id)">
-                        <div class="collect_img">
-                            <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
-                                src="{{path}}{{singleEventDetails.profilePhoto}}">
+                        <div class="collect1_img">
+                            <div class="collect_img" (click)="nextSection('seventhStep', 'initialStep')">
+                                <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
+                                    src="{{path}}{{singleEventDetails.profilePhoto}}">
+                            </div>
+                            <p>Edit Event</p>
                         </div>
-                        <p>Collected</p>
-                    </div>
-                    <div class="collect1_img">
-                        <div class="collect_img" (click)="nextSection('seventhStep', 'initialStep')">
-                            <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
-                                src="{{path}}{{singleEventDetails.profilePhoto}}">
+                        <div class="collect1_img">
+                            <div class="collect_img" (click)="viewMoreDeatils(singleEventDetails._id)">
+                                <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
+                                    src="{{path}}{{singleEventDetails.profilePhoto}}">
+                            </div>
+                            <p>View Event</p>
                         </div>
-                        <p>Edit Event</p>
-                    </div>
-                    <div class="collect1_img">
-                        <div class="collect_img" (click)="viewMoreDeatils(singleEventDetails._id)">
-                            <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
-                                src="{{path}}{{singleEventDetails.profilePhoto}}">
+
+                        <div class="collect1_img">
+                            <div class="collect_img" (click)="messageEvent(singleEventDetails._id)">
+                                <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
+                                    src="{{path}}{{singleEventDetails.profilePhoto}}">
+                            </div>
+                            <p>Message</p>
                         </div>
-                        <p>View Event</p>
+                        <div class="collect1_img">
+                            <div class="collect_img" (click)="autoMessage(singleEventDetails._id)">
+                                <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
+                                    src="{{path}}{{singleEventDetails.profilePhoto}}">
+                            </div>
+                            <p>Auto Message</p>
+                        </div>
                     </div>
 
-                    <div class="collect1_img">
-                        <div class="collect_img" (click)="messageEvent(singleEventDetails._id)">
-                            <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
-                                src="{{path}}{{singleEventDetails.profilePhoto}}">
-                        </div>
-                        <p>Message</p>
-                    </div>
-                    <div class="collect1_img">
-                        <div class="collect_img" (click)="autoMessage(singleEventDetails._id)">
-                            <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
-                                src="{{path}}{{singleEventDetails.profilePhoto}}">
-                        </div>
-                        <p>Auto Message</p>
-                    </div>
+
                 </div>
-
-
             </div>
         </div>
-    </div>
-</section>
+    </section>
 </div>
 
 

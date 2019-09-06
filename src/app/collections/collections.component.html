@@ -1,33 +1,6 @@
-<!-- <div class="row">
-    <div class="col-md-12" *ngFor="let activity of activitiesCollections">
-        <p>ActivityName:{{activity._id}}</p>
-        <div class="row">
-            <div class="col-md-12" *ngFor="let group of activity.group">
-               groupName: {{group.groupName}}
-                <div class="row">
-                    <div class="col-md-12" *ngFor="let item of group.item">
-                           <span *ngIf="item.itemGender=='female' ? getFemaleTotal(item.total) : null">
-                               {{ getFemaleTotal(item.total) }}
-                           </span>
-                           <span *ngIf="item.itemGender=='male' ? getMaleTotal(item.total) : null">
-                                {{ getMaleTotal(item.total) }}
-                            </span>
-                        </div>
-                    </div>
-                    Female: {{femaleTotal}} 
-                    Male: {{maleTotal}} 
-            </div>
-        </div>
-    </div>
-</div> -->
-
-
-
 <!-- new design  -->
-
 <section class="collection_slider_section d-flex flex-wrap align-content-center">
     <div class="container-fluid">
-
         <h3 class="text-center">Aso Ebi</h3>
         <!-- collection slider starts -->
         <div class="collection_slider">
@@ -49,29 +22,29 @@
                             </div>
                         </div>
                         <div id="overlay" class="new_event_menu_box" style="display: none;">
-                                <div class="m-auto pr-0 float-left new_event_menu slider_overlay">
-                                    <a class="text-white "><img src="/assets/images/overlay.png">
-                                        <p>Collections</p>
-                                    </a>
-                                </div>
-                                <div class="">
-                                    <div class="event_menu">
-                                        <div class="all_menu_content  d-flex flex-wrap align-content-center">
-                                            <ul>
-                                                <li><a routerLink="/home" class="text-white new_event">Home</a></li>
-                                                <li><a routerLink="/myEvent" class="text-white new_event">my event</a></li>
-                                                <li><a routerLink="/createEvent" class="text-white my_event">new event</a>
-                                                </li>
-                                                <li><a routerLink="/bankDetails" class="text-white my_account">bank
-                                                        account</a></li>
-                                                <li><a routerLink="/reset-password" class="text-white my_account">Reset
-                                                        Password</a></li>
-                                                <li><a (click)="logout()" class="text-white my_account">Logout</a></li>
-                                            </ul>
-                                        </div>
+                            <div class="m-auto pr-0 float-left new_event_menu slider_overlay">
+                                <a class="text-white "><img src="/assets/images/overlay.png">
+                                    <p>Collections</p>
+                                </a>
+                            </div>
+                            <div class="">
+                                <div class="event_menu">
+                                    <div class="all_menu_content  d-flex flex-wrap align-content-center">
+                                        <ul>
+                                            <li><a routerLink="/home" class="text-white new_event">Home</a></li>
+                                            <li><a routerLink="/myEvent" class="text-white new_event">my event</a></li>
+                                            <li><a routerLink="/createEvent" class="text-white my_event">new event</a>
+                                            </li>
+                                            <li><a routerLink="/bankDetails" class="text-white my_account">bank
+                                                    account</a></li>
+                                            <li><a routerLink="/reset-password" class="text-white my_account">Reset
+                                                    Password</a></li>
+                                            <li><a (click)="logout()" class="text-white my_account">Logout</a></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
+                        </div>
                         <div class="inner_content_btn text-center" *ngIf="totalCollection">
                             <a href="#" title="{{totalCollection.eventHashTag}}"
                                 class="tom_btn text-white text-center">{{totalCollection.eventHashTag}}</a>
@@ -88,11 +61,13 @@
                                 <h3 class="text-white">{{money._id}} ( <img src="/assets/images/N.png"> Total)</h3>
                             </div>
                             <div>
-                                <div class="row">
-                                    <div class="col-3" *ngFor="let group of money.group; let i = index;">
-                                        <input type="radio" id="{{k}}{{i}}" name="radio-group"
-                                            (change)="handleChange(group)">
-                                        <label for="{{k}}{{i}}">{{group.groupName}}</label>
+                                <div class="group-name-scroll">
+                                    <div class="row">
+                                        <div class="col-sm-6" *ngFor="let group of money.group; let i = index;">
+                                            <input type="radio" id="{{k}}{{i}}" name="radio-group"
+                                                (change)="handleChange(group)">
+                                            <label for="{{k}}{{i}}">{{group.groupName}}</label>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="gender_list text-white">
@@ -213,50 +188,51 @@
                             </div>
                         </div>
                         <div id="overlay" class="new_event_menu_box" style="display: none;">
-                                <div class="m-auto pr-0 float-left new_event_menu slider_overlay">
-                                    <a class="text-white "><img src="/assets/images/overlay.png">
-                                        <p>Collections</p>
-                                    </a>
-                                </div>
-                                <div class="">
-                                    <div class="event_menu">
-                                        <div class="all_menu_content  d-flex flex-wrap align-content-center">
-                                            <ul>
-                                                <li><a routerLink="/home" class="text-white new_event">Home</a></li>
-                                                <li><a routerLink="/myEvent" class="text-white new_event">my event</a></li>
-                                                <li><a routerLink="/createEvent" class="text-white my_event">new event</a>
-                                                </li>
-                                                <li><a routerLink="/bankDetails" class="text-white my_account">bank
-                                                        account</a></li>
-                                                <li><a routerLink="/reset-password" class="text-white my_account">Reset
-                                                        Password</a></li>
-                                                <li><a (click)="logout()" class="text-white my_account">Logout</a></li>
-                                            </ul>
-                                        </div>
+                            <div class="m-auto pr-0 float-left new_event_menu slider_overlay">
+                                <a class="text-white "><img src="/assets/images/overlay.png">
+                                    <p>Collections</p>
+                                </a>
+                            </div>
+                            <div class="">
+                                <div class="event_menu">
+                                    <div class="all_menu_content  d-flex flex-wrap align-content-center">
+                                        <ul>
+                                            <li><a routerLink="/home" class="text-white new_event">Home</a></li>
+                                            <li><a routerLink="/myEvent" class="text-white new_event">my event</a></li>
+                                            <li><a routerLink="/createEvent" class="text-white my_event">new event</a>
+                                            </li>
+                                            <li><a routerLink="/bankDetails" class="text-white my_account">bank
+                                                    account</a></li>
+                                            <li><a routerLink="/reset-password" class="text-white my_account">Reset
+                                                    Password</a></li>
+                                            <li><a (click)="logout()" class="text-white my_account">Logout</a></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                    </div>
-                    <div class="inner_content_btn text-center" *ngIf="totalCollection">
-                        <a href="#" title="{{totalCollection.eventHashTag}}"
-                            class="tom_btn text-white text-center">{{totalCollection.eventHashTag}}</a>
-                    </div>
-                    <div class="inner_content_btn total_btn">
-                        <a (click)="totalCost('slide_four')" class="text-white float-left text-center">Total</a>
-                        <a class="text-white float-right text-center">GuestList</a>
-                    </div>
-                    <h3 class="number text-white text-center"><a href="#"><img src="/assets/images/search.png"></a><a
-                            href="#"><img src="/assets/images/download.png"></a> Share point. 412</h3>
-                    <div class="inner_box_content">
-                        <div class="scrollbar-rail scroll_content">
-                            <div class="five_border">
-                                <div class="inner_title">
-                                    <h3 class="text-white"><span>TA</span> Tolani Aso Ebi</h3>
-                                </div>
-                                <div class="gender_list text-white" *ngFor="let list of allGuestList">
-                                    <div class="list1">
-                                        <p>{{list.firstName}} {{list.lastName}} <img
-                                                src="/assets/images/N.png">{{list.totalCollection}}</p>
+                        </div>
+                        <div class="inner_content_btn text-center" *ngIf="totalCollection">
+                            <a href="#" title="{{totalCollection.eventHashTag}}"
+                                class="tom_btn text-white text-center">{{totalCollection.eventHashTag}}</a>
+                        </div>
+                        <div class="inner_content_btn total_btn">
+                            <a (click)="totalCost('slide_four')" class="text-white float-left text-center">Total</a>
+                            <a class="text-white float-right text-center">GuestList</a>
+                        </div>
+                        <h3 class="number text-white text-center"><a href="#"><img
+                                    src="/assets/images/search.png"></a><a href="#"><img
+                                    src="/assets/images/download.png"></a> Share point. 412</h3>
+                        <div class="inner_box_content">
+                            <div class="scrollbar-rail scroll_content">
+                                <div class="five_border">
+                                    <div class="inner_title">
+                                        <h3 class="text-white"><span>TA</span> Tolani Aso Ebi</h3>
+                                    </div>
+                                    <div class="gender_list text-white" *ngFor="let list of allGuestList">
+                                        <div class="list1">
+                                            <p>{{list.firstName}} {{list.lastName}} <img
+                                                    src="/assets/images/N.png">{{list.totalCollection}}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -268,5 +244,3 @@
         <!-- 5th slide end -->
     </div>
     <!-- collection slider ends -->
-
-    

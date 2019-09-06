@@ -10,28 +10,22 @@ font-family: 'Russo One', sans-serif;*/
 body {
 	font-family: 'Sacramento', cursive !important;
 }
-
 body h1, body h2 {
 	font-family: 'Ruthie', cursive;
 }
-
 h1, h2, h3, h4, h5, h6, p {
 	margin: 0
 }
-
 ul {
 	padding: 0;
 	margin: 0;
 }
-
 a {
 	display: inline-block;
 	text-decoration: none!important;
 	outline: none!important;
 }
-
 /*common css end*/
-
 .form-control:focus {
 	color: #fff!important;
 	background-color: transparent!important;
@@ -39,12 +33,10 @@ a {
 	outline: 0;
 	box-shadow: none!important;
 }
-
-.join_form textarea: focus {
+.join_form textarea:focus {
 	background-color: transparent;
 	box-shadow: none;
 }
-
 .form-group input:focus {
 	background-color: transparent;
 	box-shadow: none;
@@ -65,7 +57,6 @@ a {
 	width: 666px;
 	margin: auto;
 }
-
 .inner_content_box {
 	height: 645px;
 	width: 665px;
@@ -80,53 +71,43 @@ a {
 .green_slide .inner_content_box {
 	background-color: #fff;
 }
-
 .pink_slide .inner_content_box {
 	background-image: url(/assets/images/home_text_container_slide_2.jpg);
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 }
-
 .orange_slide .inner_content_box {
 	background-color: #346a8b;
 }
-
 .yellow_slide .inner_content_box {
 	background-image: url(/assets/images/home_text_container_slide_4.jpg);
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 }
-
 .green_slide .inner_content_box img {
 	margin: -45px auto auto;
 }
-
 .orange_slide .inner_content_box img {
 	margin: -45px auto 30px;
 }
-
 .green_slide .inner_content_box h3 {
 	font-size: 55.33px;
 	color: #659827;
 	margin-top: 10px;
 }
-
 .pink_slide .inner_content_box h3 {
 	font-size: 55.33px;
 	margin-top: -10px;
 }
-
 .orange_slide .inner_content_box h2 {
 	font-size: 55.33px;
 }
-
 .orange_slide .inner_content_box h3 {
 	font-size: 55.33px;
 	margin: 10px 0px 30px;
 }
-
 .yellow_slide .inner_content_box h3 {
 	font-size: 55.33px;
 	display: table;
@@ -135,7 +116,6 @@ a {
 	padding: 35px 52px 20px;
 	margin-top: -15px;
 }
-
 .inner_content_elements_holder {
 	width: 100%;
 }
@@ -144,7 +124,6 @@ a {
 	margin-top: 33px;
 	width: 100%;
 }
-
 .two_btn_div a {
 	font-size: 17.29px;
 	font-family: 'Russo One', sans-serif;
@@ -154,7 +133,6 @@ a {
 	line-height: 49px;
 	margin: 0px 2px;
 }
-
 .home_slider ul.slick-dots {
 	position: absolute;
 	left: 0;
@@ -165,12 +143,10 @@ a {
 	width: 150px;
 	height: 20px;
 }
-
 .home_slider ul.slick-dots li {
 	display: inline-block;
 	margin: 0px 3.5px;
 }
-
 .home_slider ul.slick-dots button {
 	height: 6px;
 	width: 26px;
@@ -182,44 +158,33 @@ a {
 	background-color: #2b3335;
 	transition: all 1s;
 }
-
 .home_slider ul.slick-dots .slick-active button {
 	background-color: #659827;
 }
-
 .home_slider ul.slick-dots.pink button {
 	background-color: #ffffff;
 }
-
 .home_slider ul.slick-dots.pink .slick-active button {
 	background-color: #f63b55;
 }
-
 .home_slider ul.slick-dots.orange button {
 	background-color: #ffffff;
 }
-
 .home_slider ul.slick-dots.orange .slick-active button {
 	background-color: #ef643a;
 }
-
 .home_slider ul.slick-dots.white button {
 	background-color: #4e4e4e;
 }
-
 .home_slider ul.slick-dots.white .slick-active button {
 	background-color: #ffffff;
 }
-
 /*home page css end*/
-
 /*thanks  1 css start*/
-
 .thanks1_section {
 	min-height: 100vh;
 	background-color: #ebebeb;
 }
-
 label.upload_photo {
 	width: 100%;
 	font-size: 20px;
@@ -230,7 +195,6 @@ label.upload_photo {
 	border: 1px solid #fff;
 	background-color: transparent!important;
 }
-
 .thanks1_section .event_inner_content_box {
 	background-image: url(/assets/images/thanks1.png);
 	background-size: cover;
@@ -238,22 +202,18 @@ label.upload_photo {
 	background-repeat: no-repeat;
 	position: relative;
 }
-
 .thanks1_section h3 {
 	font-size: 58.33px;
 	color: #201f62;
 	margin-bottom: 18px;
 }
-
 .about_aso_ebi {
 	margin-top: 25px;
 }
-
 .about_aso_ebi p {
 	font-size: 25px;
 	font-family: 'Russo One', sans-serif;
 }
-
 .thanks_btn a {
 	font-size: 25.02px;
 	font-family: 'Russo One', sans-serif;
@@ -263,16 +223,12 @@ label.upload_photo {
 	margin-top: 20px;
 	background-color: #e0573a;
 }
-
 /*thanks  1 css end*/
-
 /*share page section start*/
-
 .share_page_section {
 	min-height: 100vh;
 	background-color: #ebebeb;
 }
-
 .share_page_section .event_inner_content_box {
 	background-image: url(/assets/images/share.png);
 	background-size: cover;
@@ -280,28 +236,23 @@ label.upload_photo {
 	background-repeat: no-repeat;
 	position: relative;
 }
-
 .share_page_section h3 {
 	font-size: 58.33px;
 	color: #1f2b6e;
 	margin-bottom: 18px;
 }
-
 .all_done_text h6 {
 	font-size: 25.05px;
 	font-family: 'Russo One', sans-serif;
 }
-
 .all_done_text h5 {
 	font-size: 54.17px;
 	padding: 10px 0px;
 }
-
 .all_done_text p {
 	font-size: 75px;
 	color: #1f2b6e;
 }
-
 .share_btn a {
 	font-size: 25.02px;
 	font-family: 'Russo One', sans-serif;
@@ -311,90 +262,71 @@ label.upload_photo {
 	background-color: #1f2b6e;
 	margin-top: 25px;
 }
-
 .enter_event_title label {
 	font-size: 25.02px;
 	font-family: 'Russo One', sans-serif;
 }
-
 .event_link {
 	margin-top: 0px!important;
 }
-
 .event_link label {
 	position: absolute;
 	bottom: 10px;
 }
-
 /*share page section end*/
-
 /*enter screen section start*/
-
 .enter_screen_sec .Join_inner_content_box {
 	background-image: url(/assets/images/enter1.png);
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 }
-
 .in_btn {
 	background-color: #eb2577 !important;
 	cursor: pointer;
 }
-
 .btn_enter_screen {
 	background-color: #eb2577;
 	color: #000;
 }
-
 .enter_section {
 	background-color: #ef729d;
 	min-height: 100vh;
 }
-
 .enter_section h3 {
 	font-size: 58.33px;
 	color: #201f62;
 	margin-top: -75px;
 	margin-bottom: 14px;
 }
-
 /*enter screen section end*/
-
 /*all join page start*/
-
 /*join page 1 css start*/
-
 .join_aso_ebi_sec1 .Join_inner_content_box {
 	background-image: url(/assets/images/join1.png);
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 }
-
 .Join_inner_content_box {
 	height: 645px;
 	width: 665px;
 	margin: auto;
 	position: relative;
 }
-
 .join_page1_section {
 	background-color: #cdd6d5;
 	min-height: 100vh;
 }
-
 .join_page1_section h3 {
 	color: #659827;
 }
-
 .inner_content_btn {
 	width: 100%;
 	display: table;
-	padding: 0px 50px;
+	/* padding: 0px 50px; */
 }
-
-.inner_content_btn a {
+.inn er_content_btn a {
 	font-size: 17.29px;
 	font-family: 'Russo One', sans-serif;
 	height: 49px;
@@ -403,95 +335,73 @@ label.upload_photo {
 	line-height: 49px;
 	margin: 60px;
 }
-
 .btn_enter1 {
 	background-color: #659827;
 }
-
 .btn_join1 {
 	background-color: #000;
 }
-
-/*join page 1 css end*/
-
+/*join page 1 css end*
 /*join page 2 css start*/
-
 .login_form_sec {
 	padding: 10px 60px;
 }
-
 .join_page2_section h3, .join_page1_section h3, .join_page3_section h3, .join_page4_section h3, .join_page5_section h3 {
 	font-size: 58.33px;
 	margin-top: -75px;
 	margin-bottom: 14px;
 }
-
 .join_aso_ebi_sec2 .Join_inner_content_box {
 	background-image: url(/assets/images/join2.png);
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 }
-
 .btn_enter2 {
 	background-color: #f73953;
 }
-
 .btn_join2 {
 	background-color: #fff;
 	color: #000;
-	/*line-height: 36px!important;*/
 }
-
 .join_page2_section {
 	background-color: #cdcdcd;
 	min-height: 100vh;
 }
-
 .join_page2_section h3 {
 	color: #f73953;
 }
-
 .login_btn {
 	background-color: #f73953 !important;
 }
-
 .login_form {
 	padding: 0px!important;
 }
-
 .login_form input {
 	margin-top: 0!important;
 }
-
 .email_sec {
 	background-color: #fff;
 	padding: 24px 10px;
 }
-
 .facebook_sec, .google_sec, .microsoft_sec, .yahoo_sec {
 	padding: 5px 15px;
 	background-color: #fff;
 	height: 50px;
 }
-
 .facebook_sec {
 	margin: 0px 5px 5px 10px;
 }
-
 .google_sec {
 	margin: 0px 15px 0px 5px;
 }
-
 .microsoft_sec {
 	margin: 5px 5px 5px 10px;
 }
-
 .yahoo_sec {
 	background-color: #fff;
 	margin: 5px 15px 0px 5px;
 }
-
 .facebook_sec span, .microsoft_sec span, .yahoo_sec span, .google_sec span {
 	font-size: 20px;
 	color: #000;
@@ -500,56 +410,44 @@ label.upload_photo {
 	padding-left: 5px;
 	line-height: 40px;
 }
-
 .facebook_sec img, .microsoft_sec img, .yahoo_sec img, .google_sec img {
 	margin-top: -6px;
 }
-
 /*join page 2 css end*/
-
 /*join page 3 css start*/
-
 .join_aso_ebi_sec3 .Join_inner_content_box {
 	background-image: url(/assets/images/join3.png);
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 }
-
 .btn_enter3 {
 	background-color: #fff;
 	color: #f4ad48;
 }
-
 .btn_join3 {
 	background-color: #4e4e4e;
 }
-
 .join_page3_section h3 {
 	color: #f4ad48;
 }
-
 .btn_enter_join2 {
 	line-height: 36px!important
 }
-
 .join_form h3 {
 	font-size: 55.33px;
 	margin-top: 30px;
 }
-
 .join_form textarea {
 	background-color: transparent;
 	color: #fff;
 	font-size: 30px;
 	border-radius: 0px;
 }
-
 .join_form textarea::-webkit-input-placeholder {
 	color: #fff!important;
 	font-size: 30px!important;
 }
-
 .join_form button {
 	font-size: 50px;
 	width: 100%;
@@ -557,15 +455,12 @@ label.upload_photo {
 	border-radius: 0px;
 	padding: 0px;
 }
-
 .form_join_btn {
 	background-color: #4e4e4e!important;
 }
-
 .join_form {
 	padding: 60px;
 }
-
 .join_form input {
 	background-color: transparent;
 	border-radius: 0px;
@@ -573,49 +468,38 @@ label.upload_photo {
 	height: 70px;
 	margin-top: 25px;
 }
-
 .join_form input, input::-webkit-input-placeholder {
 	color: #fff!important;
 	font-size: 41.67px!important;
 }
-
 .join_page3_section {
 	background-color: #f7f7f7;
 	min-height: 100vh;
 }
-
 .enter_join_code {
 	font-size: 55.33px;
 }
-
 /*join page 3 css end*/
-
 /*join page 4 css start*/
-
 .join_page4_section h3 {
 	color: #fd5226;
 }
-
 .join_page4_section {
 	background-color: #e6dfd7;
 	min-height: 100vh;
 }
-
 .join_aso_ebi_sec4 .Join_inner_content_box {
 	background-image: url(/assets/images/join4.png);
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 }
-
 .join_name input {
 	margin-top: 0px!important;
 }
-
 .submit_btn {
 	background-color: #fd5226!important;
 }
-
 .join_form a {
 	font-size: 50px;
 	width: 100%;
@@ -625,64 +509,48 @@ label.upload_photo {
 	height: 52px;
 	line-height: 67px;
 }
-
 .invalid-feedback {
 	margin-bottom: -17px;
 	font-size: 22px!important;
 	margin-top: 2px!important;
 }
-
 .form-control.is-invalid, .was-validated .form-control:invalid {
 	filter: contrast(1%)brightness(200%);
 }
-
 /*join page 4 css end*/
-
 /*join page 5 css start*/
-
 .join_page5_section h3 {
 	color: #23468e;
 }
-
 .join_page5_section {
 	background-color: #e6dfd7;
 	min-height: 100vh;
 }
-
 .join_aso_ebi_sec5 .Join_inner_content_box {
 	background-image: url(/assets/images/join5.png);
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 }
-
 .btn_enter5 {
 	background-color: #eecf94;
 	color: #223d61;
 }
-
 .btn_join5 {
 	background-color: #ffffff;
 	color: #223d61;
 }
-
 .user_first_name p {
 	font-size: 55.33px;
 	padding: 20px 10px 20px 50px;
 }
-
 .user_first_name {
 	display: table;
 }
-
 /*join page 5 css end*/
-
 /*all join page end*/
-
 /*all new event page start*/
-
 /*all new event page slider start*/
-
 .new_event_slider button.slick-prev, .new_event_slider button.slick-next {
 	outline: none!important;
 	position: absolute;
@@ -690,19 +558,16 @@ label.upload_photo {
 	font-size: 40px;
 	background: none!important;
 }
-
 .new_event_slider button.slick-prev {
 	left: 60px;
 	bottom: 20px;
 	z-index: 111;
 }
-
 .new_event_slider button.slick-next {
 	bottom: 20px;
 	left: 12%;
 	color: #fff;
 }
-
 .new_event_slider ul.slick-dots {
 	position: absolute;
 	right: 0;
@@ -711,12 +576,10 @@ label.upload_photo {
 	margin: auto;
 	height: 20px;
 }
-
 .new_event_slider ul.slick-dots li {
 	display: inline-block;
 	margin: 0px 3.5px;
 }
-
 .new_event_slider ul.slick-dots button {
 	height: 4px;
 	width: 24px;
@@ -728,94 +591,67 @@ label.upload_photo {
 	background-color: #fff;
 	transition: all 1s;
 }
-
 .new_event_slider ul.slick-dots .slick-active button {
 	background-color: #a4bf45;
 }
-
 .new_event_slider ul.slick-dots.slide1 .slick-active button {
 	background-color: #a4bf45;
 }
-
 .new_event_slider ul.slick-dots.slide2 .slick-active button {
 	background-color: #f73953;
 }
-
 .new_event_slider ul.slick-dots.slide3 .slick-active button {
 	background-color: #19aaad;
 }
-
 .new_event_slider ul.slick-dots.slide4 .slick-active button {
 	background-color: #f4ad48;
 }
-
 .new_event_slider ul.slick-dots.slide5 .slick-active button {
 	background-color: #fae545;
 }
-
 .new_event_slider ul.slick-dots.slide6 .slick-active button {
 	background-color: #f4c036;
 }
-
 .new_event_slider ul.slick-dots.slide7 .slick-active button {
 	background-color: #ffeb5b;
 }
-
 .new_event_slider ul.slick-dots.slide8 .slick-active button {
 	background-color: #f73953;
 }
-
 .new_event_slider ul.slick-dots.slide9 .slick-active button {
 	background-color: #bfa066;
 }
-
 .new_event_slider ul.slick-dots.slide10 .slick-active button {
 	background-color: #eaa52e;
 }
-
 .new_event_slider ul.slick-dots.slide11 .slick-active button {
 	background-color: #afda57;
 }
-
 .new_event_slider ul.slick-dots.slide12 .slick-active button {
 	background-color: #ffb54d;
 }
-
 /*new event page slider end*/
-
 .event_inner_content_box {
 	height: 645px;
 	width: 665px;
 	margin: auto;
 }
-
-/*.event_slider_section #overlay {
-	height: 645px;
-	width: 665px;
-	margin: auto;
-	top: 9px!important;
-	}*/
-
-	.slider_overlay {
-		padding: 60px 0px 0px 60px;
-	}
-
-	.event_slider_section h3 {
-		font-size: 58.33px;
-		margin-top: -75px;
-		margin-bottom: 14px;
-	}
-
-	.new_event_sec {
-		padding-top: 60px;
-		cursor: pointer;
-	}
-
-	.new_event_sec p {
-		font-size: 16.67px;
-		font-family: 'Russo One', sans-serif;
-	}
-
+.slider_overlay {
+	padding: 60px 0px 0px 60px;
+}
+.event_slider_section h3 {
+	font-size: 58.33px;
+	margin-top: -75px;
+	margin-bottom: 14px;
+}
+.new_event_sec {
+	padding-top: 60px;
+	cursor: pointer;
+}
+.new_event_sec p {
+	font-size: 16.67px;
+	font-family: 'Russo One', sans-serif;
+}
 .new_event_sec span {
 	font-size: 48.17px;
 	margin-left: -22px;
@@ -824,124 +660,99 @@ label.upload_photo {
     white-space: nowrap;
     overflow: hidden !important;
 }
-
-	.event_inner_content {
-		width: 100%;
-		padding: 0px 60px;
-	}
-
-	.event_slider_section {
-		min-height: 100vh;
-	}
-
-	.slider_height {
-		height: 645px;
-		width: 666px;
-		margin: auto;
-		position: relative;
-	}
-
-	.new_event_menu_box {
-		position: absolute;
-		left: 9%;
-		top: 25%;
-	}
-
-	.new_event_menu_box li {
-		display: inline;
-		background-color: rgb(124, 114, 115);
-		padding: 4px 9px;
-		margin-top: 10px;
-	}
-
-	/*all slide background image start*/
-
-	.first_slide .event_inner_content_box {
+.event_inner_content {
+	width: 100%;
+	padding: 0px 60px;
+}
+.event_slider_section {
+	min-height: 100vh;
+}
+.slider_height {
+	height: 645px;
+	width: 666px;
+	margin: auto;
+	position: relative;
+}
+.new_event_menu_box {
+	position: absolute;
+	left: 9%;
+	top: 25%;
+}
+.new_event_menu_box li {
+	display: inline;
+	background-color: rgb(124, 114, 115);
+	padding: 4px 9px;
+	margin-top: 10px;
+}
+/*all slide background image start*/
+.first_slide .event_inner_content_box {
 		background-image: url(/assets/images/event2.png);
 		position: relative;
 	}
-
 	.second_slide .event_inner_content_box {
 		background-image: url(/assets/images/event3.png);
 		position: relative;
 	}
-
 	.third_slide .event_inner_content_box {
 		background-image: url(/assets/images/event4.png);
 		position: relative;
 	}
-
 	.four_slide .event_inner_content_box {
 		background-image: url(/assets/images/4event.png);
 		position: relative;
 	}
-
 	.five_slide .event_inner_content_box {
 		background-image: url(/assets/images/5event.png);
 		position: relative;
 	}
-
 	.six_slide .event_inner_content_box {
 		background-image: url(/assets/images/event5.png);
 		position: relative;
 	}
-
 	.seven_slide .event_inner_content_box {
 		background-image: url(/assets/images/event8.png);
 		position: relative;
 	}
-
 	.eight_slide .event_inner_content_box {
 		background-image: url(/assets/images/event9.png);
 		position: relative;
 	}
-
 	.nine_slide .event_inner_content_box {
 		background-image: url(/assets/images/event10.png);
 		position: relative;
 	}
-
 	.ten_slide .event_inner_content_box {
 		background-image: url(/assets/images/10event.png);
 		position: relative;
 	}
-
 	.eleven_slide .event_inner_content_box {
 		background-image: url(/assets/images/event11.png);
 		position: relative;
 	}
-
 	.twelve_slide .event_inner_content_box {
 		background-image: url(/assets/images/event12.png);
 		position: relative;
 	}
-
 	.first_slide .event_inner_content_box, .second_slide .event_inner_content_box, .third_slide .event_inner_content_box, .four_slide .event_inner_content_box, .five_slide .event_inner_content_box, .six_slide .event_inner_content_box, .seven_slide .event_inner_content_box, .eight_slide .event_inner_content_box, .nine_slide .event_inner_content_box, .ten_slide .event_inner_content_box, .twelve_slide .event_inner_content_box, .eleven_slide .event_inner_content_box {
 		background-size: cover;
 		background-position: center;
 		background-repeat: no-repeat;
 	}
-
 	/*all slide background image end*/
-
 	/*third slide or event title css start*/
-
 	.normal_style_font {
 		font-style: normal;
 	}
-
 	.enter_event_title h6 {
 		font-size: 22px;
 		letter-spacing: 1px;
 		font-family: 'Russo One', sans-serif;
 	}
-
 	.enter_event_title p {
 		font-size: 20.83px;
 		font-family: 'Russo One', sans-serif;
 		margin-bottom: -4px;
 	}
-
 	.enter_event_title input , .profile_image_box input,  .back_event input{
 		background-color: transparent;
 		border-radius: 0px;
@@ -967,22 +778,18 @@ label.upload_photo {
 		color: #fff!important;
 		font-size: 35px!important;
 	}
-
 	.font_style ul li {
 		list-style: none;
 		display: inline-block;
 	}
-
 	.font_style a {
 		font-family: 'Russo One', sans-serif;
 		font-size: 16.67px;
 		padding: 12px 22px;
 	}
-
 	.normal_style1 {
 		font-style: normal;
 	}
-
 	.italic_style1 {
 		font-style: italic;
 	}
@@ -990,40 +797,31 @@ label.upload_photo {
 	.starry_style1 {
 		font-family: 'Ma Shan Zheng', cursive;
 	}
-
 	.carved_wood_style1 {
 		font-family: 'Fanwood Text', serif;
 	}
-
 	/*third slide css end*/
-
 	/*seven slide or make event private or public css start*/
-
 	.make_event_private {
 		margin-top: 28px;
 	}
-
 	.slider.round {
 		border-radius: 34px;
 	}
-
 	.slider.round:before {
 		border-radius: 50%;
 	}
-
 	.switch {
 		position: relative;
 		display: inline-block;
 		width: 60px;
 		height: 30px;
 	}
-
 	.switch input {
 		opacity: 0;
 		width: 0;
 		height: 0;
 	}
-
 	.slider {
 		position: absolute;
 		cursor: pointer;
@@ -1036,7 +834,6 @@ label.upload_photo {
 		transition: .4s;
 		border: 2px solid #fff;
 	}
-
 	.slider:before {
 		position: absolute;
 		content: "";
@@ -1048,78 +845,59 @@ label.upload_photo {
 		-webkit-transition: .4s;
 		transition: .4s;
 	}
-
 	.seven_slide input:checked+.slider:before {
 		background-color: #ffeb5b;
 	}
-
 	.twelve_slide input:checked+.slider:before {
 		background-color: #ffb54d;
 	}
-
 	input:checked+.slider {
 		background-color: transparent;
 	}
-
 	input:focus+.slider {
 		box-shadow: 0 0 1px #2196F3;
 	}
-
 	input:checked+.slider:before {
 		-webkit-transform: translateX(26px);
 		-ms-transform: translateX(26px);
 		transform: translateX(26px);
 	}
-
 	.make_event_private p, .public {
 		font-size: 20.83px;
 		font-family: 'Russo One', sans-serif;
 	}
-
 	.public {
 		padding: 7px 0px 0px 35px;
 	}
-
 	/*seven slide css end*/
-
 	/*eleven slide or handle delivery of fabric css start*/
-
 	.handle_delivary label {
 		font-size: 20.83px;
 		font-family: 'Russo One', sans-serif;
 	}
-
 	.handle_delivary {
 		margin-top: 22px;
 	}
-
 	.handle_delivary .form-check-inline .form-check-input {
 		margin-top: 5px!important;
 		margin-right: 15px!important;
 	}
-
 	.handle_delivary .form-check-inline {
 		margin-right: 60px!important;
 	}
-
 	.handle_delivary [type="radio"]:checked+label:after, .handle_delivary [type="radio"]:not(:checked)+label:after {
 		background: #afda57!important;
 	}
-
 	/*eleven slide css end*/
-
 	/*six slide or pricing tip css start*/
-
 	.Pricing_tip p {
 		font-size: 29.17px;
 		color: #f5bf37;
 		font-family: 'Russo One', sans-serif;
 	}
-
 	.Pricing_tip {
 		padding-top: 60px;
 	}
-
 	.prising_list p {
 		font-family: 'Russo One', sans-serif;
 		font-size: 20.85px;
@@ -1127,16 +905,13 @@ label.upload_photo {
 		padding-left: 60px;
 		margin-top: -38px;
 	}
-
 	.prising_list ul li {
 		list-style: none;
 		padding: 6px 0px;
 	}
-
 	.second_list p, .third_list p {
 		margin-top: -52px!important;
 	}
-
 	/*six slide css end*/
 
 	/*slide 4 or event profile photo start*/
@@ -1416,14 +1191,6 @@ label.upload_photo {
 	.add_bank_sec{
 		background: rgb(226, 228, 227)!important;
 	}
-/*.event_bank_detail input[type=radio]{
-    box-sizing: border-box;
-    padding: 0;
-    width: 48px;
-    margin: 9px 0px;
-    height: 25px;
-    }*/
-
     .slider1 p {
     	color: white;
     	font-size: 16px;
@@ -1995,22 +1762,6 @@ label.upload_photo {
 	background-color: #e70d6a!important;
 }
 
-/* 
-.thank_you_sec {
-	background-color: #fff!important;
-}
-
-.thank_you .Join_inner_content_box {
-	background-image: url(/assets/images/bank_acc.png);
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	position: relative;
-}
-
-.thank_you_btn {
-	background-color: #ef2556!important; */
-
 	/* Thank you message css start */
 
 	/*forgot password page start*/
@@ -2126,7 +1877,11 @@ label.upload_photo {
 	/*collection screen slider start*/
 
 	/*collection slider section starts*/
-
+	.group-name-scroll {
+		max-height: 31px;
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
 	.collection_slider_section {
 		min-height: 100vh;
 		position: relative;
@@ -2171,27 +1926,6 @@ label.upload_photo {
 		right: 200px;
 	}
 
-/* .collection_slider button.slick-prev, .collection_slider button.slick-next {
-	outline: none!important;
-	position: absolute;
-	border: none!important;
-	font-size: 40px;
-	background: none!important;
-}
-
-.collection_slider button.slick-prev {
-	left: 29%;
-	z-index: 110;
-	top: 25%;
-	color: #fff;
-}
-
-.collection_slider button.slick-next {
-	color: #fff;
-	right: 28%;
-	bottom: 66%;
-	} */
-
 	.collection_slider ul.slick-dots button {
 		height: 4px;
 		width: 24px;
@@ -2225,7 +1959,6 @@ label.upload_photo {
 		position: relative;
 	}
 
-	.collection_slider_section .new_event_sec p {}
 
 .collection_slider_section .inner_content_btn a {
     margin: 20px;
@@ -2261,8 +1994,8 @@ label.upload_photo {
 		font-family: 'Russo One', sans-serif;
 		font-size: 16.67px !important;
 		padding: 15px;
+		padding-right: 0px;
 		height: 215px;
-		overflow: auto;
 	}
 
 	.inner_box_content .inner_title h3 {
@@ -2330,7 +2063,7 @@ label.upload_photo {
 	}
 
 	.gender_list p {
-		line-height: 31px;
+		line-height: 13px;
 	}
 
 	.gender_list img {
@@ -2434,17 +2167,9 @@ label.upload_photo {
 	}
 
 	.slide_five .inner_box_content {
-		margin-left: 20px;
+		/* margin-left: 20px; */
 		position: relative;
 	}
-
-/*.five_border{
-    border: 2px solid white;
-    height: 215px;
-    padding: 15px;
-    width: 530px;
-    margin-left: 15px;
-    }*/
 
     /*scrollbar css start*/
 
@@ -2453,7 +2178,7 @@ label.upload_photo {
     	/*width: 500px;*/
     	top: -17px;
     	padding: 9px 0px !important;
-    	left: -35px;
+    	/* left: -35px; */
     }
 
     .collection_slider .scroll-wrapper>.scroll-content {
@@ -2544,11 +2269,6 @@ label.upload_photo {
     	position: relative;
     }
 
-    .Join_inner_content_box {
-    	height: 645px;
-    	width: 665px;
-    	margin: auto;
-    }
 
     .thanks_page_section h3 {
     	color: #22434c;
@@ -2592,13 +2312,6 @@ label.upload_photo {
     	background-repeat: no-repeat;
     	position: relative;
     }
-
-    .Join_inner_content_box {
-    	height: 645px;
-    	width: 665px;
-    	margin: auto;
-    }
-
     .msg_page_section h3 {
     	color: #659827;
     	font-size: 58.33px;
@@ -2692,13 +2405,6 @@ label.upload_photo {
     	background-repeat: no-repeat;
     	position: relative;
     }
-
-    .Join_inner_content_box {
-    	height: 645px;
-    	width: 665px;
-    	margin: auto;
-    }
-
     .name_page_section h3 {
     	color: #223d61;
     	font-size: 58.33px;
@@ -2832,12 +2538,6 @@ label.upload_photo {
     	background-position: center;
     	background-repeat: no-repeat;
     	position: relative;
-    }
-
-    .Join_inner_content_box {
-    	height: 645px;
-    	width: 665px;
-    	margin: auto;
     }
 
     .event1_page_section h3 {
@@ -3031,12 +2731,6 @@ label.upload_photo {
     	background-position: center;
     	background-repeat: no-repeat;
     	position: relative;
-    }
-
-    .Join_inner_content_box {
-    	height: 645px;
-    	width: 665px;
-    	margin: auto;
     }
 
     .slider_page_section h3 {
@@ -3243,12 +2937,6 @@ label.upload_photo {
 	position: relative;
 }
 
-.Join_inner_content_box {
-	height: 645px;
-	width: 665px;
-	margin: auto;
-}
-
 .eventA_page_section h3 {
 	color: #223d61;
 	font-size: 58.33px;
@@ -3289,10 +2977,6 @@ label.upload_photo {
 	width: 82px;
 }
 
-/* .collect1_img{
-    margin: 10px;
-    } */
-
     .collect1_img p {
     	font-size: 12px;
     	font-weight: 600;
@@ -3328,12 +3012,6 @@ label.upload_photo {
     	background-position: center;
     	background-repeat: no-repeat;
     	position: relative;
-    }
-
-    .Join_inner_content_box {
-    	height: 645px;
-    	width: 665px;
-    	margin: auto;
     }
 
     .eventB_page_section h3 {
@@ -3598,25 +3276,7 @@ label.upload_photo {
     	font-size: 16px;
     	color: #fff;
     	font-family: aso;
-    	padding: 6px 34px;
-    	margin-left: 5px;
-    }
-
-    .eventD_page_section button.event_payment {
-    	background: #da9500;
-    	font-size: 16px;
-    	color: #fff;
-    	font-family: aso;
-    	padding: 6px 34px;
-    	margin-left: 5px;
-    }
-
-    .eventD_page_section button.event_plus {
-    	background: #da9500;
-    	font-size: 16px;
-    	color: #fff;
-    	font-family: aso;
-    	padding: 6px 18px;
+    	padding: 6px 24.5px;
     	margin-left: 5px;
     }
 
@@ -3676,15 +3336,6 @@ label.upload_photo {
 
     .eventE_page_section .evet_sliding {
     	padding: 20px 50px;
-    }
-
-    .eventE_page_section button.event_btn {
-    	background: #3d9e43;
-    	color: white;
-    	font-size: 20px;
-    	font-family: 'Russo One', sans-serif;
-    	padding: 8px 45px;
-    	border: none;
     }
 
     .eventE_page_section .event_guest span {
@@ -3759,7 +3410,8 @@ label.upload_photo {
     	font-size: 20px;
     	font-family: 'Russo One', sans-serif;
     	padding: 8px 45px;
-    	border: none;
+		border: none;
+		width: 185px;
     }
 
     .eventF_page_section .eventF_btn, .eventF_at, .eventF_to {
@@ -3837,32 +3489,11 @@ label.upload_photo {
 	font-family: 'Russo One', sans-serif;
 }
 
-.eventF_page_section [type="radio"]:checked+label:before, .eventF_page_section [type="radio"]:not(:checked)+label:before {
-	content: '';
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 25px;
-	height: 25px;
-	border: 1px solid #ddd;
-	border-radius: 100%;
-	background: #fff;
+.eventF_to [type="radio"]:not(:checked)+label:after {
+	background: white;
 }
-
-.eventF_page_section [type="radio"]:checked+label:after, .eventF_page_section [type="radio"]:not(:checked)+label:after {
-	content: '';
-	width: 10px;
-	height: 10px;
-	position: absolute;
-	top: 7px;
-	left: 7px;
-	border-radius: 100%;
-	-webkit-transition: all 0.2s ease;
-	transition: all 0.2s ease;
-}
-
-.eventF_to [type="radio"]:checked+label:after, .eventF_to [type="radio"]:not(:checked)+label:after {
-	background: #fd5226!important;
+.eventF_to [type="radio"]:checked+label:after {
+	background: #fd5226 !important;    
 }
 
 .name_sec1 .Join_inner_content_box {
@@ -4010,12 +3641,6 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	background-position: center;
 	background-repeat: no-repeat;
 	position: relative;
-}
-
-.Join_inner_content_box {
-	height: 645px;
-	width: 665px;
-	margin: auto;
 }
 
 .event1_page_section h3 {
@@ -4211,12 +3836,6 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	position: relative;
 }
 
-.Join_inner_content_box {
-	height: 645px;
-	width: 665px;
-	margin: auto;
-}
-
 .slider_page_section h3 {
 	color: #fd5226;
 	font-size: 58.33px;
@@ -4389,7 +4008,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 .event-activity-class {
     /* max-width: 600px; */
     overflow-x: scroll;
-    max-height: 32px;
+    max-height: 50px;
 }
 /* event Activity css end s */
 /*eventA page start*/
@@ -4405,12 +4024,6 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	background-position: center;
 	background-repeat: no-repeat;
 	position: relative;
-}
-
-.Join_inner_content_box {
-	height: 645px;
-	width: 665px;
-	margin: auto;
 }
 
 .eventA_page_section h3 {
@@ -4444,10 +4057,6 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	width: 82px;
 }
 
-/* .collect1_img{
-    margin: 10px;
-    } */
-
 .collect1_img p {
 	font-size: 12px;
 	font-weight: 600;
@@ -4475,20 +4084,6 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 .eventB_page_section {
 	background-color: #949494;
 	min-height: 100vh;
-}
-
-.eventB_sec1 .Join_inner_content_box {
-	background-image: url('/assets/images/eventB_bg.png');
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	position: relative;
-}
-
-.Join_inner_content_box {
-	height: 645px;
-	width: 665px;
-	margin: auto;
 }
 
 .eventB_page_section h3 {
@@ -4601,15 +4196,6 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 .eventC_page_section .event_button {
 	padding: 13px 0px 13px 50px;
 	display: inline-block;
-}
-
-.eventC_page_section .eventC_btn {
-	font-size: 16px;
-	background-color: #005973;
-	color: #fff;
-	font-family: 'Russo One', sans-serif;
-	padding: 7px 45px;
-	border: none;
 }
 
 .eventC_page_section .eventC_gendar {
@@ -4753,7 +4339,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	font-size: 16px;
 	color: #fff;
 	font-family: aso;
-	padding: 6px 34px;
+	padding: 6px 24.5px;
 	margin-left: 5px;
 	border: none;
 	outline: none;
@@ -4763,33 +4349,12 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	font-size: 16px;
 	color: #fff;
 	font-family: aso;
-	padding: 6px 34px;
+	padding: 6px 24.5px;
 	margin-left: 5px;
 	border: none;
 	outline: none;
 	font-family: 'Russo One', sans-serif;
 }
-/* .eventD_page_section button.event_payment {
-	background: #da9500;
-	font-size: 16px;
-	color: #fff;
-	font-family: aso;
-	padding: 6px 34px;
-	margin-left: 5px;
-	border: none;
-	outline: none;
-}
-
-.eventD_page_section button.event_plus {
-	background: #da9500;
-	font-size: 16px;
-	color: #fff;
-	font-family: aso;
-	padding: 6px 18px;
-	margin-left: 5px;
-	border: none;
-	outline: none;
-} */
 
 .eventD_page_section .eventD_detail {
 	padding: 0px 60px;
@@ -4849,15 +4414,6 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 
 .eventE_page_section .evet_sliding {
 	padding: 20px 50px;
-}
-
-.eventE_page_section button.event_btn {
-	background: #3d9e43;
-	color: white;
-	font-size: 20px;
-	font-family: 'Russo One', sans-serif;
-	padding: 8px 45px;
-	border: none;
 }
 
 .eventE_page_section .event_guest span {
@@ -4936,7 +4492,8 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
     text-overflow: ellipsis;
     display: inline-block;
     white-space: nowrap;
-    overflow: hidden !important;
+	overflow: hidden !important;
+	width: 185px;
 }
 
 .eventF_page_section .eventF_btn, .eventF_at, .eventF_to {
@@ -5033,10 +4590,6 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	transition: all 0.2s ease;
 }
 
-.eventF_to [type="radio"]:checked+label:after, .eventF_to [type="radio"]:not(:checked)+label:after {
-	background: #fd5226!important;
-}
-
 .eventF_page_section .eventF_send input {
 	width: 100px;
 	background-color: transparent;
@@ -5114,20 +4667,6 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	top: 74px;
 	left: 61px;
 }
-
-/* .collection_slider_section #overlay {
-	height: 645px;
-	width: 666px;
-	margin: auto;
-	position: absolute;
-	top: 4px;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	z-index: 1110;
-	cursor: pointer;
-	background-color: rgba(0, 0, 0, 0.9);
-} */
 
 .slider_menu {
 	position: relative;
@@ -5524,12 +5063,6 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	position: relative;
 }
 
-.Join_inner_content_box {
-	height: 645px;
-	width: 665px;
-	margin: auto;
-}
-
 .eventA_page_section h3 {
 	color: #223d61;
 	font-size: 58.33px;
@@ -5607,25 +5140,6 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	background-color: #949494;
 	min-height: 100vh;
 	position: relative;
-}
-.overlay-parent-class {
-    position: relative;
-    height: 645px;
-    width: 665px;
-    margin: auto;
-}
-.eventB_sec1 .Join_inner_content_box {
-	background-image: url('/assets/images/eventB_bg.png');
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	position: relative;
-}
-
-.Join_inner_content_box {
-	height: 645px;
-	width: 665px;
-	margin: auto;
 }
 
 .eventB_page_section h3 {
@@ -5747,15 +5261,6 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	padding: 13px 30px 13px 50px;
 	display: inline-block;
 	text-transform: capitalize;
-}
-
-.eventC_page_section .eventC_btn {
-	font-size: 16px;
-	background-color: #005973;
-	color: #fff;
-	font-family: 'Russo One', sans-serif;
-	padding: 7px 45px;
-	border: none;
 }
 
 .eventC_page_section .eventC_gendar {
@@ -5942,10 +5447,15 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 /*eventD page end*/
 
 .event-count-box {
-	height: 100px;
-	overflow: auto;
-	border: 1px solid #fff;
-	padding: 10px;
+    height: 50px;
+    /* border: 1px solid #fff; */
+    padding: 10px;
+}
+.event-count-box-scroll{
+	overflow-x: scroll;
+    max-height: 102px;
+    border: 1px solid #fff;
+    margin: 0px 50px;
 }
 
 /*eventE page start*/
@@ -5991,7 +5501,8 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
     font-size: 20px;
     font-family: 'Russo One', sans-serif;
     padding: 8px 21px;
-    border: none;
+	border: none;
+	width: 185px;
     text-overflow: ellipsis;
     display: inline-block;
     white-space: nowrap;
@@ -6089,15 +5600,12 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	margin-top: 10px;
 }
 
-.event_prise_detail , .inner_box_content{
-	max-height: 440px;
-	overflow-y: auto;
-	overflow-x: hidden;
-}
 
 .event_prise_detail::-webkit-scrollbar-track, form.billing_address::-webkit-scrollbar-track,
 .inner_box_content::-webkit-scrollbar-track, form.billing_address::-webkit-scrollbar-track ,
-.event-activity-class::-webkit-scrollbar-track, form.billing_address::-webkit-scrollbar-track {
+.event-activity-class::-webkit-scrollbar-track, form.billing_address::-webkit-scrollbar-track ,
+.event-count-box-scroll::-webkit-scrollbar-track, form.billing_address::-webkit-scrollbar-track,
+.group-name-scroll::-webkit-scrollbar-track, form.billing_address::-webkit-scrollbar-track  {
 	border: 1px solid transparent;
 	padding: 2px 0;
 	width: 7px;
@@ -6106,14 +5614,18 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 
 .event_prise_detail::-webkit-scrollbar, form.billing_address::-webkit-scrollbar,
 .inner_box_content::-webkit-scrollbar, form.billing_address::-webkit-scrollbar ,
-.event-activity-class::-webkit-scrollbar, form.billing_address::-webkit-scrollbar {
+.event-activity-class::-webkit-scrollbar, form.billing_address::-webkit-scrollbar,
+.event-count-box-scroll::-webkit-scrollbar, form.billing_address::-webkit-scrollbar,
+.group-name-scroll::-webkit-scrollbar, form.billing_address::-webkit-scrollbar  {
 	width: 3px;
 	height: 3px;
 }
 
 .event_prise_detail::-webkit-scrollbar-thumb, form.billing_address::-webkit-scrollbar-thumb ,
 .inner_box_content::-webkit-scrollbar-thumb, form.billing_address::-webkit-scrollbar-thumb,
-.event-activity-class::-webkit-scrollbar-thumb, form.billing_address::-webkit-scrollbar-thumb{
+.event-activity-class::-webkit-scrollbar-thumb, form.billing_address::-webkit-scrollbar-thumb,
+.event-count-box-scroll::-webkit-scrollbar-thumb, form.billing_address::-webkit-scrollbar-thumb ,
+	.group-name-scroll::-webkit-scrollbar-thumb, form.billing_address::-webkit-scrollbar-thumb{
 	border-radius: 10px;
 	background-color: #fff;
 }
@@ -6797,7 +6309,26 @@ tr.blue-table-header {
 	margin: 110px 30px 0px 110px;
 	font-family: 'Russo One', sans-serif;
 }
-
+	.event_slider1 button.slick-arrow ,.event_slider2 button.slick-arrow{
+	position: absolute;
+    padding: 10px 5px;
+    top: -50px;
+    margin: auto;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    z-index: 11;
+    background-color: transparent;
+    font-size: 50px;
+    right: -4px;
+	color: #f42a70;
+	}
+	 .event_slider2 button.slick-arrow.slick-next{
+		right: 20px;
+	}
+	.event_slider1 button.slick-arrow.slick-prev{
+		right: 20px;
+	}
 /* total event list admin css end */
 /* responsive css start */
 
@@ -7950,14 +7481,6 @@ tr.blue-table-header {
 		padding: 2px 60px 2px 60px;
 	}
 	/*aso ebi event pages css end*/
-	/* event activity start s */
-	.event-count-box {
-		height: 77px;
-		overflow: scroll;
-		border: 1px solid #fff;
-		padding: 10px;
-	}
-	/* event activity end s */
 }
 
 @media(max-width: 575px) {
@@ -8158,9 +7681,9 @@ tr.blue-table-header {
 		font-size: 13.67px !important;
 	}
 	.collection_slider_section #overlay {
-		width: calc(100% - 30px);
-		right: 15px;
-		left: 15px;
+		/* width: calc(100% - 30px); */
+		/* right: 15px;
+		left: 15px; */
 	}
 	.slider_overlay img {
 		height: 35px;
@@ -8170,6 +7693,9 @@ tr.blue-table-header {
 	/*view event responsive css strt*/
 	.veiw_event_sec {
 		padding-top: 15px!important;
+	}
+	.event-activity-class{
+		max-height: 35px;
 	}
 	.event_detail_btns a {
 		padding: 2px 16px;
@@ -8444,7 +7970,7 @@ tr.blue-table-header {
 		height: 120px !important;
 	}
 	.eventD_page_section .eventD_btn, .eventC_page_section .event_button{
-		padding: 5px 50px;
+		padding: 5px 60px;
 	}
 	.group_class{
 		max-width: 500px;
@@ -8722,6 +8248,7 @@ tr.blue-table-header {
 	}
 	.collection_slider_section .inner_content_btn a {
 		margin: 0 5px;
+		width: 100px;
 	}
 	.collection_slider .slick-arrow.slick-next {
 		right: 40px;
@@ -8968,7 +8495,7 @@ tr.blue-table-header {
 	.eventA_page_section button.event_btn {
 		font-size: 13px;
 		text-transform: capitalize;
-		font-size: 20.83px !important;
+		font-size: 20.83px;
 		font-family: 'Russo One', sans-serif;
 		padding: 10px 30px;
 		background-color: #2b3335;
@@ -8990,28 +8517,11 @@ tr.blue-table-header {
 		left: 61px;
 	}
 
-/* .collection_slider_section #overlay {
-	height: 645px;
-	width: 666px;
-	margin: auto;
-	position: absolute;
-	top: 4px;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	z-index: 1110;
-	cursor: pointer;
-	background-color: rgba(0, 0, 0, 0.9);
-	} */
-
 	.slider_menu {
 		position: relative;
 	}
 	/*eventB page end*/
 	/*evnetC page start*/
-	.eventC_page_section .event_activity {
-		/* padding: 0px 15px 0px 15px; */
-	}
 	.slider_menu span {
 		color: #fff;
 		height: 50px;
@@ -9407,11 +8917,6 @@ tr.blue-table-header {
 	}
 	/*slider page end*/
 	/*new event page without slider end*/
-	/* Collection page start s */
-	.collection_slider_section .inner_content_btn a{
-		width: 148px;
-	}
-	/* Collection page end s */
 }
 
 	.submit_mail button {
@@ -9441,12 +8946,6 @@ tr.blue-table-header {
 		background-position: center;
 		background-repeat: no-repeat;
 		position: relative;
-	}
-
-	.Join_inner_content_box {
-		height: 645px;
-		width: 665px;
-		margin: auto;
 	}
 
 	.eventA_page_section h3 {
@@ -9489,9 +8988,6 @@ tr.blue-table-header {
 		width: 82px;
 	}
 
-/* .collect1_img{
-    margin: 10px;
-    } */
 
     .collect1_img p {
     	font-size: 12px;
@@ -9522,20 +9018,6 @@ tr.blue-table-header {
     	min-height: 100vh;
     }
 
-    .eventB_sec1 .Join_inner_content_box {
-    	background-image: url('/assets/images/eventB_bg.png');
-    	background-size: cover;
-    	background-position: center;
-    	background-repeat: no-repeat;
-    	position: relative;
-    }
-
-    .Join_inner_content_box {
-    	height: 645px;
-    	width: 665px;
-    	margin: auto;
-    }
-
     .eventB_page_section h3 {
     	color: #fff;
     	font-size: 58.33px;
@@ -9559,7 +9041,8 @@ tr.blue-table-header {
     	font-family: 'Russo One', sans-serif;
     	padding: 8px 20px;
     	border: none;
-    	outline: none;
+		outline: none;
+		width: 200px;
     }
 
     .eventB_page_section .event_img p {
@@ -9613,7 +9096,9 @@ tr.blue-table-header {
     	font-size: 20px;
     	font-family: 'Russo One', sans-serif;
     	padding: 8px 20px;
-    	border: none;
+		border: none;
+		outline: none;
+		width: 200px;
     }
 
     .eventC_page_section .event_img p {
@@ -9649,14 +9134,14 @@ tr.blue-table-header {
     	text-transform: capitalize;
     }
 
-    .eventC_page_section .eventC_btn {
+    /* .eventC_page_section .eventC_btn {
     	font-size: 16px;
     	background-color: #005973;
     	color: #fff;
     	font-family: 'Russo One', sans-serif;
     	padding: 7px 45px;
     	border: none;
-    }
+    } */
 
     .eventC_page_section .eventC_gendar {
     	padding: 0 60px;
@@ -9676,7 +9161,7 @@ tr.blue-table-header {
     	left: -9999px;
     }
 
-    .eventC_page_section [type="radio"]:checked+label, .eventC_page_section [type="radio"]:not(:checked)+label {
+    /* .eventC_page_section [type="radio"]:checked+label, .eventC_page_section [type="radio"]:not(:checked)+label {
     	position: relative;
     	padding-left: 33px;
     	cursor: pointer;
@@ -9686,7 +9171,7 @@ tr.blue-table-header {
     	font-size: 20.83px;
     	margin-right: 20px;
     	font-family: 'Russo One', sans-serif;
-    }
+    } */
 
     .eventC_page_section [type="radio"]:checked+label:before, .eventC_page_section [type="radio"]:not(:checked)+label:before {
     	content: '';
@@ -9784,7 +9269,8 @@ tr.blue-table-header {
     	font-size: 20px;
     	font-family: 'Russo One', sans-serif;
     	padding: 8px 20px;
-    	border: none;
+		border: none;
+		width: 185px;
     }
 
     .eventD_page_section .eventD_input {
@@ -9801,7 +9287,8 @@ tr.blue-table-header {
     }
 
     .eventD_page_section .eventD_btn {
-    	padding: 30px 60px;
+		padding: 30px 60px;
+		text-align: center;
     }
 
     .eventD_page_section button.event_invitation {
@@ -9809,7 +9296,7 @@ tr.blue-table-header {
     	font-size: 16px;
     	color: #fff;
     	/* font-family: aso; */
-    	padding: 6px 28px;
+    	padding: 6px 24.5px;
     	margin-right: 5px;
     	outline: none!important;
     	border: none!important;
@@ -9835,14 +9322,6 @@ tr.blue-table-header {
     	margin-top: 12px;
     }
 
-    /*eventD page end*/
-
-    .event-count-box {
-    	height: 100px;
-    	overflow: auto;
-    	border: 1px solid #fff;
-    	padding: 10px;
-    }
 
     /*eventE page start*/
 
@@ -9887,7 +9366,8 @@ tr.blue-table-header {
     	font-size: 20px;
     	font-family: 'Russo One', sans-serif;
     	padding: 8px 20px;
-    	border: none;
+		border: none;
+		width: 200px;
     }
 
     .eventE_page_section .event_guest span {
@@ -9982,8 +9462,6 @@ tr.blue-table-header {
 
 	.event_prise_detail , .inner_box_content{
 		max-height: 440px;
-		overflow-y: auto;
-		overflow-x: hidden;
 	}
 
 	.event_prise_detail::-webkit-scrollbar-track, form.billing_address::-webkit-scrollbar-track,
@@ -10038,7 +9516,7 @@ tr.blue-table-header {
 	}
 
 	.number_of_item input {
-		font-color: #fff!important;
+		color: #fff!important;
 		text-align: center;
 	}
 	.activity_group_slider .slick-arrow {
@@ -10262,8 +9740,8 @@ tr.blue-table-header {
 		width: 33px;
 		padding: 10px 5px;
 		top: 24px;
-		left: 30px;
-		right: 30px;
+		left: 20px;
+		right: 20px;
 		margin: auto;
 		border: none;
 		outline: none;
@@ -10271,7 +9749,7 @@ tr.blue-table-header {
 		z-index: 11;
 		background-color: transparent;
 		font-size: 44px;
-		color: #00ab8a;
+		color: #f69438;
 	}
 
 	.collect_detail button.slick-next.pull-right.slick-arrow {
@@ -11052,9 +10530,9 @@ tr.blue-table-header {
 		.login_form_sec {
 			padding: 5px 50px;
 		}
-		.inner_content_btn a {
+		/* .inner_content_btn a {
 			margin: 50px 50px 30px 50px;
-		}
+		} */
 		/*join page responsive css end*/
 		/*new event page responsive css start*/
 		.next_button {
@@ -11182,25 +10660,25 @@ tr.blue-table-header {
 				margin-top: -45px;
 				font-size: 48px;
 			}
-			.collection_slider_section .inner_content_btn a {
+			/* .collection_slider_section .inner_content_btn a {
 				margin: 14px;
-				/* width: 155px; */
+				width: 155px;
 				text-transform: unset;
 				font-size: 18px;
 				height: 40px;
 				line-height: 40px;
-			}
+			} */
 			.collection_slider_section .new_event_sec {
 				padding-top: 40px;
 			}
 			.number {
 				margin: 12px 0px !important;
 			}
-			.collection_slider_section .inner_box_content {
+			/* .collection_slider_section .inner_box_content {
 				font-size: 15.67px !important;
 				padding: 12px;
 				height: 185px;
-			}
+			} */
 			.inner_box_content .inner_title h3 {
 				font-size: 18.83px !important;
 				margin-bottom: 8px;
@@ -11229,7 +10707,7 @@ tr.blue-table-header {
 				line-height: 26px;
 			}
 			.collection_slider .scroll_content {
-				padding: 6px 0px !important;
+				/* padding: 6px 0px !important; */
 				height: 185px;
 			}
 			.slide_five .gender_list {
@@ -11444,7 +10922,7 @@ tr.blue-table-header {
 				height: 55px;
 			}
 			.eventD_page_section .eventD_btn, .eventC_page_section .event_button {
-				padding: 5px 50px;
+				padding: 5px 60px;
 			}
 			.eventC_page_section input[type=radio] {
 				margin-left: 50px;
@@ -11462,7 +10940,7 @@ tr.blue-table-header {
 				padding: 6px 13px;
 			}
 			.eventD_page_section button.event_invitation {
-				padding: 6px 27px;
+				padding: 6px 18px;
 			}
 			/*eventD page end*/
 			/*eventE page start*/
@@ -11814,15 +11292,15 @@ tr.blue-table-header {
 			.collection_slider_section .new_event_sec span {
 				font-size: 39px;
 			}
-			.collection_slider_section .inner_content_btn a {
-				/* width: 145px; */
-			}
-			.collection_slider .slick-arrow.slick-prev {
+			/* .collection_slider_section .inner_content_btn a {
+				width: 145px;
+			} */
+			/* .collection_slider .slick-arrow.slick-prev {
 				left: 140px;
-			}
-			.collection_slider .slick-arrow.slick-next {
+			} */
+			/* .collection_slider .slick-arrow.slick-next {
 				right: 140px;
-			}
+			} */
 			.collection_slider_section .event_inner_content {
 				width: 100%;
 				padding: 0px 50px;
@@ -11887,7 +11365,8 @@ tr.blue-table-header {
 				width: 520px;
 			}
 			.eventD_page_section button.event_invitation {
-				padding: 6px 11px;
+				padding: 6px 9px;
+				font-size: 14px;
 			}
 			.eventD_page_section button.eventD_share {
 				padding: 8px 25px;
@@ -12147,9 +11626,9 @@ tr.blue-table-header {
 				font-size: 13.67px !important;
 			}
 			.collection_slider_section #overlay {
-				width: calc(100% - 30px);
-				right: 15px;
-				left: 15px;
+				/* width: calc(100% - 30px); */
+				/* right: 15px;
+				left: 15px; */
 			}
 			.slider_overlay img {
 				height: 35px;
@@ -12715,9 +12194,9 @@ tr.blue-table-header {
 				font-size: 33.17px;
 				margin-left: -25px;
 			}
-			.collection_slider .slick-arrow {
+			/* .collection_slider .slick-arrow {
 				top: 19%;
-			}
+			} */
 			.collection_slider_section form .col-3 {
 				max-width: 31%;
 			}
@@ -12962,6 +12441,8 @@ tr.blue-table-header {
 			.eventC_page_section .eventC_btn {
 				padding: 5px 15px;
 				font-size: 13px;
+				margin-left: 40px;
+				margin-bottom: 10px;
 			}
 			.eventC_page_section .eventC_gendar label, .eventC_page_section .eventC_item p {
 				font-size: 13px;
@@ -12978,10 +12459,10 @@ tr.blue-table-header {
 			.eventC_page_section .event_activity p {
 				font-size: 13px;
 			}
-			.eventC_page_section button.event_btn {
+			/* .eventC_page_section button.event_btn {
 				font-size: 13px;
 				padding: 0px 10px;
-			}
+			} */
 			/*eventCpage end*/
 			/*eventD page start*/
 			.eventD_page_section .evet_sliding, .eventD_page_section .eventD_input, .eventD_page_section .eventD_detail {
@@ -12996,7 +12477,7 @@ tr.blue-table-header {
 				width: 100%;
 			}
 			.eventD_page_section button.event_payment, .eventD_page_section button.event_invitation {
-				font-size: 13px;
+				font-size: 11px;
 				padding: 6px 5px;
 			}
 			.eventD_page_section .eventD_detail p {
@@ -13079,7 +12560,6 @@ tr.blue-table-header {
 			}
 			.eventF_page_section .eventF_send input {
 				font-size: 12px;
-				width: 65px;
 				margin-right: 3px;
 			}
 			.eventF_page_section .eventF_send label, .eventF_page_section .eventF_at label, .eventF_page_section .eventF_to label {
@@ -13237,7 +12717,7 @@ tr.blue-table-header {
 			/*thanks end*/
 			/*msg start*/
 			.all_event_sec p {
-				font-size: 10px;
+				font-size: 13px;
 				line-height: 11px;
 			}
 			.all_event_sec .all_event_name {
@@ -13628,6 +13108,7 @@ tr.blue-table-header {
 			.event_detail_btns a {
 				padding: 4px 5px;
 			}
+
 			/*view event responsive css end*/
 		}
 
@@ -13719,7 +13200,7 @@ tr.blue-table-header {
 			/*eventD page start*/
 			.eventD_page_section button.event_payment, .eventD_page_section button.event_invitation {
 				font-size: 10px;
-				padding: 6px 5px;
+				padding: 6px 3px;
 			}
 			.eventD_page_section input.event_aso {
 				font-family: none;
@@ -13739,6 +13220,13 @@ tr.blue-table-header {
 			.eventF_page_section #overlay {
 				height: 615px;
 				width: 100%;
+			}
+			.sb-wrapper .sb-icon {
+				width: 40px!important;
+				height: 40px!important;
+			}
+			.group-name-scroll{
+				max-height: 19px;
 			}
 			/*aso ebi event pages css end*/
 		}
@@ -13813,6 +13301,9 @@ tr.blue-table-header {
 			.collection_slider_section .inner_box_content {
 				height: 120px;
 			}
+			.inner_content_btn{
+				padding: 0;
+			}
 			.collection_slider_section .new_event_sec span {
 				font-size: 25.17px;
 				margin-left: -12px;
@@ -13824,7 +13315,7 @@ tr.blue-table-header {
 				font-size: 14px;
 				height: 35px;
 				line-height: 35px;
-				/* width: 92px; */
+				width: 92px;
 			}
 			.number, .inner_box_content .inner_title h3 {
 				font-size: 12px !important;
@@ -13854,7 +13345,7 @@ tr.blue-table-header {
 				bottom: 28px;
 			}
 			.gender_list p {
-				line-height: 24px;
+				line-height: 13px;
 			}
 			.scrollbar-rail>.scroll-element div {
 				height: 85px;
@@ -13876,6 +13367,9 @@ tr.blue-table-header {
 			}
 			.scrollbar-rail {
 				max-height: 110px;
+			}
+			.collection_slider .slick-arrow {
+				top: 20%;
 			}
 			/*collection screen slider responsive end*/
 			/*add event section start*/

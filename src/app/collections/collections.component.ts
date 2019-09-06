@@ -173,7 +173,7 @@ export class CollectionsComponent implements OnInit {
     this._eventService.getCollections(id)
       .subscribe((data: any) => {
         console.log("total collections of ", data);
-        this.activitiesCollections = data.data;
+        this.activitiesCollections = data.data.groupWise;
         console.log("activity array", this.activitiesCollections);
         _.forEach(this.activitiesCollections[0].group[0].item, (item) => {
           console.log(item)

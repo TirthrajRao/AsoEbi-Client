@@ -1,56 +1,5 @@
 <!-- Display all created events of users and also invited events -->
-
-<!-- <div class="container">
-    <div class="row">
-        <div class="col-12">
-            <div class="card" *ngFor="let item of myEvent">
-                <div [ngStyle]="{background: getSrc(item.eventTheme)}" class="theme-background">
-                    <div class="row">
-                        <div class="col-4 m-auto">
-                            <img *ngIf="item && item.profilePhoto" src="{{path}}{{item.profilePhoto}}"
-                                class="rounded-circle img-fluid">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col text-center pt-4">
-                            <p>EventType:-
-                                <span>{{item.eventType}}</span>
-                            </p>
-                        </div>
-                        <div class="col text-center pt-4">
-                            <p>EventTitle:-
-                                <span>{{item.eventTitle}}</span>
-                            </p>
-                        </div>
-                        <div class="col text-center pt-4">
-                            <p>EventHashTag:-
-                                <span>{{item.hashTag}}</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <button type="button" class="btn btn-primary" (click)="viewMoreDeatils(item._id)">View More
-                            </button>
-                        </div>
-
-                        <div class="col-6">
-                            <button type="button" class="btn btn-primary" (click)="ThankYouMessage(item._id)"
-                                *ngIf="isCelebrant == 'true'">Thank You Message
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-
-
-
 <!-- New design implement -->
-
 <!-- First slide -->
 <section class="d-flex flex-wrap align-content-center final_step" [ngClass]="getClassNameOfSection()" style="display:none">
     <div class="container-fluid">
@@ -151,10 +100,6 @@
                 <div class="thirdStep" style="display:none">
                     <div class="event_activity" *ngIf="selectedActivity">
                         <p>{{selectedActivity.activityName}}<br>{{selectedActivity.activityDate}}</p>
-                        <!-- <div class="event_slace">/</div> -->
-                        <!-- <div class="event_adding">
-                            <img src="/assets/images/event_adding.png">
-                        </div> -->
                     </div>
                     <div class="w-100 mb-3">
                     <div class="event_button" *ngFor="let item of selectedActivityGroup;">
@@ -182,9 +127,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="eventC_add">
-                        <img src="/assets/images/eventC_add.png">
-                    </div> -->
                     <div class="collect_detail text-center">
                         <span *ngFor="let item of activityName">
                             <div class="collect1_img">
@@ -252,7 +194,6 @@
                             <button class="event_invitation" (click)="ThankYouMessage(eventId)">Payment Thank you</button>
                             <button class="event_invitation" (click)="nextSection('sixthStep', 'fourthStep')">After
                                 Event</button>
-                            <!-- <button class="event_plus">+</button> -->
                         </div>
 
                     </div>
@@ -325,23 +266,6 @@
                 <!-- fifth slide  -->
                 <div class="fifthStep" style="display:none">
                     <div class="eventE_media">
-                        <!-- <img src="/assets/images/eentE_phone.png">
-                    <img src="/assets/images/eventE_mail.png">
-                    <img src="/assets/images/eventE_facebook.png">
-                    <img src="/assets/images/eventE_google.png">
-                    <img src="/assets/images/eventE_wp.png"> -->
-                        <!-- <share-button [theme]="'circles-dark'" [button]="'whatsapp'" [showText]="true"
-                        [showCount]="true"
-                        [url]="'https://aso-ebi.com/welcome-guest/NWQ1MmMyMTdhNTBjMTUzYmVmNDc2MTIy'"
-                        [autoSetMeta]="false"></share-button>
-                    <share-button [theme]="'circles-dark'" [button]="'facebook'" [showText]="true"
-                        [showCount]="true"
-                        [url]="'https://aso-ebi.com/welcome-guest/NWQ1MmMyMTdhNTBjMTUzYmVmNDc2MTIy'">
-                    </share-button>
-                    <share-button [theme]="'circles-dark'" [button]="'email'" [showText]="true" [showCount]="true"
-                        [url]="'https://twitter.com/'"></share-button>
-                    <share-button [theme]="'circles-dark'" [button]="'sms'" [showText]="true" [showCount]="true"
-                        [url]="'https://twitter.com/'"></share-button> -->
                     </div>
                     <div class="collect_detail text-center mt-3">
                         <span *ngFor="let item of activityName">
@@ -405,7 +329,6 @@
                         <button class="invitation">Payment</button>
                         <button class="invitation">Event</button>
                         <button class="invitation">Aftert</button>
-                        <!-- <button class="plus">+</button> -->
                     </div>
 
                     <div class="eventF_pera">
@@ -530,29 +453,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div id="overlay" class="new_event_menu_box" style="display: none;">
-                        <div class="m-auto pr-0 float-left new_event_menu slider_overlay">
-                            <a class="text-white "><img src="/assets/images/overlay.png">
-                                <p>Collections</p>
-                            </a>
-                        </div>
-                        <div class="">
-                            <div class="event_menu">
-                                <div class="all_menu_content  d-flex flex-wrap align-content-center">
-                                    <ul>
-                                        <li><a routerLink="/myEvent" class="text-white new_event">my event</a></li>
-                                        <li><a routerLink="/createEvent" class="text-white my_event">new event</a>
-                                        </li>
-                                        <li><a routerLink="/bankDetails" class="text-white my_account">bank
-                                                account</a></li>
-                                        <li><a routerLink="/reset-password" class="text-white my_account">Reset
-                                                Password</a></li>
-                                        <li><a (click)="logout()" class="text-white my_account">Logout</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
                         <div *ngIf="singleEventDetails">
                             <div class="enter_event_title">
                                 <h6 class="text-center text-white">Event Hashtag</h6>
@@ -582,21 +482,3 @@
         </div>
     </section>
 </div>
-
-<!-- overLay -->
-<!-- <div id="overlay" class="new_event_menu_box" style="display: none;">
-    <div class="">
-        <div class="event_menu">
-            <div class="all_menu_content  d-flex flex-wrap align-content-center">
-                <ul>
-                    <li><a class="text-white new_event">My Event</a></li>
-                    <li><a  class="text-white my_event">New Event</a></li>
-                    <li><a  class="text-white my_account">bank account</a></li>
-                    <li><a  class="text-white my_account">Reset Password</a></li>
-                    <li><a  class="text-white my_account">Logout</a></li>
-                    <li><a  class="text-white my_account">Messages</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div> -->
