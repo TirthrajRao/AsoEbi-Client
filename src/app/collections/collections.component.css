@@ -1,0 +1,28 @@
+.collection-menu {
+	height: 645px;
+	width: 665px;
+    margin: auto;
+    position: relative;
+}
+
+@media(max-width:1366px){
+    .collection-menu{
+        width: 600px;
+        height: 525px;
+    }
+}
+@media(max-width:767px){
+    .collection-menu{
+        width: 520px;
+    }
+}
+@media(max-width:575px){
+    .collection-menu{
+        width: 100%;
+    }
+}
+@media (max-width: 320px){
+.collection-menu {
+    height: 385px;
+}
+}

@@ -26,6 +26,7 @@ export class CollectionsComponent implements OnInit {
   $slider;
   from = false;
   fromClass;
+  activityTotal :any;
   userName = JSON.parse(localStorage.getItem('userName'));
 
   colorSettings = {
@@ -102,7 +103,7 @@ export class CollectionsComponent implements OnInit {
     setTimeout(() => {
 
       this.$slideContainter = $('.collection_slider'),
-        this.$slider = this.$slideContainter.slick({
+        this.$slider = this.$slideContainter.not('.slick-initialized').slick({
           dots: true,
           infinite: false,
           speed: 1000,
@@ -173,8 +174,20 @@ export class CollectionsComponent implements OnInit {
     this._eventService.getCollections(id)
       .subscribe((data: any) => {
         console.log("total collections of ", data);
+        setTimeout(()=>{
+          this.initCollectionSlider()
+        },10)
+        this.activityTotal = data.data.activityWise;
+      console.log("activity array", this.activityTotal);
         this.activitiesCollections = data.data.groupWise;
-        console.log("activity array", this.activitiesCollections);
+        console.log("this.activitiesCollections" , this.activitiesCollections);
+        this.activitiesCollections.forEach((singleActivity)=>{
+          this.activityTotal.forEach((singlePriceObject)=>{
+            if(singlePriceObject.activityName == singleActivity._id){
+              singleActivity['totalPrice'] = singlePriceObject.total; 
+            }
+          });
+        });
         _.forEach(this.activitiesCollections[0].group[0].item, (item) => {
           console.log(item)
           let activityTotal = item.itemPrice
@@ -185,16 +198,17 @@ export class CollectionsComponent implements OnInit {
             this.femaleTotal = this.getFemaleTotal(item.total)
           }
         });
-        var total = 0;
-        _.forEach(this.activitiesCollections[0].group, (singleGroup)=>{
+        //  this.activityTotal = 0;
+        _.forEach(this.activitiesCollections.group, (singleGroup)=>{
+          console.log("single group=======================>",singleGroup);
           _.forEach(singleGroup.item , (singleItem)=>{
             console.log("singleItem.itemPrice ==> " , singleItem.itemPrice);
             if(singleItem.itemPrice){
-              total = total + singleItem.itemPrice;
+              this.activityTotal = this.activityTotal + singleItem.itemPrice;
             }
           })
         });
-        console.log("TOTAL PRICE =====>" , total);  
+        // console.log("TOTAL PRICE =====>" , this.activityTotal);  
         setTimeout(() => {
           $('input:radio[id=00]').prop('checked', true);
           this.initCollectionSlider()
