@@ -1,266 +1,9 @@
 <!-- Details of any particular event  -->
 
-<!-- <div class="row">
-    <div class="col-12">
-        <div *ngFor="let item of allDetailsofEvent">
-            <button type="button" class="btn btn-primary m-auto" (click)="editEventDeatils(item._id)"
-                *ngIf="isCelebrant == true">Edit Event </button>
-            <button type="button" class="btn btn-primary m-auto " (click)="deleteEvent(item._id)"
-                *ngIf="isCelebrant == true">Delete Event </button>
-            <button type="button" class="btn btn-primary m-auto " (click)="totalCollection(item._id)"
-                *ngIf="isCelebrant == true">Collections </button>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card p-4">
-                            <button type="button" class="btn btn-danger ml-auto mb-2" (click)="myCart(item._id)"
-                                *ngIf="isCelebrant == false">My
-                                Cart</button>
-                            <button type="button" class="btn btn-primary" (click)="joinNow(item._id)"
-                                [disabled]="isDisable" *ngIf="isCelebrant == false">Join Now
-                            </button>
-                            <div [ngStyle]="{background: getSrc(item.eventTheme)}" class="theme-background">
-                                <div class="row">
-                                    <div class="col-4 m-auto">
-                                        <img src="{{path}}{{item.profilePhoto}}" class="rounded-circle img-fluid">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col text-center pt-4">
-                                        <p>EventType:-
-                                            <span>{{item.eventType}}</span>
-                                        </p>
-                                    </div>
-                                    <div class="col text-center pt-4">
-                                        <p>EventTitle:-
-                                            <span>{{item.eventTitle}}</span>
-                                        </p>
-                                    </div>
-                                    <div class="col text-center pt-4">
-                                        <p>EventHashTag:-
-                                            <span>{{item.hashTag}}</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <p *ngIf="isCelebrant == true">EventLink:-
-                                            <input #inputTarget [(ngModel)]="eventLink" readonly />
-                                            <button [ngxClipboard]="inputTarget">Copy</button>
-                                        </p>
-                                    </div>
-                                    <share-button [theme]="'circles-dark'" [button]="'whatsapp'" [showText]="true"
-                                        [showCount]="true"
-                                        [url]="'https://aso-ebi.com/welcome-guest/NWQ1MmMyMTdhNTBjMTUzYmVmNDc2MTIy'"
-                                        [autoSetMeta]="false"></share-button>
-                                    <share-button [theme]="'circles-dark'" [button]="'facebook'" [showText]="true"
-                                        [showCount]="true"
-                                        [url]="'https://aso-ebi.com/welcome-guest/NWQ1MmMyMTdhNTBjMTUzYmVmNDc2MTIy'">
-                                    </share-button>
-                                    <share-button [theme]="'circles-dark'" [button]="'email'" [showText]="true"
-                                        [showCount]="true" [url]="'https://twitter.com/'"></share-button>
-                                    <share-button [theme]="'circles-dark'" [button]="'sms'" [showText]="true"
-                                        [showCount]="true" [url]="'https://twitter.com/'"></share-button>
-                                </div>
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-lg-8 m-auto ">
-                                            <div *ngFor="let activity of activityArray" class="card p-5">
-                                                <h2 class="text-warning text-center"> Activity:
-                                                    {{activity.activityName}}</h2>
-                                                <div *ngFor="let group of activity.group">
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <h3 class="text-danger">Group: {{group.groupName}}</h3>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="row">
-                                                                <div class="col-lg-6">
-                                                                    <p class="font-weight-bold">Male</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row" *ngFor="let male of group.item">
-                                                                <div class="col-lg-9" *ngIf="male.itemGender == 'male'">
-                                                                    <p>itemType :{{male.itemType}}</p>
-                                                                    <p>itemPrice :{{male.itemPrice}}</p>
-                                                                    <p>itemName :{{male.itemName}}</p>
-                                                                </div>
-                                                                <div class="col-lg-3">
-                                                                    <button type="button" class="btn btn-info"
-                                                                        (click)="addToCart(item._id,male._id)"
-                                                                        *ngIf="isCelebrant == false">Add
-                                                                        To Cart </button>
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="row">
-                                                                <div class="col-lg-6">
-                                                                    <p class="font-weight-bold">Female</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row" *ngFor="let female of group.item">
-                                                                <div class="col-lg-9"
-                                                                    *ngIf="female.itemGender == 'female'">
-                                                                    <p>itemName :{{female.itemName}}</p>
-                                                                    <p>itemType :{{female.itemType}}</p>
-                                                                    <p>itemPrice :{{female.itemPrice}}</p>
-                                                                </div>
-                                                                <div class="col-lg-3">
-                                                                    <button type="button" class="btn btn-info"
-                                                                        (click)="addToCart(item._id,female._id)"
-                                                                        *ngIf="isCelebrant == false">Add
-                                                                        To Cart </button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-<!-- new Design  -->
-
-<!-- <section class="view_event_section d-flex flex-wrap align-content-center">
-    <div class="container-fluid">
-        <h3 class="text-center Aso_title">Aso Ebi</h3>
-        <div class="profile_pic text-center" *ngFor= "let item of allDetailsofEvent">
-            <img *ngIf="item && item.profilePhoto"
-            src="{{path}}{{item.profilePhoto}}" class=" rounded-circle">
-        </div>
-        <h3 class="text-center user_name">{{eventHashTag}}</h3>
-
-        <div class="cart_pic text-center" *ngFor= "let item of allDetailsofEvent" (click)="myCart(item._id)"> 
-            <img src="/assets/images/cart.png">
-        </div>
-        <div class="veiw_event">
-            <div class="Join_inner_content_box h-100 mb-3">
-                <div class="event_inner_content">
-                    <div class="new_event_sec veiw_event_sec">
-                        <div class="row">
-                            <div class="col-3 m-auto pr-0 float-right new_event_menu">
-                                <a href="javascript:void(0)"><img src="/assets/images/view_event_icon.png">
-                                    <p class="text-white">My Cart</p>
-                                </a>
-                            </div>
-                            <div class="col-9 p-0">
-                                <span class="text-white event_name"> Hello {{userName}} </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="overlay" class="new_event_menu_box" style="display: none;">
-                        <div class="">
-                            <div class="event_menu">
-                                <div class="all_menu_content  d-flex flex-wrap align-content-center">
-                                    <ul>
-                                        <li><a href="eventA.html" class="text-white new_event">my event</a></li>
-                                        <li><a href="new_event_slider.html" class="text-white my_event">new event</a>
-                                        </li>
-                                        <li><a href="add_bank_account.html" class="text-white my_account">bank
-                                        account</a></li>
-                                        <li><a href="reset_password.html" class="text-white my_account">Reset
-                                        Password</a></li>
-                                        <li><a href="#" class="text-white my_account">Logout</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div *ngFor="let item of allDetailsofEvent">
-                        <div class="">
-                            <button class="btn-primary w-100 joinNowBtn" *ngIf="isCelebrant == false"
-                            (click)="joinNow(item._id)">Join Now</button>
-                            <div class="all_event_details">
-                                <div class="row">
-                                    <div class="col-4 pr-0">
-                                        <a class="text-white text-center event_type">{{item.eventType}}
-                                        </a>
-                                    </div>
-                                    <div class="col-4 pr-0">
-                                        <a class="text-white text-center event_title">{{item.eventTitle}}
-                                        </a>
-                                    </div>
-                                    <div class="col-4 pl=0 ">
-                                        <a class="text-white text-center">{{item.hashTag}}</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="activity_slider">
-                            <div class="activity_day" *ngFor="let activity of activityArray">
-                                <p class="text-center first_day_activity">Activity:{{activity.activityName}}</p>
-                                <div class="activity_group_slider">
-                                    <div *ngFor="let group of activity.group">
-                                        <p class="group_family text-center">Group: {{group.groupName}}</p>
-                                        <div class="gender_slider1 ">
-                                            <div class="gender_slide1 male_slide1">
-                                                <h5 class="text-white">Male</h5>
-                                                <div class="item_detail_height">
-                                                    <div *ngFor="let male of group.item" class="item_detail_height">
-                                                        <div *ngIf="male.itemGender == 'male'">
-                                                            <div class="row">
-                                                                <div class="col-6">
-                                                                    <div class="item_detail">
-                                                                        <p class="text-white">itemType: {{male.itemType}}</p>
-                                                                        <p class="text-white">itemPrice: {{male.itemPrice}}</p>
-                                                                        <p class="text-white">itemName: {{male.itemName}}</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-6">
-                                                                    <div class="add_to_cart_btn" (click)="addToCart(item._id,male._id)" >
-                                                                        <a class="text-white">Add to Cart</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="gender_slide1 female_slide1">
-                                                <h5 class="text-white">Female</h5>
-                                                <div class="item_detail_height">
-                                                    <div *ngFor="let female of group.item" class="">
-                                                        <div *ngIf="female.itemGender == 'female'">
-                                                            <div class="row">
-                                                                <div class="col-6">
-                                                                    <div class="item_detail">
-                                                                        <p class="text-white">itemType: {{female.itemType}}</p>
-                                                                        <p class="text-white">itemPrice: {{female.itemPrice}}
-                                                                        </p>
-                                                                        <p class="text-white">itemName: {{female.itemName}}</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-6">
-                                                                    <div class="add_to_cart_btn" (click)="addToCart(item._id,female._id)">
-                                                                        <a  class="text-white">Add to Cart</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
+<div class="alert alert-success" id="success-alert">
+    <button type="button" class="close" data-dismiss="alert">x</button>
+    <strong>Success! </strong> Product have added to your wishlist.
+  </div>
 
 <section class="view_event_section d-flex flex-wrap align-content-center">
         <div class="container-fluid">
@@ -270,10 +13,11 @@
                 src="{{path}}{{item.profilePhoto}}" class=" rounded-circle">
             </div>
             <h3 class="text-center user_name">{{eventHashTag}}</h3>
-    
+            <div >
             <div class="cart_pic text-center" *ngFor= "let item of allDetailsofEvent" (click)="myCart(item._id)"> 
                 <img src="/assets/images/cart.png"  data-toggle="tooltip" title="My Cart">
             </div>
+        </div>
             <div class="veiw_event">
                 <div class="Join_inner_content_box h-100 mb-3">
                     <div class="event_inner_content">
@@ -281,11 +25,11 @@
                             <div class="row">
                                 <div class="col-3 m-auto pr-0 float-right new_event_menu">
                                     <a href="javascript:void(0)"><img src="/assets/images/view_event_icon.png">
-                                        <p class="text-white my_cart">My Cart</p>
+                                        <p class="text-white my_cart">View Event</p>
                                     </a>
                                 </div>
                                 <div class="col-9 p-0">
-                                    <span class="text-white event_name"> Hello {{userName}} </span>
+                                    <span class="text-white event_name" *ngIf="userName"> Hello {{userName}} </span>
                                 </div>
                             </div>
                         </div>
@@ -309,7 +53,7 @@
                         </div>
                         <div *ngFor="let item of allDetailsofEvent">
                             <div class="">
-                                <button class="btn-primary w-100 joinNowBtn" *ngIf="isCelebrant == false"
+                                <button class="btn-primary w-100 joinNowBtn" 
                                 (click)="joinNow(item._id)">Join Now</button>
                                 <div class="all_event_details">
                                     <div class="row">
@@ -327,12 +71,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="activity_slider">
+                            <div class="activity_slider" >
                                 <div class="activity_day" *ngFor="let activity of activityArray">
-                                    <p class="text-center first_day_activity">Activity:{{activity.activityName}}</p>
+                                    <p class="text-center first_day_activity">{{activity.activityName}}</p>
                                     <div class="activity_group_slider">
                                         <div *ngFor="let group of activity.group">
-                                            <p class="group_family text-center">Group: {{group.groupName}}</p>
+                                            <p class="group_family text-center">{{group.groupName}}</p>
                                             <div class="gender_slider1 ">
                                                 <div class="gender_slide1 male_slide1">
                                                     <h5 class="text-white">Male</h5>
@@ -343,10 +87,10 @@
                                                                     <div class="col-6">
                                                                         <div class="item_detail">
                                                                             <p ><span>Name : </span><br> {{male.itemName}}</p>
-                                                                           <p><span>Price : </span><br> {{male.itemPrice}}</p>
+                                                                           <p><span>Price : </span><br> {{male.itemPrice | currency:"&#x20A6;"}}</p>
                                                                        </div>
                                                                    </div>
-                                                                   <div class="col-6">
+                                                                   <div class="col-6" >
                                                                     <div class="add_to_cart_btn" (click)="addToCart(item._id,male._id)" >
                                                                         <a class="text-white">Add to Cart</a>
                                                                     </div>
@@ -365,11 +109,11 @@
                                                                 <div class="col-6">
                                                                     <div class="item_detail">
                                                                         <p><span>Name : </span><br> {{female.itemName}}</p>
-                                                                        <p><span>Price : </span><br> {{female.itemPrice}}
+                                                                        <p><span>Price : </span><br> {{female.itemPrice | currency:"&#x20A6;"}}
                                                                         </p>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-6">
+                                                                <div class="col-6" >
                                                                     <div class="add_to_cart_btn" (click)="addToCart(item._id,female._id)">
                                                                         <a  class="text-white">Add to Cart</a>
                                                                     </div>

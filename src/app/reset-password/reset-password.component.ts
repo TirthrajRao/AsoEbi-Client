@@ -14,7 +14,8 @@ export class ResetPasswordComponent implements OnInit {
   resetPasswordForm: FormGroup;
   match: boolean = false;
   isDisable = false;
-  
+  userName = JSON.parse(localStorage.getItem('userName'));
+
   constructor(private router: Router, private _loginService: LoginService, private alertService: AlertService) { }
 
   ngOnInit() {

@@ -24,7 +24,7 @@
     </section>
 </div>
 <div *ngIf="!isDiable">
-    <div class=" custom_steps firstStep" >
+    <div class=" custom_steps firstStep"  style="display:none" >
         <section class="join_page2_section d-flex flex-wrap align-content-center">
             <div class="container-fluid">
                 <h3 class="text-center">Aso Ebi</h3>
@@ -35,7 +35,7 @@
                             <a routerLink="/login" class="btn_enter2 text-white float-right">Enter</a>
                         </div>
                         <div class="login_form_sec">
-                            <div class="row ">
+                            <!-- <div class="row ">
                                 <div class="email_display col-2 pr-0">
                                     <div class="email_sec">
                                         <a href="#">
@@ -79,12 +79,12 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <form class="join_form login_form" [formGroup]="signUpForm" autocomplete="off">
                                 <div class="form-group mt-2">
                                     <div class="input-group ">
                                         <input type="email" class="form-control" id="email"
-                                        placeholder="Email/Phone Number" name="email" formControlName="email"
+                                        placeholder="Enter Your Email" name="email" formControlName="email"
                                         [ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }">
                                         <div *ngIf="f.email.touched && f.email.errors"
                                         class="invalid-feedback text-white">
@@ -123,7 +123,7 @@
 
 <!-- Verification form for new register user -->
 
-<div class="custom_steps secondStep" >
+<div class="custom_steps secondStep"  style="display:none" >
     <section class="join_page3_section text-center d-flex flex-wrap align-content-center">
         <div class="container-fluid">
             <h3>Aso ebi</h3>
@@ -153,7 +153,7 @@
 
 
 <!-- personalDetails form for new register user -->
-<div class="thirdStep">
+<div class="thirdStep"  >
     <section class="join_page4_section text-center d-flex flex-wrap align-content-center">
         <div class="container-fluid">
             <h3>Aso Ebi</h3>
@@ -162,7 +162,7 @@
                     <form class="join_form join_name" [formGroup]="personalDetailsForm" autocomplete="off">
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="First Name" name="fname"
+                                <input type="text" class="form-control" placeholder="First Name" pattern="[a-zA-Z]+" name="fname"
                                 (input)="validateFirstName(personalDetailsForm.value)" id="firstName"
                                 class="form-control" formControlName="firstName"
                                 [ngClass]="{ 'is-invalid': p.firstName.touched && p.firstName.errors }">
@@ -178,7 +178,7 @@
                     </div>
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Last Name" name="lname"
+                            <input type="text" class="form-control" placeholder="Last Name" pattern="[a-zA-Z]+" name="lname"
                             formControlName="lastName" (input)="validateLastName(personalDetailsForm.value)"
                             id="lastName"
                             [ngClass]="{ 'is-invalid': p.lastName.touched && p.lastName.errors }">
@@ -216,7 +216,7 @@
 </section>
 </div>
 
-<div class="fourthStep">
+<div class="fourthStep" style="display:none" >
 
     <section class="join_page5_section text-center d-flex flex-wrap align-content-center">
         <div class="container-fluid">

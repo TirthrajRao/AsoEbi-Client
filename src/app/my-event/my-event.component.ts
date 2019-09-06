@@ -15,7 +15,7 @@ declare let $: any;
 })
 export class MyEventComponent implements OnInit {
   path = config.baseMediaUrl;
-  myEvent;
+  myEvent = 0;
   singleEventId;
   themePhoto: any = [];
   singleEventDetails: any;
@@ -378,17 +378,7 @@ export class MyEventComponent implements OnInit {
    * @param {String} eventid
    * Delete created event 
    */
-  deleteEvent(eventid) {
-    console.log(eventid);
-    this._eventService.deleteEvent(eventid).subscribe((data: any) => {
-      console.log("delete event response", data);
-      this.alertService.getSuccess(data.data.message)
-      this.router.navigate(['home/myEvent'])
-    }, (err: any) => {
-      console.log(err);
-      this.alertService.getError(err.message);
-    })
-  }
+
   handleChange(item) {
     console.log("item of single event ", item);
     this.selectedGroup = item.groupName;

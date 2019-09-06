@@ -32,6 +32,7 @@ export class EventActivityComponent implements OnInit {
   selectedGender;
   activityId;
   allActivityList;
+  isCelebrant;
   userName = JSON.parse(localStorage.getItem('userName'));
   constructor(private route: ActivatedRoute, private router: Router, private _eventService: EventService, private alertService: AlertService,
     private _loginService: LoginService) {
@@ -199,6 +200,7 @@ export class EventActivityComponent implements OnInit {
   // }
   singleActivityDetails(activityId) {
     console.log(activityId);
+    this.selectedActivity = activityId;
     this.selectedActivityGroup = activityId.group;
     this.selectedGroup = activityId.group[0].groupName;
     this.selectedGender = 'male';
@@ -209,10 +211,11 @@ export class EventActivityComponent implements OnInit {
   }
 
   eventDeatils(id, activityId) {
-    console.log(id);
     //   let className = $('#dynamic_loader_content > div:visible').attr('class');
     this._eventService.getEventDetails(id)
-      .subscribe((data: any) => {
+    .subscribe((data: any) => {
+      this.isCelebrant = data.data.isCelebrant;
+      console.log("single activity data",this.isCelebrant); 
         this.singleEventDetails = data.data;
         this.allActivityList = this.singleEventDetails.activity;
         console.log(this.allActivityList);

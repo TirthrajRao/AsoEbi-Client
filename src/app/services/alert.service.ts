@@ -17,7 +17,7 @@ export class AlertService {
     console.log(message);
     Swal.fire({
       type: 'success',
-      title: "congo" + message,
+      title: message,
       showConfirmButton: false,
       timer: 2000
     })
@@ -31,7 +31,7 @@ export class AlertService {
     console.log(message);
     Swal.fire({
       type: 'error',
-      title: "Sorry" + message,
+      title: message,
       showConfirmButton: false,
       timer: 2000
     })

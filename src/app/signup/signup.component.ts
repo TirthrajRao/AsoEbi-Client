@@ -22,7 +22,6 @@ export class SignupComponent implements OnInit {
     private router: Router, private _loginService: LoginService, private _alertService: AlertService) { }
 
   ngOnInit() {
-
     /**
      * SignUp form for new user
      */
@@ -37,6 +36,7 @@ export class SignupComponent implements OnInit {
     })
   }
 
+  
   /**
    * Display error message for signUp form
    */
@@ -55,6 +55,16 @@ export class SignupComponent implements OnInit {
   validateFirstName(form) {
     console.log(form);
     const nameInput = /[a-zA-Z ]/;
+
+    $("#firstName").on({
+      keydown: function(e) {
+        if (e.which === 32)
+          return false;
+      },
+      change: function() {
+        this.value = this.value.replace(/\s/g, "");
+      }
+     });
     let message1 = document.getElementById('message1');
     if (!form.firstName.match(nameInput)) {
       console.log("message==========", message1)
@@ -86,7 +96,7 @@ export class SignupComponent implements OnInit {
    */
   validatePhone(form) {
     console.log(form);
-    const phoneno = /[0-9]/;
+    const phoneno = /[0-9]{10}/;
     let message = document.getElementById('message');
     if (!form.mobile.match(phoneno)) {
       console.log("message==========", message)

@@ -56,7 +56,7 @@
                                 *ngIf="item.groupName">{{item.groupName}}</button>
                         </div>
                     </div>
-                    <div class="pb-3 ml-5">
+                    <div class="pb-3 ml-5" *ngIf="itemNamePrint.length>0">
                         <input type="radio" id="test" value="male" name="radio-group1" checked>
                         <label for="test">Male</label>
                         <input type="radio" id="test5" value="female" name="radio-group1">
@@ -77,11 +77,14 @@
                             </div>
                         </div>
                     </div>
+                    <div *ngIf="itemNamePrint.length == 0">
+                        <h1>Sorry, you have no item in this activity.You can <a style="color:aliceblue"
+                                (click)="nextSection('seventhStep', 'initialStep')">add Item</a>, here</h1>
+                    </div>
                     <div class="collect_detail text-center" [ngClass]="eventId">
                         <span *ngFor="let item of allActivityList">
                             <div class="collect1_img">
-                                <div class="collect_img"
-                                    (click)="singleActivityDetails(item)">
+                                <div class="collect_img" (click)="singleActivityDetails(item)">
                                     <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                         src="{{path}}{{singleEventDetails.profilePhoto}}">
                                 </div>

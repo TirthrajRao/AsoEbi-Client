@@ -1,46 +1,4 @@
 <!-- Display all addToCart items with price and quantity -->
-<!-- <div class="container">
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th>Activity Name</th>
-                <th>Group Name</th>
-                <th>Gender</th>
-                <th>Item Name</th>
-                <th class="product-price">Item Price</th>
-                <th class="product-quantity">Quantity</th>
-                <th></th>
-                <th class="product-line-price">Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let products of cartDetails" class="product" ng-init="count = 0">
-                <td>{{products.activityName}}</td>
-                <td>{{products.groupName}}</td>
-                <td>{{products.itemGender}}</td>
-                <td>{{products.itemName}}</td>
-                <td class="product-price">{{products.itemPrice}}</td>
-                <td class="product-quantity">
-                    <input type="number" min="1" [(ngModel)]="products.quantity">
-                </td>
-                <td>
-                    <button type="button" class="btn btn-danger" (click)="removeItem(products._id)">Remove
-                    </button>
-                </td>
-                <td>{{products.itemPrice * products.quantity }}</td>
-            </tr>
-            <tr>
-                <td>
-                    <button type="button" class="btn btn-primary" (click)="allItem(cartDetails)">Procced To Pay
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div> -->
-
-
-
 
 <!-- New Design of my cart  -->
 
@@ -49,7 +7,7 @@
         <div class="container-fluid">
             <h3 class="text-white text-center Aso_title">Aso Ebi</h3>
             <div class="profile_pic  text-center">
-                <img src="/assets/images/profile.png">
+                <img src="{{path}}{{eventDetails.profilePhoto}}">
             </div>
             <h3 class="text-center text-white user_name" *ngIf="eventDetails"> {{eventDetails.hashTag}}</h3>
             <div class="card_inner_content_box">
@@ -91,7 +49,7 @@
         <div class="container-fluid">
             <h3 class="text-center text-center Aso_title">Aso Ebi</h3>
             <div class="profile_pic text-center text-center">
-                <img src="/assets/images/profile.png">
+                    <img src="{{path}}{{eventDetails.profilePhoto}}">
             </div>
             <h3 class="text-center text-center user_name" *ngIf="eventDetails"> {{eventDetails.hashTag}}</h3>
             <div class="card_inner_content_box5">
@@ -116,7 +74,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="radio_btn text-white ">
+
+                        <div *ngIf="cartDetails.length == 0">
+                            <h1>Sorry, No more item added into the cart.To add item into cart <a (click)="viewEvent(eventId)">Click Here </a> </h1>
+                        </div>
+                        <div class="radio_btn text-white " *ngIf="cartDetails.length>0">
                             <p class="event_name_new" *ngIf="eventDetails"> {{eventDetails.eventType}}</p>
                             <div class="all_list_height event_prise_detail">
                                 <p class="gender_select">Male</p>
@@ -125,15 +87,10 @@
                                         <div class="row">
                                             <div class="col-12" *ngIf="item.itemGender == 'male'">
                                                 <div class="all_list">
-                                                    <div class="fabric_name float-left">{{item.itemName}} <img
-                                                        src="/assets/images/wn.png"> {{item.itemPrice}} </div>
-                                                        <div class="float-right number_of_item">
-                                                            <label class=""> x </label>
-                                                            <!-- <h1>helooooo</h1> -->
-                                                            <!-- {{item.quantity}} -->
-                                                            <input type="text" min="1"  
-                                                            (click)="finalTotal(item)"
-                                                            [(ngModel)]='item.quantity'>
+                                                    <div class="fabric_name float-left">{{item.itemName}} {{ item.itemPrice | currency:"&#x20A6;" }} </div>
+                                                        <div class="float-right ">
+                                                            <label > x </label>
+                                                            <input type="number" (click)="finalTotal(item)" [(ngModel)]="item.quantity" min="1">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -142,8 +99,8 @@
                                         <div class="col-4 all_list_total_price" *ngIf="item.itemGender == 'male'">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <div class=" float-right"> = <img src="/assets/images/wn.png">
-                                                    {{item.itemPrice * item.quantity }}</div>
+                                                    <div class=" float-right"> =
+                                                    {{(item.itemPrice * item.quantity) | currency:"&#x20A6;" }}</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -155,14 +112,13 @@
                                         </div>
                                     </div>
                                     <hr>
-                                    <p class="gender_select">Female</p>
+                                    <p class="gender_select" >Female</p>
                                     <div class="row" *ngFor="let item of cartDetails">
                                         <div class="col-7">
                                             <div class="row">
                                                 <div class="col-12" *ngIf="item.itemGender=='female'">
                                                     <div class="all_list">
-                                                        <div class="fabric_name float-left"> {{item.itemName}} <img
-                                                            src="/assets/images/wn.png"> {{item.itemPrice}} </div>
+                                                        <div class="fabric_name float-left"> {{item.itemName}} {{item.itemPrice | currency:"&#x20A6;"}} </div>
                                                             <div class="float-right number_of_item text-white">
                                                                 <label class=""> x </label>
                                                                 <input type="text" min="1" id="donation"
@@ -176,8 +132,8 @@
                                             <div class="col-4 all_list_total_price" *ngIf="item.itemGender=='female'">
                                                 <div class="row">
                                                     <div class="col-12">
-                                                        <div class=" float-right"> = <img src="/assets/images/wn.png">
-                                                        {{item.itemPrice * item.quantity }}</div>
+                                                        <div class=" float-right"> = 
+                                                        {{(item.itemPrice  * item.quantity ) | currency:"&#x20A6;"}}</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -189,18 +145,18 @@
                                             </div>
                                         </div>
                                         <hr>
-                                        <div class="all_total">
+                                        <!-- <div class="all_total">
                                             <div class="row">
                                                 <div class="col-11">
                                                     <div class="float-left">Total</div>
-                                                    <div class="fabric_name float-right">= <img src="/assets/images/yn.png">
-                                                        {{finalGrandTotal}}
+                                                    <div class="fabric_name float-right">=
+                                                        {{finalGrandTotal | currency:"&#x20A6;"}}
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
-                                    <div class="save_and_pay_btn">
+                                    <div class="save_and_pay_btn" >
                                         <a class="update_btn text-center" (click)="allItem(cartDetails)">Procced</a>
                                         <!-- <a class="paynow_btn text-center" (click)="addDonation()">Add Donation</a> -->
                                     </div>

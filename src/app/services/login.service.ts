@@ -32,8 +32,8 @@ export class LoginService {
     const eventToken = JSON.parse(localStorage.getItem('newEventId'));
     console.log("login with link ", eventToken);
     if (eventToken) {
-      userCredentials.eventId = eventToken;
-      console.log("userdata", userCredentials);
+      // userCredentials.eventId = eventToken;
+      // console.log("userdata", userCredentials);
       return this.http.post<any>(config.baseApiUrl + "api/login", userCredentials)
         .pipe(map(user => {
           console.log("login user detaislllllllllll======", user);

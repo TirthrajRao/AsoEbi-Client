@@ -5,6 +5,9 @@ import { config } from '../config';
 import { ClipboardService } from 'ngx-clipboard';
 import { AlertService } from '../services/alert.service';
 import loadjs from 'loadjs';
+import { asLiteral } from '@angular/compiler/src/render3/view/util';
+import { async } from '@angular/core/testing';
+import { delay } from 'rxjs/operators';
 declare var $: any;
 
 
@@ -48,6 +51,9 @@ export class ViewEventComponent implements OnInit {
     $(".new_event_menu").click(function () {
       $(".new_event_menu_box").toggle();
     });
+
+
+    // this.displayAlert();
     setTimeout(() => {
       // activity slider
       $('.activity_slider').not('.slick-initialized').slick({
@@ -70,7 +76,7 @@ export class ViewEventComponent implements OnInit {
       });
 
       // group slider start
-   $('.activity_group_slider').not('.slick-initialized').slick({
+      $('.activity_group_slider').not('.slick-initialized').slick({
         dots: false,
         arrows: true,
         slidesToShow: 1,
@@ -111,6 +117,18 @@ export class ViewEventComponent implements OnInit {
     }, 300)
 
 
+  }
+
+  displayAlert() {
+    $(document).ready(function () {
+      setTimeout(async () => {
+        $("#success-alert").hide();
+        await delay(5000)
+        $("#success-alert").fadeTo(2000, 500).delay(1200).slideUp(500, function () {
+          $("#success-alert").slideUp(500);
+        });
+      })
+    });
   }
 
   /**

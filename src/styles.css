@@ -4922,6 +4922,16 @@ label.upload_photo {
 		border: none!important;
 		margin: 0 0px 25px;
 	}
+	/* .man_item input{
+		border-color: #fff!important;
+		color: #fff;
+		font-family: 'Russo One', sans-serif;
+		font-size: 25px;
+		padding: 10px 43px;
+		outline: none!important;
+		border: none!important;
+		margin: 0 0px 25px;
+	} */
 
 	.eventF_page_section .eventF_send label, .eventF_page_section .eventF_at label, .eventF_page_section .eventF_to label {
 		font-size: 16px;
@@ -4931,11 +4941,6 @@ label.upload_photo {
 	.eventF_page_section [type="radio"]:checked, .eventF_page_section [type="radio"]:not(:checked) {
 		position: absolute;
 		left: -9999px;
-		text-align: center;
-	}
-
-	.number_of_item input {
-		font-color: #fff!important;
 		text-align: center;
 	}
 	.activity_group_slider .slick-arrow {

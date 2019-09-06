@@ -173,7 +173,13 @@ export class LoginComponent implements OnInit {
     console.log("login token of hotmail lofin response", token);
     this._loginService.serverHotmailLogin(token)
       .subscribe((data: any) => {
-        console.log("response of hotmail", data);
+        
+        let firstName = data.data.firstName
+        let lastName = data.data.lastName
+        this.userName = firstName + " " + lastName;
+        localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
+        localStorage.setItem('userName', JSON.stringify(this.userName));
+
         if (this.eventIdWithLogin) {
           this.isUserLoggedIn = true;
           localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
@@ -218,7 +224,13 @@ export class LoginComponent implements OnInit {
     console.log("generated token of yahoo", token);
     this._loginService.sendYahooToken(token, userId)
       .subscribe(data => {
-        console.log(data)
+
+        let firstName = data.data.firstName
+        let lastName = data.data.lastName
+        this.userName = firstName + " " + lastName;
+        localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
+        localStorage.setItem('userName', JSON.stringify(this.userName));
+
         if (this.eventIdWithLogin) {
           this.isUserLoggedIn = true;
           localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
@@ -241,7 +253,7 @@ export class LoginComponent implements OnInit {
    */
   get f() { return this.loginForm.controls; }
 
-  get g(){ return this.forgotPasswordForm.controls;}
+  get g() { return this.forgotPasswordForm.controls; }
 
   /**
    * @param {JSON} email,password
@@ -253,9 +265,9 @@ export class LoginComponent implements OnInit {
     this._loginService.login(this.loginForm.value)
       .subscribe(data => {
         let firstName = data.data.firstName
-       let lastName = data.data.lastName
-       this.userName = firstName + " " +lastName;
-       console.log(this.userName);
+        let lastName = data.data.lastName
+        this.userName = firstName + " " + lastName;
+        console.log(this.userName);
         console.log("response of login user", data);
         // this.userRole = data.data.UserRole;
         console.log("admin login entry", data.data.UserRole);
@@ -295,6 +307,15 @@ export class LoginComponent implements OnInit {
       const googleIdToken = res.idToken;
       console.log("google id of login user", googleIdToken);
       this._loginService.googleLogin(googleIdToken).subscribe(data => {
+        let firstName = data.data.firstName
+        let lastName = data.data.lastName
+        this.userName = firstName + " " + lastName;
+        console.log(this.userName);
+        console.log("response of login user", data);
+        // this.userRole = data.data.UserRole;
+        console.log("admin login entry", data.data.UserRole);
+        localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
+        localStorage.setItem('userName', JSON.stringify(this.userName));
         console.log("response positive of google", data);
         if (this.eventIdWithLogin) {
           this.isUserLoggedIn = true;
@@ -329,6 +350,13 @@ export class LoginComponent implements OnInit {
         this._loginService.facebookLogin(facebookId)
           .subscribe((data: any) => {
             console.log("data of facebook login user", data);
+
+            let firstName = data.data.firstName
+            let lastName = data.data.lastName
+            this.userName = firstName + " " + lastName;
+            localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
+            localStorage.setItem('userName', JSON.stringify(this.userName));
+
             if (this.eventIdWithLogin) {
               this.isUserLoggedIn = true;
               localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));

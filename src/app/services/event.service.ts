@@ -85,10 +85,19 @@ export class EventService {
   }
 
   removeActivity(activityId) {
-    console.log("data of delete activity",activityId)
+    console.log("data of delete activity", activityId)
     return this.http.post(config.baseApiUrl + "api/activity-delete", activityId);
   }
-
+  removeGroup(id) {
+    return this.http.put(config.baseApiUrl + "api/group-delete", id);
+  }
+  removeMaleItem(itemId, groupId) {
+    const body = {
+      itemId: itemId,
+      groupId: groupId
+    }
+    return this.http.put(config.baseApiUrl + "api/group/delete-item",body)
+  }
   /**
    * @param {Object} data
    * Add new group releated to it's activity and event 
@@ -147,7 +156,7 @@ export class EventService {
    */
   deleteEvent(id) {
     console.log("delete event id", id);
-    return this.http.delete(config.baseApiUrl + "api/event/delete-event/" + id);
+    return this.http.delete(config.baseApiUrl + "api/event/" + id);
   }
 
   /**

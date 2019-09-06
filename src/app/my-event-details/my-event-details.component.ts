@@ -29,6 +29,7 @@ export class MyEventDetailsComponent implements OnInit {
   feMaleItem;
   selectedGroup;
   selectedGender;
+  isCelebrant;
   userName = JSON.parse(localStorage.getItem('userName'));
   constructor(private route: ActivatedRoute, private router: Router, private _eventService: EventService, private alertService: AlertService,
     private _loginService: LoginService) {
@@ -95,8 +96,8 @@ export class MyEventDetailsComponent implements OnInit {
 
 
 
-  initCollectDetailSlick() {
-    $('.' + this.eventId).not('.slick-initialized').slick({
+  initCollectDetailSlick(eventId?) {
+    $('.collect_detail').not('.slick-initialized').slick({
       infinite: true,
       slidesToShow: 6,
       slidesToScroll: 1,
@@ -130,6 +131,9 @@ export class MyEventDetailsComponent implements OnInit {
         }
       ]
     });
+    console.log(typeof eventId, eventId, eventId != this.selectedEventId, typeof this.selectedEventId, this.selectedEventId);
+    if (eventId != this.selectedEventId) {
+    }
     // $(document).ready(function () {
     //   setTimeout(() => {
     //   }, 100)
@@ -165,26 +169,47 @@ export class MyEventDetailsComponent implements OnInit {
   getSrc(eventTheme) {
     return `url(` + this.path + eventTheme + `)`;
   }
-
+  selectedEventId: any;
   singleEventDeatils(id, goto, from) {
+    this.selectedEventId = id;
     console.log("same page calling", id);
-    // this.router.navigate(['/home/myEventDetails/', id])
-    this._eventService.getEventDetails(id)
-      .subscribe((data: any) => {
-        this.singleEventDetails = data.data;
-        this.eventHashtag = this.singleEventDetails.hashTag;
-        this.eventId = this.singleEventDetails._id;
-        console.log("this.singlevebtdetailssssssssss", this.singleEventDetails);
-        this.activityName = [];
-        this.activityName = this.singleEventDetails.activity;
-        console.log("data of single event ", this.activityName);
-        setTimeout(() => {
-          this.initActivitySlider();
-          this.initCollectDetailSlick();
-        }, 10);
-      }, err => {
-        console.log(err);
-      })
+    this.router.navigate(['/home/myEventDetails/', id])
+    // this._eventService.getEventDetails(id)
+    //   .subscribe((data: any) => {
+    //     this.singleEventDetails = data.data;
+    //     this.eventHashtag = this.singleEventDetails.hashTag;
+    //     this.isCelebrant = this.singleEventDetails.isCelebrant;
+    //     this.eventId = this.singleEventDetails._id;
+    //     console.log("this.singlevebtdetailssssssssss", this.singleEventDetails);
+    //     this.activityName = [];
+    //     this.activityName = this.singleEventDetails.activity;
+    //     console.log("data of single event ", this.activityName);
+    //     $('.collect_detail').slick('unslick');
+    //     setTimeout(() => {
+    //       this.initActivitySlider();
+    //       this.initCollectDetailSlick();
+    //     }, 10);
+    //   }, err => {
+    //     console.log(err);
+    //   })
+  }
+
+  getData(activityName) {
+    console.log(activityName);
+    if (activityName && activityName.length) {
+      for (let i = 0; i < activityName.length; i++) {
+        let str = ``;
+        str += `<div class="collect1_img">
+        <div class="collect_img" style="width: 82px;border-radius: 50%;height: 82px;overflow: hidden;" (click)="activityDetails(`+ this.singleEventDetails._id + `,` + activityName[i]._id + `)">
+        <img style="max-width: 100%;min-width: 100%;max-height: 100%;min-height: 100%;object-fit: cover;" src="`+ this.path + this.singleEventDetails.profilePhoto + `">
+        </div>
+        <p class="text-white">`+ activityName[i].activityName + `</p>
+        </div>`;
+        console.log(str)
+        // $('#dynamicContent').append(str);
+        return str;
+      }
+    }
   }
 
   eventDeatils(id) {
@@ -199,9 +224,12 @@ export class MyEventDetailsComponent implements OnInit {
         this.activityName = [];
         this.activityName = this.singleEventDetails.activity;
         console.log("data of single event ", this.activityName);
+        if ($('.collect_detail').hasClass('slick-initialized'))
+          $('.collect_detail').slick('unslick');
         setTimeout(() => {
           this.initActivitySlider();
-          this.initCollectDetailSlick();
+          this.initCollectDetailSlick(this.eventId);
+          // this.getData(this.activityName);
         }, 10);
       }, err => {
         console.log(err);
@@ -241,10 +269,25 @@ export class MyEventDetailsComponent implements OnInit {
     this.router.navigate(['/home/editEvent/', id])
 
   }
-  invitation(id){
+  invitation(id) {
     this.router.navigate(['/home/invitation/', id])
   }
-  autoMessage(id){
+  autoMessage(id) {
     this.router.navigate(['/home/autoMessage/', id])
+  }
+  deleteEvent(eventid) {
+    console.log(eventid);
+    this._eventService.deleteEvent(eventid).subscribe((data: any) => {
+      console.log("delete event response", data);
+      this.alertService.getSuccess(data.data.message)
+      this.router.navigate(['home/myEvent'])
+    }, (err: any) => {
+      console.log(err);
+      this.alertService.getError(err.message);
+    })
+  }
+  selectBank(id) {
+    console.log(id)
+    this.router.navigate(['home/bankDetails/', id])
   }
 }

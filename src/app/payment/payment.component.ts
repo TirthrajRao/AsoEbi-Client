@@ -15,7 +15,7 @@ export class PaymentComponent implements OnInit {
 
   private sub: any;
   private eventId: any;
-  finalCartDetails: any;
+  finalCartDetails: any = 0;
   grandTotal = 0;
   subTotal;
   finalGrandTotal;
@@ -91,6 +91,8 @@ export class PaymentComponent implements OnInit {
     this._eventService.makeFinalPayment(this.myCart)
       .subscribe((data: any) => {
         console.log("final response of carts", data);
+        this.alertService.getSuccess(data.message)
+        this.router.navigate(['/home/view-event/',this.eventId])
       }, (err: any) => {
         console.log(err);
         this.alertService.getError(err.message);

@@ -4,8 +4,11 @@ import { EventService } from '../services/event.service';
 import { AlertService } from '../services/alert.service';
 declare var $: any;
 import * as _ from 'lodash';
+import { config } from '../config';
 import { async } from 'q';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Pipe, PipeTransform } from '@angular/core';
+
 @Component({
   selector: 'app-my-cart',
   templateUrl: './my-cart.component.html',
@@ -30,16 +33,16 @@ export class MyCartComponent implements OnInit {
   donationAmount;
   maleTotal;
   femaleTotal;
+  lastAmount = 0;
+  previousID;
+  itemGender;
+  path = config.baseMediaUrl;
   constructor(private route: ActivatedRoute,
     private router: Router, private _eventService: EventService, private alertService: AlertService) {
     this.sub = this.route.params.subscribe(params => {
       this.eventId = params.id;
       console.log(this.eventId);
       this.myCartDetails(this.eventId);
-    })
-
-    this.donationForm = new FormGroup({
-      amount: new FormControl('')
     })
   }
 
@@ -55,11 +58,6 @@ export class MyCartComponent implements OnInit {
     })
   }
 
-  donation() {
-    this.donationAmount = this.donationForm.value;
-    console.log("donation amount", this.donationAmount);
-    localStorage.setItem('donationAmount', JSON.stringify(this.donationAmount));
-  }
   initMainSlider() {
     setTimeout(() => {
       $('.event_detail_slider').not('.slick-initialized').slick({
@@ -72,17 +70,17 @@ export class MyCartComponent implements OnInit {
         draggable: true,
         fade: false,
         responsive: [
-        {
-          breakpoint: 769,
-          settings: {
-            slidesToShow: 2.3
+          {
+            breakpoint: 769,
+            settings: {
+              slidesToShow: 2.3
+            }
+          }, {
+            breakpoint: 575,
+            settings: {
+              slidesToShow: 1.5
+            }
           }
-        }, {
-          breakpoint: 575,
-          settings: {
-            slidesToShow: 1.5
-          }
-        }
         ]
       });
     }, 100)
@@ -137,9 +135,9 @@ export class MyCartComponent implements OnInit {
         this.eventDetails = data.data.eventDetail;
         this.cartDetails = await this.allDetails.cartList;
         _.forEach(this.cartDetails, (item) => {
-          this.quantity = item.quantity;
-          console.log("bov important che ",this.quantity);
-          
+          // this.quantity = item.quantity;
+          // console.log("bov important che ", this.quantity);
+          this.itemGender = item.itemGender;
           if (item.itemGender == 'male') {
             this.maleTotal = item.itemPrice;
           }
@@ -149,7 +147,7 @@ export class MyCartComponent implements OnInit {
           // console.log(this.femaleTotal);
           this.subTotal = item.itemPrice * item.quantity;
           this.grandTotal = this.grandTotal + this.subTotal
-          // this.finalGrandTotal = this.grandTotal;
+          this.finalGrandTotal = this.grandTotal;
         })
         console.log(this.cartDetails);
         setTimeout(() => {
@@ -203,20 +201,57 @@ export class MyCartComponent implements OnInit {
   }
 
   finalTotal(item) {
-    console.log(item);
-    if (item.itemGender == 'male') {
-      //  this.maleTotal = item.itemPrice;
-      this.maleTotal = item.quantity * item.itemPrice;
-      console.log(this.maleTotal)
+    if (!this.previousID) {
+      this.previousID = item._id;
     }
-    
-    if (item.itemGender == 'female') {
-      //  this.femaleTotal = item.itemPrice;
-      this.femaleTotal = item.quantity * item.itemPrice;
-      console.log(this.femaleTotal)
+    console.log(item, this.previousID);
+    let price = item.itemPrice;
+    let quantity = item.quantity;
+    if (this.previousID == item._id) {
+      if (quantity > this.lastAmount) {
+        console.log("hiiiiiii")
+        this.finalGrandTotal = this.finalGrandTotal + price;
+        this.lastAmount = quantity
+      }
+      else {
+        this.finalGrandTotal = this.finalGrandTotal - price;
+        this.lastAmount = quantity
+        console.log("byyy")
+      }
+    } else {
+      console.log("//this.previousID != item._id");
+
+
     }
-    this.finalGrandTotal = this.maleTotal + this.femaleTotal;
-    console.log(this.finalGrandTotal);
+
+
+
+
+
+    // console.log("price", quantity);
+    // if (quantity > this.lastAmount) {
+    //   console.log("hiiiiiii")
+    //   this.finalGrandTotal = this.finalGrandTotal + price;
+    //   this.lastAmount = quantity
+    // }
+    // else {
+    //   this.finalGrandTotal = this.finalGrandTotal - price;
+    //   this.lastAmount = quantity
+    //   console.log("byyy")
+    // }
+    // if (item.itemGender == 'male') {
+    //   //  this.maleTotal = item.itemPrice;
+    //   this.maleTotal = item.quantity * item.itemPrice;
+    //   console.log(this.maleTotal)
+    // }
+
+    // if (item.itemGender == 'female') {
+    //   //  this.femaleTotal = item.itemPrice;
+    //   this.femaleTotal = item.quantity * item.itemPrice;
+    //   console.log(this.femaleTotal)
+    // }
+    // this.finalGrandTotal = this.maleTotal + this.femaleTotal;
+    // console.log(this.finalGrandTotal);
   }
 
   nextSection(goto, from) {
@@ -226,5 +261,9 @@ export class MyCartComponent implements OnInit {
       $('.' + from).css({ 'display': 'none' })
       this.initMainSlider();
     }, 200)
+  }
+  viewEvent(id) {
+    console.log(id)
+    this.router.navigate(['/home/view-event/', id])
   }
 }

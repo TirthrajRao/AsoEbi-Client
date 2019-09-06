@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { LoginService } from '../services/login.service';
 import { AlertService } from '../services/alert.service';
@@ -17,10 +17,17 @@ export class BankDetailsComponent implements OnInit {
   bankDetailsForm: FormGroup;
   isDisable = false;
   submitted = false;
-  bankDetails;
+  bankDetails = 0;
   selectedBank;
+  private sub: any;
+  private eventId: any;
   userName = JSON.parse(localStorage.getItem('userName'));
-  constructor(private router: Router, private _loginService: LoginService, private _eventService: EventService, private _alertService: AlertService) { }
+  constructor(private router: Router,private route: ActivatedRoute, private _loginService: LoginService, private _eventService: EventService, private _alertService: AlertService) { 
+    this.sub = this.route.params.subscribe(params => {
+      this.eventId = params.id;
+      console.log(this.eventId);
+    })
+  }
 
   ngOnInit() {
     // menu toggle start
@@ -135,8 +142,8 @@ export class BankDetailsComponent implements OnInit {
    }
 
    addBankAccount() {
-     $('.firstStep').css({ 'display': 'none' })
-     $('.secondStep').css({ 'display': 'block' });
+     $('.secondStep').css({ 'display': 'none' })
+     $('.firstStep').css({ 'display': 'block' });
    }
 
 

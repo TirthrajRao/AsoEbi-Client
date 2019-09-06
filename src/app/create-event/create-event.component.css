@@ -4,3 +4,7 @@
 	font-family: 'Russo One', sans-serif;
 	padding: 8px 30px;
 }
+
+.selectedImage{
+	background-color: white;
+}

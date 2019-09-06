@@ -79,6 +79,10 @@ const routes: Routes = [
         component: BankDetailsComponent
       },
       {
+        path: 'bankDetails/:id',
+        component: BankDetailsComponent
+      },
+      {
         path: 'collection/:id',
         component: CollectionsComponent
       },
