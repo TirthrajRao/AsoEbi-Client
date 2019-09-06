@@ -1,47 +1,6 @@
-<!-- Thank you message with normal form field -->
-
-<!-- <div class="container m-auto p-4">
-    <div class="row">
-        <div class="col-6">
-            <div class="card p-2">
-                <form [formGroup]="thankyouMessageForm">
-                    <div class="form-group">
-                        <label for="comment">Message:</label>
-                        <textarea class="form-control" formControlName="message"></textarea>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-md-12">
-                            <h5>Upload Profile Photo</h5>
-                            <div class="custom-file">
-                                <input type="file" #attachment formControlName="attachment" class="form-control"
-                                    (change)="addFile($event.target.files)" id="customFile"
-                                    accept="image/png, image/jpeg, image/jpg, image/gif" hidden>
-                                <label class="custom-file-label" for="customFile">Choose file</label>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-primary" (click)="thankyouMessage()">Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-<!-- Thank you message with use of editor -->
-
-<!-- <form [formGroup]="thankyouMessageForm">
-    <div>
-        <ckeditor class="ckeditor" [editor]="Editor" formControlName="message" (ready)="onReady($event)"></ckeditor>
-    </div>
-    <div class="custom-file">
-        <input type="file" #attachment formControlName="attachment" class="form-control"
-            (change)="addFile($event.target.files)" id="customFile" accept="image/png, image/jpeg, image/jpg, image/gif"
-            hidden>
-        <label class="custom-file-label" for="customFile">Choose file</label>
-    </div>
-    <button type="button" class="btn btn-primary" (click)="thankyouMessage()">Submit</button>
-</form> -->
-
+<div id="loading">
+    <img id="loading-image" src="/assets/images/loader.gif" alt="Loading..." />
+</div>
 
 <!-- New Design implemented -->
 <div class="step_one">

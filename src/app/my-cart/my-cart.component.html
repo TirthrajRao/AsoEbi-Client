@@ -1,48 +1,8 @@
-<!-- Display all addToCart items with price and quantity -->
-<!-- <div class="container">
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th>Activity Name</th>
-                <th>Group Name</th>
-                <th>Gender</th>
-                <th>Item Name</th>
-                <th class="product-price">Item Price</th>
-                <th class="product-quantity">Quantity</th>
-                <th></th>
-                <th class="product-line-price">Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let products of cartDetails" class="product" ng-init="count = 0">
-                <td>{{products.activityName}}</td>
-                <td>{{products.groupName}}</td>
-                <td>{{products.itemGender}}</td>
-                <td>{{products.itemName}}</td>
-                <td class="product-price">{{products.itemPrice}}</td>
-                <td class="product-quantity">
-                    <input type="number" min="1" [(ngModel)]="products.quantity">
-                </td>
-                <td>
-                    <button type="button" class="btn btn-danger" (click)="removeItem(products._id)">Remove
-                    </button>
-                </td>
-                <td>{{products.itemPrice * products.quantity }}</td>
-            </tr>
-            <tr>
-                <td>
-                    <button type="button" class="btn btn-primary" (click)="allItem(cartDetails)">Procced To Pay
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div> -->
-
-
-
-
 <!-- New Design of my cart  -->
+<div id="loading">
+    <img id="loading-image" src="/assets/images/loader.gif" alt="Loading..." />
+</div>
+
 
 <div class="step_one" style="display:none">
     <section class="buying_option1_section d-flex flex-wrap align-content-center ">
@@ -100,19 +60,19 @@
                         <div class="event_detail_slider">
                             <div class="event_detail_slide event_detail_slide_sky1">
                                 <div class="events_name text-center">
-                                    <a href="#" class="text-center text-white" *ngIf="eventDetails">
+                                    <a href="#" class="text-center text-white" *ngIf="eventDetails"  data-toggle="tooltip" title="{{eventDetails.eventType}}">
                                     {{eventDetails.eventType}}</a>
                                 </div>
                             </div>
                             <div class="event_detail_slide event_detail_slide_sky1">
                                 <div class="events_name text-center">
                                     <a (click)="nextSection('step_four', 'step_five')"
-                                    class="text-center text-white">Gift Donation</a>
+                                    class="text-center text-white" data-toggle="tooltip" title="Gift Donation">Gift Donation</a>
                                 </div>
                             </div>
                             <div class="event_detail_slide event_detail_slide_sky1">
                                 <div class="events_name text-center">
-                                    <a href="#" class="text-center text-white">Total</a>
+                                    <a href="#" class="text-center text-white" data-toggle="tooltip" title="Total">Total</a>
                                 </div>
                             </div>
                         </div>
@@ -123,11 +83,11 @@
                                 <div class="row" *ngFor="let item of cartDetails">
                                     <div class="col-7">
                                         <div class="row">
-                                            <div class="col-12" *ngIf="item.itemGender == 'male'">
+                                            <div class="col-12 p-0" *ngIf="item.itemGender == 'male'">
                                                 <div class="all_list">
                                                     <div class="fabric_name float-left">{{item.itemName}} <img
                                                         src="/assets/images/wn.png"> {{item.itemPrice}} </div>
-                                                        <div class="float-right number_of_item">
+                                                        <div class="float-right">
                                                             <label class=""> x </label>
                                                             <!-- <h1>helooooo</h1> -->
                                                             <!-- {{item.quantity}} -->
@@ -141,13 +101,13 @@
                                         </div>
                                         <div class="col-4 all_list_total_price" *ngIf="item.itemGender == 'male'">
                                             <div class="row">
-                                                <div class="col-12">
+                                                <div class="col-12 p-0">
                                                     <div class=" float-right"> = <img src="/assets/images/wn.png">
                                                     {{item.itemPrice * item.quantity }}</div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-1" *ngIf="item.itemGender == 'male'">
+                                        <div class="col-1 p-0" *ngIf="item.itemGender == 'male'">
                                             <div class="delete_item">
                                                 <i class="fa fa-times" aria-hidden="true"
                                                 (click)="removeItem(item._id)"></i>
@@ -159,11 +119,11 @@
                                     <div class="row" *ngFor="let item of cartDetails">
                                         <div class="col-7">
                                             <div class="row">
-                                                <div class="col-12" *ngIf="item.itemGender=='female'">
+                                                <div class="col-12 p-0" *ngIf="item.itemGender=='female'">
                                                     <div class="all_list">
                                                         <div class="fabric_name float-left"> {{item.itemName}} <img
                                                             src="/assets/images/wn.png"> {{item.itemPrice}} </div>
-                                                            <div class="float-right number_of_item text-white">
+                                                            <div class="float-right text-white">
                                                                 <label class=""> x </label>
                                                                 <input type="text" min="1" id="donation"
                                                                 (keyup)="finalTotal(item)"
@@ -175,13 +135,13 @@
                                             </div>
                                             <div class="col-4 all_list_total_price" *ngIf="item.itemGender=='female'">
                                                 <div class="row">
-                                                    <div class="col-12">
+                                                    <div class="col-12 p-0">
                                                         <div class=" float-right"> = <img src="/assets/images/wn.png">
                                                         {{item.itemPrice * item.quantity }}</div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-1" *ngIf="item.itemGender=='female'">
+                                            <div class="col-1 p-0" *ngIf="item.itemGender=='female'">
                                                 <div class="delete_item">
                                                     <i class="fa fa-times" aria-hidden="true"
                                                     (click)="removeItem(item._id)"></i>

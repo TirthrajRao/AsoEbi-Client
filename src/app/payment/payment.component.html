@@ -1,88 +1,7 @@
-<!-- Total payment of myCart items and if donation added display final total  -->
-
-<!-- <div class="container">
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th>Activity Name</th>
-                <th>Group Name</th>
-                <th>Gender</th>
-                <th>Item Name</th>
-                <th>Item Price</th>
-                <th>Quantity</th>
-                <th>Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let products of finalCartDetails" class="product">
-                <td>{{products.activityName}}</td>
-                <td>{{products.groupName}}</td>
-                <td>{{products.itemGender}}</td>
-                <td>{{products.itemName}}</td>
-                <td>{{products.itemPrice}}</td>
-                <td>
-                    <input type="number" min="1" [(ngModel)]="products.quantity" disabled>
-                </td>
-                <td>{{products.quantity*products.itemPrice}}</td>
-            </tr>
-            <tr>
-                <td>Total</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    {{grandTotal}}
-                </td>
-            </tr>
-
-            <tr>
-                <td>Donation</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    <input type="number" min="1" id="donation" (keyup)="finalTotal($event.target.value)"
-                        [(ngModel)]='donation'>
-                </td>
-            </tr>
-            <tr>
-                <td>GrandTotal</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    {{finalGrandTotal}}
-                </td>
-            </tr>
-            <tr>
-                <label for="comment">Address:</label>
-                <textarea placeholder="Enter Your Address" [(ngModel)]="address" id="address"></textarea>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    <button type="button" class="btn btn-primary"
-                        (click)="finalPayment(finalCartDetails,finalGrandTotal,donation,address)">CheckOut
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div> -->
-
-
 <!-- new Design of lastPayment -->
+<div id="loading">
+    <img id="loading-image" src="/assets/images/loader.gif" alt="Loading..." />
+</div>
 
 
 <div class="step_one">
@@ -99,19 +18,19 @@
                         <div class="event_detail_slider">
                             <div class="event_detail_slide event_detail_slide_sky1">
                                 <div class="events_name text-center">
-                                    <a href="#" class="text-center text-white">
+                                    <a href="#" class="text-center text-white" data-toggle="tooltip" data-placement="top" title="hi">
                                         hi</a>
                                 </div>
                             </div>
                             <div class="event_detail_slide event_detail_slide_sky1">
                                 <div class="events_name text-center">
                                     <a (click)="nextSection('step_four', 'step_five')"
-                                        class="text-center text-white">Gift Donation</a>
+                                        class="text-center text-white" data-toggle="tooltip" data-placement="top" title="Gift Donation">Gift Donation</a>
                                 </div>
                             </div>
                             <div class="event_detail_slide event_detail_slide_sky1">
                                 <div class="events_name text-center">
-                                    <a href="#" class="text-center text-white">Total</a>
+                                    <a href="#" class="text-center text-white" data-toggle="tooltip" data-placement="top" title="Total">Total</a>
                                 </div>
                             </div>
                         </div>
@@ -224,22 +143,22 @@
                             <div class="event_detail_slider">
                                 <div class="event_detail_slide event_detail_slide_pink1">
                                     <div class="events_name text-center">
-                                        <a href="#" class="text-center text-white">Engagement</a>
+                                        <a href="#" class="text-center text-white" data-toggle="tooltip" data-placement="top" title="Engagement">Engagement</a>
                                     </div>
                                 </div>
                                 <div class="event_detail_slide event_detail_slide_pink1">
                                     <div class="events_name text-center">
-                                        <a href="#" class="text-center text-white">Wedding</a>
+                                        <a href="#" class="text-center text-white" data-toggle="tooltip" data-placement="top" title="Wedding">Wedding</a>
                                     </div>
                                 </div>
                                 <div class="event_detail_slide event_detail_slide_pink1">
                                     <div class="events_name text-center">
-                                        <a href="#" class="text-center text-white">Gift Donation</a>
+                                        <a href="#" class="text-center text-white" data-toggle="tooltip" data-placement="top" title="Gift Donation">Gift Donation</a>
                                     </div>
                                 </div>
                                 <div class="event_detail_slide event_detail_slide_pink1">
                                     <div class="events_name text-center">
-                                        <a href="#" class="text-center text-white">Total</a>
+                                        <a href="#" class="text-center text-white" data-toggle="tooltip" data-placement="top" title="Total">Total</a>
                                     </div>
                                 </div>
                             </div>

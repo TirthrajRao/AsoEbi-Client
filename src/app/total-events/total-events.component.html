@@ -1,5 +1,10 @@
 <!-- Admin panel display total events  -->
 
+<div id="loading">
+    <img id="loading-image" src="/assets/images/loader.gif" alt="Loading..." />
+</div>
+
+
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -9,7 +14,7 @@
                     <div class="row">
                         <div class="col-4 m-auto">
                             <img *ngIf="item && item.profilePhoto" src="{{path}}{{item.profilePhoto}}"
-                                class="rounded-circle img-fluid">
+                            class="rounded-circle img-fluid">
                         </div>
                     </div>
                     <div class="row">

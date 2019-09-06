@@ -60,17 +60,17 @@ export class ViewEventComponent implements OnInit {
         prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
         nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
         responsive: [
-          {
-            breakpoint: 451,
-            settings: {
-              slidesToShow: 1
-            }
+        {
+          breakpoint: 451,
+          settings: {
+            slidesToShow: 1
           }
+        }
         ]
       });
 
       // group slider start
-   $('.activity_group_slider').not('.slick-initialized').slick({
+      $('.activity_group_slider').not('.slick-initialized').slick({
         dots: false,
         arrows: true,
         slidesToShow: 1,
@@ -80,12 +80,12 @@ export class ViewEventComponent implements OnInit {
         prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
         nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
         responsive: [
-          {
-            breakpoint: 451,
-            settings: {
-              slidesToShow: 1
-            }
+        {
+          breakpoint: 451,
+          settings: {
+            slidesToShow: 1
           }
+        }
         ]
       });
 
@@ -93,19 +93,21 @@ export class ViewEventComponent implements OnInit {
       $('.gender_slider1').not('.slick-initialized').slick({
         // autoplay: true,
         autoplaySpeed: 2000,
-        arrows: false,
+        arrows: true,
         dots: false,
         slidesToShow: 1.5,
         slidesToScroll: 1,
         draggable: true,
         fade: false,
+        prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+        nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
         responsive: [
-          {
-            breakpoint: 451,
-            settings: {
-              slidesToShow: 1
-            }
+        {
+          breakpoint: 451,
+          settings: {
+            slidesToShow: 1
           }
+        }
         ]
       });
     }, 300)
@@ -117,74 +119,74 @@ export class ViewEventComponent implements OnInit {
    * @param {String} eventTheme
    * Display event background image or gif 
    */
-  getSrc(eventTheme) {
-    return `url(` + this.path + eventTheme + `)`;
-  }
+   getSrc(eventTheme) {
+     return `url(` + this.path + eventTheme + `)`;
+   }
 
   /**
    * @param {String} eventId
    * Get any particular event details 
    */
-  viewDetailsOfEvent(eventId) {
-    // this.isDisable = true;
-    this._eventService.getEventDetails(eventId)
-      .subscribe((data: any) => {
-        this.allDetailsofEvent.push(data.data);
-        console.log("response of details event", this.allDetailsofEvent);
-        // this.allDetailsofEvent.push(this.userName);
-        this.eventHashTag = data.data.hashTag;
-        this.isCelebrant = data.data.isCelebrant;
-        console.log(this.isCelebrant);
-        this.isJoined = data.data.isJoined;
-        console.log(this.isJoined);
-        if (data.data.isJoined == true) {
-          this.isDisable = true;
-        } else {
-          this.isDisable = false;
-        }
-        // console.log("response store in variable", this.allDetailsofEvent);
-        this.eventLink = data.data.eventLink;
-        console.log(this.eventLink);
-        this.activityArray = data.data.activity;
-        console.log(this.activityArray);
-      }, (err: any) => {
-        console.log(err);
-        this.alertService.getError(err.message);
-      })
-  }
+   viewDetailsOfEvent(eventId) {
+     // this.isDisable = true;
+     this._eventService.getEventDetails(eventId)
+     .subscribe((data: any) => {
+       this.allDetailsofEvent.push(data.data);
+       console.log("response of details event", this.allDetailsofEvent);
+       // this.allDetailsofEvent.push(this.userName);
+       this.eventHashTag = data.data.hashTag;
+       this.isCelebrant = data.data.isCelebrant;
+       console.log(this.isCelebrant);
+       this.isJoined = data.data.isJoined;
+       console.log(this.isJoined);
+       if (data.data.isJoined == true) {
+         this.isDisable = true;
+       } else {
+         this.isDisable = false;
+       }
+       // console.log("response store in variable", this.allDetailsofEvent);
+       this.eventLink = data.data.eventLink;
+       console.log(this.eventLink);
+       this.activityArray = data.data.activity;
+       console.log(this.activityArray);
+     }, (err: any) => {
+       console.log(err);
+       this.alertService.getError(err.message);
+     })
+   }
 
-  // getLink(){
-  //   return this.eventLink;
-  // }
+   // getLink(){
+     //   return this.eventLink;
+     // }
 
-  joinNow(id) {
-    console.log("after login send event id", id);
-    this._eventService.joinEvent(id)
-      .subscribe((data: any) => {
-        console.log("join event done", data);
-        this.isDisable = true;
-        this.alertService.getSuccess(data.message)
-        this.router.navigate(['/home/view-event/', id])
-      }, err => {
-        console.log(err);
-        this.alertService.getError(err.error.message);
-      })
-  }
+     joinNow(id) {
+       console.log("after login send event id", id);
+       this._eventService.joinEvent(id)
+       .subscribe((data: any) => {
+         console.log("join event done", data);
+         this.isDisable = true;
+         this.alertService.getSuccess(data.message)
+         this.router.navigate(['/home/view-event/', id])
+       }, err => {
+         console.log(err);
+         this.alertService.getError(err.error.message);
+       })
+     }
 
   /**
    * Get all events of login user
    */
-  getMyEvents() {
-    this._eventService.getMyevents()
-      .subscribe((data: any) => {
-        console.log("get my all events ", data);
-        this.myEvent = data.data;
-        console.log("my events details", this.myEvent);
-      }, (err: any) => {
-        console.log(err);
-        this.alertService.getError(err.message);
-      })
-  }
+   getMyEvents() {
+     this._eventService.getMyevents()
+     .subscribe((data: any) => {
+       console.log("get my all events ", data);
+       this.myEvent = data.data;
+       console.log("my events details", this.myEvent);
+     }, (err: any) => {
+       console.log(err);
+       this.alertService.getError(err.message);
+     })
+   }
 
   /**
    * @param {String} groupId 
@@ -194,40 +196,40 @@ export class ViewEventComponent implements OnInit {
    * @param {Key} gender
    * Items added to cart  
    */
-  addToCart(eventId, itemId) {
-    console.log({ eventId, itemId });
-    this.isDisable = true;
-    this._eventService.addToCart(eventId, itemId)
-      .subscribe((data: any) => {
-        this.isDisable = false;
-        console.log(data);
-        this.alertService.getSuccess(data.message)
-      }, (err: any) => {
-        console.log(err);
-        this.alertService.getError(err.message);
-      })
-  }
+   addToCart(eventId, itemId) {
+     console.log({ eventId, itemId });
+     this.isDisable = true;
+     this._eventService.addToCart(eventId, itemId)
+     .subscribe((data: any) => {
+       this.isDisable = false;
+       console.log(data);
+       this.alertService.getSuccess(data.message)
+     }, (err: any) => {
+       console.log(err);
+       this.alertService.getError(err.message);
+     })
+   }
 
   /**
    * @param {String} id
    * Display all added item of cart 
    */
-  myCart(id) {
-    console.log("event id", id)
-    this.router.navigate(['home/my-cart/', id]);
-  }
+   myCart(id) {
+     console.log("event id", id)
+     this.router.navigate(['home/my-cart/', id]);
+   }
 
   /**
    * @param {String} text
    * For copy eventLink  
    */
-  copy(text: string) {
-    this._clipboardService.copyFromContent(text);
-  }
+   copy(text: string) {
+     this._clipboardService.copyFromContent(text);
+   }
 
-  totalCollection(id) {
-    console.log("event id", id);
-    this.router.navigate(['home/collection/', id]);
-  }
+   totalCollection(id) {
+     console.log("event id", id);
+     this.router.navigate(['home/collection/', id]);
+   }
 
-}
+ }

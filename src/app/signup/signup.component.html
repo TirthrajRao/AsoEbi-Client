@@ -1,9 +1,13 @@
 <!-- Loader -->
-<div class="load" *ngIf="isDiable">
+<!-- <div class="load" *ngIf="isDiable">
     <span></span>
     <span></span>
     <span></span>
     <span></span>
+</div> -->
+
+<div id="loading">
+    <img id="loading-image" src="/assets/images/loader.gif" alt="Loading..." />
 </div>
 
 <!-- Register Form for new user  -->
@@ -123,7 +127,7 @@
 
 <!-- Verification form for new register user -->
 
-<div class="custom_steps secondStep" >
+<div class="custom_steps secondStep" style="display: none;">
     <section class="join_page3_section text-center d-flex flex-wrap align-content-center">
         <div class="container-fluid">
             <h3>Aso ebi</h3>
@@ -153,7 +157,7 @@
 
 
 <!-- personalDetails form for new register user -->
-<div class="thirdStep">
+<div class="thirdStep" style="display: none;">
     <section class="join_page4_section text-center d-flex flex-wrap align-content-center">
         <div class="container-fluid">
             <h3>Aso Ebi</h3>
@@ -216,7 +220,7 @@
 </section>
 </div>
 
-<div class="fourthStep">
+<div class="fourthStep" style="display: none;">
 
     <section class="join_page5_section text-center d-flex flex-wrap align-content-center">
         <div class="container-fluid">

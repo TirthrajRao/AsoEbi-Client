@@ -1,55 +1,9 @@
-<!-- Display all created events of users and also invited events -->
-
-<!-- <div class="container">
-    <div class="row">
-        <div class="col-12">
-            <div class="card" *ngFor="let item of myEvent">
-                <div [ngStyle]="{background: getSrc(item.eventTheme)}" class="theme-background">
-                    <div class="row">
-                        <div class="col-4 m-auto">
-                            <img *ngIf="item && item.profilePhoto" src="{{path}}{{item.profilePhoto}}"
-                                class="rounded-circle img-fluid">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col text-center pt-4">
-                            <p>EventType:-
-                                <span>{{item.eventType}}</span>
-                            </p>
-                        </div>
-                        <div class="col text-center pt-4">
-                            <p>EventTitle:-
-                                <span>{{item.eventTitle}}</span>
-                            </p>
-                        </div>
-                        <div class="col text-center pt-4">
-                            <p>EventHashTag:-
-                                <span>{{item.hashTag}}</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <button type="button" class="btn btn-primary" (click)="viewMoreDeatils(item._id)">View More
-                            </button>
-                        </div>
-
-                        <div class="col-6">
-                            <button type="button" class="btn btn-primary" (click)="ThankYouMessage(item._id)"
-                                *ngIf="isCelebrant == 'true'">Thank You Message
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-
-
-
 <!-- New design implement -->
+<div id="loading">
+    <img id="loading-image" src="/assets/images/loader.gif" alt="Loading..." />
+</div>
+
+
 
 <!-- First slide -->
 <section class="d-flex flex-wrap align-content-center final_step" [ngClass]="getClassNameOfSection()" style="display:none">
@@ -582,21 +536,3 @@
         </div>
     </section>
 </div>
-
-<!-- overLay -->
-<!-- <div id="overlay" class="new_event_menu_box" style="display: none;">
-    <div class="">
-        <div class="event_menu">
-            <div class="all_menu_content  d-flex flex-wrap align-content-center">
-                <ul>
-                    <li><a class="text-white new_event">My Event</a></li>
-                    <li><a  class="text-white my_event">New Event</a></li>
-                    <li><a  class="text-white my_account">bank account</a></li>
-                    <li><a  class="text-white my_account">Reset Password</a></li>
-                    <li><a  class="text-white my_account">Logout</a></li>
-                    <li><a  class="text-white my_account">Messages</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div> -->
