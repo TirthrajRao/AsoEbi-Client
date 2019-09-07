@@ -337,7 +337,7 @@ export class CreateEventComponent implements OnInit {
   //   this.isDisable = false;
   // }
 
-  addEvent($this) {
+  addEvent() {
     this.eventForm.value.deadlineDate = $('#deadLineDate').val();
     console.log(this.eventForm.value);
     console.log("data of event", $('.slick-active').hasClass("done"));
@@ -408,9 +408,11 @@ export class CreateEventComponent implements OnInit {
     })
   }
 
-  defaultBackgroundImage(path, id) {
+  get activityFormData() { return <FormArray>this.activityForm.get('activity'); }
+  get groupFormData() { return <FormArray>this.groupForm.get('group'); }
+
+  defaultBackgroundImage(path, id?) {
     console.log(path, id);
-    $('id').addClass('.selectedImage')
     this.eventForm.controls.defaultImage.setValue(path);
     console.log("=========", this.eventForm.value)
 
@@ -919,7 +921,7 @@ export class CreateEventComponent implements OnInit {
   /**
    * If any changes update event
    */
-  updateEvent() {
+  updateEvents() {
     this.getActivityFrom(this.eventActivities);
     this.eventForm.value.deadlineDate = $('#deadLineDate').val();
 
@@ -1097,5 +1099,9 @@ export class CreateEventComponent implements OnInit {
 
   printItem(item) {
     console.log("item==========================================>", this.selectedActivityToAddGroup, item.value.activityId);
+  }
+  logout() {
+    this._loginService.logout();
+    this.router.navigate(['/display-page']);
   }
 }

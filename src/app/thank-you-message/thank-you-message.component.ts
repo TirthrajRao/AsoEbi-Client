@@ -21,7 +21,7 @@ export class ThankYouMessageComponent implements OnInit {
   private eventId: any;
   thankyouMessageForm: FormGroup;
   thankYouMessage;
-
+  isDisable:false;
   path = config.baseMediaUrl;
   files: Array<File> = [];
 
@@ -78,7 +78,7 @@ getThankYouMessage(id){
    * @param {Object} data
    * Create new thank you message 
    */
-   thankyouMessage(data) {
+   thankyouMessage(data?) {
      console.log(this.thankyouMessageForm);
      this._eventService.thankyouMessage(this.thankyouMessageForm.value, this.files)
      .subscribe(data => {

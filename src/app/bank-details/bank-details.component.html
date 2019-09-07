@@ -130,7 +130,7 @@
                             </div>
                         </div>
                     </div>
-                    <div *ngIf="bankDetails.length == 0">
+                    <div >
                         <h1>Sorry, No bank account added in your profile, to add bank account click on plus icon</h1>
                     </div>
                     <div class="event_bank_detail">
@@ -165,7 +165,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="check" *ngIf="bankDetails.length > 0">
+                        <div class="check" >
                             <label class="container">Instant transfer to my account
                                 <input type="checkbox" name="checkButton" id="box1" value="direct">
                                 <span class="checkmark"></span>
@@ -176,7 +176,7 @@
                                 <span class="checkmark"></span>
                             </label>
                         </div>
-                        <div class="addBank text-white text-center" *ngIf="bankDetails.length > 0">
+                        <div class="addBank text-white text-center">
                             <a class="text-white text-center" (click)="selectBank()">Save</a>
                         </div>
                     </div>

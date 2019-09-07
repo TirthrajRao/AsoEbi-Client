@@ -17,7 +17,7 @@ declare let $: any;
 export class AutoMessageComponent implements OnInit {
   autoMessageForm: FormGroup;
   private sub: any;
-  private eventId: any;
+  public eventId: any;
   path = config.baseMediaUrl;
   myEvent;
   singleEventId;

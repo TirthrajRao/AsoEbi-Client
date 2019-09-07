@@ -14,7 +14,7 @@ declare let $: any;
 export class MyEventDetailsComponent implements OnInit {
 
   private sub: any;
-  private eventId: any;
+  public eventId: any;
   path = config.baseMediaUrl;
   myEvent;
   singleEventId;
@@ -291,5 +291,9 @@ export class MyEventDetailsComponent implements OnInit {
   selectBank(id) {
     console.log(id)
     this.router.navigate(['home/bankDetails/', id])
+  }
+  logout() {
+    this._loginService.logout();
+    this.router.navigate(['/display-page']);
   }
 }

@@ -211,7 +211,7 @@
                                             <div class="row">
                                                 <div class="col-sm-3 ">
                                                     <a class="back1" id="background1"
-                                                        (click)="defaultBackgroundImage('/assets/images/confeti.gif', ID)">
+                                                        (click)="defaultBackgroundImage('/assets/images/confeti.gif')">
                                                         <img src="/assets/images/confeti.gif" class="rounded-circle"
                                                             style="cursor:pointer">
                                                         <p class="text-center">Confetti</p>
@@ -482,7 +482,7 @@
                                     </div>
                                     <div class="slider_next_btn text-center">
                                         <a class="text-white"
-                                            (click)="createdEventDetails? updateEvent() : addEvent()">Next</a>
+                                            (click)="createdEventDetails? updateEvents() : addEvent()">Next</a>
                                     </div>
                                 </div>
                             </div>
@@ -580,7 +580,7 @@
                     <form [formGroup]="activityForm" class="all_activity_form">
                         <div formArrayName="activity">
                             <div [formGroupName]="i"
-                                *ngFor="let tech of activityForm.controls.activity.controls; let i = index">
+                                *ngFor="let tech of activityFormData.controls; let i = index">
                                 <div class="name_ceremony">
                                     <div class="ceremony1">
                                         <div class="row mb-3">
@@ -716,7 +716,7 @@
                                 <form [formGroup]="groupForm" class="billing_address">
                                     <div formArrayName="group">
                                         <div [formGroupName]="i"
-                                            *ngFor="let item of groupForm.controls.group.controls; let i = index"
+                                            *ngFor="let item of groupFormData.controls; let i = index"
                                             [hidden]="selectedActivityToAddGroup != item.value.activityId">
                                             <div class="col-12 text-center mt-3 text-white pl-0">
                                                 <i class="fa fa-plus" aria-hidden="true"

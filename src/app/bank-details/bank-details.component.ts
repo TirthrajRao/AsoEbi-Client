@@ -17,10 +17,11 @@ export class BankDetailsComponent implements OnInit {
   bankDetailsForm: FormGroup;
   isDisable = false;
   submitted = false;
-  bankDetails = 0;
+  bankDetails;
   selectedBank;
   private sub: any;
   private eventId: any;
+
   userName = JSON.parse(localStorage.getItem('userName'));
   constructor(private router: Router,private route: ActivatedRoute, private _loginService: LoginService, private _eventService: EventService, private _alertService: AlertService) { 
     this.sub = this.route.params.subscribe(params => {
@@ -47,6 +48,10 @@ export class BankDetailsComponent implements OnInit {
     // this.bankDetailsSlider()
 
   }
+  logout() {
+    this._loginService.logout();
+    this.router.navigate(['/display-page']);
+  }
 
   /**
    * Display error message
@@ -57,7 +62,7 @@ export class BankDetailsComponent implements OnInit {
    * @param {json} data
    * Add bank account details of user
    */
-   onSubmit(data) {
+   onSubmit(data?) {
      console.log(this.bankDetailsForm);
      this.submitted = true;
      if (this.bankDetailsForm.invalid) {

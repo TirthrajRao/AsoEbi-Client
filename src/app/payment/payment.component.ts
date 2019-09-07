@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from '../services/event.service';
 import { AlertService } from '../services/alert.service';
+import { config } from '../config';
 import * as _ from 'lodash';
 declare var $: any;
 
@@ -20,6 +21,7 @@ export class PaymentComponent implements OnInit {
   subTotal;
   finalGrandTotal;
   myCart;
+  path = config.baseMediaUrl;
   donationAmount = JSON.parse(localStorage.getItem('donationAmount'));
 
   constructor(private route: ActivatedRoute,
@@ -78,14 +80,14 @@ export class PaymentComponent implements OnInit {
    * Total amount,total items which buy,address of user for delivery,if donation added with bought items 
    */
 
-  finalPayment(data, total, donation, address) {
+  finalPayment(data, total, donation) {
     console.log(data, total, donation);
     this.myCart = {
       orderDetails: this.finalCartDetails,
       finalTotal: this.finalGrandTotal,
       eventId: this.eventId,
       donationAmount: donation,
-      addressFinal: address
+      // addressFinal: address
     }
     console.log("mycartsssssssssssssss", this.myCart);
     this._eventService.makeFinalPayment(this.myCart)

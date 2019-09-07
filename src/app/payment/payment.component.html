@@ -115,7 +115,7 @@
                             </div>
                             <div class="save_and_pay_btn">
                                 <a class="update_btn text-center"
-                                    (click)="finalPayment(finalCartDetails,finalGrandTotal,donation,address)">Procced</a>
+                                    (click)="finalPayment(finalCartDetails,finalGrandTotal,donation)">Procced</a>
                                 <a class="paynow_btn text-center"
                                     (click)="nextSection('step_two', 'step_one')">Donation</a>
                             </div>
@@ -133,9 +133,9 @@
     <section class="buying_option1_section buying_option4_section d-flex flex-wrap align-content-center ">
         <div class="container-fluid">
             <h3 class="text-center text-white Aso_title">Aso Ebi</h3>
-            <div class="profile_pic text-center text-center">
+            <!-- <div class="profile_pic text-center text-center">
                 <img src="{{path}}{{eventDetails.profilePhoto}}">
-            </div>
+            </div> -->
             <h3 class="text-center text-white user_name"># Ayo Kunbi</h3>
             <div class="card_inner_content_box">
                 <div class="veiw_event">
