@@ -1,3 +1,7 @@
+<div id="loading">
+    <img id="loading-image" src="/assets/images/loader.gif" alt="Loading..." />
+</div>
+
 <div class="initialStep">
     <section class="eventC_page_section d-flex flex-wrap align-content-center">
         <div class="container-fluid">
@@ -7,7 +11,7 @@
                     <div class="all_event_sec">
                         <div class="row">
                             <div class="col-3 m-auto pr-0 float-right new_event_menu">
-                                <a href="#"><img src="/assets/images/eventC_icon.png">
+                                <a><img src="/assets/images/eventC_icon.png">
                                     <p class="text-white">New Event</p>
                                 </a>
                             </div>
@@ -16,7 +20,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="overlay1" class="new_event_menu_box" style="display: none;">
+                    <div id="overlay" class="new_event_menu_box" style="display: none;">
                         <div class="">
                             <div class="event_menu">
                                 <div class="all_menu_content  d-flex flex-wrap align-content-center">
@@ -40,7 +44,7 @@
                         <div class="event_slider1" id="firstSlider">
                             <div class="slide1" *ngFor="let item of myEvent">
                                 <div class="slider_box1 text-center m-2" [hidden]="!item.eventTitle">
-                                    <button class="event_btn"
+                                    <button class="event_btn" title="{{item.eventTitle}}"
                                         (click)="allEventList(item._id)">{{item.eventTitle}}</button>
                                 </div>
                             </div>
@@ -48,30 +52,34 @@
                     </div>
 
                     <div class="event_activity" *ngIf="selectedActivity">
-                        <p>{{selectedActivity.activityName}}<br>{{selectedActivity.activityDate}}</p>
+                        <p>{{selectedActivity.activityName}}</p> <br>
+                        <p>From: {{selectedActivity.activityStartDate | date: 'dd/MM/yyyy'}} <br> To: {{selectedActivity.activityEndDate | date: 'dd/MM/yyyy'}}  </p>
                     </div>
-                    <div class="w-100 mb-3">
+                    <div class="w-100 mb-3 event-activity-class">
                         <div class="event_button" *ngFor="let item of selectedActivityGroup;">
                             <button class="eventC_btn" (click)="handleChange(item)"
                                 *ngIf="item.groupName">{{item.groupName}}</button>
                         </div>
                     </div>
-                    <div class="pb-3 ml-5" *ngIf="itemNamePrint.length>0">
+                    <div class="pb-3 ml-5" >
                         <input type="radio" id="test" value="male" name="radio-group1" checked>
                         <label for="test">Male</label>
                         <input type="radio" id="test5" value="female" name="radio-group1">
                         <label for="test5">Female</label>
                     </div>
-                    <div class="eventC_item" *ngFor="let name of itemNamePrint;">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="event-count-box">
-                                    <div class="eventC_close float-left text-white">
-                                        <p class="text-white">{{name.itemName}}<p>
-                                    </div>
-                                    <div class="event_price float-right">
-                                        <p class="event_price"><img src="/assets/images/hecza.png">{{name.itemPrice}}
-                                        </p>
+                    <div class="event-count-box-scroll">
+                        <div class="eventC_item" *ngFor="let name of itemNamePrint;">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="event-count-box">
+                                        <div class="eventC_close float-left text-white">
+                                            <p class="text-white">{{name.itemName}}<p>
+                                        </div>
+                                        <div class="event_price float-right">
+                                            <p class="event_price"><img
+                                                    src="/assets/images/hecza.png">{{name.itemPrice}}
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -139,9 +147,6 @@
         </div>
     </section>
 </div>
-
-
-
 <div class="seventhStep" style="display:none">
     <section class="edit_event_section d-flex flex-wrap align-content-center">
         <div class="container-fluid">
@@ -158,6 +163,32 @@
                                 </div>
                                 <div class="col-9 p-0">
                                     <span class="text-white event_name"> Hello {{userName}} </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="overlay" class="new_event_menu_box" style="display: none;">
+                            <div class="m-auto pr-0 float-left new_event_menu slider_overlay">
+                                <a class="text-white "><img src="/assets/images/overlay.png">
+                                    <p>New Event</p>
+                                </a>
+                            </div>
+                            <div class="">
+                                <div class="event_menu">
+                                    <div class="all_menu_content  d-flex flex-wrap align-content-center">
+                                        <ul>
+                                            <li><a href="eventA.html" class="text-white new_event">my event</a></li>
+                                            <li><a href="new_event_slider.html" class="text-white my_event">new
+                                                    event</a>
+                                            </li>
+                                            <li><a href="add_bank_account.html" class="text-white my_account">bank
+                                                    account</a>
+                                            </li>
+                                            <li><a href="reset_password.html" class="text-white my_account">Reset
+                                                    Password</a>
+                                            </li>
+                                            <li><a href="#" class="text-white my_account">Logout</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>

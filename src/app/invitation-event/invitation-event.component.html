@@ -1,3 +1,8 @@
+<div id="loading">
+    <img id="loading-image" src="/assets/images/loader.gif" alt="Loading..." />
+</div>
+
+
 <div class="initialStep">
     <section class="eventE_page_section d-flex flex-wrap align-content-center">
         <div class="container-fluid">
@@ -7,28 +12,34 @@
                     <div class="all_event_sec">
                         <div class="row">
                             <div class="col-3 m-auto pr-0 float-right new_event_menu">
-                                <a href="#"><img src="/assets/images/eventE_icon.png"></a>
+                                <a><img src="/assets/images/eventE_icon.png">
+                                    <p class="text-white">My Event</p>
+                                </a>
                             </div>
                             <div class="col-9 p-0">
                                 <span class="text-black all_event_name"> Hello Rao Info Tech </span>
                             </div>
                         </div>
                     </div>
-                    <div id="overlay1" class="new_event_menu_box" style="display: none;">
+                    <div id="overlay" class="new_event_menu_box" style="display: none;">
+                        <div class="m-auto pr-0 float-left new_event_menu slider_overlay">
+                            <a class="text-white "><img src="/assets/images/overlay.png">
+                                <p>My Event</p>
+                            </a>
+                        </div>
                         <div class="">
                             <div class="event_menu">
                                 <div class="all_menu_content  d-flex flex-wrap align-content-center">
                                     <ul>
-                                        <li><a href="eventA.html" class="text-white new_event">my event</a></li>
-                                        <li><a href="new_event_slider.html" class="text-white my_event">new event</a>
+                                        <li><a routerLink="/home" class="text-white new_event">Home</a></li>
+                                        <li><a routerLink="/myEvent" class="text-white new_event">my event</a></li>
+                                        <li><a routerLink="/createEvent" class="text-white my_event">new event</a>
                                         </li>
-                                        <li><a href="add_bank_account.html" class="text-white my_account">bank
-                                                account</a>
-                                        </li>
-                                        <li><a href="reset_password.html" class="text-white my_account">Reset
-                                                Password</a>
-                                        </li>
-                                        <li><a href="#" class="text-white my_account">Logout</a></li>
+                                        <li><a routerLink="/bankDetails" class="text-white my_account">bank
+                                                account</a></li>
+                                        <li><a routerLink="/reset-password" class="text-white my_account">Reset
+                                                Password</a></li>
+                                        <li><a (click)="logout()" class="text-white my_account">Logout</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -38,29 +49,27 @@
                         <div class="event_slider1" id="firstSlider">
                             <div class="slide1" *ngFor="let item of myEvent">
                                 <div class="slider_box1 text-center m-2" [hidden]="!item.eventTitle">
-                                    <button class="event_btn"
+                                    <button class="event_btn" title="{{item.eventTitle}}"
                                         (click)="allEventList(item._id)">{{item.eventTitle}}</button>
                                 </div>
-                                <p>EventLink:-
-                                    <input #inputTarget [(ngModel)]="item.eventLink" readonly />
-                                    <button [ngxClipboard]="inputTarget">Copy</button>
-                                </p>
+
                             </div>
                         </div>
                     </div>
-
+                    <p>EventLink:-
+                        <input #inputTarget [(ngModel)]="EventLink" readonly />
+                        <button [ngxClipboard]="inputTarget">Copy</button>
+                    </p>
                     <div class="eventE_media">
-                        <share-button [theme]="'circles-dark'" [button]="'whatsapp'" [showText]="true"
-                            [showCount]="true"
+                        <share-button [theme]="'circles-dark'" [button]="'whatsapp'" [showCount]="true"
                             [url]="'https://aso-ebi.com/welcome-guest/NWQ1MmMyMTdhNTBjMTUzYmVmNDc2MTIy'"
                             [autoSetMeta]="false"></share-button>
-                        <share-button [theme]="'circles-dark'" [button]="'facebook'" [showText]="true"
-                            [showCount]="true"
+                        <share-button [theme]="'circles-dark'" [button]="'facebook'" [showCount]="true"
                             [url]="'https://aso-ebi.com/welcome-guest/NWQ1MmMyMTdhNTBjMTUzYmVmNDc2MTIy'">
                         </share-button>
-                        <share-button [theme]="'circles-dark'" [button]="'email'" [showText]="true" [showCount]="true"
+                        <share-button [theme]="'circles-dark'" [button]="'email'" [showCount]="true"
                             [url]="'https://twitter.com/'"></share-button>
-                        <share-button [theme]="'circles-dark'" [button]="'sms'" [showText]="true" [showCount]="true"
+                        <share-button [theme]="'circles-dark'" [button]="'sms'" [showCount]="true"
                             [url]="'https://twitter.com/'"></share-button>
 
                     </div>

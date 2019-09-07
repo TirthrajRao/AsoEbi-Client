@@ -1,6 +1,8 @@
-<!-- Display all addToCart items with price and quantity -->
-
 <!-- New Design of my cart  -->
+<div id="loading">
+    <img id="loading-image" src="/assets/images/loader.gif" alt="Loading..." />
+</div>
+
 
 <div class="step_one" style="display:none">
     <section class="buying_option1_section d-flex flex-wrap align-content-center ">
@@ -58,19 +60,19 @@
                         <div class="event_detail_slider">
                             <div class="event_detail_slide event_detail_slide_sky1">
                                 <div class="events_name text-center">
-                                    <a href="#" class="text-center text-white" *ngIf="eventDetails">
+                                    <a href="#" class="text-center text-white" *ngIf="eventDetails"  data-toggle="tooltip" title="{{eventDetails.eventType}}">
                                     {{eventDetails.eventType}}</a>
                                 </div>
                             </div>
                             <div class="event_detail_slide event_detail_slide_sky1">
                                 <div class="events_name text-center">
                                     <a (click)="nextSection('step_four', 'step_five')"
-                                    class="text-center text-white">Gift Donation</a>
+                                    class="text-center text-white" data-toggle="tooltip" title="Gift Donation">Gift Donation</a>
                                 </div>
                             </div>
                             <div class="event_detail_slide event_detail_slide_sky1">
                                 <div class="events_name text-center">
-                                    <a href="#" class="text-center text-white">Total</a>
+                                    <a href="#" class="text-center text-white" data-toggle="tooltip" title="Total">Total</a>
                                 </div>
                             </div>
                         </div>
@@ -85,7 +87,7 @@
                                 <div class="row" *ngFor="let item of cartDetails">
                                     <div class="col-7">
                                         <div class="row">
-                                            <div class="col-12" *ngIf="item.itemGender == 'male'">
+                                            <div class="col-12 p-0" *ngIf="item.itemGender == 'male'">
                                                 <div class="all_list">
                                                     <div class="fabric_name float-left">{{item.itemName}} {{ item.itemPrice | currency:"&#x20A6;" }} </div>
                                                         <div class="float-right ">
@@ -104,7 +106,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-1" *ngIf="item.itemGender == 'male'">
+                                        <div class="col-1 p-0" *ngIf="item.itemGender == 'male'">
                                             <div class="delete_item">
                                                 <i class="fa fa-times" aria-hidden="true"
                                                 (click)="removeItem(item._id)"></i>
@@ -116,7 +118,7 @@
                                     <div class="row" *ngFor="let item of cartDetails">
                                         <div class="col-7">
                                             <div class="row">
-                                                <div class="col-12" *ngIf="item.itemGender=='female'">
+                                                <div class="col-12 p-0" *ngIf="item.itemGender=='female'">
                                                     <div class="all_list">
                                                         <div class="fabric_name float-left"> {{item.itemName}} {{item.itemPrice | currency:"&#x20A6;"}} </div>
                                                             <div class="float-right number_of_item text-white">
@@ -137,7 +139,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-1" *ngIf="item.itemGender=='female'">
+                                            <div class="col-1 p-0" *ngIf="item.itemGender=='female'">
                                                 <div class="delete_item">
                                                     <i class="fa fa-times" aria-hidden="true"
                                                     (click)="removeItem(item._id)"></i>

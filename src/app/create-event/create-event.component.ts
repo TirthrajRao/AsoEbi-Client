@@ -42,6 +42,8 @@ export class CreateEventComponent implements OnInit {
   path = config.baseMediaUrl;
   activitiesDate: any = [];
   bankDetails: any = [];
+  activityEndDate;
+  activityStartDate;
   bankDetailsForm: FormGroup;
   isDisable = false;
   submitted = false;
@@ -52,6 +54,7 @@ export class CreateEventComponent implements OnInit {
   eventTypeValue;
   selectedActivityToAddGroup;
   valuedate = Date.now();
+  eventHashTag;
   model;
   userName = JSON.parse(localStorage.getItem('userName'));
   constructor(private route: ActivatedRoute, private router: Router, private _eventService: EventService,
@@ -261,7 +264,7 @@ export class CreateEventComponent implements OnInit {
 
     let colorSetting = {
       section: ['#c1c3be', '#cdcdcd', '#e7e7e7', '#f7f7f7', '#f4f4f4', '#e1c2aa', '#e8e7e5', '#e7e7e7', '#93a8c1', '#e2e4e3', '#ebf0f1', '#d1d1d1'],
-      prevArrow: ['#a4bf45', '#f73953', '#ef6439', '#f4ad48', '#fae545', '#f4c036', '#ffeb5b', '#f73953', '#bfa066', '#eaa52e', '#afda57', '#ffb54d'],
+      prevArrow: ['#a4bf45', '#f73953', '#ef6439', '#f4ad48', '#fae545', '#f4c036', '#ffeb5b', '#f73953', '#bfa066', '##afda57', '#ffb54d', '#afda57'],
       headings: ['#1d73ae', '#f73953', '#ef6439', '#f4ad48', '#e32676', '#373255', '#371448', '#e91e3b', '#363f4f', '#eaa52e', '#1c424d', '#000000'],
     };
     var changeColors = function (slide) {
@@ -326,6 +329,13 @@ export class CreateEventComponent implements OnInit {
   /**
    * Create new event with it's details
    */
+
+  // loaderTime(){
+  //   setTimeout(()=>{
+  //     this.isDisable = true;
+  //   },100)
+  //   this.isDisable = false;
+  // }
 
   addEvent($this) {
     this.eventForm.value.deadlineDate = $('#deadLineDate').val();
@@ -418,7 +428,7 @@ export class CreateEventComponent implements OnInit {
     setTimeout(() => {
       $("#activityStartDate0").datepicker({ "setDate": new Date(), "minDate": new Date(), dateFormat: 'yy-mm-dd' });
       $("#activityEndDate0").datepicker({ "setDate": new Date(), "minDate": new Date(), dateFormat: 'yy-mm-dd' });
-    },200)
+    }, 200)
   }
 
   /**
@@ -443,8 +453,8 @@ export class CreateEventComponent implements OnInit {
       actArray.push(this.fb.group({
         activityId: new FormControl(activities[i]._id),
         activityName: new FormControl(activities[i].activityName),
-        activityStartDate: new FormControl(activities[i].activityStartDate.split("T")[0]),
-        activityEndDate: new FormControl(activities[i].activityEndDate.split("T")[0]),
+        activityStartDate: new FormControl(activities[i].activityStartDate),
+        activityEndDate: new FormControl(activities[i].activityEndDate),
         eventId: new FormControl(activities[i].eventId)
       }))
     }
@@ -622,10 +632,23 @@ export class CreateEventComponent implements OnInit {
    * @param {String} index
    * add Item of clothes in female  
    */
-  removeItemsfeMale(gIndex, fIndex, id) {
-    console.log("details of remove female", id)
-    // const control = <FormArray>gIndex.controls.female;
-    // control.removeAt(fIndex);
+  removeItemsfeMale(gIndex, i, itemid, groupid, mIndex?) {
+    let finalGroupId = groupid.groupId
+    console.log("details of remove female", gIndex, i, itemid, groupid, mIndex)
+    if (!itemid.itemId) {
+      const control = <FormArray>gIndex.controls.female;
+      control.removeAt(i);
+    }
+    else {
+      this._eventService.removeMaleItem(itemid.itemId, finalGroupId)
+        .subscribe((data: any) => {
+          console.log(data)
+          const control = <FormArray>gIndex.controls.female;
+          control.removeAt(i);
+        }, err => {
+          console.log(err);
+        })
+    }
   }
 
   initCreatedActivitySlider() {
@@ -668,15 +691,21 @@ export class CreateEventComponent implements OnInit {
    * Create new activities for new event 
    */
   addActivity() {
-    for(let i = 0 ; i< this.activityForm.value.activity.length; i++){
-      this.activityForm.value.activity[i].activityStartDate = $('#activityStartDate'+i).val();
-      this.activityForm.value.activity[i].activityEndDate = $('#activityEndDate'+i).val();
+    for (let i = 0; i < this.activityForm.value.activity.length; i++) {
+      this.activityForm.value.activity[i].activityStartDate = $('#activityStartDate' + i).val();
+      this.activityForm.value.activity[i].activityEndDate = $('#activityEndDate' + i).val();
     }
     console.log("activity details", this.activityForm.value);
     this._eventService.addActivities(this.activityForm.value)
       .subscribe((data: any) => {
         console.log("activity response data", data);
         this.createdActivity = data.data;
+        _.forEach(this.createdActivity, (date) => {
+          this.activityStartDate = date.activityStartDate;
+          this.activityEndDate = date.activityEndDate;
+          console.log(this.activityStartDate, this.activityEndDate)
+        })
+        console.log(this.selectedStartDate);
         console.log("created activity response from server", this.createdActivity);
         this.initGroupForm(this.createdActivity);
         setTimeout(() => {
@@ -729,7 +758,7 @@ export class CreateEventComponent implements OnInit {
    * Add activity field with name,date 
    */
   addActivityField(): void {
-    
+
     const control = <FormArray>this.activityForm.controls.activity;
     control.push(this.fb.group({
       activityName: new FormControl(''),
@@ -739,9 +768,9 @@ export class CreateEventComponent implements OnInit {
       eventId: new FormControl(this.eventId)
     }));
     setTimeout(() => {
-      $("#activityStartDate"+(control.length-1)).datepicker({ "setDate": new Date(), "minDate": new Date(), dateFormat: 'yy-mm-dd' });
-      $("#activityEndDate"+(control.length-1)).datepicker({ "setDate": new Date(), "minDate": new Date(), dateFormat: 'yy-mm-dd' });
-    },200)
+      $("#activityStartDate" + (control.length - 1)).datepicker({ "setDate": new Date(), "minDate": new Date(), dateFormat: 'yy-mm-dd' });
+      $("#activityEndDate" + (control.length - 1)).datepicker({ "setDate": new Date(), "minDate": new Date(), dateFormat: 'yy-mm-dd' });
+    }, 200)
   }
 
   /**
@@ -877,7 +906,7 @@ export class CreateEventComponent implements OnInit {
         console.log(this.selectedStartDate);
         // this.selectedEndDate = this.createdEventDetails.endDate.split("T")[0];
         console.log(this.selectedEndDate);
-        this.paymentDeadlineDate = this.createdEventDetails.paymentDeadlineDate.split("T")[0];
+        this.paymentDeadlineDate = this.createdEventDetails.paymentDeadlineDate;
         console.log(this.paymentDeadlineDate);
         this.eventActivities = this.createdEventDetails.activity;
         console.log(this.eventActivities);
@@ -892,6 +921,8 @@ export class CreateEventComponent implements OnInit {
    */
   updateEvent() {
     this.getActivityFrom(this.eventActivities);
+    this.eventForm.value.deadlineDate = $('#deadLineDate').val();
+
     // if ($('.slick-active').hasClass("done")) {
     console.log("in twelve_slide");
     // this._eventService.addEvent(this.eventForm.value, this.files, this.themeFiles)
@@ -908,6 +939,8 @@ export class CreateEventComponent implements OnInit {
         $('.step_1').css({ 'display': 'none' })
         $('.step_2').css({ 'display': 'block' });
         this.eventId = data.data._id;
+        this.eventHashTag = data.data.hashTag;
+
         this.createdActivity = data.data.activities;
         console.log("created eventid", this.eventId);
         this.getActivityFrom(this.createdActivity);
@@ -931,15 +964,8 @@ export class CreateEventComponent implements OnInit {
       .subscribe((data: any) => {
         console.log(data);
         this.createdActivity = data.data.activity;
-        // _.forEach(updateACtivityData, (item)=>{
-        //   _.forEach(item.activities, (itemActivity)=>{
-        //     console.log("item of activity",itemActivity)
-
-        //     this.createdActivity.push(itemActivity);
-        //   } )
-        // })
-        // this.eventActivities = updateACtivityData.activities;
         console.log(this.createdActivity);
+        this.initGroupForm(this.createdActivity, true);
         setTimeout(() => {
           $('.step_2').css({ 'display': 'none' })
           $('.step_3').css({ 'display': 'block' });
@@ -960,8 +986,7 @@ export class CreateEventComponent implements OnInit {
               }
             ]
           });
-          this.initGroupForm(this.createdActivity, true);
-        }, 500);
+        }, 50);
       }, (err: any) => {
         console.log(err);
         this.alertService.getError(err.message);

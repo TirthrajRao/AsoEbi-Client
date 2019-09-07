@@ -1,7 +1,7 @@
-
-
-
 <!-- New Design Integreat -->
+<div id="loading" *ngIf="isDiable">
+    <img id="loading-image" src="/assets/images/loader.gif" alt="Loading..." />
+</div>
 
 
 <section class="enter_section d-flex flex-wrap align-content-center" *ngIf="!isDiable">
@@ -108,7 +108,8 @@
 							<input type="email" class="form-control" id="email" formControlName="email"
 								placeholder="Email/Phone Number" name="email"
 								[ngClass]="{ 'is-invalid': g.email.touched && g.email.errors }">
-							<div class="col-md-2" *ngIf="g.email.touched && g.email.errors" class="invalid-feedback text-white">
+							<div class="col-md-2" *ngIf="g.email.touched && g.email.errors"
+								class="invalid-feedback text-white">
 								<div *ngIf="g.email.errors.required">Email is required</div>
 								<div *ngIf="g.email.errors.email">Please enter valid Email</div>
 							</div>

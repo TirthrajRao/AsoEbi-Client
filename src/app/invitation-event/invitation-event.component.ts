@@ -45,7 +45,9 @@ export class InvitationEventComponent implements OnInit {
     this.getMyEvents();
     this.initActivitySlider();
     this.initCollectDetailSlick();
-
+    $(".new_event_menu").click(function () {
+      $(".new_event_menu_box").toggle();
+    });
   }
 
   initActivitySlider() {
@@ -58,9 +60,9 @@ export class InvitationEventComponent implements OnInit {
           slidesToShow: 2.5,
           slidesToScroll: 1,
           autoplay: false,
-          arrows: false,
-          prevArrow: '<button class="prevarrow text-center"><i class="fa fa-caret-left" aria-hidden="true"></i></button>',
-          nextArrow: '<button class="nextarrow text-center" ><i class="fa fa-caret-right" aria-hidden="true"></i></button>',
+          arrows: true,
+          prevArrow: '<button class="slick-prev slick-arrow"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
+          nextArrow: '<button class="slick-next slick-arrow" ><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
           responsive: [
             {
               breakpoint: 1024,
@@ -220,5 +222,10 @@ export class InvitationEventComponent implements OnInit {
   editEventDeatils(id) {
     console.log(id);
     this.router.navigate(['/home/editEvent/', id])
+  }
+
+  logout() {
+    this._loginService.logout();
+    this.router.navigate(['/login']);
   }
 }

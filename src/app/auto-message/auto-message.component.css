@@ -14,9 +14,10 @@
 }
 
 .collect_detail .collect_img {
-    width: 82px;
+    width: 70px;
+    margin: auto;
     border-radius: 50%;
-    height: 82px;
+    height: 70px;
     overflow: hidden;
 }
 .collect_detail .collect_img img{
@@ -26,3 +27,20 @@
     min-height: 100%;
     object-fit: cover;
 }
+.eventF_pera textarea.form-control {
+    background-color: transparent;
+    border-radius: 0px;
+    color: white;
+    font-family: 'Russo One', sans-serif;
+}
+textarea::-webkit-input-placeholder { /* Edge */
+    color: white;
+  }
+  
+textarea:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: white;
+  }
+  
+  textarea::placeholder {
+    color: white;
+  }

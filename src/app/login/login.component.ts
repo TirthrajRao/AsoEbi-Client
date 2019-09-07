@@ -274,6 +274,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
         localStorage.setItem('userName', JSON.stringify(this.userName));
         console.log(this.isCelebrant);
+        this.isDiable = true;
         if (this.eventIdWithLogin) {
           this.isUserLoggedIn = true;
           localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
@@ -284,7 +285,6 @@ export class LoginComponent implements OnInit {
         }
         else {
           this.isUserLoggedIn = true;
-          this.isDiable = false;
           localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
           this.router.navigate(['/home']);
         }

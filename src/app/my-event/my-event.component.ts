@@ -29,6 +29,7 @@ export class MyEventComponent implements OnInit {
   feMaleItem;
   selectedGroup;
   selectedGender;
+  isDisable;
   userName = JSON.parse(localStorage.getItem('userName'));
   constructor(private router: Router, private _eventService: EventService, private alertService: AlertService,
     private _loginService: LoginService, private change: ChangeDetectorRef) {
@@ -231,9 +232,9 @@ export class MyEventComponent implements OnInit {
           slidesToShow: 2.5,
           slidesToScroll: 1,
           autoplay: false,
-          arrows: false,
-          prevArrow: '<button class="prevarrow text-center"><i class="fa fa-caret-left" aria-hidden="true"></i></button>',
-          nextArrow: '<button class="nextarrow text-center" ><i class="fa fa-caret-right" aria-hidden="true"></i></button>',
+          arrows: true,
+          prevArrow: '<button class="slick-next slick-arrow"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
+          nextArrow: '<button class="slick-prev slick-arrow" ><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
           responsive: [
             {
               breakpoint: 1024,

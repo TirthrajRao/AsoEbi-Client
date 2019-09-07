@@ -52,7 +52,9 @@ export class CollectionsComponent implements OnInit {
       $(".new_event_menu_box").toggle();
     });
     console.log(this.userName);
-
+    setTimeout(()=>{
+      this.changeColors(0);
+    }, 200);
     // $('.new_event_menu').click(function () {
     //   $('.new_event_menu_box').toggleClass('active');
     //   $('.main').toggleClass('active');
@@ -67,9 +69,12 @@ export class CollectionsComponent implements OnInit {
     //   }
     // });
     // this.initCollectionSlider()  
-    this.changeColors(0);
 
 
+  }
+
+  openMenu(){
+    $(".new_event_menu_box").toggle();
   }
 
   changeColors(slide) {

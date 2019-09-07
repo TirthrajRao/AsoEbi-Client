@@ -1,41 +1,41 @@
 .theme-background{
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
 }
 .card{
-    background-color: #0909095e !important;
-    color: white;
+  background-color: #0909095e !important;
+  color: white;
 }
 .event_detail_btns li{
-    width: 33.33%;
-    font-size: 16px;
+  width: 33.33%;
+  font-size: 16px;
 }
 
 
 /* join now button */
 
 button.joinNowBtn {
-    border: none;
-    outline: none;
-    background-color: #f79133;
-    font-size: 30px;
-    padding: 5px 0px;
-    margin: 10px 0px;
+  border: none;
+  outline: none;
+  background-color: #f79133;
+  font-size: 30px;
+  padding: 5px 0px;
+  margin: 10px 0px;
 }
 
 button.joinNowBtn:hover {
-    background-color: #f79133
+  background-color: #f79133
 }
 .cart_pic img{
-    height: 50px;
-    width: 50px;
-    position: absolute;
-    bottom: 5px;
-    right: 32.5%;
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  bottom: 5px;
+  right: 32.5%;
 }
 .cart_pic{
-    position: relative;
+  position: relative;
 }
 
 @media(max-width: 1366px){
@@ -45,17 +45,27 @@ button.joinNowBtn:hover {
     position: absolute;
     bottom: 5px;
     right: 27%;
-}  
+  }  
+}
+@media(max-width: 1199px){
+  .cart_pic img{
+    right: 24%;
+  }
 }
 @media(max-width: 991px){
   .cart_pic img{
-      right: 19%;
-  }  
+    right: 18%;
+  }
 }
-@media(max-width: 991px){
+@media(max-width: 767px){
   .cart_pic img{
-      right: 0%;
-      height: 30px;
-      width: 30px;
-  }  
+    right: 15%;
+  } 
+} 
+@media(max-width: 575px){
+  .cart_pic img{
+    right: 0%;
+    height: 30px;
+    width: 30px;
+  } 
 }

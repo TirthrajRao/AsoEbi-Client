@@ -16,6 +16,7 @@ export class DisplayPageComponent implements OnInit {
   searchText;
   searchEvent: any = [];
   publicEvents: any = [];
+  isDiable: false;
   constructor(private router: Router, private _eventService: EventService, private alertService: AlertService) {
   }
   

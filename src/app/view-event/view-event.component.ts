@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from '../services/event.service';
+import { LoginService } from '../services/login.service';
 import { config } from '../config';
 import { ClipboardService } from 'ngx-clipboard';
 import { AlertService } from '../services/alert.service';
@@ -40,7 +41,7 @@ export class ViewEventComponent implements OnInit {
   userName = JSON.parse(localStorage.getItem('userName'));
 
   constructor(private route: ActivatedRoute,
-    private router: Router, private _eventService: EventService, private alertService: AlertService, private _clipboardService: ClipboardService) {
+    private router: Router, private _eventService: EventService,    private _loginService: LoginService, private alertService: AlertService, private _clipboardService: ClipboardService) {
     this.sub = this.route.params.subscribe(params => {
       this.eventId = params.id;
       console.log(this.eventId);
@@ -99,12 +100,14 @@ export class ViewEventComponent implements OnInit {
       $('.gender_slider1').not('.slick-initialized').slick({
         // autoplay: true,
         autoplaySpeed: 2000,
-        arrows: false,
+        arrows: true,
         dots: false,
         slidesToShow: 1.5,
         slidesToScroll: 1,
         draggable: true,
         fade: false,
+        prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+        nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
         responsive: [
           {
             breakpoint: 451,
@@ -181,11 +184,12 @@ export class ViewEventComponent implements OnInit {
       .subscribe((data: any) => {
         console.log("join event done", data);
         this.isDisable = true;
+        this.isJoined = true;
         this.alertService.getSuccess(data.message)
         this.router.navigate(['/home/view-event/', id])
       }, err => {
         console.log(err);
-        this.alertService.getError(err.error.message);
+        // this.alertService.getError(err.error.message);
       })
   }
 
@@ -247,5 +251,8 @@ export class ViewEventComponent implements OnInit {
     console.log("event id", id);
     this.router.navigate(['home/collection/', id]);
   }
-
+  logout() {
+    this._loginService.logout();
+    this.router.navigate(['/login']);
+  }
 }

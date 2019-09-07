@@ -11,15 +11,15 @@ declare var $: any;
 })
 export class LoaderComponent implements OnInit {
   userName = JSON.parse(localStorage.getItem('userName'));
-
-  constructor( private _loginService: LoginService, private route: ActivatedRoute,
+  isDisable: false;
+  constructor(private _loginService: LoginService, private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit() {
 
-    $(".new_event_menu").click(function(){
+    $(".new_event_menu").click(function () {
       $(".slider_menu").slideToggle();
-  });
+    });
 
     // $('#sideMenu').click(function () {
     //   $('.slider_menu').toggleClass('active');

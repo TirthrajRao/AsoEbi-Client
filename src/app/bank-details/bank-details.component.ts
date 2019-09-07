@@ -86,7 +86,7 @@ export class BankDetailsComponent implements OnInit {
        this.bankDetails = data.data.bankDetail;
        console.log("har har mahadev", this.bankDetails);
        setTimeout(()=>{
-       this.initSlider()
+         this.initSlider()
        },100)
      }, err => {
        console.log(err);
@@ -94,14 +94,15 @@ export class BankDetailsComponent implements OnInit {
    }
 
    initSlider(){
-     $('.slider1').not('.slick-initialized').slick({
-       infinite: true,
+     $('.bank_details_slider').not('.slick-initialized').slick({
+
+       dots: false,
        slidesToShow: 1.5,
        slidesToScroll: 1,
-       autoplay: false,
-       arrows: false,
-       prevArrow:'<button class="prevarrow text-center"><i class="fa fa-caret-left" aria-hidden="true"></i></button>',
-       nextArrow:'<button class="nextarrow text-center"><i class="fa fa-caret-right" aria-hidden="true"></i></button>',
+       draggable: true,
+       arrows: true,
+       prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+       nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
        responsive: [
        {
          breakpoint: 600,
@@ -110,13 +111,6 @@ export class BankDetailsComponent implements OnInit {
            slidesToScroll: 1,
          }
        },
-       {
-         breakpoint: 480,
-         settings: {
-           slidesToShow: 1,
-           slidesToScroll: 1
-         }
-       }
        ]
      });
 

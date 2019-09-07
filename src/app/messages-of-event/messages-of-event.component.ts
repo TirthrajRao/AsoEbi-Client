@@ -60,9 +60,9 @@ export class MessagesOfEventComponent implements OnInit {
           slidesToShow: 2.5,
           slidesToScroll: 1,
           autoplay: false,
-          arrows: false,
-          prevArrow: '<button class="prevarrow text-center"><i class="fa fa-caret-left" aria-hidden="true"></i></button>',
-          nextArrow: '<button class="nextarrow text-center" ><i class="fa fa-caret-right" aria-hidden="true"></i></button>',
+          arrows: true,
+          prevArrow: '<button class="slick-prev slick-arrow"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
+          nextArrow: '<button class="slick-next slick-arrow" ><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
           responsive: [
             {
               breakpoint: 1024,
@@ -206,7 +206,7 @@ export class MessagesOfEventComponent implements OnInit {
     console.log("kai mde che ke nai", id);
     this.router.navigate(['/home/view-event/', id])
   }
-  invitation(id){
+  invitation(id) {
     this.router.navigate(['/home/invitation/', id])
   }
   allEventList(id) {
@@ -223,11 +223,15 @@ export class MessagesOfEventComponent implements OnInit {
     this.router.navigate(['/home/editEvent/', id])
 
   }
-  autoMessage(id){
+  autoMessage(id) {
     this.router.navigate(['/home/autoMessage/', id])
   }
   thankYouMessage(id) {
-      console.log("thank you message event id", id);
-      this.router.navigate(['/home/thank-you', id])
-    }
+    console.log("thank you message event id", id);
+    this.router.navigate(['/home/thank-you', id])
+  }
+  logout() {
+    this._loginService.logout();
+    this.router.navigate(['/login']);
+  }
 }

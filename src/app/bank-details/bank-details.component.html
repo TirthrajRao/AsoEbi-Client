@@ -1,4 +1,9 @@
-<div class="firstStep" style="display:none">
+<div id="loading">
+    <img id="loading-image" src="/assets/images/loader.gif" alt="Loading..." />
+</div>
+
+
+<div class="secondStep" style="display:none">
     <section class="reset_pwd_section add_bank_account_sec d-flex flex-wrap align-content-center ">
         <div class="container-fluid">
             <h3 class="text-center">Aso Ebi</h3>
@@ -135,7 +140,7 @@
                         <div class="sliding">
                             <div class="row bank_slider">
                                 <div class="col-11 ">
-                                    <div class="slider1">
+                                    <div class="bank_details_slider">
                                         <div class="slide1" *ngFor="let details of bankDetails">
                                             <div class=slider_radio_btn>
                                                 <input type="radio" id="{{details._id}}" [value]="details._id"

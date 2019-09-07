@@ -150,6 +150,10 @@ export class EventService {
     return this.http.post(config.baseApiUrl + "api/message/add-message", formdata);
   }
 
+  getThankyouMessage(id){
+    return this.http.get(config.baseApiUrl + "api/messagelist/"+ id);
+  }
+
   /**
    * @param {String} id 
    * Delete event

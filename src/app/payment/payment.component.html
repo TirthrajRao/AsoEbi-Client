@@ -1,8 +1,7 @@
-<!-- Total payment of myCart items and if donation added display final total  -->
-
-
-
 <!-- new Design of lastPayment -->
+<div id="loading">
+    <img id="loading-image" src="/assets/images/loader.gif" alt="Loading..." />
+</div>
 
 
 <div class="step_one">
@@ -19,19 +18,19 @@
                         <div class="event_detail_slider">
                             <div class="event_detail_slide event_detail_slide_sky1">
                                 <div class="events_name text-center">
-                                    <a class="text-center text-white">
+                                    <a href="#" class="text-center text-white" data-toggle="tooltip" data-placement="top" title="hi">
                                         hi</a>
                                 </div>
                             </div>
                             <div class="event_detail_slide event_detail_slide_sky1">
                                 <div class="events_name text-center">
                                     <a (click)="nextSection('step_four', 'step_five')"
-                                        class="text-center text-white">Gift Donation</a>
+                                        class="text-center text-white" data-toggle="tooltip" data-placement="top" title="Gift Donation">Gift Donation</a>
                                 </div>
                             </div>
                             <div class="event_detail_slide event_detail_slide_sky1">
                                 <div class="events_name text-center">
-                                    <a class="text-center text-white">Total</a>
+                                    <a href="#" class="text-center text-white" data-toggle="tooltip" data-placement="top" title="Total">Total</a>
                                 </div>
                             </div>
                         </div>
@@ -94,7 +93,7 @@
                                 </div>
                                 <hr>
                             </div>
-                            <div class="all_total" *ngIf="finalCartDetails.length>1">
+                            <div class="all_total" >
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="float-left">Total</div>
@@ -104,7 +103,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="all_total mt-2" *ngIf="finalCartDetails.length>1">
+                            <div class="all_total mt-2">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="float-left">Final Total</div>
@@ -144,22 +143,22 @@
                         <div class="event_detail_slider">
                             <div class="event_detail_slide event_detail_slide_pink1">
                                 <div class="events_name text-center">
-                                    <a href="#" class="text-center text-white">Engagement</a>
+                                        <a href="#" class="text-center text-white" data-toggle="tooltip" data-placement="top" title="Engagement">Engagement</a>
                                 </div>
                             </div>
                             <div class="event_detail_slide event_detail_slide_pink1">
                                 <div class="events_name text-center">
-                                    <a href="#" class="text-center text-white">Wedding</a>
+                                        <a href="#" class="text-center text-white" data-toggle="tooltip" data-placement="top" title="Wedding">Wedding</a>
                                 </div>
                             </div>
                             <div class="event_detail_slide event_detail_slide_pink1">
                                 <div class="events_name text-center">
-                                    <a href="#" class="text-center text-white">Gift Donation</a>
+                                        <a href="#" class="text-center text-white" data-toggle="tooltip" data-placement="top" title="Gift Donation">Gift Donation</a>
                                 </div>
                             </div>
                             <div class="event_detail_slide event_detail_slide_pink1">
                                 <div class="events_name text-center">
-                                    <a href="#" class="text-center text-white">Total</a>
+                                        <a href="#" class="text-center text-white" data-toggle="tooltip" data-placement="top" title="Total">Total</a>
                                 </div>
                             </div>
                         </div>

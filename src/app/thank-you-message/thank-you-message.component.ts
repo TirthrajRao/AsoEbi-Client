@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { EventService } from '../services/event.service';
 import {AlertService} from '../services/alert.service';
+import { config } from '../config';
 // import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import * as _ from 'lodash';
 import Swal from 'sweetalert2';
@@ -19,6 +20,9 @@ export class ThankYouMessageComponent implements OnInit {
   private sub: any;
   private eventId: any;
   thankyouMessageForm: FormGroup;
+  thankYouMessage;
+
+  path = config.baseMediaUrl;
   files: Array<File> = [];
 
   constructor(private route: ActivatedRoute,
@@ -26,6 +30,7 @@ export class ThankYouMessageComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.eventId = params.id;
       console.log(this.eventId);
+      this.getThankYouMessage(this.eventId);
     })
   }
 
@@ -44,6 +49,17 @@ export class ThankYouMessageComponent implements OnInit {
        eventId: new FormControl(this.eventId)
      })
    }
+
+getThankYouMessage(id){
+  this._eventService.getThankyouMessage(id)
+  .subscribe((data: any)=>{
+    this.thankYouMessage = data.data.thanksMessage;
+    console.log("data", this.thankYouMessage)
+  }, err=>{
+    console.log(err);
+  })
+
+}
 
   /**
    * Using of ckEditor for message

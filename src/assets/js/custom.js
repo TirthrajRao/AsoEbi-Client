@@ -1,4 +1,20 @@
 $(document).ready(function(){
+// loader js start
+$(window).on('load',function(){ 
+	setTimeout(function(){
+		$('#loading').fadeOut('slow', function(){
+			$('body').removeAttr('style');
+		});
+	},100);
+});
+
+	// loader js end
+// tooltip js start
+
+$('[data-toggle="tooltip"]').tooltip(); 
+
+	// tooltip js end
+	
 // menu toggle start
 // $(".new_event_menu").click(function(){
 // 	$(".new_event_menu_box").toggle();
@@ -18,7 +34,7 @@ $(".normal_style").click(function(){
 // home page slider
 
 var $slideContainterHome = $('.home_slider'),
-$sliderH = $slideContainterHome.slick({
+$sliderH = $slideContainterHome.not('.slick-initialized').slick({
 	dots: true,
 	infinite: false,
 	speed: 1000,

@@ -1,98 +1,108 @@
-<!-- Details of any particular event  -->
+<div id="loading">
+    <img id="loading-image" src="/assets/images/loader.gif" alt="Loading..." />
+</div>
 
-<div class="alert alert-success" id="success-alert">
+<!-- <div class="alert alert-success" id="success-alert">
     <button type="button" class="close" data-dismiss="alert">x</button>
     <strong>Success! </strong> Product have added to your wishlist.
-  </div>
+</div> -->
 
 <section class="view_event_section d-flex flex-wrap align-content-center">
-        <div class="container-fluid">
-            <h3 class="text-center Aso_title">Aso Ebi</h3>
-            <div class="profile_pic text-center" *ngFor= "let item of allDetailsofEvent">
-                <img *ngIf="item && item.profilePhoto"
-                src="{{path}}{{item.profilePhoto}}" class=" rounded-circle">
-            </div>
-            <h3 class="text-center user_name">{{eventHashTag}}</h3>
-            <div >
-            <div class="cart_pic text-center" *ngFor= "let item of allDetailsofEvent" (click)="myCart(item._id)"> 
-                <img src="/assets/images/cart.png"  data-toggle="tooltip" title="My Cart">
-            </div>
+    <div class="container-fluid">
+        <h3 class="text-center Aso_title">Aso Ebi</h3>
+        <div class="profile_pic text-center" *ngFor="let item of allDetailsofEvent">
+            <img *ngIf="item && item.profilePhoto" src="{{path}}{{item.profilePhoto}}" class=" rounded-circle">
         </div>
-            <div class="veiw_event">
-                <div class="Join_inner_content_box h-100 mb-3">
-                    <div class="event_inner_content">
-                        <div class="new_event_sec veiw_event_sec">
-                            <div class="row">
-                                <div class="col-3 m-auto pr-0 float-right new_event_menu">
-                                    <a href="javascript:void(0)"><img src="/assets/images/view_event_icon.png">
-                                        <p class="text-white my_cart">View Event</p>
-                                    </a>
-                                </div>
-                                <div class="col-9 p-0">
-                                    <span class="text-white event_name" *ngIf="userName"> Hello {{userName}} </span>
+        <h3 class="text-center user_name" data-toggle="tooltip" title="{{eventHashTag}}">{{eventHashTag}}</h3>
+
+        <div class="cart_pic text-center" (click)="myCart(item._id)" *ngFor= "let item of allDetailsofEvent" >
+            <img src="/assets/images/cart.png" data-toggle="tooltip" title="My Cart" *ngIf="isJoined == true">
+        </div>
+        <div class="veiw_event">
+            <div class="Join_inner_content_box h-100 mb-3">
+                <div class="event_inner_content">
+                    <div class="new_event_sec veiw_event_sec">
+                        <div class="row">
+                            <div class="col-3 m-auto pr-0 float-right new_event_menu">
+                                <a href="javascript:void(0)"><img src="/assets/images/view_event_icon.png">
+                                    <p class="text-white my_cart">View Event</p>
+                                </a>
+                            </div>
+                            <div class="col-9 p-0">
+                                <span class="text-white event_name" *ngIf="userName"> Hello {{userName}} </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="overlay" class="new_event_menu_box" style="display: none;">
+                        <div class="">
+                            <div class="event_menu">
+                                <div class="all_menu_content  d-flex flex-wrap align-content-center">
+                                    <ul>
+                                        <li><a routerLink="/home" class="text-white new_event">Home</a></li>
+                                        <li><a routerLink="/myEvent" class="text-white new_event">my event</a></li>
+                                        <li><a routerLink="/createEvent" class="text-white my_event">new event</a>
+                                        </li>
+                                        <li><a routerLink="/bankDetails" class="text-white my_account">bank
+                                                account</a></li>
+                                        <li><a routerLink="/reset-password" class="text-white my_account">Reset
+                                                Password</a></li>
+                                        <li><a (click)="logout()" class="text-white my_account">Logout</a></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
-                        <div id="overlay" class="new_event_menu_box" style="display: none;">
-                            <div class="">
-                                <div class="event_menu">
-                                    <div class="all_menu_content  d-flex flex-wrap align-content-center">
-                                        <ul>
-                                            <li><a href="eventA.html" class="text-white new_event">my event</a></li>
-                                            <li><a href="new_event_slider.html" class="text-white my_event">new event</a>
-                                            </li>
-                                            <li><a href="add_bank_account.html" class="text-white my_account">bank
-                                            account</a></li>
-                                            <li><a href="reset_password.html" class="text-white my_account">Reset
-                                            Password</a></li>
-                                            <li><a href="#" class="text-white my_account">Logout</a></li>
-                                        </ul>
+                    </div>
+                    <div *ngFor="let item of allDetailsofEvent">
+                        <div class="">
+                            <button class="btn-primary w-100 joinNowBtn" (click)="joinNow(item._id)"
+                            [disabled]="isDisable" (click)="joinNow(item._id)" *ngIf="isCelebrant == false">Join Now</button>
+                            <div class="all_event_details">
+                                <div class="row">
+                                    <div class="col-4 pr-0">
+                                        <a class="text-white text-center event_type event_tooltip" data-toggle="tooltip"
+                                            data-placement="top" title="{{item.eventType}}">{{item.eventType}}
+                                        </a>
+                                    </div>
+                                    <div class="col-4 pr-0">
+                                        <a class="text-white text-center event_title event_tooltip"
+                                            data-toggle="tooltip" data-placement="top"
+                                            title="{{item.eventTitle}}">{{item.eventTitle}}
+                                        </a>
+                                    </div>
+                                    <div class="col-4 pl=0 ">
+                                        <a class="text-white text-center event_tooltip" data-toggle="tooltip"
+                                            data-placement="top" title="{{item.hashTag}}">{{item.hashTag}}</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div *ngFor="let item of allDetailsofEvent">
-                            <div class="">
-                                <button class="btn-primary w-100 joinNowBtn" 
-                                (click)="joinNow(item._id)">Join Now</button>
-                                <div class="all_event_details">
-                                    <div class="row">
-                                        <div class="col-4 pr-0">
-                                            <a class="text-white text-center event_type event_tooltip"  data-toggle="tooltip" data-placement="top" title="{{item.eventType}}">{{item.eventType}}
-                                            </a>
-                                        </div>
-                                        <div class="col-4 pr-0">
-                                            <a class="text-white text-center event_title event_tooltip"  data-toggle="tooltip" data-placement="top" title="{{item.eventTitle}}">{{item.eventTitle}}
-                                            </a>
-                                        </div>
-                                        <div class="col-4 pl=0 ">
-                                            <a class="text-white text-center event_tooltip" data-toggle="tooltip" data-placement="top" title="{{item.hashTag}}">{{item.hashTag}}</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="activity_slider" >
-                                <div class="activity_day" *ngFor="let activity of activityArray">
-                                    <p class="text-center first_day_activity">{{activity.activityName}}</p>
-                                    <div class="activity_group_slider">
-                                        <div *ngFor="let group of activity.group">
-                                            <p class="group_family text-center">{{group.groupName}}</p>
-                                            <div class="gender_slider1 ">
-                                                <div class="gender_slide1 male_slide1">
-                                                    <h5 class="text-white">Male</h5>
-                                                    <div class="item_detail_height">
-                                                        <div *ngFor="let male of group.item" class="item_detail_height">
-                                                            <div *ngIf="male.itemGender == 'male'">
-                                                                <div class="row">
-                                                                    <div class="col-6">
-                                                                        <div class="item_detail">
-                                                                            <p ><span>Name : </span><br> {{male.itemName}}</p>
-                                                                           <p><span>Price : </span><br> {{male.itemPrice | currency:"&#x20A6;"}}</p>
-                                                                       </div>
-                                                                   </div>
-                                                                   <div class="col-6" >
-                                                                    <div class="add_to_cart_btn" (click)="addToCart(item._id,male._id)" >
-                                                                        <a class="text-white">Add to Cart</a>
+                        <div class="activity_slider">
+                            <div class="
+                                " *ngFor="let activity of activityArray">
+                                <p class="text-center first_day_activity" data-toggle="tooltip" data-placement="top"
+                                    title="Activity:{{activity.activityName}}">Activity:{{activity.activityName}}</p>
+                                <div class="activity_group_slider">
+                                    <div *ngFor="let group of activity.group">
+                                        <p class="group_family text-center">{{group.groupName}}</p>
+                                        <div class="gender_slider1 ">
+                                            <div class="gender_slide1 male_slide1">
+                                                <h5 class="text-white">Male</h5>
+                                                <div class="item_detail_height">
+                                                    <div *ngFor="let male of group.item" class="item_detail_height">
+                                                        <div *ngIf="male.itemGender == 'male'">
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    <div class="item_detail">
+                                                                        <p><span>Name : </span><br> {{male.itemName}}
+                                                                        </p>
+                                                                        <p><span>Price : </span><br>
+                                                                            {{male.itemPrice | currency:"&#x20A6;"}}</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <div class="add_to_cart_btn"
+                                                                        (click)="addToCart(item._id,male._id)">
+                                                                        <a class="text-white" *ngIf="isJoined == true">Add to Cart</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -108,14 +118,17 @@
                                                             <div class="row">
                                                                 <div class="col-6">
                                                                     <div class="item_detail">
-                                                                        <p><span>Name : </span><br> {{female.itemName}}</p>
-                                                                        <p><span>Price : </span><br> {{female.itemPrice | currency:"&#x20A6;"}}
+                                                                        <p><span>Name : </span><br> {{female.itemName}}
+                                                                        </p>
+                                                                        <p><span>Price : </span><br>
+                                                                            {{female.itemPrice | currency:"&#x20A6;"}}
                                                                         </p>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-6" >
-                                                                    <div class="add_to_cart_btn" (click)="addToCart(item._id,female._id)">
-                                                                        <a  class="text-white">Add to Cart</a>
+                                                                <div class="col-6">
+                                                                    <div class="add_to_cart_btn"
+                                                                        (click)="addToCart(item._id,female._id)">
+                                                                        <a class="text-white" *ngIf="isJoined == true">Add to Cart</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -133,7 +146,7 @@
             </div>
         </div>
     </div>
-    </section>
+</section>
 
 <script type="text/javascript">
     function getLink(eventLink) {
