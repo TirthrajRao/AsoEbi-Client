@@ -24,7 +24,7 @@ const baseMediaUrl = "https://andcowith.me/test/server/";
 
 // const baseUrl = `${host}${port}/`;
 // const baseUrl = "http://192.168.1.83:3000/";
-const baseUrl = "http://andcowith.me:3000/";
+const baseUrl = "https://andcowith.me:3000/";
 
 
 export const config = {
