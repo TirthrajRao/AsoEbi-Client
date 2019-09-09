@@ -158,16 +158,16 @@ export class EventActivityComponent implements OnInit {
     console.log(item);
     this.selectedActivity = item[0];
     this.selectedActivityGroup = item[0].group;
-    this.selectedGroup = item[0].group[0].groupName;
-    this.selectedGender = 'male';
-    this.itemNamePrint = [];
-    console.log("thisbjfdkjnkjdfdjfg", this.selectedActivityGroup)
-    this.itemNamePrint.push(this.selectedActivityGroup[0].item[0]);
-    setTimeout(() => {
-      this.initActivitySlider();
-      this.initCollectDetailSlick();
-      // $('.collect_detail')[0].slick.refresh();
-    }, 100)
+      this.selectedGroup = item[0].group[0].groupName;
+      this.selectedGender = 'male';
+      this.itemNamePrint = [];
+      console.log("thisbjfdkjnkjdfdjfg", this.selectedActivityGroup)
+      this.itemNamePrint.push(this.selectedActivityGroup[0].item[0]);
+      setTimeout(() => {
+        this.initActivitySlider();
+        this.initCollectDetailSlick();
+        // $('.collect_detail')[0].slick.refresh();
+      }, 100)
 
   }
 
@@ -204,20 +204,22 @@ export class EventActivityComponent implements OnInit {
     console.log(activityId);
     this.selectedActivity = activityId;
     this.selectedActivityGroup = activityId.group;
-    this.selectedGroup = activityId.group[0].groupName;
+    if (this.activityId.group && this.activityId.group.length > 1) {
+      this.selectedGroup = activityId.group[0].groupName;
+    }
     this.selectedGender = 'male';
     console.log(this.selectedGender)
     $('input:radio[id="test"]').prop('checked', true);
-    this.itemNamePrint = _.filter(activityId.group[0].item, {itemGender: 'male'});
+    this.itemNamePrint = _.filter(activityId.group[0].item, { itemGender: 'male' });
     // this.router.navigate(['/home/eventActivity/', eventId, activityId])
   }
 
   eventDeatils(id, activityId) {
     //   let className = $('#dynamic_loader_content > div:visible').attr('class');
     this._eventService.getEventDetails(id)
-    .subscribe((data: any) => {
-      this.isCelebrant = data.data.isCelebrant;
-      console.log("single activity data",this.isCelebrant); 
+      .subscribe((data: any) => {
+        this.isCelebrant = data.data.isCelebrant;
+        console.log("single activity data", this.isCelebrant);
         this.singleEventDetails = data.data;
         this.allActivityList = this.singleEventDetails.activity;
         console.log(this.allActivityList);
@@ -288,10 +290,10 @@ export class EventActivityComponent implements OnInit {
 
   }
 
-  invitation(id){
+  invitation(id) {
     this.router.navigate(['/home/invitation/', id])
   }
-  autoMessage(id){
+  autoMessage(id) {
     this.router.navigate(['/home/autoMessage/', id])
   }
 

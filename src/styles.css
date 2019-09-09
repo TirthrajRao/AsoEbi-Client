@@ -60,7 +60,7 @@ a {
 .home_slider {
 	height: 645px;
 	width: 666px;
-	margin: auto;
+	margin: 40px auto;
 }
 .inner_content_box {
 	height: 645px;
@@ -96,7 +96,7 @@ a {
 }
 
 .green_slide .inner_content_box img {
-	margin: -45px auto auto;
+	margin:  auto auto;
 }
 
 .orange_slide .inner_content_box img {
@@ -330,7 +330,7 @@ label.upload_photo {
 .enter_section h3 {
 	font-size: 58.33px;
 	color: #201f62;
-	margin-top: -75px;
+	/* margin-top: -75px; */
 	margin-bottom: 14px;
 }
 /*enter screen section end*/
@@ -394,7 +394,7 @@ label.upload_photo {
 
 .join_page2_section h3, .join_page1_section h3, .join_page3_section h3, .join_page4_section h3, .join_page5_section h3 {
 	font-size: 58.33px;
-	margin-top: -75px;
+	/* margin-top: -75px; */
 	margin-bottom: 14px;
 }
 
@@ -764,7 +764,7 @@ label.upload_photo {
 
 .event_slider_section h3 {
 	font-size: 58.33px;
-	margin-top: -75px;
+	/* margin-top: -75px; */
 	margin-bottom: 14px;
 }
 
@@ -1159,8 +1159,31 @@ label.profile_and_cover_edit {
 	font-weight: normal;
 	transition: all 0.2s
 }
+label.background_edit {
+	height: 34px;
+	width: 34px;
+	border-radius: 50%;
+	cursor: pointer;
+	font-size: 15px;
+	position: absolute;
+	bottom: -14px;
+	right: 0px;
+	background-color: #fff;
+	z-index: 111;
+	line-height: 39px;
+	color: #757575;
+	display: inline-block;
+	border: 1px solid transparent;
+	box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+	font-weight: normal;
+	transition: all 0.2s
+}
 
 label.profile_and_cover_edit:hover {
+	background: #f1f1f1;
+	border-color: #d6d6d6;
+}
+label.background_edit:hover {
 	background: #f1f1f1;
 	border-color: #d6d6d6;
 }
@@ -1196,6 +1219,7 @@ label.profile_and_cover_edit:hover {
 	height: 103px;
 	width: 103px;
 	margin: auto;
+	position: relative;
 }
 
 .back1 img {
@@ -1204,23 +1228,6 @@ label.profile_and_cover_edit:hover {
 	min-height: 100%;
 	max-height: 100%;
 	object-fit: cover;
-}
-
-label.background_edit {
-	height: 103px;
-	width: 103px;
-	margin: auto;
-	border-radius: 50%;
-	border: 1px solid #fff;
-	cursor: pointer;
-	text-align: center;
-	font-size: 40px;
-	color: white!important;
-	background-color: transparent;
-}
-
-label.background_edit i {
-	margin-top: 32px;
 }
 
 /*slide 5 end*/
@@ -1610,7 +1617,7 @@ label.background_edit i {
 .reset_pwd_section h3 {
 	color: #e70d6a;
 	font-size: 58.33px;
-	margin-top: -75px;
+	/* margin-top: -75px; */
 	margin-bottom: 14px;
 }
 
@@ -1663,7 +1670,7 @@ label.background_edit i {
 .forgot_pwd_section h3 {
 	color: #0d1928;
 	font-size: 58.33px;
-	margin-top: -75px;
+	/* margin-top: -75px; */
 	margin-bottom: 14px;
 }
 
@@ -1727,7 +1734,7 @@ label.background_edit i {
 .edit_event_section h3 {
 	color: #0d1928;
 	font-size: 58.33px;
-	margin-top: -75px;
+	/* margin-top: -75px; */
 	margin-bottom: 14px;
 }
 
@@ -2041,7 +2048,7 @@ label.background_edit i {
 
 .collection_slider_section h3 {
 	font-size: 58.33px;
-	margin-top: -75px;
+	/* margin-top: -75px; */
 	margin-bottom: 14px;
 }
 
@@ -2431,7 +2438,7 @@ label.background_edit i {
 .thanks_page_section h3 {
 	color: #22434c;
 	font-size: 58.33px;
-	margin-top: -75px;
+	/* margin-top: -75px; */
 	margin-bottom: 14px;
 }
 
@@ -2480,7 +2487,7 @@ label.background_edit i {
 .msg_page_section h3 {
 	color: #659827;
 	font-size: 58.33px;
-	margin-top: -75px;
+	/* margin-top: -75px; */
 	margin-bottom: 14px;
 }
 
@@ -2580,7 +2587,7 @@ label.background_edit i {
 .name_page_section h3 {
 	color: #223d61;
 	font-size: 58.33px;
-	margin-top: -75px;
+	/* margin-top: -75px; */
 	margin-bottom: 14px;
 	;
 }
@@ -2621,7 +2628,7 @@ label.background_edit i {
 
 form.all_activity_form {
 	overflow-y: auto;
-	max-height: 182px;
+	max-height: 225px;
 }
 
 form.billing_address {
@@ -2659,13 +2666,6 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 }
 .add_ceremony.text-center {
 	margin-top: 20px;
-}
-
-.close_ceremony img {
-	margin: auto;
-	top: 0px;
-	right: -9px;
-	position: absolute;
 }
 
 .next_button a {
@@ -2727,7 +2727,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 .event1_page_section h3 {
 	color: #5b453f;
 	font-size: 58.33px;
-	margin-top: -75px;
+	/* margin-top: -75px; */
 	margin-bottom: 14px;
 }
 
@@ -2926,7 +2926,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 .slider_page_section h3 {
 	color: #fd5226;
 	font-size: 58.33px;
-	margin-top: -75px;
+	/* margin-top: -75px; */
 	margin-bottom: 14px;
 	;
 }
@@ -2946,7 +2946,6 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 
 .slider_page_section .freind_family {
 	padding: 0 60px;
-	margin-top: 25px;
 }
 
 .slider_page_section .gender_slider {
@@ -3035,7 +3034,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	color: #fff;
 }
 .select_item_scroll{
-	max-height: 200px;
+	max-height:110px;
 	overflow-y: auto;
 	overflow-x: hidden;
 
@@ -3043,6 +3042,8 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 .slider_page_section .gender_slide input {
 	background-color: transparent;
 	height: 30px;
+	color: #fff;
+	border-radius: 0px;
 }
 
 .slider_page_section .select_date input {
@@ -3148,7 +3149,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 .eventA_page_section h3 {
 	color: #223d61;
 	font-size: 58.33px;
-	margin-top: -75px;
+	/* margin-top: -75px; */
 	margin-bottom: 14px;
 }
 
@@ -3231,7 +3232,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 .eventB_page_section h3 {
 	color: #fff;
 	font-size: 58.33px;
-	margin-top: -75px;
+	/* margin-top: -75px; */
 	margin-bottom: 14px;
 }
 
@@ -3286,7 +3287,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 .eventC_page_section h3 {
 	color: #000;
 	font-size: 58.33px;
-	margin-top: -75px;
+	/* margin-top: -75px; */
 	margin-bottom: 14px;
 }
 
@@ -3444,7 +3445,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 .eventD_page_section h3 {
 	color: #000;
 	font-size: 58.33px;
-	margin-top: -75px;
+	/* margin-top: -75px; */
 	margin-bottom: 14px;
 }
 
@@ -3556,7 +3557,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 .eventE_page_section h3 {
 	color: #f4a737;
 	font-size: 58.33px;
-	margin-top: -75px;
+	/* margin-top: -75px; */
 	margin-bottom: 14px;
 }
 
@@ -3631,7 +3632,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 .eventF_page_section h3 {
 	color: #4c4a92;
 	font-size: 58.33px;
-	margin-top: -75px;
+	/* margin-top: -75px; */
 	margin-bottom: 14px;
 }
 
@@ -3819,15 +3820,15 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	font-family: 'Russo One', sans-serif;
 	padding: 10px 30px;
 	background-color: #2b3335;
-	/* margin: 10px 6px 0px 0px; */
+	margin: 10px 6px 0px 0px;
 }
 
-.coll_slide .new_event_menu, .eventC_page_section .new_event_menu, .eventB_page_section .new_event_menu, .final_step .new_event_menu, .forgot_pwd_section .new_event_menu, .reset_pwd_section .new_event_menu, .msg_page_section .new_event_menu, .thank_you_section .new_event_menu, .view_event_section .new_event_menu, .name_page_section .new_event_menu, .slider_page_section .new_event_menu {
+.edit_event_section .new_event_menu, .coll_slide .new_event_menu, .eventC_page_section .new_event_menu, .eventB_page_section .new_event_menu, .final_step .new_event_menu, .forgot_pwd_section .new_event_menu, .reset_pwd_section .new_event_menu, .msg_page_section .new_event_menu, .thank_you_section .new_event_menu, .view_event_section .new_event_menu, .name_page_section .new_event_menu, .slider_page_section .new_event_menu {
 	z-index: 1111;
 }
 
 .slider_overlay p {
-	font-size: 20.83px !important;
+	font-size: 16.83px !important;
 	font-family: 'Russo One', sans-serif;
 }
 
@@ -4439,7 +4440,8 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 
     .eventC_page_section .event_activity p {
     	font-size: 20px;
-    	color: #fff;
+			color: #fff;
+			margin: 10px;
     	font-family: 'Russo One', sans-serif;
     }
 
@@ -4805,7 +4807,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	.event-activity-class::-webkit-scrollbar-track ,
 	.event-count-box-scroll::-webkit-scrollbar-track,
 	.group-name-scroll::-webkit-scrollbar-track,
-	.select_item_scroll ::-webkit-scrollbar-track {
+	.select_item_scroll::-webkit-scrollbar-track{
 		border: 1px solid transparent;
 		padding: 2px 0;
 		width: 7px;
@@ -4824,12 +4826,12 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	}
 	
 	.event_prise_detail::-webkit-scrollbar-thumb,
-	 form.billing_address::-webkit-scrollbar-thumb ,
+	form.billing_address::-webkit-scrollbar-thumb ,
 	.inner_box_content::-webkit-scrollbar-thumb,
 	.event-activity-class::-webkit-scrollbar-thumb,
 	.event-count-box-scroll::-webkit-scrollbar-thumb ,
-		.group-name-scroll::-webkit-scrollbar-thumb,
-		.select_item_scroll ::-webkit-scrollbar-thumb{
+	.group-name-scroll::-webkit-scrollbar-thumb,
+	.select_item_scroll ::-webkit-scrollbar-thumb{
 		border-radius: 10px;
 		background-color: #fff;
 	}
@@ -4950,7 +4952,8 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
     	max-width: 100%;
     	min-height: 100%;
     	min-width: 100%;
-    	object-fit: cover;
+			object-fit: cover;
+			border-radius: 50%;
     }
 
     .profile_pic {
@@ -5138,10 +5141,10 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
     	right: 0px;
     }
 
-    .thankyou_img {
+    /* .thankyou_img {
     	overflow-y: auto;
     	max-height: 400px;
-    }
+    } */
 
     .thankyou_msg {
     	margin: 105px 60px;
@@ -5631,10 +5634,75 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	.event_slider1 button.slick-arrow.slick-prev{
 		right: 20px;
 	}
+	.collection_slider_section .event_inner_content_box{
+    height: 645px;
+    width: 665px;
+    margin: auto;
+	}
+	.event_invitation_link{
+		padding: 0 60px;
+		margin: auto;
+		text-align: center;
+	}
+	.event_invitation_link label{
+	font-family: 'Russo One', sans-serif;
+	font-size: 18px;
+ }	
+ .event_invitation_link button{
+	font-family: 'Russo One', sans-serif;
+	font-size: 18px;
+	background-color: #f4a737;
+	color: #fff;
+	border: none;
+	outline: none;
+	height: 50px;
+	padding: 0px 15px;
+ }	
+	.event_invitation_link ul li{
+		display: inline-block;
+		list-style: none;
+		padding: 0px 5px;
+	}
+	.event_invitation_link input{
+		background-color: transparent;
+		font-family: 'Russo One', sans-serif;
+		color: #000;
+		border-color: #000;
+		height: 50px;
+		width: 310px;
+		text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+		overflow: hidden !important;
+		padding: 0px 5px;
+	}
+	.sorry_msg{
+		margin-top: 20px;
+	}
 	/* event slider css end */
     /* responsive css start */
 
     @media(max-width: 1366px) {
+			form.all_activity_form {
+							max-height: 165px;
+		}
+			.collection_slider .slick-arrow.slick-prev {
+				left: 170px;
+		}
+
+.collection_slider .slick-arrow.slick-next {
+	right: 170px;
+}
+			.event_invitation_link input {
+							width: 290px;
+						}
+			.event_invitation_link{
+				padding: 0 50px;
+			}
+			.collection_slider_section .event_inner_content_box{
+				width: 600px;
+    		height: 525px;
+			}
     	.activity_group_slider .gender_slider1 .slick-arrow {
     		top: -200px!important;
     	}
@@ -6075,11 +6143,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
     		font-size: 48px;
     		margin-left: -22px;
     	}
-    	.collection_slider_section .event_inner_content_box {
-    		width: 600px;
-    		height: 525px;
-    	}
-    	.collection_slider_section h3 {
+        	.collection_slider_section h3 {
     		margin-bottom: 0px;
     		margin-top: -45px;
     		font-size: 48px;
@@ -6121,7 +6185,8 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
     		padding: 6px 0px;
     	}
     	.collection_slider {
-    		height: 525px;
+				height: 525px;
+				width: 600px;
     	}
     	.scroll_content {
     		height: 185px;
@@ -6461,6 +6526,9 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
     	/*new event page without slider end*/
     }
     @media(max-width: 767px) {
+			.event_invitation_link input {
+				width: 210px;
+		}
     	/*loader responsive start*/
     	#loading-image {
     		min-width: 150px;
@@ -6636,13 +6704,14 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
     	/*home page responsive css end*/
     	/*join page responsive css start*/
     	.Join_inner_content_box {
-    		width: 520px;
+				width: 520px;
     	}
     	.email_sec {
-    		padding: 24px 3px;
+				padding: 24px 3px;
+
     	}
     	.facebook_sec span, .microsoft_sec span, .yahoo_sec span, .google_sec span {
-    		font-size: 15px;
+				font-size: 15px;
     	}
     	/*join page responsive css end*/
     	/*new event responsive css start*/
@@ -6686,6 +6755,9 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
     	}
     	.event_inner_content_box, .new_event_slider {
     		width: 520px;
+			}
+			.event_slider_section .event_inner_content_box {
+    		width: 520px;
     	}
     	.slider_height {
     		width: 520px;
@@ -6716,10 +6788,10 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
     		/* width: 145px; */
     	}
     	.collection_slider .slick-arrow.slick-prev {
-    		left: 140px;
+    		left: 120px;
     	}
     	.collection_slider .slick-arrow.slick-next {
-    		right: 140px;
+    		right: 120px;
     	}
     	.collection_slider_section .event_inner_content {
     		width: 100%;
@@ -6812,6 +6884,25 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
     }
 
     @media(max-width: 575px) {
+			.event_invitation_link label {
+								font-size: 15px;
+		}
+		.event_invitation_link input {
+			width: 161px;
+			height: 40px;
+			font-size: 15px;
+	}
+	.event_invitation_link button {
+        font-size: 15x;
+       height: 40px;
+    }
+			.event_invitation_link{
+				padding: 0 15px;
+			}
+			.event_slider_section .event_inner_content_box {
+				width: 100%;
+				height: 385px;
+    	}
 		.eventC_page_section [type="radio"]:checked+label, .eventC_page_section [type="radio"]:not(:checked)+label {
 			font-size: 14.70px;
 		}
@@ -6829,7 +6920,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
     		margin-bottom: -14px;
     	}
     	.slider_page_section .freind_family i {
-    		margin-top: 9px;
+    		margin-top: -9px;
     	}
     	.slider_page_section .gender_slide input {
     		height: 25px;
@@ -6872,7 +6963,8 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
     		font-size: 22.33px;
     	}
     	form.all_activity_form {
-    		max-height: 124px;
+				max-height: 124px;
+				overflow-x: hidden;
     	}
     	.add_ceremony.text-center {
     		margin-top: 12px;
@@ -7269,7 +7361,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
     	.facebook_sec img, .microsoft_sec img, .yahoo_sec img, .google_sec img {
     		height: 30px;
     		width: 30px;
-    		margin-top: -5px;
+				margin-top: -5px;
     	}
     	.facebook_sec {
     		margin: 0px 10px 5px 15px;
@@ -7290,7 +7382,9 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
     		margin: 5px 15px 0px 0px;
     		padding: 5px 7px;
     		height: 45px;
-    	}
+			}
+		
+
     	.login_form_sec {
     		padding: 5px 15px;
     	}
@@ -7335,10 +7429,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
     	}
     	.add_ceremony.text-center {
     		margin-top: 10px;
-    	}
-    	.close_ceremony {
-    		margin-right: 15px;
-    	}
+			}
     	.next_button a {
     		font-size: 15.83px;
     	}
@@ -7457,15 +7548,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
     		width: 70px;
     		height: 70px;
     	}
-    	label.background_edit {
-    		width: 70px;
-    		height: 70px;
-    		font-size: 25px;
-    	}
-    	label.background_edit i {
-    		margin-top: 24px;
-    	}
-    	.all_back_img .col-sm-3 {
+        	.all_back_img .col-sm-3 {
     		padding-right: 3px;
     	}
     	.all_back_img .row {
@@ -7600,7 +7683,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
     		margin-left: -25px;
     	}
     	.collection_slider .slick-arrow {
-    		top: 15%;
+    		top: 19%;
     	}
     	.collection_slider_section form .col-3 {
     		max-width: 31%;
@@ -8171,6 +8254,13 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
     }
 
     @media screen and (max-width: 411px) {
+			.create-event-cross .col-11{
+				padding-right: 0px;
+			}
+			.create-event-cross .col-1{
+				padding-right: 0px;
+				padding-left: 5px;
+			}
     	.event_menu_start ul li {
     		padding: 7px 20px;
     		font-size: 14px!important;
@@ -8451,15 +8541,8 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
     		width: 49px;
     		height: 49px;
     	}
-    	label.background_edit {
-    		width: 49px;
-    		height: 49px;
-    		font-size: 22px;
-    	}
-    	label.background_edit i {
-    		margin-top: 14px;
-    	}
-    	.back1 p {
+				
+			    	.back1 p {
     		font-size: 9.83px;
     	}
     	.all_back_img .col-sm-3 {

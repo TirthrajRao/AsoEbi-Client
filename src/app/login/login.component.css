@@ -59,7 +59,9 @@
       border: none;
       color: #fff;
     }
-
+    .row.social_Login {
+      cursor: pointer;
+  }
     @media(max-width: 575px){
       /*forgot password modal css start*/
       .submit_mail button {

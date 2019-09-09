@@ -11,6 +11,8 @@ declare var $: any;
 })
 export class LoaderComponent implements OnInit {
   userName = JSON.parse(localStorage.getItem('userName'));
+  userRole = JSON.parse(localStorage.getItem('userRole'));
+  manualLoginUser = JSON.parse(localStorage.getItem('currentUser'));
   isDisable: false;
   constructor(private _loginService: LoginService, private route: ActivatedRoute,
     private router: Router) { }
@@ -20,6 +22,8 @@ export class LoaderComponent implements OnInit {
     $(".new_event_menu").click(function () {
       $(".slider_menu").slideToggle();
     });
+
+    // console.log("login with only manual", this.manualLoginUser);
 
     // $('#sideMenu').click(function () {
     //   $('.slider_menu').toggleClass('active');

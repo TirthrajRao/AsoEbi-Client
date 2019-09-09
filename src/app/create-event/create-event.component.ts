@@ -49,6 +49,7 @@ export class CreateEventComponent implements OnInit {
   submitted = false;
   public imagePath;
   imgURL: any;
+  themeURL: any;
   colorSetting: any;
   changeColors: any;
   eventTypeValue;
@@ -93,6 +94,18 @@ export class CreateEventComponent implements OnInit {
       $(".new_event_menu_box").toggle();
     });
     console.log("login user name", this.userName)
+
+
+    // function activateDatePickers() {
+      
+  // }
+
+    // $(document).ready(function(){
+    
+    // });
+
+
+
     // this.createdActivity = [
     //   {
 
@@ -315,6 +328,10 @@ export class CreateEventComponent implements OnInit {
 
   }
 
+  activateDatePickers(event){
+    console.log("event of date picker", event);
+    
+  }
 
 
   /**
@@ -355,7 +372,7 @@ export class CreateEventComponent implements OnInit {
         console.log(err);
         this.alertService.getError(err.message);
       })
-    // // }
+    // }
     // console.log("data of event", $('.slick-active').hasClass("twelve_slide"));
     // if ($('.slick-active').hasClass("twelve_slide")) {
     //   $('.slick-active').addClass("done")
@@ -397,8 +414,17 @@ export class CreateEventComponent implements OnInit {
     _.forEach(event, (file: any) => {
       if (file.type == "image/jpeg" || file.type == "image/jpg" || file.type == "image/png" || file.type == "image/gif") {
         this.themeFiles.push(file);
-
-      } else {
+        var reader = new FileReader();
+        this.imagePath = this.themeFiles;
+        reader.readAsDataURL(this.themeFiles[0]);
+        reader.onload = (_event) => {
+          this.themeURL = reader.result;
+        }
+        this.eventForm.controls.defaultImage.reset();
+        $('.back1 img').hasClass('active_background'); 
+        $('.back1 img').removeClass('active_background');
+      }
+       else {
         Swal.fire({
           title: 'Error',
           text: "You can upload only image",
@@ -409,10 +435,20 @@ export class CreateEventComponent implements OnInit {
   }
 
   defaultBackgroundImage(path, id) {
-    console.log(path, id);
-    $('id').addClass('.selectedImage')
-    this.eventForm.controls.defaultImage.setValue(path);
-    console.log("=========", this.eventForm.value)
+    console.log($('.back1 img').hasClass('active_background'));
+    if($('.back1 img').hasClass('active_background')) $('.back1 img').removeClass('active_background');{
+      $('#'+id).addClass('active_background')
+      this.eventForm.controls.defaultImage.setValue(path);
+    }
+    // if(this.themeFiles){
+    //   $('.back1 img').hasClass('active_background'); 
+    //     $('.back1 img').removeClass('active_background');
+    //   Swal.fire({
+    //     title: 'Error',
+    //     text: "You can upload single image",
+    //     type: 'warning',
+    //   })
+    // }
 
   }
 
@@ -426,9 +462,29 @@ export class CreateEventComponent implements OnInit {
       activity: this.fb.array(this.activityArray(createdActivity))
     });
     setTimeout(() => {
-      $("#activityStartDate0").datepicker({ "setDate": new Date(), "minDate": new Date(), dateFormat: 'yy-mm-dd' });
-      $("#activityEndDate0").datepicker({ "setDate": new Date(), "minDate": new Date(), dateFormat: 'yy-mm-dd' });
+      // $("#activityStartDate0").datepicker({ "setDate": new Date(), "minDate": new Date(), dateFormat: 'yy-mm-dd' });
+      // $("#activityEndDate0").datepicker({ "setDate": new Date(), "minDate": new Date(), dateFormat: 'yy-mm-dd' });
+      $("#activityStartDate0").datepicker({
+        minDate: new Date(),
+        onClose: function() {
+            $("#activityEndDate0").datepicker(
+                    "change",
+                    { minDate: new Date($('#activityStartDate0').val()) }
+            );
+        }
+    });
+    $("#activityEndDate0").datepicker({
+        onClose: function() {
+            $("#activityStartDate0").datepicker(
+                    "change",
+                    { maxDate: new Date($('#activityEndDate0').val()) }
+            );
+        }
+    });
     }, 200)
+
+    
+  
   }
 
   /**
@@ -722,7 +778,7 @@ export class CreateEventComponent implements OnInit {
             fade: false,
             responsive: [
               {
-                breakpoint: 767,
+                breakpoint: 575,
                 settings: {
                   slidesToShow: 1
                 }
@@ -768,9 +824,27 @@ export class CreateEventComponent implements OnInit {
       eventId: new FormControl(this.eventId)
     }));
     setTimeout(() => {
-      $("#activityStartDate" + (control.length - 1)).datepicker({ "setDate": new Date(), "minDate": new Date(), dateFormat: 'yy-mm-dd' });
-      $("#activityEndDate" + (control.length - 1)).datepicker({ "setDate": new Date(), "minDate": new Date(), dateFormat: 'yy-mm-dd' });
-    }, 200)
+      console.log($('#activityEndDate' +(control.length - 2) ).val());
+      $("#activityStartDate" +(control.length - 1) ).datepicker({
+        minDate: new Date($('#activityEndDate' +(control.length - 2) ).val()),
+        onClose: function() {
+          console.log($('#activityEndDate' +(control.length - 1) ).val());
+          $("#activityEndDate"+(control.length - 1)).datepicker(
+            "change",
+            { minDate: new Date($('#activityStartDate' +(control.length - 1) ).val()) }
+            );
+          }
+        });
+        $("#activityEndDate"+(control.length - 1)).datepicker({
+          // maxDate: new Date($('#activityEndDate'+(control.length - 1)).val()),
+          onClose: function() {
+            $("#activityStartDate" +(control.length - 1) ).datepicker(
+              "change",
+              { maxDate: new Date($('#activityEndDate'+(control.length - 1)).val()) }
+              );
+            }
+          });
+        }, 200)
   }
 
   /**
@@ -1097,5 +1171,29 @@ export class CreateEventComponent implements OnInit {
 
   printItem(item) {
     console.log("item==========================================>", this.selectedActivityToAddGroup, item.value.activityId);
+  }
+
+  getSourceOfImage() {
+    let className = $('#overlay > div:visible').attr('class');
+    if (className === 'slider_overlay') {
+      return '/assets/images/icon1.png';
+    }
+    // } else if (className === 'secondStep') {
+    //   return '/assets/images/eventB_icon.png';
+    // } else if (className === 'thirdStep') {
+    //   return '/assets/images/eventC_icon.png';
+    // } else if (className === 'fourthStep') {
+    //   return '/assets/images/eventD_icon.png';
+    // } else if (className === 'fifthStep') {
+    //   return '/assets/images/eventE_icon.png';
+    // } else if (className === 'sixthStep') {
+    //   return '/assets/images/eventF_icon.png';
+    // } else {
+    //   return "";
+    // }
+  }
+  logout() {
+    this._loginService.logout();
+    this.router.navigate(['/display-page']);
   }
 }

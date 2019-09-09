@@ -10,11 +10,11 @@ const host = 'http://192.168.1.83';
 const port = 3000;
 
 // const baseMediaUrl = `${host}/Aso-testing-server/server/`;
-const baseMediaUrl = "http://192.168.1.83/AsoEbi-2/server/";
+const baseMediaUrl = "https://andcowith.me/test/server/";
 
 
 // const baseUrl = `${host}${port}/`;
-const baseUrl = "http://192.168.1.83:3000/";
+const baseUrl = "https://andcowith.me:3000";
 // const baseUrl = "http://localhost:3000/";
 
 

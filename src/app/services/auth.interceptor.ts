@@ -21,12 +21,16 @@ export class AuthInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     const idtoken = JSON.parse(localStorage.getItem('currentUser'));
+    const facebookIdToken = JSON.parse(localStorage.getItem('facebookUser'));
+    const googleIdToken = JSON.parse(localStorage.getItem('googleUser'));
+    const microsoftIdToken = JSON.parse(localStorage.getItem('microsoftUser'));
+    const yahooIdToken = JSON.parse(localStorage.getItem('yahooUser'));
     // console.log("interceptor login user token", idtoken);
 
-    if (idtoken) {
+    if (idtoken || facebookIdToken || googleIdToken || microsoftIdToken || yahooIdToken) {
       const cloned = req.clone({
         headers: req.headers.set("authorization",
-          idtoken)
+          idtoken || facebookIdToken || googleIdToken || microsoftIdToken || yahooIdToken)
       });
       return next.handle(cloned)
         .pipe(

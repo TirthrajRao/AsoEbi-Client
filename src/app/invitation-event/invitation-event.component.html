@@ -56,10 +56,14 @@
                             </div>
                         </div>
                     </div>
-                    <p>EventLink:-
-                        <input #inputTarget [(ngModel)]="EventLink" readonly />
-                        <button [ngxClipboard]="inputTarget">Copy</button>
-                    </p>
+                    <div class="event_invitation_link">
+                        <ul>
+                       <li><label>EventLink:-</label></li> 
+                           <li><input #inputTarget [(ngModel)]="EventLink" readonly /></li> 
+                           <li><button [ngxClipboard]="inputTarget">Copy</button></li>
+                        
+                    </ul>
+                    </div>
                     <div class="eventE_media">
                         <share-button [theme]="'circles-dark'" [button]="'whatsapp'" [showCount]="true"
                             [url]="'https://aso-ebi.com/welcome-guest/NWQ1MmMyMTdhNTBjMTUzYmVmNDc2MTIy'"
@@ -120,6 +124,13 @@
                             </div>
                             <p>Auto Message</p>
                         </div>
+                        <div class="collect1_img" *ngIf="!isCelebrant"><!-- *ngIf="!isCelebrant" -->
+                            <div class="collect_img" (click)="selectBank(eventId)">
+                                <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
+                                    src="{{path}}{{singleEventDetails.profilePhoto}}">
+                            </div>
+                            <p class="text-white">Select Bank Account</p>
+                        </div>
                     </div>
 
 
@@ -142,7 +153,7 @@
                             <div class="row">
                                 <div class="col-3 m-auto pr-0 float-right new_event_menu">
                                     <a><img src="/assets/images/edit_event_icon.png">
-                                        <p class="text-white">New Event</p>
+                                        <p class="text-white">Edit Event</p>
                                     </a>
                                 </div>
                                 <div class="col-9 p-0">
@@ -150,6 +161,25 @@
                                 </div>
                             </div>
                         </div>
+                        <div id="overlay" class="new_event_menu_box" style="display: none;">
+                                <div class="">
+                                    <div class="event_menu">
+                                        <div class="all_menu_content  d-flex flex-wrap align-content-center">
+                                            <ul>
+                                                <li><a routerLink="/home" class="text-white new_event">Home</a></li>
+                                                <li><a routerLink="/myEvent" class="text-white new_event">my event</a></li>
+                                                <li><a routerLink="/createEvent" class="text-white my_event">new event</a>
+                                                </li>
+                                                <li><a routerLink="/bankDetails" class="text-white my_account">bank
+                                                        account</a></li>
+                                                <li><a routerLink="/reset-password" class="text-white my_account">Reset
+                                                        Password</a></li>
+                                                <li><a (click)="logout()" class="text-white my_account">Logout</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         <div *ngIf="singleEventDetails">
                             <div class="enter_event_title">
                                 <h6 class="text-center text-white">Event Hashtag</h6>

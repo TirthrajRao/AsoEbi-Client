@@ -1,0 +1,15 @@
+.active_background {
+    border: dotted 5px blue;
+    color: #fff;
+    width: 50px;
+    height: 50px;;
+}
+
+/* .active_background {
+    background-image: url(/assets/images/yes.png);
+	background-size: cover;
+	background-position: center;
+    background-repeat: no-repeat;
+    margin-top: 50px;
+} */
+

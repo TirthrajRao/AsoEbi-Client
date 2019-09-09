@@ -122,18 +122,6 @@ export class ViewEventComponent implements OnInit {
 
   }
 
-  displayAlert() {
-    $(document).ready(function () {
-      setTimeout(async () => {
-        $("#success-alert").hide();
-        await delay(5000)
-        $("#success-alert").fadeTo(2000, 500).delay(1200).slideUp(500, function () {
-          $("#success-alert").slideUp(500);
-        });
-      })
-    });
-  }
-
   /**
    * @param {String} eventTheme
    * Display event background image or gif 

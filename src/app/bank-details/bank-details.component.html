@@ -3,7 +3,7 @@
 </div>
 
 
-<div class="secondStep" style="display:none">
+<div class="firstStep" style="display:none">
     <section class="reset_pwd_section add_bank_account_sec d-flex flex-wrap align-content-center ">
         <div class="container-fluid">
             <h3 class="text-center">Aso Ebi</h3>
@@ -112,14 +112,14 @@
                             <div class="event_menu">
                                 <div class="all_menu_content  d-flex flex-wrap align-content-center">
                                     <ul>
-                                        <li><a routerLink="myEvent" class="text-white text-center new_event">my
+                                        <li><a routerLink="/myEvent" class="text-white text-center new_event">my
                                                 event</a></li>
-                                        <li><a routerLink="createEvent" class="text-white text-center my_event">new
+                                        <li><a routerLink="/createEvent" class="text-white text-center my_event">new
                                                 event</a></li>
-                                        <li><a routerLink="bankDetails" class="text-white text-center my_account">bank
+                                        <li><a routerLink="/bankDetails" class="text-white text-center my_account">bank
                                                 account</a>
                                         </li>
-                                        <li><a routerLink="reset-password"
+                                        <li><a routerLink="/reset-password"
                                                 class="text-white text-center my_account">Reset
                                                 Password</a></li>
                                         <li><a (click)="logout()" class="text-white text-center my_account">Logout</a>
@@ -167,12 +167,12 @@
                         </div>
                         <div class="check" *ngIf="bankDetails.length > 0">
                             <label class="container">Instant transfer to my account
-                                <input type="checkbox" name="checkButton" id="box1" value="direct">
+                                <input type="radio" name="checkButton" id="box1" value="direct">
                                 <span class="checkmark"></span>
                             </label>
                             <label class="container">Franster on 05-08-2019 to my account (this option saves
                                 you on alert notifications)
-                                <input type="checkbox" name="checkButton" id="box2" value="indirect">
+                                <input type="radio" name="checkButton" id="box2" value="indirect">
                                 <span class="checkmark"></span>
                             </label>
                         </div>

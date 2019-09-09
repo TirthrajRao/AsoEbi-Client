@@ -81,7 +81,7 @@ export class LoginService {
       .pipe(map(googleUser => {
         console.log("google login user accesstoken", googleUser);
         if (googleUser && googleUser.data.accessToken) {
-          localStorage.setItem('currentUser', JSON.stringify(googleUser.data.accessToken));
+          localStorage.setItem('googleUser', JSON.stringify(googleUser.data.accessToken));
           localStorage.setItem('userRole',JSON.stringify(googleUser.data.UserRole));
           this.currentUserSubject.next(googleUser);
         }
@@ -102,7 +102,7 @@ export class LoginService {
       .pipe(map(facebookUser => {
         console.log("facebook user jwt token", facebookUser);
         if (facebookUser && facebookUser.data.accessToken) {
-          localStorage.setItem('currentUser', JSON.stringify(facebookUser.data.accessToken));
+          localStorage.setItem('facebookUser', JSON.stringify(facebookUser.data.accessToken));
           localStorage.setItem('userRole',JSON.stringify(facebookUser.data.UserRole));
           this.currentUserSubject.next(facebookUser);
 
@@ -125,7 +125,7 @@ export class LoginService {
       .pipe(map((microsoftUser: any) => {
         console.log("hotmaail login user token", microsoftUser);
         if (microsoftUser && microsoftUser.data.accessToken) {
-          localStorage.setItem('currentUser', JSON.stringify(microsoftUser.data.accessToken));
+          localStorage.setItem('microsoftUser', JSON.stringify(microsoftUser.data.accessToken));
           localStorage.setItem('userRole',JSON.stringify(microsoftUser.data.UserRole));
           this.currentUserSubject.next(microsoftUser);
         }
@@ -149,7 +149,7 @@ export class LoginService {
       .pipe(map((yahooUser: any) => {
         console.log("google login user accesstoken", yahooUser);
         if (yahooUser && yahooUser.data.accessToken) {
-          localStorage.setItem('currentUser', JSON.stringify(yahooUser.data.accessToken));
+          localStorage.setItem('yahooUser', JSON.stringify(yahooUser.data.accessToken));
           localStorage.setItem('userRole',JSON.stringify(yahooUser.data.UserRole));
           this.currentUserSubject.next(yahooUser);
         }
@@ -189,6 +189,10 @@ export class LoginService {
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('facebookUser');
+    localStorage.removeItem('googleUser');
+    localStorage.removeItem('microsoftUser');
+    localStorage.removeItem('yahooUser');
     localStorage.removeItem('accessToken');
     localStorage.removeItem('isUserLoggedIn');
     localStorage.removeItem('isCelebrant');

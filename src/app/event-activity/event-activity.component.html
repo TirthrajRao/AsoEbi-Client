@@ -53,7 +53,8 @@
 
                     <div class="event_activity" *ngIf="selectedActivity">
                         <p>{{selectedActivity.activityName}}</p> <br>
-                        <p>From: {{selectedActivity.activityStartDate | date: 'dd/MM/yyyy'}} <br> To: {{selectedActivity.activityEndDate | date: 'dd/MM/yyyy'}}  </p>
+                        <p>From: {{selectedActivity.activityStartDate | date: 'dd/MM/yyyy'}} </p>
+                        <p>To: {{selectedActivity.activityEndDate | date: 'dd/MM/yyyy'}} </p>
                     </div>
                     <div class="w-100 mb-3 event-activity-class">
                         <div class="event_button" *ngFor="let item of selectedActivityGroup;">
@@ -61,7 +62,7 @@
                                 *ngIf="item.groupName">{{item.groupName}}</button>
                         </div>
                     </div>
-                    <div class="pb-3 ml-5" >
+                    <div class="pb-3 ml-5">
                         <input type="radio" id="test" value="male" name="radio-group1" checked>
                         <label for="test">Male</label>
                         <input type="radio" id="test5" value="female" name="radio-group1">
@@ -85,10 +86,10 @@
                             </div>
                         </div>
                     </div>
-                    <div *ngIf="itemNamePrint.length == 0">
+                    <!-- <div *ngIf="itemNamePrint.length == 0">
                         <h1>Sorry, you have no item in this activity.You can <a style="color:aliceblue"
                                 (click)="nextSection('seventhStep', 'initialStep')">add Item</a>, here</h1>
-                    </div>
+                    </div> -->
                     <div class="collect_detail text-center" [ngClass]="eventId">
                         <span *ngFor="let item of allActivityList">
                             <div class="collect1_img">

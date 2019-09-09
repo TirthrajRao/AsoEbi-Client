@@ -146,6 +146,25 @@
                                 </div>
                             </div>
                         </div>
+                        <div id="overlay" class="new_event_menu_box" style="display: none;">
+                            <div class="">
+                                <div class="event_menu">
+                                    <div class="all_menu_content  d-flex flex-wrap align-content-center">
+                                        <ul>
+                                            <li><a routerLink="/home" class="text-white new_event">Home</a></li>
+                                            <li><a routerLink="/myEvent" class="text-white new_event">my event</a></li>
+                                            <li><a routerLink="/createEvent" class="text-white my_event">new event</a>
+                                            </li>
+                                            <li><a routerLink="/bankDetails" class="text-white my_account">bank
+                                                    account</a></li>
+                                            <li><a routerLink="/reset-password" class="text-white my_account">Reset
+                                                    Password</a></li>
+                                            <li><a (click)="logout()" class="text-white my_account">Logout</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div *ngIf="singleEventDetails">
                             <div class="enter_event_title">
                                 <h6 class="text-center text-white">Event Hashtag</h6>
@@ -174,24 +193,4 @@
             </div>
         </div>
     </section>
-</div>
-
-<div id="overlay" class="new_event_menu_box" style="display: none;">
-    <div class="">
-        <div class="event_menu">
-            <div class="all_menu_content  d-flex flex-wrap align-content-center">
-                <ul>
-                    <li><a routerLink="/home" class="text-white new_event">Home</a></li>
-                    <li><a routerLink="/myEvent" class="text-white new_event">my event</a></li>
-                    <li><a routerLink="/createEvent" class="text-white my_event">new event</a>
-                    </li>
-                    <li><a routerLink="/bankDetails" class="text-white my_account">bank
-                            account</a></li>
-                    <li><a routerLink="/reset-password" class="text-white my_account">Reset
-                            Password</a></li>
-                    <li><a (click)="logout()" class="text-white my_account">Logout</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
 </div>

@@ -1,4 +1,4 @@
-.collection-menu {
+.collection-overlay {
 	height: 645px;
 	width: 665px;
     margin: auto;
@@ -6,23 +6,23 @@
 }
 
 @media(max-width:1366px){
-    .collection-menu{
+    .collection-overlay{
         width: 600px;
         height: 525px;
     }
 }
 @media(max-width:767px){
-    .collection-menu{
+    .collection-overlay{
         width: 520px;
     }
 }
 @media(max-width:575px){
-    .collection-menu{
+    .collection-overlay{
         width: 100%;
     }
 }
 @media (max-width: 320px){
-.collection-menu {
+.collection-overlay {
     height: 385px;
 }
 }

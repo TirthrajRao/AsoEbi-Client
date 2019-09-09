@@ -1,9 +1,9 @@
-<div id="loading" *ngIf="!isDisable">
+<div id="loading">
     <img id="loading-image" src="/assets/images/loader.gif" alt="Loading..." />
 </div>
 
 
-<div>
+<div *ngIf="userRole == 'user'">
   <section class="msg_page_section d-flex flex-wrap align-content-center">
     <div class="container-fluid">
       <h3 class="text-center">Aso Ebi</h3>
@@ -26,7 +26,7 @@
               <li><a routerLink="createEvent" class="text-white text-center my_event">new event</a></li>
               <li><a routerLink="bankDetails" class="text-white text-center my_account">bank account</a>
               </li>
-              <li><a routerLink="reset-password" class="text-white text-center my_account">Reset
+              <li *ngIf="manualLoginUser"><a routerLink="reset-password" class="text-white text-center my_account">Reset
               Password</a></li>
               <li><a (click)="logout()" class="text-white text-center my_account">Logout</a></li>
               <!-- <li><a href="#" class="text-white text-center my_messages">Messages</a></li> -->

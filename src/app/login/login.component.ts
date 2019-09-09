@@ -69,8 +69,8 @@ export class LoginComponent implements OnInit {
       authority: "https://login.microsoftonline.com/common", //This is your tenant info
     },
     cache: {
-      cacheLocation: "localStorage",
-      storeAuthStateInCookie: true
+      // cacheLocation: "localStorage",
+      // storeAuthStateInCookie: true
     }
   };
   myMSALObj = new Msal.UserAgentApplication(this.msalConfig);

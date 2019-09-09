@@ -210,16 +210,18 @@
                                         <div class="all_back_img">
                                             <div class="row">
                                                 <div class="col-sm-3 ">
-                                                    <a class="back1" id="background1"
-                                                        (click)="defaultBackgroundImage('/assets/images/confeti.gif', ID)">
+                                                    <a class="back1"
+                                                        (click)="defaultBackgroundImage('/assets/images/confeti.gif', 'background1')">
+                                                        <!-- <i class="yes_arrow"></i> -->
                                                         <img src="/assets/images/confeti.gif" class="rounded-circle"
-                                                            style="cursor:pointer">
+                                                            style="cursor:pointer" id="background1">
                                                         <p class="text-center">Confetti</p>
                                                     </a>
                                                 </div>
                                                 <div class="col-sm-3">
                                                     <a class="back1"
-                                                        (click)="defaultBackgroundImage('/assets/images/rain.gif')">
+                                                        (click)="defaultBackgroundImage('/assets/images/rain.gif', 'background2')">
+                                                        <!-- <i class="yes_arrow"></i> -->
                                                         <img src="/assets/images/rain.gif" id="background2"
                                                             class="rounded-circle" style="cursor:pointer">
                                                         <p class="text-center">Rain</p>
@@ -227,7 +229,8 @@
                                                 </div>
                                                 <div class="col-sm-3 ">
                                                     <a class="back1"
-                                                        (click)="defaultBackgroundImage('/assets/images/bloom.gif')">
+                                                        (click)="defaultBackgroundImage('/assets/images/bloom.gif', 'background3')">
+                                                        <!-- <i class="yes_arrow"></i> -->
                                                         <img src="/assets/images/bloom.gif" id="background3"
                                                             class="rounded-circle" style="cursor:pointer">
                                                         <p class="text-center"> Blossom Falling</p>
@@ -244,10 +247,11 @@
                                                         <label for="customThemeFile" class="background_edit text-center"
                                                             title="Change Profile"><i class="fa fa-camera"
                                                                 aria-hidden="true"></i></label>
-                                                        <p class="text-center">Add Photo</p>
-                                                        <div class="background_img">
-
-                                                        </div>
+                                                        <img  [src]="themeURL" height="200"
+                                                            class="float-right rounded-circle" 
+                                                            onerror="this.src='/assets/images/profile_photo.png'">
+                                                            <p class="text-center">add Photo</p>
+                                                        <!-- <p class="text-center">Add Photo</p> -->
                                                     </a>
                                                 </div>
                                             </div>
@@ -585,15 +589,21 @@
                                     <div class="ceremony1">
                                         <div class="row mb-3">
                                             <div class="col-12">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control w-100"
-                                                        formControlName="activityName"
-                                                        placeholder="Enter activity name">
-                                                </div>
-                                                <div *ngIf="activityForm.controls.activity.controls.length>1"
-                                                    class="close_ceremony text-center float-right">
-                                                    <a (click)="removeActivityField(i,tech.value)">
-                                                        <img src="/assets/images/close1.png"></a>
+                                                <div class="row create-event-cross">
+                                                    <div class="col-11">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control mb-2 w-100"
+                                                                formControlName="activityName"
+                                                                placeholder="Enter activity name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-1 text-center mt-2">
+                                                        <div *ngIf="activityForm.controls.activity.controls.length>1"
+                                                            class="close_ceremony text-center float-right">
+                                                            <a (click)="removeActivityField(i,tech.value)">
+                                                                <img src="/assets/images/close1.png"></a>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div>
                                                     <input id="eventId" class="form-control" formControlName="eventId"
