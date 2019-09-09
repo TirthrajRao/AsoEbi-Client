@@ -15,7 +15,7 @@ declare let $: any;
 })
 export class InvitationEventComponent implements OnInit {
   private sub: any;
-  private eventId: any;
+  public eventId: any;
   path = config.baseMediaUrl;
   myEvent;
   singleEventId;
@@ -227,5 +227,9 @@ export class InvitationEventComponent implements OnInit {
   logout() {
     this._loginService.logout();
     this.router.navigate(['/login']);
+  }
+  selectBank(id) {
+    console.log(id)
+    this.router.navigate(['home/bankDetails/', id])
   }
 }

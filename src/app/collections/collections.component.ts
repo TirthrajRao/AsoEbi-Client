@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from '../services/event.service';
+import { LoginService } from '../services/login.service';
 import * as _ from 'lodash';
 // import * as $ from 'jquery';   
 
@@ -37,7 +38,7 @@ export class CollectionsComponent implements OnInit {
     buttonGroup: ['#3dbbcd', '#feb332', '#ce3259', '#00c0e6', '#9a8970']
   };
   constructor(private route: ActivatedRoute,
-    private router: Router, private _eventService: EventService) {
+    private router: Router, private _eventService: EventService, private _loginService: LoginService) {
     this.sub = this.route.params.subscribe(params => {
       this.eventId = params.id;
       console.log(this.eventId);
@@ -259,5 +260,9 @@ export class CollectionsComponent implements OnInit {
     if(this.from == true){
       $(this.fromClass).css({'display': 'block'});
     }
+  }
+  logout() {
+    this._loginService.logout();
+    this.router.navigate(['/display-page']);
   }
 }

@@ -584,7 +584,7 @@
                     <form [formGroup]="activityForm" class="all_activity_form">
                         <div formArrayName="activity">
                             <div [formGroupName]="i"
-                                *ngFor="let tech of activityForm.controls.activity.controls; let i = index">
+                                *ngFor="let tech of activityFormData.controls; let i = index">
                                 <div class="name_ceremony">
                                     <div class="ceremony1">
                                         <div class="row mb-3">
@@ -726,7 +726,7 @@
                                 <form [formGroup]="groupForm" class="billing_address">
                                     <div formArrayName="group">
                                         <div [formGroupName]="i"
-                                            *ngFor="let item of groupForm.controls.group.controls; let i = index"
+                                            *ngFor="let item of groupFormData.controls; let i = index"
                                             [hidden]="selectedActivityToAddGroup != item.value.activityId">
                                             <div class="col-12 text-center mt-3 text-white pl-0">
                                                 <i class="fa fa-plus" aria-hidden="true"

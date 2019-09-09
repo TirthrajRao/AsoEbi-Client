@@ -140,12 +140,6 @@ export class CreateEventComponent implements OnInit {
       this.initGroupForm();
     this.initCreatedActivitySlider()
     $('#eventId').css({ 'display': 'none' });
-    // $(document).ready(function () {
-
-    // $("#deadLineDate").val(Date.now());
-    // $("#deadLineDate").datepicker({ dateFormat: 'yyyy-MM-dd' }).val();
-    //   $("#deadLineDate").datepicker({dateFormat: "yy-mm-dd"});
-
     $("#deadLineDate").datepicker({ "setDate": new Date(), "minDate": new Date(), dateFormat: 'yy-mm-dd' });
 
 
@@ -328,11 +322,6 @@ export class CreateEventComponent implements OnInit {
 
   }
 
-  activateDatePickers(event){
-    console.log("event of date picker", event);
-    
-  }
-
 
   /**
    * Error message of eventDetails 
@@ -347,14 +336,10 @@ export class CreateEventComponent implements OnInit {
    * Create new event with it's details
    */
 
-  // loaderTime(){
-  //   setTimeout(()=>{
-  //     this.isDisable = true;
-  //   },100)
-  //   this.isDisable = false;
-  // }
+  get activityFormData() { return <FormArray>this.activityForm.get('activity'); }
+  get groupFormData() { return <FormArray>this.groupForm.get('group'); }
 
-  addEvent($this) {
+  addEvent() {
     this.eventForm.value.deadlineDate = $('#deadLineDate').val();
     console.log(this.eventForm.value);
     console.log("data of event", $('.slick-active').hasClass("done"));

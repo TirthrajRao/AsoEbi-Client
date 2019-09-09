@@ -17,7 +17,7 @@ declare let $: any;
 export class AutoMessageComponent implements OnInit {
   autoMessageForm: FormGroup;
   private sub: any;
-  private eventId: any;
+  public eventId: any;
   path = config.baseMediaUrl;
   myEvent;
   singleEventId;
@@ -113,7 +113,7 @@ export class AutoMessageComponent implements OnInit {
           autoplay: false,
           draggable: true,
           arrows: true,
-          prevArrow: "<button type='button' class='prevarrow slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+          prevArrow: "<button type='button' class='privateprevarrow slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
           nextArrow: "<button type='button' class='nextarrow slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
           responsive: [
             {
@@ -258,6 +258,11 @@ export class AutoMessageComponent implements OnInit {
   logout() {
     this._loginService.logout();
     this.router.navigate(['/login']);
+  }
+
+  selectBank(id) {
+    console.log(id)
+    this.router.navigate(['home/bankDetails/', id])
   }
 
 }

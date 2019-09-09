@@ -46,7 +46,7 @@ export class ForgotPasswordComponent implements OnInit {
   * @param(hash) encrypted eventId
   * Generate new password when user forgot password 
   */
-  resetPassword(hash) {
+  resetPassword(hash?) {
     this.isDisable = true;
     console.log("current password value", this.forgotPasswordForm.value);
     this._loginService.forgotPasswordWithLink(this.forgotPasswordForm.value, this.hash)

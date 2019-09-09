@@ -78,14 +78,14 @@ export class PaymentComponent implements OnInit {
    * Total amount,total items which buy,address of user for delivery,if donation added with bought items 
    */
 
-  finalPayment(data, total, donation, address) {
+  finalPayment(data, total, donation) {
     console.log(data, total, donation);
     this.myCart = {
       orderDetails: this.finalCartDetails,
       finalTotal: this.finalGrandTotal,
       eventId: this.eventId,
       donationAmount: donation,
-      addressFinal: address
+      // addressFinal: address
     }
     console.log("mycartsssssssssssssss", this.myCart);
     this._eventService.makeFinalPayment(this.myCart)

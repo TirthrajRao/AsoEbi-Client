@@ -17,7 +17,7 @@ export class BankDetailsComponent implements OnInit {
   bankDetailsForm: FormGroup;
   isDisable = false;
   submitted = false;
-  bankDetails = 0;
+  bankDetails;
   selectedBank;
   private sub: any;
   private eventId: any;
@@ -57,7 +57,7 @@ export class BankDetailsComponent implements OnInit {
    * @param {json} data
    * Add bank account details of user
    */
-   onSubmit(data) {
+   onSubmit() {
      console.log(this.bankDetailsForm);
      this.submitted = true;
      if (this.bankDetailsForm.invalid) {
@@ -192,4 +192,9 @@ export class BankDetailsComponent implements OnInit {
 
      }
    }
+
+   logout() {
+    this._loginService.logout();
+    this.router.navigate(['/login']);
+  }
  }

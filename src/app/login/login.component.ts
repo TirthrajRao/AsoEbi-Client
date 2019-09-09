@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
   FB: any;
   isUserLoggedIn = false;
-  isDiable = false;
+  isDisable = false;
   eventIdWithLogin = JSON.parse(localStorage.getItem('newEventId'));;
   isGuestJoined;
   isCelebrant;
@@ -260,7 +260,7 @@ export class LoginComponent implements OnInit {
    * for login with created email and password
    */
   onSubmitLogin() {
-    this.isDiable = true;
+    this.isDisable = true;
     console.log("login details", this.loginForm);
     this._loginService.login(this.loginForm.value)
       .subscribe(data => {
@@ -274,7 +274,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
         localStorage.setItem('userName', JSON.stringify(this.userName));
         console.log(this.isCelebrant);
-        this.isDiable = true;
+        this.isDisable = true;
         if (this.eventIdWithLogin) {
           this.isUserLoggedIn = true;
           localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
@@ -290,9 +290,9 @@ export class LoginComponent implements OnInit {
         }
       }, (error: any) => {
         console.log(error);
-        this.isDiable = false;
+        this.isDisable = false;
         this.loginForm.reset();
-        console.log("disable:", this.isDiable);
+        console.log("disable:", this.isDisable);
       })
   }
 
@@ -300,7 +300,7 @@ export class LoginComponent implements OnInit {
    * Login with google account  
    */
   signInWithGoogleAccount() {
-    this.isDiable = true;
+    this.isDisable = true;
     console.log("In func")
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((res) => {
       console.log(res);
@@ -323,7 +323,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/home/view-event/', this.eventIdWithLogin])
         }
         else {
-          this.isDiable = false;
+          this.isDisable = false;
           this.isUserLoggedIn = true;
           localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
           this.router.navigate(['/home']);
@@ -340,7 +340,7 @@ export class LoginComponent implements OnInit {
    * Login with facebook account
    */
   signWithFacebook() {
-    this.isDiable = true;
+    this.isDisable = true;
     console.log("submit login to facebook");
     FB.login((response) => {
       console.log('submitLogin', response);
@@ -364,7 +364,7 @@ export class LoginComponent implements OnInit {
             }
             else {
               this.router.navigate(['/home']);
-              this.isDiable = false;
+              this.isDisable = false;
               this.isUserLoggedIn = true;
               localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
             }

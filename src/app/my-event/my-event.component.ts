@@ -15,7 +15,7 @@ declare let $: any;
 })
 export class MyEventComponent implements OnInit {
   path = config.baseMediaUrl;
-  myEvent = 0;
+  myEvent;
   singleEventId;
   themePhoto: any = [];
   singleEventDetails: any;
