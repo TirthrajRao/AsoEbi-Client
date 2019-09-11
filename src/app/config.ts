@@ -10,7 +10,7 @@ const host = 'http://192.168.1.83';
 const port = 3000;
 
 // const baseMediaUrl = `${host}/Aso-testing-server/server/`;
-const baseMediaUrl = "https://andcowith.me/test/server/";
+// const baseMediaUrl = "https://andcowith.me/test/server/";
 
 
 // const baseUrl = `${host}${port}/`;
@@ -18,7 +18,7 @@ const baseMediaUrl = "https://andcowith.me/test/server/";
 // const baseUrl = "http://localhost:3000/";
 // const baseMediaUrl = "http://192.168.1.83/AsoEbi-2/server/";
 
-// const baseMediaUrl = "http://andcowith.me/test/";
+const baseMediaUrl = "https://andcowith.me/server/";
 
 
 
@@ -44,5 +44,4 @@ export const firebaseConfig = {
     messagingSenderId: "1021800185546",
     appId: "1:1021800185546:web:0b3e09d6183792d7"
 };
-
 

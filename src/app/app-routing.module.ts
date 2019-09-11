@@ -42,7 +42,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: ()=> HomeModule 
+    loadChildren: './home/home.module#HomeModule' 
   }
 ];
 

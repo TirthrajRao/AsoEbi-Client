@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from '../services/event.service';
 import { AlertService } from '../services/alert.service';
 import * as _ from 'lodash';
+import { config } from '../config';
 declare var $: any;
 
 
@@ -17,9 +18,11 @@ export class PaymentComponent implements OnInit {
   private eventId: any;
   finalCartDetails: any = 0;
   grandTotal = 0;
+  eventDetails;
   subTotal;
   finalGrandTotal;
   myCart;
+  path = config.baseMediaUrl;
   donationAmount = JSON.parse(localStorage.getItem('donationAmount'));
 
   constructor(private route: ActivatedRoute,
@@ -44,7 +47,8 @@ export class PaymentComponent implements OnInit {
         setTimeout(() => {
           this.initMainSlider();
         }, 10)
-        console.log("last all payment details", data);
+        this.eventDetails = data.data.eventDetail;
+        console.log("last all payment details", this.eventDetails);
         this.finalCartDetails = data.data.cartItem;
         console.log(this.finalCartDetails);
         _.forEach(this.finalCartDetails, (Item: any) => {
@@ -92,7 +96,7 @@ export class PaymentComponent implements OnInit {
       .subscribe((data: any) => {
         console.log("final response of carts", data);
         this.alertService.getSuccess(data.message)
-        this.router.navigate(['/home/view-event/',this.eventId])
+        this.router.navigate(['/home/view-event/', this.eventId])
       }, (err: any) => {
         console.log(err);
         this.alertService.getError(err.message);
@@ -141,8 +145,40 @@ export class PaymentComponent implements OnInit {
     setTimeout(() => {
       $('.' + goto).css({ 'display': 'block' });
       $('.' + from).css({ 'display': 'none' })
-      this.initMainSlider();
-    }, 200)
+
+      if ($('.event_detail_slider').hasClass('slick-initialized'))
+      $('.event_detail_slider').slick('unslick');
+
+      $('.event_detail_slider').not('.slick-initialized').slick({
+        // autoplay: true,
+        autoplaySpeed: 2000,
+        arrows: false,
+        dots: false,
+        slidesToShow: 1.5,
+        slidesToScroll: 1,
+        draggable: true,
+        fade: false,
+        responsive: [
+          {
+            breakpoint: 1367,
+            settings: {
+              slidesToShow: 3.2
+            }
+          },
+          {
+            breakpoint: 769,
+            settings: {
+              slidesToShow: 2.7
+            }
+          }, {
+            breakpoint: 575,
+            settings: {
+              slidesToShow: 1.5
+            }
+          }
+        ]
+      });
+    }, 20)
   }
 
 

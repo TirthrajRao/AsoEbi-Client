@@ -83,9 +83,11 @@ export class MyEventComponent implements OnInit {
   getMyEvents() {
     this._eventService.getMyevents()
       .subscribe((data: any) => {
-        // setTimeout(() => {
-        //   this.initActivitySlider();
-        // }, 10)
+        if ($('.event_slider1').hasClass('slick-initialized'))
+          $('.event_slider1').slick('unslick');
+        setTimeout(() => {
+          this.initActivitySlider();
+        }, 10)
         console.log("get my all events ", data);
         this.myEvent = data.data;
         console.log("my events details", this.myEvent);
@@ -223,46 +225,44 @@ export class MyEventComponent implements OnInit {
   // }
 
   initActivitySlider() {
-    $(document).ready(function () {
-      setTimeout(() => {
-        // console.log("$('#custom_btn_next').trigger('click') done");
-        // console.log($('.event_slider1').not('.slick-initialized'));
-        $('.event_slider1').not('.slick-initialized').slick({
-          infinite: true,
-          slidesToShow: 2.5,
-          slidesToScroll: 1,
-          autoplay: false,
-          arrows: true,
-          prevArrow: '<button class="slick-next slick-arrow"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
-          nextArrow: '<button class="slick-prev slick-arrow" ><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
-          responsive: [
-            {
-              breakpoint: 1024,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 1,
-                infinite: true,
-              }
-            },
-            {
-              breakpoint: 600,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 1,
-              }
-            },
-            {
-              breakpoint: 480,
-              settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-              }
+    setTimeout(() => {
+      // console.log("$('#custom_btn_next').trigger('click') done");
+      // console.log($('.event_slider1').not('.slick-initialized'));
+      $('.event_slider1').not('.slick-initialized').slick({
+        infinite: true,
+        slidesToShow: 2.5,
+        slidesToScroll: 1,
+        autoplay: false,
+        arrows: true,
+        prevArrow: '<button class="slick-next slick-arrow"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
+        nextArrow: '<button class="slick-prev slick-arrow" ><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              infinite: true,
             }
-          ]
-        });
-        // $('#custom_btn_next').trigger('click');
-      }, 100);
-    })
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]
+      });
+      // $('#custom_btn_next').trigger('click');
+    }, 100);
   }
 
 

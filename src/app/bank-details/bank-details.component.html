@@ -1,4 +1,4 @@
-<div id="loading">
+<div id="loading" *ngIf="isLoad">
     <img id="loading-image" src="/assets/images/loader.gif" alt="Loading..." />
 </div>
 
@@ -17,7 +17,7 @@
                                     <p class="text-white">Bank Account</p>
                                 </div>
                                 <div class="col-9 p-0">
-                                    <span class="text-white event_name"> Hello Rao Info Tech </span>
+                                    <span class="text-white event_name"> Hello {{userName}} </span>
                                 </div>
                             </div>
                         </div>
@@ -26,19 +26,19 @@
                                 <div class="event_menu">
                                     <div class="all_menu_content  d-flex flex-wrap align-content-center">
                                         <ul>
-                                            <li><a routerLink="myEvent" class="text-white text-center new_event">my
-                                                    event</a></li>
-                                            <li><a routerLink="createEvent" class="text-white text-center my_event">new
-                                                    event</a></li>
-                                            <li><a routerLink="bankDetails"
-                                                    class="text-white text-center my_account">bank account</a>
-                                            </li>
-                                            <li><a routerLink="reset-password"
-                                                    class="text-white text-center my_account">Reset
-                                                    Password</a></li>
-                                            <li><a (click)="logout()"
-                                                    class="text-white text-center my_account">Logout</a></li>
-                                            <li><a href="#" class="text-white text-center my_messages">Messages</a></li>
+                                            <li><a routerLink="/myEvent" class="text-white text-center new_event">my
+                                                event</a>
+                                        </li>
+                                        <li><a routerLink="/createEvent" class="text-white text-center my_event">new
+                                                event</a></li>
+                                        <li><a routerLink="/bankDetails" class="text-white text-center my_account">bank
+                                                account</a>
+                                        </li>
+                                        <li><a routerLink="/reset-password"
+                                                class="text-white text-center my_account">Reset
+                                                Password</a></li>
+                                        <li><a (click)="logout()" class="text-white text-center my_account">Logout</a>
+                                        </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -53,6 +53,7 @@
                                     formControlName="bankName"
                                     [ngClass]="{ 'is-invalid': f.bankName.touched && f.bankName.errors }"
                                     placeholder="Bank Name" name="bname">
+                                <span id="message1" style="color: red; font-size: 14px;"></span>
                                 <div class="col-md-2" *ngIf=" f.bankName.touched && f.bankName.errors"
                                     class="invalid-feedback text-white">
                                     <div *ngIf="f.bankName.errors.required">Name is required</div>
@@ -68,6 +69,7 @@
                                     (input)="validateAccountNumber(bankDetailsForm.value)" id="accountNumber"
                                     [ngClass]="{ 'is-invalid': f.accountNumber.touched && f.accountNumber.errors }"
                                     placeholder="Account Number">
+                                <span id="message2" style="color: red; font-size: 14px;"></span>
                                 <div *ngIf="f.accountNumber.touched && f.accountNumber.errors"
                                     class="invalid-feedback text-white">
                                     <div *ngIf="f.accountNumber.errors.required">Account Number is required</div>
@@ -135,7 +137,7 @@
                     </div>
                     <div class="event_bank_detail">
                         <div class="event_hashtag text-center">
-                            <p># Event Hashtag</p>
+                            <p *ngIf="eventDetails">{{eventDetails.hashTag}}</p>
                         </div>
                         <div class="sliding">
                             <div class="row bank_slider">
@@ -165,19 +167,21 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="check" *ngIf="bankDetails && bankDetails.length > 0">
-                            <label class="container">Instant transfer to my account
-                                <input type="radio" name="checkButton" id="box1" value="direct">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="container">Franster on 05-08-2019 to my account (this option saves
-                                you on alert notifications)
-                                <input type="radio" name="checkButton" id="box2" value="indirect">
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <div class="addBank text-white text-center" *ngIf="bankDetails && bankDetails.length > 0">
-                            <a class="text-white text-center" (click)="selectBank()">Save</a>
+                        <div *ngIf="eventId">
+                            <div class="check" *ngIf="bankDetails && bankDetails.length > 0">
+                                <label class="container">Instant transfer to my account
+                                    <input type="radio" name="checkButton" id="box1" value="direct">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container" *ngIf="eventDetails">Franster on {{eventDetails.paymentDeadlineDate | date}} to my account (this option saves
+                                    you on alert notifications)
+                                    <input type="radio" name="checkButton" id="box2" value="indirect">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="addBank text-white text-center" *ngIf="bankDetails && bankDetails.length > 0">
+                                <a class="text-white text-center" (click)="selectBank()">Save</a>
+                            </div>
                         </div>
                     </div>
                 </div>

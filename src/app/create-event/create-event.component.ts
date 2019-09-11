@@ -57,6 +57,7 @@ export class CreateEventComponent implements OnInit {
   valuedate = Date.now();
   eventHashTag;
   model;
+  isLoad = false;
   userName = JSON.parse(localStorage.getItem('userName'));
   constructor(private route: ActivatedRoute, private router: Router, private _eventService: EventService,
     private alertService: AlertService, private fb: FormBuilder, private _loginService: LoginService) {
@@ -97,11 +98,11 @@ export class CreateEventComponent implements OnInit {
 
 
     // function activateDatePickers() {
-      
-  // }
+
+    // }
 
     // $(document).ready(function(){
-    
+
     // });
 
 
@@ -340,6 +341,7 @@ export class CreateEventComponent implements OnInit {
   get groupFormData() { return <FormArray>this.groupForm.get('group'); }
 
   addEvent() {
+    this.isLoad = true;
     this.eventForm.value.deadlineDate = $('#deadLineDate').val();
     console.log(this.eventForm.value);
     console.log("data of event", $('.slick-active').hasClass("done"));
@@ -352,8 +354,10 @@ export class CreateEventComponent implements OnInit {
         $('.step_2').css({ 'display': 'block' });
         this.eventId = data.data._id;
         console.log("created eventid", this.eventId);
+        this.isLoad = false;
         this.getActivityFrom();
       }, (err: any) => {
+        this.isLoad = false;
         console.log(err);
         this.alertService.getError(err.message);
       })
@@ -406,10 +410,10 @@ export class CreateEventComponent implements OnInit {
           this.themeURL = reader.result;
         }
         this.eventForm.controls.defaultImage.reset();
-        $('.back1 img').hasClass('active_background'); 
+        $('.back1 img').hasClass('active_background');
         $('.back1 img').removeClass('active_background');
       }
-       else {
+      else {
         Swal.fire({
           title: 'Error',
           text: "You can upload only image",
@@ -421,8 +425,8 @@ export class CreateEventComponent implements OnInit {
 
   defaultBackgroundImage(path, id) {
     console.log($('.back1 img').hasClass('active_background'));
-    if($('.back1 img').hasClass('active_background')) $('.back1 img').removeClass('active_background');{
-      $('#'+id).addClass('active_background')
+    if ($('.back1 img').hasClass('active_background')) $('.back1 img').removeClass('active_background'); {
+      $('#' + id).addClass('active_background')
       this.eventForm.controls.defaultImage.setValue(path);
     }
     // if(this.themeFiles){
@@ -447,29 +451,27 @@ export class CreateEventComponent implements OnInit {
       activity: this.fb.array(this.activityArray(createdActivity))
     });
     setTimeout(() => {
-      // $("#activityStartDate0").datepicker({ "setDate": new Date(), "minDate": new Date(), dateFormat: 'yy-mm-dd' });
-      // $("#activityEndDate0").datepicker({ "setDate": new Date(), "minDate": new Date(), dateFormat: 'yy-mm-dd' });
       $("#activityStartDate0").datepicker({
         minDate: new Date(),
-        onClose: function() {
-            $("#activityEndDate0").datepicker(
-                    "change",
-                    { minDate: new Date($('#activityStartDate0').val()) }
-            );
+        onClose: function () {
+          $("#activityEndDate0").datepicker(
+            "change",
+            { minDate: new Date($('#activityStartDate0').val()) }
+          );
         }
-    });
-    $("#activityEndDate0").datepicker({
-        onClose: function() {
-            $("#activityStartDate0").datepicker(
-                    "change",
-                    { maxDate: new Date($('#activityEndDate0').val()) }
-            );
+      });
+      $("#activityEndDate0").datepicker({
+        onClose: function () {
+          $("#activityStartDate0").datepicker(
+            "change",
+            { maxDate: new Date($('#activityEndDate0').val()) }
+          );
         }
-    });
+      });
     }, 200)
 
-    
-  
+
+
   }
 
   /**
@@ -494,8 +496,8 @@ export class CreateEventComponent implements OnInit {
       actArray.push(this.fb.group({
         activityId: new FormControl(activities[i]._id),
         activityName: new FormControl(activities[i].activityName),
-        activityStartDate: new FormControl(activities[i].activityStartDate),
-        activityEndDate: new FormControl(activities[i].activityEndDate),
+        activityStartDate: new FormControl(activities[i].activityStartDate.split("T")[0]),
+        activityEndDate: new FormControl(activities[i].activityEndDate.split("T")[0]),
         eventId: new FormControl(activities[i].eventId)
       }))
     }
@@ -732,6 +734,7 @@ export class CreateEventComponent implements OnInit {
    * Create new activities for new event 
    */
   addActivity() {
+    this.isLoad = true;
     for (let i = 0; i < this.activityForm.value.activity.length; i++) {
       this.activityForm.value.activity[i].activityStartDate = $('#activityStartDate' + i).val();
       this.activityForm.value.activity[i].activityEndDate = $('#activityEndDate' + i).val();
@@ -739,6 +742,7 @@ export class CreateEventComponent implements OnInit {
     console.log("activity details", this.activityForm.value);
     this._eventService.addActivities(this.activityForm.value)
       .subscribe((data: any) => {
+        this.isLoad = false;
         console.log("activity response data", data);
         this.createdActivity = data.data;
         _.forEach(this.createdActivity, (date) => {
@@ -790,6 +794,7 @@ export class CreateEventComponent implements OnInit {
           });
         }, 50);
       }, (err: any) => {
+        this.isLoad = false;
         console.log(err);
         this.alertService.getError(err.message);
       })
@@ -809,27 +814,27 @@ export class CreateEventComponent implements OnInit {
       eventId: new FormControl(this.eventId)
     }));
     setTimeout(() => {
-      console.log($('#activityEndDate' +(control.length - 2) ).val());
-      $("#activityStartDate" +(control.length - 1) ).datepicker({
-        minDate: new Date($('#activityEndDate' +(control.length - 2) ).val()),
-        onClose: function() {
-          console.log($('#activityEndDate' +(control.length - 1) ).val());
-          $("#activityEndDate"+(control.length - 1)).datepicker(
+      console.log($('#activityEndDate' + (control.length - 2)).val());
+      $("#activityStartDate" + (control.length - 1)).datepicker({
+        minDate: new Date($('#activityEndDate' + (control.length - 2)).val()),
+        onClose: function () {
+          console.log($('#activityEndDate' + (control.length - 1)).val());
+          $("#activityEndDate" + (control.length - 1)).datepicker(
             "change",
-            { minDate: new Date($('#activityStartDate' +(control.length - 1) ).val()) }
-            );
-          }
-        });
-        $("#activityEndDate"+(control.length - 1)).datepicker({
-          // maxDate: new Date($('#activityEndDate'+(control.length - 1)).val()),
-          onClose: function() {
-            $("#activityStartDate" +(control.length - 1) ).datepicker(
-              "change",
-              { maxDate: new Date($('#activityEndDate'+(control.length - 1)).val()) }
-              );
-            }
-          });
-        }, 200)
+            { minDate: new Date($('#activityStartDate' + (control.length - 1)).val()) }
+          );
+        }
+      });
+      $("#activityEndDate" + (control.length - 1)).datepicker({
+        // maxDate: new Date($('#activityEndDate'+(control.length - 1)).val()),
+        onClose: function () {
+          $("#activityStartDate" + (control.length - 1)).datepicker(
+            "change",
+            { maxDate: new Date($('#activityEndDate' + (control.length - 1)).val()) }
+          );
+        }
+      });
+    }, 200)
   }
 
   /**
@@ -928,7 +933,7 @@ export class CreateEventComponent implements OnInit {
    * Create new group in new event
    */
   addGroup() {
-    // this.eventId = '5d6613c7ae51902a2b045c81';
+    this.isLoad = true;
     this.groupForm.controls.eventId.setValue(this.eventId);
     this.eventForm.value.activityDate = $('#activityDate').val();
     const control = <FormArray>this.groupForm.controls.group;
@@ -940,10 +945,12 @@ export class CreateEventComponent implements OnInit {
     console.log("created group details", this.groupForm);
     this._eventService.addGroup(this.groupForm.value)
       .subscribe((data: any) => {
+        this.isLoad = false;
         console.log("display created group data", data);
         this.alertService.getSuccess(data.message)
         this.router.navigate(['home/myEvent'])
       }, (err: any) => {
+        this.isLoad = false;
         console.log(err);
         this.alertService.getError(err.message);
       })
@@ -961,11 +968,13 @@ export class CreateEventComponent implements OnInit {
         $('.selected_event_type > a').html(this.createdEventDetails.eventType);
         this.eventForm.controls.eventType.setValue(this.createdEventDetails.eventType);
         this.eventForm.controls.isPublic.setValue(this.createdEventDetails.isPublic);
+        this.imgURL = this.path+this.createdEventDetails.profilePhoto
+        this.themeURL = this.path + this.createdEventDetails.eventTheme
         // this.selectedStartDate = this.createdEventDetails.startDate.split("T")[0];
         console.log(this.selectedStartDate);
         // this.selectedEndDate = this.createdEventDetails.endDate.split("T")[0];
         console.log(this.selectedEndDate);
-        this.paymentDeadlineDate = this.createdEventDetails.paymentDeadlineDate;
+        this.paymentDeadlineDate = this.createdEventDetails.paymentDeadlineDate.split("T")[0];
         console.log(this.paymentDeadlineDate);
         this.eventActivities = this.createdEventDetails.activity;
         console.log(this.eventActivities);
@@ -979,24 +988,15 @@ export class CreateEventComponent implements OnInit {
    * If any changes update event
    */
   updateEvent() {
+    this.isLoad = true;
     this.getActivityFrom(this.eventActivities);
     this.eventForm.value.deadlineDate = $('#deadLineDate').val();
-
-    // if ($('.slick-active').hasClass("done")) {
-    console.log("in twelve_slide");
-    // this._eventService.addEvent(this.eventForm.value, this.files, this.themeFiles)
-    //   .subscribe((data: any) => {
-    //     console.log("event details", data);
-
-    //   }, (err: any) => {
-    //     console.log(err);
-    //     this.alertService.getError(err.message);
-    //   })
     this._eventService.updateEvent(this.eventId, this.eventForm.value, this.files)
       .subscribe((data: any) => {
         console.log(data);
         $('.step_1').css({ 'display': 'none' })
         $('.step_2').css({ 'display': 'block' });
+        this.isLoad = false;
         this.eventId = data.data._id;
         this.eventHashTag = data.data.hashTag;
 
@@ -1004,6 +1004,7 @@ export class CreateEventComponent implements OnInit {
         console.log("created eventid", this.eventId);
         this.getActivityFrom(this.createdActivity);
       }, (err: any) => {
+        this.isLoad = false;
         console.log(err);
         this.alertService.getError(err.message);
       })
@@ -1018,17 +1019,41 @@ export class CreateEventComponent implements OnInit {
    *  Updating activity if any changes
    */
   updateActivity() {
-    // console.log("Update Event");
+    this.isLoad = true;
     this._eventService.updateActivity(this.activityForm.value)
       .subscribe((data: any) => {
         console.log(data);
         this.createdActivity = data.data.activity;
         console.log(this.createdActivity);
         this.initGroupForm(this.createdActivity, true);
+        if ($('.gender_slider').hasClass('slick-initialized'))
+          $('.gender_slider').slick('unslick');
+
+        if ($('.gender_slider1').hasClass('slick-initialized'))
+          $('.gender_slider1').slick('unslick');
+
         setTimeout(() => {
           $('.step_2').css({ 'display': 'none' })
           $('.step_3').css({ 'display': 'block' });
+          $('.gender_slider1').not('.slick-initialized').slick({
+            autoplaySpeed: 2000,
+            arrows: false,
+            dots: false,
+            slidesToShow: 1.5,
+            slidesToScroll: 1,
+            draggable: true,
+            fade: false,
+            responsive: [
+              {
+                breakpoint: 767,
+                settings: {
+                  slidesToShow: 1
+                }
+              }
+            ]
+          });
           $('.gender_slider').not('.slick-initialized').slick({
+            // autoplay: true,
             autoplaySpeed: 2000,
             arrows: false,
             dots: false,
@@ -1046,7 +1071,9 @@ export class CreateEventComponent implements OnInit {
             ]
           });
         }, 50);
+        this.isLoad = false;
       }, (err: any) => {
+        this.isLoad = false;
         console.log(err);
         this.alertService.getError(err.message);
       })
@@ -1056,13 +1083,17 @@ export class CreateEventComponent implements OnInit {
    *  Updating group if any changes
    */
   updateGroup() {
+    this.isLoad = true;
     this.groupForm.controls.eventId.setValue(this.eventId);
     console.log(this.groupForm.value);
     this._eventService.updateGroup(this.groupForm.value)
       .subscribe(data => {
+        this.isLoad = false;
         console.log("updated group details", data);
+        this.router.navigate(['home/myEvent'])
       }, (err: any) => {
         console.log(err);
+        this.isLoad = false;
         this.alertService.getError(err.message);
       })
   }
@@ -1134,24 +1165,28 @@ export class CreateEventComponent implements OnInit {
     console.log("item==========================================>", control.controls, _.findIndex(control.controls, { value: { activityId: this.selectedActivityToAddGroup } }));
     if (_.findIndex(control.controls, { value: { activityId: this.selectedActivityToAddGroup } }) === -1)
       this.AddGroupField(this.selectedActivityToAddGroup);
-    $('.gender_slider').not('.slick-initialized').slick({
-      // autoplay: true,
-      autoplaySpeed: 2000,
-      arrows: false,
-      dots: false,
-      slidesToShow: 1.5,
-      slidesToScroll: 1,
-      draggable: true,
-      fade: false,
-      responsive: [
-        {
-          breakpoint: 767,
-          settings: {
-            slidesToShow: 1
+    if ($('.gender_slider').hasClass('slick-initialized'))
+      $('.gender_slider').slick('unslick');
+    setTimeout(() => {
+      $('.gender_slider').not('.slick-initialized').slick({
+        // autoplay: true,
+        autoplaySpeed: 2000,
+        arrows: false,
+        dots: false,
+        slidesToShow: 1.5,
+        slidesToScroll: 1,
+        draggable: true,
+        fade: false,
+        responsive: [
+          {
+            breakpoint: 767,
+            settings: {
+              slidesToShow: 1
+            }
           }
-        }
-      ]
-    });
+        ]
+      });
+    }, 50)
   }
 
   printItem(item) {

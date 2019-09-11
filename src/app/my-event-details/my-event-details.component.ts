@@ -30,6 +30,7 @@ export class MyEventDetailsComponent implements OnInit {
   selectedGroup;
   selectedGender;
   isCelebrant;
+  isLoad = false;
   userName = JSON.parse(localStorage.getItem('userName'));
   constructor(private route: ActivatedRoute, private router: Router, private _eventService: EventService, private alertService: AlertService,
     private _loginService: LoginService) {
@@ -215,11 +216,13 @@ export class MyEventDetailsComponent implements OnInit {
   }
 
   eventDeatils(id) {
+    this.isLoad = true;
     console.log(id);
     //   let className = $('#dynamic_loader_content > div:visible').attr('class');
     this._eventService.getEventDetails(id)
       .subscribe((data: any) => {
         this.singleEventDetails = data.data;
+        this.isCelebrant = this.singleEventDetails.isCelebrant
         this.eventHashtag = this.singleEventDetails.hashTag;
         this.eventId = this.singleEventDetails._id;
         console.log("this.singlevebtdetailssssssssss", this.singleEventDetails);
@@ -229,11 +232,13 @@ export class MyEventDetailsComponent implements OnInit {
         if ($('.collect_detail').hasClass('slick-initialized'))
           $('.collect_detail').slick('unslick');
         setTimeout(() => {
+          this.isLoad = false;
           this.initActivitySlider();
           this.initCollectDetailSlick(this.eventId);
           // this.getData(this.activityName);
-        }, 10);
+        }, 100);
       }, err => {
+        this.isLoad = false;
         console.log(err);
       })
   }

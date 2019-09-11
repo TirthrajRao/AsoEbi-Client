@@ -17,6 +17,8 @@ export class SignupComponent implements OnInit {
   submitted = false;
   signUpDetails;
   userId;
+  isLoad = false;
+  newUserName;
 
   constructor(private route: ActivatedRoute,
     private router: Router, private _loginService: LoginService, private _alertService: AlertService) { }
@@ -110,7 +112,8 @@ export class SignupComponent implements OnInit {
    * @param {Object} data
    * Create new signUp user with details 
    */
-  onSubmit(data) {
+  onSubmit() {
+    this.isLoad = true;
     this.submitted = true;
     if (this.signUpForm.invalid) {
       return;
@@ -123,6 +126,7 @@ export class SignupComponent implements OnInit {
         $('.firstStep').css({ 'display': 'none' })
         $('.secondStep').css({ 'display': 'block' });
         this.isDisable = false;
+        this.isLoad = false;
         this.signUpDetails = data.data.email;
         console.log("first sign up details", this.signUpDetails);
       }, err => {
@@ -137,6 +141,7 @@ export class SignupComponent implements OnInit {
    * Check verification code for new register user 
    */
   verifyCode(data) {
+    this.isLoad = true;
     console.log("data", data);
     const verified = {
       code: data,
@@ -145,6 +150,7 @@ export class SignupComponent implements OnInit {
     this._loginService.verificationCode(verified)
       .subscribe((data: any) => {
         console.log("positive response", data);
+        this.isLoad = false;
         this.userId = data.data.userId;
         console.log(this.userId);
         $('.secondStep').css({ 'display': 'none' });
@@ -160,7 +166,8 @@ export class SignupComponent implements OnInit {
    * @param {Object} data
    * Add other details of new user after verification  
    */
-  personalDetails(data) {
+  personalDetails() {
+    this.isLoad = true;
     console.log(this.personalDetailsForm.value);
     const finalDetails = {
       details: this.personalDetailsForm.value,
@@ -169,8 +176,10 @@ export class SignupComponent implements OnInit {
     this._loginService.personalDetails(finalDetails)
       .subscribe((data: any) => {
         console.log("final response", data);
+        this.newUserName = data.data.firstName;
         $('.thirdStep').css({ 'display': 'none' });
         $('.fourthStep').css({ 'display': 'block' })
+        this.isLoad = false;
         this._alertService.getSuccess(data.message);
         // this.router.navigate(['/login']);
       }, err => {

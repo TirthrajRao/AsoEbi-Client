@@ -187,6 +187,10 @@ export class AutoMessageComponent implements OnInit {
         this.activityName = [];
         this.activityName = this.singleEventDetails.activity;
         console.log("data of single event ", this.activityName);
+        if ($('.event_slider1').hasClass('slick-initialized'))
+          $('.event_slider1').slick('unslick');
+        if ($('.collect_detail').hasClass('slick-initialized'))
+          $('.collect_detail').slick('unslick');
         setTimeout(() => {
           this.initActivitySlider();
           this.initCollectDetailSlick();
@@ -263,6 +267,17 @@ export class AutoMessageComponent implements OnInit {
   selectBank(id) {
     console.log(id)
     this.router.navigate(['home/bankDetails/', id])
+  }
+  deleteEvent(eventid) {
+    console.log(eventid);
+    this._eventService.deleteEvent(eventid).subscribe((data: any) => {
+      console.log("delete event response", data);
+      this.alertService.getSuccess(data.data.message)
+      this.router.navigate(['home/myEvent'])
+    }, (err: any) => {
+      console.log(err);
+      this.alertService.getError(err.message);
+    })
   }
 
 }

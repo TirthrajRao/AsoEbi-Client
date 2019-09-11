@@ -1,7 +1,7 @@
 <!-- Form of create new event and also edit created event -->
 
 <!-- New Design of create event page and edit event page  -->
-<div id="loading" *ngIf="isDisable" (onload)="loaderTime()">
+<div id="loading" *ngIf="isLoad">
     <img id="loading-image" src="/assets/images/loader.gif" alt="Loading..." />
 </div>
 
@@ -167,9 +167,10 @@
                                                 <label for="customFile" class="profile_and_cover_edit text-center"
                                                     title="Change Profile"><i class="fa fa-camera"
                                                         aria-hidden="true"></i></label>
-                                                <img [src]="imgURL" height="200" class="float-right rounded-circle"
-                                                    id="imageFilter"
-                                                    onerror="this.src='/assets/images/profile_photo.png'">
+                                                        <span >
+                                                <img [src]="imgURL"   height="200"
+                                                    class="float-right rounded-circle" id="imageFilter"
+                                                    onerror="this.src='/assets/images/profile_photo.png'"> </span>
                                             </div>
                                         </div>
                                         <div class="profile_content text-center">
@@ -238,6 +239,9 @@
                                                 </div>
                                                 <div class="col-sm-3 ">
                                                     <a class="back1">
+                                                        <!-- <img *ngIf="createdEventDetails && createdEventDetails.eventTheme"
+                                                            src="{{path}}{{createdEventDetails.eventTheme}}"
+                                                            class="rounded-circle"> -->
                                                         <input type="file" formControlName="background"
                                                             class="form-control"
                                                             (change)="addThemePhoto($event.target.files)"
@@ -247,10 +251,10 @@
                                                         <label for="customThemeFile" class="background_edit text-center"
                                                             title="Change Profile"><i class="fa fa-camera"
                                                                 aria-hidden="true"></i></label>
-                                                        <img  [src]="themeURL" height="200"
-                                                            class="float-right rounded-circle" 
+                                                        <img [src]="themeURL" height="200"
+                                                            class="float-right rounded-circle"
                                                             onerror="this.src='/assets/images/profile_photo.png'">
-                                                            <p class="text-center">add Photo</p>
+                                                        <p class="text-center">add Photo</p>
                                                         <!-- <p class="text-center">Add Photo</p> -->
                                                     </a>
                                                 </div>
@@ -328,7 +332,7 @@
                             </div>
                         </div>
 
-                        <div class="new_event_slide eight_slide">
+                        <!-- <div class="new_event_slide eight_slide">
                             <div class="event_inner_content_box">
                                 <div class="event_inner_content ">
                                     <div class="new_event_sec">
@@ -370,7 +374,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="new_event_slide nine_slide">
                             <div class="event_inner_content_box">
@@ -515,7 +519,6 @@
                                                 Password</a></li>
                                         <li><a (click)="logout()" class="text-white text-center my_account">Logout</a>
                                         </li>
-                                        <li><a href="#" class="text-white text-center my_messages">Messages</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -583,8 +586,7 @@
 
                     <form [formGroup]="activityForm" class="all_activity_form">
                         <div formArrayName="activity">
-                            <div [formGroupName]="i"
-                                *ngFor="let tech of activityFormData.controls; let i = index">
+                            <div [formGroupName]="i" *ngFor="let tech of activityFormData.controls; let i = index">
                                 <div class="name_ceremony">
                                     <div class="ceremony1">
                                         <div class="row mb-3">
@@ -766,7 +768,7 @@
                                                                             formControlName="itemPrice">
                                                                     </div>
                                                                 </div>
-                                                                <div class="close-male-item float-right">
+                                                                <div class="close-male-item float-right" *ngIf="item.controls.male.controls.length>1">
                                                                     <i class="fa fa-times" aria-hidden="true"
                                                                         (click)="removeItemsMale(item, k ,group.value,item.value)"></i>
                                                                 </div>
@@ -796,7 +798,7 @@
                                                                             formControlName="itemPrice">
                                                                     </div>
                                                                 </div>
-                                                                <div (click)="removeItemsfeMale(item, j ,group.value,item.value)"
+                                                                <div *ngIf="item.controls.female.controls.length>1" (click)="removeItemsfeMale(item, j ,group.value,item.value)"
                                                                     class="float-right close-male-item">
                                                                     <i class="fa fa-times" aria-hidden="true"></i>
                                                                 </div>

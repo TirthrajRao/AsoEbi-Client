@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { LoginService } from '../services/login.service';
+// import {AlertService} from '../services/alert.service';
 import { AuthService } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
 import { HttpErrorResponse } from '@angular/common/http';
@@ -63,15 +64,16 @@ export class LoginComponent implements OnInit {
   show: boolean;
   pwd: boolean;
   userName;
+  isLoad = false;
   msalConfig = {
     auth: {
       clientId: 'bd9b8a24-97aa-42db-a5fe-dcb24b15e6f8', //This is your client ID,
       authority: "https://login.microsoftonline.com/common", //This is your tenant info
     },
-    cache: {
-      // cacheLocation: "localStorage",
-      // storeAuthStateInCookie: true
-    }
+    // cache: {
+    //   cacheLocation: "localStorage",
+    //   storeAuthStateInCookie: true
+    // }
   };
   myMSALObj = new Msal.UserAgentApplication(this.msalConfig);
 
@@ -170,10 +172,11 @@ export class LoginComponent implements OnInit {
    * Send accessToken for authentication login with microSoft 
    */
   serverHotmailLogin(token) {
+    this.isLoad = true;
     console.log("login token of hotmail lofin response", token);
     this._loginService.serverHotmailLogin(token)
       .subscribe((data: any) => {
-        
+        this.isLoad = false;
         let firstName = data.data.firstName
         let lastName = data.data.lastName
         this.userName = firstName + " " + lastName;
@@ -221,10 +224,11 @@ export class LoginComponent implements OnInit {
    * Send accessToken and userId fot authentication  
    */
   serverYahooLogin(token, userId) {
+    this.isLoad = true;
     console.log("generated token of yahoo", token);
     this._loginService.sendYahooToken(token, userId)
       .subscribe(data => {
-
+        this.isLoad = false
         let firstName = data.data.firstName
         let lastName = data.data.lastName
         this.userName = firstName + " " + lastName;
@@ -260,10 +264,12 @@ export class LoginComponent implements OnInit {
    * for login with created email and password
    */
   onSubmitLogin() {
+    this.isLoad = true;
     this.isDisable = true;
     console.log("login details", this.loginForm);
     this._loginService.login(this.loginForm.value)
       .subscribe(data => {
+        this.isLoad = false;
         let firstName = data.data.firstName
         let lastName = data.data.lastName
         this.userName = firstName + " " + lastName;
@@ -279,17 +285,16 @@ export class LoginComponent implements OnInit {
           this.isUserLoggedIn = true;
           localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
           this.router.navigate(['/home/view-event/', this.eventIdWithLogin])
-        }
-        else if (data.data.UserRole == 'admin') {
+        } else if (data.data.UserRole == 'admin') {
           this.router.navigate(['/home/admin-dashboard']);
-        }
-        else {
+        } else if (data.data.UserRole == 'user') {
           this.isUserLoggedIn = true;
           localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
           this.router.navigate(['/home']);
         }
-      }, (error: any) => {
-        console.log(error);
+      }, (err: any) => {
+        this.isLoad = false;
+        this.alertService.getError(err.error.message)
         this.isDisable = false;
         this.loginForm.reset();
         console.log("disable:", this.isDisable);
@@ -300,6 +305,7 @@ export class LoginComponent implements OnInit {
    * Login with google account  
    */
   signInWithGoogleAccount() {
+    this.isLoad = true;
     this.isDisable = true;
     console.log("In func")
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((res) => {
@@ -307,6 +313,7 @@ export class LoginComponent implements OnInit {
       const googleIdToken = res.idToken;
       console.log("google id of login user", googleIdToken);
       this._loginService.googleLogin(googleIdToken).subscribe(data => {
+        this.isLoad = false;
         let firstName = data.data.firstName
         let lastName = data.data.lastName
         this.userName = firstName + " " + lastName;
@@ -329,7 +336,9 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/home']);
         }
       }, err => {
+        this.isLoad = false;
         console.log("error display", err);
+        this.alertService.getError(err.error.message);
       })
     }).catch((err) => {
       console.log(err);
@@ -340,6 +349,7 @@ export class LoginComponent implements OnInit {
    * Login with facebook account
    */
   signWithFacebook() {
+    this.isLoad = true;
     this.isDisable = true;
     console.log("submit login to facebook");
     FB.login((response) => {
@@ -349,8 +359,8 @@ export class LoginComponent implements OnInit {
       if (response.authResponse) {
         this._loginService.facebookLogin(facebookId)
           .subscribe((data: any) => {
+            this.isLoad = false
             console.log("data of facebook login user", data);
-
             let firstName = data.data.firstName
             let lastName = data.data.lastName
             this.userName = firstName + " " + lastName;
@@ -369,7 +379,9 @@ export class LoginComponent implements OnInit {
               localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
             }
           }, err => {
-            console.log(err);
+            this.isLoad = false;
+            console.log("error display", err);
+            this.alertService.getError(err.error.message);
           })
       }
       else {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from '../services/event.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { config } from '../config';
+import { ClipboardService } from 'ngx-clipboard';
 import { AlertService } from '../services/alert.service';
 import { LoginService } from '../services/login.service';
 import * as _ from 'lodash';
@@ -30,7 +31,8 @@ export class InvitationEventComponent implements OnInit {
   feMaleItem;
   selectedGroup;
   selectedGender;
-  EventLink;
+  public EventLink: any;
+  // URL = this.EventLink;
   userName = JSON.parse(localStorage.getItem('userName'));
   constructor(private route: ActivatedRoute, private router: Router, private _eventService: EventService, private alertService: AlertService,
     private _loginService: LoginService) {
@@ -177,10 +179,14 @@ export class InvitationEventComponent implements OnInit {
         this.eventHashtag = this.singleEventDetails.hashTag;
         this.EventLink = this.singleEventDetails.eventLink;
         this.eventId = this.singleEventDetails._id;
-        console.log("this.singlevebtdetailssssssssss", this.singleEventDetails);
+        console.log("this.singlevebtdetailssssssssss", this.EventLink);
         this.activityName = [];
         this.activityName = this.singleEventDetails.activity;
         console.log("data of single event ", this.activityName);
+        if ($('.event_slider1').hasClass('slick-initialized'))
+          $('.event_slider1').slick('unslick');
+        if ($('.collect_detail').hasClass('slick-initialized'))
+          $('.collect_detail').slick('unslick');
         setTimeout(() => {
           this.initActivitySlider();
           this.initCollectDetailSlick();
@@ -231,5 +237,16 @@ export class InvitationEventComponent implements OnInit {
   selectBank(id) {
     console.log(id)
     this.router.navigate(['home/bankDetails/', id])
+  }
+  deleteEvent(eventid) {
+    console.log(eventid);
+    this._eventService.deleteEvent(eventid).subscribe((data: any) => {
+      console.log("delete event response", data);
+      this.alertService.getSuccess(data.data.message)
+      this.router.navigate(['home/myEvent'])
+    }, (err: any) => {
+      console.log(err);
+      this.alertService.getError(err.message);
+    })
   }
 }

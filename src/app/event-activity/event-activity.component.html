@@ -1,4 +1,4 @@
-<div id="loading">
+<div id="loading" *ngIf="isLoad">
     <img id="loading-image" src="/assets/images/loader.gif" alt="Loading..." />
 </div>
 
@@ -25,16 +25,15 @@
                             <div class="event_menu">
                                 <div class="all_menu_content  d-flex flex-wrap align-content-center">
                                     <ul>
-                                        <li><a href="eventA.html" class="text-white new_event">my event</a></li>
-                                        <li><a href="new_event_slider.html" class="text-white my_event">new event</a>
+                                        <li><a routerLink="/home" class="text-white new_event">Home</a></li>
+                                        <li><a routerLink="/myEvent" class="text-white new_event">my event</a></li>
+                                        <li><a routerLink="/createEvent" class="text-white my_event">new event</a>
                                         </li>
-                                        <li><a href="add_bank_account.html" class="text-white my_account">bank
-                                                account</a>
-                                        </li>
-                                        <li><a href="reset_password.html" class="text-white my_account">Reset
-                                                Password</a>
-                                        </li>
-                                        <li><a href="#" class="text-white my_account">Logout</a></li>
+                                        <li><a routerLink="/bankDetails" class="text-white my_account">bank
+                                                account</a></li>
+                                        <li><a routerLink="/reset-password" class="text-white my_account">Reset
+                                                Password</a></li>
+                                        <li><a (click)="logout()" class="text-white my_account">Logout</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -100,14 +99,14 @@
                                 <p class="text-white">{{item.activityName}}</p>
                             </div>
                         </span>
-                        <div class="collect1_img" (click)="totalCollection(singleEventDetails._id)">
+                        <div class="collect1_img" (click)="totalCollection(singleEventDetails._id)"  *ngIf="isCelebrant">
                             <div class="collect_img">
                                 <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                     src="{{path}}{{singleEventDetails.profilePhoto}}">
                             </div>
                             <p class="text-center text-white">Collected</p>
                         </div>
-                        <div class="collect1_img">
+                        <div class="collect1_img" *ngIf="isCelebrant">
                             <div class="collect_img" (click)="nextSection('seventhStep', 'initialStep')">
                                 <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                     src="{{path}}{{singleEventDetails.profilePhoto}}">
@@ -121,26 +120,34 @@
                             </div>
                             <p class="text-white">View Event</p>
                         </div>
-                        <div class="collect1_img">
+                        <div class="collect1_img" *ngIf="isCelebrant">
                             <div class="collect_img" (click)="messageEvent(singleEventDetails._id)">
                                 <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                     src="{{path}}{{singleEventDetails.profilePhoto}}">
                             </div>
                             <p class="text-white">Message</p>
                         </div>
-                        <div class="collect1_img">
+                        <div class="collect1_img" *ngIf="isCelebrant">
                             <div class="collect_img" (click)="invitation(singleEventDetails._id)">
                                 <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                     src="{{path}}{{singleEventDetails.profilePhoto}}">
                             </div>
                             <p class="text-white">Invited Guestes</p>
                         </div>
-                        <div class="collect1_img">
+                        <div class="collect1_img" *ngIf="isCelebrant">
                             <div class="collect_img" (click)="autoMessage(singleEventDetails._id)">
                                 <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                     src="{{path}}{{singleEventDetails.profilePhoto}}">
                             </div>
                             <p class="text-white">Auto Message</p>
+                        </div>
+                        <div class="collect1_img" *ngIf="isCelebrant">
+                            <!-- *ngIf="!isCelebrant" -->
+                            <div class="collect_img" (click)="selectBank(eventId)">
+                                <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
+                                    src="{{path}}{{singleEventDetails.profilePhoto}}">
+                            </div>
+                            <p>Select Bank Account</p>
                         </div>
                     </div>
                 </div>

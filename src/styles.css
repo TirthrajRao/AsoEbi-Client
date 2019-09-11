@@ -3034,7 +3034,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	color: #fff;
 }
 .select_item_scroll{
-	max-height:110px;
+	max-height:190px;
 	overflow-y: auto;
 	overflow-x: hidden;
 
@@ -4299,7 +4299,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
     .collect1_img p {
     	font-size: 12px;
     	font-weight: 600;
-    	color: #374b5d;
+    	color: white !important;
     	font-family: 'Russo One', sans-serif;
     	text-align: center;
     }

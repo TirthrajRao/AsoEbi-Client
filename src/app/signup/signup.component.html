@@ -1,5 +1,5 @@
 <!-- Loader -->
-<div id="loading">
+<div id="loading" *ngIf="isLoad">
     <img id="loading-image" src="/assets/images/loader.gif" alt="Loading..." />
 </div>
 
@@ -20,7 +20,7 @@
         </div>
     </section>
 </div>
-<div *ngIf="!isDisable">
+<div [hidden]="isDisable">
     <div class=" custom_steps firstStep" style="display:none">
         <section class="join_page2_section d-flex flex-wrap align-content-center">
             <div class="container-fluid">
@@ -226,7 +226,7 @@
                             <a routerLink="/login" class="btn_enter5 float-right">Enter</a>
                         </div>
                         <div class="user_first_name">
-                            <p class="text-white"> (User's First name), your<br> account is now live. Click<br>enter to
+                            <p class="text-white"> Hello {{newUserName}}, your<br> account is now live. Click<br>enter to
                                 start collecting for<br>your next events.</p>
                         </div>
                     </div>

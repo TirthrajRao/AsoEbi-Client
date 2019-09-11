@@ -1,4 +1,4 @@
-<div id="loading">
+<div id="loading" *ngIf="isLoad">
     <img id="loading-image" src="/assets/images/loader.gif" alt="Loading..." />
 </div>
 
@@ -16,7 +16,7 @@
         <h3 class="text-center user_name" data-toggle="tooltip" title="{{eventHashTag}}">{{eventHashTag}}</h3>
 
         <div class="cart_pic text-center" (click)="myCart(item._id)" *ngFor="let item of allDetailsofEvent">
-            <img src="/assets/images/cart.png" data-toggle="tooltip" *ngIf="isCelebrant == false" title="My Cart">
+            <img src="/assets/images/cart.png" data-toggle="tooltip" *ngIf="isJoined" title="My Cart">
         </div>
         <div class="veiw_event">
             <div class="Join_inner_content_box h-100 mb-3">
@@ -54,8 +54,8 @@
                     </div>
                     <div *ngFor="let item of allDetailsofEvent">
                         <div class="">
-                            <button class="btn-primary w-100 joinNowBtn" (click)="joinNow(item._id)"
-                                [disabled]="isDisable" (click)="joinNow(item._id)" *ngIf="isCelebrant == false">Join
+                            <button class="btn-primary w-100 joinNowBtn" [disabled]="isDisable"
+                                (click)="joinNow(item._id)" *ngIf="!isCelebrant"  title="{{isJoined ? 'you join successfully' : ''}}">Join
                                 Now</button>
                             <div class="all_event_details">
                                 <div class="row">
@@ -77,8 +77,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div *ngFor="let activity of activityArray">
-                        </div>
+
                         <div class="activity_slider">
                             <div class="" *ngFor="let activity of activityArray">
                                 <p class="text-center first_day_activity" data-toggle="tooltip" data-placement="top"
@@ -88,6 +87,7 @@
                                         <p class="group_family text-center">{{group.groupName}}</p>
                                         <div class="gender_slider1 ">
                                             <div class="gender_slide1 male_slide1">
+                                                <!-- <h1 *ngIf="group && !group.length" style="color:white" >hello</h1> -->
                                                 <h5 class="text-white">Male</h5>
                                                 <div class="item_detail_height">
                                                     <div *ngFor="let male of group.item" class="item_detail_height">
@@ -141,6 +141,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <!-- <h1 *ngIf="group && !group.length" style="color:white" > Sory you have no items</h1> -->
                                     </div>
                                 </div>
                             </div>

@@ -299,4 +299,7 @@ export class EventService {
     return this.http.put(config.baseApiUrl + "api/after-eventmsg", data);
 
   }
+  selectBankAccount(data){
+   return this.http.put(config.baseApiUrl+ "api/bank-account", data);
+  }
 }

@@ -17,7 +17,7 @@
                                 </a>
                             </div>
                             <div class="col-9 p-0">
-                                <span class="text-black all_event_name"> Hello Rao Info Tech </span>
+                                <span class="text-black all_event_name"> Hello {{userName}} </span>
                             </div>
                         </div>
                     </div>
@@ -65,16 +65,16 @@
                     </ul>
                     </div>
                     <div class="eventE_media">
-                        <share-button [theme]="'circles-dark'" [button]="'whatsapp'" [showCount]="true"
-                            [url]="'https://aso-ebi.com/welcome-guest/NWQ1MmMyMTdhNTBjMTUzYmVmNDc2MTIy'"
+                        <share-button [theme]="'circles-dark'" [button]="'whatsapp'"
+                            [url]="EventLink"
                             [autoSetMeta]="false"></share-button>
-                        <share-button [theme]="'circles-dark'" [button]="'facebook'" [showCount]="true"
-                            [url]="'https://aso-ebi.com/welcome-guest/NWQ1MmMyMTdhNTBjMTUzYmVmNDc2MTIy'">
+                        <share-button [theme]="'circles-dark'" [button]="'facebook'"
+                            [url]="EventLink">
                         </share-button>
-                        <share-button [theme]="'circles-dark'" [button]="'email'" [showCount]="true"
-                            [url]="'https://twitter.com/'"></share-button>
-                        <share-button [theme]="'circles-dark'" [button]="'sms'" [showCount]="true"
-                            [url]="'https://twitter.com/'"></share-button>
+                        <share-button [theme]="'circles-dark'" [button]="'email'"
+                            [url]="EventLink"></share-button>
+                        <share-button [theme]="'circles-dark'" [button]="'sms'"
+                            [url]="EventLink"></share-button>
 
                     </div>
                     <div class="collect_detail text-center mt-3">
@@ -129,7 +129,7 @@
                                 <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                     src="{{path}}{{singleEventDetails.profilePhoto}}">
                             </div>
-                            <p class="text-white">Select Bank Account</p>
+                            <p>Select Bank Account</p>
                         </div>
                     </div>
 

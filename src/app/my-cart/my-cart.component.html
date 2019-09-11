@@ -9,7 +9,7 @@
         <div class="container-fluid">
             <h3 class="text-white text-center Aso_title">Aso Ebi</h3>
             <div class="profile_pic text-center ">
-                <img src="{{path}}{{eventDetails.profilePhoto}}" class="rounded-circle">
+                <img *ngIf="eventDetails" src="{{path}}{{eventDetails.profilePhoto}}" class="rounded-circle">
             </div>
             <h3 class="text-center text-white user_name" *ngIf="eventDetails"> {{eventDetails.hashTag}}</h3>
             <div class="card_inner_content_box">
@@ -51,7 +51,7 @@
         <div class="container-fluid">
             <h3 class="text-center text-center Aso_title">Aso Ebi</h3>
             <div class="profile_pic text-center text-center">
-                    <img src="{{path}}{{eventDetails.profilePhoto}}">
+                    <img src="{{path}}{{eventDetails.profilePhoto}}" *ngIf="eventDetails">
             </div>
             <h3 class="text-center text-center user_name" *ngIf="eventDetails"> {{eventDetails.hashTag}}</h3>
             <div class="card_inner_content_box5">
@@ -121,9 +121,9 @@
                                                 <div class="col-12 p-0" *ngIf="item.itemGender=='female'">
                                                     <div class="all_list">
                                                         <div class="fabric_name float-left"> {{item.itemName}} {{item.itemPrice | currency:"&#x20A6;"}} </div>
-                                                            <div class="float-right number_of_item text-white">
+                                                            <div class="float-right text-white">
                                                                 <label class=""> x </label>
-                                                                <input type="text" min="1" id="donation"
+                                                                <input type="number" min="1" id="donation"
                                                                 (keyup)="finalTotal(item)"
                                                                 [(ngModel)]='item.quantity'>
                                                             </div>

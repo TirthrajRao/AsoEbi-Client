@@ -1,4 +1,4 @@
-<div id="loading">
+<div id="loading" *ngIf="isLoad">
     <img id="loading-image" src="/assets/images/loader.gif" alt="Loading..." />
 </div>
 
@@ -17,7 +17,7 @@
                                 </a>
                             </div>
                             <div class="col-9 p-0">
-                                <span class="text-white all_event_name"> Hello Rao Info Tech </span>
+                                <span class="text-white all_event_name"> Hello {{userName}} </span>
                             </div>
                         </div>
                     </div>
@@ -123,6 +123,13 @@
                                     src="{{path}}{{singleEventDetails.profilePhoto}}">
                             </div>
                             <p class="text-white">Auto Message</p>
+                        </div>
+                        <div class="collect1_img" ><!-- *ngIf="!isCelebrant" -->
+                            <div class="collect_img" (click)="selectBank(eventId)">
+                                <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
+                                    src="{{path}}{{singleEventDetails.profilePhoto}}">
+                            </div>
+                            <p>Select Bank Account</p>
                         </div>
                     </div>
                 </div>

@@ -5,6 +5,7 @@ import { config } from '../config';
 import { AlertService } from '../services/alert.service';
 import { LoginService } from '../services/login.service';
 import * as _ from 'lodash';
+import { isProtractorLocator } from 'protractor/built/locators';
 declare let $: any;
 
 @Component({
@@ -33,6 +34,7 @@ export class EventActivityComponent implements OnInit {
   activityId;
   allActivityList;
   isCelebrant;
+  isLoad = false;
   userName = JSON.parse(localStorage.getItem('userName'));
   constructor(private route: ActivatedRoute, private router: Router, private _eventService: EventService, private alertService: AlertService,
     private _loginService: LoginService) {
@@ -158,16 +160,20 @@ export class EventActivityComponent implements OnInit {
     console.log(item);
     this.selectedActivity = item[0];
     this.selectedActivityGroup = item[0].group;
-      this.selectedGroup = item[0].group[0].groupName;
-      this.selectedGender = 'male';
-      this.itemNamePrint = [];
-      console.log("thisbjfdkjnkjdfdjfg", this.selectedActivityGroup)
-      this.itemNamePrint.push(this.selectedActivityGroup[0].item[0]);
-      setTimeout(() => {
-        this.initActivitySlider();
-        this.initCollectDetailSlick();
-        // $('.collect_detail')[0].slick.refresh();
-      }, 100)
+    this.selectedGroup = item[0].group[0].groupName;
+    this.selectedGender = 'male';
+    this.itemNamePrint = [];
+    console.log("thisbjfdkjnkjdfdjfg", this.selectedActivityGroup)
+    this.itemNamePrint.push(this.selectedActivityGroup[0].item[0]);
+    if ($('.event_slider1').hasClass('slick-initialized'))
+      $('.event_slider1').slick('unslick');
+    if ($('.collect_detail').hasClass('slick-initialized'))
+      $('.collect_detail').slick('unslick');
+    setTimeout(() => {
+      this.initActivitySlider();
+      this.initCollectDetailSlick();
+      // $('.collect_detail')[0].slick.refresh();
+    }, 100)
 
   }
 
@@ -201,12 +207,14 @@ export class EventActivityComponent implements OnInit {
   //   this.router.navigate(['/home/myEventDetails/', id])
   // }
   singleActivityDetails(activityId) {
+    this.isLoad = true;
+    setTimeout(()=>{
+      this.isLoad = false
+    }, 10)
     console.log(activityId);
     this.selectedActivity = activityId;
     this.selectedActivityGroup = activityId.group;
-    if (this.activityId.group && this.activityId.group.length > 1) {
-      this.selectedGroup = activityId.group[0].groupName;
-    }
+    this.selectedGroup = activityId.group[0].groupName;
     this.selectedGender = 'male';
     console.log(this.selectedGender)
     $('input:radio[id="test"]').prop('checked', true);
@@ -215,6 +223,7 @@ export class EventActivityComponent implements OnInit {
   }
 
   eventDeatils(id, activityId) {
+    this.isLoad = true;
     //   let className = $('#dynamic_loader_content > div:visible').attr('class');
     this._eventService.getEventDetails(id)
       .subscribe((data: any) => {
@@ -236,11 +245,18 @@ export class EventActivityComponent implements OnInit {
         })
         console.log("data of single event ", this.activityName);
         this.activityDetails(this.activityName)
+        if ($('.event_slider1').hasClass('slick-initialized'))
+        $('.event_slider1').slick('unslick');
+        if ($('.collect_detail').hasClass('slick-initialized'))
+        $('.collect_detail').slick('unslick');
         setTimeout(() => {
+          this.isLoad = false;
           this.initActivitySlider();
           this.initCollectDetailSlick();
-        }, 10);
+        }, 100);
       }, err => {
+        this.isLoad = false;
+        this.alertService.getError(err.message);
         console.log(err);
       })
   }
@@ -296,5 +312,23 @@ export class EventActivityComponent implements OnInit {
   autoMessage(id) {
     this.router.navigate(['/home/autoMessage/', id])
   }
-
+  selectBank(id) {
+    console.log(id)
+    this.router.navigate(['home/bankDetails/', id])
+  }
+  logout() {
+    this._loginService.logout();
+    this.router.navigate(['/login']);
+  }
+  deleteEvent(eventid) {
+    console.log(eventid);
+    this._eventService.deleteEvent(eventid).subscribe((data: any) => {
+      console.log("delete event response", data);
+      this.alertService.getSuccess(data.data.message)
+      this.router.navigate(['home/myEvent'])
+    }, (err: any) => {
+      console.log(err);
+      this.alertService.getError(err.message);
+    })
+  }
 }

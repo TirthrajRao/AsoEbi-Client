@@ -25,9 +25,10 @@ export class CollectionsComponent implements OnInit {
   allGuestList: any;
   $slideContainter;
   $slider;
+  isLoad = false;
   from = false;
   fromClass;
-  activityTotal :any;
+  activityTotal: any;
   userName = JSON.parse(localStorage.getItem('userName'));
 
   colorSettings = {
@@ -46,68 +47,55 @@ export class CollectionsComponent implements OnInit {
       this.totalAmountOfUser(this.eventId);
       this.guestList(this.eventId);
     })
-    
+
   }
   ngOnInit() {
     $(".new_event_menu").click(function () {
       $(".new_event_menu_box").toggle();
     });
     console.log(this.userName);
-    setTimeout(()=>{
+    setTimeout(() => {
       this.changeColors(0);
     }, 200);
-    // $('.new_event_menu').click(function () {
-    //   $('.new_event_menu_box').toggleClass('active');
-    //   $('.main').toggleClass('active');
-    //   $(this).toggleClass('active');
-
-    //   if ($('.new_event_menu_box').hasClass('active')) {
-    //     $(this).find('i').addClass('fa-close');
-    //     $(this).find('i').removeClass('fa-bars');
-    //   } else {
-    //     $(this).find('i').addClass('fa-bars');
-    //     $(this).find('i').removeClass('fa-close');
-    //   }
-    // });
-    // this.initCollectionSlider()  
-
-
   }
 
-  openMenu(){
+  openMenu() {
     $(".new_event_menu_box").toggle();
   }
 
   changeColors(slide) {
-    $('input:radio[id=' + slide + '0]').prop('checked', true);
-    let colorSettings = {
-      section: ['#d7d7d7', '#d0dadc', '#a4a5a8', '#dadbdf', '#2b2f31'],
-      prevArrows: ['#9ec23b', '#19a7b2', '#fcb638', '#b930a8', '#d44b3d'],
-      heading: ['#475454', '#e70054', '#424242', '#130829', '#d44b3d'],
-      mainButton: ['#9ec23b', '#19a7b2', '#fcb638', '#b930a8', '#d44b3d'],
-      buttonGroup: ['#3dbbcd', '#feb332', '#ce3259', '#00c0e6', '#9a8970']
-    };
-    console.log("color=========>", slide);
-    $('.collection_slider_section').css({
-      background: colorSettings.section[slide]
-    }, 10);
-    $('.collection_slider button.slick-prev :hover, .collection_slider button.slick-next :hover').css({
-      color: colorSettings.prevArrows[slide]
-    }, 10);
-    $('.collection_slider_section h3').css({
-      color: colorSettings.heading[slide]
-    }, 10);
-    $('.collection_slider .tom_btn').css({
-      background: colorSettings.mainButton[slide]
-    }, 10);
-    $('.collection_slider .total_btn a').css({
-      background: colorSettings.buttonGroup[slide]
-    }, 10);
+    setTimeout(() => {
+
+      console.log("slide of collection", slide)
+      $('input:radio[id=' + slide + '0]').prop('checked', true);
+      let colorSettings = {
+        section: ['#d7d7d7', '#d0dadc', '#a4a5a8', '#dadbdf', '#2b2f31'],
+        prevArrows: ['#9ec23b', '#19a7b2', '#fcb638', '#b930a8', '#d44b3d'],
+        heading: ['#475454', '#e70054', '#424242', '#130829', '#d44b3d'],
+        mainButton: ['#9ec23b', '#19a7b2', '#fcb638', '#b930a8', '#d44b3d'],
+        buttonGroup: ['#3dbbcd', '#feb332', '#ce3259', '#00c0e6', '#9a8970']
+      };
+      console.log("color=========>", slide);
+      $('.collection_slider_section').css({
+        background: colorSettings.section[slide]
+      }, 10);
+      $('.collection_slider button.slick-prev :hover, .collection_slider button.slick-next :hover').css({
+        color: colorSettings.prevArrows[slide]
+      }, 10);
+      $('.collection_slider_section h3').css({
+        color: colorSettings.heading[slide]
+      }, 10);
+      $('.collection_slider .tom_btn').css({
+        background: colorSettings.mainButton[slide]
+      }, 10);
+      $('.collection_slider .total_btn a').css({
+        background: colorSettings.buttonGroup[slide]
+      }, 10);
+    }, 10)
   };
 
   initCollectionSlider() {
     setTimeout(() => {
-
       this.$slideContainter = $('.collection_slider'),
         this.$slider = this.$slideContainter.not('.slick-initialized').slick({
           dots: true,
@@ -115,7 +103,7 @@ export class CollectionsComponent implements OnInit {
           speed: 1000,
           draggable: true,
           arrows: true,
-          prevArrow: "<button type='button' id='display_slide' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+          prevArrow: "<button type='button'  class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
           nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>"
           // autoplay:true
         });
@@ -177,20 +165,22 @@ export class CollectionsComponent implements OnInit {
   }
 
   getCollections(id) {
+    this.isLoad = true;
     this._eventService.getCollections(id)
       .subscribe((data: any) => {
         console.log("total collections of ", data);
-        setTimeout(()=>{
+        setTimeout(() => {
+          this.isLoad = false;
           this.initCollectionSlider()
-        },10)
+        }, 10)
         this.activityTotal = data.data.activityWise;
-      console.log("activity array", this.activityTotal);
+        console.log("activity array", this.activityTotal);
         this.activitiesCollections = data.data.groupWise;
-        console.log("this.activitiesCollections" , this.activitiesCollections);
-        this.activitiesCollections.forEach((singleActivity)=>{
-          this.activityTotal.forEach((singlePriceObject)=>{
-            if(singlePriceObject.activityName == singleActivity._id){
-              singleActivity['totalPrice'] = singlePriceObject.total; 
+        console.log("this.activitiesCollections", this.activitiesCollections);
+        this.activitiesCollections.forEach((singleActivity) => {
+          this.activityTotal.forEach((singlePriceObject) => {
+            if (singlePriceObject.activityName == singleActivity._id) {
+              singleActivity['totalPrice'] = singlePriceObject.total;
             }
           });
         });
@@ -205,11 +195,11 @@ export class CollectionsComponent implements OnInit {
           }
         });
         //  this.activityTotal = 0;
-        _.forEach(this.activitiesCollections.group, (singleGroup)=>{
-          console.log("single group=======================>",singleGroup);
-          _.forEach(singleGroup.item , (singleItem)=>{
-            console.log("singleItem.itemPrice ==> " , singleItem.itemPrice);
-            if(singleItem.itemPrice){
+        _.forEach(this.activitiesCollections.group, (singleGroup) => {
+          console.log("single group=======================>", singleGroup);
+          _.forEach(singleGroup.item, (singleItem) => {
+            console.log("singleItem.itemPrice ==> ", singleItem.itemPrice);
+            if (singleItem.itemPrice) {
               this.activityTotal = this.activityTotal + singleItem.itemPrice;
             }
           })
@@ -220,6 +210,7 @@ export class CollectionsComponent implements OnInit {
           this.initCollectionSlider()
         }, 10)
       }, err => {
+        this.isLoad = false;
         console.log(err);
       })
   }
@@ -248,17 +239,17 @@ export class CollectionsComponent implements OnInit {
     console.log("classss", goto, from);
     this.fromClass = from;
     console.log("this.formclass", this.fromClass);
-    if(this.from == false){
+    if (this.from == false) {
 
-      $('.'+goto).css({'display':'block'});
-      $('.'+from).css({'display':'none'});
+      $('.' + goto).css({ 'display': 'block' });
+      $('.' + from).css({ 'display': 'none' });
     }
   }
-  priveviousSlide(){
+  priveviousSlide() {
     console.log("hale che")
     this.from = true;
-    if(this.from == true){
-      $(this.fromClass).css({'display': 'block'});
+    if (this.from == true) {
+      $(this.fromClass).css({ 'display': 'block' });
     }
   }
   logout() {
