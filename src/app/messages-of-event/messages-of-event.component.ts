@@ -55,8 +55,8 @@ export class MessagesOfEventComponent implements OnInit {
     $(document).ready(function () {
       setTimeout(() => {
         // console.log("$('#custom_btn_next').trigger('click') done");
-        // console.log($('.event_slider1').not('.slick-initialized'));
-        $('.event_slider1').not('.slick-initialized').slick({
+        // console.log($('.event_slider4').not('.slick-initialized'));
+        $('.event_slider4').not('.slick-initialized').slick({
           infinite: true,
           slidesToShow: 2.5,
           slidesToScroll: 1,
@@ -182,8 +182,8 @@ this.isLoad = true;
         this.activityName = [];
         this.activityName = this.singleEventDetails.activity;
         console.log("data of single event ", this.activityName);
-        if ($('.event_slider1').hasClass('slick-initialized'))
-          $('.event_slider1').slick('unslick');
+        if ($('.event_slider4').hasClass('slick-initialized'))
+          $('.event_slider4').slick('unslick');
 
         if ($('.collect_detail').hasClass('slick-initialized'))
         $('.collect_detail').slick('unslick');

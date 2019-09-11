@@ -74,15 +74,15 @@ export class EventActivityComponent implements OnInit {
     $(document).ready(function () {
       setTimeout(() => {
         // console.log("$('#custom_btn_next').trigger('click') done");
-        // console.log($('.event_slider1').not('.slick-initialized'));
-        $('.event_slider1').not('.slick-initialized').slick({
+        // console.log($('.event_slider3').not('.slick-initialized'));
+        $('.event_slider3').not('.slick-initialized').slick({
           infinite: true,
           slidesToShow: 2.5,
           slidesToScroll: 1,
           autoplay: false,
-          arrows: false,
-          prevArrow: '<button class="prevarrow text-center"><i class="fa fa-caret-left" aria-hidden="true"></i></button>',
-          nextArrow: '<button class="nextarrow text-center" ><i class="fa fa-caret-right" aria-hidden="true"></i></button>',
+          arrows: true,
+          prevArrow: '<button class="prevarrow text-center"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
+          nextArrow: '<button class="nextarrow text-center" ><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
           responsive: [
             {
               breakpoint: 1024,
@@ -165,8 +165,8 @@ export class EventActivityComponent implements OnInit {
     this.itemNamePrint = [];
     console.log("thisbjfdkjnkjdfdjfg", this.selectedActivityGroup)
     this.itemNamePrint.push(this.selectedActivityGroup[0].item[0]);
-    if ($('.event_slider1').hasClass('slick-initialized'))
-      $('.event_slider1').slick('unslick');
+    if ($('.event_slider3').hasClass('slick-initialized'))
+      $('.event_slider3').slick('unslick');
     if ($('.collect_detail').hasClass('slick-initialized'))
       $('.collect_detail').slick('unslick');
     setTimeout(() => {
@@ -245,8 +245,8 @@ export class EventActivityComponent implements OnInit {
         })
         console.log("data of single event ", this.activityName);
         this.activityDetails(this.activityName)
-        if ($('.event_slider1').hasClass('slick-initialized'))
-        $('.event_slider1').slick('unslick');
+        if ($('.event_slider3').hasClass('slick-initialized'))
+        $('.event_slider3').slick('unslick');
         if ($('.collect_detail').hasClass('slick-initialized'))
         $('.collect_detail').slick('unslick');
         setTimeout(() => {

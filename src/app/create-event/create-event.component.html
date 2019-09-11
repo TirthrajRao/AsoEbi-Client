@@ -730,26 +730,30 @@
                                         <div [formGroupName]="i"
                                             *ngFor="let item of groupFormData.controls; let i = index"
                                             [hidden]="selectedActivityToAddGroup != item.value.activityId">
-                                            <div class="col-12 text-center mt-3 text-white pl-0">
-                                                <i class="fa fa-plus" aria-hidden="true"
-                                                    (click)="createdEventDetails ? AddGroupField(eventActivities[i]._id) : AddGroupField(selectedActivityToAddGroup)"></i>
+                                            <div class="add_group">
+                                            <div class="col-12 mt-3 text-white  text-right">
+                                               <i class="fa fa-plus-circle" aria-hidden="true"
+                                                (click)="createdEventDetails ? AddGroupField(eventActivities[i]._id) : AddGroupField(selectedActivityToAddGroup)"></i>
                                             </div>
-                                            <div class="freind_family">
-                                                <div class="row">
-                                                    <div class="col-11 form-group float-left">
-                                                        <input class="form-control" type="text"
-                                                            placeholder="Enter Group Name" formControlName="groupName">
-                                                        <i class="fa fa-times" (click)="removeGroupField(i,item.value)"
-                                                            aria-hidden="true"></i>
-                                                    </div>
+                                        </div>
+                                        <div class="freind_family">
+                                            <div class="row">
+                                                <div class="col-8 form-group float-left">
+                                                    <input class="form-control" type="text"
+                                                    placeholder="Enter Group Name" formControlName="groupName">
+                                                </div>
+                                                <div class="col-1 text-white p-0 mt-2">
+                                                    <i class="fa fa-minus-circle" (click)="removeGroupField(i,item.value)"
+                                                    aria-hidden="true"></i>
                                                 </div>
                                             </div>
+                                        </div>
                                             <div class="gender_slider">
                                                 <div class="gender_slide male_slide select_item_scroll">
                                                     <h5 class="text-white">Male</h5>
                                                     <div class="text-center plus_icon float-right">
                                                         <a class="text-white">
-                                                            <i class="fa fa-plus" aria-hidden="true"
+                                                            <i class="fa fa-plus-circle" aria-hidden="true"
                                                                 (click)="addItemsMale(item)">
                                                             </i>
                                                         </a>
@@ -769,7 +773,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="close-male-item float-right" *ngIf="item.controls.male.controls.length>1">
-                                                                    <i class="fa fa-times" aria-hidden="true"
+                                                                    <i class="fa fa-minus-circle" aria-hidden="true"
                                                                         (click)="removeItemsMale(item, k ,group.value,item.value)"></i>
                                                                 </div>
                                                             </div>
@@ -780,7 +784,7 @@
                                                     <h5 class="text-white">Female</h5>
                                                     <div class="text-center plus_icon float-right">
                                                         <a class="text-white">
-                                                            <i class="fa fa-plus" aria-hidden="true"
+                                                            <i class="fa fa-plus-circle" aria-hidden="true"
                                                                 (click)="addItemsfeMale(item)"></i>
                                                         </a>
                                                     </div>
@@ -799,8 +803,8 @@
                                                                     </div>
                                                                 </div>
                                                                 <div *ngIf="item.controls.female.controls.length>1" (click)="removeItemsfeMale(item, j ,group.value,item.value)"
-                                                                    class="float-right close-male-item">
-                                                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                                                    class="close-male-item float-right">
+                                                                    <i class="fa fa-minus-circle" aria-hidden="true"></i>
                                                                 </div>
                                                             </div>
                                                         </div>

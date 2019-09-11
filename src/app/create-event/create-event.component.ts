@@ -272,7 +272,7 @@ export class CreateEventComponent implements OnInit {
 
     let colorSetting = {
       section: ['#c1c3be', '#cdcdcd', '#e7e7e7', '#f7f7f7', '#f4f4f4', '#e1c2aa', '#e8e7e5', '#e7e7e7', '#93a8c1', '#e2e4e3', '#ebf0f1', '#d1d1d1'],
-      prevArrow: ['#a4bf45', '#f73953', '#ef6439', '#f4ad48', '#fae545', '#f4c036', '#ffeb5b', '#f73953', '#bfa066', '##afda57', '#ffb54d', '#afda57'],
+      prevArrow: ['#a4bf45', '#f73953', '#ef6439', '#f4ad48', '#fae545', '#f4c036', '#ffeb5b', '#bfa066', '#afda57', '#ffb54d', '#ffb54d', '#afda57'],
       headings: ['#1d73ae', '#f73953', '#ef6439', '#f4ad48', '#e32676', '#373255', '#371448', '#e91e3b', '#363f4f', '#eaa52e', '#1c424d', '#000000'],
     };
     var changeColors = function (slide) {
