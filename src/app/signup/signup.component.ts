@@ -29,12 +29,12 @@ export class SignupComponent implements OnInit {
      */
     this.signUpForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)])
-    })
-    this.personalDetailsForm = new FormGroup({
+      password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
       firstName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
       lastName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
       mobile: new FormControl('', [Validators.minLength(10), Validators.maxLength(10)]),
+    })
+    this.personalDetailsForm = new FormGroup({
     })
   }
 
@@ -48,7 +48,7 @@ export class SignupComponent implements OnInit {
   /**
    * Display error message for personalDetails form
    */
-  get p() { return this.personalDetailsForm.controls }
+  // get p() { return this.personalDetailsForm.controls }
 
   /**
    * @param {String} form
@@ -112,28 +112,32 @@ export class SignupComponent implements OnInit {
    * @param {Object} data
    * Create new signUp user with details 
    */
-  onSubmit() {
-    this.isLoad = true;
-    this.submitted = true;
-    if (this.signUpForm.invalid) {
-      return;
-    }
-    this.isDisable = true;
-    this._loginService.signUpOfEmail(this.signUpForm.value)
-      .subscribe((data: any) => {
-        console.log("signup user details", data);
-        this._alertService.getSuccess(data.message);
-        $('.firstStep').css({ 'display': 'none' })
-        $('.secondStep').css({ 'display': 'block' });
-        this.isDisable = false;
-        this.isLoad = false;
-        this.signUpDetails = data.data.email;
-        console.log("first sign up details", this.signUpDetails);
-      }, err => {
-        console.log(err);
-        this._alertService.getError(err.message);
-        this.isDisable = true;
-      })
+  // onSubmit() {
+  //   this.isLoad = true;
+  //   this.submitted = true;
+  //   if (this.signUpForm.invalid) {
+  //     return;
+  //   }
+  //   this.isDisable = true;
+  //   this._loginService.signUpOfEmail(this.signUpForm.value)
+  //     .subscribe((data: any) => {
+  //       console.log("signup user details", data);
+  //       this._alertService.getSuccess(data.message);
+  //       $('.firstStep').css({ 'display': 'none' })
+  //       $('.thirdStep').css({ 'display': 'block' });
+  //       this.isDisable = false;
+  //       this.isLoad = false;
+  //       this.signUpDetails = data.data.email;
+  //       console.log("first sign up details", this.signUpDetails);
+  //     }, err => {
+  //       console.log(err);
+  //       this._alertService.getError(err.message);
+  //       this.isDisable = true;
+  //     })
+  // }
+  onSubmit(){
+          $('.firstStep').css({ 'display': 'none' })
+        $('.thirdStep').css({ 'display': 'block' });
   }
 
   /**
@@ -145,7 +149,7 @@ export class SignupComponent implements OnInit {
     console.log("data", data);
     const verified = {
       code: data,
-      email: this.signUpDetails
+      // email: this.signUpDetails
     }
     this._loginService.verificationCode(verified)
       .subscribe((data: any) => {
@@ -154,7 +158,7 @@ export class SignupComponent implements OnInit {
         this.userId = data.data.userId;
         console.log(this.userId);
         $('.secondStep').css({ 'display': 'none' });
-        $('.thirdStep').css({ 'display': 'block' })
+        $('.fourthStep').css({ 'display': 'block' })
       }, err => {
         console.log(err);
       })
@@ -168,17 +172,17 @@ export class SignupComponent implements OnInit {
    */
   personalDetails() {
     this.isLoad = true;
-    console.log(this.personalDetailsForm.value);
-    const finalDetails = {
-      details: this.personalDetailsForm.value,
-      userId: this.userId
-    }
-    this._loginService.personalDetails(finalDetails)
+    console.log(this.signUpForm.value);
+    // const finalDetails = {
+    //   details: this.personalDetailsForm.value,
+    //   userId: this.userId
+    // }
+    this._loginService.signUpOfEmail(this.signUpForm.value)
       .subscribe((data: any) => {
         console.log("final response", data);
         this.newUserName = data.data.firstName;
         $('.thirdStep').css({ 'display': 'none' });
-        $('.fourthStep').css({ 'display': 'block' })
+        $('.secondStep').css({ 'display': 'block' })
         this.isLoad = false;
         this._alertService.getSuccess(data.message);
         // this.router.navigate(['/login']);

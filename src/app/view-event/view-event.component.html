@@ -54,7 +54,7 @@
                     </div>
                     <div *ngFor="let item of allDetailsofEvent">
                         <div class="">
-                            <button class="btn-primary w-100 joinNowBtn" [disabled]="isDisable"
+                            <button class="btn w-100 joinNowBtn" [disabled]="isDisable"
                                 (click)="joinNow(item._id)" *ngIf="!isCelebrant"  title="{{isJoined ? 'you join successfully' : ''}}">Join
                                 Now</button>
                             <div class="all_event_details">

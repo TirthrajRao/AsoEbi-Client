@@ -30,6 +30,7 @@ export class MyEventComponent implements OnInit {
   selectedGroup;
   selectedGender;
   isDisable;
+  totalCollectionOfUser;
   userName = JSON.parse(localStorage.getItem('userName'));
   constructor(private router: Router, private _eventService: EventService, private alertService: AlertService,
     private _loginService: LoginService, private change: ChangeDetectorRef) {
@@ -60,6 +61,7 @@ export class MyEventComponent implements OnInit {
       console.log(this.itemNamePrint)
     })
     this.getMyEvents();
+    this.getTotalCollection();
     // this.initCollectDetailSlick();
     // this.initActivitySlider();
     $(window).on('resize', this.initActivitySlider());
@@ -68,6 +70,17 @@ export class MyEventComponent implements OnInit {
     }, 100)
   }
 
+
+
+  getTotalCollection(){
+    this._eventService.getTotalCollection()
+    .subscribe((data: any)=>{
+      console.log(data);
+      this.totalCollectionOfUser = data.data;
+    }, err=>{
+      console.log(err);
+    })
+  }
 
   /**
    * @param eventTheme 

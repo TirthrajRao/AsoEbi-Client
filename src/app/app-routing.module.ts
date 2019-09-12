@@ -43,6 +43,10 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: './home/home.module#HomeModule' 
+  },
+  {
+    path: 'id_token',
+    redirectTo: 'login',
   }
 ];
 

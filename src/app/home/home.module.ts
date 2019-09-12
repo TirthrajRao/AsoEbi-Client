@@ -29,6 +29,7 @@ import { MessagesOfEventComponent } from '../messages-of-event/messages-of-event
 import { InvitationEventComponent } from '../invitation-event/invitation-event.component';
 import { AutoMessageComponent } from '../auto-message/auto-message.component';
 import { EventActivityComponent } from '../event-activity/event-activity.component';
+import { EditEventComponent } from '../edit-event/edit-event.component';
 
 
 const routes: Routes = [
@@ -50,6 +51,10 @@ const routes: Routes = [
         path: 'editEvent/:id',
         component: CreateEventComponent,
       },
+      {
+        path: 'singleEditEvent/:id',
+        component: EditEventComponent,
+      },     
       {
         path: 'myEvent',
         component: MyEventComponent,
@@ -150,7 +155,8 @@ const routes: Routes = [
     MessagesOfEventComponent,
     InvitationEventComponent,
     AutoMessageComponent,
-    EventActivityComponent
+    EventActivityComponent,
+    EditEventComponent,
   ],
   imports: [
     CommonModule,

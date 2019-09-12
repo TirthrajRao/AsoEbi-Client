@@ -158,7 +158,7 @@ export class EventService {
    */
   deleteEvent(id) {
     console.log("delete event id", id);
-    return this.http.delete(config.baseApiUrl + "api/event/" + id);
+    return this.http.delete(config.baseApiUrl + "api/event-delete/" + id);
   }
 
   /**
@@ -301,5 +301,9 @@ export class EventService {
   }
   selectBankAccount(data){
    return this.http.put(config.baseApiUrl+ "api/bank-account", data);
+  }
+
+  getTotalCollection(){
+   return this.http.get(config.baseApiUrl + "api/mycollection");
   }
 }

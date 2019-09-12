@@ -297,7 +297,6 @@ export class LoginComponent implements OnInit {
         this.alertService.getError(err.error.message)
         this.isDisable = false;
         this.loginForm.reset();
-        console.log("disable:", this.isDisable);
       })
   }
 
@@ -416,3 +415,41 @@ export class LoginComponent implements OnInit {
   }
 
 }
+
+
+
+
+// main-es2015.a12f6de474005ab90da6.js:1 ERROR Error: Uncaught (in promise): Error: Cannot match any routes. URL Segment: 'id_token'
+// Error: Cannot match any routes. URL Segment: 'id_token'
+//     at Nt.noMatchError (main-es2015.a12f6de474005ab90da6.js:1)
+//     at u.expandSegmentGroup.pipe.pipe.e [as selector] (main-es2015.a12f6de474005ab90da6.js:1)
+//     at u.error (main-es2015.a12f6de474005ab90da6.js:1)
+//     at o._error (main-es2015.a12f6de474005ab90da6.js:1)
+//     at o.error (main-es2015.a12f6de474005ab90da6.js:1)
+//     at o._error (main-es2015.a12f6de474005ab90da6.js:1)
+//     at o.error (main-es2015.a12f6de474005ab90da6.js:1)
+//     at o._error (main-es2015.a12f6de474005ab90da6.js:1)
+//     at o.error (main-es2015.a12f6de474005ab90da6.js:1)
+//     at u._error (main-es2015.a12f6de474005ab90da6.js:1)
+//     at u.error (main-es2015.a12f6de474005ab90da6.js:1)
+//     at C._error (main-es2015.a12f6de474005ab90da6.js:1)
+//     at C.error (main-es2015.a12f6de474005ab90da6.js:1)
+//     at c.notifyError (main-es2015.a12f6de474005ab90da6.js:1)
+//     at r._error (main-es2015.a12f6de474005ab90da6.js:1)
+//     at r.error (main-es2015.a12f6de474005ab90da6.js:1)
+//     at P (polyfills-es2015.5728f680576ca47e99fe.js:1)
+//     at P (polyfills-es2015.5728f680576ca47e99fe.js:1)
+//     at C.t.scheduleMicroTask (polyfills-es2015.5728f680576ca47e99fe.js:1)
+//     at a.invokeTask (polyfills-es2015.5728f680576ca47e99fe.js:1)
+//     at Object.onInvokeTask (main-es2015.a12f6de474005ab90da6.js:1)
+//     at a.invokeTask (polyfills-es2015.5728f680576ca47e99fe.js:1)
+//     at t.runTask (polyfills-es2015.5728f680576ca47e99fe.js:1)
+//     at _ (polyfills-es2015.5728f680576ca47e99fe.js:1)
+//     at r (bluebird.min.js:31)
+//     at r._settlePromiseFromHandler (bluebird.min.js:30)
+//     at r._settlePromise (bluebird.min.js:30)
+//     at r._settlePromiseCtx (bluebird.min.js:30)
+//     at r._drainQueue (bluebird.min.js:29)
+//     at r._drainQueues (bluebird.min.js:29)
+//     at drainQueues (bluebird.min.js:29)
+//     at MutationObserver.<anonymous> (bluebird.min.js:30)

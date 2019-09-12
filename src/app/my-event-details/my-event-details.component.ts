@@ -49,10 +49,7 @@ export class MyEventDetailsComponent implements OnInit {
 
   }
 
-  editEvent(Id) {
-    this.router.navigate(['/home/editEvent/', Id])
 
-  }
 
   initActivitySlider() {
     $('.event_slider2').not('.slick-initialized').slick({
@@ -271,27 +268,11 @@ export class MyEventDetailsComponent implements OnInit {
     $('.' + goto).css({ 'display': 'block' });
     $('.' + from).css({ 'display': 'none' })
   }
-  editEventDeatils(id) {
-    console.log(id);
-    this.router.navigate(['/home/editEvent/', id])
-
-  }
   invitation(id) {
     this.router.navigate(['/home/invitation/', id])
   }
   autoMessage(id) {
     this.router.navigate(['/home/autoMessage/', id])
-  }
-  deleteEvent(eventid) {
-    console.log(eventid);
-    this._eventService.deleteEvent(eventid).subscribe((data: any) => {
-      console.log("delete event response", data);
-      this.alertService.getSuccess(data.data.message)
-      this.router.navigate(['home/myEvent'])
-    }, (err: any) => {
-      console.log(err);
-      this.alertService.getError(err.message);
-    })
   }
   selectBank(id) {
     console.log(id)
@@ -300,5 +281,9 @@ export class MyEventDetailsComponent implements OnInit {
   logout() {
     this._loginService.logout();
     this.router.navigate(['/login']);
+  }
+
+  editEvent(id) {
+    this.router.navigate(['home/singleEditEvent/', id])
   }
 }

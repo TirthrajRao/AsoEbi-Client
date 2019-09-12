@@ -32,51 +32,6 @@
                             <a routerLink="/login" class="btn_enter2 text-white float-right">Enter</a>
                         </div>
                         <div class="login_form_sec">
-                            <!-- <div class="row ">
-                                <div class="email_display col-2 pr-0">
-                                    <div class="email_sec">
-                                        <a href="#">
-                                            <img src="/assets/images/email.png">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-10 col-xs-12 social_media_login">
-                                    <div class="row">
-                                        <div class="col-6 p-0">
-                                            <div class="facebook_sec">
-                                                <a href="#">
-                                                    <img src="/assets/images/facebook.png">
-                                                    <span>facebook</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 p-0">
-                                            <div class="google_sec">
-                                                <a href="#">
-                                                    <img src="/assets/images/google.png">
-                                                    <span>google</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 p-0">
-                                            <div class="microsoft_sec">
-                                                <a href="#">
-                                                    <img src="/assets/images/microsoft.png">
-                                                    <span>microsoft</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-6 p-0">
-                                            <div class="yahoo_sec">
-                                                <a href="#">
-                                                    <img src="/assets/images/yahoo.png">
-                                                    <span>yahoo</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
                             <form class="join_form login_form" [formGroup]="signUpForm" autocomplete="off">
                                 <div class="form-group mt-2">
                                     <div class="input-group ">
@@ -108,7 +63,7 @@
                                 </div>
                                 <div class="btn_login">
                                     <button type="submit" class="btn text-white login_btn" (click)="onSubmit()"
-                                        [disabled]="isDisable || signUpForm.invalid">Create</button>
+                                        >Create</button>
                                 </div>
                             </form>
                         </div>
@@ -141,7 +96,7 @@
                                 <button type="button" class="btn text-white form_join_btn"
                                     (click)="verifyCode(joinCode.value)">Join</button>
                                 <p class="text-white text-center enter_join_code">Enter Join code<br>sent to your
-                                    email/<br>phone number</p>
+                                    email</p>
                             </form>
                         </div>
                     </div>
@@ -158,20 +113,20 @@
                 <h3>Aso Ebi</h3>
                 <div class="join_aso_ebi_sec4">
                     <div class="Join_inner_content_box">
-                        <form class="join_form join_name" [formGroup]="personalDetailsForm" autocomplete="off">
+                        <form class="join_form join_name" [formGroup]="signUpForm" autocomplete="off">
                             <div class="form-group">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="First Name" pattern="[a-zA-Z]+"
-                                        name="fname" (input)="validateFirstName(personalDetailsForm.value)"
-                                        id="firstName" class="form-control" formControlName="firstName"
-                                        [ngClass]="{ 'is-invalid': p.firstName.touched && p.firstName.errors }">
+                                        name="fname" (input)="validateFirstName(signUpForm.value)" id="firstName"
+                                        class="form-control" formControlName="firstName"
+                                        [ngClass]="{ 'is-invalid': f.firstName.touched && f.firstName.errors }">
                                     <div id="message1"></div>
-                                    <div *ngIf=" p.firstName.touched && p.firstName.errors"
+                                    <div *ngIf=" f.firstName.touched && f.firstName.errors"
                                         class="invalid-feedback text-white">
-                                        <div *ngIf="p.firstName.errors.required">Name is required</div>
-                                        <div *ngIf="p.firstName.errors.minlength">Name must be at least 2 characters
+                                        <div *ngIf="f.firstName.errors.required">Name is required</div>
+                                        <div *ngIf="f.firstName.errors.minlength">Name must be at least 2 characters
                                         </div>
-                                        <div *ngIf="p.firstName.errors.pattern">Please enter only alphabates</div>
+                                        <div *ngIf="f.firstName.errors.pattern">Please enter only alphabates</div>
                                     </div>
                                 </div>
                             </div>
@@ -179,34 +134,34 @@
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Last Name" pattern="[a-zA-Z]+"
                                         name="lname" formControlName="lastName"
-                                        (input)="validateLastName(personalDetailsForm.value)" id="lastName"
-                                        [ngClass]="{ 'is-invalid': p.lastName.touched && p.lastName.errors }">
+                                        (input)="validateLastName(signUpForm.value)" id="lastName"
+                                        [ngClass]="{ 'is-invalid': f.lastName.touched && f.lastName.errors }">
                                     <div id="message2"></div>
-                                    <div *ngIf=" p.lastName.touched && p.lastName.errors"
+                                    <div *ngIf=" f.lastName.touched && f.lastName.errors"
                                         class="invalid-feedback text-white">
-                                        <div *ngIf="p.lastName.errors.required">Name is required</div>
-                                        <div *ngIf="p.lastName.errors.minlength">Name must be at least 2 characters
+                                        <div *ngIf="f.lastName.errors.required">Name is required</div>
+                                        <div *ngIf="f.lastName.errors.minlength">Name must be at least 2 characters
                                         </div>
-                                        <div *ngIf="p.lastName.errors.pattern">Please enter only alphabates</div>
+                                        <div *ngIf="f.lastName.errors.pattern">Please enter only alphabates</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Mobile Number" name="no"
-                                        formControlName="mobile" (input)="validatePhone(personalDetailsForm.value)"
-                                        id="mobile" [ngClass]="{ 'is-invalid': p.mobile.touched && p.mobile.errors }">
+                                        formControlName="mobile" (input)="validatePhone(signUpForm.value)" id="mobile"
+                                        [ngClass]="{ 'is-invalid': f.mobile.touched && f.mobile.errors }">
                                     <div id="message"></div>
-                                    <div *ngIf="p.mobile.touched && p.mobile.errors"
+                                    <div *ngIf="f.mobile.touched && f.mobile.errors"
                                         class="invalid-feedback text-white">
-                                        <div *ngIf="p.mobile.errors.minlength">Phone must be only 10 digits</div>
-                                        <div *ngIf="p.mobile.errors.maxlength">Phone must be only 10 digits</div>
+                                        <div *ngIf="f.mobile.errors.minlength">Phone must be only 10 digits</div>
+                                        <div *ngIf="f.mobile.errors.maxlength">Phone must be only 10 digits</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="btn_submit">
                                 <button class="btn text-white submit_btn text-center" (click)="personalDetails()"
-                                    [disabled]="isDisable || personalDetailsForm.invalid">Submit</button>
+                                    [disabled]="isDisable || signUpForm.invalid">Submit</button>
                             </div>
                         </form>
                     </div>
@@ -226,7 +181,8 @@
                             <a routerLink="/login" class="btn_enter5 float-right">Enter</a>
                         </div>
                         <div class="user_first_name">
-                            <p class="text-white"> Hello {{newUserName}}, your<br> account is now live. Click<br>enter to
+                            <p class="text-white"> Hello {{newUserName}}, your<br> account is now live. Click<br>enter
+                                to
                                 start collecting for<br>your next events.</p>
                         </div>
                     </div>

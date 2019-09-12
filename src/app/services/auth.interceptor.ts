@@ -47,6 +47,14 @@ export class AuthInterceptor implements HttpInterceptor {
             console.log("interceptorsssssssss error by meeeeeeeeeee", error);
             const errorMessage = error.error.message;
             console.log("error in interceptor", errorMessage);
+            // if(error.status === 400){
+            //   Swal.fire({
+            //     type: 'error',
+            //     title:  errorMessage,
+            //     showConfirmButton: false,
+            //     timer: 2000
+            //   })
+            // }
             if (error.status === 401) {
               const idtoken = (localStorage.removeItem('currentUser'));
               Swal.fire({
@@ -57,7 +65,7 @@ export class AuthInterceptor implements HttpInterceptor {
               })
               this.router.navigate(['/login']);
             }
-            return throwError('backend comm error');
+            return throwError(error.error);
           })
         );
     } else {

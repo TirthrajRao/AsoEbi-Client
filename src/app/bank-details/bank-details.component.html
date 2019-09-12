@@ -27,18 +27,20 @@
                                     <div class="all_menu_content  d-flex flex-wrap align-content-center">
                                         <ul>
                                             <li><a routerLink="/myEvent" class="text-white text-center new_event">my
-                                                event</a>
-                                        </li>
-                                        <li><a routerLink="/createEvent" class="text-white text-center my_event">new
-                                                event</a></li>
-                                        <li><a routerLink="/bankDetails" class="text-white text-center my_account">bank
-                                                account</a>
-                                        </li>
-                                        <li><a routerLink="/reset-password"
-                                                class="text-white text-center my_account">Reset
-                                                Password</a></li>
-                                        <li><a (click)="logout()" class="text-white text-center my_account">Logout</a>
-                                        </li>
+                                                    event</a>
+                                            </li>
+                                            <li><a routerLink="/createEvent" class="text-white text-center my_event">new
+                                                    event</a></li>
+                                            <li><a routerLink="/bankDetails"
+                                                    class="text-white text-center my_account">bank
+                                                    account</a>
+                                            </li>
+                                            <li><a routerLink="/reset-password"
+                                                    class="text-white text-center my_account">Reset
+                                                    Password</a></li>
+                                            <li><a (click)="logout()"
+                                                    class="text-white text-center my_account">Logout</a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -53,7 +55,7 @@
                                     formControlName="bankName"
                                     [ngClass]="{ 'is-invalid': f.bankName.touched && f.bankName.errors }"
                                     placeholder="Bank Name" name="bname">
-                                <span id="message1" style="color: red; font-size: 14px;"></span>
+                                <p id="message1" style="color: red; font-size: 14px;"></p>
                                 <div class="col-md-2" *ngIf=" f.bankName.touched && f.bankName.errors"
                                     class="invalid-feedback text-white">
                                     <div *ngIf="f.bankName.errors.required">Name is required</div>
@@ -69,7 +71,7 @@
                                     (input)="validateAccountNumber(bankDetailsForm.value)" id="accountNumber"
                                     [ngClass]="{ 'is-invalid': f.accountNumber.touched && f.accountNumber.errors }"
                                     placeholder="Account Number">
-                                <span id="message2" style="color: red; font-size: 14px;"></span>
+                                <p id="message2" style="color: red; font-size: 14px;"></p>
                                 <div *ngIf="f.accountNumber.touched && f.accountNumber.errors"
                                     class="invalid-feedback text-white">
                                     <div *ngIf="f.accountNumber.errors.required">Account Number is required</div>
@@ -114,19 +116,17 @@
                             <div class="event_menu">
                                 <div class="all_menu_content  d-flex flex-wrap align-content-center">
                                     <ul>
+                                        <li><a routerLink="/home" class="text-white text-center my_account">Home</a>
+                                        </li>
                                         <li><a routerLink="/myEvent" class="text-white text-center new_event">my
                                                 event</a></li>
                                         <li><a routerLink="/createEvent" class="text-white text-center my_event">new
                                                 event</a></li>
-                                        <li><a routerLink="/bankDetails" class="text-white text-center my_account">bank
-                                                account</a>
-                                        </li>
                                         <li><a routerLink="/reset-password"
                                                 class="text-white text-center my_account">Reset
                                                 Password</a></li>
                                         <li><a (click)="logout()" class="text-white text-center my_account">Logout</a>
                                         </li>
-                                        <li><a href="#" class="text-white text-center my_messages">Messages</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -173,7 +173,8 @@
                                     <input type="radio" name="checkButton" id="box1" value="direct">
                                     <span class="checkmark"></span>
                                 </label>
-                                <label class="container" *ngIf="eventDetails">Franster on {{eventDetails.paymentDeadlineDate | date}} to my account (this option saves
+                                <label class="container" *ngIf="eventDetails">Franster on
+                                    {{eventDetails.paymentDeadlineDate | date}} to my account (this option saves
                                     you on alert notifications)
                                     <input type="radio" name="checkButton" id="box2" value="indirect">
                                     <span class="checkmark"></span>

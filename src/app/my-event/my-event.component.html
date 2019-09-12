@@ -33,7 +33,6 @@
                             <div class="all_menu_content  d-flex flex-wrap align-content-center">
                                 <ul>
                                     <li><a routerLink="/home" class="text-white new_event">Home</a></li>
-                                    <li><a routerLink="/myEvent" class="text-white new_event">my event</a></li>
                                     <li><a routerLink="/createEvent" class="text-white my_event">new event</a>
                                     </li>
                                     <li><a routerLink="/bankDetails" class="text-white my_account">bank
@@ -58,7 +57,7 @@
                 <div id="dynamic_loader_content">
                     <div class="firstStep">
                         <div class="collected">
-                            <p>Total Collected: 000,000;00 (dote)</p>
+                            <p>Total Collected: {{totalCollectionOfUser | currency:"&#x20A6;"}}</p>
                             <p>Check my collections for more details</p>
                         </div>
                     </div>

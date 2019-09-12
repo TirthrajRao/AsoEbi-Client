@@ -31,19 +31,19 @@
                                     <div class="enter_event_title">
                                         <h6 class="text-center text-white">Event Title</h6>
                                         <div class="form-group">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" id="eventTitle"
-                                                    formControlName="eventTitle" placeholder="Enter Event Title"
-                                                    ngModel="{{createdEventDetails ? createdEventDetails.eventTitle : ''}}"
-                                                    [ngClass]="{ 'is-invalid': f.eventTitle.touched && f.eventTitle.errors }">
-                                                <div class="col-md-2"
-                                                    *ngIf="f.eventTitle.touched && f.eventTitle.errors"
-                                                    class="invalid-feedback text-white">
-                                                    <div *ngIf="f.eventTitle.errors.required">eventTitle is required
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" id="eventTitle"
+                                                        formControlName="eventTitle" placeholder="Enter Event Title"
+                                                        ngModel="{{createdEventDetails ? createdEventDetails.eventTitle : ''}}"
+                                                        [ngClass]="{ 'is-invalid': f.eventTitle.touched && f.eventTitle.errors }">
+                                                    <div class="col-md-2"
+                                                        *ngIf="f.eventTitle.touched && f.eventTitle.errors"
+                                                        class="invalid-feedback text-white">
+                                                        <div *ngIf="f.eventTitle.errors.required">Event Title is Required.
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -77,7 +77,7 @@
                                         </ul>
                                         <div *ngIf="f.eventType.touched && f.eventType.errors"
                                             class="invalid-feedback text-white">
-                                            <div *ngIf="f.eventType.errors.required">eventType is required</div>
+                                            <div *ngIf="f.eventType.errors.required">Event Type is Required</div>
                                         </div>
                                     </div>
                                 </div>
@@ -109,10 +109,10 @@
                                                     [ngClass]="{ 'is-invalid': f.hashTag.touched && f.hashTag.errors }">
                                                 <div class="col-md-2" *ngIf="f.hashTag.touched && f.hashTag.errors"
                                                     class="invalid-feedback text-white">
-                                                    <div *ngIf="f.hashTag.errors.required">EventHashTag is required
+                                                    <div *ngIf="f.hashTag.errors.required">Event HashTag is Required
                                                     </div>
                                                     <div *ngIf="f.hashTag.errors.minlength">Name must be at least 4
-                                                        characters
+                                                        Characters
                                                     </div>
                                                 </div>
                                             </div>
@@ -678,13 +678,12 @@
                                         <div class="event_menu">
                                             <div class="all_menu_content  d-flex flex-wrap align-content-center">
                                                 <ul>
+                                                        <li><a routerLink="/home"
+                                                            class="text-white text-center my_event">Home</a></li>
                                                     <li><a routerLink="/myEvent"
                                                             class="text-white text-center new_event">my
                                                             event</a>
                                                     </li>
-                                                    <li><a routerLink="/createEvent"
-                                                            class="text-white text-center my_event">new
-                                                            event</a></li>
                                                     <li><a routerLink="/bankDetails"
                                                             class="text-white text-center my_account">bank
                                                             account</a>
@@ -702,7 +701,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <h6 class="text-center"># EventName</h6>
+                                <h6 class="text-center">{{eventName}}</h6>
                                 <div *ngIf="createdActivity && createdActivity.length">
                                     <div class="gender_slider1 gender_slider_space">
                                         <span *ngFor="let item of createdActivity;">
@@ -742,7 +741,7 @@
                                                     <input class="form-control" type="text"
                                                     placeholder="Enter Group Name" formControlName="groupName">
                                                 </div>
-                                                <div class="col-1 text-white p-0 mt-2">
+                                                <div class="col-1 text-white p-0 mt-2" *ngIf="groupForm.controls.group.controls.length>1">
                                                     <i class="fa fa-minus-circle" (click)="removeGroupField(i,item.value)"
                                                     aria-hidden="true"></i>
                                                 </div>

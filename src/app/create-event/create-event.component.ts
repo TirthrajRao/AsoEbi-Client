@@ -58,6 +58,7 @@ export class CreateEventComponent implements OnInit {
   eventHashTag;
   model;
   isLoad = false;
+  eventName;
   userName = JSON.parse(localStorage.getItem('userName'));
   constructor(private route: ActivatedRoute, private router: Router, private _eventService: EventService,
     private alertService: AlertService, private fb: FormBuilder, private _loginService: LoginService) {
@@ -71,10 +72,8 @@ export class CreateEventComponent implements OnInit {
     this.eventForm = new FormGroup({
       eventTitle: new FormControl('', [Validators.required]),
       eventType: new FormControl('', [Validators.required]),
-      // startDate: new FormControl(''),
-      // endDate: new FormControl(''),
       hashTag: new FormControl('', [Validators.required, Validators.minLength(4)]),
-      profile: new FormControl(''),
+      profile: new FormControl('',[Validators.required]),
       deadlineDate: new FormControl(''),
       isPublic: new FormControl(this.isPublicVal),
       isLogistics: new FormControl(this.isLogistics),
@@ -341,13 +340,14 @@ export class CreateEventComponent implements OnInit {
   get groupFormData() { return <FormArray>this.groupForm.get('group'); }
 
   addEvent() {
-    this.isLoad = true;
     this.eventForm.value.deadlineDate = $('#deadLineDate').val();
     console.log(this.eventForm.value);
     console.log("data of event", $('.slick-active').hasClass("done"));
     // if ($('.slick-active').hasClass("done")) {
-    console.log("in twelve_slide");
-    this._eventService.addEvent(this.eventForm.value, this.files, this.themeFiles)
+      console.log("in twelve_slide");
+      if(this.files.length){
+        this.isLoad = true;
+      this._eventService.addEvent(this.eventForm.value, this.files, this.themeFiles)
       .subscribe((data: any) => {
         console.log("event details", data);
         $('.step_1').css({ 'display': 'none' })
@@ -356,16 +356,20 @@ export class CreateEventComponent implements OnInit {
         console.log("created eventid", this.eventId);
         this.isLoad = false;
         this.getActivityFrom();
-      }, (err: any) => {
+      }, (error: any) => {
         this.isLoad = false;
-        console.log(err);
-        this.alertService.getError(err.message);
+        console.log(error);
+        this.alertService.getError(error.message);
       })
-    // }
-    // console.log("data of event", $('.slick-active').hasClass("twelve_slide"));
-    // if ($('.slick-active').hasClass("twelve_slide")) {
-    //   $('.slick-active').addClass("done")
-    // }
+    }
+    else{
+      Swal.fire({
+        type: 'error',
+        title: "Profile Photo is required" ,
+        showConfirmButton: false,
+        timer: 2000
+      })
+    }
   }
 
   /**
@@ -1025,6 +1029,8 @@ export class CreateEventComponent implements OnInit {
         console.log(data);
         this.createdActivity = data.data.activity;
         console.log(this.createdActivity);
+        this.eventName = data.data.eventTitle;
+        console.log(this.eventName);
         this.initGroupForm(this.createdActivity, true);
         if ($('.gender_slider').hasClass('slick-initialized'))
           $('.gender_slider').slick('unslick');

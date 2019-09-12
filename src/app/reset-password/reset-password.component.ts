@@ -66,5 +66,8 @@ export class ResetPasswordComponent implements OnInit {
        this.match = false;
      }
    }
-
+   logout() {
+    this._loginService.logout();
+    this.router.navigate(['/login']);
+  }
  }

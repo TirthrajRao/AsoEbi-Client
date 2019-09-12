@@ -237,11 +237,6 @@ export class AutoMessageComponent implements OnInit {
     $('.' + goto).css({ 'display': 'block' });
     $('.' + from).css({ 'display': 'none' })
   }
-  editEventDeatils(id) {
-    console.log(id);
-    this.router.navigate(['/home/editEvent/', id])
-
-  }
   thankYouMessage(id) {
     console.log("thank you message event id", id);
     this.router.navigate(['/home/thank-you', id])
@@ -251,10 +246,11 @@ export class AutoMessageComponent implements OnInit {
     this.autoMessageForm.value.messageDate = $('#afterEventDate').val();
     console.log(this.autoMessageForm.value);
     console.log('eventId:', this.eventId);
-
     this._eventService.afterEventMessageDetail(this.eventId, this.autoMessageForm.value)
       .subscribe((data: any) => {
+        this.alertService.getSuccess(data.message)
         console.log('Success Response:', data);
+        this.autoMessageForm.reset();
       }, err => {
         console.log(err);
       })
@@ -268,16 +264,9 @@ export class AutoMessageComponent implements OnInit {
     console.log(id)
     this.router.navigate(['home/bankDetails/', id])
   }
-  deleteEvent(eventid) {
-    console.log(eventid);
-    this._eventService.deleteEvent(eventid).subscribe((data: any) => {
-      console.log("delete event response", data);
-      this.alertService.getSuccess(data.data.message)
-      this.router.navigate(['home/myEvent'])
-    }, (err: any) => {
-      console.log(err);
-      this.alertService.getError(err.message);
-    })
+
+  editEvent(id){
+    this.router.navigate(['home/singleEditEvent/', id])
   }
 
 }

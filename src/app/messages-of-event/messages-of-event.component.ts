@@ -169,7 +169,7 @@ export class MessagesOfEventComponent implements OnInit {
   }
 
   eventDeatils(id) {
-this.isLoad = true;
+    this.isLoad = true;
     console.log(id);
     //   let className = $('#dynamic_loader_content > div:visible').attr('class');
     this._eventService.getEventDetails(id)
@@ -186,7 +186,7 @@ this.isLoad = true;
           $('.event_slider4').slick('unslick');
 
         if ($('.collect_detail').hasClass('slick-initialized'))
-        $('.collect_detail').slick('unslick');
+          $('.collect_detail').slick('unslick');
         setTimeout(() => {
           this.initActivitySlider();
           this.initCollectDetailSlick();
@@ -226,11 +226,6 @@ this.isLoad = true;
     $('.' + goto).css({ 'display': 'block' });
     $('.' + from).css({ 'display': 'none' })
   }
-  editEventDeatils(id) {
-    console.log(id);
-    this.router.navigate(['/home/editEvent/', id])
-
-  }
   autoMessage(id) {
     this.router.navigate(['/home/autoMessage/', id])
   }
@@ -246,15 +241,7 @@ this.isLoad = true;
     console.log(id)
     this.router.navigate(['home/bankDetails/', id])
   }
-  deleteEvent(eventid) {
-    console.log(eventid);
-    this._eventService.deleteEvent(eventid).subscribe((data: any) => {
-      console.log("delete event response", data);
-      this.alertService.getSuccess(data.data.message)
-      this.router.navigate(['home/myEvent'])
-    }, (err: any) => {
-      console.log(err);
-      this.alertService.getError(err.message);
-    })
+  editEvent(id) {
+    this.router.navigate(['home/singleEditEvent/', id])
   }
 }
