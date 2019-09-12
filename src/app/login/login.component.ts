@@ -64,6 +64,7 @@ export class LoginComponent implements OnInit {
   show: boolean;
   pwd: boolean;
   userName;
+  varificationEmail;
   isLoad = false;
   msalConfig = {
     auth: {
@@ -269,6 +270,7 @@ export class LoginComponent implements OnInit {
     console.log("login details", this.loginForm);
     this._loginService.login(this.loginForm.value)
       .subscribe(data => {
+        console.log("data of invalid user", data);
         this.isLoad = false;
         let firstName = data.data.firstName
         let lastName = data.data.lastName
@@ -293,6 +295,11 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/home']);
         }
       }, (err: any) => {
+        let varification = err.error.data;
+        console.log("err of invalid", varification)
+      this.varificationEmail = varification.useremail
+      localStorage.setItem('varificationEmail', JSON.stringify(this.varificationEmail));
+      this.router.navigate(['/verification']);
         this.isLoad = false;
         this.alertService.getError(err.error.message)
         this.isDisable = false;

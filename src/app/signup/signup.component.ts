@@ -17,6 +17,7 @@ export class SignupComponent implements OnInit {
   submitted = false;
   signUpDetails;
   userId;
+  email;
   isLoad = false;
   newUserName;
 
@@ -140,25 +141,18 @@ export class SignupComponent implements OnInit {
         $('.thirdStep').css({ 'display': 'block' });
   }
 
-  /**
-   * @param {Object} data
-   * Check verification code for new register user 
-   */
   verifyCode(data) {
     this.isLoad = true;
     console.log("data", data);
     const verified = {
       code: data,
-      // email: this.signUpDetails
+      email: this.email
     }
     this._loginService.verificationCode(verified)
       .subscribe((data: any) => {
         console.log("positive response", data);
         this.isLoad = false;
-        this.userId = data.data.userId;
-        console.log(this.userId);
-        $('.secondStep').css({ 'display': 'none' });
-        $('.fourthStep').css({ 'display': 'block' })
+        this.router.navigate(['/login']);
       }, err => {
         console.log(err);
       })
@@ -180,6 +174,8 @@ export class SignupComponent implements OnInit {
     this._loginService.signUpOfEmail(this.signUpForm.value)
       .subscribe((data: any) => {
         console.log("final response", data);
+        this.email = data.data.email
+        console.log(this.email);
         this.newUserName = data.data.firstName;
         $('.thirdStep').css({ 'display': 'none' });
         $('.secondStep').css({ 'display': 'block' })

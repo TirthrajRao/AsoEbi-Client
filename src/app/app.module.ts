@@ -15,6 +15,7 @@ import { GuestEventComponent } from './guest-event/guest-event.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { DisplayPageComponent } from './display-page/display-page.component';
 import {HomeModule} from './home/home.module';
+import { VerificationComponent } from './verification/verification.component';
 
 /**
  * Key For login with google and facebook 
@@ -41,6 +42,7 @@ export function provideConfig() {
     GuestEventComponent,
     ForgotPasswordComponent,
     DisplayPageComponent,
+    VerificationComponent,
   ],
   imports: [
     BrowserModule,

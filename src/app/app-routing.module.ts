@@ -9,50 +9,55 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
 import { AdminEventDetailsComponent } from './admin-event-details/admin-event-details.component';
 import { DisplayPageComponent } from './display-page/display-page.component';
+import { VerificationComponent } from './verification/verification.component';
 import {HomeModule} from './home/home.module';
 
 /**
  * Routing of all pages 
  */
-const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'display-page',
-    pathMatch: 'full'
-  },
-  {
-    path: 'display-page',
-    component: DisplayPageComponent
-  },
-  {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'signUp',
-    component: SignupComponent
-  },
-  {
-    path: 'welcome-guest/:id',
-    component: GuestEventComponent
-  },
-  {
-    path: 'forgot-password/:id',
-    component: ForgotPasswordComponent
-  },
-  {
-    path: 'home',
-    loadChildren: './home/home.module#HomeModule' 
-  },
-  {
-    path: 'id_token',
-    redirectTo: 'login',
-  }
-];
+ const routes: Routes = [
+ {
+   path: '',
+   redirectTo: 'display-page',
+   pathMatch: 'full'
+ },
+ {
+   path: 'display-page',
+   component: DisplayPageComponent
+ },
+ {
+   path: 'login',
+   component: LoginComponent
+ },
+ {
+   path: 'signUp',
+   component: SignupComponent
+ },
+ {
+   path: 'welcome-guest/:id',
+   component: GuestEventComponent
+ },
+ {
+   path: 'forgot-password/:id',
+   component: ForgotPasswordComponent
+ },
+ {
+   path: 'home',
+   loadChildren: './home/home.module#HomeModule' 
+ },
+ {
+   path: 'id_token',
+   redirectTo: 'login',
+ },
+ {
+   path: 'verification',
+   component: VerificationComponent
+ }
+ ];
 
-@NgModule({
-  // { useHash: true }
-  imports: [RouterModule.forRoot(routes, { useHash: true })], 
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+ @NgModule({
+   // { useHash: true }
+   imports: [RouterModule.forRoot(routes, { useHash: true })], 
+   exports: [RouterModule]
+ })
+ export class AppRoutingModule { }
