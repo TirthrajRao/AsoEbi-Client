@@ -16,7 +16,7 @@
         <h3 class="text-center user_name" data-toggle="tooltip" title="{{eventHashTag}}">{{eventHashTag}}</h3>
 
         <div class="cart_pic text-center" (click)="myCart(item._id)" *ngFor="let item of allDetailsofEvent">
-            <img src="/assets/images/cart.png" data-toggle="tooltip" *ngIf="isJoined" title="My Cart">
+            <img src="/assets/images/cart.png" data-toggle="tooltip" title="My Cart">
         </div>
         <div class="veiw_event">
             <div class="Join_inner_content_box h-100 mb-3">
@@ -61,18 +61,18 @@
                                 <div class="row">
                                     <div class="col-4 pr-0">
                                         <a class="text-white text-center event_type event_tooltip" data-toggle="tooltip"
-                                            data-placement="top" title="{{item.eventType}}">{{item.eventType}}
+                                            data-placement="top" title="{{item.eventType}}">EventType:<br>{{item.eventType}}
                                         </a>
                                     </div>
                                     <div class="col-4 pr-0">
                                         <a class="text-white text-center event_title event_tooltip"
                                             data-toggle="tooltip" data-placement="top"
-                                            title="{{item.eventTitle}}">{{item.eventTitle}}
+                                            title="{{item.eventTitle}}">EventTitle:<br>{{item.eventTitle}}
                                         </a>
                                     </div>
                                     <div class="col-4 pl=0 ">
                                         <a class="text-white text-center event_tooltip" data-toggle="tooltip"
-                                            data-placement="top" title="{{item.hashTag}}">{{item.hashTag}}</a>
+                                            data-placement="top" title="{{item.hashTag}}">Event HashTag:<br>{{item.hashTag}}</a>
                                     </div>
                                 </div>
                             </div>
@@ -105,7 +105,7 @@
                                                                     <div class="add_to_cart_btn"
                                                                         (click)="addToCart(item._id,male._id)">
                                                                         <a class="text-white"
-                                                                            *ngIf="isJoined == true">Add to Cart</a>
+                                                                           >Add to Cart</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -132,7 +132,7 @@
                                                                     <div class="add_to_cart_btn"
                                                                         (click)="addToCart(item._id,female._id)">
                                                                         <a class="text-white"
-                                                                            *ngIf="isJoined == true">Add to Cart</a>
+                                                                            >Add to Cart</a>
                                                                     </div>
                                                                 </div>
                                                             </div>

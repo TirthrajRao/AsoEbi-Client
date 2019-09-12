@@ -55,7 +55,7 @@
                                     formControlName="bankName"
                                     [ngClass]="{ 'is-invalid': f.bankName.touched && f.bankName.errors }"
                                     placeholder="Bank Name" name="bname">
-                                <p id="message1" style="color: red; font-size: 14px;"></p>
+                                <span id="message1"  class="w-100 text-white"></span>
                                 <div class="col-md-2" *ngIf=" f.bankName.touched && f.bankName.errors"
                                     class="invalid-feedback text-white">
                                     <div *ngIf="f.bankName.errors.required">Name is required</div>
@@ -71,7 +71,7 @@
                                     (input)="validateAccountNumber(bankDetailsForm.value)" id="accountNumber"
                                     [ngClass]="{ 'is-invalid': f.accountNumber.touched && f.accountNumber.errors }"
                                     placeholder="Account Number">
-                                <p id="message2" style="color: red; font-size: 14px;"></p>
+                                <span id="message2" class="w-100 text-white"></span>
                                 <div *ngIf="f.accountNumber.touched && f.accountNumber.errors"
                                     class="invalid-feedback text-white">
                                     <div *ngIf="f.accountNumber.errors.required">Account Number is required</div>

@@ -4031,8 +4031,8 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	margin: 10px 6px 0px 0px;
 }
 
-.edit_event_section .new_event_menu, .coll_slide .new_event_menu, .eventC_page_section .new_event_menu, .eventB_page_section .new_event_menu, .final_step .new_event_menu, .forgot_pwd_section .new_event_menu, .reset_pwd_section .new_event_menu, .msg_page_section .new_event_menu, .thank_you_section .new_event_menu, .view_event_section .new_event_menu, .name_page_section .new_event_menu, .slider_page_section .new_event_menu {
-	z-index: 1070;
+.eventF_page_section .new_event_menu, .eventE_page_section .new_event_menu, .edit_event_section .new_event_menu, .coll_slide .new_event_menu, .eventC_page_section .new_event_menu, .eventB_page_section .new_event_menu, .final_step .new_event_menu, .forgot_pwd_section .new_event_menu, .reset_pwd_section .new_event_menu, .msg_page_section .new_event_menu, .thank_you_section .new_event_menu, .view_event_section .new_event_menu, .name_page_section .new_event_menu, .slider_page_section .new_event_menu {
+	z-index: 1050;
 }
 
 .slider_overlay p {
@@ -4856,10 +4856,11 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 /*eventD page end*/
 
 .event-count-box-scroll {
-	overflow-x: scroll;
+	overflow-x: hidden;
 	max-height: 102px;
 	border: 1px solid #fff;
 	margin: 0px 50px;
+	padding: 5px 0px;
 }
 
 /*eventE page start*/
@@ -5058,7 +5059,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	font-family: 'Russo One', sans-serif;
 	font-size: 18px;
 	word-wrap: all;
-	padding: 7px 10px;
+	padding: 7px 8px;
 	text-overflow: ellipsis;
 	display: inline-block;
 	white-space: nowrap;
@@ -5980,6 +5981,12 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 
 .close-male-item i {
 	position: absolute;
+}
+.collection_slider .slick-arrow.slick-next {
+   color: rgb(158, 194, 59);
+}
+.collection_slider_section .inner_content_btn .total_btn {
+    background-color: rgb(61, 187, 205);
 }
 /* event slider css end */
 
@@ -8819,6 +8826,9 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 	.new_event_sec p {
 		font-size: 10px;
 	}
+	.slider_overlay p {
+		font-size: 10px !important;
+	}
 	.new_event_sec .event_name {
 		margin-left: -5px;
 		font-size: 30px;
@@ -9083,6 +9093,7 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 @media(max-width: 812px) and (orientation: landscape) {
 	.join_page1_section, .join_page2_section, .join_page3_section, .join_page4_section, .join_page5_section, .enter_section, .msg_page_section, .home_slider_section, .reset_pwd_section, .forgot_pwd_section, .event_slider_section, .name_page_section, .thanks_page_section, .eventA_page_section, .collection_slider_section, .eventE_page_section, .edit_event_section {
 		height: auto;
+		padding: 10px;
 	}
 	.prising_list ul li {
 		padding: 2px 0px;
