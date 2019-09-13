@@ -28,7 +28,7 @@ export class ThankYouMessageComponent implements OnInit {
   files: Array<File> = [];
 
   constructor(private route: ActivatedRoute,
-    private router: Router, private _eventService: EventService,private _loginService: LoginService, private alertService: AlertService) {
+    private router: Router, private _eventService: EventService, private _loginService: LoginService, private alertService: AlertService) {
     this.sub = this.route.params.subscribe(params => {
       this.eventId = params.id;
       console.log(this.eventId);
@@ -41,6 +41,38 @@ export class ThankYouMessageComponent implements OnInit {
     $(".new_event_menu").click(function () {
       $(".new_event_menu_box").toggle();
     });
+    // function typeMessage(typing) {
+    //   var aText = new Array(
+    //     "{{thankYouMessage.message}}" 
+    //   );
+    //   var iSpeed = 100;
+    //   var iIndex = 0;
+    //   var iArrLength = aText[0].length;
+    //   var iScrollAt = 20;
+    //   var iTextPos = 0;
+    //   var sContents = '';
+    //   var iRow;
+    //   function typewriter() {
+    //     sContents = ' ';
+    //     iRow = Math.max(0, iIndex - iScrollAt);
+    //     var destination = document.getElementById("thankyou_font_msg");
+    //     while (iRow < iIndex) {
+    //       sContents += aText[iRow++] + '<br />';
+    //     }
+    //     destination.innerHTML = sContents + aText[iIndex].substring(0, iTextPos) + "";
+    //     if (iTextPos++ == iArrLength) {
+    //       iTextPos = 0;
+    //       iIndex++;
+    //       if (iIndex != aText.length) {
+    //         iArrLength = aText[iIndex].length;
+    //         setTimeout("typewriter()", 500);
+    //       }
+    //     } else {
+    //       setTimeout("typewriter()", iSpeed);
+    //     }
+    //   }
+    //   typewriter();
+    // }
     // menu toggle end
     /**
   * Thank you message form
@@ -64,7 +96,7 @@ export class ThankYouMessageComponent implements OnInit {
         console.log(err);
       })
   }
- 
+
   /**
    * Using of ckEditor for message
    */
@@ -87,12 +119,12 @@ export class ThankYouMessageComponent implements OnInit {
     console.log(this.thankyouMessageForm);
     this._eventService.thankyouMessage(this.thankyouMessageForm.value, this.files)
       .subscribe(data => {
+        this.thankyouMessageForm.reset();
         this.getThankYouMessage(this.eventId);
         console.log("thank you message response", data);
         //  this.router.navigate(['home/myEvent'])
         $('.step_one').css({ 'display': 'none' })
         $('.step_two').css({ 'display': 'block' })
-        this.thankyouMessageForm.reset();
       }, (err: any) => {
         console.log(err);
         this.alertService.getError(err.message);
@@ -118,11 +150,11 @@ export class ThankYouMessageComponent implements OnInit {
     })
   }
 
-  addThnakyou(){
+  addThnakyou() {
     $('.step_two').css({ 'display': 'none' })
     $('.step_one ').css({ 'display': 'block' })
   }
-  closeThnakyou(){
+  closeThnakyou() {
     $('.step_one').css({ 'display': 'none' })
     $('.step_two').css({ 'display': 'block' })
   }

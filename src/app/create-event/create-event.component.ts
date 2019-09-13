@@ -107,35 +107,35 @@ export class CreateEventComponent implements OnInit {
 
 
 
-    this.createdActivity = [
-      {
+    // this.createdActivity = [
+    //   {
 
-        activityName: "vzvsdfrsfrsr",
-        createdAt: "2019-09-03T13:56:44.676Z",
-        isDeleted: false,
-        updatedAt: "2019-09-03T13:56:44.676Z",
-        _id: "5d6f1ecbc9e2730f32beba99"
-      }, {
-        activityName: "dfsfdsfdsfdsfdsFdsf",
-        createdAt: "2019-09-03T13:56:44.676Z",
-        isDeleted: false,
-        updatedAt: "2019-09-03T13:56:44.676Z",
-        _id: "5d6f1ecbc9e2730f32beba98"
-      }, {
-        activityName: "fsdfdsfdsfZXCERere",
-        createdAt: "2019-09-03T13:56:44.676Z",
-        isDeleted: false,
-        updatedAt: "2019-09-03T13:56:44.676Z",
-        _id: "5d6f1ecbc9e2730f32beba97"
-      },
-      {
-        activityName: "cvvzcxvrtgrtrtrt",
-        createdAt: "2019-09-03T13:56:44.676Z",
-        isDeleted: false,
-        updatedAt: "2019-09-03T13:56:44.676Z",
-        _id: "5d6f1ecbc9e2730f32beba96"
-      }
-    ]
+    //     activityName: "vzvsdfrsfrsr",
+    //     createdAt: "2019-09-03T13:56:44.676Z",
+    //     isDeleted: false,
+    //     updatedAt: "2019-09-03T13:56:44.676Z",
+    //     _id: "5d6f1ecbc9e2730f32beba99"
+    //   }, {
+    //     activityName: "dfsfdsfdsfdsfdsFdsf",
+    //     createdAt: "2019-09-03T13:56:44.676Z",
+    //     isDeleted: false,
+    //     updatedAt: "2019-09-03T13:56:44.676Z",
+    //     _id: "5d6f1ecbc9e2730f32beba98"
+    //   }, {
+    //     activityName: "fsdfdsfdsfZXCERere",
+    //     createdAt: "2019-09-03T13:56:44.676Z",
+    //     isDeleted: false,
+    //     updatedAt: "2019-09-03T13:56:44.676Z",
+    //     _id: "5d6f1ecbc9e2730f32beba97"
+    //   },
+    //   {
+    //     activityName: "cvvzcxvrtgrtrtrt",
+    //     createdAt: "2019-09-03T13:56:44.676Z",
+    //     isDeleted: false,
+    //     updatedAt: "2019-09-03T13:56:44.676Z",
+    //     _id: "5d6f1ecbc9e2730f32beba96"
+    //   }
+    // ]
     this.getActivityFrom(),
       // this.initGroupForm(this.createdActivity);
       this.initGroupForm();

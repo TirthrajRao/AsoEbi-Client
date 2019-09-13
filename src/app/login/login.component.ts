@@ -279,7 +279,7 @@ export class LoginComponent implements OnInit {
         console.log("data of invalid user", data);
         let firstName = data.data.firstName
         let lastName = data.data.lastName
-        this.userName = firstName + " " + lastName;
+        this.userName = firstName ;
         console.log(this.userName);
         console.log("response of login user", data);
         // this.userRole = data.data.UserRole;

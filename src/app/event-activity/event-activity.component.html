@@ -51,15 +51,17 @@
                     </div>
 
                     <div class="event_activity" *ngIf="selectedActivity">
-                        <p>{{selectedActivity.activityName}}</p> <br>
+                        <p title="{{selectedActivity.activityName}}">{{selectedActivity.activityName}}</p> <br>
                         <p>From: {{selectedActivity.activityStartDate | date: 'dd/MM/yyyy'}} </p>
                         <p>To: {{selectedActivity.activityEndDate | date: 'dd/MM/yyyy'}} </p>
                     </div>
-                    <div class="w-100 mb-3 event-activity-class">
+                    <div class="w-100 mb-3 all_class">
+                        <div class=" event-activity-class">
                         <div class="event_button" *ngFor="let item of selectedActivityGroup;">
                             <button class="eventC_btn" (click)="handleChange(item)"
                                 *ngIf="item.groupName">{{item.groupName}}</button>
                         </div>
+                    </div>
                     </div>
                     <div class="pb-3 ml-5">
                         <input type="radio" id="test" value="male" name="radio-group1" checked>
@@ -96,7 +98,7 @@
                                     <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                         src="{{path}}{{singleEventDetails.profilePhoto}}">
                                 </div>
-                                <p class="text-white">{{item.activityName}}</p>
+                                <p class="text-white" title="{{item.activityName}}">{{item.activityName}}</p>
                             </div>
                         </span>
                         <div class="collect1_img" (click)="totalCollection(singleEventDetails._id)" *ngIf="isCelebrant">

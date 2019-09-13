@@ -46,7 +46,8 @@
                                 <div class="event_menu">
                                     <div class="all_menu_content  d-flex flex-wrap align-content-center">
                                         <ul>
-                                                <li><a routerLink="/home" class="text-white text-center my_event">Home</a></li>
+                                            <li><a routerLink="/home" class="text-white text-center my_event">Home</a>
+                                            </li>
                                             <li><a routerLink="/myEvent" class="text-white text-center new_event">my
                                                     event</a>
                                             </li>
@@ -110,14 +111,15 @@
                             <div class="thankyou_img text-center">
                                 <img src="{{path}}{{eventTheme}}" height="200" class="float-right"
                                     *ngIf="thankYouMessage">
-                                <img src="/assets/images/profile_photo.png" *ngIf="!thankYouMessage">
+                                <img src="/assets/images/bloom.gif" *ngIf="!thankYouMessage">
                             </div>
                         </div>
                         <div class="all_msg">
                             <!-- <p class="text-center thankyou_font">Thank You</p> -->
                             <p *ngIf="!thankYouMessage" class="text-center thankyou_font">Sorry you have no message</p>
-                            <p class="text-center thankyou_font_msg" *ngIf="thankYouMessage">
-                                {{thankYouMessage.message}}</p>
+                            <div *ngIf="thankYouMessage">
+                                <p class="text-center thankyou_font_msg" id="thankyou_font_msg">{{thankYouMessage.message}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>

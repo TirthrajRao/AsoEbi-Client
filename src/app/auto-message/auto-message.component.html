@@ -87,7 +87,7 @@
                                 <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                     src="{{path}}{{singleEventDetails.profilePhoto}}">
                             </div>
-                            <p class="text-white">{{item.activityName}}</p>
+                            <p class="text-white" title="{{item.activityName}}">{{item.activityName}}</p>
                         </div>
                         <!-- </span> -->
                         <div class="collect1_img" (click)="totalCollection(singleEventDetails._id)">
@@ -116,7 +116,7 @@
                                 <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                     src="{{path}}{{singleEventDetails.profilePhoto}}">
                             </div>
-                            <p class="text-white">Invited Guestes</p>
+                            <p class="text-white" title="Invited Guestes">Invited Guestes</p>
                         </div>
                         <div class="collect1_img">
                             <div class="collect_img" (click)="messageEvent(singleEventDetails._id)">
@@ -130,7 +130,7 @@
                                 <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                     src="{{path}}{{singleEventDetails.profilePhoto}}">
                             </div>
-                            <p class="text-white">Select Bank Account</p>
+                            <p class="text-white" title="Select Bank Account" >Select Bank Account</p>
                         </div>
                     </div>
                 </div>

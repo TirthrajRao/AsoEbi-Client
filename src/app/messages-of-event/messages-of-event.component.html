@@ -58,7 +58,7 @@
                     </div>
 
                     <div class="eventD_input">
-                        <input type="text" name="event" placeholder="{{eventHashtag}}" class="event_aso">
+                        <input type="text" name="event" title="{{eventHashtag}}" placeholder="{{eventHashtag}}" class="event_aso" readonly>
                     </div>
 
                     <div class="eventD_btn">
@@ -86,7 +86,7 @@
                                 <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                     src="{{path}}{{singleEventDetails.profilePhoto}}">
                             </div>
-                            <p class="text-white">{{item.activityName}}</p>
+                            <p class="text-white" title="{{item.activityName}}">{{item.activityName}}</p>
                         </div>
                         <!-- </span> -->
                         <div class="collect1_img" (click)="totalCollection(singleEventDetails._id)">

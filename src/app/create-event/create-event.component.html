@@ -6,7 +6,7 @@
 </div>
 
 
-<div class="step_1" style="display:none">
+<div class="step_1">
     <section class="event_slider_section d-flex flex-wrap align-content-center">
         <div class="container-fluid">
             <h3 class="text-center aso_heading">Aso Ebi</h3>
@@ -653,7 +653,7 @@
 </div>
 
 
-<div class="step_3" >
+<div class="step_3" style="display:none">
     <div class="form_input">
         <div class="row justify-content-center m-0">
             <section class="slider_page_section d-flex flex-wrap align-content-center">
@@ -701,13 +701,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <h6 class="text-center">{{eventName}}</h6>
+                                <div class="text-center">
+                                    <h6 title="{{eventName}}">{{eventName}}</h6>
+                                </div>
                                 <div *ngIf="createdActivity && createdActivity.length">
                                     <div class="gender_slider1 gender_slider_space">
                                         <span *ngFor="let item of createdActivity;">
                                             <div class="slide1">
                                                 <div class="ceremony1  text-center">
-                                                    <a class="event_btn"
+                                                    <a class="event_btn" title="{{item.activityName}}"
                                                         (click)="addGroupWithActivity(item._id)">{{item.activityName}}</a>
                                                 </div>
                                             </div>

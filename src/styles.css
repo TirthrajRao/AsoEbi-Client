@@ -38,7 +38,7 @@ html {
 /*common css end*/
 
 .form-control:focus {
-	color: #fff;
+	color: #fff!important;
 	background-color: transparent;
 	border-color: #fff;
 	outline: 0;
@@ -1324,6 +1324,7 @@ label.background_edit:hover {
 	width: 103px;
 	margin: auto;
 	position: relative;
+	cursor: pointer;
 }
 
 .back1 img {
@@ -1333,7 +1334,9 @@ label.background_edit:hover {
 	max-height: 100%;
 	object-fit: cover;
 }
-
+.close_ceremony{
+	cursor: pointer;
+}
 /*slide 5 end*/
 
 /*slide 10 or bank detail or event hashtag start*/
@@ -1496,6 +1499,7 @@ label.background_edit:hover {
 	margin: auto;
 	position: absolute;
 	top: 57%;
+	cursor: pointer;
 }
 
 .event_bank_detail .slider_box1 {
@@ -1528,6 +1532,7 @@ label.background_edit:hover {
 .select_event_type ul li {
 	list-style: none;
 	display: block;
+	cursor: pointer;
 }
 
 .select_event_type .list-group-item {
@@ -1764,6 +1769,7 @@ label.background_edit:hover {
 
 .reset_pwd_btn {
 	background-color: #e70d6a!important;
+	cursor: pointer;
 }
 
 /*reset password page end*/
@@ -1784,6 +1790,7 @@ label.background_edit:hover {
 
 .add_bank_btn {
 	background-color: #ef2556!important;
+	cursor: pointer;
 }
 
 /*add bank account css end/
@@ -2778,18 +2785,18 @@ form.billing_address {
 	max-height: 312px;
 }
 
-form.all_activity_form::-webkit-scrollbar-track, form.billing_address::-webkit-scrollbar-track {
+form.all_activity_form::-webkit-scrollbar-track, form.billing_address::-webkit-scrollbar-track, .thankyou_font_msg::-webkit-scrollbar-track {
 	border: 1px solid transparent;
 	padding: 2px 0;
 	width: 7px;
 	background-color: transparent;
 }
 
-form.all_activity_form::-webkit-scrollbar, form.billing_address::-webkit-scrollbar {
+form.all_activity_form::-webkit-scrollbar, form.billing_address::-webkit-scrollbar, .thankyou_font_msg::-webkit-scrollbar {
 	width: 5px;
 }
 
-form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-scrollbar-thumb {
+form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-scrollbar-thumb, .thankyou_font_msg::-webkit-scrollbar-thumb{
 	border-radius: 10px;
 	background-color: #adb5bd;
 }
@@ -3121,19 +3128,29 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	font-family: 'Russo One', sans-serif;
 	font-size: 25px;
 	color: #fd5226;
+	text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+	overflow: hidden !important;
+	width:60%;
 }
 
 .slide1 .ceremony1 a {
 	font-size: 20px;
 	padding: 0px 7px;
 	height: 40px;
-	width: 96%;
+	width: 90%;
 	color: #000;
 	background-color: #fff;
 	margin-right: 3px;
 	line-height: 40px;
 	margin-bottom: 10px;
 	font-family: 'Russo One', sans-serif;
+	text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+	overflow: hidden !important;
+	cursor: pointer;
 }
 
 .slider_page_section .plus a {
@@ -3665,6 +3682,11 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	font-size: 22px;
 	border-color: #fff!important;
 	font-family: 'Russo One', sans-serif;
+	text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+	overflow: hidden !important;
+	width: 90%;
 }
 
 .eventD_page_section input.event_aso::placeholder {
@@ -4121,6 +4143,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden !important;
+	cursor: pointer;
 }
 
 .event_detail_slide_blue a {
@@ -4510,6 +4533,12 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	font-family: 'Russo One', sans-serif;
 	text-align: center;
 	margin-bottom: 0;
+	word-break: break-all;
+	text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden !important;
+    width: 90%;
 }
 
 .collect_detail .collect_img p {
@@ -4648,6 +4677,9 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	font-size: 20px;
 	color: #fff;
 	margin: 10px;
+	text-overflow: ellipsis;
+    display: inline-block;
+    overflow: hidden !important;
 	font-family: 'Russo One', sans-serif;
 }
 
@@ -5296,6 +5328,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	padding: 10px 28px;
 	background-color: #2b3335;
 	margin: 10px 6px 0px 0px;
+	cursor: pointer;
 }
 
 .first_event_menu_start {
@@ -5307,14 +5340,12 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 }
 
 .thankyou_img img {
-	width: 545px;
-	height: 435px;
-	margin: auto;
-	position: absolute;
-	top: 0;
-	bottom: 0px;
-	left: 0px;
-	right: 0px;
+	width: 400px;
+    height: 255px;
+    margin: auto;
+    position: absolute;
+    left: 0px;
+    right: 0px;
 }
 
 /* .thankyou_img {
@@ -5327,21 +5358,29 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 }
 
 .thankyou_font {
-	color: #ef2556;
-	font-size: 83.33px;
+	color: #ffffff;
+    font-size: 83.33px;
+	text-shadow: 2px 2px #000000;
+	/* position: absolute; */
 }
-
+.cart_pic{
+	cursor: pointer;
+}
 .thankyou_font_msg {
-	color: #1a1a1a;
-	font-size: 58.33px;
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 140px;
+	color: #ffffff;
+    text-shadow: 2px 2px #000000;
+    font-size: 48.33px;
+    position: absolute;
+    bottom: 20px;
+    left: 60px;
+    right: 60px;
+	word-break: break-all;
+    max-height: 200px;
+    overflow-y: scroll;
 }
 
 .all_msg {
-	padding: 50px 30px;
+	padding: 50px;
 	margin: auto;
 }
 
@@ -5727,7 +5766,7 @@ tr.blue-table-header {
 }
 
 form.billing_address {
-	margin-top: -16px;
+	margin-top: -5px;
 	position: relative;
 }
 
@@ -5744,10 +5783,10 @@ i.fa.fa-times.text-white.cross_icon.float-right {
 
 .event-activity-class {
 	overflow-y: scroll;
-	max-height: 60px;
+	max-height: 65px;
 	overflow-x: hidden;
-}
-
+	}
+	
 /*loader css start*/
 
 #loading {
@@ -5803,7 +5842,7 @@ i.fa.fa-times.text-white.cross_icon.float-right {
 }
 
 .gender_slider1 button.slick-prev.pull-left.slick-arrow {
-	right: 5%!important;
+	right: 10%!important;
 }
 
 .bank_details_slider button.slick-arrow {
@@ -5939,6 +5978,7 @@ i.fa.fa-times.text-white.cross_icon.float-right {
 i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 	color: #fd5226!important;
 	font-size: 27px;
+	cursor: pointer;
 }
 
 .add_group {
@@ -5996,10 +6036,13 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 /* responsive css start */
 
 @media(max-width: 1366px) {
+	.thankyou_font_msg{
+		max-height: 160px;
+	}
 	.collection_slider ul.slick-dots {
 			bottom: 15px;
-			}
-		.add_group {
+	}
+	.add_group {
 		padding: 0px 50px;
 	}
 	.noMessage {
@@ -6225,11 +6268,15 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 		font-size: 65.33px;
 	}
 	.thankyou_font_msg {
-		font-size: 45.33px;
+		font-size: 35.33px;
 	}
 	.all_msg {
 		padding: 25px 15px;
 		margin: auto;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
 	}
 	.thanks1_section h3 {
 		font-size: 48px;
@@ -6241,8 +6288,8 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 		line-height: 49px;
 	}
 	.thankyou_img img {
-		width: 455px;
-		height: 325px;
+		width: 385px;
+		height: 215px;
 	}
 	/*thanks 1 responsive css end*/
 	/*share  page responsive css start*/
@@ -7053,8 +7100,8 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 		margin-top: 20px;
 	}
 	.thankyou_img img {
-		width: 395px;
-		height: 285px;
+		width: 365px;
+		height: 215px;
 	}
 	/*new thanks responsive css end*/
 	/*collection screen slider responsive start*/
@@ -7167,6 +7214,9 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 }
 
 @media(max-width: 575px) {
+	.thankyou_font_msg {
+		max-height: 100px;
+	}
 	.thank-you-plus{
 		padding:15px;
 	}
@@ -8398,8 +8448,8 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 	}
 	/* thanks page css start */
 	.thankyou_img img {
-		width: 300px;
-		height: 285px;
+		width: 320px;
+		height: 205px;
 	}
 	/* thanks page css end */
 }
@@ -8905,6 +8955,9 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 }
 
 @media screen and (max-width: 360px) {
+	.thank-you-plus {
+		padding: 14px 0px;
+	} 
 	/*buying option 2 start*/
 	.event_group a {
 		padding: 0px 13px;
@@ -8924,7 +8977,8 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 	/* thanks page css start */
 	.thankyou_img img {
 		width: 250px;
-		height: 270px;
+		height: 200px;
+		margin-top: 20px;
 	}
 	.thank-you-close button{
 		padding: 9px;
@@ -9041,6 +9095,11 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 }
 
 @media (max-width: 320px) {
+	.thankyou_img img {
+		width: 100%;
+		/* height: 100%; */
+		margin-top: 20px;
+	}
 	.collection_slider .slick-arrow.slick-prev {
 			top: 75px;
 	}

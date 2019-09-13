@@ -99,7 +99,7 @@ export class MyEventDetailsComponent implements OnInit {
   initCollectDetailSlick(eventId?) {
     $('.collect_detail').not('.slick-initialized').slick({
       infinite: true,
-      slidesToShow: 6,
+      slidesToShow: 5,
       slidesToScroll: 1,
       autoplay: false,
       draggable: true,

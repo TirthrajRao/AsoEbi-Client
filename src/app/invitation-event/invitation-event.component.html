@@ -80,7 +80,7 @@
                                     <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                         src="{{path}}{{singleEventDetails.profilePhoto}}">
                                 </div>
-                                <p>{{item.activityName}}</p>
+                                <p title="{{item.activityName}}">{{item.activityName}}</p>
                             </div>
                         </span>
                         <div class="collect1_img" (click)="totalCollection(singleEventDetails._id)">
