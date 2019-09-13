@@ -3,6 +3,7 @@ import { EventService } from '../services/event.service';
 import { AlertService } from '../services/alert.service';
 // import { config } from '../config';
 declare var $: any;
+import { LoginService } from '../services/login.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -20,7 +21,7 @@ export class EditEventComponent implements OnInit {
   isLoad = false;
   userName = JSON.parse(localStorage.getItem('userName'));
 
-  constructor(private route: ActivatedRoute, private router: Router, private _eventService: EventService, private alertService: AlertService, ) {
+  constructor(private route: ActivatedRoute, private router: Router,private _loginService: LoginService, private _eventService: EventService, private alertService: AlertService, ) {
     this.sub = this.route.params.subscribe(params => {
       this.eventId = params.id;
       console.log(this.eventId);
@@ -62,5 +63,9 @@ export class EditEventComponent implements OnInit {
       console.log(err);
       this.alertService.getError(err.message);
     })
+  }
+  logout() {
+    this._loginService.logout();
+    this.router.navigate(['/login']);
   }
 }

@@ -69,12 +69,13 @@ export class LoginComponent implements OnInit {
   msalConfig = {
     auth: {
       clientId: 'bd9b8a24-97aa-42db-a5fe-dcb24b15e6f8', //This is your client ID,
-      authority: "https://login.microsoftonline.com/common", //This is your tenant info
+      authority: "https://login.microsoftonline.com/common",//This is your tenant info 
+      redirectUri:"https://andcowith.me"
     },
-    // cache: {
-    //   cacheLocation: "localStorage",
-    //   storeAuthStateInCookie: true
-    // }
+    cache: {
+      cacheLocation: "localStorage",
+      storeAuthStateInCookie: true
+    }
   };
   myMSALObj = new Msal.UserAgentApplication(this.msalConfig);
 
@@ -138,7 +139,7 @@ export class LoginComponent implements OnInit {
   hotMailLogin() {
     console.log("heeeeeeeee rammmmmmm", this.myMSALObj);
     let requestObj = {
-      scopes: ["user.read"]
+      scopes: ["user.read" ,"mail.send"]
     }
     let obj = this.myMSALObj;
     obj.loginPopup(requestObj).then(function (loginResponse) {
@@ -177,25 +178,27 @@ export class LoginComponent implements OnInit {
     console.log("login token of hotmail lofin response", token);
     this._loginService.serverHotmailLogin(token)
       .subscribe((data: any) => {
-        this.isLoad = false;
         let firstName = data.data.firstName
         let lastName = data.data.lastName
         this.userName = firstName + " " + lastName;
         localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
         localStorage.setItem('userName', JSON.stringify(this.userName));
-
+        
         if (this.eventIdWithLogin) {
+          this.isLoad = false;
           this.isUserLoggedIn = true;
           localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
           this.router.navigate(['/home/view-event/', this.eventIdWithLogin])
         }
         else {
+          this.isLoad = false
           this.isUserLoggedIn = true;
           localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
           localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
           this.router.navigate(['/home']);
         }
       }, err => {
+        this.isLoad = false
         console.log(err);
         this.alertService.getError(err.messege);
       })
@@ -229,7 +232,7 @@ export class LoginComponent implements OnInit {
     console.log("generated token of yahoo", token);
     this._loginService.sendYahooToken(token, userId)
       .subscribe(data => {
-        this.isLoad = false
+        
         let firstName = data.data.firstName
         let lastName = data.data.lastName
         this.userName = firstName + " " + lastName;
@@ -237,6 +240,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('userName', JSON.stringify(this.userName));
 
         if (this.eventIdWithLogin) {
+          this.isLoad = false
           this.isUserLoggedIn = true;
           localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
           this.router.navigate(['/home/view-event/', this.eventIdWithLogin])
@@ -246,8 +250,10 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
           localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
           this.router.navigate(['/home']);
+          this.isLoad = false
         }
       }, err => {
+        this.isLoad = false
         console.log(err);
         this.alertService.getError(err.messege);
       })
@@ -271,7 +277,6 @@ export class LoginComponent implements OnInit {
     this._loginService.login(this.loginForm.value)
       .subscribe(data => {
         console.log("data of invalid user", data);
-        this.isLoad = false;
         let firstName = data.data.firstName
         let lastName = data.data.lastName
         this.userName = firstName + " " + lastName;
@@ -284,26 +289,29 @@ export class LoginComponent implements OnInit {
         console.log(this.isCelebrant);
         this.isDisable = true;
         if (this.eventIdWithLogin) {
+          this.isLoad = false;
           this.isUserLoggedIn = true;
           localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
           this.router.navigate(['/home/view-event/', this.eventIdWithLogin])
         } else if (data.data.UserRole == 'admin') {
+          this.isLoad = false
           this.router.navigate(['/home/admin-dashboard']);
         } else if (data.data.UserRole == 'user') {
+          this.isLoad = false
           this.isUserLoggedIn = true;
           localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
           this.router.navigate(['/home']);
         }
       }, (err: any) => {
-        let varification = err.error.data;
-        console.log("err of invalid", varification)
-      this.varificationEmail = varification.useremail
-      localStorage.setItem('varificationEmail', JSON.stringify(this.varificationEmail));
-      this.router.navigate(['/verification']);
         this.isLoad = false;
+        let varification = err.error.data;
+        console.log("err of invalid", err)
         this.alertService.getError(err.error.message)
         this.isDisable = false;
         this.loginForm.reset();
+      this.varificationEmail = varification.useremail
+      localStorage.setItem('varificationEmail', JSON.stringify(this.varificationEmail));
+      this.router.navigate(['/verification']);
       })
   }
 
@@ -319,7 +327,6 @@ export class LoginComponent implements OnInit {
       const googleIdToken = res.idToken;
       console.log("google id of login user", googleIdToken);
       this._loginService.googleLogin(googleIdToken).subscribe(data => {
-        this.isLoad = false;
         let firstName = data.data.firstName
         let lastName = data.data.lastName
         this.userName = firstName + " " + lastName;
@@ -331,11 +338,13 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('userName', JSON.stringify(this.userName));
         console.log("response positive of google", data);
         if (this.eventIdWithLogin) {
+          this.isLoad = false;
           this.isUserLoggedIn = true;
           localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
           this.router.navigate(['/home/view-event/', this.eventIdWithLogin])
         }
         else {
+          this.isLoad = false
           this.isDisable = false;
           this.isUserLoggedIn = true;
           localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
@@ -365,20 +374,21 @@ export class LoginComponent implements OnInit {
       if (response.authResponse) {
         this._loginService.facebookLogin(facebookId)
           .subscribe((data: any) => {
-            this.isLoad = false
             console.log("data of facebook login user", data);
             let firstName = data.data.firstName
             let lastName = data.data.lastName
             this.userName = firstName + " " + lastName;
             localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
             localStorage.setItem('userName', JSON.stringify(this.userName));
-
+            
             if (this.eventIdWithLogin) {
+              this.isLoad = false
               this.isUserLoggedIn = true;
               localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
               this.router.navigate(['/home/view-event/', this.eventIdWithLogin])
             }
             else {
+              this.isLoad = false
               this.router.navigate(['/home']);
               this.isDisable = false;
               this.isUserLoggedIn = true;
@@ -410,6 +420,7 @@ export class LoginComponent implements OnInit {
         // this.router.navigate(['/login']);
       }, err => {
         console.log(err);
+        this.alertService.getError(err.message);
       })
   }
 
@@ -422,41 +433,3 @@ export class LoginComponent implements OnInit {
   }
 
 }
-
-
-
-
-// main-es2015.a12f6de474005ab90da6.js:1 ERROR Error: Uncaught (in promise): Error: Cannot match any routes. URL Segment: 'id_token'
-// Error: Cannot match any routes. URL Segment: 'id_token'
-//     at Nt.noMatchError (main-es2015.a12f6de474005ab90da6.js:1)
-//     at u.expandSegmentGroup.pipe.pipe.e [as selector] (main-es2015.a12f6de474005ab90da6.js:1)
-//     at u.error (main-es2015.a12f6de474005ab90da6.js:1)
-//     at o._error (main-es2015.a12f6de474005ab90da6.js:1)
-//     at o.error (main-es2015.a12f6de474005ab90da6.js:1)
-//     at o._error (main-es2015.a12f6de474005ab90da6.js:1)
-//     at o.error (main-es2015.a12f6de474005ab90da6.js:1)
-//     at o._error (main-es2015.a12f6de474005ab90da6.js:1)
-//     at o.error (main-es2015.a12f6de474005ab90da6.js:1)
-//     at u._error (main-es2015.a12f6de474005ab90da6.js:1)
-//     at u.error (main-es2015.a12f6de474005ab90da6.js:1)
-//     at C._error (main-es2015.a12f6de474005ab90da6.js:1)
-//     at C.error (main-es2015.a12f6de474005ab90da6.js:1)
-//     at c.notifyError (main-es2015.a12f6de474005ab90da6.js:1)
-//     at r._error (main-es2015.a12f6de474005ab90da6.js:1)
-//     at r.error (main-es2015.a12f6de474005ab90da6.js:1)
-//     at P (polyfills-es2015.5728f680576ca47e99fe.js:1)
-//     at P (polyfills-es2015.5728f680576ca47e99fe.js:1)
-//     at C.t.scheduleMicroTask (polyfills-es2015.5728f680576ca47e99fe.js:1)
-//     at a.invokeTask (polyfills-es2015.5728f680576ca47e99fe.js:1)
-//     at Object.onInvokeTask (main-es2015.a12f6de474005ab90da6.js:1)
-//     at a.invokeTask (polyfills-es2015.5728f680576ca47e99fe.js:1)
-//     at t.runTask (polyfills-es2015.5728f680576ca47e99fe.js:1)
-//     at _ (polyfills-es2015.5728f680576ca47e99fe.js:1)
-//     at r (bluebird.min.js:31)
-//     at r._settlePromiseFromHandler (bluebird.min.js:30)
-//     at r._settlePromise (bluebird.min.js:30)
-//     at r._settlePromiseCtx (bluebird.min.js:30)
-//     at r._drainQueue (bluebird.min.js:29)
-//     at r._drainQueues (bluebird.min.js:29)
-//     at drainQueues (bluebird.min.js:29)
-//     at MutationObserver.<anonymous> (bluebird.min.js:30)

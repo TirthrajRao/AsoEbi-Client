@@ -17,6 +17,8 @@ export class AppComponent {
     })
   }
 
+  
+
   checkRouterEvent(routerEvent: Event): void {
     if (routerEvent instanceof NavigationEnd || routerEvent instanceof NavigationCancel || routerEvent instanceof NavigationError) {
       setTimeout(function(){

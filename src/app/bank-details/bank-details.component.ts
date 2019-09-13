@@ -79,6 +79,7 @@ export class BankDetailsComponent implements OnInit {
     this.isDisable = true;
     this._loginService.addBankDetails(this.bankDetailsForm.value)
       .subscribe((data: any) => {
+        this.getBankDetails();
         console.log("data of bank details", data);
         this._alertService.getSuccess(data.message)
         this.bankDetailsForm.reset();

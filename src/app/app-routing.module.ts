@@ -45,10 +45,10 @@ import {HomeModule} from './home/home.module';
    path: 'home',
    loadChildren: './home/home.module#HomeModule' 
  },
- {
-   path: 'id_token',
-   redirectTo: 'login',
- },
+//  {
+//    path: 'id_token',
+//    redirectTo: 'login',
+//  },
  {
    path: 'verification',
    component: VerificationComponent

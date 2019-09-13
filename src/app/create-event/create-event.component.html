@@ -6,7 +6,7 @@
 </div>
 
 
-<div class="step_1">
+<div class="step_1" style="display:none">
     <section class="event_slider_section d-flex flex-wrap align-content-center">
         <div class="container-fluid">
             <h3 class="text-center aso_heading">Aso Ebi</h3>
@@ -653,7 +653,7 @@
 </div>
 
 
-<div class="step_3" style="display:none">
+<div class="step_3" >
     <div class="form_input">
         <div class="row justify-content-center m-0">
             <section class="slider_page_section d-flex flex-wrap align-content-center">
@@ -767,8 +767,8 @@
                                                                         formControlName="itemName">
                                                                     <div class="NGN float-right">
                                                                         <label class="text-white">NGN</label>
-                                                                        <input type="text" class="form-control"
-                                                                            formControlName="itemPrice">
+                                                                        <input type="number" class="form-control"
+                                                                            formControlName="itemPrice"  onkeydown="return event.keyCode !== 69">
                                                                     </div>
                                                                 </div>
                                                                 <div class="close-male-item float-right" *ngIf="item.controls.male.controls.length>1">
@@ -797,8 +797,8 @@
                                                                         formControlName="itemName">
                                                                     <div class="NGN float-right">
                                                                         <label class="text-white">NGN</label>
-                                                                        <input type="text" class="form-control"
-                                                                            formControlName="itemPrice">
+                                                                        <input type="number" class="form-control"
+                                                                            formControlName="itemPrice"  onkeydown="return event.keyCode !== 69">
                                                                     </div>
                                                                 </div>
                                                                 <div *ngIf="item.controls.female.controls.length>1" (click)="removeItemsfeMale(item, j ,group.value,item.value)"

@@ -23,18 +23,18 @@
 							</div> -->
                             <div class="event_detail_slide event_detail_slide_blue">
                                 <div class="events_name text-center">
-                                    <a href="#" class="text-center text-white"
+                                    <a  class="text-center text-white"
                                     *ngIf="eventDetails">{{eventDetails.eventType}}</a>
                                 </div>
                             </div>
                             <div class="event_detail_slide event_detail_slide_blue">
                                 <div class="events_name text-center">
-                                    <a href="#" class="text-center text-white">Gift Donation</a>
+                                    <a  class="text-center text-white">Gift Donation</a>
                                 </div>
                             </div>
                             <div class="event_detail_slide event_detail_slide_blue">
                                 <div class="events_name text-center">
-                                    <a href="#" class="text-center text-white">Total</a>
+                                    <a  class="text-center text-white">Total</a>
                                 </div>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                         <div class="event_detail_slider">
                             <div class="event_detail_slide event_detail_slide_sky1">
                                 <div class="events_name text-center">
-                                    <a href="#" class="text-center text-white" *ngIf="eventDetails"  data-toggle="tooltip" title="{{eventDetails.eventType}}">
+                                    <a  class="text-center text-white" *ngIf="eventDetails"  data-toggle="tooltip" title="{{eventDetails.eventType}}">
                                     {{eventDetails.eventType}}</a>
                                 </div>
                             </div>
@@ -72,7 +72,7 @@
                             </div>
                             <div class="event_detail_slide event_detail_slide_sky1">
                                 <div class="events_name text-center">
-                                    <a href="#" class="text-center text-white" data-toggle="tooltip" title="Total">Total</a>
+                                    <a  class="text-center text-white" data-toggle="tooltip" title="Total">Total</a>
                                 </div>
                             </div>
                         </div>
@@ -87,12 +87,12 @@
                                 <div class="row" *ngFor="let item of cartDetails">
                                     <div class="col-7">
                                         <div class="row">
-                                            <div class="col-12 p-0" *ngIf="item.itemGender == 'male'">
+                                            <div class="col-12 " *ngIf="item.itemGender == 'male'">
                                                 <div class="all_list">
                                                     <div class="fabric_name float-left">{{item.itemName}} {{ item.itemPrice | currency:"&#x20A6;" }} </div>
                                                         <div class="float-right ">
                                                             <label > x </label>
-                                                            <input type="number" (click)="finalTotal(item)" [(ngModel)]="item.quantity" min="1">
+                                                            <input type="number" onkeydown="return event.keyCode !== 69" id="myCartPaisa"  (click)="finalTotal(item)" [(ngModel)]="item.quantity" min="1">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -118,7 +118,7 @@
                                     <div class="row" *ngFor="let item of cartDetails">
                                         <div class="col-7">
                                             <div class="row">
-                                                <div class="col-12 p-0" *ngIf="item.itemGender=='female'">
+                                                <div class="col-12 " *ngIf="item.itemGender=='female'">
                                                     <div class="all_list">
                                                         <div class="fabric_name float-left"> {{item.itemName}} {{item.itemPrice | currency:"&#x20A6;"}} </div>
                                                             <div class="float-right text-white">

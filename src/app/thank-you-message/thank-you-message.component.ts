@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { EventService } from '../services/event.service';
 import { AlertService } from '../services/alert.service';
+import { LoginService } from '../services/login.service';
 import { config } from '../config';
 // import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import * as _ from 'lodash';
@@ -27,7 +28,7 @@ export class ThankYouMessageComponent implements OnInit {
   files: Array<File> = [];
 
   constructor(private route: ActivatedRoute,
-    private router: Router, private _eventService: EventService, private alertService: AlertService) {
+    private router: Router, private _eventService: EventService,private _loginService: LoginService, private alertService: AlertService) {
     this.sub = this.route.params.subscribe(params => {
       this.eventId = params.id;
       console.log(this.eventId);
@@ -124,5 +125,9 @@ export class ThankYouMessageComponent implements OnInit {
   closeThnakyou(){
     $('.step_one').css({ 'display': 'none' })
     $('.step_two').css({ 'display': 'block' })
+  }
+  logout() {
+    this._loginService.logout();
+    this.router.navigate(['/login']);
   }
 }

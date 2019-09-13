@@ -55,7 +55,26 @@ export class MyCartComponent implements OnInit {
       console.log(item);
       this.itemNamePrint = _.filter(item, { 'itemGender': this.selectedGender });
       console.log("he bhagvan", this.itemNamePrint)
-    })
+    });
+
+    
+    function setInputFilter(textbox, inputFilter) {
+      ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
+        textbox.addEventListener(event, function() {
+          if (inputFilter(this.value)) {
+            this.oldValue = this.value;
+            this.oldSelectionStart = this.selectionStart;
+            this.oldSelectionEnd = this.selectionEnd;
+          } else if (this.hasOwnProperty("oldValue")) {
+            this.value = this.oldValue;
+            this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+          }
+        });
+      });
+    }
+
+    setInputFilter(document.getElementById("myCartPaisa"), function(value) {
+      return /^\d*$/.test(value); });
   }
 
   initMainSlider() {

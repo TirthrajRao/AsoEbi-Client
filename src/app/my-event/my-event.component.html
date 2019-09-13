@@ -56,7 +56,7 @@
                 </div>
                 <div id="dynamic_loader_content">
                     <div class="firstStep">
-                        <div class="collected">
+                        <div class="collected" *ngIf="totalCollectionOfUser" >
                             <p>Total Collected: {{totalCollectionOfUser | currency:"&#x20A6;"}}</p>
                             <p>Check my collections for more details</p>
                         </div>

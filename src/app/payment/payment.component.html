@@ -162,8 +162,8 @@
                                 <div class="col-12">
                                     <div class="thanx_write text-white">
                                         <p>Thank you for being here. Planning on getting
-                                            us a present - we are greatfull. Gifts will not
-                                            be accepted on the wedding day, however,
+                                            us a present - we are grateful. Gifts will not
+                                            be accepted on the wedding day, however,your
                                             financial gift is very much appreciated.</p>
                                     </div>
                                 </div>
@@ -179,8 +179,8 @@
                                         <label for="email" class="text-white">I give</label>
                                     </div>
                                     <div class="col-sm-10">
-                                        <input type="number" min="1" (keyup)="finalTotal($event.target.value)"
-                                            [(ngModel)]='donation' value="donation">
+                                        <input type="text" id="uintTextBox" (keyup)="finalTotal($event.target.value)"
+                                            [(ngModel)]="donation" onkeydown="return event.keyCode !== 69" >
                                     </div>
                                 </div>
                             </div>

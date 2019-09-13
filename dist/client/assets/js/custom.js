@@ -36,11 +36,11 @@ $(".normal_style").click(function(){
 var $slideContainterHome = $('.home_slider'),
 $sliderH = $slideContainterHome.not('.slick-initialized').slick({
 	dots: true,
-	infinite: false,
+	infinite: true,
 	speed: 1000,
 	draggable: true,
 	arrows: false,
-		// autoplay:true
+	autoplay:true
 	});
 $sliderH.on('beforeChange', function(event, slick, currentSlide, nextSlide){
 	setTimeout(function(){

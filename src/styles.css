@@ -5986,7 +5986,10 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
    color: rgb(158, 194, 59);
 }
 .collection_slider_section .inner_content_btn .total_btn {
-    background-color: rgb(61, 187, 205);
+    background-color: #3dbbcd;
+}
+.collection_slider_section .inner_content_btn .tom_btn {
+    background-color: rgb(158, 194, 59);
 }
 /* event slider css end */
 
@@ -7164,6 +7167,9 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 }
 
 @media(max-width: 575px) {
+	.thank-you-plus{
+		padding:15px;
+	}
 	.collection_slider ul.slick-dots {
 		bottom: 64px;
 	}
@@ -8390,6 +8396,12 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 		width: 100%;
 		font-size: 15px!important;
 	}
+	/* thanks page css start */
+	.thankyou_img img {
+		width: 300px;
+		height: 285px;
+	}
+	/* thanks page css end */
 }
 
 @media screen and (max-width: 450px) {
@@ -8510,6 +8522,7 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 	.thanks_page_section .thanks_head p {
 		font-size: 70px;
 	}
+	
 	/*thanks end*/
 	/*msg start*/
 	.all_event_sec p {
@@ -8908,6 +8921,15 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 	.collection_slider_section .inner_content_btn a {
 		width: 100px;
 	}
+	/* thanks page css start */
+	.thankyou_img img {
+		width: 250px;
+		height: 270px;
+	}
+	.thank-you-close button{
+		padding: 9px;
+	}
+	/* thanks page css end */
 }
 
 @media screen and (max-width: 340px) {

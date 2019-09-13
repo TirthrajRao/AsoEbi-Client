@@ -19,7 +19,7 @@ export class AlertService {
       type: 'success',
       title: message,
       showConfirmButton: false,
-      timer: 2000
+      timer: 5000
     })
   }
 
@@ -33,7 +33,7 @@ export class AlertService {
       type: 'error',
       title: message,
       showConfirmButton: false,
-      timer: 2000
+      timer: 5000
     })
   }
 }

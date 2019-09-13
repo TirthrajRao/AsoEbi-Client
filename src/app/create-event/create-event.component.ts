@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 import { config } from '../config';
 import loadjs from 'loadjs';
 import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
+import { async } from 'q';
 
 
 
@@ -106,35 +107,35 @@ export class CreateEventComponent implements OnInit {
 
 
 
-    // this.createdActivity = [
-    //   {
+    this.createdActivity = [
+      {
 
-    //     activityName: "vzvsdfrsfrsr",
-    //     createdAt: "2019-09-03T13:56:44.676Z",
-    //     isDeleted: false,
-    //     updatedAt: "2019-09-03T13:56:44.676Z",
-    //     _id: "5d6f1ecbc9e2730f32beba99"
-    //   }, {
-    //     activityName: "dfsfdsfdsfdsfdsFdsf",
-    //     createdAt: "2019-09-03T13:56:44.676Z",
-    //     isDeleted: false,
-    //     updatedAt: "2019-09-03T13:56:44.676Z",
-    //     _id: "5d6f1ecbc9e2730f32beba98"
-    //   }, {
-    //     activityName: "fsdfdsfdsfZXCERere",
-    //     createdAt: "2019-09-03T13:56:44.676Z",
-    //     isDeleted: false,
-    //     updatedAt: "2019-09-03T13:56:44.676Z",
-    //     _id: "5d6f1ecbc9e2730f32beba97"
-    //   },
-    //   {
-    //     activityName: "cvvzcxvrtgrtrtrt",
-    //     createdAt: "2019-09-03T13:56:44.676Z",
-    //     isDeleted: false,
-    //     updatedAt: "2019-09-03T13:56:44.676Z",
-    //     _id: "5d6f1ecbc9e2730f32beba96"
-    //   }
-    // ]
+        activityName: "vzvsdfrsfrsr",
+        createdAt: "2019-09-03T13:56:44.676Z",
+        isDeleted: false,
+        updatedAt: "2019-09-03T13:56:44.676Z",
+        _id: "5d6f1ecbc9e2730f32beba99"
+      }, {
+        activityName: "dfsfdsfdsfdsfdsFdsf",
+        createdAt: "2019-09-03T13:56:44.676Z",
+        isDeleted: false,
+        updatedAt: "2019-09-03T13:56:44.676Z",
+        _id: "5d6f1ecbc9e2730f32beba98"
+      }, {
+        activityName: "fsdfdsfdsfZXCERere",
+        createdAt: "2019-09-03T13:56:44.676Z",
+        isDeleted: false,
+        updatedAt: "2019-09-03T13:56:44.676Z",
+        _id: "5d6f1ecbc9e2730f32beba97"
+      },
+      {
+        activityName: "cvvzcxvrtgrtrtrt",
+        createdAt: "2019-09-03T13:56:44.676Z",
+        isDeleted: false,
+        updatedAt: "2019-09-03T13:56:44.676Z",
+        _id: "5d6f1ecbc9e2730f32beba96"
+      }
+    ]
     this.getActivityFrom(),
       // this.initGroupForm(this.createdActivity);
       this.initGroupForm();
@@ -530,7 +531,6 @@ export class CreateEventComponent implements OnInit {
       return this.fb.group({
         activityId: new FormControl(activityId),
         groupName: new FormControl(''),
-        // selectDate: new FormControl(''),
         male: this.fb.array([this.maleItemArray()]),
         female: this.fb.array([this.femaleItemArray()])
       });
@@ -547,7 +547,6 @@ export class CreateEventComponent implements OnInit {
             this.gArray.push(this.fb.group({
               activityId: new FormControl(activities[i]._id),
               eventId: new FormControl(this.eventId),
-              // selectDate: new FormControl(''),
               groupId: new FormControl(activities[i].group[j]._id),
               groupName: new FormControl(activities[i].group[j].groupName),
               male: this.fb.array([...this.maleItemArray(activities[i].group[j].item)]),
@@ -556,10 +555,12 @@ export class CreateEventComponent implements OnInit {
           }
           // return this.gArray;
         } else {
+          console.log("ama kaik ave che ke nai")
+          debugger
           this.selectedActivityToAddGroup = activities[i]._id;
           this.gArray.push(this.fb.group({
             activityId: new FormControl(activities[i]._id),
-            // selectDate: new FormControl(''),
+            eventId: new FormControl(this.eventId),
             groupName: new FormControl(''),
             male: this.fb.array([this.maleItemArray()]),
             female: this.fb.array([this.femaleItemArray()])
@@ -812,7 +813,6 @@ export class CreateEventComponent implements OnInit {
     const control = <FormArray>this.activityForm.controls.activity;
     control.push(this.fb.group({
       activityName: new FormControl(''),
-      activityDate: new FormControl(''),
       activityStartDate: new FormControl(''),
       activityEndDate: new FormControl(''),
       eventId: new FormControl(this.eventId)
@@ -1023,6 +1023,10 @@ export class CreateEventComponent implements OnInit {
    *  Updating activity if any changes
    */
   updateActivity() {
+    for (let i = 0; i < this.activityForm.value.activity.length; i++) {
+      this.activityForm.value.activity[i].activityStartDate = $('#activityStartDate' + i).val();
+      this.activityForm.value.activity[i].activityEndDate = $('#activityEndDate' + i).val();
+    }
     this.isLoad = true;
     this._eventService.updateActivity(this.activityForm.value)
       .subscribe((data: any) => {
@@ -1088,9 +1092,16 @@ export class CreateEventComponent implements OnInit {
   /**
    *  Updating group if any changes
    */
-  updateGroup() {
+  async updateGroup() {
+    const control = <FormArray>this.groupForm.controls.group;
+    let values = [];
+    _.forEach(control.controls, async (ctr) => {
+      await values.push(ctr.value);
+    })
+    this.groupForm.value.group = values;
+    console.log("updateed group details", this.groupForm.value);
     this.isLoad = true;
-    this.groupForm.controls.eventId.setValue(this.eventId);
+    // await this.groupForm.controls.eventId.setValue(this.eventId);
     console.log(this.groupForm.value);
     this._eventService.updateGroup(this.groupForm.value)
       .subscribe(data => {

@@ -1,0 +1,5 @@
+#myCartPaisa::-webkit-inner-spin-button, 
+#myCartPaisa::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+    margin: 0; 
+}
