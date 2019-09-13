@@ -47,7 +47,7 @@
                             </div>
                         </div>
                     </div>
-                    <form [formGroup]="bankDetailsForm" autocomplete="off" class="join_form forgot_pwd_form mt-3">
+                    <form [formGroup]="bankDetailsForm" autocomplete="off" class="join_form forgot_pwd_form mt-3" (ngSubmit)="onSubmit()">
                         <div class="form-group">
                             <div class="input-group">
                                 <input type="text" class="form-control"
@@ -84,7 +84,7 @@
                         </div>
                         <div class="btn_submit_pwd">
                             <button class="btn text-white text-center add_bank_btn submit_btn_pwd text-center"
-                                (click)="onSubmit()" [disabled]="isDisable || bankDetailsForm.invalid">Submit</button>
+                                 [disabled]="isDisable || bankDetailsForm.invalid">Submit</button>
                         </div>
                     </form>
                 </div>

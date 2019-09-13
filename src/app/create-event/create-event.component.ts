@@ -556,7 +556,6 @@ export class CreateEventComponent implements OnInit {
           // return this.gArray;
         } else {
           console.log("ama kaik ave che ke nai")
-          debugger
           this.selectedActivityToAddGroup = activities[i]._id;
           this.gArray.push(this.fb.group({
             activityId: new FormControl(activities[i]._id),

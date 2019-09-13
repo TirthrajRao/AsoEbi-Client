@@ -47,6 +47,7 @@ export class BankDetailsComponent implements OnInit {
       // IFSCCode: new FormControl('', [Validators.required, Validators.minLength(9), Validators.min(9)])
     })
     this.getBankDetails();
+
     // this.bankDetailsSlider()
 
   }
@@ -60,7 +61,7 @@ export class BankDetailsComponent implements OnInit {
         console.log(err);
       })
   }
-
+  
   /**
    * Display error message
    */
@@ -71,7 +72,9 @@ export class BankDetailsComponent implements OnInit {
    * Add bank account details of user
    */
   onSubmit() {
+    this.isLoad = true;
     console.log(this.bankDetailsForm);
+    
     this.submitted = true;
     if (this.bankDetailsForm.invalid) {
       return;
@@ -79,14 +82,38 @@ export class BankDetailsComponent implements OnInit {
     this.isDisable = true;
     this._loginService.addBankDetails(this.bankDetailsForm.value)
       .subscribe((data: any) => {
-        this.getBankDetails();
-        console.log("data of bank details", data);
-        this._alertService.getSuccess(data.message)
-        this.bankDetailsForm.reset();
-
-        $('.firstStep').css({ 'display': 'none' })
-        $('.secondStep').css({ 'display': 'block' });
+        setTimeout(() => {
+          console.log("====================== CALLED ============================");
+          
+          this.getBankDetails();
+          $('.bank_details_slider').not('.slick-initialized').slick({
+            dots: false,
+            slidesToShow: 1.5,
+            slidesToScroll: 1,
+            draggable: true,
+            arrows: true,
+            prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+            nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+            responsive: [
+              {
+                breakpoint: 600,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                }
+              },
+            ]
+          });
+          console.log("data of bank details", data);
+          this._alertService.getSuccess(data.message)
+          // this.bankDetailsForm.reset();
+          $('.firstStep').css({ 'display': 'none' })
+          $('.secondStep').css({ 'display': 'block' });
+          this.bankDetailsForm.reset();
+          this.isLoad = false;
+        }, 100);
       }, (err: any) => {
+        this.isLoad = false;
         console.log(err);
         this.isDisable = false;
         this._alertService.getError(err.message);
@@ -99,12 +126,33 @@ export class BankDetailsComponent implements OnInit {
     this._eventService.getBankDetails()
       .subscribe((data: any) => {
         console.log(data);
-        this.isLoad = false;
+        // if(this.bankDetails){
         this.bankDetails = data.data.bankDetail;
+        // }
         console.log("har har mahadev", this.bankDetails);
         setTimeout(() => {
-          this.initSlider()
+          if ($('.bank_details_slider').hasClass('slick-initialized'))
+            $('.bank_details_slider').slick('unslick');
+          $('.bank_details_slider').not('.slick-initialized').slick({
+            dots: false,
+            slidesToShow: 1.5,
+            slidesToScroll: 1,
+            draggable: true,
+            arrows: true,
+            prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+            nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+            responsive: [
+              {
+                breakpoint: 600,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                }
+              },
+            ]
+          });
         }, 100)
+        this.isLoad = false;
       }, err => {
         this.isLoad = false;
         console.log(err);
@@ -112,25 +160,7 @@ export class BankDetailsComponent implements OnInit {
   }
 
   initSlider() {
-    $('.bank_details_slider').not('.slick-initialized').slick({
 
-      dots: false,
-      slidesToShow: 1.5,
-      slidesToScroll: 1,
-      draggable: true,
-      arrows: true,
-      prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
-      nextArrow: "<button type='button' class='slick-next pull-right'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
-      responsive: [
-        {
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 1,
-            slidesToScroll: 1,
-          }
-        },
-      ]
-    });
 
   }
 
@@ -151,24 +181,25 @@ export class BankDetailsComponent implements OnInit {
       console.log(this.selectedBank);
       console.log(checked);
     }
-    const body ={
+    const body = {
       accountId: this.selectedBank,
       paymentType: checked,
       eventId: this.eventId
     }
     this._eventService.selectBankAccount(body)
-    .subscribe((data: any)=>{
-      console.log(data);
-      this.isLoad = false;
-      this._alertService.getSuccess(data.message);
-      this.router.navigate(['/home/myEventDetails/', this.eventId])
-    }, err =>{
-      this.isLoad = false;
-      console.log(err)
-    })
+      .subscribe((data: any) => {
+        console.log(data);
+        this.isLoad = false;
+        this._alertService.getSuccess(data.message);
+        this.router.navigate(['/home/myEventDetails/', this.eventId])
+      }, err => {
+        this.isLoad = false;
+        console.log(err)
+      })
   }
 
   addBankAccount() {
+    this.bankDetailsForm.reset()
     $('.secondStep').css({ 'display': 'none' })
     $('.firstStep').css({ 'display': 'block' });
   }
@@ -196,7 +227,7 @@ export class BankDetailsComponent implements OnInit {
    * validation of accountNumber with proper error message 
    */
   validateAccountNumber(form) {
-
+this.isDisable = false
     console.log(form);
     //  NOT ( REGEX ( Name__c,"[a-zA-Z]*" ))
     const accountNumber = /[0-9]/;
