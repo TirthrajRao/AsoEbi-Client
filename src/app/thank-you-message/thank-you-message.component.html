@@ -16,7 +16,7 @@
     <button type="button" class="btn btn-primary" (click)="thankyouMessage()">Submit</button>
 </form> -->
 
-<div id="loading">
+<div id="loading" *ngIf="isLoad">
     <img id="loading-image" src="/assets/images/loader.gif" alt="Loading..." />
 </div>
 

@@ -23,6 +23,7 @@ export class ThankYouMessageComponent implements OnInit {
   thankyouMessageForm: FormGroup;
   thankYouMessage;
   eventTheme;
+  isLoad = false;
   userName = JSON.parse(localStorage.getItem('userName'));
   path = config.baseMediaUrl;
   files: Array<File> = [];
@@ -64,36 +65,24 @@ export class ThankYouMessageComponent implements OnInit {
         console.log(err);
       })
   }
- 
-  /**
-   * Using of ckEditor for message
-   */
-  // public Editor = ClassicEditor;
-  // public configuration = { placeholder: 'Enter Comment Text...' };
-  // public onReady(editor) {
-  //   editor.ui.getEditableElement().parentElement.insertBefore(
-  //     editor.ui.view.toolbar.element,
-  //     editor.ui.getEditableElement()
-  //   );
-  // }
-
 
   /**
    * @param {Object} data
    * Create new thank you message 
    */
   thankyouMessage() {
-    //  this.isDisable = true;
+    this.isLoad = true;
+    this.thankyouMessageForm.controls.eventId.setValue(this.eventId);
     console.log(this.thankyouMessageForm);
     this._eventService.thankyouMessage(this.thankyouMessageForm.value, this.files)
       .subscribe(data => {
         this.getThankYouMessage(this.eventId);
         console.log("thank you message response", data);
-        //  this.router.navigate(['home/myEvent'])
         $('.step_one').css({ 'display': 'none' })
         $('.step_two').css({ 'display': 'block' })
-        this.thankyouMessageForm.reset();
+        this.isLoad = false;
       }, (err: any) => {
+        this.isLoad = false;
         console.log(err);
         this.alertService.getError(err.message);
       })
@@ -119,6 +108,8 @@ export class ThankYouMessageComponent implements OnInit {
   }
 
   addThnakyou(){
+    this.thankyouMessageForm.reset();
+    this.files = []
     $('.step_two').css({ 'display': 'none' })
     $('.step_one ').css({ 'display': 'block' })
   }

@@ -163,8 +163,15 @@ export class EventActivityComponent implements OnInit {
     this.selectedGroup = item[0].group[0].groupName;
     this.selectedGender = 'male';
     this.itemNamePrint = [];
-    console.log("thisbjfdkjnkjdfdjfg", this.selectedActivityGroup)
-    this.itemNamePrint.push(this.selectedActivityGroup[0].item[0]);
+    console.log("thisbjfdkjnkjdfdjfg", this.selectedActivityGroup);
+    _.forEach( item[0].group[0].item, (person) => {
+      console.log("person----->", person);
+      if (person.itemGender == 'male') {
+        console.log("=========>", person);
+        this.itemNamePrint.push(person);
+      }
+    })
+
     if ($('.event_slider3').hasClass('slick-initialized'))
       $('.event_slider3').slick('unslick');
     if ($('.collect_detail').hasClass('slick-initialized'))
