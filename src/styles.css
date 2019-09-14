@@ -2384,7 +2384,7 @@ label.background_edit:hover {
 /*radio button ends*/
 
 .gender_list p {
-	line-height: 28px;
+	line-height: 38px;
 	margin-bottom: 0;
 }
 
@@ -2527,21 +2527,21 @@ label.background_edit:hover {
 	width: 15px;
 }
 
-.scrollbar-rail>.scroll-element.scroll-y:before {
+/* .scrollbar-rail>.scroll-element.scroll-y:before {
 	content: 'A';
 	position: absolute;
 	top: -5px;
 	color: white;
 	font-size: 16px;
-}
+} */
 
-.scrollbar-rail>.scroll-element.scroll-y:after {
+/* .scrollbar-rail>.scroll-element.scroll-y:after {
 	content: 'Z';
 	position: absolute;
 	bottom: -7px;
 	color: white;
 	font-size: 16px;
-}
+} */
 
 .scrollbar-rail>.scroll-content.scroll-scrolly_visible {
 	left: 0;
@@ -4811,9 +4811,16 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden !important;
-	width: 90%;
 }
 
+.eventC_close {
+    width: 70%;
+}
+.event_price {
+    width: 30%;
+    padding-left: 10px;
+    text-align: right;
+}
 .eventC_page_section .eventC_add {
 	padding: 0 60px;
 }
@@ -6079,7 +6086,11 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 }
 
 /* event slider css end */
-
+.collection-5th-slide-scroll{
+	max-height: 300px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
 /* responsive css start */
 
 @media(max-width: 1366px) {
@@ -9069,7 +9080,10 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 }
 
 @media screen and (max-width: 340px) {
-	.event-count-box-scroll {
+	.event_price{
+		padding-left: 0px;
+	}
+	.event-count-box-scroll{
 		margin: 0 4px;
 	}
 	.fabric_name {

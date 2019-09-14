@@ -85,7 +85,7 @@
                                 <div class="col-12">
                                     <div class="event-count-box">
                                         <div class="eventC_close float-left text-white">
-                                            <p class="text-white">{{name.itemName}}<p>
+                                            <p class="text-white" title="{{name.itemName}}">{{name.itemName}}<p>
                                         </div>
                                         <div class="event_price float-right">
                                             <span class="event_price"><img
@@ -144,7 +144,7 @@
                                 <img *ngIf="singleEventDetails && singleEventDetails.profilePhoto"
                                     src="{{path}}{{singleEventDetails.profilePhoto}}">
                             </div>
-                            <p class="text-white">Invited Guestes</p>
+                            <p class="text-white" title="Invited Guestes">Invited Guestes</p>
                         </div>
                         <div class="collect1_img" *ngIf="isCelebrant">
                             <div class="collect_img" (click)="autoMessage(singleEventDetails._id)">
