@@ -51,9 +51,19 @@
                     </div>
 
                     <div class="event_activity" *ngIf="selectedActivity">
-                        <p title="{{selectedActivity.activityName}}">{{selectedActivity.activityName}}</p> <br>
-                        <p>From: {{selectedActivity.activityStartDate | date: 'dd/MM/yyyy'}} </p>
-                        <p>To: {{selectedActivity.activityEndDate | date: 'dd/MM/yyyy'}} </p>
+                        <div class="row">
+                            <div class="col-6 p-0">
+                                <span title="{{selectedActivity.activityName}}">{{selectedActivity.activityName}}</span> <br>
+                            </div>
+                            <div class="col-3 p-0">
+                                <p class="m-0">From:</p>
+                                <p>{{selectedActivity.activityStartDate | date: 'dd/MM/yyyy'}} </p>
+                            </div>
+                            <div class="col-3 p-0">
+                                <p class="m-0">To:</p>
+                                <p>{{selectedActivity.activityEndDate | date: 'dd/MM/yyyy'}} </p>
+                            </div>
+                        </div>
                     </div>
                     <div class="w-100 mb-3 all_class">
                         <div class=" event-activity-class">
@@ -78,9 +88,9 @@
                                             <p class="text-white">{{name.itemName}}<p>
                                         </div>
                                         <div class="event_price float-right">
-                                            <p class="event_price"><img
+                                            <span class="event_price"><img
                                                     src="/assets/images/hecza.png">{{name.itemPrice}}
-                                            </p>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>

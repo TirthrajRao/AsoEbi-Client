@@ -2312,9 +2312,23 @@ label.background_edit:hover {
 	max-height: 300px;
 }
 
-.inner_box_content .inner_title h3 {
+.inner_box_content .inner_title h3{
 	font-size: 20.83px !important;
 	margin-top: 0px !important;
+	/* text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    overflow: hidden !important;
+    width: 60%; */
+}
+.inner_box_content .inner_title p:first-child{
+	font-size: 20.83px !important;
+	margin-top: 0px !important;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    overflow: hidden !important;
+    width: 60%;
 }
 
 /*radio button starts*/
@@ -2331,6 +2345,11 @@ label.background_edit:hover {
 	line-height: 28px;
 	display: inline-block;
 	color: white;
+	width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    overflow: hidden !important;
 }
 
 .collection_slider_section [type="radio"]:checked+label:before, .collection_slider_section [type="radio"]:not(:checked)+label:before {
@@ -2477,7 +2496,7 @@ label.background_edit:hover {
 	/*width: 500px;*/
 	top: -17px;
 	padding: 9px 0px !important;
-	left: -35px;
+	/* left: -35px; */
 }
 
 .collection_slider .scroll-wrapper>.scroll-content {
@@ -3515,10 +3534,10 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	font-family: 'Russo One', sans-serif;
 }
 
-.eventC_page_section .event_activity {
+/* .eventC_page_section .event_activity {
 	padding: 17px 60px 7px 60px;
 	display: inline-flex;
-}
+} */
 
 .eventC_page_section .event_activity p {
 	font-size: 20px;
@@ -3686,7 +3705,6 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
     display: inline-block;
     white-space: nowrap;
 	overflow: hidden !important;
-	width: 90%;
 }
 
 .eventD_page_section input.event_aso::placeholder {
@@ -4053,7 +4071,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	margin: 10px 6px 0px 0px;
 }
 
-.eventF_page_section .new_event_menu, .eventE_page_section .new_event_menu, .edit_event_section .new_event_menu, .coll_slide .new_event_menu, .eventC_page_section .new_event_menu, .eventB_page_section .new_event_menu, .final_step .new_event_menu, .forgot_pwd_section .new_event_menu, .reset_pwd_section .new_event_menu, .msg_page_section .new_event_menu, .thank_you_section .new_event_menu, .view_event_section .new_event_menu, .name_page_section .new_event_menu, .slider_page_section .new_event_menu {
+.new_event_sec .new_event_menu, .eventF_page_section .new_event_menu, .eventE_page_section .new_event_menu, .edit_event_section .new_event_menu, .coll_slide .new_event_menu, .eventC_page_section .new_event_menu, .eventB_page_section .new_event_menu, .final_step .new_event_menu, .forgot_pwd_section .new_event_menu, .reset_pwd_section .new_event_menu, .msg_page_section .new_event_menu, .thank_you_section .new_event_menu, .view_event_section .new_event_menu, .name_page_section .new_event_menu, .slider_page_section .new_event_menu {
 	z-index: 1050;
 }
 
@@ -4304,6 +4322,13 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 .all_list {
 	font-size: 16.67px;
 }
+.all_list span{
+	width: 100%;
+	text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden !important;
+}
 
 .all_list_total_price, .total_event_prise_detail {
 	font-size: 16.67px;
@@ -4421,7 +4446,9 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	background-color: #90d6d9;
 	color: #283d7e;
 }
-
+.fabric_name{
+	width: 50%;
+}
 .fabric_name_yellow {
 	color: #f9cf3c;
 }
@@ -4668,19 +4695,20 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	font-family: 'Russo One', sans-serif;
 }
 
-.eventC_page_section .event_activity {
-	padding: 17px 60px 7px 60px;
+/* .eventC_page_section .event_activity {
+	padding: 0px 60px 7px 60px;
 	display: inline-flex;
-}
+} */
 
-.eventC_page_section .event_activity p {
+.eventC_page_section .event_activity span {
 	font-size: 20px;
 	color: #fff;
-	margin: 10px;
 	text-overflow: ellipsis;
     display: inline-block;
     overflow: hidden !important;
 	font-family: 'Russo One', sans-serif;
+	width: 80%;
+	margin-left: 50px;
 }
 
 .eventC_page_section .event_slace {
@@ -4785,6 +4813,10 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	color: #fff;
 	font-size: 16px;
 	font-family: 'Russo One', sans-serif;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+	overflow: hidden !important;
+	width: 90%;
 }
 
 .eventC_page_section .eventC_add {
@@ -4889,7 +4921,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 
 .event-count-box-scroll {
 	overflow-x: hidden;
-	max-height: 102px;
+	max-height: 62px;
 	border: 1px solid #fff;
 	margin: 0px 50px;
 	padding: 5px 0px;
@@ -5244,7 +5276,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	float: right;
 	background-color: #f79132;
 	font-size: 14.74px;
-	padding: 8px 14px;
+	padding: 8px 13px;
 	letter-spacing: 2px;
 	font-family: 'Russo One', sans-serif;
 	margin-top: 10px;
@@ -5257,6 +5289,11 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	line-height: 17px;
 	color: #fff;
 	font-family: 'Russo One', sans-serif;
+	text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden !important;
+    width: 100%;
 }
 
 .item_detail span {
@@ -5378,10 +5415,13 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
     max-height: 200px;
     overflow-y: scroll;
 }
-
 .all_msg {
-	padding: 50px;
+	padding: 10px;
 	margin: auto;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
 }
 
 .thank_you_sec_font h3 {
@@ -6002,7 +6042,10 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 	width: 665px;
 	margin: auto;
 }
-
+.event_price span{
+	color: #fff;
+	font-family: 'Russo One', sans-serif;
+}
 .event_price p, .eventC_close p {
 	margin-bottom: 0px!important;
 }
@@ -6025,7 +6068,7 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 .collection_slider .slick-arrow.slick-next {
    color: rgb(158, 194, 59);
 }
-.collection_slider_section .inner_content_btn .total_btn {
+.collection_slider_section .inner_content_btn .total_btn a {
     background-color: #3dbbcd;
 }
 .collection_slider_section .inner_content_btn .tom_btn {
@@ -6093,7 +6136,7 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 		padding: 0 50px;
 	}
 	.slider_overlay {
-		padding: 50px 0px 0px 50px;
+		padding: 40px 0px 0px 50px;
 	}
 	.event_prise_detail {
 		max-height: 385px;
@@ -6745,9 +6788,9 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 	.eventC_page_section input[type=radio] {
 		margin-left: 50px;
 	}
-	.eventC_page_section .event_activity {
+	/* .eventC_page_section .event_activity {
 		padding: 17px 50px 7px 50px;
-	}
+	} */
 	.eventD_page_section button.eventD_share {
 		font-size: 17px;
 	}
@@ -7214,6 +7257,12 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 }
 
 @media(max-width: 575px) {
+	.eventC_page_section .event_activity span{
+		margin-left: 20px;
+	}
+	.eventF_page_section .eventF_send input{
+		font-family: 'Russo One', sans-serif;
+	}
 	.thankyou_font_msg {
 		max-height: 100px;
 	}
@@ -7230,6 +7279,7 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 	.eventE_btn button.event_invitation {
 		font-size: 15px;
 		padding: 7px 34px;
+		margin-bottom: 10px;
 	}
 	.event_slider5 button.slick-arrow, .event_slider4 button.slick-arrow, .event_slider1 button.slick-arrow, .event_slider2 button.slick-arrow, .event_slider3 button.slick-arrow {
 		top: -27px;
@@ -8294,6 +8344,7 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 	.eventC_page_section .eventC_btn {
 		padding: 5px 15px;
 		font-size: 13px;
+		margin-bottom: 6px;
 	}
 	.eventC_page_section .eventC_gendar label, .eventC_page_section .eventC_item p {
 		font-size: 13px;
@@ -8348,6 +8399,7 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 		height: 35px;
 		padding: 15px;
 		font-size: 16px;
+		width: 100%;
 	}
 	.eventD_page_section button.eventD_share {
 		font-size: 13px;
@@ -8987,6 +9039,12 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 }
 
 @media screen and (max-width: 340px) {
+	.event-count-box-scroll{
+		margin: 0 4px;
+	}
+	.fabric_name{
+		width: 30%;
+	}
 	/*view event responsive css strt*/
 	.event_detail_btns a {
 		font-size: 11px;

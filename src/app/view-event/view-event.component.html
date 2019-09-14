@@ -16,7 +16,7 @@
         <h3 class="text-center user_name" data-toggle="tooltip" title="{{eventHashTag}}">{{eventHashTag}}</h3>
 
         <div class="cart_pic text-center" (click)="myCart(item._id)" *ngFor="let item of allDetailsofEvent">
-            <img src="/assets/images/cart.png" data-toggle="tooltip" *ngIf="isJoined == true" title="My Cart">
+            <img src="/assets/images/cart.png" data-toggle="tooltip"  title="My Cart">
         </div>
         <div class="veiw_event">
             <div class="Join_inner_content_box h-100 mb-3">
@@ -81,7 +81,7 @@
                         <div class="activity_slider">
                             <div class="" *ngFor="let activity of activityArray">
                                 <p class="text-center first_day_activity" data-toggle="tooltip" data-placement="top"
-                                    title="Activity:{{activity.activityName}}">Activity:{{activity.activityName}}</p>
+                                    title="{{activity.activityName}}">Activity:{{activity.activityName}}</p>
                                 <div class="activity_group_slider">
                                     <div *ngFor="let group of activity.group">
                                         <p class="group_family text-center">{{group.groupName}}</p>
@@ -95,14 +95,14 @@
                                                             <div class="row">
                                                                 <div class="col-6">
                                                                     <div class="item_detail">
-                                                                        <p><span>Name : </span><br> {{male.itemName}}
+                                                                        <p title="{{male.itemName}}"><span>Name : </span><br> {{male.itemName}}
                                                                         </p>
                                                                         <p><span>Price : </span><br>
                                                                             {{male.itemPrice | currency:"&#x20A6;"}}</p>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-6">
-                                                                    <div class="add_to_cart_btn" *ngIf="isJoined == true"
+                                                                    <div class="add_to_cart_btn" 
                                                                         (click)="addToCart(item._id,male._id)">
                                                                         <a class="text-white"
                                                                            >Add to Cart</a>
@@ -129,7 +129,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-6">
-                                                                    <div class="add_to_cart_btn" *ngIf="isJoined == true"
+                                                                    <div class="add_to_cart_btn"
                                                                          (click)="addToCart(item._id,female._id)">
                                                                         <a class="text-white"
                                                                             >Add to Cart</a>

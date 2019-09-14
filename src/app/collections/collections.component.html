@@ -1,9 +1,6 @@
 <div id="loading" *ngIf="isLoad">
     <img id="loading-image" src="/assets/images/loader.gif" alt="Loading..." />
 </div>
-
-
-
 <section class="collection_slider_section d-flex flex-wrap align-content-center">
     <div class="container-fluid">
         <h3 class="text-center">Aso Ebi</h3>
@@ -12,28 +9,25 @@
             <div id="overlay" class="new_event_menu_box" style="display: none;">
                 <div class="m-auto pr-0 float-left new_event_menu slider_overlay">
                     <a href="javascript:void(0)" class="text-white "><img src="/assets/images/overlay.png">
-                        <p>New Event</p>
+                        <p>Collections</p>
                     </a>
                 </div>
-                <div class="">
-
-                    <div class="event_menu">
-                        <div class="all_menu_content  d-flex flex-wrap align-content-center">
-                            <ul>
-                                <li><a routerLink="/myEvent" class="text-white text-center new_event">my
-                                        event</a>
-                                </li>
-                                <li><a routerLink="/createEvent" class="text-white text-center my_event">new
-                                        event</a></li>
-                                <li><a routerLink="/bankDetails" class="text-white text-center my_account">bank
-                                        account</a>
-                                </li>
-                                <li><a routerLink="/reset-password" class="text-white text-center my_account">Reset
-                                        Password</a></li>
-                                <li><a (click)="logout()" class="text-white text-center my_account">Logout</a>
-                                </li>
-                            </ul>
-                        </div>
+                <div class="event_menu">
+                    <div class="all_menu_content  d-flex flex-wrap align-content-center">
+                        <ul>
+                            <li><a routerLink="/myEvent" class="text-white text-center new_event">my
+                                    event</a>
+                            </li>
+                            <li><a routerLink="/createEvent" class="text-white text-center my_event">new
+                                    event</a></li>
+                            <li><a routerLink="/bankDetails" class="text-white text-center my_account">bank
+                                    account</a>
+                            </li>
+                            <li><a routerLink="/reset-password" class="text-white text-center my_account">Reset
+                                    Password</a></li>
+                            <li><a (click)="logout()" class="text-white text-center my_account">Logout</a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -55,7 +49,8 @@
                                 </div>
                             </div>
                             <div class="inner_content_btn text-center" *ngIf="totalCollection">
-                                <a class="tom_btn text-white text-center">{{totalCollection.eventHashTag}}</a>
+                                <a class="tom_btn text-white text-center"
+                                    title="{{totalCollection.eventHashTag}}">{{totalCollection.eventHashTag}}</a>
                             </div>
                             <div class="inner_content_btn total_btn">
                                 <a class="text-white float-left text-center">Total</a>
@@ -65,15 +60,20 @@
                             </h3>
                             <div class="inner_box_content">
                                 <div class="inner_title">
-                                    <h3 class="text-white">{{money._id}} ({{money.totalPrice | currency:"&#x20A6;"}} )
+                                    <h3 class="text-white d-inline-block w-100 mb-0">
+                                        <p class="float-left m-0">{{money._id}}</p>
+                                        <p class="float-right m-0">({{money.totalPrice | currency:"&#x20A6;"}} )</p>
                                     </h3>
                                 </div>
                                 <div>
-                                    <div class="row">
-                                        <div class="col-3" *ngFor="let group of money.group; let i = index;">
-                                            <input type="radio" id="{{k}}{{i}}" name="radio-group"
-                                                (change)="handleChange(group)">
-                                            <label for="{{k}}{{i}}">{{group.groupName}}</label>
+                                    <div class="event-activity-class">
+                                        <div class="row">
+                                            <div class="col-6" *ngFor="let group of money.group; let i = index;">
+                                                <input type="radio" id="{{k}}{{i}}" name="radio-group"
+                                                    (change)="handleChange(group)">
+                                                <label for="{{k}}{{i}}"
+                                                    title="{{group.groupName}}">{{group.groupName}}</label>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="gender_list text-white">
@@ -118,7 +118,8 @@
                                 </div>
                             </div>
                             <div class="inner_content_btn text-center" *ngIf="totalCollection">
-                                <a class="tom_btn text-white text-center">{{totalCollection.eventHashTag}}</a>
+                                <a class="tom_btn text-white text-center"
+                                    title="{{totalCollection.eventHashTag}}">{{totalCollection.eventHashTag}}</a>
                             </div>
                             <div class="inner_content_btn total_btn">
                                 <a class="text-white float-left text-center">Total</a>
@@ -168,10 +169,11 @@
                                 </div>
                             </div>
                             <div class="inner_content_btn text-center" *ngIf="totalCollection">
-                                <a class="tom_btn text-white text-center">{{totalCollection.eventHashTag}}</a>
+                                <a class="tom_btn text-white text-center"
+                                    title="{{totalCollection.eventHashTag}}">{{totalCollection.eventHashTag}}</a>
                             </div>
                             <div class="inner_content_btn total_btn">
-                                <a  class="text-white float-left text-center">Total</a>
+                                <a class="text-white float-left text-center">Total</a>
                                 <a class="text-white float-right text-center">GuestList</a>
                             </div>
                             <h3 class="number text-white text-center"><a></a><a></a></h3>
@@ -196,31 +198,6 @@
                 <!-- 5th slide end -->
             </div>
             <!-- collection slider ends -->
-
-            <div id="overlay" class="new_event_menu_box" style="display: none;">
-                <div class="m-auto pr-0 float-left new_event_menu slider_overlay">
-                <a class="text-white "><img src="/assets/images/overlay.png">
-                    <p>Collections</p>
-                </a>
-            </div>
-                <div class="">
-                    <div class="event_menu">
-                        <div class="all_menu_content  d-flex flex-wrap align-content-center">
-                            <ul>
-                                <li><a routerLink="/home" class="text-white new_event">Home</a></li>
-                                <li><a routerLink="/myEvent" class="text-white new_event">my event</a></li>
-                                <li><a routerLink="/createEvent" class="text-white my_event">new event</a>
-                                </li>
-                                <li><a routerLink="/bankDetails" class="text-white my_account">bank
-                                        account</a></li>
-                                <li><a routerLink="/reset-password" class="text-white my_account">Reset
-                                        Password</a></li>
-                                <li><a (click)="logout()" class="text-white my_account">Logout</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </section>

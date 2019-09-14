@@ -35,7 +35,7 @@
                             </div>
                         </div>
                         <div class="radio_btn text-white">
-                            <p class="event_name_new"> ji</p>
+                            <p class="event_name_new">{{eventDetails.eventType}}</p>
                             <div class="event_prise_detail">
                                 <p class="gender_select">Male</p>
                                 <div class="row" *ngFor="let item of finalCartDetails">
@@ -43,9 +43,11 @@
                                         <div class="row">
                                             <div class="col-12" *ngIf="item.itemGender == 'male'">
                                                 <div class="all_list all_list_height">
-                                                    <div class="fabric_name float-left"> {{item.itemName}}
-                                                        {{item.itemPrice | currency:"&#x20A6;"}} </div>
+                                                    <div class="fabric_name float-left"> 
+                                                        <span title="{{item.itemName}}">{{item.itemName}}</span>
+                                                        </div>
                                                     <div class="float-right number_of_item">
+                                                        <label>{{item.itemPrice | currency:"&#x20A6;"}}</label>
                                                         <!-- <label class=""> x </label> -->
                                                         <input type="text" min="1" [(ngModel)]="item.quantity" disabled>
                                                     </div>
@@ -72,9 +74,11 @@
                                         <div class="row">
                                             <div class="col-12" *ngIf="item.itemGender=='female'">
                                                 <div class="all_list all_list_height">
-                                                    <div class="fabric_name float-left"> {{item.itemName}}
-                                                        {{item.itemPrice | currency:"&#x20A6;"}} </div>
+                                                    <div class="fabric_name float-left">
+                                                        <span title="{{item.itemName}}">{{item.itemName}}</span>
+                                                         </div>
                                                     <div class="float-right number_of_item">
+                                                        <label>{{item.itemPrice | currency:"&#x20A6;"}}</label>
                                                         <!-- <label class=""> x </label> -->
                                                         <input type="text" min="1" [(ngModel)]="item.quantity" disabled>
                                                     </div>
