@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit {
     auth: {
       clientId: 'bd9b8a24-97aa-42db-a5fe-dcb24b15e6f8', //This is your client ID,
       authority: "https://login.microsoftonline.com/common",//This is your tenant info 
-      redirectUri:"https://andcowith.me"
+      // redirectUri:"https://andcowith.me"
     },
     cache: {
       cacheLocation: "localStorage",

@@ -31,6 +31,7 @@ export class GuestEventComponent implements OnInit {
     console.log(this.newEventId)
     this.guestEventDetailsWithoutLogin(this.newEventId);
     localStorage.setItem('newEventId', JSON.stringify(this.newEventId));
+    // window.localStorage.setItem('newEventId', 'true');
   }
 
   ngOnInit() {
