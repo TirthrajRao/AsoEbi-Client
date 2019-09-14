@@ -23,18 +23,18 @@
 							</div> -->
                             <div class="event_detail_slide event_detail_slide_blue">
                                 <div class="events_name text-center">
-                                    <a  class="text-center text-white"
-                                    *ngIf="eventDetails">{{eventDetails.eventType}}</a>
+                                    <a class="text-center text-white"
+                                        *ngIf="eventDetails">{{eventDetails.eventType}}</a>
                                 </div>
                             </div>
                             <div class="event_detail_slide event_detail_slide_blue">
                                 <div class="events_name text-center">
-                                    <a  class="text-center text-white">Gift Donation</a>
+                                    <a class="text-center text-white">Gift Donation</a>
                                 </div>
                             </div>
                             <div class="event_detail_slide event_detail_slide_blue">
                                 <div class="events_name text-center">
-                                    <a  class="text-center text-white">Total</a>
+                                    <a class="text-center text-white">Total</a>
                                 </div>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
         <div class="container-fluid">
             <h3 class="text-center text-center Aso_title">Aso Ebi</h3>
             <div class="profile_pic text-center text-center">
-                    <img src="{{path}}{{eventDetails.profilePhoto}}" *ngIf="eventDetails">
+                <img src="{{path}}{{eventDetails.profilePhoto}}" *ngIf="eventDetails">
             </div>
             <h3 class="text-center text-center user_name" *ngIf="eventDetails"> {{eventDetails.hashTag}}</h3>
             <div class="card_inner_content_box5">
@@ -60,25 +60,27 @@
                         <div class="event_detail_slider">
                             <div class="event_detail_slide event_detail_slide_sky1">
                                 <div class="events_name text-center">
-                                    <a  class="text-center text-white" *ngIf="eventDetails"  data-toggle="tooltip" title="{{eventDetails.eventType}}">
-                                    {{eventDetails.eventType}}</a>
+                                    <a class="text-center text-white" *ngIf="eventDetails" data-toggle="tooltip"
+                                        title="{{eventDetails.eventType}}">
+                                        {{eventDetails.eventType}}</a>
                                 </div>
                             </div>
                             <div class="event_detail_slide event_detail_slide_sky1">
                                 <div class="events_name text-center">
-                                    <a (click)="nextSection('step_four', 'step_five')"
-                                    class="text-center text-white" data-toggle="tooltip" title="Gift Donation">Gift Donation</a>
+                                    <a (click)="nextSection('step_four', 'step_five')" class="text-center text-white"
+                                        data-toggle="tooltip" title="Gift Donation">Gift Donation</a>
                                 </div>
                             </div>
                             <div class="event_detail_slide event_detail_slide_sky1">
                                 <div class="events_name text-center">
-                                    <a  class="text-center text-white" data-toggle="tooltip" title="Total">Total</a>
+                                    <a class="text-center text-white" data-toggle="tooltip" title="Total">Total</a>
                                 </div>
                             </div>
                         </div>
 
                         <div *ngIf="cartDetails.length == 0" class="text-white text-center">
-                            <h1 class="sorry_msg">Sorry, No more item added into the cart.To add item into cart <a (click)="viewEvent(eventId)">Click Here </a> </h1>
+                            <h1 class="sorry_msg">Sorry, No more item added into the cart.To add item into cart <a style="color: #90d6d9"
+                                    (click)="viewEvent(eventId)">Click Here </a> </h1>
                         </div>
                         <div class="radio_btn text-white " *ngIf="cartDetails.length>0">
                             <p class="event_name_new" *ngIf="eventDetails"> {{eventDetails.eventType}}</p>
@@ -89,65 +91,71 @@
                                         <div class="row">
                                             <div class="col-12 " *ngIf="item.itemGender == 'male'">
                                                 <div class="all_list">
-                                                    <div class="fabric_name float-left">{{item.itemName}} {{ item.itemPrice | currency:"&#x20A6;" }} </div>
-                                                        <div class="float-right ">
-                                                            <label > x </label>
-                                                            <input type="number" onkeydown="return event.keyCode !== 69" id="myCartPaisa"  (click)="finalTotal(item)" [(ngModel)]="item.quantity" min="1">
-                                                        </div>
+                                                    <div class="fabric_name float-left"><span
+                                                            title="{{item.itemName}}">{{item.itemName}}</span></div>
+                                                    <div class="float-right ">
+                                                        <label>{{ item.itemPrice | currency:"&#x20A6;" }}</label>
+                                                        <label> x </label>
+                                                        <input type="number" onkeydown="return event.keyCode !== 69"
+                                                            id="myCartPaisa" (click)="finalTotal(item)"
+                                                            [(ngModel)]="item.quantity" min="1">
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 all_list_total_price" *ngIf="item.itemGender == 'male'">
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <div class=" float-right"> =
-                                                    {{(item.itemPrice * item.quantity) | currency:"&#x20A6;" }}</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-1 p-0" *ngIf="item.itemGender == 'male'">
-                                            <div class="delete_item">
-                                                <i class="fa fa-times" aria-hidden="true"
-                                                (click)="removeItem(item._id)"></i>
                                             </div>
                                         </div>
                                     </div>
-                                    <hr>
-                                    <p class="gender_select" >Female</p>
-                                    <div class="row" *ngFor="let item of cartDetails">
-                                        <div class="col-7">
-                                            <div class="row">
-                                                <div class="col-12 " *ngIf="item.itemGender=='female'">
-                                                    <div class="all_list">
-                                                        <div class="fabric_name float-left"> {{item.itemName}} {{item.itemPrice | currency:"&#x20A6;"}} </div>
-                                                            <div class="float-right text-white">
-                                                                <label class=""> x </label>
-                                                                <input type="number" min="1" id="donation"
-                                                                (keyup)="finalTotal(item)"
-                                                                [(ngModel)]='item.quantity'>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                    <div class="col-4 all_list_total_price" *ngIf="item.itemGender == 'male'">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class=" float-right"> =
+                                                    {{(item.itemPrice * item.quantity) | currency:"&#x20A6;" }}</div>
                                             </div>
-                                            <div class="col-4 all_list_total_price" *ngIf="item.itemGender=='female'">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <div class=" float-right"> = 
-                                                        {{(item.itemPrice  * item.quantity ) | currency:"&#x20A6;"}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 p-0" *ngIf="item.itemGender == 'male'">
+                                        <div class="delete_item">
+                                            <i class="fa fa-times" aria-hidden="true"
+                                                (click)="removeItem(item._id)"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <p class="gender_select">Female</p>
+                                <div class="row" *ngFor="let item of cartDetails">
+                                    <div class="col-7">
+                                        <div class="row">
+                                            <div class="col-12 " *ngIf="item.itemGender=='female'">
+                                                <div class="all_list">
+                                                    <div class="fabric_name float-left"><span
+                                                            title="{{item.itemName}}">{{item.itemName}}</span>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-1 p-0" *ngIf="item.itemGender=='female'">
-                                                <div class="delete_item">
-                                                    <i class="fa fa-times" aria-hidden="true"
-                                                    (click)="removeItem(item._id)"></i>
+                                                    <div class="float-right text-white">
+                                                        <label>{{item.itemPrice | currency:"&#x20A6;"}}</label>
+                                                        <label> x </label>
+                                                        <input type="number" min="1" id="donation"
+                                                            (keyup)="finalTotal(item)" [(ngModel)]='item.quantity'>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <hr>
-                                        <!-- <div class="all_total">
+                                    </div>
+                                    <div class="col-4 all_list_total_price" *ngIf="item.itemGender=='female'">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class=" float-right"> =
+                                                    {{(item.itemPrice  * item.quantity ) | currency:"&#x20A6;"}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-1 p-0" *ngIf="item.itemGender=='female'">
+                                        <div class="delete_item">
+                                            <i class="fa fa-times" aria-hidden="true"
+                                                (click)="removeItem(item._id)"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <!-- <div class="all_total">
                                             <div class="row">
                                                 <div class="col-11">
                                                     <div class="float-left">Total</div>
@@ -157,15 +165,15 @@
                                                 </div>
                                             </div>
                                         </div> -->
-                                    </div>
-                                    <div class="save_and_pay_btn" >
-                                        <a class="update_btn text-center" (click)="allItem(cartDetails)">Procced</a>
-                                        <!-- <a class="paynow_btn text-center" (click)="addDonation()">Add Donation</a> -->
-                                    </div>
-                                </div>
+                            </div>
+                            <div class="save_and_pay_btn">
+                                <a class="update_btn text-center" (click)="allItem(cartDetails)">Procced</a>
+                                <!-- <a class="paynow_btn text-center" (click)="addDonation()">Add Donation</a> -->
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
         </div>
+    </section>
+</div>

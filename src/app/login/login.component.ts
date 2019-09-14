@@ -66,27 +66,45 @@ export class LoginComponent implements OnInit {
   userName;
   varificationEmail;
   isLoad = false;
+  requestObj = {
+    scopes: ["user.read", "mail.send"]
+  }
   msalConfig = {
     auth: {
-      clientId: 'bd9b8a24-97aa-42db-a5fe-dcb24b15e6f8', //This is your client ID,
-      authority: "https://login.microsoftonline.com/common",//This is your tenant info 
-      // redirectUri:"https://andcowith.me"
+      clientId: 'bd9b8a24-97aa-42db-a5fe-dcb24b15e6f8', //This is your client ID
+      authority: "https://login.microsoftonline.com/common" //This is your tenant info
     },
     cache: {
       cacheLocation: "localStorage",
       storeAuthStateInCookie: true
     }
   };
-  myMSALObj = new Msal.UserAgentApplication(this.msalConfig);
-
+  graphConfig = {
+    graphMeEndpoint: "https://graph.microsoft.com/v1.0/me"
+  };
+  myMSALObj: any;
   constructor(private route: ActivatedRoute,
     private router: Router, private _loginService: LoginService, private authService: AuthService,
     private alertService: AlertService, ) {
     this.show = false;
+    this.myMSALObj = new Msal.UserAgentApplication(this.msalConfig);
+    this.myMSALObj.handleRedirectCallback(this.authRedirectCallBack);
 
     // redirect to home if already logged in
     if (this._loginService.currentUserValue) {
       this.router.navigate(['/home']);
+    }
+  }
+
+  authRedirectCallBack(error, response) {
+    if (error) {
+      console.log(error);
+    } else {
+      if (response.tokenType === "access_token") {
+        this.serverHotmailLogin(response.accessToken);
+      } else {
+        console.log("token type is:" + response.tokenType);
+      }
     }
   }
 
@@ -137,36 +155,41 @@ export class LoginComponent implements OnInit {
    * Login with microsoft or hotmail
    */
   hotMailLogin() {
-    console.log("heeeeeeeee rammmmmmm", this.myMSALObj);
-    let requestObj = {
-      scopes: ["user.read" ,"mail.send"]
-    }
-    let obj = this.myMSALObj;
-    obj.loginPopup(requestObj).then(function (loginResponse) {
-      //Successful login
+    console.log("heeeeeeeee rammmmmmm", this.myMSALObj, window.location.href.split("?")[0].split("#")[0]);
+    this.myMSALObj.loginPopup(this.requestObj).then((loginResponse) => {
       //Call MS Graph using the token in the response
-      console.log("Login Response", loginResponse);
-      obj.acquireTokenSilent(requestObj)
-        .then(function (tokenResponse) {
-          console.log(tokenResponse.accessToken);
-          callmicrosoftLogin(tokenResponse.accessToken)
-        }).catch(function (error) {
-          console.log(error);
-        })
-      obj.acquireTokenPopup(requestObj)
-        .then(function (tokenResponse) {
-          console.log(tokenResponse.accessToken)
-        }).catch(function (err) {
-          console.log(err);
-        })
-
-    }).catch(function (error) {
+      this.acquireTokenPopupAndCallMSGraph();
+    }).catch((error) => {
       //Please check the console for errors
       console.log(error);
     });
-    let callmicrosoftLogin = (token) => {
-      this.serverHotmailLogin(token);
+  }
+
+  acquireTokenPopupAndCallMSGraph() {
+    //Always start with acquireTokenSilent to obtain a token in the signed in user from cache
+    this.myMSALObj.acquireTokenSilent(this.requestObj).then((tokenResponse) => {
+      this.serverHotmailLogin(tokenResponse.accessToken);
+    }).catch((error) => {
+      console.log(error);
+      // Upon acquireTokenSilent failure (due to consent or interaction or login required ONLY)
+      // Call acquireTokenPopup(popup window) 
+      if (this.requiresInteraction(error.errorCode)) {
+        this.myMSALObj.acquireTokenPopup(this.requestObj).then((tokenResponse) => {
+          this.serverHotmailLogin(tokenResponse.accessToken);
+        }).catch((error) => {
+          console.log(error);
+        });
+      }
+    });
+  }
+
+  requiresInteraction(errorCode) {
+    if (!errorCode || !errorCode.length) {
+      return false;
     }
+    return errorCode === "consent_required" ||
+      errorCode === "interaction_required" ||
+      errorCode === "login_required";
   }
 
   /**
@@ -183,7 +206,7 @@ export class LoginComponent implements OnInit {
         this.userName = firstName + " " + lastName;
         localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
         localStorage.setItem('userName', JSON.stringify(this.userName));
-        
+
         if (this.eventIdWithLogin) {
           this.isLoad = false;
           this.isUserLoggedIn = true;
@@ -232,7 +255,7 @@ export class LoginComponent implements OnInit {
     console.log("generated token of yahoo", token);
     this._loginService.sendYahooToken(token, userId)
       .subscribe(data => {
-        
+
         let firstName = data.data.firstName
         let lastName = data.data.lastName
         this.userName = firstName + " " + lastName;
@@ -279,7 +302,7 @@ export class LoginComponent implements OnInit {
         console.log("data of invalid user", data);
         let firstName = data.data.firstName
         let lastName = data.data.lastName
-        this.userName = firstName ;
+        this.userName = firstName;
         console.log(this.userName);
         console.log("response of login user", data);
         // this.userRole = data.data.UserRole;
@@ -309,9 +332,9 @@ export class LoginComponent implements OnInit {
         this.alertService.getError(err.error.message)
         this.isDisable = false;
         this.loginForm.reset();
-      this.varificationEmail = varification.useremail
-      localStorage.setItem('varificationEmail', JSON.stringify(this.varificationEmail));
-      this.router.navigate(['/verification']);
+        this.varificationEmail = varification.useremail
+        localStorage.setItem('varificationEmail', JSON.stringify(this.varificationEmail));
+        this.router.navigate(['/verification']);
       })
   }
 
@@ -380,7 +403,7 @@ export class LoginComponent implements OnInit {
             this.userName = firstName + " " + lastName;
             localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
             localStorage.setItem('userName', JSON.stringify(this.userName));
-            
+
             if (this.eventIdWithLogin) {
               this.isLoad = false
               this.isUserLoggedIn = true;

@@ -94,8 +94,8 @@ export class AdminDashboardComponent implements OnInit {
         ["Element", "Amount", { role: "style" }],
        
         ["Total Amount Collected", collection, "#f9a24a"],
-        ["Total Amount (Logistic)", 30000, "#48b4d6"],
-        ["Total Amount (Commission)", 10000, "#8c6ec5"],
+        ["Total Amount (Logistic)", "#48b4d6"],
+        ["Total Amount (Commission)", "#8c6ec5"],
       ]);
 
       var view = new google.visualization.DataView(data);

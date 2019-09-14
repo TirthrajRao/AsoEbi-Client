@@ -41,7 +41,7 @@
     }
     .forgot_password_form input{
       background-color: transparent;
-      color: #000;
+      color: #000!important;
       height: 50px;
       border-radius: 0px!important;
       font-size: 30px;

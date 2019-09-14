@@ -80,10 +80,10 @@
                         </div>
                         <div class="row mt-1">
                             <div class="col-md-12">
+                                <label class="upload_photo" for="file">Upload files</label>
                                 <input type="file" #attachment formControlName="attachment" class="form-control"
                                     (change)="addFile($event.target.files)" id="file"
                                     accept="image/png, image/jpeg, image/jpg, image/gif" style="display: none;" hidden>
-                                <label class="upload_photo" for="file">Upload files</label>
                             </div>
                         </div>
                         <div class="btn_submit_pwd">

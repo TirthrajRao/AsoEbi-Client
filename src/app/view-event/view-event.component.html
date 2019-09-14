@@ -81,7 +81,7 @@
                         <div class="activity_slider">
                             <div class="" *ngFor="let activity of activityArray">
                                 <p class="text-center first_day_activity" data-toggle="tooltip" data-placement="top"
-                                    title="Activity:{{activity.activityName}}">Activity:{{activity.activityName}}</p>
+                                    title="{{activity.activityName}}">Activity:{{activity.activityName}}</p>
                                 <div class="activity_group_slider">
                                     <div *ngFor="let group of activity.group">
                                         <p class="group_family text-center">{{group.groupName}}</p>
@@ -95,16 +95,16 @@
                                                             <div class="row">
                                                                 <div class="col-6">
                                                                     <div class="item_detail">
-                                                                        <p><span>Name : </span><br> {{male.itemName}}
+                                                                        <p title="{{male.itemName}}"><span>Name : </span><br> {{male.itemName}}
                                                                         </p>
                                                                         <p><span>Price : </span><br>
                                                                             {{male.itemPrice | currency:"&#x20A6;"}}</p>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-6">
-                                                                    <div class="add_to_cart_btn" *ngIf="isJoined == true"
+                                                                <div class="col-6" *ngIf="male.itemName || male.itemPrice">
+                                                                    <div class="add_to_cart_btn"  *ngIf="isJoined == true"
                                                                         (click)="addToCart(item._id,male._id)">
-                                                                        <a class="text-white"
+                                                                        <a  class="text-white"
                                                                            >Add to Cart</a>
                                                                     </div>
                                                                 </div>
@@ -128,7 +128,7 @@
                                                                         </p>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-6">
+                                                                <div class="col-6" *ngIf="female.itemName || female.itemPrice">
                                                                     <div class="add_to_cart_btn" *ngIf="isJoined == true"
                                                                          (click)="addToCart(item._id,female._id)">
                                                                         <a class="text-white"

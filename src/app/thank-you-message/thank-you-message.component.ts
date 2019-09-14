@@ -38,6 +38,12 @@ export class ThankYouMessageComponent implements OnInit {
   }
 
   ngOnInit() {
+    // upload file name display
+    $('#file').change(function() {
+      var i = $(this).prev('label').clone();
+      var file = $('#file')[0].files[0].name;
+      $(this).prev('label').text(file);
+    });
     // menu toggle start
     $(".new_event_menu").click(function () {
       $(".new_event_menu_box").toggle();

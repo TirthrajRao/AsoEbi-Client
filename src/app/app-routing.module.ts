@@ -27,7 +27,7 @@ import {HomeModule} from './home/home.module';
  },
  {
    path: 'login',
-   component: LoginComponent
+   component: LoginComponent,
  },
  {
    path: 'signUp',

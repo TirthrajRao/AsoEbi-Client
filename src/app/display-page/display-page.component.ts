@@ -21,8 +21,8 @@ export class DisplayPageComponent implements OnInit {
   }
   
   ngOnInit() {
-    loadjs('assets/js/custom.js');
-    this.getPublicEvents();
+    // loadjs('assets/js/custom.js');
+    // this.getPublicEvents();
   }
 
   /**
@@ -54,17 +54,17 @@ export class DisplayPageComponent implements OnInit {
   /**
    * Get all public events with basic details of event
    */
-  getPublicEvents() {
-    this._eventService.getPublicEvents()
-      .subscribe((data: any) => {
-        console.log("data of public event", data);
-        this.publicEvents = data.data;
-        console.log("this.publicEvents", this.publicEvents);
-      }, (err: any) => {
-        console.log(err);
-        this.alertService.getError(err.message);
-      })
-  }
+  // getPublicEvents() {
+  //   this._eventService.getPublicEvents()
+  //     .subscribe((data: any) => {
+  //       console.log("data of public event", data);
+  //       this.publicEvents = data.data;
+  //       console.log("this.publicEvents", this.publicEvents);
+  //     }, (err: any) => {
+  //       console.log(err);
+  //       this.alertService.getError(err.message);
+  //     })
+  // }
 
   /**
    * Redirect to login page
