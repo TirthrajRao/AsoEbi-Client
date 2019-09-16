@@ -31,7 +31,7 @@ export class MyEventComponent implements OnInit {
   selectedGender;
   isDisable;
   totalCollectionOfUser;
-  userName = JSON.parse(localStorage.getItem('userName'));
+  userName = JSON.parse(sessionStorage.getItem('userName'));
   constructor(private router: Router, private _eventService: EventService, private alertService: AlertService,
     private _loginService: LoginService, private change: ChangeDetectorRef) {
     this.ngOnInit()

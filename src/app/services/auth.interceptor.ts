@@ -20,11 +20,11 @@ export class AuthInterceptor implements HttpInterceptor {
    */
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    const idtoken = JSON.parse(localStorage.getItem('currentUser'));
-    const facebookIdToken = JSON.parse(localStorage.getItem('facebookUser'));
-    const googleIdToken = JSON.parse(localStorage.getItem('googleUser'));
-    const microsoftIdToken = JSON.parse(localStorage.getItem('microsoftUser'));
-    const yahooIdToken = JSON.parse(localStorage.getItem('yahooUser'));
+    const idtoken = JSON.parse(sessionStorage.getItem('currentUser'));
+    const facebookIdToken = JSON.parse(sessionStorage.getItem('facebookUser'));
+    const googleIdToken = JSON.parse(sessionStorage.getItem('googleUser'));
+    const microsoftIdToken = JSON.parse(sessionStorage.getItem('microsoftUser'));
+    const yahooIdToken = JSON.parse(sessionStorage.getItem('yahooUser'));
     // console.log("interceptor login user token", idtoken);
 
     if (idtoken || facebookIdToken || googleIdToken || microsoftIdToken || yahooIdToken) {
@@ -56,7 +56,7 @@ export class AuthInterceptor implements HttpInterceptor {
             //   })
             // }
             if (error.status === 401) {
-              const idtoken = (localStorage.removeItem('currentUser'));
+              const idtoken = (sessionStorage.removeItem('currentUser'));
               Swal.fire({
                 type: 'error',
                 title: "sorry" + errorMessage,

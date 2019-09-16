@@ -12,7 +12,7 @@ declare var $: any;
 })
 export class VerificationComponent implements OnInit {
   isLoad = false;
-  varificationEmail = JSON.parse(localStorage.getItem('varificationEmail'));
+  varificationEmail = JSON.parse(sessionStorage.getItem('varificationEmail'));
   constructor(private route: ActivatedRoute,
     private router: Router, private _loginService: LoginService, private _alertService: AlertService) { }
 
@@ -35,7 +35,7 @@ export class VerificationComponent implements OnInit {
       .subscribe((data: any) => {
         console.log("positive response", data);
         this.isLoad = false;
-        localStorage.removeItem('varificationEmail');
+        sessionStorage.removeItem('varificationEmail');
         this.router.navigate(['/login']);
       }, err => {
         console.log(err);

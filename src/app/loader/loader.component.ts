@@ -10,9 +10,9 @@ declare var $: any;
   styleUrls: ['./loader.component.css']
 })
 export class LoaderComponent implements OnInit {
-  userName = JSON.parse(localStorage.getItem('userName'));
-  userRole = JSON.parse(localStorage.getItem('userRole'));
-  manualLoginUser = JSON.parse(localStorage.getItem('currentUser'));
+  userName = JSON.parse(sessionStorage.getItem('userName'));
+  userRole = JSON.parse(sessionStorage.getItem('userRole'));
+  manualLoginUser = JSON.parse(sessionStorage.getItem('currentUser'));
   isDisable: false;
   constructor(private _loginService: LoginService, private route: ActivatedRoute,
     private router: Router) { }

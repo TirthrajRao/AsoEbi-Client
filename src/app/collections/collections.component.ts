@@ -29,7 +29,7 @@ export class CollectionsComponent implements OnInit {
   from = false;
   fromClass;
   activityTotal: any;
-  userName = JSON.parse(localStorage.getItem('userName'));
+  userName = JSON.parse(sessionStorage.getItem('userName'));
 
   colorSettings = {
     section: ['#d7d7d7', '#d0dadc', '#a4a5a8', '#dadbdf', '#2b2f31'],

@@ -23,7 +23,7 @@ export class BankDetailsComponent implements OnInit {
   isLoad = false;
   private sub: any;
   public eventId: any;
-  userName = JSON.parse(localStorage.getItem('userName'));
+  userName = JSON.parse(sessionStorage.getItem('userName'));
   constructor(private router: Router, private route: ActivatedRoute, private _loginService: LoginService, private _eventService: EventService, private _alertService: AlertService) {
     this.sub = this.route.params.subscribe(params => {
       this.eventId = params.id;

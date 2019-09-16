@@ -18,8 +18,8 @@ export class GuestEventComponent implements OnInit {
   themePhoto: any = [];
   newEventId;
   guestEventDetailsAfterLogin;
-  idtoken = JSON.parse(localStorage.getItem('currentUser'));
-  isGuestJoined = JSON.parse(localStorage.getItem('isGuestJoined'));
+  idtoken = JSON.parse(sessionStorage.getItem('currentUser'));
+  isGuestJoined = JSON.parse(sessionStorage.getItem('isGuestJoined'));
   constructor(private route: ActivatedRoute,
     private router: Router, private _eventService: EventService) {
 
@@ -30,8 +30,8 @@ export class GuestEventComponent implements OnInit {
     this.newEventId = Buffer.from(this.eventId, 'base64').toString('ascii');
     console.log(this.newEventId)
     this.guestEventDetailsWithoutLogin(this.newEventId);
-    localStorage.setItem('newEventId', JSON.stringify(this.newEventId));
-    // window.localStorage.setItem('newEventId', 'true');
+    sessionStorage.setItem('newEventId', JSON.stringify(this.newEventId));
+    // window.sessionStorage.setItem('newEventId', 'true');
   }
 
   ngOnInit() {
@@ -64,7 +64,7 @@ export class GuestEventComponent implements OnInit {
   * To join event redirect to login page for guest 
   */
   joinNow() {
-    const eventToken = JSON.parse(localStorage.getItem('newEventId'));
+    const eventToken = JSON.parse(sessionStorage.getItem('newEventId'));
     console.log(eventToken);
     this._eventService.joinEvent(eventToken)
       .subscribe(data => {

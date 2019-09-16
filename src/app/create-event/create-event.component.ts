@@ -61,7 +61,7 @@ export class CreateEventComponent implements OnInit {
   isLoad = false;
   groupLength;
   eventName;
-  userName = JSON.parse(localStorage.getItem('userName'));
+  userName = JSON.parse(sessionStorage.getItem('userName'));
   constructor(private route: ActivatedRoute, private router: Router, private _eventService: EventService,
     private alertService: AlertService, private fb: FormBuilder, private _loginService: LoginService) {
     this.sub = this.route.params.subscribe(params => {
@@ -1032,6 +1032,7 @@ export class CreateEventComponent implements OnInit {
         console.log(data);
         this.createdActivity = data.data.activity;
         console.log(this.createdActivity);
+        this.groupLength = this.createdActivity.length
         this.eventName = data.data.eventTitle;
         console.log(this.eventName);
         this.initGroupForm(this.createdActivity, true);

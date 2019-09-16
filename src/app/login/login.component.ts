@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
   FB: any;
   isUserLoggedIn = false;
   isDisable = false;
-  eventIdWithLogin = JSON.parse(localStorage.getItem('newEventId'));;
+  eventIdWithLogin = JSON.parse(sessionStorage.getItem('newEventId'));;
   isGuestJoined;
   isCelebrant;
   userRole;
@@ -204,20 +204,20 @@ export class LoginComponent implements OnInit {
         let firstName = data.data.firstName
         let lastName = data.data.lastName
         this.userName = firstName + " " + lastName;
-        localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
-        localStorage.setItem('userName', JSON.stringify(this.userName));
+        sessionStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
+        sessionStorage.setItem('userName', JSON.stringify(this.userName));
 
         if (this.eventIdWithLogin) {
           this.isLoad = false;
           this.isUserLoggedIn = true;
-          localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+          sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
           this.router.navigate(['/home/view-event/', this.eventIdWithLogin])
         }
         else {
           this.isLoad = false
           this.isUserLoggedIn = true;
-          localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
-          localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
+          sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+          sessionStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
           this.router.navigate(['/home']);
         }
       }, err => {
@@ -258,19 +258,19 @@ export class LoginComponent implements OnInit {
         let firstName = data.data.firstName
         let lastName = data.data.lastName
         this.userName = firstName;
-        localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
-        localStorage.setItem('userName', JSON.stringify(this.userName));
+        sessionStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
+        sessionStorage.setItem('userName', JSON.stringify(this.userName));
         if (this.eventIdWithLogin) {
           this.isLoad = false
           this.isUserLoggedIn = true;
-          localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+          sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
           this.router.navigate(['/home/view-event/', this.eventIdWithLogin])
         }
         else {
           this.isLoad = false
           this.isUserLoggedIn = true;
-          localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
-          localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
+          sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+          sessionStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
           this.router.navigate(['/home']);
           window.location.reload()
         }
@@ -306,14 +306,14 @@ export class LoginComponent implements OnInit {
         console.log("response of login user", data);
         // this.userRole = data.data.UserRole;
         console.log("admin login entry", data.data.UserRole);
-        localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
-        localStorage.setItem('userName', JSON.stringify(this.userName));
+        sessionStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
+        sessionStorage.setItem('userName', JSON.stringify(this.userName));
         console.log(this.isCelebrant);
         this.isDisable = true;
         if (this.eventIdWithLogin) {
           this.isLoad = false;
           this.isUserLoggedIn = true;
-          localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+          sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
           this.router.navigate(['/home/view-event/', this.eventIdWithLogin])
         } else if (data.data.UserRole == 'admin') {
           this.isLoad = false
@@ -321,7 +321,7 @@ export class LoginComponent implements OnInit {
         } else if (data.data.UserRole == 'user') {
           this.isLoad = false
           this.isUserLoggedIn = true;
-          localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+          sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
           this.router.navigate(['/home']);
         }
       }, (err: any) => {
@@ -332,7 +332,7 @@ export class LoginComponent implements OnInit {
         this.isDisable = false;
         this.loginForm.reset();
         this.varificationEmail = varification.useremail
-        localStorage.setItem('varificationEmail', JSON.stringify(this.varificationEmail));
+        sessionStorage.setItem('varificationEmail', JSON.stringify(this.varificationEmail));
         this.router.navigate(['/verification']);
       })
   }
@@ -356,20 +356,20 @@ export class LoginComponent implements OnInit {
         console.log("response of login user", data);
         // this.userRole = data.data.UserRole;
         console.log("admin login entry", data.data.UserRole);
-        localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
-        localStorage.setItem('userName', JSON.stringify(this.userName));
+        sessionStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
+        sessionStorage.setItem('userName', JSON.stringify(this.userName));
         console.log("response positive of google", data);
         if (this.eventIdWithLogin) {
           this.isLoad = false;
           this.isUserLoggedIn = true;
-          localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+          sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
           this.router.navigate(['/home/view-event/', this.eventIdWithLogin])
         }
         else {
           this.isLoad = false
           this.isDisable = false;
           this.isUserLoggedIn = true;
-          localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+          sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
           this.router.navigate(['/home']);
         }
       }, err => {
@@ -400,13 +400,13 @@ export class LoginComponent implements OnInit {
             let firstName = data.data.firstName
             let lastName = data.data.lastName
             this.userName = firstName;
-            localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
-            localStorage.setItem('userName', JSON.stringify(this.userName));
+            sessionStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
+            sessionStorage.setItem('userName', JSON.stringify(this.userName));
 
             if (this.eventIdWithLogin) {
               this.isLoad = false
               this.isUserLoggedIn = true;
-              localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+              sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
               this.router.navigate(['/home/view-event/', this.eventIdWithLogin])
             }
             else {
@@ -414,7 +414,7 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['/home']);
               this.isDisable = false;
               this.isUserLoggedIn = true;
-              localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+              sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
             }
           }, err => {
             this.isLoad = false;

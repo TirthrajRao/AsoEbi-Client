@@ -14,8 +14,8 @@ declare var $: any;
 
 export class HeaderComponent implements OnInit {
 
-  currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  adminUser = JSON.parse(localStorage.getItem('userRole'));
+  currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+  adminUser = JSON.parse(sessionStorage.getItem('userRole'));
   searchText;
   searchEvent: any = [];
   publicEvents: any = [];
@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     // admin dashboard start
-
+// console.log("current user of login", this.currentUser);
     $('#menu-action').click(function () {
       $('.sidebar').toggleClass('active');
       // $('.main').toggleClass('active');

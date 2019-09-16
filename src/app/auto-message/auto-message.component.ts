@@ -32,7 +32,7 @@ export class AutoMessageComponent implements OnInit {
   feMaleItem;
   selectedGroup;
   selectedGender;
-  userName = JSON.parse(localStorage.getItem('userName'));
+  userName = JSON.parse(sessionStorage.getItem('userName'));
   constructor(private route: ActivatedRoute, private router: Router, private _eventService: EventService, private alertService: AlertService,
     private _loginService: LoginService) {
     this.sub = this.route.params.subscribe(params => {

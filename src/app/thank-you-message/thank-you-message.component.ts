@@ -24,7 +24,7 @@ export class ThankYouMessageComponent implements OnInit {
   thankYouMessage;
   eventTheme;
   isLoad = false;
-  userName = JSON.parse(localStorage.getItem('userName'));
+  userName = JSON.parse(sessionStorage.getItem('userName'));
   path = config.baseMediaUrl;
   files: Array<File> = [];
 

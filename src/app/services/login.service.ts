@@ -13,7 +13,7 @@ export class LoginService {
   isUserLoggedIn: false;
 
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(sessionStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
@@ -29,7 +29,7 @@ export class LoginService {
    */
   login(userCredentials) {
     console.log("helloooooooo", userCredentials);
-    const eventToken = JSON.parse(localStorage.getItem('newEventId'));
+    const eventToken = JSON.parse(sessionStorage.getItem('newEventId'));
     console.log("login with link ", eventToken);
     if (eventToken) {
       // userCredentials.eventId = eventToken;
@@ -38,8 +38,7 @@ export class LoginService {
         .pipe(map(user => {
           console.log("login user detaislllllllllll======", user);
           if (user && user.data.accessToken) {
-            // localStorage.setItem('currentUser', JSON.stringify(user.data));
-            localStorage.setItem('currentUser', JSON.stringify(user.data.accessToken));
+            sessionStorage.setItem('currentUser', JSON.stringify(user.data.accessToken));
             this.currentUserSubject.next(user);
           }
           return user;
@@ -50,8 +49,8 @@ export class LoginService {
         .pipe(map(user => {
           console.log("login user detaislllllllllll======", user);
           if (user && user.data.accessToken) {
-            // localStorage.setItem('currentUser', JSON.stringify(user.data));
-            localStorage.setItem('currentUser', JSON.stringify(user.data.accessToken));
+            // sessionStorage.setItem('currentUser', JSON.stringify(user.data));
+            sessionStorage.setItem('currentUser', JSON.stringify(user.data.accessToken));
             this.currentUserSubject.next(user);
           }
           return user;
@@ -81,8 +80,8 @@ export class LoginService {
       .pipe(map(googleUser => {
         console.log("google login user accesstoken", googleUser);
         if (googleUser && googleUser.data.accessToken) {
-          localStorage.setItem('googleUser', JSON.stringify(googleUser.data.accessToken));
-          localStorage.setItem('userRole',JSON.stringify(googleUser.data.UserRole));
+          sessionStorage.setItem('googleUser', JSON.stringify(googleUser.data.accessToken));
+          sessionStorage.setItem('userRole',JSON.stringify(googleUser.data.UserRole));
           this.currentUserSubject.next(googleUser);
         }
         return googleUser;
@@ -102,8 +101,8 @@ export class LoginService {
       .pipe(map(facebookUser => {
         console.log("facebook user jwt token", facebookUser);
         if (facebookUser && facebookUser.data.accessToken) {
-          localStorage.setItem('facebookUser', JSON.stringify(facebookUser.data.accessToken));
-          localStorage.setItem('userRole',JSON.stringify(facebookUser.data.UserRole));
+          sessionStorage.setItem('facebookUser', JSON.stringify(facebookUser.data.accessToken));
+          sessionStorage.setItem('userRole',JSON.stringify(facebookUser.data.UserRole));
           this.currentUserSubject.next(facebookUser);
 
         }
@@ -125,8 +124,8 @@ export class LoginService {
       .pipe(map((microsoftUser: any) => {
         console.log("hotmaail login user token", microsoftUser);
         if (microsoftUser && microsoftUser.data.accessToken) {
-          localStorage.setItem('microsoftUser', JSON.stringify(microsoftUser.data.accessToken));
-          localStorage.setItem('userRole',JSON.stringify(microsoftUser.data.UserRole));
+          sessionStorage.setItem('microsoftUser', JSON.stringify(microsoftUser.data.accessToken));
+          sessionStorage.setItem('userRole',JSON.stringify(microsoftUser.data.UserRole));
           this.currentUserSubject.next(microsoftUser);
         }
         return microsoftUser;
@@ -149,8 +148,8 @@ export class LoginService {
       .pipe(map((yahooUser: any) => {
         console.log("google login user accesstoken", yahooUser);
         if (yahooUser && yahooUser.data.accessToken) {
-          localStorage.setItem('yahooUser', JSON.stringify(yahooUser.data.accessToken));
-          localStorage.setItem('userRole',JSON.stringify(yahooUser.data.UserRole));
+          sessionStorage.setItem('yahooUser', JSON.stringify(yahooUser.data.accessToken));
+          sessionStorage.setItem('userRole',JSON.stringify(yahooUser.data.UserRole));
           this.currentUserSubject.next(yahooUser);
         }
         return yahooUser;
@@ -188,19 +187,19 @@ export class LoginService {
    */
   logout() {
     // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
-    localStorage.removeItem('facebookUser');
-    localStorage.removeItem('googleUser');
-    localStorage.removeItem('microsoftUser');
-    localStorage.removeItem('yahooUser');
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('isUserLoggedIn');
-    localStorage.removeItem('isCelebrant');
-    localStorage.removeItem('newEventId');
-    localStorage.removeItem('userRole');
-    localStorage.removeItem('isGuestJoined');
-    localStorage.removeItem('userName');
-    this.currentUserSubject.next(null);
+      sessionStorage.removeItem('currentUser');
+      sessionStorage.removeItem('facebookUser');
+      sessionStorage.removeItem('googleUser');
+      sessionStorage.removeItem('microsoftUser');
+      sessionStorage.removeItem('yahooUser');
+      sessionStorage.removeItem('accessToken');
+      sessionStorage.removeItem('isUserLoggedIn');
+      sessionStorage.removeItem('isCelebrant');
+      sessionStorage.removeItem('newEventId');
+      sessionStorage.removeItem('userRole');
+      sessionStorage.removeItem('isGuestJoined');
+      sessionStorage.removeItem('userName');
+      this.currentUserSubject.next(null);
   }
 
 
@@ -231,4 +230,5 @@ export class LoginService {
     return this.http.put(config.baseApiUrl + "api/addProfile", details);
   }
 }
+
 

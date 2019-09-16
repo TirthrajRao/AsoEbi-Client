@@ -13,7 +13,7 @@
   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/css/bootstrap4-toggle.min.css"
   rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="/assets/css/jquery-ui.css">
+  <link rel="stylesheet" type="text/css" href="/assets/jquery-ui.css">
   <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="assets/css/slick.css">
@@ -59,8 +59,7 @@
   <!-- <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
  integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> -->
   <script type='text/javascript'
-    src='https://platform-api.sharethis.com/js/sharethis.js#property=5d51b6743387b20012d77a07&product='
-    inline-share-buttons' async='async'></script>
+    src='https://platform-api.sharethis.com/js/sharethis.js#property=5d51b6743387b20012d77a07&product=inline-share-buttons' async='async'></script>
 
   <!-- Facebook Share -->
   <script async defer crossorigin="anonymous"
@@ -74,12 +73,15 @@
   <script type="text/javascript" src="./assets/js/custom.js"></script>
   <script type="text/javascript" src="./assets/js/slick.min.js"></script>
 
-  <script>
-    $(window).on('load', function () {
-      $('#loader-wrapper').fadeOut('slow', function () {
-        $('body').removeAttr('style');
-      });
-    });
+
+
+  <!-- <script src="libs/msal/msal/dist/msal.min.js"></script> -->
+  <script type="text/javascript">
+      // Microsoft login redirects back to this page and requires this object before it closes the popup.
+      // See https://github.com/AzureAD/microsoft-authentication-library-for-js/issues/174
+      if (location.hash.includes("id_token")) {
+          new Msal.UserAgentApplication("bd9b8a24-97aa-42db-a5fe-dcb24b15e6f8", null, null);
+      }
   </script>
 </body>
 

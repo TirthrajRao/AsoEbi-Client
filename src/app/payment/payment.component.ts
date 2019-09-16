@@ -23,7 +23,7 @@ export class PaymentComponent implements OnInit {
   finalGrandTotal;
   myCart;
   path = config.baseMediaUrl;
-  donationAmount = JSON.parse(localStorage.getItem('donationAmount'));
+  // donationAmount = JSON.parse(sessionStorage.getItem('donationAmount'));
   donation: any;
   constructor(private route: ActivatedRoute,
     private router: Router, private _eventService: EventService, private alertService: AlertService) {
@@ -35,10 +35,6 @@ export class PaymentComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.donationAmount);
-
-    
-
     function setInputFilter(textbox, inputFilter) {
       ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
         textbox.addEventListener(event, function() {
