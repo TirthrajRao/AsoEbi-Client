@@ -1,12 +1,9 @@
-<!-- Form of create new event and also edit created event -->
-
-<!-- New Design of create event page and edit event page  -->
 <div id="loading" *ngIf="isLoad">
     <img id="loading-image" src="/assets/images/loader.gif" alt="Loading..." />
 </div>
 
 
-<div class="step_1" >
+<div class="step_1" style="display:none">
     <section class="event_slider_section d-flex flex-wrap align-content-center">
         <div class="container-fluid">
             <h3 class="text-center aso_heading">Aso Ebi</h3>
@@ -31,19 +28,19 @@
                                     <div class="enter_event_title">
                                         <h6 class="text-center text-white">Event Title</h6>
                                         <div class="form-group">
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control" id="eventTitle"
-                                                        formControlName="eventTitle" placeholder="Enter Event Title"
-                                                        ngModel="{{createdEventDetails ? createdEventDetails.eventTitle : ''}}"
-                                                        [ngClass]="{ 'is-invalid': f.eventTitle.touched && f.eventTitle.errors }">
-                                                    <div class="col-md-2"
-                                                        *ngIf="f.eventTitle.touched && f.eventTitle.errors"
-                                                        class="invalid-feedback text-white">
-                                                        <div *ngIf="f.eventTitle.errors.required">Event Title is Required.
-                                                        </div>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="eventTitle"
+                                                    formControlName="eventTitle" placeholder="Enter Event Title"
+                                                    ngModel="{{createdEventDetails ? createdEventDetails.eventTitle : ''}}"
+                                                    [ngClass]="{ 'is-invalid': f.eventTitle.touched && f.eventTitle.errors }">
+                                                <div class="col-md-2"
+                                                    *ngIf="f.eventTitle.touched && f.eventTitle.errors"
+                                                    class="invalid-feedback text-white">
+                                                    <div *ngIf="f.eventTitle.errors.required">Event Title is Required.
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -167,10 +164,10 @@
                                                 <label for="customFile" class="profile_and_cover_edit text-center"
                                                     title="Change Profile"><i class="fa fa-camera"
                                                         aria-hidden="true"></i></label>
-                                                        <span >
-                                                <img [src]="imgURL"   height="200"
-                                                    class="float-right rounded-circle" id="imageFilter"
-                                                    onerror="this.src='/assets/images/profile_photo.png'"> </span>
+                                                <span>
+                                                    <img [src]="imgURL" height="200" class="float-right rounded-circle"
+                                                        id="imageFilter"
+                                                        onerror="this.src='/assets/images/profile_photo.png'"> </span>
                                             </div>
                                         </div>
                                         <div class="profile_content text-center">
@@ -411,7 +408,6 @@
 
                                             <!-- <div class="input-group">
                                                 <input class="form-control" placeholder="{{valuedate | date: 'yyyy-MM-dd'}}"
-
                                                                 </div>
                                                             </a>
                                                         </div>
@@ -571,7 +567,6 @@
                                                 Password</a></li>
                                         <li><a (click)="logout()" class="text-white text-center my_account">Logout</a>
                                         </li>
-                                        <li><a href="#" class="text-white text-center my_messages">Messages</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -653,7 +648,7 @@
 </div>
 
 
-<div class="step_3" style="display:none">
+<div class="step_3" >
     <div class="form_input">
         <div class="row justify-content-center m-0">
             <section class="slider_page_section d-flex flex-wrap align-content-center">
@@ -678,7 +673,7 @@
                                         <div class="event_menu">
                                             <div class="all_menu_content  d-flex flex-wrap align-content-center">
                                                 <ul>
-                                                        <li><a routerLink="/home"
+                                                    <li><a routerLink="/home"
                                                             class="text-white text-center my_event">Home</a></li>
                                                     <li><a routerLink="/myEvent"
                                                             class="text-white text-center new_event">my
@@ -694,9 +689,7 @@
                                                     <li><a (click)="logout()"
                                                             class="text-white text-center my_account">Logout</a>
                                                     </li>
-                                                    <li><a href="#"
-                                                            class="text-white text-center my_messages">Messages</a></li>
-                                                </ul>`
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -732,23 +725,25 @@
                                             *ngFor="let item of groupFormData.controls; let i = index"
                                             [hidden]="selectedActivityToAddGroup != item.value.activityId">
                                             <div class="add_group">
-                                            <div class="col-12 mt-3 text-white  text-right">
-                                               <i class="fa fa-plus-circle" aria-hidden="true"
-                                                (click)="createdEventDetails ? AddGroupField(selectedActivityToAddGroup) : AddGroupField(selectedActivityToAddGroup)"></i>
-                                            </div>
-                                        </div>
-                                        <div class="freind_family">
-                                            <div class="row">
-                                                <div class="col-8 form-group float-left">
-                                                    <input class="form-control" type="text"
-                                                    placeholder="Enter Group Name" formControlName="groupName">
-                                                </div>
-                                                <div class="col-1 text-white p-0 mt-2" >
-                                                    <i class="fa fa-minus-circle" *ngIf="groupForm.controls.group.controls.length>groupLength" (click)="removeGroupField(i,item.value)"
-                                                    aria-hidden="true"></i>
+                                                <div class="col-12 mt-3 text-white  text-right">
+                                                    <i class="fa fa-plus-circle" aria-hidden="true"
+                                                        (click)="createdEventDetails ? AddGroupField(selectedActivityToAddGroup) : AddGroupField(selectedActivityToAddGroup)"></i>
                                                 </div>
                                             </div>
-                                        </div>
+                                            <div class="freind_family">
+                                                <div class="row">
+                                                    <div class="col-8 form-group float-left">
+                                                        <input class="form-control" type="text"
+                                                            placeholder="Enter Group Name" formControlName="groupName">
+                                                    </div>
+                                                    <div class="col-1 text-white p-0 mt-2">
+                                                        <i class="fa fa-minus-circle"
+                                                            *ngIf="groupForm.controls.group.controls.length>groupLength"
+                                                            (click)="removeGroupField(i,item.value)"
+                                                            aria-hidden="true"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="gender_slider">
                                                 <div class="gender_slide male_slide select_item_scroll">
                                                     <h5 class="text-white">Male</h5>
@@ -770,10 +765,12 @@
                                                                     <div class="NGN float-right">
                                                                         <label class="text-white">NGN</label>
                                                                         <input type="number" class="form-control"
-                                                                            formControlName="itemPrice"  onkeydown="return event.keyCode !== 69">
+                                                                            formControlName="itemPrice" min="0" oninput="validity.valid||(value='');"
+                                                                            onkeydown="return event.keyCode !== 69" >
                                                                     </div>
                                                                 </div>
-                                                                <div class="close-male-item float-right" *ngIf="item.controls.male.controls.length>1">
+                                                                <div class="close-male-item float-right"
+                                                                    *ngIf="item.controls.male.controls.length>1">
                                                                     <i class="fa fa-minus-circle" aria-hidden="true"
                                                                         (click)="removeItemsMale(item, k ,group.value,item.value)"></i>
                                                                 </div>
@@ -800,12 +797,15 @@
                                                                     <div class="NGN float-right">
                                                                         <label class="text-white">NGN</label>
                                                                         <input type="number" class="form-control"
-                                                                            formControlName="itemPrice"  onkeydown="return event.keyCode !== 69">
+                                                                            formControlName="itemPrice"
+                                                                            onkeydown="return event.keyCode !== 69" min="0" oninput="validity.valid||(value='');" >
                                                                     </div>
                                                                 </div>
-                                                                <div *ngIf="item.controls.female.controls.length>1" (click)="removeItemsfeMale(item, j ,group.value,item.value)"
+                                                                <div *ngIf="item.controls.female.controls.length>1"
+                                                                    (click)="removeItemsfeMale(item, j ,group.value,item.value)"
                                                                     class="close-male-item float-right">
-                                                                    <i class="fa fa-minus-circle" aria-hidden="true"></i>
+                                                                    <i class="fa fa-minus-circle"
+                                                                        aria-hidden="true"></i>
                                                                 </div>
                                                             </div>
                                                         </div>

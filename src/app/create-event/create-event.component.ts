@@ -98,13 +98,8 @@ export class CreateEventComponent implements OnInit {
     console.log("login user name", this.userName)
 
 
-    // function activateDatePickers() {
 
-    // }
 
-    // $(document).ready(function(){
-
-    // });
 
 
 
@@ -340,6 +335,8 @@ export class CreateEventComponent implements OnInit {
 
   get activityFormData() { return <FormArray>this.activityForm.get('activity'); }
   get groupFormData() { return <FormArray>this.groupForm.get('group'); }
+
+
 
   addEvent() {
     this.eventForm.value.deadlineDate = $('#deadLineDate').val();
