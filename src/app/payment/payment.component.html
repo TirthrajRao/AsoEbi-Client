@@ -18,19 +18,22 @@
                         <div class="event_detail_slider">
                             <div class="event_detail_slide event_detail_slide_sky1">
                                 <div class="events_name text-center">
-                                    <a *ngIf="eventDetails" class="text-center text-white" data-toggle="tooltip" data-placement="top" title="{{eventDetails.eventType}}">
+                                    <a *ngIf="eventDetails" class="text-center text-white" data-toggle="tooltip"
+                                        data-placement="top" title="{{eventDetails.eventType}}">
                                         {{eventDetails.eventType}}</a>
                                 </div>
                             </div>
                             <div class="event_detail_slide event_detail_slide_sky1">
                                 <div class="events_name text-center">
-                                    <a (click)="nextSection('step_four', 'step_five')"
-                                        class="text-center text-white" data-toggle="tooltip" data-placement="top" title="Gift Donation">Gift Donation</a>
+                                    <a (click)="nextSection('step_four', 'step_five')" class="text-center text-white"
+                                        data-toggle="tooltip" data-placement="top" title="Gift Donation">Gift
+                                        Donation</a>
                                 </div>
                             </div>
                             <div class="event_detail_slide event_detail_slide_sky1">
                                 <div class="events_name text-center">
-                                    <a class="text-center text-white" data-toggle="tooltip" data-placement="top" title="Total">Total</a>
+                                    <a class="text-center text-white" data-toggle="tooltip" data-placement="top"
+                                        title="Total">Total</a>
                                 </div>
                             </div>
                         </div>
@@ -38,17 +41,34 @@
                             <p class="event_name_new">{{eventDetails.eventType}}</p>
                             <div class="event_prise_detail">
                                 <p class="gender_select">Male</p>
-                                <div class="row" *ngFor="let item of finalCartDetails">
+                                <div class="table-responsive">
+                                        <table class="cart-table w-100">
+                                            <tr *ngFor="let item of finalCartDetails">
+                                                <td class="all_list p-2" *ngIf="item.itemGender == 'male'">
+                                                    <span title="{{item.itemName}}">{{item.itemName}}</span>
+                                                </td>
+                                                <td class="all_list p-2 text-right" *ngIf="item.itemGender == 'male'">
+                                                    <label>{{item.itemPrice | currency:"&#x20A6;"}}</label>
+                                                    <input type="text" min="1" [(ngModel)]="item.quantity" disabled>
+                                                </td>
+                                                <td class="all_list_total_price p-2 text-right" *ngIf="item.itemGender == 'male'">
+                                                    <p class="mb-0 text-white">
+                                                        {{(item.itemPrice * item.quantity) | currency:"&#x20A6;" }}
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                <!-- <div class="row" *ngFor="let item of finalCartDetails">
                                     <div class="col-7">
                                         <div class="row">
                                             <div class="col-12" *ngIf="item.itemGender == 'male'">
                                                 <div class="all_list all_list_height">
-                                                    <div class="fabric_name float-left"> 
+                                                    <div class="fabric_name float-left">
                                                         <span title="{{item.itemName}}">{{item.itemName}}</span>
-                                                        </div>
+                                                    </div>
                                                     <div class="float-right number_of_item">
                                                         <label>{{item.itemPrice | currency:"&#x20A6;"}}</label>
-                                                        <!-- <label class=""> x </label> -->
                                                         <input type="text" min="1" [(ngModel)]="item.quantity" disabled>
                                                     </div>
                                                 </div>
@@ -63,14 +83,31 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <hr>
 
 
                                 <!-- <p class="event_name_new" *ngIf="eventDetails"> {{eventDetails.eventType}}</p> -->
                                 <p class="gender_select">Female</p>
-                                <div class="row" *ngFor="let item of finalCartDetails">
-                                    <div class="col-7">
+                                <div class="table-responsive">
+                                    <table class="cart-table w-100">
+                                        <tr *ngFor="let item of finalCartDetails">
+                                            <td class="all_list p-2" *ngIf="item.itemGender=='female'">
+                                                <span title="{{item.itemName}}">{{item.itemName}}</span>
+                                            </td>
+                                            <td class="all_list number_of_item p-2 text-right" *ngIf="item.itemGender=='female'">
+                                                <label>{{item.itemPrice | currency:"&#x20A6;"}}</label>
+                                                <input type="text" min="1" [(ngModel)]="item.quantity" disabled>
+                                            </td>
+                                            <td class="all_list_total_price p-2 text-right" *ngIf="item.itemGender=='female'">
+                                                <p class="mb-0 text-white">
+                                                    {{(item.itemPrice * item.quantity) | currency:"&#x20A6;" }}
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <!-- <div class="col-7">
                                         <div class="row">
                                             <div class="col-12" *ngIf="item.itemGender=='female'">
                                                 <div class="all_list all_list_height">
@@ -79,7 +116,6 @@
                                                          </div>
                                                     <div class="float-right number_of_item">
                                                         <label>{{item.itemPrice | currency:"&#x20A6;"}}</label>
-                                                        <!-- <label class=""> x </label> -->
                                                         <input type="text" min="1" [(ngModel)]="item.quantity" disabled>
                                                     </div>
                                                 </div>
@@ -93,15 +129,14 @@
                                                     {{(item.itemPrice * item.quantity) | currency:"&#x20A6;" }} </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
+                                    </div> -->
                                 <hr>
                             </div>
-                            <div class="all_total" >
+                            <div class="all_total">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="float-left">Total</div>
-                                        <div class="fabric_name float-right"> =
+                                        <div class="float-right"> =
                                             {{grandTotal | currency:"&#x20A6;"}}
                                         </div>
                                     </div>
@@ -111,7 +146,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="float-left">Final Total</div>
-                                        <div class="fabric_name float-right">=
+                                        <div class="float-right">=
                                             {{finalGrandTotal | currency:"&#x20A6;"}}
                                         </div>
                                     </div>
@@ -140,19 +175,22 @@
             <div class="profile_pic text-center text-center">
                 <img *ngIf="eventDetails" src="{{path}}{{eventDetails.profilePhoto}}" class="rounded-circle">
             </div>
-            <h3 class="text-center text-white user_name" *ngIf="eventDetails" >{{eventDetails.hashTag}}</h3>
+            <h3 class="text-center text-white user_name" *ngIf="eventDetails">{{eventDetails.hashTag}}</h3>
             <div class="card_inner_content_box">
                 <div class="veiw_event">
                     <div class="event_inner_content">
                         <div class="event_detail_slider">
                             <div class="event_detail_slide event_detail_slide_pink1">
                                 <div class="events_name text-center">
-                                        <a  class="text-center text-white" *ngIf="eventDetails" data-toggle="tooltip" data-placement="top" title="{{eventDetails.eventType}}">{{eventDetails.eventType}}</a>
+                                    <a class="text-center text-white" *ngIf="eventDetails" data-toggle="tooltip"
+                                        data-placement="top"
+                                        title="{{eventDetails.eventType}}">{{eventDetails.eventType}}</a>
                                 </div>
                             </div>
                             <div class="event_detail_slide event_detail_slide_pink1">
                                 <div class="events_name text-center">
-                                        <a  class="text-center text-white" data-toggle="tooltip" data-placement="top" title="Gift Donation">Gift Donation</a>
+                                    <a class="text-center text-white" data-toggle="tooltip" data-placement="top"
+                                        title="Gift Donation">Gift Donation</a>
                                 </div>
                             </div>
                             <!-- <div class="event_detail_slide event_detail_slide_pink1">
@@ -184,7 +222,7 @@
                                     </div>
                                     <div class="col-sm-10">
                                         <input type="text" id="uintTextBox" (keyup)="finalTotal($event.target.value)"
-                                            [(ngModel)]="donation" onkeydown="return event.keyCode !== 69" >
+                                            [(ngModel)]="donation" onkeydown="return event.keyCode !== 69">
                                     </div>
                                 </div>
                             </div>

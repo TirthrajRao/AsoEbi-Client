@@ -2328,7 +2328,7 @@ label.background_edit:hover {
     white-space: nowrap;
     cursor: pointer;
     overflow: hidden !important;
-    width: 60%;
+    /* width: 50%; */
 }
 
 /*radio button starts*/
@@ -2491,13 +2491,13 @@ label.background_edit:hover {
 
 /*scrollbar css start*/
 
-.collection_slider .scroll_content {
+/* .collection_slider .scroll_content {
 	height: 215px;
-	/*width: 500px;*/
+	width: 500px;
 	top: -17px;
 	padding: 9px 0px !important;
-	/* left: -35px; */
-}
+	left: -35px;
+} */
 
 .collection_slider .scroll-wrapper>.scroll-content {
 	position: unset !important;
@@ -5058,19 +5058,19 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	/*    padding: 10px 13px;*/
 }
 
-.event_prise_detail::-webkit-scrollbar-track, form.billing_address::-webkit-scrollbar-track, .inner_box_content::-webkit-scrollbar-track, .event-activity-class::-webkit-scrollbar-track, .event-count-box-scroll::-webkit-scrollbar-track, .group-name-scroll::-webkit-scrollbar-track, .select_item_scroll::-webkit-scrollbar-track {
+.event_prise_detail::-webkit-scrollbar-track, form.billing_address::-webkit-scrollbar-track, .inner_box_content::-webkit-scrollbar-track, .event-activity-class::-webkit-scrollbar-track, .event-count-box-scroll::-webkit-scrollbar-track, .group-name-scroll::-webkit-scrollbar-track, .select_item_scroll::-webkit-scrollbar-track, .my-cart-price-scroll::-webkit-scrollbar-track, .collection-5th-slide-scroll::-webkit-scrollbar-track{
 	border: 1px solid transparent;
 	padding: 2px 0;
 	width: 7px;
 	background-color: transparent;
 }
 
-.event_prise_detail::-webkit-scrollbar, form.billing_address::-webkit-scrollbar, .inner_box_content::-webkit-scrollbar, .event-activity-class::-webkit-scrollbar, .event-count-box-scroll::-webkit-scrollbar, .group-name-scroll::-webkit-scrollbar, .select_item_scroll ::-webkit-scrollbar {
+.event_prise_detail::-webkit-scrollbar, form.billing_address::-webkit-scrollbar, .inner_box_content::-webkit-scrollbar, .event-activity-class::-webkit-scrollbar, .event-count-box-scroll::-webkit-scrollbar, .group-name-scroll::-webkit-scrollbar, .select_item_scroll ::-webkit-scrollbar, .my-cart-price-scroll::-webkit-scrollbar, .collection-5th-slide-scroll::-webkit-scrollbar{
 	width: 3px;
 	height: 3px;
 }
 
-.event_prise_detail::-webkit-scrollbar-thumb, form.billing_address::-webkit-scrollbar-thumb, .inner_box_content::-webkit-scrollbar-thumb, .event-activity-class::-webkit-scrollbar-thumb, .event-count-box-scroll::-webkit-scrollbar-thumb, .group-name-scroll::-webkit-scrollbar-thumb, .select_item_scroll ::-webkit-scrollbar-thumb {
+.event_prise_detail::-webkit-scrollbar-thumb, form.billing_address::-webkit-scrollbar-thumb, .inner_box_content::-webkit-scrollbar-thumb, .event-activity-class::-webkit-scrollbar-thumb, .event-count-box-scroll::-webkit-scrollbar-thumb, .group-name-scroll::-webkit-scrollbar-thumb, .select_item_scroll::-webkit-scrollbar-thumb, .my-cart-price-scroll::-webkit-scrollbar-thumb, .collection-5th-slide-scroll::-webkit-scrollbar-thumb{
 	border-radius: 10px;
 	background-color: #fff;
 }
@@ -6082,11 +6082,6 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
     background-color: rgb(158, 194, 59);
 }
 /* event slider css end */
-.collection-5th-slide-scroll{
-	max-height: 300px;
-	overflow-y: scroll;
-	overflow-x: hidden;
-}
 /* responsive css start */
 
 @media(max-width: 1366px) {
@@ -8874,6 +8869,7 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 	}
 	.slide_five .gender_list p {
 		line-height: 22px;
+		font-size: 14px;
 	}
 	.inner_title span {
 		padding: 7px;
@@ -9050,6 +9046,9 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 }
 
 @media screen and (max-width: 340px) {
+	.slide_five .gender_list p{
+		font-size: 13px;
+	}
 	.event_price{
 		padding-left: 0px;
 	}

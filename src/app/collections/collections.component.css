@@ -4,11 +4,29 @@
     margin: auto;
     position: relative;
 }
+.collection-5th-slide-scroll{
+    height: 200px;
+	max-height: 200px;
+	overflow-y: scroll;
+    overflow-x: hidden;
+    border: 2px solid white;
+	font-family: 'Russo One', sans-serif;
+	font-size: 16.67px !important;
+	padding: 15px;
+	margin-top: 20px;
+}
+.collection-5th-slide-scroll .inner_title h3{
+	font-size: 20.83px !important;
+	margin-top: 0px !important;
+}
 
 @media(max-width:1366px){
     .collection-overlay{
         width: 600px;
         height: 525px;
+    }
+    .collection-5th-slide-scroll{
+        height: 170px;
     }
 }
 @media(max-width:767px){

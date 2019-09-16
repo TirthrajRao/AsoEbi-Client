@@ -79,37 +79,32 @@
                         </div>
 
                         <div *ngIf="cartDetails.length == 0" class="text-white text-center">
-                            <h1 class="sorry_msg">Sorry, No more item added into the cart.To add item into cart <a style="color: #90d6d9"
-                                    (click)="viewEvent(eventId)">Click Here </a> </h1>
+                            <h1 class="sorry_msg">Sorry, No more item added into the cart.To add item into cart <a
+                                    style="color: #90d6d9" (click)="viewEvent(eventId)">Click Here </a> </h1>
                         </div>
                         <div class="radio_btn text-white " *ngIf="cartDetails.length>0">
                             <p class="event_name_new" *ngIf="eventDetails"> {{eventDetails.eventType}}</p>
                             <div class="all_list_height event_prise_detail">
                                 <p class="gender_select">Male</p>
-                                <div class="row" *ngFor="let item of cartDetails">
+                                <!-- <div class="row" *ngFor="let item of cartDetails">
                                     <div class="col-7">
-                                        <div class="row">
-                                            <div class="col-12 " *ngIf="item.itemGender == 'male'">
-                                                <div class="all_list">
-                                                    <div class="fabric_name float-left"><span
-                                                            title="{{item.itemName}}">{{item.itemName}}</span></div>
-                                                    <div class="float-right ">
-                                                        <label>{{ item.itemPrice | currency:"&#x20A6;" }}</label>
-                                                        <label> x </label>
-                                                        <input type="number" onkeydown="return event.keyCode !== 69"
-                                                            id="myCartPaisa" (click)="finalTotal(item)"
-                                                            [(ngModel)]="item.quantity" min="1">
-                                                    </div>
+                                        <div *ngIf="item.itemGender == 'male'">
+                                            <div class="all_list">
+                                                <div class="fabric_name float-left"><span
+                                                        title="{{item.itemName}}">{{item.itemName}}</span></div>
+                                                <div class="float-right ">
+                                                    <label>{{ item.itemPrice | currency:"&#x20A6;" }}</label>
+                                                    <label> x </label>
+                                                    <input type="number" onkeydown="return event.keyCode !== 69"
+                                                        id="myCartPaisa" (click)="finalTotal(item)"
+                                                        [(ngModel)]="item.quantity" min="1">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-4 all_list_total_price" *ngIf="item.itemGender == 'male'">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class=" float-right"> =
-                                                    {{(item.itemPrice * item.quantity) | currency:"&#x20A6;" }}</div>
-                                            </div>
+                                    <div class="col-4 all_list_total_price  " *ngIf="item.itemGender == 'male'">
+                                        <div class=" float-right"> =
+                                            {{(item.itemPrice * item.quantity) | currency:"&#x20A6;" }}
                                         </div>
                                     </div>
                                     <div class="col-1 p-0" *ngIf="item.itemGender == 'male'">
@@ -118,13 +113,78 @@
                                                 (click)="removeItem(item._id)"></i>
                                         </div>
                                     </div>
+                                </div> -->
+                                <div class="table-responsive">
+                                    <table class="cart-table">
+                                        <tr *ngFor="let item of cartDetails">
+                                            <td class="p-2" *ngIf="item.itemGender == 'male'">
+                                                <div class="all_list">
+                                                    <span title="{{item.itemName}}">{{item.itemName}}</span>
+                                                </div>
+                                            </td>
+                                            <td class="p-2 text-right w-100" *ngIf="item.itemGender == 'male'">
+                                                <div class="all_list">
+                                                    <div class="text-white">
+                                                        <label>{{ item.itemPrice | currency:"&#x20A6;" }}</label>
+                                                        <label> x </label>
+                                                        <input type="number" onkeydown="return event.keyCode !== 69"
+                                                            id="myCartPaisa" (click)="finalTotal(item)"
+                                                            [(ngModel)]="item.quantity" min="1"> =
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="p-2" *ngIf="item.itemGender == 'male'">
+                                                <p class="text-white mb-0">
+                                                    {{(item.itemPrice  * item.quantity ) | currency:"&#x20A6;"}}
+                                                </p>
+                                            </td>
+                                            <td class="p-2" *ngIf="item.itemGender == 'male'">
+                                                <div class="delete_item">
+                                                    <i class="fa fa-times" aria-hidden="true"
+                                                        (click)="removeItem(item._id)"></i>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </div>
                                 <hr>
                                 <p class="gender_select">Female</p>
-                                <div class="row" *ngFor="let item of cartDetails">
-                                    <div class="col-7">
-                                        <div class="row">
-                                            <div class="col-12 " *ngIf="item.itemGender=='female'">
+                                <div class="table-responsive">
+                                    <table class="cart-table">
+                                        <tr *ngFor="let item of cartDetails">
+                                            <td class="p-2" *ngIf="item.itemGender=='female'">
+                                                <div class="all_list">
+                                                    <span title="{{item.itemName}}">{{item.itemName}}</span>
+                                                </div>
+                                            </td>
+                                            <td class="p-2 text-right" *ngIf="item.itemGender=='female'">
+                                                <div class="all_list">
+                                                    <div class="text-white">
+                                                        <label>{{item.itemPrice | currency:"&#x20A6;"}}</label>
+                                                        <label> x </label>
+                                                        <input type="number" min="1" id="donation"
+                                                            (keyup)="finalTotal(item)" [(ngModel)]='item.quantity'>
+                                                            =
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="p-2" *ngIf="item.itemGender=='female'">
+                                                <p class="text-white mb-0">
+                                                    {{(item.itemPrice  * item.quantity ) | currency:"&#x20A6;"}}</p>
+                                            </td>
+                                            <td class="p-2" *ngIf="item.itemGender=='female'">
+                                                <div class="delete_item">
+                                                    <i class="fa fa-times" aria-hidden="true"
+                                                        (click)="removeItem(item._id)"></i>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <!-- <div class="my-cart-price-scroll">
+                                    <div class="row" *ngFor="let item of cartDetails">
+                                        <div class="col-4">
+                                            <div *ngIf="item.itemGender=='female'">
                                                 <div class="all_list">
                                                     <div class="fabric_name float-left"><span
                                                             title="{{item.itemName}}">{{item.itemName}}</span>
@@ -138,22 +198,19 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-4 all_list_total_price" *ngIf="item.itemGender=='female'">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class=" float-right"> =
-                                                    {{(item.itemPrice  * item.quantity ) | currency:"&#x20A6;"}}</div>
+                                        <div class="col-4 all_list_total_price" *ngIf="item.itemGender=='female'">
+                                            <div class=" float-right"> =
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="col-4" *ngIf="item.itemGender=='female'">
+                                            <div class="delete_item">
+                                                <i class="fa fa-times" aria-hidden="true"
+                                                    (click)="removeItem(item._id)"></i>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-1 p-0" *ngIf="item.itemGender=='female'">
-                                        <div class="delete_item">
-                                            <i class="fa fa-times" aria-hidden="true"
-                                                (click)="removeItem(item._id)"></i>
-                                        </div>
-                                    </div>
-                                </div>
+                                </div> -->
                                 <hr>
                                 <!-- <div class="all_total">
                                             <div class="row">

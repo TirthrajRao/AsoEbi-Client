@@ -3,3 +3,7 @@
     -webkit-appearance: none;
     margin: 0; 
 }
+.cart-table{
+    width: 100%;
+    min-width: 545px;
+}
