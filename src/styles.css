@@ -2317,17 +2317,10 @@ label.background_edit:hover {
 	font-size: 20.83px !important;
 	margin-top: 0px !important;
 	text-overflow: ellipsis;
-<<<<<<< HEAD
     white-space: nowrap;
     cursor: pointer;
     overflow: hidden !important;
     /* width: 50%; */
-=======
-	white-space: nowrap;
-	cursor: pointer;
-	overflow: hidden !important;
-	width: 60%;
->>>>>>> 61f56c3445de9c21598199ed5c5fad66eabd7ef3
 }
 
 /*radio button starts*/
