@@ -33,6 +33,8 @@ export class BankDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isDisable = false;
+
     // menu toggle start
     $(".new_event_menu").click(function () {
       $(".new_event_menu_box").toggle();
@@ -61,7 +63,7 @@ export class BankDetailsComponent implements OnInit {
         console.log(err);
       })
   }
-  
+
   /**
    * Display error message
    */
@@ -74,17 +76,17 @@ export class BankDetailsComponent implements OnInit {
   onSubmit() {
     this.isLoad = true;
     console.log(this.bankDetailsForm);
-    
+    // this.isDisable = true;
     this.submitted = true;
     if (this.bankDetailsForm.invalid) {
       return;
     }
-    this.isDisable = true;
+
     this._loginService.addBankDetails(this.bankDetailsForm.value)
       .subscribe((data: any) => {
         setTimeout(() => {
           console.log("====================== CALLED ============================");
-          
+
           this.getBankDetails();
           $('.bank_details_slider').not('.slick-initialized').slick({
             dots: false,
@@ -111,6 +113,7 @@ export class BankDetailsComponent implements OnInit {
           $('.secondStep').css({ 'display': 'block' });
           this.bankDetailsForm.reset();
           this.isLoad = false;
+          this.isDisable = false;
         }, 100);
       }, (err: any) => {
         this.isLoad = false;
@@ -226,18 +229,55 @@ export class BankDetailsComponent implements OnInit {
    * @param {String} form
    * validation of accountNumber with proper error message 
    */
-  validateAccountNumber(form) {
-this.isDisable = false
-    console.log(form);
-    //  NOT ( REGEX ( Name__c,"[a-zA-Z]*" ))
-    const accountNumber = /[0-9]/;
+  // validateAccountNumber(form) {
+  //   this.isDisable = true;
+  //   console.log(form);
+  //   const accountNumber = !/[^a-zA-Z0-9]/;
+  //   let message = document.getElementById('message2');
+  //   if (!form.accountNumber.match(accountNumber)){
+  //     message.innerHTML = "";
+  //     this.isDisable = false;
+  //   }
+  //   else {
+
+  //     message.innerHTML = "Please enter only numbers"
+  //     this.isDisable = true;
+  //     console.log("message==========", message.innerHTML)
+  //   }
+  // }
+
+  // validateAccountNumber(form) {
+  //   console.log(form);
+  //   const accountNumber = /[0-9]/;
+  //   let message = document.getElementById('message2');
+  //   if (!form.accountNumber.match(accountNumber)) {
+  //     console.log("message==========", message)
+  //     message.innerHTML = "Please enter only numbers"
+  //     this.isDisable = true;
+  //   } else {
+  //     this.isDisable = false
+  //     message.innerHTML = "";
+  //   }
+  // }
+
+  getValidation(form){
+    console.log(form)
+    var field1 = (<HTMLInputElement>document.getElementById("accountNumber")).value;
     let message = document.getElementById('message2');
-    if (!form.accountNumber.match(accountNumber)) {
+    console.log(field1);
+    if(/[a-zA-Z]/g.test(field1)){
       message.innerHTML = "Please enter only numbers"
-      console.log("message==========", message.innerHTML)
     }
-    else {
-      message.innerHTML = "";
+    else if(!(/[0-9]{16}/.test(field1))){
+      this.isDisable = true;
+      console.log("Please enter valid number");
+      if(field1.length < 16){
+        message.innerHTML = "Please enter 16 digit number";
+      }
+    }else{
+      message.innerHTML = ""
+      this.isDisable = false;
+      console.log("Valid entry");
     }
   }
 

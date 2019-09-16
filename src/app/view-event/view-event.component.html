@@ -16,7 +16,7 @@
         <h3 class="text-center user_name" data-toggle="tooltip" title="{{eventHashTag}}">{{eventHashTag}}</h3>
 
         <div class="cart_pic text-center" (click)="myCart(item._id)" *ngFor="let item of allDetailsofEvent">
-            <img src="/assets/images/cart.png" data-toggle="tooltip"  title="My Cart">
+            <img src="/assets/images/cart.png" data-toggle="tooltip" *ngIf="isJoined == true" title="My Cart">
         </div>
         <div class="veiw_event">
             <div class="Join_inner_content_box h-100 mb-3">
@@ -101,10 +101,10 @@
                                                                             {{male.itemPrice | currency:"&#x20A6;"}}</p>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-6">
-                                                                    <div class="add_to_cart_btn" 
+                                                                <div class="col-6" *ngIf="male.itemName || male.itemPrice">
+                                                                    <div class="add_to_cart_btn"  *ngIf="isJoined == true"
                                                                         (click)="addToCart(item._id,male._id)">
-                                                                        <a class="text-white"
+                                                                        <a  class="text-white"
                                                                            >Add to Cart</a>
                                                                     </div>
                                                                 </div>
@@ -128,8 +128,8 @@
                                                                         </p>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-6">
-                                                                    <div class="add_to_cart_btn"
+                                                                <div class="col-6" *ngIf="female.itemName || female.itemPrice">
+                                                                    <div class="add_to_cart_btn" *ngIf="isJoined == true"
                                                                          (click)="addToCart(item._id,female._id)">
                                                                         <a class="text-white"
                                                                             >Add to Cart</a>

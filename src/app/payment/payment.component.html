@@ -25,9 +25,14 @@
                             </div>
                             <div class="event_detail_slide event_detail_slide_sky1">
                                 <div class="events_name text-center">
+<<<<<<< HEAD
                                     <a (click)="nextSection('step_four', 'step_five')" class="text-center text-white"
                                         data-toggle="tooltip" data-placement="top" title="Gift Donation">Gift
                                         Donation</a>
+=======
+                                    <a 
+                                        class="text-center text-white" data-toggle="tooltip" data-placement="top" title="Gift Donation">Gift Donation</a>
+>>>>>>> 61f56c3445de9c21598199ed5c5fad66eabd7ef3
                                 </div>
                             </div>
                             <div class="event_detail_slide event_detail_slide_sky1">
@@ -38,7 +43,7 @@
                             </div>
                         </div>
                         <div class="radio_btn text-white">
-                            <p class="event_name_new">{{eventDetails.eventType}}</p>
+                            <p class="event_name_new"  *ngIf="eventDetails">{{eventDetails.eventType}}</p>
                             <div class="event_prise_detail">
                                 <p class="gender_select">Male</p>
                                 <div class="table-responsive">
@@ -215,7 +220,7 @@
                                     </div>
                                 </div> -->
                             </div>
-                            <div action="#" class="donation_form">
+                            <div class="donation_form">
                                 <div class="row">
                                     <div class="col-sm-2">
                                         <label for="email" class="text-white">I give</label>

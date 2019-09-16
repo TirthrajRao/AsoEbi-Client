@@ -66,9 +66,10 @@
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="text" max="16" maxlength="16" class="form-control"
+                                <input type="text" minlength="16" maxlength="16" class="form-control" 
                                     formControlName="accountNumber"
-                                    (input)="validateAccountNumber(bankDetailsForm.value)" id="accountNumber"
+                                     id="accountNumber"
+                                     (input)="getValidation(bankDetailsForm.value)"
                                     [ngClass]="{ 'is-invalid': f.accountNumber.touched && f.accountNumber.errors }"
                                     placeholder="Account Number">
                                 <span id="message2" class="w-100 text-white"></span>
