@@ -59,6 +59,7 @@ export class CreateEventComponent implements OnInit {
   eventHashTag;
   model;
   isLoad = false;
+  groupLength;
   eventName;
   userName = JSON.parse(localStorage.getItem('userName'));
   constructor(private route: ActivatedRoute, private router: Router, private _eventService: EventService,
@@ -749,6 +750,8 @@ export class CreateEventComponent implements OnInit {
         this.isLoad = false;
         console.log("activity response data", data);
         this.createdActivity = data.data;
+        this.groupLength = this.createdActivity.length;
+        console.log(this.createdActivity.length);
         _.forEach(this.createdActivity, (date) => {
           this.activityStartDate = date.activityStartDate;
           this.activityEndDate = date.activityEndDate;

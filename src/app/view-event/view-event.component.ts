@@ -193,7 +193,7 @@ export class ViewEventComponent implements OnInit {
       }, err => {
         this.isLoad = false;
         console.log(err);
-        this.alertService.getError(err.error.message);
+        this.alertService.getError(err.message);
       })
   }
 
@@ -225,7 +225,8 @@ export class ViewEventComponent implements OnInit {
     this.isDisable = true;
     this._eventService.addToCart(eventId, itemId)
       .subscribe((data: any) => {
-        this.isDisable = false;
+        this.isDisable = true;
+        this.isJoined = true;
         console.log(data);
         this.alertService.getSuccess(data.message)
       }, (err: any) => {

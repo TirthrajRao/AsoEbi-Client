@@ -255,13 +255,11 @@ export class LoginComponent implements OnInit {
     console.log("generated token of yahoo", token);
     this._loginService.sendYahooToken(token, userId)
       .subscribe(data => {
-
         let firstName = data.data.firstName
         let lastName = data.data.lastName
-        this.userName = firstName + " " + lastName;
+        this.userName = firstName;
         localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
         localStorage.setItem('userName', JSON.stringify(this.userName));
-
         if (this.eventIdWithLogin) {
           this.isLoad = false
           this.isUserLoggedIn = true;
@@ -269,11 +267,12 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/home/view-event/', this.eventIdWithLogin])
         }
         else {
+          this.isLoad = false
           this.isUserLoggedIn = true;
           localStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
           localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
           this.router.navigate(['/home']);
-          this.isLoad = false
+          window.location.reload()
         }
       }, err => {
         this.isLoad = false
@@ -352,7 +351,7 @@ export class LoginComponent implements OnInit {
       this._loginService.googleLogin(googleIdToken).subscribe(data => {
         let firstName = data.data.firstName
         let lastName = data.data.lastName
-        this.userName = firstName + " " + lastName;
+        this.userName = firstName;
         console.log(this.userName);
         console.log("response of login user", data);
         // this.userRole = data.data.UserRole;
@@ -400,7 +399,7 @@ export class LoginComponent implements OnInit {
             console.log("data of facebook login user", data);
             let firstName = data.data.firstName
             let lastName = data.data.lastName
-            this.userName = firstName + " " + lastName;
+            this.userName = firstName;
             localStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
             localStorage.setItem('userName', JSON.stringify(this.userName));
 

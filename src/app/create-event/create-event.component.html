@@ -743,8 +743,8 @@
                                                     <input class="form-control" type="text"
                                                     placeholder="Enter Group Name" formControlName="groupName">
                                                 </div>
-                                                <div class="col-1 text-white p-0 mt-2" *ngIf="groupForm.controls.group.controls.length>1">
-                                                    <i class="fa fa-minus-circle" (click)="removeGroupField(i,item.value)"
+                                                <div class="col-1 text-white p-0 mt-2" >
+                                                    <i class="fa fa-minus-circle" *ngIf="groupForm.controls.group.controls.length>groupLength" (click)="removeGroupField(i,item.value)"
                                                     aria-hidden="true"></i>
                                                 </div>
                                             </div>

@@ -55,7 +55,7 @@ export class PaymentComponent implements OnInit {
     }
 
     setInputFilter(document.getElementById("uintTextBox"), function(value) {
-      return /^-?\d*[.,]?\d{0,2}$/.test(value); });
+      return /^\d*$/.test(value); });
     }
   /**
    * @param eventId 

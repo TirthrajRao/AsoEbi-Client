@@ -183,7 +183,10 @@ export class SignupComponent implements OnInit {
         this._alertService.getSuccess(data.message);
         // this.router.navigate(['/login']);
       }, err => {
+        this.isLoad = false;
+        this._alertService.getError(err.error.message)
         console.log(err);
+        this.router.navigate(['/login']);
       })
   }
 
