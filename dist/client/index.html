@@ -73,13 +73,19 @@
   <script type="text/javascript" src="./assets/js/custom.js"></script>
   <script type="text/javascript" src="./assets/js/slick.min.js"></script>
 
-  <script>
-    $(window).on('load', function () {
-      $('#loader-wrapper').fadeOut('slow', function () {
-        $('body').removeAttr('style');
-      });
-    });
+
+
+  <!-- <script src="libs/msal/msal/dist/msal.min.js"></script> -->
+  <script type="text/javascript">
+      // Microsoft login redirects back to this page and requires this object before it closes the popup.
+      // See https://github.com/AzureAD/microsoft-authentication-library-for-js/issues/174
+      if (location.hash.includes("id_token")) {
+          new Msal.UserAgentApplication("bd9b8a24-97aa-42db-a5fe-dcb24b15e6f8", null, null);
+      }
+      if(location.hash.includes("access_token")){
+        new Msal.UserAgentApplication("bd9b8a24-97aa-42db-a5fe-dcb24b15e6f8", null, null)
+      }
   </script>
-<script src="runtime-es2015.b7e7f72c15da1ae79890.js" type="module"></script><script src="polyfills-es2015.5728f680576ca47e99fe.js" type="module"></script><script src="runtime-es5.fbda6cd0c2121adaa5b1.js" nomodule></script><script src="polyfills-es5.7f43b971448d2fb49202.js" nomodule></script><script src="scripts.52c82cca9dda8d724745.js"></script><script src="main-es2015.2bf301d00fbbe9e9893a.js" type="module"></script><script src="main-es5.c73018f5f43e06feb43c.js" nomodule></script></body>
+<script src="runtime-es2015.b7e7f72c15da1ae79890.js" type="module"></script><script src="polyfills-es2015.5728f680576ca47e99fe.js" type="module"></script><script src="runtime-es5.fbda6cd0c2121adaa5b1.js" nomodule></script><script src="polyfills-es5.7f43b971448d2fb49202.js" nomodule></script><script src="scripts.52c82cca9dda8d724745.js"></script><script src="main-es2015.879f527372a757d24deb.js" type="module"></script><script src="main-es5.5d40ede9ec6cf4d6f5eb.js" nomodule></script></body>
 
 </html>

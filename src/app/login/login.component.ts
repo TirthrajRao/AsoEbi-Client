@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
       authority: "https://login.microsoftonline.com/common" //This is your tenant info
     },
     cache: {
-      cacheLocation: "localStorage",
+      cacheLocation: "sessionStorage",
       storeAuthStateInCookie: true
     }
   };
@@ -97,6 +97,7 @@ export class LoginComponent implements OnInit {
   }
 
   authRedirectCallBack(error, response) {
+    console.log("bholanath response mdi jaje login no", response)
     if (error) {
       console.log(error);
     } else {
@@ -157,6 +158,7 @@ export class LoginComponent implements OnInit {
   hotMailLogin() {
     console.log("heeeeeeeee rammmmmmm", this.myMSALObj, window.location.href.split("?")[0].split("#")[0]);
     this.myMSALObj.loginPopup(this.requestObj).then((loginResponse) => {
+      console.log("first response ma mde che kai", loginResponse);
       //Call MS Graph using the token in the response
       this.acquireTokenPopupAndCallMSGraph();
     }).catch((error) => {
@@ -168,6 +170,7 @@ export class LoginComponent implements OnInit {
   acquireTokenPopupAndCallMSGraph() {
     //Always start with acquireTokenSilent to obtain a token in the signed in user from cache
     this.myMSALObj.acquireTokenSilent(this.requestObj).then((tokenResponse) => {
+      console.log("microsoft tolen ", tokenResponse)
       this.serverHotmailLogin(tokenResponse.accessToken);
     }).catch((error) => {
       console.log(error);
@@ -175,6 +178,7 @@ export class LoginComponent implements OnInit {
       // Call acquireTokenPopup(popup window) 
       if (this.requiresInteraction(error.errorCode)) {
         this.myMSALObj.acquireTokenPopup(this.requestObj).then((tokenResponse) => {
+          console.log("second reesponse of token", tokenResponse);
           this.serverHotmailLogin(tokenResponse.accessToken);
         }).catch((error) => {
           console.log(error);
@@ -201,9 +205,10 @@ export class LoginComponent implements OnInit {
     console.log("login token of hotmail lofin response", token);
     this._loginService.serverHotmailLogin(token)
       .subscribe((data: any) => {
+        console.log("response of login user", data);
         let firstName = data.data.firstName
         let lastName = data.data.lastName
-        this.userName = firstName + " " + lastName;
+        this.userName = firstName;
         sessionStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
         sessionStorage.setItem('userName', JSON.stringify(this.userName));
 
@@ -261,18 +266,22 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
         sessionStorage.setItem('userName', JSON.stringify(this.userName));
         if (this.eventIdWithLogin) {
+          setTimeout(()=>{
+            this.isUserLoggedIn = true;
+            sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+            this.router.navigate(['/home/view-event/', this.eventIdWithLogin])
+          },500)
           this.isLoad = false
-          this.isUserLoggedIn = true;
-          sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
-          this.router.navigate(['/home/view-event/', this.eventIdWithLogin])
         }
         else {
-          this.isLoad = false
-          this.isUserLoggedIn = true;
-          sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
-          sessionStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
-          this.router.navigate(['/home']);
-          window.location.reload()
+          setTimeout(()=>{
+            this.isUserLoggedIn = true;
+            sessionStorage.setItem('isUserLoggedIn', JSON.stringify(this.isUserLoggedIn));
+            sessionStorage.setItem('userRole', JSON.stringify(data.data.UserRole));
+            this.router.navigate(['/home']);
+          },500)
+            this.isLoad = false
+          // window.location.reload()
         }
       }, err => {
         this.isLoad = false
@@ -455,3 +464,9 @@ export class LoginComponent implements OnInit {
   }
 
 }
+
+
+
+// microsoft login popup issue
+// https://github.com/AzureAD/azure-activedirectory-library-for-js/issues/100
+// https://github.com/auth0/angular2-jwt/issues/211

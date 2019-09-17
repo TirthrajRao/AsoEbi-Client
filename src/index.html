@@ -82,6 +82,9 @@
       if (location.hash.includes("id_token")) {
           new Msal.UserAgentApplication("bd9b8a24-97aa-42db-a5fe-dcb24b15e6f8", null, null);
       }
+      if(location.hash.includes("access_token")){
+        new Msal.UserAgentApplication("bd9b8a24-97aa-42db-a5fe-dcb24b15e6f8", null, null)
+      }
   </script>
 </body>
 

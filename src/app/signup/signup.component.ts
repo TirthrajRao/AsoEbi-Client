@@ -33,9 +33,7 @@ export class SignupComponent implements OnInit {
       password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
       firstName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
       lastName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
-      mobile: new FormControl('', [Validators.minLength(10), Validators.maxLength(10)]),
-    })
-    this.personalDetailsForm = new FormGroup({
+      mobile: new FormControl('', [Validators.required,Validators.minLength(10), Validators.maxLength(10)]),
     })
   }
 
@@ -82,14 +80,24 @@ export class SignupComponent implements OnInit {
    * Validation of lastName in signUp form  
    */
   validateLastName(form) {
+    this.isDisable = false;
     console.log(form);
     const nameInput = /[a-zA-Z ]/;
-    let message2 = document.getElementById('message2');
-    if (!form.lastName.match(nameInput)) {
-      console.log("message==========", message2)
-      message2.innerHTML = "Name can not start with digit"
+    $("#lastName").on({
+      keydown: function(e) {
+        if (e.which === 32)
+          return false;
+      },
+      change: function() {
+        this.value = this.value.replace(/\s/g, "");
+      }
+     });
+    let message1 = document.getElementById('message2');
+    if (!form.firstName.match(nameInput)) {
+      console.log("message==========", message1)
+      message1.innerHTML = "Name can not start with digit"
     } else {
-      message2.innerHTML = "";
+      message1.innerHTML = "";
     }
   }
 
@@ -97,15 +105,34 @@ export class SignupComponent implements OnInit {
    * @param {String} form
    * Validation of phoneNumber in signUp form  
    */
-  validatePhone(form) {
-    console.log(form);
-    const phoneno = /[0-9]{10}/;
-    let message = document.getElementById('message');
-    if (!form.mobile.match(phoneno)) {
-      console.log("message==========", message)
+  // validatePhone(form) {
+  //   console.log(form);
+  //   const phoneno = /[0-9]{10}/;
+  //   let message = document.getElementById('message');
+  //   if (!form.mobile.match(phoneno)) {
+  //     console.log("message==========", message)
+  //     message.innerHTML = "Please enter only numbers"
+  //   } else {
+  //     message.innerHTML = "";
+  //   }
+  // }
+
+  validatePhone(form){
+    console.log(form)
+    var field1 = (<HTMLInputElement>document.getElementById("mobile")).value;
+    let message = document.getElementById('message3');
+    console.log(field1);
+    if(/[a-zA-Z]/g.test(field1)){
       message.innerHTML = "Please enter only numbers"
-    } else {
-      message.innerHTML = "";
+    }
+    else if(!(/[0-9]{10}/.test(field1))){
+      console.log("Please enter valid number");
+      if(field1.length < 10){
+        message.innerHTML = "Please enter 10 digit number";
+      }
+    }else{
+      message.innerHTML = ""
+      console.log("Valid entry");
     }
   }
 
@@ -137,8 +164,13 @@ export class SignupComponent implements OnInit {
   //     })
   // }
   onSubmit(){
-          $('.firstStep').css({ 'display': 'none' })
-        $('.thirdStep').css({ 'display': 'block' });
+    this.isLoad = true;
+    setTimeout(()=>{
+
+      $('.firstStep').css({ 'display': 'none' })
+      $('.thirdStep').css({ 'display': 'block' });
+    },500)
+      this.isLoad = false;
   }
 
   verifyCode(data) {
@@ -166,11 +198,11 @@ export class SignupComponent implements OnInit {
    */
   personalDetails() {
     this.isLoad = true;
+      this.submitted = true;
+      if (this.signUpForm.invalid) {
+        return;
+      }
     console.log(this.signUpForm.value);
-    // const finalDetails = {
-    //   details: this.personalDetailsForm.value,
-    //   userId: this.userId
-    // }
     this._loginService.signUpOfEmail(this.signUpForm.value)
       .subscribe((data: any) => {
         console.log("final response", data);
@@ -186,7 +218,7 @@ export class SignupComponent implements OnInit {
         this.isLoad = false;
         this._alertService.getError(err.error.message)
         console.log(err);
-        this.router.navigate(['/login']);
+        // this.router.navigate(['/login']);
       })
   }
 
