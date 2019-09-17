@@ -21,6 +21,8 @@ export class HeaderComponent implements OnInit {
   publicEvents: any = [];
   path = config.baseMediaUrl;
 
+  
+
   constructor(private _loginService: LoginService, private route: ActivatedRoute,
     private router: Router, private fb: FormBuilder, private _eventService: EventService) {
     if (!this.currentUser) {
@@ -29,11 +31,9 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    // admin dashboard start
-// console.log("current user of login", this.currentUser);
     $('#menu-action').click(function () {
       $('.sidebar').toggleClass('active');
-      // $('.main').toggleClass('active');
+      $('.main').toggleClass('active');
       $(this).toggleClass('active');
       if ($('.sidebar').hasClass('active')) {
         $(this).find('i').addClass('fa-close');
@@ -44,6 +44,7 @@ export class HeaderComponent implements OnInit {
       }
     });
   }
+
 
   /** 
    * @param {string} searchText 
