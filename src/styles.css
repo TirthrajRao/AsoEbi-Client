@@ -4696,14 +4696,16 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 } */
 
 .eventC_page_section .event_activity span {
-	font-size: 20px;
-	color: #fff;
-	text-overflow: ellipsis;
-	display: inline-block;
-	overflow: hidden !important;
-	font-family: 'Russo One', sans-serif;
-	width: 80%;
-	margin-left: 50px;
+    font-size: 20px;
+    color: #fff;
+    font-family: 'Russo One', sans-serif;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden !important;
+    width: 70%;
+    margin-left: 50px;
 }
 
 .eventC_page_section .event_slace {
@@ -6086,6 +6088,24 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 }
 
 /* event slider css end */
+a.ui-datepicker-next.ui-corner-all:after {
+    content: "\003E";
+	margin: 10px!important;
+	font-weight: bold;
+	color: #fff;
+}
+a.ui-datepicker-prev.ui-corner-all:after{
+	content: "\003C";
+	margin: 10px!important;
+	font-weight: bold;
+	color: #fff;
+}
+a.ui-datepicker-next.ui-corner-all,
+a.ui-datepicker-prev.ui-corner-all
+ {
+    background: #bfa065!important;
+}
+
 /* responsive css start */
 
 @media(max-width: 1366px) {
@@ -7285,6 +7305,7 @@ i.fa.fa-plus-circle, i.fa.fa-minus-circle {
 	}
 	.eventC_page_section .event_activity span {
 		margin-left: 20px;
+		font-size: 16px;
 	}
 	.eventF_page_section .eventF_send input {
 		font-family: 'Russo One', sans-serif;
