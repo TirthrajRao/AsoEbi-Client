@@ -200,6 +200,7 @@ export class LoginService {
       sessionStorage.removeItem('isGuestJoined');
       sessionStorage.removeItem('userName');
       this.currentUserSubject.next(null);
+      sessionStorage.clear();
   }
 
 
