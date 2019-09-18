@@ -31,6 +31,7 @@ export class MyEventDetailsComponent implements OnInit {
   selectedGender;
   isCelebrant;
   isLoad = false;
+  manualLoginUser = JSON.parse(sessionStorage.getItem('currentUser'));
   userName = JSON.parse(sessionStorage.getItem('userName'));
   constructor(private route: ActivatedRoute, private router: Router, private _eventService: EventService, private alertService: AlertService,
     private _loginService: LoginService) {

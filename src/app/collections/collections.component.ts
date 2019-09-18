@@ -30,6 +30,8 @@ export class CollectionsComponent implements OnInit {
   fromClass;
   activityTotal: any;
   userName = JSON.parse(sessionStorage.getItem('userName'));
+  manualLoginUser = JSON.parse(sessionStorage.getItem('currentUser'));
+
 
   colorSettings = {
     section: ['#d7d7d7', '#d0dadc', '#a4a5a8', '#dadbdf', '#2b2f31'],

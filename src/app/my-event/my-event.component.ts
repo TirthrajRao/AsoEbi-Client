@@ -31,6 +31,7 @@ export class MyEventComponent implements OnInit {
   selectedGender;
   isDisable;
   totalCollectionOfUser;
+  manualLoginUser = JSON.parse(sessionStorage.getItem('currentUser'));
   userName = JSON.parse(sessionStorage.getItem('userName'));
   constructor(private router: Router, private _eventService: EventService, private alertService: AlertService,
     private _loginService: LoginService, private change: ChangeDetectorRef) {

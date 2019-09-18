@@ -39,6 +39,7 @@ export class ViewEventComponent implements OnInit {
   isLoad = false;
   url = this.eventLink;
   eventHashTag;
+  manualLoginUser = JSON.parse(sessionStorage.getItem('currentUser'));
   userName = JSON.parse(sessionStorage.getItem('userName'));
 
   constructor(private route: ActivatedRoute,

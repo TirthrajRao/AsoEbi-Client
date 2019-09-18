@@ -20,6 +20,7 @@ export class EditEventComponent implements OnInit {
   eventHashtag;
   isLoad = false;
   userName = JSON.parse(sessionStorage.getItem('userName'));
+  manualLoginUser = JSON.parse(sessionStorage.getItem('currentUser'));
 
   constructor(private route: ActivatedRoute, private router: Router,private _loginService: LoginService, private _eventService: EventService, private alertService: AlertService, ) {
     this.sub = this.route.params.subscribe(params => {

@@ -32,7 +32,7 @@ export class InvitationEventComponent implements OnInit {
   selectedGroup;
   selectedGender;
   public EventLink: any;
-  // URL = this.EventLink;
+  manualLoginUser = JSON.parse(sessionStorage.getItem('currentUser'));
   userName = JSON.parse(sessionStorage.getItem('userName'));
   constructor(private route: ActivatedRoute, private router: Router, private _eventService: EventService, private alertService: AlertService,
     private _loginService: LoginService) {

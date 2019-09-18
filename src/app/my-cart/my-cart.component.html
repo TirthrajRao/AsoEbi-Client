@@ -86,34 +86,6 @@
                             <p class="event_name_new" *ngIf="eventDetails"> {{eventDetails.eventType}}</p>
                             <div class="all_list_height event_prise_detail">
                                 <p class="gender_select">Male</p>
-                                <!-- <div class="row" *ngFor="let item of cartDetails">
-                                    <div class="col-7">
-                                        <div *ngIf="item.itemGender == 'male'">
-                                            <div class="all_list">
-                                                <div class="fabric_name float-left"><span
-                                                        title="{{item.itemName}}">{{item.itemName}}</span></div>
-                                                <div class="float-right ">
-                                                    <label>{{ item.itemPrice | currency:"&#x20A6;" }}</label>
-                                                    <label> x </label>
-                                                    <input type="number" onkeydown="return event.keyCode !== 69"
-                                                        id="myCartPaisa" (click)="finalTotal(item)"
-                                                        [(ngModel)]="item.quantity" min="1">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-4 all_list_total_price  " *ngIf="item.itemGender == 'male'">
-                                        <div class=" float-right"> =
-                                            {{(item.itemPrice * item.quantity) | currency:"&#x20A6;" }}
-                                        </div>
-                                    </div>
-                                    <div class="col-1 p-0" *ngIf="item.itemGender == 'male'">
-                                        <div class="delete_item">
-                                            <i class="fa fa-times" aria-hidden="true"
-                                                (click)="removeItem(item._id)"></i>
-                                        </div>
-                                    </div>
-                                </div> -->
                                 <div class="table-responsive">
                                     <table class="cart-table">
                                         <tr *ngFor="let item of cartDetails">
@@ -126,8 +98,8 @@
                                                 <div class="all_list">
                                                     <div class="text-white">
                                                         <label>{{ item.itemPrice | currency:"&#x20A6;" }}</label>
-                                                        <label> x </label>
-                                                        <input type="number" onkeydown="return event.keyCode !== 69"
+                                                        <label> x </label> 
+                                                        <input type="number" min="0" oninput="validity.valid||(value='');" onkeydown="return event.keyCode !== 69"
                                                             id="myCartPaisa" (click)="finalTotal(item)"
                                                             [(ngModel)]="item.quantity" min="1"> =
                                                     </div>
@@ -181,47 +153,7 @@
                                         </tr>
                                     </table>
                                 </div>
-                                <!-- <div class="my-cart-price-scroll">
-                                    <div class="row" *ngFor="let item of cartDetails">
-                                        <div class="col-4">
-                                            <div *ngIf="item.itemGender=='female'">
-                                                <div class="all_list">
-                                                    <div class="fabric_name float-left"><span
-                                                            title="{{item.itemName}}">{{item.itemName}}</span>
-                                                    </div>
-                                                    <div class="float-right text-white">
-                                                        <label>{{item.itemPrice | currency:"&#x20A6;"}}</label>
-                                                        <label> x </label>
-                                                        <input type="number" min="1" id="donation"
-                                                            (keyup)="finalTotal(item)" [(ngModel)]='item.quantity'>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 all_list_total_price" *ngIf="item.itemGender=='female'">
-                                            <div class=" float-right"> =
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="col-4" *ngIf="item.itemGender=='female'">
-                                            <div class="delete_item">
-                                                <i class="fa fa-times" aria-hidden="true"
-                                                    (click)="removeItem(item._id)"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
                                 <hr>
-                                <!-- <div class="all_total">
-                                            <div class="row">
-                                                <div class="col-11">
-                                                    <div class="float-left">Total</div>
-                                                    <div class="fabric_name float-right">=
-                                                        {{finalGrandTotal | currency:"&#x20A6;"}}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> -->
                             </div>
                             <div class="save_and_pay_btn">
                                 <a class="update_btn text-center" (click)="allItem(cartDetails)">Procced</a>

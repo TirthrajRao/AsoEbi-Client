@@ -25,8 +25,8 @@
                             </div>
                             <div class="event_detail_slide event_detail_slide_sky1">
                                 <div class="events_name text-center">
-                                    <a 
-                                        class="text-center text-white" data-toggle="tooltip" data-placement="top" title="Gift Donation">Gift Donation</a>
+                                    <a class="text-center text-white" data-toggle="tooltip" data-placement="top"
+                                        title="Gift Donation">Gift Donation</a>
                                 </div>
                             </div>
                             <div class="event_detail_slide event_detail_slide_sky1">
@@ -37,68 +37,21 @@
                             </div>
                         </div>
                         <div class="radio_btn text-white">
-                            <p class="event_name_new"  *ngIf="eventDetails">{{eventDetails.eventType}}</p>
+                            <p class="event_name_new" *ngIf="eventDetails">{{eventDetails.eventType}}</p>
                             <div class="event_prise_detail">
                                 <p class="gender_select">Male</p>
                                 <div class="table-responsive">
-                                        <table class="cart-table w-100">
-                                            <tr *ngFor="let item of finalCartDetails">
-                                                <td class="all_list p-2" *ngIf="item.itemGender == 'male'">
-                                                    <span title="{{item.itemName}}">{{item.itemName}}</span>
-                                                </td>
-                                                <td class="all_list p-2 text-right" *ngIf="item.itemGender == 'male'">
-                                                    <label>{{item.itemPrice | currency:"&#x20A6;"}}</label>
-                                                    <input type="text" min="1" [(ngModel)]="item.quantity" disabled>
-                                                </td>
-                                                <td class="all_list_total_price p-2 text-right" *ngIf="item.itemGender == 'male'">
-                                                    <p class="mb-0 text-white">
-                                                        {{(item.itemPrice * item.quantity) | currency:"&#x20A6;" }}
-                                                    </p>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                <!-- <div class="row" *ngFor="let item of finalCartDetails">
-                                    <div class="col-7">
-                                        <div class="row">
-                                            <div class="col-12" *ngIf="item.itemGender == 'male'">
-                                                <div class="all_list all_list_height">
-                                                    <div class="fabric_name float-left">
-                                                        <span title="{{item.itemName}}">{{item.itemName}}</span>
-                                                    </div>
-                                                    <div class="float-right number_of_item">
-                                                        <label>{{item.itemPrice | currency:"&#x20A6;"}}</label>
-                                                        <input type="text" min="1" [(ngModel)]="item.quantity" disabled>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-5 all_list_total_price" *ngIf="item.itemGender == 'male'">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class=" float-right"> =
-                                                    {{(item.itemPrice * item.quantity) | currency:"&#x20A6;" }} </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
-                                <hr>
-
-
-                                <!-- <p class="event_name_new" *ngIf="eventDetails"> {{eventDetails.eventType}}</p> -->
-                                <p class="gender_select">Female</p>
-                                <div class="table-responsive">
                                     <table class="cart-table w-100">
                                         <tr *ngFor="let item of finalCartDetails">
-                                            <td class="all_list p-2" *ngIf="item.itemGender=='female'">
+                                            <td class="all_list p-2" *ngIf="item.itemGender == 'male'">
                                                 <span title="{{item.itemName}}">{{item.itemName}}</span>
                                             </td>
-                                            <td class="all_list number_of_item p-2 text-right" *ngIf="item.itemGender=='female'">
+                                            <td class="all_list p-2 text-right" *ngIf="item.itemGender == 'male'">
                                                 <label>{{item.itemPrice | currency:"&#x20A6;"}}</label>
                                                 <input type="text" min="1" [(ngModel)]="item.quantity" disabled>
                                             </td>
-                                            <td class="all_list_total_price p-2 text-right" *ngIf="item.itemGender=='female'">
+                                            <td class="all_list_total_price p-2 text-right"
+                                                *ngIf="item.itemGender == 'male'">
                                                 <p class="mb-0 text-white">
                                                     {{(item.itemPrice * item.quantity) | currency:"&#x20A6;" }}
                                                 </p>
@@ -106,29 +59,28 @@
                                         </tr>
                                     </table>
                                 </div>
-                                <!-- <div class="col-7">
-                                        <div class="row">
-                                            <div class="col-12" *ngIf="item.itemGender=='female'">
-                                                <div class="all_list all_list_height">
-                                                    <div class="fabric_name float-left">
-                                                        <span title="{{item.itemName}}">{{item.itemName}}</span>
-                                                         </div>
-                                                    <div class="float-right number_of_item">
-                                                        <label>{{item.itemPrice | currency:"&#x20A6;"}}</label>
-                                                        <input type="text" min="1" [(ngModel)]="item.quantity" disabled>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-5 all_list_total_price" *ngIf="item.itemGender=='female'">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class=" float-right"> =
-                                                    {{(item.itemPrice * item.quantity) | currency:"&#x20A6;" }} </div>
-                                            </div>
-                                        </div>
-                                    </div> -->
+                                <hr>
+                                <p class="gender_select">Female</p>
+                                <div class="table-responsive">
+                                    <table class="cart-table w-100">
+                                        <tr *ngFor="let item of finalCartDetails">
+                                            <td class="all_list p-2" *ngIf="item.itemGender=='female'">
+                                                <span title="{{item.itemName}}">{{item.itemName}}</span>
+                                            </td>
+                                            <td class="all_list number_of_item p-2 text-right"
+                                                *ngIf="item.itemGender=='female'">
+                                                <label>{{item.itemPrice | currency:"&#x20A6;"}}</label>
+                                                <input type="text" min="1" [(ngModel)]="item.quantity" disabled>
+                                            </td>
+                                            <td class="all_list_total_price p-2 text-right"
+                                                *ngIf="item.itemGender=='female'">
+                                                <p class="mb-0 text-white">
+                                                    {{(item.itemPrice * item.quantity) | currency:"&#x20A6;" }}
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
                                 <hr>
                             </div>
                             <div class="all_total">
@@ -192,13 +144,13 @@
                                         title="Gift Donation">Gift Donation</a>
                                 </div>
                             </div>
-                            <!-- <div class="event_detail_slide event_detail_slide_pink1">
-                                <div class="events_name text-center">
-                                        <a  class="text-center text-white" data-toggle="tooltip" data-placement="top" title="Total">Total</a>
-                                </div>
-                            </div> -->
                         </div>
                         <div class="donation_detail">
+                            <div class="thank-you-close">
+                                <button (click)="closeThnakyou()" class="float-right"><i class="fa fa-times"
+                                        aria-hidden="true"></i>
+                                </button>
+                            </div>
                             <div class="row">
                                 <div class="col-12">
                                     <div class="thanx_write text-white">
@@ -208,11 +160,6 @@
                                             financial gift is very much appreciated.</p>
                                     </div>
                                 </div>
-                                <!-- <div class="col-1">
-                                    <div class="cross_img float-right">
-                                        <img src="/assets/images/cross_img.png">
-                                    </div>
-                                </div> -->
                             </div>
                             <div class="donation_form">
                                 <div class="row">

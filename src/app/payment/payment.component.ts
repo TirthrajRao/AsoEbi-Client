@@ -163,6 +163,7 @@ export class PaymentComponent implements OnInit {
       if ($('.event_detail_slider').hasClass('slick-initialized'))
       $('.event_detail_slider').slick('unslick');
 
+
       $('.event_detail_slider').not('.slick-initialized').slick({
         // autoplay: true,
         autoplaySpeed: 2000,
@@ -195,5 +196,43 @@ export class PaymentComponent implements OnInit {
     }, 20)
   }
 
+  closeThnakyou() {
+    $('.step_two').css({ 'display': 'none' })
+    $('.step_one ').css({ 'display': 'block' })
+    setTimeout(()=>{
+      if ($('.event_detail_slider').hasClass('slick-initialized'))
+      $('.event_detail_slider').slick('unslick');
 
+
+      $('.event_detail_slider').not('.slick-initialized').slick({
+        // autoplay: true,
+        autoplaySpeed: 2000,
+        arrows: false,
+        dots: false,
+        slidesToShow: 1.5,
+        slidesToScroll: 1,
+        draggable: true,
+        fade: false,
+        responsive: [
+          {
+            breakpoint: 1367,
+            settings: {
+              slidesToShow: 3.2
+            }
+          },
+          {
+            breakpoint: 769,
+            settings: {
+              slidesToShow: 2.7
+            }
+          }, {
+            breakpoint: 575,
+            settings: {
+              slidesToShow: 1.5
+            }
+          }
+        ]
+      });
+    },20)
+  }
 }

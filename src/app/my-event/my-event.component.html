@@ -37,7 +37,7 @@
                                     </li>
                                     <li><a routerLink="/bankDetails" class="text-white my_account">bank
                                             account</a></li>
-                                    <li><a routerLink="/reset-password" class="text-white my_account">Reset
+                                    <li *ngIf="manualLoginUser"><a routerLink="/reset-password" class="text-white my_account">Reset
                                             Password</a></li>
                                     <li><a (click)="logout()" class="text-white my_account">Logout</a></li>
                                 </ul>
@@ -67,53 +67,3 @@
         </div>
     </div>
 </section>
-
-<!-- Edit Event Slide -->
-<div class="seventhStep" style="display:none">
-    <section class="edit_event_section d-flex flex-wrap align-content-center">
-        <div class="container-fluid">
-            <h3 class="text-center">Aso Ebi</h3>
-            <div class="edit_event">
-                <div class="event_inner_content_box">
-                    <div class="event_inner_content ">
-                        <div class="new_event_sec edit_event_new">
-                            <div class="row">
-                                <div class="col-3 m-auto pr-0 float-right new_event_menu">
-                                    <a><img src="/assets/images/edit_event_icon.png">
-                                        <p class="text-white">New Event</p>
-                                    </a>
-                                </div>
-                                <div class="col-9 p-0">
-                                    <span class="text-white event_name"> Hello {{userName}} </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div *ngIf="singleEventDetails">
-                            <div class="enter_event_title">
-                                <h6 class="text-center text-white">Event Hashtag</h6>
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" id="title" [(ngModel)]="eventHashtag"
-                                            placeholder="# Enter your event hashtag here.." name="title">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="edit_event_btn">
-                                <div class="row">
-                                    <div class="col-sm-6 col-xs-12 edit_info"
-                                        (click)="editEventDeatils(singleEventDetails._id)">
-                                        <a class="edit_btn text-white  text-center">Edit Information </a>
-                                    </div>
-                                    <div class="col-sm-6 delete_info col-xs-12"
-                                        (click)="deleteEvent(singleEventDetails._id)">
-                                        <a class="delete_event_btn text-center">Delete Event</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>

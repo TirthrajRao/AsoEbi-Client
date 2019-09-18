@@ -66,6 +66,7 @@ export class ForgotPasswordComponent implements OnInit {
    * Comapre new password and confirm password  
    */
    comparePassword(form) {
+     this.isDisable = true;
      console.log(form.value.newPassword == form.value.confirmPassword, this.match);
      if (form.value.newPassword === form.value.confirmPassword) {
        console.log("In true condition");

@@ -57,7 +57,7 @@
                                                     class="text-white text-center my_account">bank
                                                     account</a>
                                             </li>
-                                            <li><a routerLink="/reset-password"
+                                            <li *ngIf="manualLoginUser"><a routerLink="/reset-password"
                                                     class="text-white text-center my_account">Reset
                                                     Password</a></li>
                                             <li><a (click)="logout()"

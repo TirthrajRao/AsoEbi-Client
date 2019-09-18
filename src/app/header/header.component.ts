@@ -15,7 +15,7 @@ declare var $: any;
 export class HeaderComponent implements OnInit {
 
   currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-  adminUser = JSON.parse(sessionStorage.getItem('userRole'));
+  adminUser= JSON.parse(sessionStorage.getItem('userRole'));
   searchText;
   searchEvent: any = [];
   publicEvents: any = [];

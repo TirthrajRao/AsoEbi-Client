@@ -62,6 +62,8 @@ export class CreateEventComponent implements OnInit {
   groupLength;
   eventName;
   userName = JSON.parse(sessionStorage.getItem('userName'));
+  manualLoginUser = JSON.parse(sessionStorage.getItem('currentUser'));
+
   constructor(private route: ActivatedRoute, private router: Router, private _eventService: EventService,
     private alertService: AlertService, private fb: FormBuilder, private _loginService: LoginService) {
     this.sub = this.route.params.subscribe(params => {

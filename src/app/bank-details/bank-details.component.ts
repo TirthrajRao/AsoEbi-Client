@@ -24,6 +24,8 @@ export class BankDetailsComponent implements OnInit {
   private sub: any;
   public eventId: any;
   userName = JSON.parse(sessionStorage.getItem('userName'));
+  manualLoginUser = JSON.parse(sessionStorage.getItem('currentUser'));
+  
   constructor(private router: Router, private route: ActivatedRoute, private _loginService: LoginService, private _eventService: EventService, private _alertService: AlertService) {
     this.sub = this.route.params.subscribe(params => {
       this.eventId = params.id;

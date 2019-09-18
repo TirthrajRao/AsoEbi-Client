@@ -1833,7 +1833,7 @@ label.background_edit:hover {
 }
 
 .submit_btn_pwd {
-	background-color: #18c4ad;
+	background-color: #18c4ad !important;
 }
 
 .btn_submit_pwd a {
@@ -4374,6 +4374,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 }
 
 .buying_option4_section .card_inner_content_box {
+	position: relative;
 	background-image: url(/assets/images/buying_option4.png)!important;
 }
 
