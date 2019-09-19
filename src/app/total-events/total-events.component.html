@@ -5,7 +5,8 @@
 </div>
 
 
-<div class="container">
+
+<!-- <div class="container">
     <div class="row">
         <div class="col-12">
             <div class="card" *ngFor="let item of totalEvent">
@@ -44,4 +45,158 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+
+
+
+
+
+
+<section class="total-event-page">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 mb-4" #allTheseThings *ngFor="let item of totalEvent">
+                <div class="p-4" id={{item._id}} >
+                    <!-- [ngClass]="getClassNameOfSection(item._id)" -->
+                    <div class="profile-pic-admin text-center">
+                        <img *ngIf="item && item.profilePhoto" src="{{path}}{{item.profilePhoto}}"
+                            alt="profile pic admin">
+                    </div>
+                    <div class="row">
+                        <div class="col-4 text-left">
+                            <p>EventType:</p>
+                            <p>{{item.eventType}}</p>
+                        </div>
+                        <div class="col-4 text-center">
+                            <p>EventTitle:</p>
+                            <p>{{item.eventTitle}}</p>
+                        </div>
+                        <div class="col-4 text-right">
+                            <p>EventHashTag:</p>
+                            <p>{{item.hashTag}}</p>
+                        </div>
+                    </div>
+                    <div class="event-status">
+                        <p [ngClass]="item.isPaymentAccept ? 'bg-success on_off' : 'bg-danger on_off'"></p>
+                        <button class="btn btn-primary">View more</button>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-lg-6 mb-4">
+                    <div class="blue-bg p-4">
+                        <div class="profile-pic-admin text-center">
+                            <img src="images/profile.png" alt="profile pic admin">
+                        </div>
+                        <div class="row">
+                                <div class="col-4 text-left">
+                                    <p>EventType:</p>
+                                    <p>Wedding</p>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <p>EventTitle:</p>
+                                    <p>vishal wedding</p>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <p>EventHashTag:</p>
+                                    <p>VishuWedding</p>
+                                </div>
+                            </div>
+                        <img src="images/green-active.png" alt="green active" class="mr-5">
+                        <button class="btn btn-primary">View more</button>
+                    </div>
+                </div> -->
+            <!-- <div class="col-lg-6 mb-4">
+                    <div class="blue-bg p-4">
+                        <div class="profile-pic-admin text-center">
+                            <img src="images/profile.png" alt="profile pic admin">
+                        </div>
+                        <div class="row">
+                                <div class="col-4 text-left">
+                                    <p>EventType:</p>
+                                    <p>Wedding</p>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <p>EventTitle:</p>
+                                    <p>vishal wedding</p>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <p>EventHashTag:</p>
+                                    <p>VishuWedding</p>
+                                </div>
+                            </div>
+                        <img src="images/green-active.png" alt="green active" class="mr-5">
+                        <button class="btn btn-primary">View more</button>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="gray-bg p-4">
+                        <div class="profile-pic-admin text-center">
+                            <img src="images/profile.png" alt="profile pic admin">
+                        </div>
+                        <div class="row">
+                                <div class="col-4 text-left">
+                                    <p>EventType:</p>
+                                    <p>Wedding</p>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <p>EventTitle:</p>
+                                    <p>vishal wedding</p>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <p>EventHashTag:</p>
+                                    <p>VishuWedding</p>
+                                </div>
+                            </div>
+                        <img src="images/green-active.png" alt="green active" class="mr-5">
+                        <button class="btn btn-primary">View more</button>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="gray-bg p-4">
+                        <div class="profile-pic-admin text-center">
+                            <img src="images/profile.png" alt="profile pic admin">
+                        </div>
+                        <div class="row">
+                                <div class="col-4 text-left">
+                                    <p>EventType:</p>
+                                    <p>Wedding</p>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <p>EventTitle:</p>
+                                    <p>vishal wedding</p>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <p>EventHashTag:</p>
+                                    <p>VishuWedding</p>
+                                </div>
+                            </div>
+                        <img src="images/green-active.png" alt="green active" class="mr-5">
+                        <button class="btn btn-primary">View more</button>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="pink-bg p-4">
+                        <div class="profile-pic-admin text-center">
+                            <img src="images/profile.png" alt="profile pic admin">
+                        </div>
+                        <div class="row">
+                                <div class="col-4 text-left">
+                                    <p>EventType:</p>
+                                    <p>Wedding</p>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <p>EventTitle:</p>
+                                    <p>vishal wedding</p>
+                                </div>
+                                <div class="col-4 text-right">
+                                    <p>EventHashTag:</p>
+                                    <p>VishuWedding</p>
+                                </div>
+                            </div>
+                        <img src="images/green-active.png" alt="green active" class="mr-5">
+                        <button class="btn btn-primary">View more</button>
+                    </div>
+                </div> -->
+        </div>
+    </div>
+</section>
