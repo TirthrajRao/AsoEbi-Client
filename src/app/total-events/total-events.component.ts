@@ -39,7 +39,7 @@ export class TotalEventsComponent implements OnInit {
   ngForRendred() {
     console.log('NgFor is Rendered');
     _.forEach(this.totalEvent, event => {
-      console.log(this.className[Math.floor(Math.random()*this.className.length)]);
+      // console.log(this.className[Math.floor(Math.random()*this.className.length)]);
       $('#'+event._id).addClass(this.className[Math.floor(Math.random()*this.className.length)]);
     })
   }

@@ -1,0 +1,23 @@
+
+.input_with_icont{
+    position: relative;
+  }
+  .input_with_icont span{
+    position: absolute;
+    top: 25px;
+    bottom: 0;
+    right: 24px;
+    margin: auto;
+    z-index: 11;
+    color: white;
+  }
+  .input_with_icont:after{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 52px;
+    margin: auto;
+    background-color: #d6d6d6;
+    z-index: 11;
+  }

@@ -16,15 +16,15 @@ const port = 3000;
 // const baseUrl = `${host}${port}/`;
 // const baseUrl = "https://andcowith.me:3000";
 // const baseUrl = "http://localhost:3000/";
-// const baseMediaUrl = "http://192.168.1.83/AsoEbi-2/server/";
+const baseMediaUrl = "http://192.168.1.83/AsoEbi-2/server/";
 
-const baseMediaUrl = "https://test.andcowith.me/server/";
+// const baseMediaUrl = "https://test.andcowith.me/server/";
 
 
 
 // const baseUrl = `${host}${port}/`;
-// const baseUrl = "http://192.168.1.83:3000/";
-const baseUrl = "https://test.andcowith.me:3000/";
+const baseUrl = "http://192.168.1.83:3000/";
+// const baseUrl = "https://test.andcowith.me:3000/";
 
 
 export const config = {

@@ -78,7 +78,7 @@
                     </div>
                     <div class="event-status">
                         <p [ngClass]="item.isPaymentAccept ? 'bg-success on_off' : 'bg-danger on_off'"></p>
-                        <button class="btn btn-primary">View more</button>
+                        <button class="btn btn-primary" (click)="viewMoreDeatils(item._id)">View more</button>
                     </div>
                 </div>
             </div>

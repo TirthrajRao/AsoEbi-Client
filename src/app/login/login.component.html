@@ -1,124 +1,125 @@
 <!-- New Design Integreat -->
 <div id="loading" *ngIf="isLoad">
-		<img id="loading-image" src="/assets/images/loader.gif" alt="Loading..." />
-	</div>
-	
-	
-	<section class="enter_section d-flex flex-wrap align-content-center" >
-		<div class="container-fluid">
-			<h3 class="text-center">Aso Ebi</h3>
-			<div class="enter_screen_sec">
-				<div class="Join_inner_content_box">
-					<div class="inner_content_btn text-center">
-						<a routerLink="/signUp" class="nav-link btn_join2 btn_enter_join2  float-left">Join</a>
-						<a routerLink="/login" class="btn_enter_screen text-white float-right">Enter</a>
-					</div>
-					<div class="login_form_sec">
-						<div class="row ">
-							<div class="email_display col-2 pr-0">
-								<div class="email_sec">
-									<a>
-										<img src="/assets/images/email.png">
-									</a>
-								</div>
-							</div>
-							<div class="col-sm-10 col-xs-12 social_media_login">
-								<div class="row social_Login">
-									<div class="col-6 p-0">
-										<div class="facebook_sec">
-											<a (click)="signWithFacebook();">
-												<img src="/assets/images/facebook.png">
-												<span>facebook</span>
-											</a>
-										</div>
-									</div>
-									<div class="col-6 p-0">
-										<div class="google_sec">
-											<a (click)="signInWithGoogleAccount()">
-												<img src="/assets/images/google.png">
-												<span>google</span>
-											</a>
-										</div>
-									</div>
-									<div class="col-6 p-0">
-										<div class="microsoft_sec">
-											<a (click)="hotMailLogin()">
-												<img src="/assets/images/microsoft.png">
-												<span>microsoft</span>
-											</a>
-										</div>
-									</div>
-									<div class="col-6 p-0">
-										<div class="yahoo_sec">
-											<a (click)="yahooLogin()">
-												<img src="/assets/images/yahoo.png">
-												<span>yahoo</span>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<form class="join_form login_form pt-0" [formGroup]="loginForm" autocomplete="off">
-							<div class="form-group mt-2">
-								<div class="input-group">
-									<input type="email" class="form-control" id="email1" formControlName="email"
-										placeholder="Enter Your Email" name="email"
-										[ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }">
-									<div class="col-md-2" *ngIf="f.email.touched && f.email.errors"
-										class="invalid-feedback text-white">
-										<div *ngIf="f.email.errors.required">Email is required</div>
-										<div *ngIf="f.email.errors.email">Please enter valid Email</div>
-									</div>
-								</div>
-							</div>
-							<div class="form-group ">
-								<div class="input-group">
-									<input type="password" class="form-control" formControlName="password" id="pwd"
-										placeholder="Password" name="password">
-								</div>
-							</div>
-							<div class="btn_login">
-								<button type="submit" (click)="onSubmitLogin()" class="btn text-white in_btn"
-									[disabled]="isDisable || loginForm.invalid">In</button>
-							</div>
-							<a class="text-white" data-toggle="modal" data-target="#exampleModal">forgot password ?</a>
-						</form>
-					</div>
+	<img id="loading-image" src="/assets/images/loader.gif" alt="Loading..." />
+</div>
+
+
+<section class="enter_section d-flex flex-wrap align-content-center">
+	<div class="container-fluid">
+		<h3 class="text-center">Aso Ebi</h3>
+		<div class="enter_screen_sec">
+			<div class="Join_inner_content_box">
+				<div class="inner_content_btn text-center">
+					<a routerLink="/signUp" class="nav-link btn_join2 btn_enter_join2  float-left">Join</a>
+					<a routerLink="/login" class="btn_enter_screen text-white float-right">Enter</a>
 				</div>
-			</div>
-		</div>
-	</section>
-	
-	
-	<!-- Forgot password modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-		aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal_content">
-					<div class="">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-					</div>
-					<form class="forgot_password_form" [formGroup]="forgotPasswordForm" autocomplete="off">
-						<div class="form-group">
-							<div class="input-group ">
-								<input type="email" class="form-control text-dark" id="email" formControlName="email"
-									placeholder="Email/Phone Number" name="email"
-									[ngClass]="{ 'is-invalid': g.email.touched && g.email.errors }">
-								<div class="col-md-2" *ngIf="g.email.touched && g.email.errors"
-									class="invalid-feedback">
-									<div *ngIf="g.email.errors.required">Email is required</div>
-									<div *ngIf="g.email.errors.email">Please enter valid Email</div>
+				<div class="login_form_sec">
+					<div class="row ">
+						<div class="email_display col-2 pr-0">
+							<div class="email_sec">
+								<a>
+									<img src="/assets/images/email.png">
+								</a>
+							</div>
+						</div>
+						<div class="col-sm-10 col-xs-12 social_media_login">
+							<div class="row social_Login">
+								<div class="col-6 p-0">
+									<div class="facebook_sec">
+										<a (click)="signWithFacebook();">
+											<img src="/assets/images/facebook.png">
+											<span>facebook</span>
+										</a>
+									</div>
+								</div>
+								<div class="col-6 p-0">
+									<div class="google_sec">
+										<a (click)="signInWithGoogleAccount()">
+											<img src="/assets/images/google.png">
+											<span>google</span>
+										</a>
+									</div>
+								</div>
+								<div class="col-6 p-0">
+									<div class="microsoft_sec">
+										<a (click)="hotMailLogin()">
+											<img src="/assets/images/microsoft.png">
+											<span>microsoft</span>
+										</a>
+									</div>
+								</div>
+								<div class="col-6 p-0">
+									<div class="yahoo_sec">
+										<a (click)="yahooLogin()">
+											<img src="/assets/images/yahoo.png">
+											<span>yahoo</span>
+										</a>
+									</div>
 								</div>
 							</div>
 						</div>
-						<div class="submit_mail">
-							<button type="submit" (click)="submitForgotPassword();"
-								[disabled]="isDisable || forgotPasswordForm.invalid">Submit</button>
+					</div>
+					<form class="join_form login_form pt-0" [formGroup]="loginForm" autocomplete="off">
+						<div class="form-group mt-2">
+							<div class="input-group">
+								<input type="email" class="form-control" id="email1" formControlName="email"
+									placeholder="Enter Your Email" name="email"
+									[ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }">
+								<div class="col-md-2" *ngIf="f.email.touched && f.email.errors"
+									class="invalid-feedback text-white">
+									<div *ngIf="f.email.errors.required">Email is required</div>
+									<div *ngIf="f.email.errors.email">Please enter valid Email</div>
+								</div>
+							</div>
 						</div>
+						<div class="form-group ">
+							<div class="input-group input_with_icont">
+								<input type="password" class="form-control" formControlName="password" id="pwd"
+									placeholder="Password" name="password" [type]="show ? 'text' : 'password'">
+									<span toggle="#password-field" class="fa fa-fw fa-eye-slash field-icon toggle-password"
+									(click)="password()"></span>
+							</div>
+						</div>
+						<div class="btn_login">
+							<button type="submit" (click)="onSubmitLogin()" class="btn text-white in_btn"
+								[disabled]="isDisable || loginForm.invalid">In</button>
+						</div>
+						<a class="text-white" data-toggle="modal" data-target="#exampleModal">forgot password ?</a>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
+</section>
+
+
+<!-- Forgot password modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal_content">
+				<div class="">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<form class="forgot_password_form" [formGroup]="forgotPasswordForm" autocomplete="off">
+					<div class="form-group">
+						<div class="input-group ">
+							<input type="email" class="form-control text-dark" id="email" formControlName="email"
+								placeholder="Email/Phone Number" name="email"
+								[ngClass]="{ 'is-invalid': g.email.touched && g.email.errors }">
+							<div class="col-md-2" *ngIf="g.email.touched && g.email.errors" class="invalid-feedback">
+								<div *ngIf="g.email.errors.required">Email is required</div>
+								<div *ngIf="g.email.errors.email">Please enter valid Email</div>
+							</div>
+						</div>
+					</div>
+					<div class="submit_mail">
+						<button type="submit" (click)="submitForgotPassword();"
+							[disabled]="isDisable || forgotPasswordForm.invalid">Submit</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

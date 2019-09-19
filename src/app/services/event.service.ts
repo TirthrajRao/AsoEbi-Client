@@ -282,6 +282,10 @@ export class EventService {
     return this.http.get(config.baseApiUrl + "api/event/event-detail/" + id);
   }
 
+  singleGuestItemDetails(id){
+    return this.http.get(config.baseApiUrl +"api/event-transaction?eventId="+ id);
+  }
+
   /**
    * Get all Users list 
    */

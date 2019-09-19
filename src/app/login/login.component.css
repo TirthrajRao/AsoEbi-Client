@@ -1,4 +1,5 @@
 /*enter screen section start*/
+
 /* .enter_screen_sec .Join_inner_content_box {
     background-image: url(/assets/images/enter1.png);
     background-size: cover;
@@ -23,58 +24,92 @@
     margin-bottom: 18px;
     } */
 
+.modal-content {
+  background-image: url('/assets/images/join1.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.modal_content {
+  padding: 20px;
+}
+
+.forgot_password_form {
+  margin: 20px 0;
+}
+
+.forgot_password_form input {
+  background-color: transparent;
+  color: #000!important;
+  height: 50px;
+  border-radius: 0px!important;
+  font-size: 30px;
+}
+
+.forgot_password_form input::-webkit-input-placeholder {
+  color: #000!important;
+  font-size: 30px!important;
+}
+
+.submit_mail button {
+  font-size: 35.83px;
+  height: 50px;
+  width: 100%;
+  background-color: #202055;
+  line-height: 52px;
+  border: none;
+  color: #fff;
+}
+
+.row.social_Login {
+  cursor: pointer;
+}
+
+/* .field-icon {
+  color: white;
+  margin-left: -22px;
+  margin-top: 26px;
+  margin-right: 0px;
+} */
 
 
+.input_with_icont{
+  position: relative;
+}
+.input_with_icont span{
+  position: absolute;
+  top: 25px;
+  bottom: 0;
+  right: 24px;
+  margin: auto;
+  z-index: 11;
+  color: white;
+}
+.input_with_icont:after{
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 52px;
+  margin: auto;
+  background-color: #d6d6d6;
+  z-index: 11;
+}
 
-
-    .modal-content{
-      background-image: url('/assets/images/join1.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-    .modal_content{
-      padding: 20px;
-    }
-    .forgot_password_form{
-      margin: 20px 0;
-    }
-    .forgot_password_form input{
-      background-color: transparent;
-      color: #000!important;
-      height: 50px;
-      border-radius: 0px!important;
-      font-size: 30px;
-    }
-    .forgot_password_form  input::-webkit-input-placeholder {
-      color: #000!important;
-      font-size: 30px!important;
-    }
-    .submit_mail button{
-      font-size: 35.83px;
-      height: 50px;
-      width: 100%;
-      background-color: #202055;
-      line-height: 52px;
-      border: none;
-      color: #fff;
-    }
-    .row.social_Login {
-      cursor: pointer;
+@media(max-width: 575px) {
+  /*forgot password modal css start*/
+  .submit_mail button {
+    font-size: 28.83px;
+    height: 45px;
   }
-    @media(max-width: 575px){
-      /*forgot password modal css start*/
-      .submit_mail button {
-        font-size: 28.83px;
-        height: 45px;
-      }
-      .forgot_password_form  input::-webkit-input-placeholder {
-        color: #000!important;
-        font-size: 25px!important;
-      }
-      .forgot_password_form input{
-        height: 45px;
-        font-size: 25px;
-      }
-      /*forgot password modal css end*/
-    }
+  .forgot_password_form input::-webkit-input-placeholder {
+    color: #000!important;
+    font-size: 25px!important;
+  }
+  .forgot_password_form input {
+    height: 45px;
+    font-size: 25px;
+  }
+  /*forgot password modal css end*/
+}

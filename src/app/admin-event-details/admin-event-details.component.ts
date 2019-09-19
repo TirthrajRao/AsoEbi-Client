@@ -51,13 +51,20 @@ export class AdminEventDetailsComponent implements OnInit {
         console.log(this.allEventDetails);
         this.guestList = data.data.guestDetail;
         console.log("guest list ", this.guestList);
-        this.guestListWithPayment = data.data.guestListWithPayment;
-        console.log("payment list", this.guestListWithPayment);
-        this.groupWithItemList = data.data.groupWithItemList;
-        console.log("vechayeli itemsssssssss", this.groupWithItemList);
-        this.cartItems = this.groupWithItemList.cartItem;
+        // ;
+        // console.log("payment list", this.guestListWithPayment);
+        // this.groupWithItemList = data.data.groupWithItemList;
+        // console.log("vechayeli itemsssssssss", this.groupWithItemList);
+        // this.cartItems = this.groupWithItemList.cartItem;
         // console.log("items which are sold ", this.cartItem);
       }, err => {
+        console.log(err);
+      })
+      this._eventService.singleGuestItemDetails(eventId)
+      .subscribe((data:any)=>{
+        this.guestListWithPayment = data.data;
+        console.log("data of guest item purchase",this.guestListWithPayment);
+      }, err =>{
         console.log(err);
       })
   }

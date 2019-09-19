@@ -993,6 +993,7 @@ export class CreateEventComponent implements OnInit {
    * If any changes update event
    */
   updateEvent() {
+    console.log("update event details of celebrant", this.eventForm.value)
     this.isLoad = true;
     this.getActivityFrom(this.eventActivities);
     this.eventForm.value.deadlineDate = $('#deadLineDate').val();

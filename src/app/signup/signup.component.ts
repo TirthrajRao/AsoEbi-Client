@@ -20,11 +20,18 @@ export class SignupComponent implements OnInit {
   email;
   isLoad = false;
   newUserName;
+  show2: boolean;
+  pwd2: boolean;
 
   constructor(private route: ActivatedRoute,
     private router: Router, private _loginService: LoginService, private _alertService: AlertService) { }
 
   ngOnInit() {
+
+    $(".toggle-password").click(function () {
+      $(this).toggleClass("fa-eye fa-eye-slash");
+    });
+
     /**
      * SignUp form for new user
      */
@@ -33,11 +40,11 @@ export class SignupComponent implements OnInit {
       password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
       firstName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
       lastName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
-      mobile: new FormControl('', [Validators.required,Validators.minLength(10), Validators.maxLength(10)]),
+      mobile: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
     })
   }
 
-  
+
   /**
    * Display error message for signUp form
    */
@@ -58,14 +65,14 @@ export class SignupComponent implements OnInit {
     const nameInput = /[a-zA-Z ]/;
 
     $("#firstName").on({
-      keydown: function(e) {
+      keydown: function (e) {
         if (e.which === 32)
           return false;
       },
-      change: function() {
+      change: function () {
         this.value = this.value.replace(/\s/g, "");
       }
-     });
+    });
     let message1 = document.getElementById('message1');
     if (!form.firstName.match(nameInput)) {
       console.log("message==========", message1)
@@ -84,14 +91,14 @@ export class SignupComponent implements OnInit {
     console.log(form);
     const nameInput = /[a-zA-Z ]/;
     $("#lastName").on({
-      keydown: function(e) {
+      keydown: function (e) {
         if (e.which === 32)
           return false;
       },
-      change: function() {
+      change: function () {
         this.value = this.value.replace(/\s/g, "");
       }
-     });
+    });
     let message1 = document.getElementById('message2');
     if (!form.firstName.match(nameInput)) {
       console.log("message==========", message1)
@@ -117,20 +124,20 @@ export class SignupComponent implements OnInit {
   //   }
   // }
 
-  validatePhone(form){
+  validatePhone(form) {
     console.log(form)
     var field1 = (<HTMLInputElement>document.getElementById("mobile")).value;
     let message = document.getElementById('message3');
     console.log(field1);
-    if(/[a-zA-Z]/g.test(field1)){
+    if (/[a-zA-Z]/g.test(field1)) {
       message.innerHTML = "Please enter only numbers"
     }
-    else if(!(/[0-9]{10}/.test(field1))){
+    else if (!(/[0-9]{10}/.test(field1))) {
       console.log("Please enter valid number");
-      if(field1.length < 10){
+      if (field1.length < 10) {
         message.innerHTML = "Please enter 10 digit number";
       }
-    }else{
+    } else {
       message.innerHTML = ""
       console.log("Valid entry");
     }
@@ -163,14 +170,14 @@ export class SignupComponent implements OnInit {
   //       this.isDisable = true;
   //     })
   // }
-  onSubmit(){
+  onSubmit() {
     this.isLoad = true;
-    setTimeout(()=>{
+    setTimeout(() => {
 
       $('.firstStep').css({ 'display': 'none' })
       $('.thirdStep').css({ 'display': 'block' });
-    },500)
-      this.isLoad = false;
+    }, 500)
+    this.isLoad = false;
   }
 
   verifyCode(data) {
@@ -198,10 +205,10 @@ export class SignupComponent implements OnInit {
    */
   personalDetails() {
     this.isLoad = true;
-      this.submitted = true;
-      if (this.signUpForm.invalid) {
-        return;
-      }
+    this.submitted = true;
+    if (this.signUpForm.invalid) {
+      return;
+    }
     console.log(this.signUpForm.value);
     this._loginService.signUpOfEmail(this.signUpForm.value)
       .subscribe((data: any) => {
@@ -225,6 +232,12 @@ export class SignupComponent implements OnInit {
   nextSection(goto, from) {
     $('.' + goto).css({ 'display': 'block' });
     $('.' + from).css({ 'display': 'none' })
+  }
+
+
+  password2() {
+    this.show2 = !this.show2;
+    this.pwd2 = !this.pwd2;
   }
 
 }

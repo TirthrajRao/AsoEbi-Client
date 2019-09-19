@@ -46,10 +46,14 @@
                                     </div>
                                 </div>
                                 <div class="form-group ">
-                                    <div class="input-group">
+                                    <div class="input-group input_with_icont">
                                         <input placeholder="Password" type="password" class="form-control"
-                                            formControlName="password" id="password"
-                                            [ngClass]="{ 'is-invalid': f.password.touched && f.password.errors }">
+                                            formControlName="password" id="pwd2"
+                                            [ngClass]="{ 'is-invalid': f.password.touched && f.password.errors }"
+                                            [type]="show2 ? 'text' : 'password'">
+                                        <span toggle="#password-field"
+                                            class="fa fa-fw fa-eye-slash field-icon toggle-password"
+                                            (click)="password2()"></span>
                                         <div *ngIf="f.password.touched && f.password.errors"
                                             class="invalid-feedback text-white">
                                             <div *ngIf="f.password.errors.required">Password is required</div>
@@ -62,8 +66,8 @@
                                     </div>
                                 </div>
                                 <div class="btn_login">
-                                    <button type="submit" class="btn text-white login_btn" (click)="onSubmit()"
-                                        >Create</button>
+                                    <button type="submit" class="btn text-white login_btn"
+                                        (click)="onSubmit()">Create</button>
                                 </div>
                             </form>
                         </div>
@@ -103,7 +107,7 @@
             </div>
         </section>
     </div>
-    
+
 
 
     <!-- personalDetails form for new register user -->
@@ -117,7 +121,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="First Name" pattern="[a-zA-Z]+"
-                                         (input)="validateFirstName(signUpForm.value)" id="firstName"
+                                        (input)="validateFirstName(signUpForm.value)" id="firstName"
                                         class="form-control" formControlName="firstName"
                                         [ngClass]="{ 'is-invalid': f.firstName.touched && f.firstName.errors }">
                                     <div id="message1"></div>
@@ -133,8 +137,8 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Last Name" pattern="[a-zA-Z]+"
-                                         formControlName="lastName"
-                                        (input)="validateLastName(signUpForm.value)" id="lastName"
+                                        formControlName="lastName" (input)="validateLastName(signUpForm.value)"
+                                        id="lastName"
                                         [ngClass]="{ 'is-invalid': f.lastName.touched && f.lastName.errors }">
                                     <div id="message2"></div>
                                     <div *ngIf=" f.lastName.touched && f.lastName.errors"
@@ -148,10 +152,11 @@
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
-                                    <input type="text" minlength="10" maxlength="10"  class="form-control w-100" placeholder="Mobile Number" 
-                                        formControlName="mobile" (input)="validatePhone(signUpForm.value)" id="mobile"
+                                    <input type="text" minlength="10" maxlength="10" class="form-control w-100"
+                                        placeholder="Mobile Number" formControlName="mobile"
+                                        (input)="validatePhone(signUpForm.value)" id="mobile"
                                         [ngClass]="{ 'is-invalid': f.mobile.touched && f.mobile.errors }">
-                                        <span id="message3" class="w-100 text-white"></span>
+                                    <span id="message3" class="w-100 text-white"></span>
                                     <div *ngIf="f.mobile.touched && f.mobile.errors"
                                         class="invalid-feedback text-white text-left">
                                         <div *ngIf="f.mobile.errors.minlength">Phone must be only 10 digits</div>
