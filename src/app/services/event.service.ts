@@ -279,11 +279,7 @@ export class EventService {
    */
   adminEventDetails(id) {
     console.log(id);
-    return this.http.get(config.baseApiUrl + "api/event/event-detail/" + id);
-  }
-
-  singleGuestItemDetails(id){
-    return this.http.get(config.baseApiUrl +"api/event-transaction?eventId="+ id);
+    return this.http.get(config.baseApiUrl + "api/event-transaction?eventId="+ id);
   }
 
   /**

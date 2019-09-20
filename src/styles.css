@@ -2796,18 +2796,18 @@ form.billing_address {
 	max-height: 312px;
 }
 
-form.all_activity_form::-webkit-scrollbar-track, form.billing_address::-webkit-scrollbar-track, .thankyou_font_msg::-webkit-scrollbar-track {
+.table-responsive::-webkit-scrollbar-track,form.all_activity_form::-webkit-scrollbar-track, form.billing_address::-webkit-scrollbar-track, .thankyou_font_msg::-webkit-scrollbar-track {
 	border: 1px solid transparent;
 	padding: 2px 0;
 	width: 7px;
 	background-color: transparent;
 }
 
-form.all_activity_form::-webkit-scrollbar, form.billing_address::-webkit-scrollbar, .thankyou_font_msg::-webkit-scrollbar {
+.table-responsive::-webkit-scrollbar ,form.all_activity_form::-webkit-scrollbar, form.billing_address::-webkit-scrollbar, .thankyou_font_msg::-webkit-scrollbar {
 	width: 5px;
 }
 
-form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-scrollbar-thumb, .thankyou_font_msg::-webkit-scrollbar-thumb {
+.table-responsive::-webkit-scrollbar-thumb,form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-scrollbar-thumb, .thankyou_font_msg::-webkit-scrollbar-thumb {
 	border-radius: 10px;
 	background-color: #adb5bd;
 }
@@ -5588,6 +5588,7 @@ form.all_activity_form::-webkit-scrollbar-thumb, form.billing_address::-webkit-s
 	font-size: 33px;
 	-webkit-transition: all .2s ease-in-out;
 	transition: all .2s ease-in-out;
+	cursor: pointer;
 }
 
 i {
@@ -5654,6 +5655,7 @@ i {
 .sidebar a:hover {
 	background-color: #3398db;
 	color: #ffffff;
+	cursor: pointer;
 }
 
 .admin-card .card {
@@ -5679,7 +5681,7 @@ i {
 /* admin event list details page css start */
 
 .event-list-page-detail-admin {
-	padding: 150px;
+    padding: 100px 50px 10px 130px;
 }
 
 .event-list-page-detail-admin {
@@ -5739,8 +5741,10 @@ tr.gray-table-header {
 tr.blue-table-header {
 	background-color: #4755a7;
 }
-
-.blue-table-header th {
+tr.pink-table-header{
+	background-color: #611f60;
+}
+.blue-table-header th, .pink-table-header th {
 	border-right: 1px solid #ddd;
 }
 
@@ -6112,6 +6116,9 @@ a.ui-datepicker-prev.ui-corner-all
 /* responsive css start */
 
 @media(max-width: 1366px) {
+	.content-1{
+		width: calc( 100% / 3 );
+	}
 	.green_slide .inner_content_box, .pink_slide .inner_content_box, .orange_slide .inner_content_box, .yellow_slide .inner_content_box, .home_slider {
 		height: 525px;
 		width: 535px;
@@ -6903,6 +6910,10 @@ a.ui-datepicker-prev.ui-corner-all
 }
 
 @media(max-width: 1199px) {
+	.content-1{
+		width: calc( 100% / 2 );
+		text-align: center;
+	}
 	/*slider overlay start*/
 	.slider_overlay {
 		top: 56px;
@@ -7293,6 +7304,9 @@ a.ui-datepicker-prev.ui-corner-all
 }
 
 @media(max-width: 575px) {
+	.event-list-page-detail-admin {
+		padding: 100px 10px 0px 90px;
+	}
 	.home_slider ul.slick-dots button {
 		height: 4px;
 		width: 20px;

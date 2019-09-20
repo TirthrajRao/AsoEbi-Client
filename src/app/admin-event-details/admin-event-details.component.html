@@ -109,18 +109,15 @@
 
 <section class="event-list-page-detail-admin">
     <div class="container-fluid">
-        <div class="row" *ngIf="allEventDetails">
+        <div class="row">
             <div class="col-lg-6 ">
-                <div class="card mb-3" [ngStyle]="{background: getSrc(allEventDetails.eventTheme)}">
+                <div class="card mb-3 " *ngIf="allEventDetails"
+                    [ngStyle]="{background: getSrc(allEventDetails.eventTheme)}">
                     <div class="left-bg">
                         <div class="profile-pic-admin text-center">
                             <img src="{{path}}{{allEventDetails.profilePhoto}}" alt="profile pic admin">
                         </div>
                         <div class="row">
-                            <!-- <div class="content-1">
-                                    <p>EventDate: 2019-08-09</p>
-                                    <p>T00:00:00.000Z</p>
-                                </div> -->
                             <div class="content-1">
                                 <p>EventTitle:</p>
                                 <p>{{allEventDetails.eventTitle}}</p>
@@ -130,57 +127,89 @@
                                 <p>{{allEventDetails.hashTag}}</p>
                             </div>
                             <div class="content-1">
+                                <p>PaymentDate:</p>
+                                <p>{{allEventDetails.paymentDeadlineDate | date}}</p>
+                            </div>
+                            <div class="content-1">
                                 <p>Created By:</p>
-                                <span>{{allEventDetails.eventCreator.firstName}}
-                                    {{allEventDetails.eventCreator.lastName}}</span>
+                                <span>{{allEventDetails.creator.firstName}}
+                                    {{allEventDetails.creator.lastName}}</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="card">
+                <div class="card mb-3">
                     <div class="right-card">
                         <h3 class="pl-4">GuestList</h3>
-                        <p class="pl-4" *ngFor="let list of guestList">{{list.firstName}}
-                            {{list.lastName}}</p>
+                        <div class="table-responsive p-0">
+                            <table class="table">
+                                <tr class="blue-table-header">                                    
+                                    <th class="text-white">GuestName</th>
+                                    <th class="text-white">Email</th>
+                                    <th class="text-white">Mobile No.</th>
+                                </tr>
+                                <tbody class="table-body-content">
+                                    <tr *ngFor="let list of guestList">
+                                        <td>{{list.firstName}} {{list.lastName}}</td>
+                                        <td>{{list.email}}</td>
+                                        <td>{{list.mobile}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card mb-3">
+                    <div class="right-card">
+                        <h3 class="pl-4">Total No Of Payment Done By Guest</h3>
+                        <div class="table-responsive p-0">
+                            <table class="table">
+                                <tr class="pink-table-header">
+                                    <th class="text-white">GuestName</th>
+                                    <th class="text-white">Donation</th>
+                                    <th class="text-white">Total Amount</th>
+                                    <th class="text-white">Final Amount</th>
+                                </tr>
+                                <tr *ngFor="let list of guestList" class="product" ng-init="count = 0">
+                                    <td>{{list.firstName}} {{list.lastName}}</td>
+                                    <td>{{list.totalDonation | currency:"&#x20A6;"}} </td>
+                                    <td>{{list.totalCollection | currency:"&#x20A6;"}} </td>
+                                    <td>{{list.finalTotal | currency:"&#x20A6;"}} </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card mb-3">
+                    <div class="right-card">
                         <h3 class="pl-4">Total No Of Payment Done By Guest</h3>
                         <div class="table-responsive p-0">
                             <table class="table">
                                 <tr class="gray-table-header">
-                                    <th class="text-white">GuestName</th>
-                                    <th class="text-white">Donation</th>
-                                    <th class="text-white">Total Amount</th>
+                                    <th class="text-white">GroupName</th>
+                                    <th class="text-white">Gender</th>
+                                    <th class="text-white">ItemName</th>
+                                    <th class="text-white">Item Price</th>
+                                    <th class="text-white">quantity</th>
+                                    <th class="text-white">Total</th>
                                 </tr>
-                                <tr *ngFor="let list of guestListWithPayment" class="product" ng-init="count = 0">
-                                    <td>{{list.firstName}} {{list.lastName}}</td>
-                                    <td>{{list.donation}} $</td>
-                                    <td>{{list.grandTotal}} $</td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div *ngFor="let products of groupWithItemList">
-                            <h3 class="pl-4">{{products.groupName}}</h3>
-                            <div class="table-responsive p-0">
-                                <table class="table">
-                                    <tr class="blue-table-header">
-                                        <th class="text-white">ItemName</th>
-                                        <th class="text-white">Gender</th>
-                                        <th class="text-white">Item Price</th>
-                                        <th class="text-white">quantity</th>
-                                        <th class="text-white">Total</th>
+                                <tbody>
+                                    <tr *ngFor="let products of groupWithItemList">
+                                        <td>{{products.groupName}}</td>
+                                        <td>{{products.itemGender}}</td>
+                                        <td>{{products.itemName}}</td>
+                                        <td>{{products.itemPrice | currency:"&#x20A6;"}}</td>
+                                        <td>{{products.itemQuantity}}</td>
+                                        <td>{{products.itemTotal | currency:"&#x20A6;"}}</td>
                                     </tr>
-                                    <tbody>
-                                        <tr *ngFor="let items of products.cartItem">
-                                            <td>{{items.itemName}}</td>
-                                            <td>{{items.gender}} $</td>
-                                            <td>{{items.itemPrice}} $</td>
-                                            <td>{{items.quantity}} $</td>
-                                            <td>{{items.subTotal}} $</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

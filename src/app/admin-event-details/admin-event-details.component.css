@@ -6,4 +6,10 @@
 .card{
     background-color: #0909095e !important;
     color: white;
+    background-repeat: no-repeat!important;
+    background-size: cover!important;
+}
+.table-responsive {
+    max-height: 300px;
+    height: 300px;
 }
